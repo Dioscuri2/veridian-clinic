@@ -3,7 +3,6 @@ const path = require("path");
 
 const nextConfig = {
   reactStrictMode: true,
-  output: "standalone",
   turbopack: {
     root: path.join(__dirname),
   },
