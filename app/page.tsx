@@ -7,7 +7,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 
 const domains = [
  { n:"01", title:"Structural Health", sub:"Your physical foundation", desc:"Cardiovascular fitness, muscle mass, and movement — how well your body tolerates and recovers from everyday physical demand.", metrics:["Resting heart rate","VO₂max / fitness proxy","Body composition","Grip strength & movement"], band:"amr", pct:"56%" },
- { n:"02", title:"Metabolic Health", sub:"How your body handles energy", desc:"How effectively you process glucose and fats — and the hidden burden on your blood vessels and organs. The most powerful lever for long-term disease prevention.", metrics:["HbA1c & fasting insulin","ApoB & full lipid panel","CGM — TIR & variability","Post-prandial glucose patterns"], band:"red", pct:"40%" },
+ { n:"02", title:"Metabolic Health", sub:"How your body handles energy", desc:"How effectively you process glucose and fats — and the hidden burden on your blood vessels and organs. The most powerful lever for long-term disease prevention.", metrics:["HbA1c & fasting insulin","ApoB, homocysteine & full lipid panel","CGM — TIR & variability","Post-prandial glucose patterns"], band:"red", pct:"40%" },
  { n:"03", title:"Recovery", sub:"How you repair and regenerate", desc:"Sleep quality, HRV, and nervous system balance — how well your body shifts from output to restoration. Independently linked to diabetes, hypertension, and cardiovascular mortality.", metrics:["Sleep duration & consistency","Heart rate variability (HRV)","Sleep efficiency","Autonomic balance"], band:"amr", pct:"52%" },
  { n:"04", title:"Stress Resilience", sub:"How you respond to pressure", desc:"How often and how long your body sits in fight-or-flight — directly affecting appetite, blood pressure, sleep quality, and cardiovascular risk.", metrics:["Validated stress screening","Subjective load audit","Physiological markers","Behavioural patterns"], band:"grn", pct:"72%" },
 ];
@@ -40,7 +40,7 @@ const faqs = [
  { q:"Is Veridian a replacement for my NHS GP?", a:"No. We are a private preventive and optimisation service that complements your NHS care. We communicate with your GP where clinically appropriate." },
  { q:"Is Veridian CQC registered?", a:"Yes. Veridian Clinic is fully CQC registered. All clinical services are personally led by Dr Oluwatosin Taiwo — MBBS, MRCGP, MRCS." },
  { q:"How are consultations delivered?", a:"All consultations are virtual, delivered via a secure encrypted video platform, accessible across the UK." },
- { q:"What blood tests are included?", a:"The Core Assessment includes HbA1c, fasting insulin, ApoB, full lipid panel, and key metabolic markers. The Advanced Assessment adds Lp(a), HOMA-IR, hsCRP, ferritin and a full cardiovascular risk panel." },
+ { q:"What blood tests are included?", a:"The Core Assessment includes HbA1c, fasting insulin, ApoB, homocysteine, full lipid panel, and key metabolic markers. The Advanced Assessment adds Lp(a), HOMA-IR, hsCRP, ferritin and a full cardiovascular risk panel." },
  { q:"Can I access GLP-1 therapy?", a:"Where clinically indicated, we can initiate and supervise GLP-1 therapy as part of a structured programme — always integrated into a wider plan, never prescribed in isolation." },
  { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5–7 working days." },
 ];
@@ -104,8 +104,8 @@ export default function HomePage() {
  </div>
  <div className="g2-hero" style={{ display: "grid", alignItems: "center" }}>
  <div>
- <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(.92rem,2vw,1.05rem)", fontWeight: 400, color: "var(--fo3)", letterSpacing: ".02em", marginBottom: 10 }} className="a1">
- For the health-conscious professional who knows something is off — but hasn't been able to prove it.
+ <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.12rem,2.8vw,1.4rem)", fontWeight: 500, color: "var(--fo2)", letterSpacing: ".01em", lineHeight: 1.5, marginBottom: 14, maxWidth: 700 }} className="a1">
+ For people who want sharper insight into their health before problems become disease.
  </p>
  <p className="lbl a1">Longevity &amp; Metabolic Health</p>
  <div className="rule a2"/>
