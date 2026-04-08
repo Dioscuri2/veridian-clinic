@@ -64,7 +64,7 @@ export default function Navigation() {
  ))}
  </nav>
 
- <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+ <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
  <div style={{ display: "none", alignItems: "center", gap: 6, marginRight: 8 }} className="nav-trust">
  <Shield/>
  <span style={{ fontSize: ".66rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--fo)" }}>CQC Registered</span>
@@ -73,14 +73,14 @@ export default function Navigation() {
  style={{ padding: "10px 18px", fontSize: ".78rem", display: "none" }}>
  Book Baseline Audit →
  </Link>
- <button className="mob-btn" onClick={() => setMobOpen(!mobOpen)} aria-label="Menu">
+ <button className="mob-btn" onClick={() => setMobOpen(!mobOpen)} aria-label={mobOpen ? "Close menu" : "Open menu"} aria-expanded={mobOpen} aria-controls="mobile-navigation-menu">
  {mobOpen ? "✕" : "☰"}
  </button>
  </div>
  </div>
 
  {mobOpen && (
- <div className="mob-menu">
+ <div className="mob-menu" id="mobile-navigation-menu">
  {navLinks.map(({ label, href }) => (
  <Link key={label} href={href} className="mob-link">{label}</Link>
  ))}

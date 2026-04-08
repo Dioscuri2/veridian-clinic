@@ -103,7 +103,7 @@ export default function LeadCaptureForm({
         style={{
           display: "grid",
           gap: 12,
-          gridTemplateColumns: compact ? "1fr" : "repeat(auto-fit, minmax(220px, 1fr))",
+          gridTemplateColumns: compact ? "1fr" : "repeat(auto-fit, minmax(min(220px, 100%), 1fr))",
         }}
       >
         <div>
@@ -143,13 +143,14 @@ export default function LeadCaptureForm({
           fontSize: ".78rem",
           color: "var(--sl3)",
           lineHeight: 1.7,
+          textAlign: "left",
         }}
       >
         <input
           type="checkbox"
           checked={consent}
           onChange={(event) => setConsent(event.target.checked)}
-          style={{ marginTop: 3 }}
+          style={{ marginTop: 3, minWidth: 18, minHeight: 18, flexShrink: 0 }}
         />
         <span>
           I agree to receive Veridian marketing emails, including newsletter updates, quiz results, and roadmap-related follow-up.

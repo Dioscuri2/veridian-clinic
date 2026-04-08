@@ -41,8 +41,10 @@ body {
  -webkit-font-smoothing: antialiased;
  overflow-x: hidden;
 }
-img, svg { display: block; }
+main { overflow-x: clip; }
+img, svg { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
+button, input, select, textarea { font: inherit; }
 
 .cg { font-family: 'Cormorant Garamond', serif; }
 
@@ -82,6 +84,7 @@ a { text-decoration: none; color: inherit; }
 .nav-inner {
  max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);
  height: 100%; display: flex; align-items: center; justify-content: space-between;
+ gap: 12px;
 }
 .nav-scroll {
  background: rgba(246,241,232,.97);
@@ -100,7 +103,7 @@ a { text-decoration: none; color: inherit; }
 }
 .nav-link:hover { color: var(--fo); }
 .nav-link:hover::after { width: 100%; }
-.logo-mark { display: flex; align-items: center; gap: 13px; }
+.logo-mark { display: flex; align-items: center; gap: 13px; min-width: 0; }
 .logo-text-main { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; letter-spacing: .18em; color: var(--sl); line-height: 1; }
 .logo-text-sub { font-size: .52rem; font-weight: 500; letter-spacing: .3em; color: var(--sl3); text-transform: uppercase; margin-top: 3px; }
 
@@ -109,8 +112,9 @@ a { text-decoration: none; color: inherit; }
  display: inline-flex; align-items: center; justify-content: center;
  gap: 8px; border: none; cursor: pointer; font-family: 'Figtree', sans-serif;
  font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
- text-decoration: none; white-space: nowrap; transition: all .3s ease;
+ text-decoration: none; white-space: normal; transition: all .3s ease;
  padding: 14px 28px; font-size: .82rem; border-radius: 0;
+ min-height: 44px; min-width: 44px; line-height: 1.35; text-align: center;
 }
 .btn-fo { background: var(--fo); color: var(--iv); }
 .btn-fo:hover { background: var(--fo2); box-shadow: 0 10px 36px rgba(13,40,24,.26); transform: translateY(-2px); }
@@ -163,6 +167,7 @@ a { text-decoration: none; color: inherit; }
 .card {
  background: var(--wh); border: 1px solid rgba(0,0,0,.07);
  padding: 32px; transition: box-shadow .3s, transform .3s;
+ overflow-wrap: anywhere;
 }
 .card:hover { box-shadow: 0 18px 56px rgba(13,40,24,.09); transform: translateY(-3px); }
 .card-iv { background: var(--iv); border: 1px solid rgba(0,0,0,.07); padding: 32px; }
@@ -197,8 +202,8 @@ a { text-decoration: none; color: inherit; }
 /* ── Form fields ── */
 .form-field {
  padding: 13px 15px; border: 1px solid rgba(0,0,0,.11);
- background: var(--iv); width: 100%;
- font-family: 'Figtree', sans-serif; font-size: .9rem; font-weight: 300;
+ background: var(--iv); width: 100%; min-height: 44px;
+ font-family: 'Figtree', sans-serif; font-size: .95rem; font-weight: 300;
  color: var(--sl); outline: none; transition: border-color .2s;
  -webkit-appearance: none; appearance: none;
 }
@@ -235,6 +240,7 @@ a { text-decoration: none; color: inherit; }
  font-family: 'Figtree', sans-serif; font-size: .93rem;
  font-weight: 400; color: var(--sl); cursor: pointer;
  transition: all .22s ease; display: flex; align-items: center; gap: 14px;
+ min-height: 56px;
 }
 .q-opt:hover { border-color: var(--fo); background: rgba(13,40,24,.03); }
 .q-opt.selected { border-color: var(--fo); background: var(--fo); color: var(--iv); }
@@ -278,9 +284,9 @@ a { text-decoration: none; color: inherit; }
 .ticker-dot { color: var(--go); }
 
 /* ── Mobile nav ── */
-.mob-btn { background: none; border: none; cursor: pointer; color: var(--sl); font-size: 1.35rem; padding: 6px; }
+.mob-btn { background: none; border: none; cursor: pointer; color: var(--sl); font-size: 1.35rem; padding: 10px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 .mob-menu { background: var(--iv); border-top: 1px solid rgba(0,0,0,.07); padding: 12px 24px 22px; }
-.mob-link { display: block; padding: 11px 0; font-size: .93rem; color: var(--sl); border-bottom: 1px solid rgba(0,0,0,.05); }
+.mob-link { display: block; padding: 14px 0; font-size: .98rem; color: var(--sl); border-bottom: 1px solid rgba(0,0,0,.05); min-height: 44px; }
 
 /* ── Footer ── */
 .footer-link { font-size: .72rem; color: rgba(246,241,232,.22); text-decoration: none; transition: color .2s; }
@@ -331,9 +337,21 @@ a { text-decoration: none; color: inherit; }
  MOBILE overrides
  ════════════════════════════════════════════════ */
 @media (max-width: 639px) {
+ :root { --pad: 16px; --nav-h: 72px; }
  .plan-price { font-size: 2.4rem; }
- .btn { font-size: .8rem; padding: 13px 22px; }
- .badge { padding: 7px 13px; font-size: .64rem; }
- .card, .card-iv, .card-fo { padding: 24px; }
-}
+ .btn { width: 100%; font-size: .8rem; padding: 13px 18px; letter-spacing: .06em; }
+ .badge { padding: 7px 12px; font-size: .62rem; letter-spacing: .11em; }
+ .card, .card-iv, .card-fo { padding: 20px; }
+ .sec { padding: 64px var(--pad); }
+ .sh { margin-bottom: 40px; }
+ .sh-body { font-size: .92rem; }
+ .nav { background: rgba(246,241,232,.97); backdrop-filter: blur(14px); box-shadow: 0 2px 24px rgba(0,0,0,.05); border-bottom: 1px solid rgba(0,0,0,.06); }
+ .nav-inner { padding: 0 var(--pad); }
+ .logo-mark svg { width: 28px; height: 28px; flex-shrink: 0; }
+ .logo-text-main { font-size: .95rem; letter-spacing: .12em; }
+ .logo-text-sub { font-size: .48rem; letter-spacing: .2em; }
+ .ticker-item { padding: 0 24px; font-size: .68rem; }
+ .cqc-strip { padding: 20px; }
+ table { min-width: 680px !important; }
+ }
 `;
