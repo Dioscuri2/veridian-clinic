@@ -154,7 +154,11 @@ export async function POST(request: NextRequest) {
       destination = formspreeOk ? "formspree" : "local-log";
     }
 
-    await appendLocalLead({ ...entry, destination });
+    try {
+      await appendLocalLead({ ...entry, destination });
+    } catch {
+      // Ignore filesystem write failures on read-only serverless runtimes.
+    }
 
     return NextResponse.json({
       ok: true,
