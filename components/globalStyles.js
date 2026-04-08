@@ -286,6 +286,17 @@ a { text-decoration: none; color: inherit; }
 .footer-link { font-size: .72rem; color: rgba(246,241,232,.22); text-decoration: none; transition: color .2s; }
 .footer-link:hover { color: rgba(246,241,232,.5); }
 
+/* ── Lead forms ── */
+.lead-label {
+ display: block;
+ font-size: .7rem;
+ font-weight: 600;
+ letter-spacing: .12em;
+ text-transform: uppercase;
+ color: var(--sl3);
+ margin-bottom: 8px;
+}
+
 /* ── Vline ── */
 .vline { width: 1px; height: 64px; background: linear-gradient(to bottom, transparent, var(--go), transparent); margin: 0 auto 24px; }
 

@@ -23,7 +23,7 @@ export default function Footer() {
  {[
  { label: "Assessments", href: "/assessments" },
  { label: "Book Now", href: "/book" },
- { label: "Free Quiz", href: "/quiz" },
+ { label: "Metabolic Quiz", href: "/metabolic-age" },
  { label: "Patient Portal", href: "/intake" },
  ].map(({ label, href }) => (
  <Link key={label} href={href} className="footer-link" style={{ color: "rgba(246,241,232,.4)" }}>{label}</Link>
