@@ -288,9 +288,9 @@ export default function MetabolicAgePage() {
                     quizScore={score}
                     metabolicAge={metabolicAge}
                     resultBand={band.label}
-                    title="Get Your Full Longevity Roadmap"
-                    subtitle="Enter your details to unlock the personalised roadmap that matches your metabolic age result."
-                    ctaLabel="Get Your Full Longevity Roadmap →"
+                    title="Get Your Full Longevity Roadmap + Free 7 Missing Markers Guide"
+                    subtitle="Enter your details to unlock the personalised roadmap that matches your metabolic age result, plus the GP-led guide to the 7 missing longevity biomarkers."
+                    ctaLabel="Get Your Roadmap + Free Guide →"
                   />
                 </div>
               </div>
