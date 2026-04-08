@@ -3,12 +3,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-/* ─────────────────────────────────────────────────────────────────
- Navigation — shared across all Veridian pages
- Uses Next.js Link for instant SPA transitions.
- Anchor links prefixed with /# so they work from sub-pages.
- ───────────────────────────────────────────────────────────────── */
-
 function Shield() {
  return (
  <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
@@ -36,11 +30,10 @@ export default function Navigation() {
 
  const navLinks = [
  { label: "How It Works", href: anchor("#process") },
- { label: "The Domains", href: anchor("#domains") },
+ { label: "Missing Links", href: anchor("#domains") },
  { label: "Assessments", href: "/assessments" },
- { label: "Programme", href: anchor("#programme") },
+ { label: "Reset", href: anchor("#programme") },
  { label: "Our Doctors", href: anchor("#team") },
- { label: "Testimonials", href: anchor("#testimonials") },
  { label: "FAQ", href: anchor("#faq") },
  ];
 
@@ -76,9 +69,9 @@ export default function Navigation() {
  <Shield/>
  <span style={{ fontSize: ".66rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--fo)" }}>CQC Registered</span>
  </div>
- <Link href="/assessments" className="btn btn-fo" id="nav-cta"
- style={{ padding: "9px 18px", fontSize: ".76rem", display: "none" }}>
- View Assessments →
+ <Link href="/book?tier=baseline" className="btn btn-fo" id="nav-cta"
+ style={{ padding: "10px 18px", fontSize: ".78rem", display: "none" }}>
+ Book Baseline Audit →
  </Link>
  <button className="mob-btn" onClick={() => setMobOpen(!mobOpen)} aria-label="Menu">
  {mobOpen ? "✕" : "☰"}
@@ -91,8 +84,8 @@ export default function Navigation() {
  {navLinks.map(({ label, href }) => (
  <Link key={label} href={href} className="mob-link">{label}</Link>
  ))}
- <Link href="/assessments" className="btn btn-fo btn-full" style={{ marginTop: 16 }}>
- View Assessments →
+ <Link href="/book?tier=baseline" className="btn btn-fo btn-full" style={{ marginTop: 16 }}>
+ Book Baseline Audit →
  </Link>
  <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(0,0,0,.07)" }}>
  <Shield/>
