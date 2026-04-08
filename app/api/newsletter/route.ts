@@ -12,8 +12,9 @@ type LeadPayload = {
   resultBand?: string;
 };
 
-const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
-const FORMSPREE_ENDPOINT = process.env.FORMSPREE_ENDPOINT || "https://formspree.io/f/mkopkopb";
+const BREVO_API_KEY =
+  process.env.BREVO_API_KEY ||
+  "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";
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
 const VERIDIAN_LIST_NAME = "Veridian Leads";
 const FALLBACK_DIR = path.join(process.cwd(), "data");
@@ -93,27 +94,6 @@ async function submitToBrevo(payload: LeadPayload) {
   return { ok: true as const };
 }
 
-async function submitToFormspree(payload: LeadPayload) {
-  const response = await fetch(FORMSPREE_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      accept: "application/json",
-    },
-    body: JSON.stringify({
-      firstName: payload.firstName || "",
-      email: payload.email,
-      source: payload.source || "website",
-      quizScore: payload.quizScore ?? "",
-      metabolicAge: payload.metabolicAge ?? "",
-      resultBand: payload.resultBand || "",
-      consent: payload.consent ? "yes" : "no",
-    }),
-  });
-
-  return response.ok;
-}
-
 export async function POST(request: NextRequest) {
   try {
     const payload = (await request.json()) as LeadPayload;
@@ -142,16 +122,9 @@ export async function POST(request: NextRequest) {
 
     let destination = "local-log";
 
-    if (BREVO_API_KEY) {
-      const brevoResult = await submitToBrevo({ ...payload, email, source });
-      if (brevoResult.ok) {
-        destination = "brevo";
-      }
-    }
-
-    if (destination !== "brevo") {
-      const formspreeOk = await submitToFormspree({ ...payload, email, source }).catch(() => false);
-      destination = formspreeOk ? "formspree" : "local-log";
+    const brevoResult = await submitToBrevo({ ...payload, email, source });
+    if (brevoResult.ok) {
+      destination = "brevo";
     }
 
     try {

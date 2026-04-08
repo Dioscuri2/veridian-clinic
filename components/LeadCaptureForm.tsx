@@ -152,7 +152,7 @@ export default function LeadCaptureForm({
           style={{ marginTop: 3 }}
         />
         <span>
-          I agree to receive clinical insights and roadmap-related follow-up from Veridian Clinic.
+          I agree to receive Veridian marketing emails, including newsletter updates, quiz results, and roadmap-related follow-up.
         </span>
       </label>
 
