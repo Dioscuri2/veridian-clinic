@@ -8,7 +8,6 @@ import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 type AnswerMap = {
-  waistRatio: string | null;
   energy: string | null;
   sleep: string | null;
   exercise: string | null;
@@ -24,17 +23,6 @@ type Question = {
 };
 
 const questions: Question[] = [
-  {
-    key: "waistRatio",
-    title: "What’s your waist-to-height ratio?",
-    helper: "Quick guide: waist circumference ÷ height. Under 0.5 is usually lower risk.",
-    options: [
-      { label: "Under 0.5", value: "under-0.5", points: -2 },
-      { label: "0.50–0.54", value: "0.50-0.54", points: 2 },
-      { label: "0.55–0.59", value: "0.55-0.59", points: 5 },
-      { label: "0.60 or above", value: "0.60-plus", points: 8 },
-    ],
-  },
   {
     key: "energy",
     title: "How often do you get an afternoon energy crash?",
@@ -89,20 +77,60 @@ const questions: Question[] = [
 
 const baseAge = 42;
 
-function calculateMetabolicAge(score: number) {
-  return Math.max(24, Math.min(79, baseAge + Math.round(score * 0.85)));
+function getBodyCompositionPoints(heightCm: number, weightKg: number) {
+  const heightM = heightCm / 100;
+  if (!heightM || !Number.isFinite(heightM)) return 0;
+
+  const bmi = weightKg / (heightM * heightM);
+
+  if (bmi < 18.5) return 2;
+  if (bmi < 25) return -2;
+  if (bmi < 30) return 3;
+  if (bmi < 35) return 6;
+  return 8;
 }
 
-function getBand(score: number) {
-  if (score <= 4) return { label: "Resilient", tone: "On Track", color: "var(--grn)", note: "Your answers suggest relatively strong metabolic resilience. The opportunity is optimisation, not rescue." };
-  if (score <= 12) return { label: "Drifting", tone: "Needs Attention", color: "var(--amr)", note: "There are early signals that your metabolic age may be running ahead of your chronological age. This is exactly the stage where precision changes trajectory." };
-  return { label: "Accelerated", tone: "High Priority", color: "var(--red)", note: "Your responses suggest multiple drivers of accelerated metabolic ageing. That doesn’t mean damage is fixed — it means this is the right time to intervene." };
+function calculateMetabolicAge(score: number, heightCm: number, weightKg: number) {
+  const bodyCompositionPoints = getBodyCompositionPoints(heightCm, weightKg);
+  const adjustedScore = score + bodyCompositionPoints;
+  return Math.max(24, Math.min(79, baseAge + Math.round(adjustedScore * 0.9)));
+}
+
+function getBand(score: number, heightCm: number, weightKg: number) {
+  const bodyCompositionPoints = getBodyCompositionPoints(heightCm, weightKg);
+  const adjustedScore = score + bodyCompositionPoints;
+
+  if (adjustedScore <= 4) {
+    return {
+      label: "Resilient",
+      tone: "On Track",
+      color: "var(--grn)",
+      note: "Your answers suggest relatively strong metabolic resilience. The opportunity is optimisation, not rescue.",
+    };
+  }
+
+  if (adjustedScore <= 12) {
+    return {
+      label: "Drifting",
+      tone: "Needs Attention",
+      color: "var(--amr)",
+      note: "There are early signals that your metabolic age may be running ahead of your chronological age. This is exactly the stage where precision changes trajectory.",
+    };
+  }
+
+  return {
+    label: "Accelerated",
+    tone: "High Priority",
+    color: "var(--red)",
+    note: "Your responses suggest multiple drivers of accelerated metabolic ageing. That doesn’t mean damage is fixed — it means this is the right time to intervene.",
+  };
 }
 
 export default function MetabolicAgePage() {
   const [step, setStep] = useState(0);
+  const [heightCm, setHeightCm] = useState("");
+  const [weightKg, setWeightKg] = useState("");
   const [answers, setAnswers] = useState<AnswerMap>({
-    waistRatio: null,
     energy: null,
     sleep: null,
     exercise: null,
@@ -110,10 +138,14 @@ export default function MetabolicAgePage() {
     stress: null,
   });
 
-  const totalAnswered = useMemo(
-    () => Object.values(answers).filter(Boolean).length,
-    [answers]
-  );
+  const parsedHeight = Number.parseFloat(heightCm);
+  const parsedWeight = Number.parseFloat(weightKg);
+  const hasBodyMetrics = parsedHeight > 0 && parsedWeight > 0;
+
+  const totalAnswered = useMemo(() => {
+    const answerCount = Object.values(answers).filter(Boolean).length;
+    return answerCount + (hasBodyMetrics ? 1 : 0);
+  }, [answers, hasBodyMetrics]);
 
   const score = useMemo(() => {
     return questions.reduce((sum, question) => {
@@ -122,21 +154,34 @@ export default function MetabolicAgePage() {
     }, 0);
   }, [answers]);
 
-  const metabolicAge = calculateMetabolicAge(score);
-  const band = getBand(score);
-  const progress = (totalAnswered / questions.length) * 100;
-  const finished = totalAnswered === questions.length && step >= questions.length;
+  const bodyCompositionPoints = useMemo(() => {
+    if (!hasBodyMetrics) return 0;
+    return getBodyCompositionPoints(parsedHeight, parsedWeight);
+  }, [hasBodyMetrics, parsedHeight, parsedWeight]);
+
+  const adjustedScore = score + bodyCompositionPoints;
+  const metabolicAge = hasBodyMetrics ? calculateMetabolicAge(score, parsedHeight, parsedWeight) : baseAge;
+  const band = hasBodyMetrics ? getBand(score, parsedHeight, parsedWeight) : getBand(0, 170, 70);
+  const totalSteps = questions.length + 1;
+  const progress = (totalAnswered / totalSteps) * 100;
+  const finished = hasBodyMetrics && Object.values(answers).every(Boolean) && step >= questions.length;
 
   function setAnswer(key: keyof AnswerMap, value: string) {
     setAnswers((current) => ({ ...current, [key]: value }));
   }
 
   function next() {
-    const currentQuestion = questions[step];
+    if (step === 0) {
+      if (!hasBodyMetrics) return;
+      setStep(1);
+      return;
+    }
+
+    const currentQuestion = questions[step - 1];
     if (!currentQuestion) return;
     if (!answers[currentQuestion.key]) return;
-    if (step < questions.length - 1) setStep(step + 1);
-    else setStep(questions.length);
+    if (step < questions.length) setStep(step + 1);
+    else setStep(questions.length + 1);
   }
 
   function back() {
@@ -144,11 +189,13 @@ export default function MetabolicAgePage() {
   }
 
   function restart() {
-    setAnswers({ waistRatio: null, energy: null, sleep: null, exercise: null, recovery: null, stress: null });
+    setHeightCm("");
+    setWeightKg("");
+    setAnswers({ energy: null, sleep: null, exercise: null, recovery: null, stress: null });
     setStep(0);
   }
 
-  const currentQuestion = questions[step];
+  const currentQuestion = step > 0 ? questions[step - 1] : null;
 
   return (
     <>
@@ -182,45 +229,111 @@ export default function MetabolicAgePage() {
               </div>
             </div>
 
-            {!finished && currentQuestion ? (
+            {!finished && (step === 0 || currentQuestion) ? (
               <div className="g2" style={{ alignItems: "start" }}>
                 <div className="card">
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 16, marginBottom: 12 }}>
-                    <p className="lbl">Question {step + 1} of {questions.length}</p>
+                    <p className="lbl">Question {step + 1} of {totalSteps}</p>
                     <p style={{ fontSize: ".76rem", color: "var(--sl3)" }}>{Math.round(progress)}% complete</p>
                   </div>
                   <div className="prog-track" style={{ marginBottom: 26 }}>
                     <div className="prog-fill" style={{ width: `${progress}%` }} />
                   </div>
 
-                  <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 10 }}>
-                    {currentQuestion.title}
-                  </h2>
-                  {currentQuestion.helper ? (
-                    <p style={{ fontSize: ".84rem", color: "var(--sl3)", lineHeight: 1.8, marginBottom: 22 }}>{currentQuestion.helper}</p>
-                  ) : null}
+                  {step === 0 ? (
+                    <>
+                      <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 10 }}>
+                        What are your height and weight?
+                      </h2>
+                      <p style={{ fontSize: ".84rem", color: "var(--sl3)", lineHeight: 1.8, marginBottom: 22 }}>
+                        Use centimetres and kilograms. We’ll use this to estimate body-composition-related metabolic risk for you.
+                      </p>
 
-                  <div style={{ display: "grid", gap: 12, marginBottom: 26 }}>
-                    {currentQuestion.options.map((option, index) => {
-                      const active = answers[currentQuestion.key] === option.value;
-                      return (
-                        <button
-                          key={option.value}
-                          className={`q-opt ${active ? "selected" : ""}`}
-                          onClick={() => setAnswer(currentQuestion.key, option.value)}
-                        >
-                          <span className="q-opt-letter">{String.fromCharCode(65 + index)}</span>
-                          <span>{option.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
+                      <div style={{ display: "grid", gap: 14, marginBottom: 26 }}>
+                        <label style={{ display: "grid", gap: 8 }}>
+                          <span style={{ fontSize: ".82rem", color: "var(--sl2)", fontWeight: 600 }}>Height</span>
+                          <input
+                            type="number"
+                            inputMode="decimal"
+                            min="100"
+                            max="250"
+                            step="0.1"
+                            placeholder="e.g. 175 cm"
+                            value={heightCm}
+                            onChange={(event) => setHeightCm(event.target.value)}
+                            style={{
+                              width: "100%",
+                              padding: "14px 16px",
+                              borderRadius: 14,
+                              border: "1px solid rgba(25,38,32,.12)",
+                              background: "var(--wh)",
+                              color: "var(--sl)",
+                              fontSize: "1rem",
+                            }}
+                          />
+                        </label>
+
+                        <label style={{ display: "grid", gap: 8 }}>
+                          <span style={{ fontSize: ".82rem", color: "var(--sl2)", fontWeight: 600 }}>Weight</span>
+                          <input
+                            type="number"
+                            inputMode="decimal"
+                            min="30"
+                            max="300"
+                            step="0.1"
+                            placeholder="e.g. 78 kg"
+                            value={weightKg}
+                            onChange={(event) => setWeightKg(event.target.value)}
+                            style={{
+                              width: "100%",
+                              padding: "14px 16px",
+                              borderRadius: 14,
+                              border: "1px solid rgba(25,38,32,.12)",
+                              background: "var(--wh)",
+                              color: "var(--sl)",
+                              fontSize: "1rem",
+                            }}
+                          />
+                        </label>
+                      </div>
+                    </>
+                  ) : currentQuestion ? (
+                    <>
+                      <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 10 }}>
+                        {currentQuestion.title}
+                      </h2>
+                      {currentQuestion.helper ? (
+                        <p style={{ fontSize: ".84rem", color: "var(--sl3)", lineHeight: 1.8, marginBottom: 22 }}>{currentQuestion.helper}</p>
+                      ) : null}
+
+                      <div style={{ display: "grid", gap: 12, marginBottom: 26 }}>
+                        {currentQuestion.options.map((option, index) => {
+                          const active = answers[currentQuestion.key] === option.value;
+                          return (
+                            <button
+                              key={option.value}
+                              className={`q-opt ${active ? "selected" : ""}`}
+                              onClick={() => setAnswer(currentQuestion.key, option.value)}
+                            >
+                              <span className="q-opt-letter">{String.fromCharCode(65 + index)}</span>
+                              <span>{option.label}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
+                  ) : null}
 
                   <div style={{ display: "flex", gap: 12, justifyContent: "space-between", flexWrap: "wrap" }}>
                     <button onClick={back} className="btn btn-ol" disabled={step === 0} style={{ opacity: step === 0 ? 0.45 : 1 }}>
                       Back
                     </button>
-                    <button onClick={next} className="btn btn-fo" disabled={!answers[currentQuestion.key]} style={{ opacity: !answers[currentQuestion.key] ? 0.45 : 1 }}>
+                    <button
+                      onClick={next}
+                      className="btn btn-fo"
+                      disabled={step === 0 ? !hasBodyMetrics : !currentQuestion || !answers[currentQuestion.key]}
+                      style={{ opacity: step === 0 ? (hasBodyMetrics ? 1 : 0.45) : !currentQuestion || !answers[currentQuestion.key] ? 0.45 : 1 }}
+                    >
                       Continue →
                     </button>
                   </div>
@@ -241,7 +354,7 @@ export default function MetabolicAgePage() {
                   </div>
                   <div style={{ marginTop: 22, display: "grid", gap: 10 }}>
                     {[
-                      "Waist-to-height ratio",
+                      "Height + weight",
                       "Energy stability",
                       "Sleep quality",
                       "Exercise consistency",
@@ -273,7 +386,7 @@ export default function MetabolicAgePage() {
                   </p>
                   <div style={{ padding: "18px 20px", background: "var(--iv)", borderLeft: `3px solid ${band.color}`, marginBottom: 22 }}>
                     <p style={{ fontSize: ".82rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-                      Score: <strong style={{ color: "var(--fo)" }}>{score}</strong>. This isn’t a diagnosis. It’s a directional screening tool built to identify who should look closer at metabolic risk.
+                      Score: <strong style={{ color: "var(--fo)" }}>{adjustedScore}</strong>. This isn’t a diagnosis. It’s a directional screening tool built to identify who should look closer at metabolic risk.
                     </p>
                   </div>
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -285,7 +398,7 @@ export default function MetabolicAgePage() {
                 <div className="card" style={{ borderTop: "3px solid var(--go)" }}>
                   <LeadCaptureForm
                     source="metabolic-age-quiz"
-                    quizScore={score}
+                    quizScore={adjustedScore}
                     metabolicAge={metabolicAge}
                     resultBand={band.label}
                     title="Get Your Full Longevity Roadmap + Free 7 Missing Markers Guide"
