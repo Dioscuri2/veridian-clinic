@@ -11,11 +11,13 @@ type LeadCaptureFormProps = {
   successMessage?: string;
   consentLabel?: string;
   ctaLabel?: string;
+  submittingLabel?: string;
   title?: string;
   subtitle?: string;
   buttonClassName?: string;
   compact?: boolean;
   fields?: Array<"firstName" | "email" | "phone">;
+  metadata?: Record<string, unknown>;
 };
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
@@ -29,11 +31,13 @@ export default function LeadCaptureForm({
   successMessage,
   consentLabel = "I agree to receive Veridian marketing emails, including newsletter updates, quiz results, and roadmap-related follow-up.",
   ctaLabel = "Get Your Full Longevity Roadmap →",
+  submittingLabel = "Submitting...",
   title = "Get your full roadmap",
   subtitle = "Enter your details and we’ll send your next-step longevity roadmap.",
   buttonClassName = "btn btn-fo btn-full",
   compact = false,
   fields = ["firstName", "email"],
+  metadata,
 }: LeadCaptureFormProps) {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
@@ -73,6 +77,7 @@ export default function LeadCaptureForm({
           quizScore,
           metabolicAge,
           resultBand,
+          metadata,
         }),
       });
 
@@ -197,7 +202,7 @@ export default function LeadCaptureForm({
       </label>
 
       <button type="submit" className={buttonClassName} disabled={disabled} style={{ opacity: disabled ? 0.6 : 1 }}>
-        {status === "submitting" ? "Submitting..." : ctaLabel}
+        {status === "submitting" ? submittingLabel : ctaLabel}
       </button>
 
       {message ? (

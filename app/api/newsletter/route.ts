@@ -12,6 +12,7 @@ type LeadPayload = {
   quizScore?: number;
   metabolicAge?: number;
   resultBand?: string;
+  metadata?: Record<string, unknown>;
 };
 
 const BREVO_API_KEY =
@@ -117,6 +118,7 @@ async function submitToBrevo(payload: LeadPayload, listKey: ListKey) {
         QUIZSCORE: payload.quizScore ?? "",
         METABOLICAGE: payload.metabolicAge ?? "",
         RESULTBAND: payload.resultBand || "",
+        METADATA: payload.metadata ? JSON.stringify(payload.metadata) : "",
         CONSENT: payload.consent ? "true" : "false",
       },
     }),
@@ -163,6 +165,7 @@ export async function POST(request: NextRequest) {
       quizScore: payload.quizScore ?? null,
       metabolicAge: payload.metabolicAge ?? null,
       resultBand: payload.resultBand ?? null,
+      metadata: payload.metadata ?? null,
       userAgent: request.headers.get("user-agent") || "",
       ip:
         request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
