@@ -5,8 +5,10 @@ import path from "node:path";
 type LeadPayload = {
   firstName?: string;
   email?: string;
+  phone?: string;
   consent?: boolean;
   source?: string;
+  list?: string;
   quizScore?: number;
   metabolicAge?: number;
   resultBand?: string;
@@ -16,12 +18,42 @@ const BREVO_API_KEY =
   process.env.BREVO_API_KEY ||
   "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";
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
-const VERIDIAN_LIST_NAME = "Veridian Leads";
 const FALLBACK_DIR = path.join(process.cwd(), "data");
 const FALLBACK_FILE = path.join(FALLBACK_DIR, "newsletter-leads.ndjson");
 
+const LIST_CONFIG = {
+  newsletter: {
+    key: "newsletter",
+    name: process.env.BREVO_NEWSLETTER_LIST_NAME || "Veridian Leads",
+    fallbackSource: "website",
+    message:
+      "You’re on the Veridian list. We’ll be in touch with your roadmap shortly.",
+  },
+  executive_waitlist: {
+    key: "executive_waitlist",
+    name: process.env.BREVO_EXECUTIVE_WAITLIST_NAME || "Executive Waitlist",
+    fallbackSource: "executive-waitlist",
+    message:
+      "Your Executive Healthspan application has been received. We’ll contact you when priority access opens.",
+  },
+} as const;
+
+type ListKey = keyof typeof LIST_CONFIG;
+
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function normalizeListKey(list?: string, source?: string): ListKey {
+  const raw = `${list || source || ""}`.trim().toLowerCase();
+  if (
+    raw.includes("executive") ||
+    raw.includes("priority") ||
+    raw.includes("healthspan")
+  ) {
+    return "executive_waitlist";
+  }
+  return "newsletter";
 }
 
 async function appendLocalLead(entry: Record<string, unknown>) {
@@ -41,22 +73,22 @@ async function fetchBrevo(pathname: string, init: RequestInit = {}) {
   });
 }
 
-async function ensureBrevoList(): Promise<number | null> {
+async function ensureBrevoList(listName: string): Promise<number | null> {
   if (!BREVO_API_KEY) return null;
 
-  const listResponse = await fetchBrevo(`/contacts/lists?limit=50&offset=0`);
+  const listResponse = await fetchBrevo(`/contacts/lists?limit=100&offset=0`);
   if (!listResponse.ok) return null;
 
   const listData = await listResponse.json();
   const existing = Array.isArray(listData?.lists)
-    ? listData.lists.find((list: { id: number; name: string }) => list.name === VERIDIAN_LIST_NAME)
+    ? listData.lists.find((list: { id: number; name: string }) => list.name === listName)
     : null;
 
   if (existing?.id) return existing.id;
 
   const createResponse = await fetchBrevo("/contacts/lists", {
     method: "POST",
-    body: JSON.stringify({ name: VERIDIAN_LIST_NAME, folderId: 1 }),
+    body: JSON.stringify({ name: listName, folderId: 1 }),
   });
 
   if (!createResponse.ok) return null;
@@ -65,8 +97,9 @@ async function ensureBrevoList(): Promise<number | null> {
   return created?.id ?? null;
 }
 
-async function submitToBrevo(payload: LeadPayload) {
-  const listId = await ensureBrevoList();
+async function submitToBrevo(payload: LeadPayload, listKey: ListKey) {
+  const config = LIST_CONFIG[listKey];
+  const listId = await ensureBrevoList(config.name);
   if (!listId) return { ok: false as const, reason: "brevo_unavailable" };
 
   const response = await fetchBrevo("/contacts", {
@@ -77,7 +110,10 @@ async function submitToBrevo(payload: LeadPayload) {
       updateEnabled: true,
       attributes: {
         FIRSTNAME: payload.firstName || "",
-        SOURCE: payload.source || "website",
+        SMS: payload.phone || "",
+        PHONE: payload.phone || "",
+        SOURCE: payload.source || config.fallbackSource,
+        LIST: config.key,
         QUIZSCORE: payload.quizScore ?? "",
         METABOLICAGE: payload.metabolicAge ?? "",
         RESULTBAND: payload.resultBand || "",
@@ -98,18 +134,32 @@ export async function POST(request: NextRequest) {
   try {
     const payload = (await request.json()) as LeadPayload;
     const email = payload.email?.trim().toLowerCase() || "";
-    const source = payload.source?.trim() || "website";
+    const listKey = normalizeListKey(payload.list, payload.source);
+    const listConfig = LIST_CONFIG[listKey];
+    const source = payload.source?.trim() || listConfig.fallbackSource;
+    const phone = payload.phone?.trim() || "";
 
     if (!email || !isValidEmail(email)) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
+
+    if (listKey === "executive_waitlist" && !payload.firstName?.trim()) {
+      return NextResponse.json({ error: "Please enter your name." }, { status: 400 });
+    }
+
+    if (listKey === "executive_waitlist" && !phone) {
+      return NextResponse.json({ error: "Please enter your phone number." }, { status: 400 });
     }
 
     const entry = {
       timestamp: new Date().toISOString(),
       email,
       firstName: payload.firstName?.trim() || "",
+      phone,
       consent: Boolean(payload.consent),
       source,
+      list: listConfig.key,
+      listName: listConfig.name,
       quizScore: payload.quizScore ?? null,
       metabolicAge: payload.metabolicAge ?? null,
       resultBand: payload.resultBand ?? null,
@@ -122,7 +172,7 @@ export async function POST(request: NextRequest) {
 
     let destination = "local-log";
 
-    const brevoResult = await submitToBrevo({ ...payload, email, source });
+    const brevoResult = await submitToBrevo({ ...payload, email, phone, source }, listKey);
     if (brevoResult.ok) {
       destination = "brevo";
     }
@@ -136,10 +186,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       ok: true,
       destination,
+      list: listConfig.key,
       message:
         destination === "brevo"
-          ? "You’re on the Veridian list. We’ll be in touch with your roadmap shortly."
-          : "Your details are captured securely. We’ll follow up with your roadmap shortly.",
+          ? listConfig.message
+          : listKey === "executive_waitlist"
+            ? "Your Executive Healthspan details are captured securely. We’ll be in touch when enrolment opens."
+            : "Your details are captured securely. We’ll follow up with your roadmap shortly.",
     });
   } catch (error) {
     return NextResponse.json(

@@ -7,11 +7,15 @@ type LeadCaptureFormProps = {
   quizScore?: number;
   metabolicAge?: number;
   resultBand?: string;
+  list?: string;
+  successMessage?: string;
+  consentLabel?: string;
   ctaLabel?: string;
   title?: string;
   subtitle?: string;
   buttonClassName?: string;
   compact?: boolean;
+  fields?: Array<"firstName" | "email" | "phone">;
 };
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
@@ -21,22 +25,34 @@ export default function LeadCaptureForm({
   quizScore,
   metabolicAge,
   resultBand,
+  list,
+  successMessage,
+  consentLabel = "I agree to receive Veridian marketing emails, including newsletter updates, quiz results, and roadmap-related follow-up.",
   ctaLabel = "Get Your Full Longevity Roadmap →",
   title = "Get your full roadmap",
   subtitle = "Enter your details and we’ll send your next-step longevity roadmap.",
   buttonClassName = "btn btn-fo btn-full",
   compact = false,
+  fields = ["firstName", "email"],
 }: LeadCaptureFormProps) {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(true);
   const [status, setStatus] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
 
-  const disabled = useMemo(
-    () => status === "submitting" || !email.trim() || !consent,
-    [status, email, consent]
-  );
+  const requiresFirstName = fields.includes("firstName");
+  const requiresEmail = fields.includes("email");
+  const requiresPhone = fields.includes("phone");
+
+  const disabled = useMemo(() => {
+    if (status === "submitting" || !consent) return true;
+    if (requiresEmail && !email.trim()) return true;
+    if (requiresFirstName && !firstName.trim()) return true;
+    if (requiresPhone && !phone.trim()) return true;
+    return false;
+  }, [status, consent, requiresEmail, email, requiresFirstName, firstName, requiresPhone, phone]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -50,8 +66,10 @@ export default function LeadCaptureForm({
         body: JSON.stringify({
           firstName,
           email,
+          phone,
           consent,
           source,
+          list,
           quizScore,
           metabolicAge,
           resultBand,
@@ -66,11 +84,11 @@ export default function LeadCaptureForm({
 
       setStatus("success");
       setMessage(
-        data?.message ||
-          "You’re in. Your roadmap request has been captured successfully."
+        data?.message || successMessage || "You’re in. Your roadmap request has been captured successfully."
       );
       setFirstName("");
       setEmail("");
+      setPhone("");
       setConsent(true);
     } catch (error) {
       setStatus("error");
@@ -106,33 +124,56 @@ export default function LeadCaptureForm({
           gridTemplateColumns: compact ? "1fr" : "repeat(auto-fit, minmax(min(220px, 100%), 1fr))",
         }}
       >
-        <div>
-          <label htmlFor={`${source}-first-name`} className="lead-label">
-            First name
-          </label>
-          <input
-            id={`${source}-first-name`}
-            type="text"
-            className="form-field"
-            placeholder="First name"
-            value={firstName}
-            onChange={(event) => setFirstName(event.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor={`${source}-email`} className="lead-label">
-            Email address
-          </label>
-          <input
-            id={`${source}-email`}
-            type="email"
-            className="form-field"
-            placeholder="Enter your best email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
-        </div>
+        {requiresFirstName ? (
+          <div>
+            <label htmlFor={`${source}-first-name`} className="lead-label">
+              Name
+            </label>
+            <input
+              id={`${source}-first-name`}
+              type="text"
+              className="form-field"
+              placeholder="Your full name"
+              value={firstName}
+              onChange={(event) => setFirstName(event.target.value)}
+              required
+            />
+          </div>
+        ) : null}
+
+        {requiresEmail ? (
+          <div>
+            <label htmlFor={`${source}-email`} className="lead-label">
+              Email address
+            </label>
+            <input
+              id={`${source}-email`}
+              type="email"
+              className="form-field"
+              placeholder="Enter your best email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            />
+          </div>
+        ) : null}
+
+        {requiresPhone ? (
+          <div>
+            <label htmlFor={`${source}-phone`} className="lead-label">
+              Phone number
+            </label>
+            <input
+              id={`${source}-phone`}
+              type="tel"
+              className="form-field"
+              placeholder="Best number for priority access updates"
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+              required
+            />
+          </div>
+        ) : null}
       </div>
 
       <label
@@ -152,9 +193,7 @@ export default function LeadCaptureForm({
           onChange={(event) => setConsent(event.target.checked)}
           style={{ marginTop: 3, minWidth: 18, minHeight: 18, flexShrink: 0 }}
         />
-        <span>
-          I agree to receive Veridian marketing emails, including newsletter updates, quiz results, and roadmap-related follow-up.
-        </span>
+        <span>{consentLabel}</span>
       </label>
 
       <button type="submit" className={buttonClassName} disabled={disabled} style={{ opacity: disabled ? 0.6 : 1 }}>
