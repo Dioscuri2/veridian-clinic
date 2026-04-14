@@ -36,8 +36,14 @@ export default function Footer() {
  </p>
 
  <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 18 }}>
- {["Privacy Policy", "Terms of Service", "CQC Registration", "Contact Us"].map(l => (
- <a key={l} href="#" className="footer-link">{l}</a>
+ {[
+ { label: "Privacy Policy", href: "/privacy" },
+ { label: "Cookie Policy", href: "/cookies" },
+ { label: "Terms of Service", href: "#" },
+ { label: "CQC Registration", href: "#" },
+ { label: "Contact Us", href: "#" },
+ ].map(({ label, href }) => (
+ <Link key={label} href={href} className="footer-link">{label}</Link>
  ))}
  </div>
 
