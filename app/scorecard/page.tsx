@@ -1,9 +1,16 @@
 "use client";
 import { useState } from 'react';
 
+type Answers = {
+  sleep?: string;
+  fasting?: string;
+  sugar?: string;
+  exercise?: string;
+};
+
 export default function MetabolicScorecard() {
-  const [score, setScore] = useState(null);
-  const [answers, setAnswers] = useState({});
+  const [score, setScore] = useState<number | null>(null);
+  const [answers, setAnswers] = useState<Answers>({});
 
   const calculateScore = () => {
     // Basic logic for MVP scorecard
