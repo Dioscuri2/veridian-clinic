@@ -111,7 +111,7 @@ export default function HomePage() {
  <div className="g2-hero" style={{ display: "grid", alignItems: "center" }}>
  <div>
  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.25rem,3vw,1.7rem)", fontWeight: 500, color: "var(--fo2)", letterSpacing: ".01em", lineHeight: 1.55, marginBottom: 14, maxWidth: 760 }} className="a1">
- For high-performing adults who want to catch metabolic decline early — and change its trajectory.
+ For individuals who want to catch metabolic decline early — and change its trajectory.
  </p>
  <p className="lbl a1">Longevity &amp; Metabolic Health</p>
  <div className="rule a2"/>
