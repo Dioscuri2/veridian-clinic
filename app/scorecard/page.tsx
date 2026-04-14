@@ -23,29 +23,35 @@ export default function MetabolicScorecard() {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Metabolic Health Scorecard</h2>
-      <div className="space-y-4">
-        <div>
-          <label className="block mb-1">How many hours of quality sleep do you get?</label>
-          <select onChange={(e) => setAnswers({...answers, sleep: e.target.value})} className="border p-2 w-full">
+    <div className="w-full max-w-lg mx-auto p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
+      <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center font-display">Metabolic Health Scorecard</h2>
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">How many hours of quality sleep do you get?</label>
+          <select onChange={(e) => setAnswers({...answers, sleep: e.target.value})} className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-600 outline-none transition-all">
             <option value="">Select...</option>
-            <option value="<6">Less than 6</option>
+            <option value="<6">Less than 6 hours</option>
+            <option value="6-7">6-7 hours</option>
             <option value="7-9">7-9 hours</option>
           </select>
         </div>
-        <div>
-          <label className="block mb-1">Do you practice intermittent fasting?</label>
-          <select onChange={(e) => setAnswers({...answers, fasting: e.target.value})} className="border p-2 w-full">
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">Do you practice intermittent fasting?</label>
+          <select onChange={(e) => setAnswers({...answers, fasting: e.target.value})} className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-600 outline-none transition-all">
             <option value="">Select...</option>
-            <option value="yes">Yes</option>
+            <option value="yes">Yes, regularly</option>
             <option value="no">No</option>
           </select>
         </div>
-        <button onClick={calculateScore} className="bg-green-700 text-white p-3 rounded w-full">
-          Get Your Score
+        <button onClick={calculateScore} className="w-full py-4 bg-green-900 text-white font-semibold rounded-xl hover:bg-green-800 transition-colors shadow-lg shadow-green-900/20">
+          Calculate My Score
         </button>
-        {score !== null && <p className="text-xl font-semibold mt-4">Your Score: {score}/100</p>}
+        {score !== null && (
+          <div className="p-4 bg-green-50 rounded-xl border border-green-200 text-center">
+            <p className="text-sm text-green-800 font-medium">Your Metabolic Health Score</p>
+            <p className="text-4xl font-bold text-green-900">{score}/100</p>
+          </div>
+        )}
       </div>
     </div>
   );
