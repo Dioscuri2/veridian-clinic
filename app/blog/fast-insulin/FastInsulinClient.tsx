@@ -155,6 +155,117 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+function KraftCurve() {
+  const W = 620;
+  const H = 320;
+  const PAD = { top: 30, right: 30, bottom: 54, left: 58 };
+  const cW = W - PAD.left - PAD.right;
+  const cH = H - PAD.top - PAD.bottom;
+
+  const times = [0, 0.5, 1, 2, 3];
+  const maxT = 3;
+  const maxY = 200;
+
+  const tx = (t: number) => PAD.left + (t / maxT) * cW;
+  const ty = (v: number) => PAD.top + cH - (v / maxY) * cH;
+
+  const patterns = [
+    { id: "I", label: "Pattern I — Normal", color: "#4CAF7C", values: [8, 72, 55, 18, 8], dash: "" },
+    { id: "II", label: "Pattern II — Delayed Peak (early IR)", color: "#C9A84C", values: [10, 45, 88, 60, 18], dash: "6,3" },
+    { id: "III", label: "Pattern III — Late Peak (established IR)", color: "#E08A3C", values: [12, 30, 55, 110, 75], dash: "4,4" },
+    { id: "IV", label: "Pattern IV — Overt IR (high fasting)", color: "#D94F4F", values: [55, 80, 130, 170, 145], dash: "8,3,2,3" },
+    { id: "V", label: "Pattern V — Insulinopenic", color: "#7B9EB8", values: [6, 14, 18, 14, 8], dash: "3,3" },
+  ];
+
+  function smoothPath(pts: Array<[number, number]>) {
+    if (pts.length < 2) return "";
+    let d = `M ${pts[0][0]},${pts[0][1]}`;
+    for (let i = 1; i < pts.length; i++) {
+      const prev = pts[i - 1];
+      const curr = pts[i];
+      const cpX = (prev[0] + curr[0]) / 2;
+      d += ` C ${cpX},${prev[1]} ${cpX},${curr[1]} ${curr[0]},${curr[1]}`;
+    }
+    return d;
+  }
+
+  const xLabels = ["Fasting", "30 min", "1 hr", "2 hr", "3 hr"];
+  const yTicks = [0, 50, 100, 150, 200];
+
+  return (
+    <div style={{ width: "100%", overflowX: "auto" }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        style={{ width: "100%", maxWidth: W, display: "block", margin: "0 auto" }}
+        aria-label="Kraft Insulin Response Curve Patterns I–V"
+        role="img"
+      >
+        <style>{`
+          .kraft-label { font-family: 'DM Sans', sans-serif; fill: #8BA898; }
+          .kraft-axis { font-family: 'DM Sans', sans-serif; fill: #8BA898; font-size: 11px; }
+          .kraft-title { font-family: 'Cormorant Garamond', serif; fill: #F5F0E8; }
+        `}</style>
+        <rect width={W} height={H} fill="#0A1915" rx="6" />
+        {yTicks.map((v) => (
+          <line key={v} x1={PAD.left} y1={ty(v)} x2={PAD.left + cW} y2={ty(v)} stroke="rgba(201,168,76,0.1)" strokeWidth="1" />
+        ))}
+        <line x1={PAD.left} y1={PAD.top} x2={PAD.left} y2={PAD.top + cH + 6} stroke="rgba(201,168,76,0.4)" strokeWidth="1" />
+        <line x1={PAD.left - 6} y1={PAD.top + cH} x2={PAD.left + cW} y2={PAD.top + cH} stroke="rgba(201,168,76,0.4)" strokeWidth="1" />
+        {yTicks.map((v) => (
+          <text key={v} x={PAD.left - 8} y={ty(v) + 4} textAnchor="end" className="kraft-axis">{v}</text>
+        ))}
+        {times.map((t, i) => (
+          <text key={t} x={tx(t)} y={PAD.top + cH + 18} textAnchor="middle" className="kraft-axis">{xLabels[i]}</text>
+        ))}
+        <text x={PAD.left + cW / 2} y={H - 4} textAnchor="middle" className="kraft-axis" style={{ fontSize: 11, fill: "#8BA898" }}>
+          Time after 100g glucose challenge
+        </text>
+        <text
+          x={14}
+          y={PAD.top + cH / 2}
+          textAnchor="middle"
+          className="kraft-axis"
+          style={{ fontSize: 11, fill: "#8BA898" }}
+          transform={`rotate(-90, 14, ${PAD.top + cH / 2})`}
+        >
+          Insulin (µU/mL)
+        </text>
+        {patterns.map((p) => {
+          const pts = times.map((t, i) => [tx(t), ty(p.values[i])] as [number, number]);
+          return (
+            <path
+              key={p.id}
+              d={smoothPath(pts)}
+              fill="none"
+              stroke={p.color}
+              strokeWidth={p.id === "I" ? 2.5 : 2}
+              strokeDasharray={p.dash}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity={0.9}
+            />
+          );
+        })}
+        {patterns.map((p) =>
+          times.map((t, i) => (
+            <circle key={`${p.id}-${i}`} cx={tx(t)} cy={ty(p.values[i])} r={p.id === "I" ? 3.5 : 2.8} fill={p.color} opacity={0.85} />
+          ))
+        )}
+        {patterns.map((p, i) => (
+          <g key={p.id} transform={`translate(${PAD.left + 10}, ${PAD.top + 8 + i * 20})`}>
+            <line x1="0" y1="6" x2="18" y2="6" stroke={p.color} strokeWidth="2" strokeDasharray={p.dash} />
+            <circle cx="9" cy="6" r="2.5" fill={p.color} />
+            <text x="24" y="10" className="kraft-axis" style={{ fontSize: 10 }}>{p.label}</text>
+          </g>
+        ))}
+        <text x={W / 2} y={PAD.top - 10} textAnchor="middle" className="kraft-title" style={{ fontSize: 13, letterSpacing: 1 }}>
+          Kraft Insulin Response Patterns (OGTT)
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 export default function FastInsulinClient() {
   return (
     <div className="fi-page">
@@ -239,8 +350,10 @@ export default function FastInsulinClient() {
             tolerance tests showed abnormal insulin response curves, patterns that revealed metabolic disease hiding in plain sight.
           </p>
           <div className="fi-figure-card">
-            <div className="fi-figure-meta">Diagram Placeholder</div>
-            <div className="fi-figure-body">[Kraft Curve Diagram]</div>
+            <div className="fi-figure-meta">Kraft Insulin Response Patterns</div>
+            <div className="fi-figure-body fi-figure-body-graphic">
+              <KraftCurve />
+            </div>
           </div>
           <p>
             That insight still matters. Two people can share the same glucose reading, but one may require far more insulin to hold that line.
@@ -577,6 +690,13 @@ export default function FastInsulinClient() {
           font-size: 0.95rem;
           letter-spacing: 0.12em;
           text-transform: uppercase;
+        }
+
+        .fi-figure-body-graphic {
+          padding: 20px;
+          min-height: 0;
+          text-transform: none;
+          letter-spacing: normal;
         }
 
         .fi-protocol-stack {
