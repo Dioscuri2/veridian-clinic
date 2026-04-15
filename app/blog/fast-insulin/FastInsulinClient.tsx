@@ -22,7 +22,7 @@ const articleSchema = {
         name: "Veridian Clinic",
         url: "https://veridian-clinic.vercel.app",
       },
-      mainEntityOfPage: "https://veridian-clinic.vercel.app/blog/fast-insulin",
+      mainEntityOfPage: "https://veridian.clinic/blog/fast-insulin",
       articleSection: "Metabolic Health",
       keywords: [
         "fasting insulin",
@@ -36,7 +36,7 @@ const articleSchema = {
     {
       "@type": "MedicalWebPage",
       name: "Fasting Insulin Clinical Guide",
-      url: "https://veridian-clinic.vercel.app/blog/fast-insulin",
+      url: "https://veridian.clinic/blog/fast-insulin",
       about: [
         { "@type": "MedicalCondition", name: "Insulin Resistance" },
         { "@type": "MedicalCondition", name: "Hyperinsulinemia" },
@@ -459,20 +459,16 @@ export default function FastInsulinClient() {
           border-bottom: 1px solid rgba(201, 168, 76, 0.18);
         }
 
-        :global(.logo-text-main),
-        :global(.logo-text-sub),
         :global(.nav-link),
         :global(.footer-link),
         :global(.cg) {
           font-family: 'DM Sans', sans-serif;
         }
 
-        :global(.logo-text-main),
         :global(.nav-link) {
           color: #f5f0e8;
         }
 
-        :global(.logo-text-sub),
         :global(.footer-link) {
           color: #8ba898;
         }
