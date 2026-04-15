@@ -4,7 +4,6 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
-import MetabolicScorecard from "./scorecard/page";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const domains = [
@@ -165,8 +164,22 @@ export default function HomePage() {
  </div>
  </section>
  <section id="scorecard" className="sec bg-wh">
- <div className="wrap text-center">
- <MetabolicScorecard />
+ <div className="wrap">
+ <div style={{
+ background: "linear-gradient(135deg, #0d1f1a 0%, #13212e 100%)",
+ border: "1px solid rgba(0,0,0,.08)",
+ padding: "clamp(32px,6vw,56px)",
+ display: "grid",
+ gap: 24,
+ textAlign: "center",
+ justifyItems: "center"
+ }}>
+ <p className="lbl" style={{ color: "var(--go2)", marginBottom: 0 }}>Metabolic Scorecard</p>
+ <h2 className="cg" style={{ fontSize: "clamp(2.1rem,4.8vw,3.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.14, maxWidth: 780, margin: 0 }}>Get Your Metabolic Scorecard in 60 Seconds</h2>
+ <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.74)", lineHeight: 1.9, maxWidth: 700, margin: 0 }}>Answer a few focused questions and get a premium snapshot of the domains most likely driving your energy, weight trajectory, and long-term cardiovascular risk.</p>
+ <Link href="/metabolic-scorecard" className="btn btn-go">Start Assessment →</Link>
+ <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}><span style={{ fontSize: ".67rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(246,241,232,.38)" }}>GP Led</span><span style={{ color: "rgba(246,241,232,.2)", margin: "0 4px" }}>|</span><span style={{ fontSize: ".67rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(246,241,232,.38)" }}>ApoB · Insulin · Recovery</span><span style={{ color: "rgba(246,241,232,.2)", margin: "0 4px" }}>|</span><span style={{ fontSize: ".67rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(246,241,232,.38)" }}>60 Second Entry Point</span></div>
+ </div>
  </div>
  </section>
  <div className="ticker-wrap bg-iv2"><div className="ticker-inner">{[...Array(4)].flatMap((_, k) => ["Fasting Insulin","Homocysteine","ApoB","Continuous Glucose Monitoring","CQC Registered","GP Led","HbA1c · hs-CRP · ALT/AST","Longevity Medicine","12-Week Reset Programme"].map(t => (<span key={`${k}-${t}`} className="ticker-item">{t}<span className="ticker-dot"> · </span></span>)))}</div></div>
