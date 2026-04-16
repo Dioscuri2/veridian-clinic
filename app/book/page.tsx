@@ -9,21 +9,45 @@ import { FONTS, CSS } from "@/components/globalStyles";
 const FORMSPREE_ID = "mkopkopb";
 
 const tiers = [
-  { value: "initial", label: "Initial GP Consultation — £195" },
-  { value: "core", label: "Core Metabolic Assessment — £495" },
-  { value: "advanced", label: "Advanced Longevity Assessment — £895" },
-  { value: "programme", label: "12-Week Metabolic Reset Programme — £1,895" },
+  { value: "discovery", label: "Metabolic Discovery — £195" },
+  { value: "baseline", label: "Veridian Baseline — £595" },
+  { value: "programme", label: "12-Week Metabolic Reset — £1,895" },
 ];
+
+const tierAliasMap: Record<string, string> = {
+  advanced: "programme",
+};
+
+const tierDetails: Record<string, { title: string; price: string; description: string }> = {
+  discovery: {
+    title: "Metabolic Discovery",
+    price: "£195",
+    description:
+      "A focused GP-led consultation to understand your symptoms, goals, family history and likely metabolic blind spots, then recommend the right next diagnostic step.",
+  },
+  baseline: {
+    title: "Veridian Baseline",
+    price: "£595",
+    description:
+      "A GP-led baseline audit designed to reveal the most actionable metabolic drivers of decline before they become disease.",
+  },
+  programme: {
+    title: "12-Week Metabolic Reset",
+    price: "£1,895",
+    description:
+      "A doctor-led reset for patients who need guided implementation, accountability and follow-through, not just a report.",
+  },
+};
 
 function BookingFormInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const tierParam = searchParams.get("tier") || "";
 
-  const validTier = useMemo(
-    () => (tiers.some((t) => t.value === tierParam) ? tierParam : "core"),
-    [tierParam]
-  );
+  const validTier = useMemo(() => {
+    const normalizedTier = tierAliasMap[tierParam] || tierParam;
+    return tiers.some((t) => t.value === normalizedTier) ? normalizedTier : "baseline";
+  }, [tierParam]);
 
   const [form, setForm] = useState({
     name: "",
@@ -74,7 +98,7 @@ function BookingFormInner() {
       });
 
       if (!res.ok) throw new Error("Submission failed");
-      router.push("/book/thank-you");
+      router.push(`/book/thank-you?tier=${encodeURIComponent(form.tier)}`);
     } catch {
       setError("There was a problem submitting your request. Please try again.");
     } finally {
@@ -94,9 +118,20 @@ function BookingFormInner() {
                 Book your assessment.
                 <br /><em style={{ fontStyle: "italic", color: "var(--fo)" }}>Start with clarity.</em>
               </h1>
-              <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 28 }}>
+              <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 18 }}>
                 Complete the short form below. Your chosen assessment will be pre-selected if you arrived here from the quiz or pricing page.
               </p>
+              <div className="card" style={{ marginBottom: 28 }}>
+                <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>
+                  Selected pathway
+                </p>
+                <h2 className="cg" style={{ fontSize: "1.4rem", color: "var(--sl)", marginBottom: 8 }}>
+                  {tierDetails[form.tier].title} — {tierDetails[form.tier].price}
+                </h2>
+                <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.8 }}>
+                  {tierDetails[form.tier].description}
+                </p>
+              </div>
               <form onSubmit={onSubmit} className="card" style={{ display: "grid", gap: 14 }}>
                 <input className="form-field" name="name" placeholder="Full name" value={form.name} onChange={onChange} required />
                 <input className="form-field" name="email" type="email" placeholder="Email address" value={form.email} onChange={onChange} required />
@@ -119,6 +154,7 @@ function BookingFormInner() {
                 <ul className="chk">
                   <li>Virtual, UK-wide delivery</li>
                   <li>GP-led clinical review</li>
+                  <li>Pricing aligned to your selected pathway</li>
                   <li>Clear next steps after booking</li>
                   <li>Secure intake available after confirmation</li>
                 </ul>
@@ -126,7 +162,7 @@ function BookingFormInner() {
               <div className="card">
                 <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>Need help choosing?</p>
                 <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 18 }}>
-                  If you’re not completely sure which tier is right, take the free quiz first and we’ll point you to the best starting option.
+                  If you’re not completely sure which pathway is right, take the free quiz first and we’ll point you to the best starting option.
                 </p>
                 <Link href="/quiz" className="btn btn-ol">Take the Free Quiz →</Link>
               </div>
