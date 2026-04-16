@@ -14,6 +14,8 @@ const tiers = [
   { value: "programme", label: "12-Week Metabolic Reset — £1,895" },
 ];
 
+const paidTiers = new Set(["baseline", "programme"]);
+
 const tierAliasMap: Record<string, string> = {
   advanced: "programme",
 };
@@ -58,10 +60,15 @@ function BookingFormInner() {
   });
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {
     setForm((prev) => ({ ...prev, tier: validTier }));
   }, [validTier]);
+
+  useEffect(() => {
+    setCancelled(searchParams.get("cancelled") === "1");
+  }, [searchParams]);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -98,6 +105,31 @@ function BookingFormInner() {
       });
 
       if (!res.ok) throw new Error("Submission failed");
+
+      if (paidTiers.has(form.tier)) {
+        const checkoutRes = await fetch("/api/checkout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            phone: form.phone,
+            tier: form.tier,
+            notes: form.notes,
+          }),
+        });
+
+        const checkoutData = await checkoutRes.json();
+        if (!checkoutRes.ok || !checkoutData?.url) {
+          throw new Error(checkoutData?.error || "Checkout session failed");
+        }
+
+        window.location.href = checkoutData.url;
+        return;
+      }
+
       router.push(`/book/thank-you?tier=${encodeURIComponent(form.tier)}`);
     } catch {
       setError("There was a problem submitting your request. Please try again.");
@@ -142,9 +174,14 @@ function BookingFormInner() {
                   ))}
                 </select>
                 <textarea className="form-field" name="notes" placeholder="Anything useful to know before we contact you?" rows={5} value={form.notes} onChange={onChange} />
+                {cancelled && !error ? (
+                  <p style={{ color: "var(--fo)", fontSize: ".82rem" }}>
+                    Checkout was cancelled. Your form details are still here if you want to try again.
+                  </p>
+                ) : null}
                 {error && <p style={{ color: "var(--red)", fontSize: ".82rem" }}>{error}</p>}
                 <button type="submit" className="btn btn-fo" disabled={submitting} style={{ opacity: submitting ? 0.6 : 1, cursor: submitting ? "wait" : "pointer" }}>
-                  {submitting ? "Submitting..." : "Request Booking →"}
+                  {submitting ? "Submitting..." : paidTiers.has(form.tier) ? "Continue to Secure Payment →" : "Request Booking →"}
                 </button>
               </form>
             </div>
