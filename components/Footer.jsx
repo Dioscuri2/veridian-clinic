@@ -30,10 +30,21 @@ export default function Footer() {
  ))}
  </div>
 
- <p style={{ fontSize: ".74rem", color: "rgba(246,241,232,.22)", lineHeight: 1.95, maxWidth: 560, margin: "0 auto 18px" }}>
+ <div style={{ fontSize: ".74rem", color: "rgba(246,241,232,.22)", lineHeight: 1.95, maxWidth: 720, margin: "0 auto 18px" }}>
+ <p style={{ margin: "0 0 10px" }}>
  Veridian Clinic is a CQC-registered private healthcare provider. All clinical services are led by qualified GMC-registered doctors.
- Our services complement, but do not replace, NHS care. TZA Inc. Limited.
+ Our services complement, but do not replace, NHS care.
  </p>
+ <p style={{ margin: "0 0 8px", color: "rgba(246,241,232,.34)" }}>
+ Veridian Clinic is a trading name of Olympus Premium Health Ltd.
+ </p>
+ <p style={{ margin: "0 0 8px" }}>
+ Registered Business Address: 82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, England, IP28 7DE.
+ </p>
+ <p style={{ margin: 0 }}>
+ Company Registration Number: 13621708.
+ </p>
+ </div>
 
  <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 18 }}>
  {[
@@ -48,7 +59,7 @@ export default function Footer() {
  </div>
 
  <p style={{ fontSize: ".68rem", color: "rgba(246,241,232,.14)" }}>
- © {new Date().getFullYear()} Veridian Clinic (TZA Inc. Limited). All rights reserved.
+ © {new Date().getFullYear()} Veridian Clinic, a trading name of Olympus Premium Health Ltd. All rights reserved.
  </p>
  </div>
  </footer>

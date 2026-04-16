@@ -6,6 +6,7 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
 const SITE_URL = "https://veridian-clinic.vercel.app";
+const PAYMENT_DESCRIPTOR = "Olympus Premium Health";
 
 const tierAliasMap: Record<string, string> = {
   advanced: "programme",
@@ -71,7 +72,16 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       billing_address_collection: "required",
-      payment_method_types: ["card", "klarna"],
+      payment_method_types: ["card", "klarna", "customer_balance"],
+      payment_method_options: {
+        customer_balance: {
+          funding_type: "bank_transfer",
+          bank_transfer: {
+            type: "gb_bank_transfer",
+          },
+        },
+      },
+      customer_creation: "always",
       customer_email: payload.email?.trim() || undefined,
       phone_number_collection: { enabled: true },
       line_items: [
@@ -80,7 +90,7 @@ export async function POST(request: NextRequest) {
             currency: "gbp",
             product_data: {
               name: product.name,
-              description: product.description,
+              description: `${product.description} Payments may appear as ${PAYMENT_DESCRIPTOR} on bank statements.`,
             },
             unit_amount: product.amount,
           },
@@ -94,6 +104,10 @@ export async function POST(request: NextRequest) {
         email: payload.email?.trim() || "",
         phone: payload.phone?.trim() || "",
         notes: payload.notes?.trim() || "",
+        payment_descriptor: PAYMENT_DESCRIPTOR,
+      },
+      payment_intent_data: {
+        description: `Veridian Clinic ${product.name} payment. Payments may appear as ${PAYMENT_DESCRIPTOR} on bank statements.`,
       },
       success_url: `${baseUrl}/book/thank-you?tier=${encodeURIComponent(
         tier
