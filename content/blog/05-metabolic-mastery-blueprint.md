@@ -5,7 +5,7 @@ Hero Subtitle: The real path to better energy, body composition, resilience and 
 
 # Metabolic Mastery: The Lifestyle Blueprint for Peak Performance and Longevity
 
-![Peak fitness and performance](https://images.unsplash.com/photo-1517838277536-f5f99be5b7cd)
+![Placeholder for Image](IMAGE_PLACEHOLDER_URL)
 
 If you are interested in **healthspan vs lifespan**, **biohacking your bloods**, **how to fix insulin resistance**, or why you feel more fragile, inflamed or tired than you used to, this is the blueprint worth understanding.
 

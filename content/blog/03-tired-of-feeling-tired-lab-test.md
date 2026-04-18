@@ -5,7 +5,7 @@ Hero Subtitle: If your routine tests look acceptable but your energy, focus and 
 
 # Tired of Feeling Tired? The Metabolic and Nutrient Panel That May Explain Low Energy After 40
 
-![Rest and recovery](https://images.unsplash.com/photo-1544367567-0f2fcb009e0a)
+![Placeholder for Image](IMAGE_PLACEHOLDER_URL)
 
 If you keep searching **blood tests normal but still tired**, **unexplained brain fog**, or **low energy after 40**, you are not alone. This is one of the most common reasons high-functioning adults start looking beyond routine blood work.
 

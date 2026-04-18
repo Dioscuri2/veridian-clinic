@@ -5,7 +5,7 @@ Hero Subtitle: If your routine bloods look “fine” but your energy, waistline
 
 # Beyond Blood Tests: The Cutting-Edge Biomarkers Revealing Your True Metabolic Age
 
-![Medical biomarkers analysis](https://images.unsplash.com/photo-1576091160399-112ba8d25d1d)
+![Placeholder for Image](IMAGE_PLACEHOLDER_URL)
 
 If you have ever thought, “my blood tests are normal but I still feel tired”, “why do I have unexplained brain fog”, or “why is my energy lower after 40 even though I’m trying”, you are not imagining it. Standard blood work can miss the early shifts that drive metabolic ageing.
 

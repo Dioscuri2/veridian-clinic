@@ -5,7 +5,7 @@ Hero Subtitle: You can have normal cholesterol, eat reasonably well, and still c
 
 # The Lipoprotein(a) Truth: Why This Hidden Cholesterol Marker Matters More Than You Think
 
-![Cardiovascular health and heart](https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd)
+![Placeholder for Image](IMAGE_PLACEHOLDER_URL)
 
 If you have ever wondered, **“ApoB vs LDL, which is better?”**, **“is Lp(a) genetic?”**, or even **“how can I prevent a heart attack with normal cholesterol?”**, you are asking exactly the right questions.
 
