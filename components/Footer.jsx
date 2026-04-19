@@ -32,9 +32,10 @@ export default function Footer() {
 
  <div style={{ fontSize: ".74rem", color: "rgba(246,241,232,.22)", lineHeight: 1.95, maxWidth: 720, margin: "0 auto 18px" }}>
  <p style={{ margin: "0 0 10px" }}>
- Veridian Clinic is a CQC-registered private healthcare provider. All clinical services are led by qualified GMC-registered doctors.
+ Veridian Clinic provides health optimisation and longevity services.
+ Regulated medical services, including prescribing, are delivered by a CQC-registered partner provider.
  Our services complement, but do not replace, NHS care.
- </p>
+  </p>
  <p style={{ margin: "0 0 8px", color: "rgba(246,241,232,.34)" }}>
  Veridian Clinic is a trading name of Olympus Premium Health Ltd.
  </p>
@@ -51,7 +52,7 @@ export default function Footer() {
  { label: "Privacy Policy", href: "/privacy" },
  { label: "Cookie Policy", href: "/cookies" },
  { label: "Terms of Service", href: "#" },
- { label: "CQC Registration", href: "#" },
+ { label: "Clinical Partners", href: "#" },
  { label: "Contact Us", href: "#" },
  ].map(({ label, href }) => (
  <Link key={label} href={href} className="footer-link">{label}</Link>

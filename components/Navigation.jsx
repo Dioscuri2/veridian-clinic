@@ -33,12 +33,15 @@ export default function Navigation() {
  { label: "Metabolic Quiz", href: "/metabolic-age" },
  { label: "Assessments", href: "/assessments" },
  { label: "Reset", href: anchor("#programme") },
- { label: "Our Doctors", href: anchor("#team") },
+ { label: "Our Team", href: anchor("#team") },
  { label: "FAQ", href: anchor("#faq") },
  ];
 
  return (
  <header className={`nav ${scrolled || !isHome ? "nav-scroll" : ""}`}>
+ <div style={{ padding: "8px 24px", textAlign: "center", fontSize: ".66rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--fo)", borderBottom: "1px solid rgba(0,0,0,.06)", background: "rgba(246,241,232,.92)" }}>
+ CQC-regulated medical services available via our clinical partners
+ </div>
  <div className="nav-inner">
  <Link href="/" className="logo-mark">
  <svg viewBox="0 0 40 40" fill="none" width="34" height="34">
@@ -67,7 +70,7 @@ export default function Navigation() {
  <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
  <div style={{ display: "none", alignItems: "center", gap: 6, marginRight: 8 }} className="nav-trust">
  <Shield/>
- <span style={{ fontSize: ".66rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--fo)" }}>CQC Registered</span>
+ <span style={{ fontSize: ".66rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--fo)" }}>Clinical Partners</span>
  </div>
  <Link href="/book?tier=baseline" className="btn btn-fo" id="nav-cta"
  style={{ padding: "10px 18px", fontSize: ".78rem", display: "none" }}>
@@ -89,7 +92,7 @@ export default function Navigation() {
  </Link>
  <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(0,0,0,.07)" }}>
  <Shield/>
- <span style={{ fontSize: ".68rem", fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--fo)" }}>CQC Registered · GP Led</span>
+ <span style={{ fontSize: ".68rem", fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--fo)" }}>Clinical Partners · Longevity Focus</span>
  </div>
  </div>
  )}

@@ -7,7 +7,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 export const metadata: Metadata = {
   title: "Metabolic Health Scorecard | Free GP-Led Risk Snapshot",
   description:
-    "Take the Veridian Clinic Metabolic Health Scorecard. A 7-question GP-led quiz using waist-to-height ratio, sleep, activity, and diet to reveal your metabolic risk snapshot.",
+    "Take the Veridian Clinic Metabolic Health Scorecard. A 7-question clinical quiz using waist-to-height ratio, sleep, activity, and diet to reveal your metabolic risk snapshot.",
   alternates: {
     canonical: "https://veridian.clinic/metabolic-scorecard",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Metabolic Health Scorecard | Veridian Clinic",
     description:
-      "A free GP-led metabolic scorecard using waist-to-height ratio, sleep, activity, and diet.",
+      "A free metabolic scorecard using waist-to-height ratio, sleep, activity, and diet.",
   },
 };
 
@@ -47,7 +47,7 @@ export default async function MetabolicScorecardPage({
                 <div className="rule rule-c" />
                 <h1 className="sh-title">Metabolic Health Scorecard</h1>
                 <p className="sh-body" style={{ maxWidth: 720 }}>
-                  A fast, GP-led screening tool to estimate metabolic drift before it becomes obvious disease.
+                  A fast clinical screening tool to estimate metabolic drift before it becomes obvious disease.
                 </p>
               </div>
             ) : null}

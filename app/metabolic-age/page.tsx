@@ -276,7 +276,7 @@ export default function MetabolicAgePage() {
               <div className="badge-row" style={{ justifyContent: "center" }}>
                 <span className="badge">7 questions</span>
                 <span className="badge">Instant age deviation result</span>
-                <span className="badge">GP-led framework</span>
+                <span className="badge">Clinical framework</span>
               </div>
             </div>
 

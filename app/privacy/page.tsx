@@ -16,7 +16,7 @@ const sections = [
   {
     title: "1. Who we are",
     body: [
-      "Veridian Clinic is a UK-based private healthcare provider offering GP-led longevity, metabolic health and preventive medicine services. For the purposes of UK data protection law, Veridian Clinic acts as the data controller for the personal data described in this policy, except where another organisation is clearly identified.",
+      "Veridian Clinic is a UK-based longevity and metabolic health clinic offering health optimisation, preventive support and educational services. Where regulated medical services are arranged through our clinical partners, those partner providers are identified separately where relevant.",
       "This policy explains how we collect, use, share, store and protect your personal information when you visit our website, enquire about our services, join our waitlist, complete forms, or become a patient.",
     ],
   },
@@ -50,14 +50,14 @@ const sections = [
     body: [
       "We process personal data where it is necessary for our legitimate interests, such as running and improving our services, provided those interests are not overridden by your rights.",
       "We process data where it is necessary to take steps at your request before entering into a contract, or to perform a contract with you, such as arranging consultations or delivering paid services.",
-      "We process data where it is necessary to comply with legal or regulatory obligations, including medical, tax, accounting, safeguarding and CQC-related requirements.",
+      "We process data where it is necessary to comply with legal or regulatory obligations, including medical, tax, accounting and safeguarding requirements.",
       "Where special category health data is involved, we rely on the relevant lawful bases and conditions permitted under UK GDPR and the Data Protection Act 2018, including the provision of health care and management of health services. In some circumstances we may also rely on your explicit consent.",
     ],
   },
   {
     title: "6. How we share information",
     body: [
-      "We only share your information where there is a clear need and lawful basis to do so. This may include sharing with clinicians involved in your care, diagnostic laboratories, secure technology providers, payment processors, website and analytics providers, regulators, insurers, legal advisers, and other service providers who help us operate the clinic.",
+      "We only share your information where there is a clear need and lawful basis to do so. This may include sharing with clinicians involved in your care, CQC-registered partner providers, diagnostic laboratories, secure technology providers, payment processors, website and analytics providers, regulators, insurers, legal advisers, and other service providers who help us operate the clinic.",
       "We may also share information where required by law, court order, regulatory request, safeguarding duty, or to protect the vital interests of a patient or another person.",
       "We do not sell your personal information.",
     ],
@@ -213,9 +213,10 @@ export default function PrivacyPolicyPage() {
                   Data controller
                 </p>
                 <p style={{ fontSize: ".96rem", color: "var(--sl2)", lineHeight: 1.9, marginTop: 8 }}>
-                  Veridian Clinic, a CQC-registered private healthcare provider. For privacy or data
-                  protection enquiries, please contact us via the clinic contact details published on
-                  the website.
+                  Veridian Clinic. For privacy or data protection enquiries, please contact us via
+                  the clinic contact details published on the website. Where regulated medical
+                  services are delivered by a partner provider, that provider may act as a separate
+                  controller for the care it delivers.
                 </p>
               </div>
 

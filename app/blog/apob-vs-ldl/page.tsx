@@ -4,7 +4,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 export const metadata: Metadata = {
   title: "ApoB vs LDL | Why ApoB Better Reflects Cardiovascular Risk",
   description:
-    "A GP-led deep dive into ApoB vs LDL, why apolipoprotein B is often the better marker of atherosclerotic risk, and how to interpret cardiovascular risk markers through a longevity lens.",
+    "A deep dive into ApoB vs LDL, why apolipoprotein B is often the better marker of atherosclerotic risk, and how to interpret cardiovascular risk markers through a longevity lens.",
   alternates: {
     canonical: "https://veridian.clinic/blog/apob-vs-ldl",
   },

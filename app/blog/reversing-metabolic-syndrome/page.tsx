@@ -4,7 +4,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 export const metadata: Metadata = {
   title: "Reversing Metabolic Syndrome in 12 Weeks | Practical Clinical Strategy",
   description:
-    "A GP-led guide to the main levers behind a 12-week metabolic reset, including diet quality, waist reduction, activity, sleep, and biomarker tracking.",
+    "A guide to the main levers behind a 12-week metabolic reset, including diet quality, waist reduction, activity, sleep, and biomarker tracking.",
   alternates: {
     canonical: "https://veridian.clinic/blog/reversing-metabolic-syndrome",
   },

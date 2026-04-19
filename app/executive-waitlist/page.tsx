@@ -79,7 +79,7 @@ export default function ExecutiveWaitlistPage() {
                   className="a3"
                   style={{ fontSize: ".95rem", color: "var(--sl3)", lineHeight: 1.9, maxWidth: 680, marginBottom: 28 }}
                 >
-                  For leaders, founders, clinicians, and high-performing operators who want deeper preventive oversight, broader diagnostics, and a more strategic doctor-led plan for performance and longevity.
+                  For leaders, founders, clinicians, and high-performing operators who want deeper preventive oversight, broader diagnostics, and a more strategic plan for performance and longevity.
                 </p>
 
                 <div className="a4" style={{ display: "grid", gap: 12, maxWidth: 640, marginBottom: 32 }}>

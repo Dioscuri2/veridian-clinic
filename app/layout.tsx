@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
  metadataBase: new URL("https://veridian.clinic"),
  title: {
- default: "Veridian Clinic | GP-Led Longevity & Metabolic Health | CQC Registered",
+ default: "Veridian Clinic | Longevity & Metabolic Health Clinic",
  template: "%s | Veridian Clinic",
  },
- description: "Doctor-led longevity and metabolic health clinic. Advanced biomarker testing, CGM monitoring, and personalised 12-week optimisation plans. Led by Dr Oluwatosin Taiwo MBBS MRCGP MRCS. CQC registered, UK nationwide.",
- keywords: ["metabolic health doctor UK","longevity clinic UK","private GP metabolic health","CGM monitoring UK","ApoB testing UK","HbA1c private test","12 week metabolic reset","GLP-1 therapy UK","CQC registered longevity clinic","Dr Oluwatosin Taiwo","Veridian Clinic"],
+ description: "Longevity-focused clinic for metabolic health, advanced biomarker testing, CGM monitoring, and personalised optimisation plans. Regulated medical services are available via CQC-registered clinical partners.",
+ keywords: ["metabolic health clinic UK","longevity clinic UK","health optimisation clinic","CGM monitoring UK","ApoB testing UK","HbA1c private test","12 week metabolic reset","longevity medicine UK","Dr Oluwatosin Taiwo","Veridian Clinic"],
  authors: [{ name: "Dr Oluwatosin Taiwo" }],
  openGraph: {
  type: "website", locale: "en_GB", url: "https://veridian.clinic", siteName: "Veridian Clinic",
- title: "Veridian Clinic | GP-Led Longevity & Metabolic Health",
+ title: "Veridian Clinic | Longevity & Metabolic Health",
  description: "Understand what's driving your weight, energy, and long-term health — then fix it.",
  images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Veridian Clinic" }],
  },
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 const schema = {
  "@context": "https://schema.org", "@type": "MedicalBusiness",
  name: "Veridian Clinic",
- description: "CQC-registered GP-led longevity and metabolic health clinic",
+ description: "Longevity and metabolic health clinic with regulated medical services available via clinical partners",
  url: "https://veridian.clinic",
  medicalSpecialty: ["Metabolic Health","Longevity Medicine","Preventive Medicine"],
  availableService: [
- { "@type": "MedicalProcedure", name: "Initial GP Consultation", offers: { "@type": "Offer", price: "195", priceCurrency: "GBP" } },
+  { "@type": "MedicalProcedure", name: "Initial Clinical Discovery Consultation", offers: { "@type": "Offer", price: "195", priceCurrency: "GBP" } },
  { "@type": "MedicalProcedure", name: "Core Metabolic Assessment", offers: { "@type": "Offer", price: "495", priceCurrency: "GBP" } },
  { "@type": "MedicalProcedure", name: "Advanced Longevity Assessment", offers: { "@type": "Offer", price: "895", priceCurrency: "GBP" } },
  { "@type": "MedicalProcedure", name: "12-Week Metabolic Reset", offers: { "@type": "Offer", price: "1895", priceCurrency: "GBP" } },

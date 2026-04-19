@@ -20,13 +20,13 @@ const tierCatalog: Record<
     name: "Veridian Baseline",
     amount: 59500,
     description:
-      "A GP-led baseline metabolic audit designed to reveal the most actionable drivers of decline before they become disease.",
+      "A longevity-focused baseline metabolic audit designed to reveal the most actionable drivers of decline before they become disease.",
   },
   programme: {
     name: "12-Week Metabolic Reset",
     amount: 189500,
     description:
-      "A doctor-led 12-week reset with structured implementation, accountability, and clinical oversight.",
+      "A 12-week reset with structured implementation, accountability, and clinical oversight via trusted medical partners where indicated.",
   },
 };
 

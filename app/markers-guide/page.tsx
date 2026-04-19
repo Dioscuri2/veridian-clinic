@@ -39,13 +39,13 @@ const outcomes = [
   "Understand which biomarkers routine screening commonly misses",
   "Learn what each marker may reveal about long-term metabolic and cardiovascular risk",
   "Know why \"normal\" does not always mean optimal in preventive medicine",
-  "Get a GP-led framework for what to test next and why it matters",
+  "Get a clinical framework for what to test next and why it matters",
 ];
 
 export const metadata = {
   title: "7 Missing Markers Guide | Veridian Clinic",
   description:
-    "Download Veridian Clinic's GP-led guide to the 7 missing longevity biomarkers most people are never properly shown.",
+    "Download Veridian Clinic's guide to the 7 missing longevity biomarkers most people are never properly shown.",
 };
 
 export default function MarkersGuidePage() {
@@ -263,7 +263,7 @@ export default function MarkersGuidePage() {
                     Prefer a clinical pathway?
                   </p>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14 }}>
-                    If you already know you want a deeper assessment, explore Veridian’s GP-led pathways for
+                    If you already know you want a deeper assessment, explore Veridian’s longevity pathways for
                     metabolic and longevity screening.
                   </p>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>

@@ -25,19 +25,19 @@ const tierDetails: Record<string, { title: string; price: string; description: s
     title: "Metabolic Discovery",
     price: "£195",
     description:
-      "A focused GP-led consultation to understand your symptoms, goals, family history and likely metabolic blind spots, then recommend the right next diagnostic step.",
+      "A focused clinical discovery consultation to understand your symptoms, goals, family history and likely metabolic blind spots, then recommend the right next step.",
   },
   baseline: {
     title: "Veridian Baseline",
     price: "£595",
     description:
-      "A GP-led baseline audit designed to reveal the most actionable metabolic drivers of decline before they become disease.",
+      "A longevity-focused baseline audit designed to reveal the most actionable metabolic drivers of decline before they become disease.",
   },
   programme: {
     title: "12-Week Metabolic Reset",
     price: "£1,895",
     description:
-      "A doctor-led reset for patients who need guided implementation, accountability and follow-through, not just a report.",
+      "A structured reset for patients who need guided implementation, accountability and follow-through, not just a report.",
   },
 };
 
@@ -153,6 +153,9 @@ function BookingFormInner() {
               <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 18 }}>
                 Complete the short form below. Your chosen assessment will be pre-selected if you arrived here from the quiz or pricing page.
               </p>
+              <p style={{ fontSize: ".82rem", color: "var(--sl3)", lineHeight: 1.85, marginBottom: 18 }}>
+                Regulated medical services, including prescribing where appropriate, are delivered via our CQC-registered clinical partners.
+              </p>
               <div className="card" style={{ marginBottom: 28 }}>
                 <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>
                   Selected pathway
@@ -190,7 +193,7 @@ function BookingFormInner() {
                 <p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>What to expect</p>
                 <ul className="chk">
                   <li>Virtual, UK-wide delivery</li>
-                  <li>GP-led clinical review</li>
+                  <li>Clinical review via trusted medical partners where needed</li>
                   <li>Pricing aligned to your selected pathway</li>
                   <li>Clear next steps after booking</li>
                   <li>Secure intake available after confirmation</li>
