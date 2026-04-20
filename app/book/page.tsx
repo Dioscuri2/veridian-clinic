@@ -154,7 +154,7 @@ function BookingFormInner() {
                 Complete the short form below. Your chosen assessment will be pre-selected if you arrived here from the quiz or pricing page.
               </p>
               <p style={{ fontSize: ".82rem", color: "var(--sl3)", lineHeight: 1.85, marginBottom: 18 }}>
-                Regulated medical services, including prescribing where appropriate, are delivered via our CQC-registered clinical partners.
+                CQC regulated clinical services — including prescribing where indicated — are delivered under the umbrella of thanksdoc.co.uk.
               </p>
               <div className="card" style={{ marginBottom: 28 }}>
                 <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>

@@ -118,7 +118,7 @@ export default function AssessmentsPage() {
  Every pathway is clinically structured and designed to identify the missing-link drivers standard screening often misses — particularly insulin burden, ApoB-driven vascular risk and homocysteine load.
  </p>
  <div className="badge-row a4" style={{ justifyContent: "center", marginTop: 24 }}>
- <span className="badge"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3.8v3.2c0 2.4 1.9 4.5 4.5 5.2 2.6-.7 4.5-2.8 4.5-5.2V3.8z" fill="var(--fo)" stroke="var(--go)" strokeWidth=".6"/><path d="M4.5 6.5l1.5 1.5 2.5-2.5" stroke="var(--go)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/></svg>Clinical Partners</span>
+ <span className="badge"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3.8v3.2c0 2.4 1.9 4.5 4.5 5.2 2.6-.7 4.5-2.8 4.5-5.2V3.8z" fill="var(--fo)" stroke="var(--go)" strokeWidth=".6"/><path d="M4.5 6.5l1.5 1.5 2.5-2.5" stroke="var(--go)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/></svg>GP-Led &amp; CQC Regulated</span>
  <span className="badge">Longevity Focus</span>
  <span className="badge">Virtual UK Care</span>
  <span className="badge">Actionable Marker Focus</span>
