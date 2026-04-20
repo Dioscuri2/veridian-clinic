@@ -39,9 +39,12 @@ export default function Navigation() {
 
   return (
     <header className={`nav ${scrolled || !isHome ? "nav-scroll" : ""}`}>
-      <div style={{ padding: "8px 24px", textAlign: "center", fontSize: ".66rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--fo)", borderBottom: "1px solid rgba(0,0,0,.06)", background: "rgba(246,241,232,.92)" }}>
-        <Shield style={{ display: "inline-block", verticalAlign: "middle", marginRight: 6 }} />
-        CQC regulated services — GP-led metabolic and longevity care
+      <div style={{ padding: "8px 24px", textAlign: "center", fontSize: ".66rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--fo)", borderBottom: "1px solid rgba(0,0,0,.06)", background: "rgba(246,241,232,.92)", display: "flex", alignItems: "center", justifyContent: "center", gap: 7 }}>
+        <svg width="11" height="11" viewBox="0 0 15 15" fill="none" style={{ flexShrink: 0 }}>
+          <path d="M7.5 1.2L2 4.2v3.5c0 2.8 2.1 5 5.5 5.8 3.4-.8 5.5-3 5.5-5.8V4.2z" fill="var(--fo)" stroke="var(--go)" strokeWidth=".7"/>
+          <path d="M5 7.5l1.7 1.7 2.8-2.8" stroke="var(--go)" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span>CQC regulated services &nbsp;·&nbsp; GP-led metabolic and longevity care</span>
       </div>
       <div className="nav-inner">
         <Link href="/" className="logo-mark">
