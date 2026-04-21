@@ -88,7 +88,7 @@ const comparisonRows = [
  { feature: "hs-CRP", discovery: false, baseline: true, programme: true, executive: true },
  { feature: "CGM cycle", discovery: false, baseline: false, programme: true, executive: true },
  { feature: "Fortnightly coaching", discovery: false, baseline: false, programme: true, executive: true },
- { feature: "Partner medical review where indicated", discovery: false, baseline: false, programme: true, executive: true },
+ { feature: "GP-led clinical review where indicated", discovery: false, baseline: false, programme: true, executive: true },
  { feature: "Written action plan", discovery: true, baseline: true, programme: true, executive: true },
  { feature: "Priority / premium pathway", discovery: false, baseline: false, programme: false, executive: true },
 ];

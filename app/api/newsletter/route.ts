@@ -32,7 +32,7 @@ const LIST_CONFIG = {
   },
   executive_waitlist: {
     key: "executive_waitlist",
-    name: process.env.BREVO_EXECUTIVE_WAITLIST_NAME || "Executive Waitlist",
+    name: process.env.BREVO_EXECUTIVE_WAITLIST_NAME || "waitlist executive health span waitlist",
     fallbackSource: "executive-waitlist",
     message:
       "Your Executive Healthspan application has been received. We’ll contact you when priority access opens.",
