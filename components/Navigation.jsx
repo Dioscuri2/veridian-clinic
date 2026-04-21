@@ -30,7 +30,7 @@ export default function Navigation() {
 
   const navLinks = [
     { label: "How It Works", href: anchor("#process") },
-    { label: "Metabolic Quiz", href: "/metabolic-age" },
+    { label: "Metabolic Quiz", href: "/metabolic-quiz" },
     { label: "Assessments", href: "/assessments" },
     { label: "Reset", href: anchor("#programme") },
     { label: "Our Team", href: anchor("#team") },

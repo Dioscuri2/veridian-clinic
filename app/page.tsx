@@ -275,7 +275,7 @@ export default function HomePage() {
                 </p>
                 <div className="a4" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                   <Link href="/book?tier=discovery" className="btn btn-go">Book Discovery Call →</Link>
-                  <Link href="/metabolic-scorecard" className="btn btn-fo">Take the Metabolic Quiz →</Link>
+                  <Link href="/metabolic-quiz" className="btn btn-fo">Take the Metabolic Quiz →</Link>
                   <Link href="/assessments" className="btn btn-ol">Explore Assessments</Link>
                 </div>
                 <div className="a5" style={{ display: "flex", flexWrap: "wrap", gap: 36, paddingTop: 32, borderTop: "1px solid rgba(0,0,0,.08)", marginTop: 36 }}>
@@ -334,7 +334,7 @@ export default function HomePage() {
               ))}
             </div>
             <div style={{ marginTop: 36, textAlign: "center" }}>
-              <Link href="/metabolic-scorecard" className="btn btn-fo">Take the free Metabolic Quiz →</Link>
+              <Link href="/metabolic-quiz" className="btn btn-fo">Take the free Metabolic Quiz →</Link>
               <p style={{ fontSize: ".8rem", color: "var(--sl3)", marginTop: 12, fontStyle: "italic" }}>60 seconds. No account needed. Understand your picture before you book.</p>
             </div>
           </div>
@@ -355,7 +355,7 @@ export default function HomePage() {
               <p className="lbl" style={{ color: "var(--go2)", marginBottom: 0 }}>Free Metabolic Assessment</p>
               <h2 className="cg" style={{ fontSize: "clamp(2.1rem,4.8vw,3.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.14, maxWidth: 780, margin: 0 }}>Take the Metabolic Quiz in 60 Seconds</h2>
               <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.74)", lineHeight: 1.9, maxWidth: 700, margin: 0 }}>Answer a few focused questions and get a snapshot of the domains most likely driving your energy, weight trajectory, and long-term cardiovascular risk. Free, and no account required.</p>
-              <Link href="/metabolic-scorecard" className="btn btn-go">Take the Metabolic Quiz →</Link>
+              <Link href="/metabolic-quiz" className="btn btn-go">Take the Metabolic Quiz →</Link>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
                 <span style={{ fontSize: ".67rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(246,241,232,.38)" }}>Free &amp; Instant</span>
                 <span style={{ color: "rgba(246,241,232,.2)", margin: "0 4px" }}>|</span>
@@ -612,7 +612,7 @@ export default function HomePage() {
             <p style={{ fontSize:"1rem", color:"rgba(246,241,232,.58)", lineHeight:1.95, marginBottom:24 }}>Get clarity on what is driving decline, and a plan that combines regulated medical pathways with meaningful health optimisation support.</p>
             <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap", marginBottom:28 }}>
               <Link href="/book?tier=discovery" className="btn btn-go">Book Discovery Call →</Link>
-              <Link href="/metabolic-scorecard" className="btn btn-ol-lt">Take the Metabolic Quiz</Link>
+              <Link href="/metabolic-quiz" className="btn btn-ol-lt">Take the Metabolic Quiz</Link>
             </div>
             <div style={{ background:"rgba(246,241,232,.05)", border:"1px solid rgba(246,241,232,.08)", padding:"24px", textAlign:"left", marginBottom:26 }}>
               <LeadCaptureForm source="homepage-waitlist" title="Join the Veridian waitlist" subtitle="Get early access to new longevity pathways, flagship offers, and your next-step roadmap." ctaLabel="Join Waitlist →" buttonClassName="btn btn-go btn-full" compact />
