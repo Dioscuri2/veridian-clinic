@@ -9,9 +9,10 @@ function ScorecardContent() {
   const params = useSearchParams();
   const router = useRouter();
 
-  const score = params.get("score") || "";
+  const mAge = params.get("mAge") || "";
+  const chrono = params.get("chrono") || "";
+  const delta = params.get("delta") || "";
   const band = params.get("band") || "drifting";
-  const age = params.get("age") || "";
   const weakest = params.get("weakest") || "";
 
   const [firstName, setFirstName] = useState("");
@@ -38,10 +39,12 @@ function ScorecardContent() {
           consent,
           source: "metabolic-quiz-scorecard",
           list: "newsletter",
-          quizScore: score ? Number(score) : undefined,
+          metabolicAge: mAge ? Number(mAge) : undefined,
           resultBand: band,
           metadata: {
-            age: age ? Number(age) : undefined,
+            chronologicalAge: chrono ? Number(chrono) : undefined,
+            metabolicAge: mAge ? Number(mAge) : undefined,
+            riskDelta: delta ? Number(delta) : undefined,
             weakest,
             funnel: "metabolic-quiz",
           },
@@ -78,8 +81,8 @@ function ScorecardContent() {
           style={{ minHeight: "calc(100svh - var(--nav-h))", display: "flex", alignItems: "center" }}
         >
           <div className="wrap" style={{ maxWidth: 660 }}>
-            {/* Score reminder */}
-            {score && (
+            {/* Metabolic age reminder */}
+            {mAge && (
               <div
                 className="a1"
                 style={{
@@ -95,17 +98,17 @@ function ScorecardContent() {
                 <div
                   style={{
                     fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "2rem",
+                    fontSize: "2.4rem",
                     fontWeight: 500,
                     lineHeight: 1,
                     color: BAND_COLORS[band] ?? "var(--fo)",
                   }}
                 >
-                  {score}
+                  {mAge}
                 </div>
                 <div>
                   <p style={{ fontSize: ".7rem", color: "var(--sl3)", letterSpacing: ".12em", textTransform: "uppercase", fontWeight: 600 }}>
-                    Your score · {BAND_LABELS[band] ?? band}
+                    Estimated metabolic age · {BAND_LABELS[band] ?? band}
                   </p>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", marginTop: 2 }}>
                     Your full breakdown is ready to be emailed to you.

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, Suspense } from "react";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
@@ -11,21 +11,21 @@ const BANDS = {
     tone: "On Track",
     color: "var(--grn)",
     bg: "rgba(20,82,38,.08)",
-    title: "Your metabolism is well-matched to your years.",
+    border: "rgba(20,82,38,.22)",
     note: "Your inputs suggest relatively strong metabolic resilience. The priority is protecting this trajectory and confirming the unseen biomarkers before they drift.",
   },
   drifting: {
     tone: "Needs Attention",
     color: "var(--amr)",
     bg: "rgba(138,85,0,.08)",
-    title: "Your metabolic age may be running slightly ahead of the calendar.",
+    border: "rgba(138,85,0,.22)",
     note: "There are early signs of metabolic drift. This is often the best intervention window — before more obvious dysfunction becomes established.",
   },
   "high-risk": {
     tone: "High Priority",
     color: "var(--red)",
     bg: "rgba(122,22,22,.08)",
-    title: "Your answers suggest your metabolism may be ageing ahead of your years.",
+    border: "rgba(122,22,22,.22)",
     note: "Your pattern shows multiple drivers of metabolic stress. That does not make the outcome fixed — but it does mean the next move matters.",
   },
 };
@@ -37,34 +37,25 @@ const WEAKEST_LABELS: Record<string, string> = {
   diet: "Diet quality — directly affects insulin load, systemic inflammation, and long-term metabolic function.",
 };
 
-function clamp(v: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, v));
-}
-
 function ResultContent() {
   const params = useSearchParams();
-  const score = clamp(Number(params.get("score") || 0), 0, 100);
+  const mAge = Number(params.get("mAge") || 0);
+  const chrono = Number(params.get("chrono") || 0);
+  const delta = Number(params.get("delta") || 0);
   const bandKey = (params.get("band") || "drifting") as keyof typeof BANDS;
-  const age = Number(params.get("age") || 0);
   const weakest = params.get("weakest") || "sleep";
   const band = BANDS[bandKey] ?? BANDS.drifting;
 
-  const [animated, setAnimated] = useState(0);
+  const scorecardUrl =
+    `/metabolic-quiz/scorecard?mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${bandKey}&weakest=${weakest}`;
 
-  useEffect(() => {
-    const t = setInterval(() => {
-      setAnimated((prev) => {
-        if (prev >= score) { clearInterval(t); return score; }
-        return Math.min(score, prev + 2);
-      });
-    }, 18);
-    return () => clearInterval(t);
-  }, [score]);
-
-  const radius = 86;
-  const circ = 2 * Math.PI * radius;
-  const offset = circ - (animated / 100) * circ;
-  const scorecardUrl = `/metabolic-quiz/scorecard?score=${score}&band=${bandKey}&age=${age}&weakest=${weakest}`;
+  const deltaLabel = delta > 0 ? `+${delta} years` : delta < 0 ? `${delta} years` : "Matched";
+  const interpretation =
+    delta > 0
+      ? `Your metabolism appears to be running approximately ${delta} year${delta === 1 ? "" : "s"} ahead of your calendar age.`
+      : delta < 0
+        ? `Your metabolic age is tracking behind your calendar age — a positive sign of metabolic resilience.`
+        : "Your metabolic age closely matches your chronological age.";
 
   return (
     <>
@@ -72,10 +63,10 @@ function ResultContent() {
       <Navigation />
       <main style={{ paddingTop: "var(--nav-h)" }}>
         <section className="sec bg-iv">
-          <div className="wrap" style={{ maxWidth: 900 }}>
-            <div className="text-center" style={{ marginBottom: 48 }}>
-              <p className="lbl a1">Metabolic Age Result</p>
-              <div className="rule rule-c a1" />
+          <div className="wrap" style={{ maxWidth: 940 }}>
+            <div className="text-center a1" style={{ marginBottom: 48 }}>
+              <p className="lbl">Metabolic Age Result</p>
+              <div className="rule rule-c" />
             </div>
 
             <div
@@ -83,79 +74,137 @@ function ResultContent() {
               style={{
                 display: "grid",
                 gap: 48,
-                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,360px),1fr))",
-                alignItems: "center",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,380px),1fr))",
+                alignItems: "start",
               }}
             >
-              {/* Score ring */}
-              <div style={{ display: "grid", placeItems: "center" }}>
-                <div style={{ position: "relative", width: 240, height: 240 }}>
-                  <svg width="240" height="240" viewBox="0 0 240 240" aria-label={`Metabolic score: ${score}`}>
-                    <circle cx="120" cy="120" r={radius} fill="none" stroke="rgba(0,0,0,.07)" strokeWidth="18" />
-                    <circle
-                      cx="120"
-                      cy="120"
-                      r={radius}
-                      fill="none"
-                      stroke={band.color}
-                      strokeWidth="18"
-                      strokeLinecap="round"
-                      strokeDasharray={circ}
-                      strokeDashoffset={offset}
-                      transform="rotate(-90 120 120)"
-                      style={{ transition: "stroke-dashoffset .6s ease" }}
-                    />
-                  </svg>
+              {/* Metabolic age display */}
+              <div style={{ display: "grid", gap: 20 }}>
+                {/* Main age card */}
+                <div
+                  style={{
+                    padding: "36px 32px",
+                    background: band.bg,
+                    border: `1.5px solid ${band.border}`,
+                    textAlign: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: ".68rem",
+                      color: "var(--sl3)",
+                      letterSpacing: ".18em",
+                      textTransform: "uppercase",
+                      fontWeight: 600,
+                      marginBottom: 12,
+                    }}
+                  >
+                    Estimated Metabolic Age
+                  </p>
+                  <div
+                    className="cg"
+                    style={{
+                      fontSize: "clamp(5rem,14vw,8rem)",
+                      fontWeight: 500,
+                      lineHeight: 1,
+                      color: band.color,
+                    }}
+                  >
+                    {mAge}
+                  </div>
+                  <p
+                    style={{
+                      fontSize: ".82rem",
+                      color: "var(--sl3)",
+                      marginTop: 10,
+                      letterSpacing: ".06em",
+                    }}
+                  >
+                    years
+                  </p>
+                </div>
+
+                {/* Comparison row */}
+                {chrono > 0 && (
                   <div
                     style={{
-                      position: "absolute",
-                      inset: 0,
                       display: "grid",
-                      placeItems: "center",
+                      gridTemplateColumns: "1fr auto 1fr",
+                      gap: 8,
+                      alignItems: "center",
                       textAlign: "center",
+                      padding: "18px 20px",
+                      background: "var(--iv2)",
                     }}
                   >
                     <div>
                       <p
                         style={{
-                          fontSize: ".7rem",
+                          fontSize: ".62rem",
                           color: "var(--sl3)",
                           letterSpacing: ".14em",
                           textTransform: "uppercase",
-                          marginBottom: 4,
+                          fontWeight: 600,
+                          marginBottom: 6,
                         }}
                       >
-                        Your Score
+                        Your Age
                       </p>
-                      <div
-                        className="cg"
-                        style={{ fontSize: "3.8rem", fontWeight: 500, lineHeight: 1, color: band.color }}
-                      >
-                        {animated}
+                      <div className="cg" style={{ fontSize: "2.2rem", fontWeight: 400, color: "var(--sl3)" }}>
+                        {chrono}
                       </div>
-                      <p style={{ fontSize: ".88rem", color: "var(--sl3)", marginTop: 6 }}>out of 100</p>
+                    </div>
+                    <div
+                      style={{
+                        padding: "6px 12px",
+                        background: band.bg,
+                        color: band.color,
+                        fontSize: ".76rem",
+                        fontWeight: 700,
+                        letterSpacing: ".1em",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {deltaLabel}
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: ".62rem",
+                          color: "var(--sl3)",
+                          letterSpacing: ".14em",
+                          textTransform: "uppercase",
+                          fontWeight: 600,
+                          marginBottom: 6,
+                        }}
+                      >
+                        Metabolic Age
+                      </p>
+                      <div className="cg" style={{ fontSize: "2.2rem", fontWeight: 400, color: band.color }}>
+                        {mAge}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
+                {/* Band badge */}
                 <div
                   style={{
-                    marginTop: 20,
-                    padding: "8px 20px",
+                    padding: "10px 20px",
                     background: band.bg,
                     color: band.color,
                     fontSize: ".72rem",
                     fontWeight: 700,
                     letterSpacing: ".14em",
                     textTransform: "uppercase",
-                    display: "inline-block",
+                    textAlign: "center",
                   }}
                 >
                   {band.tone}
                 </div>
               </div>
 
-              {/* Interpretation */}
+              {/* Interpretation + CTA */}
               <div style={{ display: "grid", gap: 22 }}>
                 <h1
                   className="cg"
@@ -166,10 +215,7 @@ function ResultContent() {
                     lineHeight: 1.2,
                   }}
                 >
-                  {age > 0 ? (
-                    <>Age {age} snapshot — </>
-                  ) : null}
-                  {band.title}
+                  {interpretation}
                 </h1>
 
                 <p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95 }}>{band.note}</p>
@@ -184,7 +230,7 @@ function ResultContent() {
                 >
                   <p
                     style={{
-                      fontSize: ".7rem",
+                      fontSize: ".68rem",
                       color: "var(--sl3)",
                       letterSpacing: ".12em",
                       textTransform: "uppercase",
@@ -200,16 +246,10 @@ function ResultContent() {
                 </div>
 
                 {/* CTA block */}
-                <div
-                  style={{
-                    padding: "24px 28px",
-                    background: "var(--fo)",
-                    borderRadius: 0,
-                  }}
-                >
+                <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
                   <p
                     style={{
-                      fontSize: ".7rem",
+                      fontSize: ".68rem",
                       color: "var(--go2)",
                       letterSpacing: ".14em",
                       textTransform: "uppercase",
@@ -227,7 +267,7 @@ function ResultContent() {
                       marginBottom: 20,
                     }}
                   >
-                    Your personalised breakdown, key drivers, and next-step guidance can be emailed to you.
+                    Get your personalised breakdown, key drivers, and next-step guidance emailed to you.
                   </p>
                   <Link href={scorecardUrl} className="btn btn-go btn-full">
                     Get My Full Scorecard →
@@ -235,7 +275,7 @@ function ResultContent() {
                 </div>
 
                 <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7 }}>
-                  The detailed breakdown is emailed to you. The next step unlocks your personalised interpretation.
+                  The detailed breakdown is emailed to you. This unlocks your personalised interpretation.
                 </p>
               </div>
             </div>

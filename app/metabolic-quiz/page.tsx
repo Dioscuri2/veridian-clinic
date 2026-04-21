@@ -90,33 +90,44 @@ const QUESTIONS = [
 const INITIAL: Answers = { age: "", sex: "", heightCm: "", waistCm: "", sleep: "", activity: "", diet: "" };
 
 function computeResult(a: Answers) {
-  const age = Number(a.age || 0);
+  const chrono = Number(a.age || 0);
   const h = Number(a.heightCm || 0);
   const w = Number(a.waistCm || 0);
   const whtr = h > 0 && w > 0 ? w / h : 0;
 
-  let whtrScore = 0;
-  if (whtr && a.sex) {
-    whtrScore = a.sex === "male"
-      ? whtr < 0.5 ? 100 : whtr < 0.55 ? 65 : 25
-      : whtr < 0.45 ? 100 : whtr < 0.5 ? 70 : 25;
+  // WHtR → year delta (from original metabolic-age ruleset)
+  let whtrYears = 0;
+  if (whtr) {
+    if (a.sex === "male") {
+      whtrYears = whtr < 0.5 ? 0 : whtr < 0.55 ? 4 : whtr < 0.6 ? 7 : 10;
+    } else if (a.sex === "female") {
+      whtrYears = whtr < 0.45 ? 0 : whtr < 0.5 ? 2 : whtr < 0.55 ? 6 : 10;
+    }
   }
 
-  const sleepScore = a.sleep === "optimal" ? 100 : a.sleep === "mid" ? 65 : 30;
-  const activityScore = a.activity === "high" ? 100 : a.activity === "mid" ? 65 : 25;
-  const dietScore = a.diet === "high" ? 100 : a.diet === "mid" ? 60 : 20;
-  const score = Math.round((whtrScore * 0.4) + (sleepScore * 0.2) + (activityScore * 0.2) + (dietScore * 0.2));
-  const band = score >= 75 ? "strong" : score >= 50 ? "drifting" : "high-risk";
+  // Sleep → year delta
+  const sleepYears = a.sleep === "optimal" ? 1 : a.sleep === "mid" ? 3 : 6;
 
+  // Activity → year delta (negative = positive metabolic protection)
+  const activityYears = a.activity === "high" ? -4 : a.activity === "mid" ? -1 : 4;
+
+  // Diet → year delta
+  const dietYears = a.diet === "high" ? 0 : a.diet === "mid" ? 2 : 5;
+
+  const delta = whtrYears + sleepYears + activityYears + dietYears;
+  const mAge = Math.max(18, Math.min(90, Math.round(chrono + delta)));
+  const band = delta <= 3 ? "strong" : delta <= 10 ? "drifting" : "high-risk";
+
+  // Weakest = highest positive year contributor (worst factor)
   const factors = [
-    { key: "waist", score: whtrScore },
-    { key: "sleep", score: sleepScore },
-    { key: "activity", score: activityScore },
-    { key: "diet", score: dietScore },
+    { key: "waist", years: whtrYears },
+    { key: "sleep", years: sleepYears },
+    { key: "activity", years: Math.max(0, activityYears) },
+    { key: "diet", years: dietYears },
   ];
-  const weakest = factors.sort((a, b) => a.score - b.score)[0].key;
+  const weakest = factors.sort((a, b) => b.years - a.years)[0].key;
 
-  return { score, band, age, weakest };
+  return { mAge, chrono, delta, band, weakest };
 }
 
 function canAdvance(step: number, answers: Answers): boolean {
@@ -147,8 +158,8 @@ export default function MetabolicQuizPage() {
   function handleNext() {
     if (!ready) return;
     if (!isLast) { setStep((s) => s + 1); return; }
-    const { score, band, age, weakest } = computeResult(answers);
-    router.push(`/metabolic-quiz/result?score=${score}&band=${band}&age=${age}&weakest=${weakest}`);
+    const { mAge, chrono, delta, band, weakest } = computeResult(answers);
+    router.push(`/metabolic-quiz/result?mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${band}&weakest=${weakest}`);
   }
 
   function handleBack() {
