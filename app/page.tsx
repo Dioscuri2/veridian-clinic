@@ -265,28 +265,26 @@ export default function HomePage() {
                 <p className="lbl a1">Metabolic &amp; Longevity Medicine</p>
                 <div className="rule a2"/>
                 <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.4rem,6.8vw,4.7rem)", fontWeight: 500, lineHeight: 1.09, color: "var(--sl)", letterSpacing: "-.01em", margin: "8px 0 22px" }} className="a2">
-                  Understand what's driving your weight, energy and long-term health — and fix it.
+                  Fix your weight, energy, sleep and metabolic health at the root cause
                 </h1>
-                <p className="a3" style={{ fontSize: "clamp(1.05rem,2.5vw,1.22rem)", color: "var(--sl2)", lineHeight: 1.9, maxWidth: 640, marginBottom: 18 }}>
-                  Veridian Clinic is a doctor-led metabolic and longevity-focused clinic. We help you identify the root causes of weight gain, poor energy, and cardiometabolic risk through structured assessment, advanced testing, and personalised plans.
+                <p className="a3" style={{ fontSize: "clamp(1.05rem,2.5vw,1.18rem)", color: "var(--sl2)", lineHeight: 1.9, maxWidth: 640, marginBottom: 18 }}>
+                  Doctor-led metabolic and longevity care for adults 40+ using biomarkers, structured assessment and personalised plans to help you feel better and measure real progress.
                 </p>
-                <p className="a3" style={{ fontSize: ".84rem", fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 28, lineHeight: 1.7, borderLeft: "2px solid var(--go)", paddingLeft: 14 }}>
+                <p className="a3" style={{ fontSize: ".84rem", fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 20, lineHeight: 1.7, borderLeft: "2px solid var(--go)", paddingLeft: 14 }}>
                   GP-led &nbsp;·&nbsp; CQC regulated services &nbsp;·&nbsp; Nationwide virtual care
                 </p>
+                <ul className="a3" style={{ listStyle: "none", padding: 0, margin: "0 0 28px", display: "grid", gap: 10 }}>
+                  {["Fix the drivers behind weight gain, low energy and poor sleep","Use biomarkers to uncover what routine care often misses","Track progress across metabolism, recovery, stress and long-term health"].map(b => (
+                    <li key={b} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.7 }}>
+                      <span style={{ color: "var(--go)", fontWeight: 700, flexShrink: 0, marginTop: 2 }}>✓</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="a4" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                   <Link href="/book?tier=discovery" className="btn btn-go">Book Discovery Call →</Link>
                   <Link href="/metabolic-quiz" className="btn btn-fo">Take the Metabolic Quiz →</Link>
                   <Link href="/assessments" className="btn btn-ol">Explore Assessments</Link>
-                </div>
-                <div className="a5" style={{ display: "flex", flexWrap: "wrap", gap: 36, paddingTop: 32, borderTop: "1px solid rgba(0,0,0,.08)", marginTop: 36 }}>
-                  {[ ["4","Health Domains\nAssessed"],["3","Missing-Link\nMarkers Prioritised"],["12","Week Reset\nProgramme"] ].map(([n,l]) => (
-                    <div key={l}>
-                      <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "2.35rem", fontWeight: 500, color: "var(--fo)", lineHeight: 1 }}>{n}</div>
-                      <div style={{ fontSize: ".72rem", fontWeight: 500, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)", marginTop: 5, lineHeight: 1.5 }}>
-                        {l.split("\n").map((ln, i) => <span key={i} style={{ display: "block" }}>{ln}</span>)}
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
               <div className="a3" style={{ background: "var(--wh)", border: "1px solid rgba(0,0,0,.09)", padding: "clamp(24px,5vw,40px)", boxShadow: "0 28px 80px rgba(13,40,24,.12)", position: "relative", marginTop: 40 }}>
@@ -319,7 +317,7 @@ export default function HomePage() {
             <div className="sh text-center">
               <p className="lbl">Why People Come</p>
               <div className="rule rule-c"/>
-              <h2 className="cg sh-title">You look well. But are you optimised?</h2>
+              <h2 className="cg sh-title">You look well. But something is drifting.</h2>
               <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 720 }}>
                 Most patients arrive at Veridian not in crisis, but because something has shifted — and routine care hasn't given them a clear answer. These are the most common patterns we see.
               </p>
@@ -610,12 +608,9 @@ export default function HomePage() {
             <div className="vline"/>
             <h2 className="cg" style={{ fontSize:"clamp(2rem,4.5vw,3rem)", fontWeight:500, color:"var(--iv)", lineHeight:1.25, marginBottom:16 }}>Long-term health needs more than symptom management.<br/><em style={{ fontStyle:"italic", color:"var(--go2)" }}>It needs clarity, structure, and follow-through.</em></h2>
             <p style={{ fontSize:"1rem", color:"rgba(246,241,232,.58)", lineHeight:1.95, marginBottom:24 }}>Get clarity on what is driving decline, and a plan that combines regulated medical pathways with meaningful health optimisation support.</p>
-            <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap", marginBottom:28 }}>
+            <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap", marginBottom:32 }}>
               <Link href="/book?tier=discovery" className="btn btn-go">Book Discovery Call →</Link>
               <Link href="/metabolic-quiz" className="btn btn-ol-lt">Take the Metabolic Quiz</Link>
-            </div>
-            <div style={{ background:"rgba(246,241,232,.05)", border:"1px solid rgba(246,241,232,.08)", padding:"24px", textAlign:"left", marginBottom:26 }}>
-              <LeadCaptureForm source="homepage-waitlist" title="Join the Veridian waitlist" subtitle="Get early access to new longevity pathways, flagship offers, and your next-step roadmap." ctaLabel="Join Waitlist →" buttonClassName="btn btn-go btn-full" compact />
             </div>
             <div style={{ display:"flex", flexWrap:"wrap", gap:16, justifyContent:"center" }}>
               <span style={{ fontSize:".67rem", fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"rgba(246,241,232,.38)" }}>CQC Regulated Services</span>
