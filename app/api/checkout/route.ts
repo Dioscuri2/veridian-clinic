@@ -14,8 +14,15 @@ const tierAliasMap: Record<string, string> = {
 
 const tierCatalog: Record<
   string,
-  { name: string; amount: number; description: string }
+  { name: string; amount: number; description: string; successPath?: string }
 > = {
+  guide: {
+    name: "Why Your Weight Isn't Shifting — Doctor's 21-Day Metabolic Reset Guide",
+    amount: 1999,
+    description:
+      "A GP-authored practical guide covering the PERC framework, 21-day roadmap, meal plans, fasting strategies, and movement tiers for metabolic reset.",
+    successPath: "/metabolic-reset-guide/thank-you",
+  },
   baseline: {
     name: "Veridian Baseline",
     amount: 59500,
@@ -109,10 +116,10 @@ export async function POST(request: NextRequest) {
       payment_intent_data: {
         description: `Veridian Clinic ${product.name} payment. Payments may appear as ${PAYMENT_DESCRIPTOR} on bank statements.`,
       },
-      success_url: `${baseUrl}/book/thank-you?tier=${encodeURIComponent(
+      success_url: `${baseUrl}${product.successPath ?? "/book/thank-you"}?tier=${encodeURIComponent(
         tier
       )}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/book?tier=${encodeURIComponent(tier)}&cancelled=1`,
+      cancel_url: `${baseUrl}${tier === "guide" ? "/metabolic-reset-guide" : "/book"}?tier=${encodeURIComponent(tier)}&cancelled=1`,
     });
 
     if (!session.url) {

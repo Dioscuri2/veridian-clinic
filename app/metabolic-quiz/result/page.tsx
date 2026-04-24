@@ -245,38 +245,34 @@ function ResultContent() {
                   </p>
                 </div>
 
-                {/* CTA block */}
+                {/* Primary CTA — guide purchase */}
                 <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
-                  <p
-                    style={{
-                      fontSize: ".68rem",
-                      color: "var(--go2)",
-                      letterSpacing: ".14em",
-                      textTransform: "uppercase",
-                      fontWeight: 600,
-                      marginBottom: 8,
-                    }}
-                  >
-                    Your full scorecard is ready
+                  <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
+                    Your next step
                   </p>
-                  <p
-                    style={{
-                      fontSize: ".93rem",
-                      color: "rgba(246,241,232,.78)",
-                      lineHeight: 1.85,
-                      marginBottom: 20,
-                    }}
-                  >
-                    Get your personalised breakdown, key drivers, and next-step guidance emailed to you.
+                  <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.95)", lineHeight: 1.3, fontWeight: 500, marginBottom: 8 }}>
+                    Why Your Weight Isn't Shifting
                   </p>
-                  <Link href={scorecardUrl} className="btn btn-go btn-full">
-                    Get My Full Scorecard →
+                  <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
+                    A Doctor's 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. £19.99 · Instant download.
+                  </p>
+                  <Link href="/metabolic-reset-guide" className="btn btn-go btn-full">
+                    Get the Metabolic Reset Guide →
                   </Link>
                 </div>
 
-                <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7 }}>
-                  The detailed breakdown is emailed to you. This unlocks your personalised interpretation.
-                </p>
+                {/* Secondary CTA — free scorecard */}
+                <div style={{ padding: "16px 20px", background: "var(--iv2)", border: "1px solid rgba(0,0,0,.07)" }}>
+                  <p style={{ fontSize: ".72rem", color: "var(--sl3)", letterSpacing: ".1em", textTransform: "uppercase", fontWeight: 600, marginBottom: 6 }}>
+                    Free option
+                  </p>
+                  <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 12 }}>
+                    Get your free personalised scorecard breakdown emailed to you.
+                  </p>
+                  <Link href={scorecardUrl} style={{ fontSize: ".86rem", color: "var(--fo)", fontWeight: 600, textDecoration: "underline" }}>
+                    Email me my free scorecard →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

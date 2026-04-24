@@ -9,6 +9,9 @@ const nextConfig = {
   images: {
     domains: [],
   },
+  outputFileTracingIncludes: {
+    "/api/guide-download": ["./private/**/*"],
+  },
 };
 
 module.exports = nextConfig;
