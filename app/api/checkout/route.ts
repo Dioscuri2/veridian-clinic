@@ -79,15 +79,7 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       billing_address_collection: "required",
-      payment_method_types: ["card", "klarna", "customer_balance"],
-      payment_method_options: {
-        customer_balance: {
-          funding_type: "bank_transfer",
-          bank_transfer: {
-            type: "gb_bank_transfer",
-          },
-        },
-      },
+      payment_method_types: ["card"],
       customer_creation: "always",
       customer_email: payload.email?.trim() || undefined,
       phone_number_collection: { enabled: true },
