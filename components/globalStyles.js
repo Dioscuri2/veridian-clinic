@@ -104,8 +104,8 @@ button, input, select, textarea { font: inherit; }
 .nav-link:hover { color: var(--fo); }
 .nav-link:hover::after { width: 100%; }
 .logo-mark { display: flex; align-items: center; gap: 13px; min-width: 0; }
-.logo-text-main { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 700; letter-spacing: .2em; color: var(--sl); line-height: 1; }
-.logo-text-sub { font-size: .62rem; font-weight: 600; letter-spacing: .32em; color: var(--fo); text-transform: uppercase; margin-top: 4px; }
+.logo-text-main { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; letter-spacing: .18em; color: var(--sl); line-height: 1; }
+.logo-text-sub { font-size: .7rem; font-weight: 700; letter-spacing: .3em; color: var(--fo); text-transform: uppercase; margin-top: 5px; }
 
 /* ── Buttons ── */
 .btn {
@@ -348,8 +348,8 @@ button, input, select, textarea { font: inherit; }
  .nav { background: rgba(246,241,232,.97); backdrop-filter: blur(14px); box-shadow: 0 2px 24px rgba(0,0,0,.05); border-bottom: 1px solid rgba(0,0,0,.06); }
  .nav-inner { padding: 0 var(--pad); }
  .logo-mark svg { width: 28px; height: 28px; flex-shrink: 0; }
- .logo-text-main { font-size: 1.2rem; letter-spacing: .14em; }
- .logo-text-sub { font-size: .56rem; letter-spacing: .24em; }
+ .logo-text-main { font-size: 1.3rem; letter-spacing: .14em; }
+ .logo-text-sub { font-size: .62rem; letter-spacing: .24em; }
  .ticker-item { padding: 0 24px; font-size: .68rem; }
  .cqc-strip { padding: 20px; }
  table { min-width: 680px !important; }

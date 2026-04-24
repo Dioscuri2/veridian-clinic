@@ -213,22 +213,23 @@ export default function HomePage() {
         /* ── Hero split layout ── */
         .hero-split {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          min-height: 100svh;
+          grid-template-columns: 1.15fr 0.85fr;
+          min-height: min(100svh, 840px);
+          max-height: 920px;
           padding-top: var(--nav-h);
         }
         .hero-text-col {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: clamp(48px,8vh,96px) clamp(28px,6vw,88px);
+          padding: clamp(48px,7vh,88px) clamp(32px,6vw,80px);
           background: var(--iv);
           order: 1;
         }
         .hero-img-col {
           position: relative;
           overflow: hidden;
-          background: var(--fo);
+          background: #e8e4dc;
           order: 2;
         }
         .hero-img-col img {
@@ -237,21 +238,25 @@ export default function HomePage() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center top;
+          object-position: 50% 18%;
           display: block;
         }
         @media(max-width:900px) {
           .hero-split {
             grid-template-columns: 1fr;
             min-height: auto;
+            max-height: none;
           }
           .hero-text-col {
             padding: 36px 20px 44px;
             order: 1;
           }
           .hero-img-col {
-            height: 380px;
+            height: 420px;
             order: 2;
+          }
+          .hero-img-col img {
+            object-position: 50% 12%;
           }
         }
 

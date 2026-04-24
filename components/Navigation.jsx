@@ -45,7 +45,7 @@ export default function Navigation() {
       </div>
       <div className="nav-inner">
         <Link href="/" className="logo-mark">
-          <svg viewBox="0 0 40 40" fill="none" width="34" height="34">
+          <svg viewBox="0 0 40 40" fill="none" width="38" height="38">
             <circle cx="14" cy="20" r="12" stroke="var(--fo)" strokeWidth="3.2" fill="none"/>
             <circle cx="26" cy="20" r="12" stroke="var(--go)" strokeWidth="3.2" fill="none"/>
           </svg>
