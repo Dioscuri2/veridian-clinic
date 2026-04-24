@@ -3,6 +3,7 @@ const path = require("path");
 
 const nextConfig = {
   reactStrictMode: true,
+  serverExternalPackages: ["stripe"],
   turbopack: {
     root: path.join(__dirname),
   },
