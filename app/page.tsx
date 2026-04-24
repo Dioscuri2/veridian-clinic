@@ -18,23 +18,13 @@ const fillClass = { red:"fill-red", amr:"fill-amr", grn:"fill-grn" };
 const bandLabel = { red:"High Priority", amr:"Moderate Priority", grn:"On Track" };
 const bandClass = { red:"spill-r", amr:"spill-a", grn:"spill-g" };
 
-const programme = [
-  "Veridian Baseline biomarkers — exact metabolic risk markers included",
-  "One 14-day CGM cycle with interpretation and action plan",
-  "Fortnightly coaching to improve nutrition, activity and recovery adherence",
-  "GP-led review at programme midpoint to assess progress and adapt treatment where indicated",
-  "Personalised nutrition, movement and behaviour protocol",
-  "Clinical review of therapies where indicated, including lipid or GLP-1 options",
-  "Repeat measurements and end-of-programme forward plan",
-];
-
 const offers = [
   {
     name: "Discovery Call",
     price: "£195",
     tier: "discovery",
-    tag: "Focused starting point",
-    blurb: "A 30-minute GP-led consultation. Useful even if you don't progress further — you leave with clarity, answers to your questions, and a clear written next-step plan.",
+    tag: "First conversation",
+    blurb: "A 30-minute GP-led consultation to review your concerns, history and goals. Useful even if you don't progress immediately — you leave with clarity and a clear written next-step plan.",
     leave_with: [
       "Expert GP assessment of your symptoms and likely metabolic drivers",
       "Clear written action summary and next-step recommendations",
@@ -49,8 +39,8 @@ const offers = [
     name: "Veridian Baseline",
     price: "£595",
     tier: "baseline",
-    tag: "Core diagnostic assessment",
-    blurb: "A full diagnostic clinical work-up built around the markers most likely to reveal what is driving your symptoms — with clinical interpretation and a clear action plan.",
+    tag: "Diagnostic assessment",
+    blurb: "The deeper clinical work-up. A structured assessment built around the biomarkers most likely to reveal what is driving your symptoms — with clinical interpretation and a clear action plan.",
     leave_with: [
       "Full blood panel: HbA1c, fasting insulin, ApoB, homocysteine, lipid profile, hs-CRP, ALT, AST",
       "Clinical interpretation — not just numbers, but what they mean for you",
@@ -65,8 +55,8 @@ const offers = [
     name: "12-Week Metabolic Reset",
     price: "£1,895",
     tier: "programme",
-    tag: "Structured implementation",
-    blurb: "A structured 12-week supervised programme combining the Baseline findings with CGM monitoring, fortnightly coaching and GP oversight. Measurable change, built around your data.",
+    tag: "Structured programme",
+    blurb: "12 weeks of supervised implementation. CGM monitoring, fortnightly coaching, and GP oversight combined into a programme designed to create measurable, lasting change.",
     leave_with: [
       "Everything in the Veridian Baseline",
       "One 14-day CGM cycle with full interpretation",
@@ -94,13 +84,6 @@ const faqs = [
   { q:"What blood tests are included?", a:"The Veridian Baseline includes HbA1c, fasting insulin, fasting glucose, ApoB, homocysteine, full lipid panel, ALT, AST, hs-CRP and broader metabolic markers. Higher-tier pathways add deeper review and integrated support." },
   { q:"Can I access GLP-1 therapy?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through our CQC regulated clinical structure — never as an isolated shortcut, always as part of a structured programme." },
   { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5–7 working days." },
-];
-
-const insightPlaceholders = [
-  { title: "The 7 Missing Markers: A Clinical Guide to Longevity Biomarkers", category: "Free Guide", href: "/markers-guide", cta: "Get the free guide →", label: "Available now", body: "A concise, high-authority guide to the overlooked biomarkers that often reveal metabolic and cardiovascular risk earlier than routine screening." },
-  { title: "Why Fasting Insulin is the Missing Link in Longevity", category: "Metabolic Health", href: "/blog/fast-insulin", cta: "Read article →", label: "Live now", body: "A clinical explainer on why insulin often shifts long before glucose markers become obviously abnormal." },
-  { title: "ApoB vs LDL: The Real Cardiovascular Risk Marker", category: "Cardiovascular Risk", href: "/blog/apob-vs-ldl", cta: "Read article →", label: "Live now", body: "A practical guide to why ApoB often gives a cleaner picture of atherogenic particle burden than LDL alone." },
-  { title: "Reversing Metabolic Syndrome in 12 Weeks", category: "Clinical Protocols", href: "/blog/reversing-metabolic-syndrome", cta: "Read article →", label: "Live now", body: "How a focused 12-week strategy can improve weight trajectory, insulin burden, and cardiometabolic risk." },
 ];
 
 function Stars({ n }: { n: number }) {
@@ -148,21 +131,26 @@ export default function HomePage() {
   return (
     <>
       <style>{FONTS + CSS + `
-        .doc-hero-grid {
+        /* ── Hero split layout ── */
+        .hero-split {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          min-height: 580px;
-          overflow: hidden;
-          border: 1px solid rgba(0,0,0,.08);
-          background: var(--wh);
-          margin-bottom: 32px;
+          min-height: 100svh;
+          padding-top: var(--nav-h);
         }
-        .doc-hero-image {
+        .hero-text-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: clamp(48px,8vh,96px) clamp(28px,6vw,88px);
+          background: var(--iv);
+        }
+        .hero-img-col {
           position: relative;
+          overflow: hidden;
           background: var(--fo);
-          min-height: 480px;
         }
-        .doc-hero-image img {
+        .hero-img-col img {
           position: absolute;
           inset: 0;
           width: 100%;
@@ -171,14 +159,42 @@ export default function HomePage() {
           object-position: center top;
           display: block;
         }
-        .doc-hero-image-overlay {
+        @media(max-width:900px) {
+          .hero-split { grid-template-columns: 1fr; min-height: auto; }
+          .hero-text-col { padding: 40px 24px 48px; order: 2; }
+          .hero-img-col { height: 420px; order: 1; }
+        }
+
+        /* ── Meet the doctor ── */
+        .doc-editorial {
+          display: grid;
+          grid-template-columns: 480px 1fr;
+          min-height: 560px;
+          overflow: hidden;
+          border: 1px solid rgba(0,0,0,.08);
+          background: var(--wh);
+        }
+        .doc-editorial-img {
+          position: relative;
+          background: var(--fo);
+        }
+        .doc-editorial-img img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center top;
+          display: block;
+        }
+        .doc-editorial-overlay {
           position: absolute;
           bottom: 0; left: 0; right: 0;
-          background: linear-gradient(transparent, rgba(13,40,24,0.88));
-          padding: 80px 28px 28px;
+          background: linear-gradient(transparent, rgba(13,40,24,.85));
+          padding: 72px 28px 28px;
         }
-        .doc-hero-bio {
-          padding: clamp(36px,6vw,64px);
+        .doc-editorial-bio {
+          padding: clamp(36px,5vw,60px);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -186,21 +202,23 @@ export default function HomePage() {
         .doc-cred-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 12px;
+          gap: 10px;
           margin-bottom: 28px;
         }
-        @media(max-width:900px){
-          .doc-hero-grid { grid-template-columns: 1fr; }
-          .doc-hero-image { min-height: 400px; }
+        @media(max-width:960px) {
+          .doc-editorial { grid-template-columns: 1fr; }
+          .doc-editorial-img { min-height: 420px; }
           .doc-cred-grid { grid-template-columns: 1fr; }
         }
+
+        /* ── Offer cards ── */
         .offer-grid {
           display: grid;
           grid-template-columns: repeat(3,1fr);
           gap: 24px;
           align-items: start;
         }
-        @media(max-width:900px){ .offer-grid { grid-template-columns: 1fr; } }
+        @media(max-width:900px) { .offer-grid { grid-template-columns: 1fr; } }
         .offer-card {
           border: 1px solid rgba(0,0,0,.09);
           background: var(--wh);
@@ -212,13 +230,8 @@ export default function HomePage() {
           border: 2px solid var(--go);
           background: var(--fo);
         }
-        .offer-card-head {
-          padding: 28px 28px 20px;
-          border-bottom: 1px solid rgba(0,0,0,.07);
-        }
-        .offer-card-featured .offer-card-head {
-          border-bottom-color: rgba(246,241,232,.1);
-        }
+        .offer-card-head { padding: 28px 28px 20px; border-bottom: 1px solid rgba(0,0,0,.07); }
+        .offer-card-featured .offer-card-head { border-bottom-color: rgba(246,241,232,.1); }
         .offer-card-body { padding: 24px 28px; flex-grow: 1; display: flex; flex-direction: column; }
         .offer-price {
           font-family: 'Cormorant Garamond', serif;
@@ -229,98 +242,94 @@ export default function HomePage() {
           margin-bottom: 4px;
         }
         .offer-card-featured .offer-price { color: var(--go2); }
-        .symptom-grid {
-          display: grid;
-          grid-template-columns: repeat(2,1fr);
-          gap: 12px 40px;
-        }
-        @media(max-width:640px){ .symptom-grid { grid-template-columns: 1fr; } }
+
+        /* ── Domain cards ── */
         .problem-grid {
           display: grid;
           grid-template-columns: repeat(3,1fr);
           gap: 20px;
         }
-        @media(max-width:900px){ .problem-grid { grid-template-columns: 1fr; gap: 14px; } }
-        @media(min-width:640px) and (max-width:900px){ .problem-grid { grid-template-columns: repeat(2,1fr); } }
+        @media(max-width:900px) { .problem-grid { grid-template-columns: 1fr; gap: 14px; } }
+        @media(min-width:640px) and (max-width:900px) { .problem-grid { grid-template-columns: repeat(2,1fr); } }
       `}</style>
       <Navigation />
       <main>
 
-        {/* ── 1. HERO ── */}
-        <section style={{ minHeight: "100svh", display: "flex", flexDirection: "column", justifyContent: "center",
-          paddingTop: "calc(var(--nav-h) + 32px)", paddingBottom: 60, paddingLeft: "var(--pad)", paddingRight: "var(--pad)",
-          background: "radial-gradient(ellipse 70% 55% at 65% 45%, rgba(13,40,24,.05) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 12% 78%, rgba(200,168,75,.04) 0%, transparent 55%), var(--iv)" }}>
-          <div style={{ maxWidth: "var(--max)", margin: "0 auto", width: "100%" }}>
-            <div className="badge-row a1" style={{ marginBottom: 28 }}>
-              <span className="badge"><Shield/>GP-Led</span>
-              <span className="badge"><Shield/>CQC Regulated Services</span>
-              <span className="badge">UK Nationwide</span>
-              <span className="badge">Evidence-Based</span>
+        {/* ─────────────────────────────────────────────────────────
+            1. HERO — clean split: copy left, doctor image right
+        ───────────────────────────────────────────────────────── */}
+        <section className="hero-split">
+          <div className="hero-text-col">
+            <p className="lbl a1" style={{ marginBottom: 12 }}>Metabolic &amp; Longevity Medicine</p>
+            <div className="rule a1" style={{ marginBottom: 24 }}/>
+            <h1
+              className="cg a2"
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(2.4rem,5.5vw,4.2rem)",
+                fontWeight: 500,
+                lineHeight: 1.1,
+                color: "var(--sl)",
+                letterSpacing: "-.01em",
+                marginBottom: 28,
+              }}
+            >
+              Fix your weight, energy, sleep, and metabolic health at the root cause.
+            </h1>
+            <p
+              className="a2"
+              style={{
+                fontSize: ".82rem",
+                fontWeight: 600,
+                letterSpacing: ".1em",
+                textTransform: "uppercase",
+                color: "var(--fo)",
+                marginBottom: 32,
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                flexWrap: "wrap",
+              }}
+            >
+              <span style={{ display:"flex", alignItems:"center", gap:6 }}><Shield/>GP-led</span>
+              <span style={{ color:"var(--iv3)" }}>·</span>
+              <span>CQC regulated services</span>
+              <span style={{ color:"var(--iv3)" }}>·</span>
+              <span>Nationwide virtual care</span>
+            </p>
+            <div className="a3" style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 360 }}>
+              <Link href="/book?tier=discovery" className="btn btn-go" style={{ textAlign: "center" }}>
+                Book a Discovery Call →
+              </Link>
+              <Link href="/metabolic-quiz" className="btn btn-fo" style={{ textAlign: "center" }}>
+                Check your metabolic age — Free
+              </Link>
             </div>
-            <div className="g2-hero" style={{ display: "grid", alignItems: "center" }}>
-              <div>
-                <p className="lbl a1">Metabolic &amp; Longevity Medicine</p>
-                <div className="rule a2"/>
-                <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.4rem,6.8vw,4.7rem)", fontWeight: 500, lineHeight: 1.09, color: "var(--sl)", letterSpacing: "-.01em", margin: "8px 0 22px" }} className="a2">
-                  Fix your weight, energy, sleep and metabolic health at the root cause
-                </h1>
-                <p className="a3" style={{ fontSize: "clamp(1.05rem,2.5vw,1.18rem)", color: "var(--sl2)", lineHeight: 1.9, maxWidth: 640, marginBottom: 18 }}>
-                  Doctor-led metabolic and longevity care for adults 40+ using biomarkers, structured assessment and personalised plans to help you feel better and measure real progress.
-                </p>
-                <p className="a3" style={{ fontSize: ".84rem", fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 20, lineHeight: 1.7, borderLeft: "2px solid var(--go)", paddingLeft: 14 }}>
-                  GP-led &nbsp;·&nbsp; CQC regulated services &nbsp;·&nbsp; Nationwide virtual care
-                </p>
-                <ul className="a3" style={{ listStyle: "none", padding: 0, margin: "0 0 28px", display: "grid", gap: 10 }}>
-                  {["Fix the drivers behind weight gain, low energy and poor sleep","Use biomarkers to uncover what routine care often misses","Track progress across metabolism, recovery, stress and long-term health"].map(b => (
-                    <li key={b} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.7 }}>
-                      <span style={{ color: "var(--go)", fontWeight: 700, flexShrink: 0, marginTop: 2 }}>✓</span>
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="a4" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                  <Link href="/book?tier=discovery" className="btn btn-go">Book Discovery Call →</Link>
-                  <Link href="/metabolic-quiz" className="btn btn-fo">Take the Metabolic Quiz →</Link>
-                </div>
-              </div>
-              <div className="a3" style={{ background: "var(--wh)", border: "1px solid rgba(0,0,0,.09)", padding: "clamp(24px,5vw,40px)", boxShadow: "0 28px 80px rgba(13,40,24,.12)", position: "relative", marginTop: 40 }}>
-                <div style={{ position: "absolute", top: 0, left: 0, width: 56, height: 3, background: "var(--go)" }}/>
-                <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: 56, background: "var(--go)" }}/>
-                <p className="lbl" style={{ marginBottom: 24 }}>Sample Domain Scorecard</p>
-                {[{ l:"Structural Health",s:6,p:"60%",b:"amr"},{ l:"Metabolic Health",s:4,p:"40%",b:"red"},{ l:"Recovery",s:5,p:"52%",b:"amr"},{ l:"Stress Resilience",s:7,p:"72%",b:"grn"}].map(d => (
-                  <div key={d.l} style={{ marginBottom: 20 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7 }}>
-                      <span style={{ fontSize: ".92rem", fontWeight: 500, color: "var(--sl)" }}>{d.l}</span>
-                      <span style={{ fontSize: ".84rem", fontWeight: 600, color: fillHex[d.b as keyof typeof fillHex] }}>{d.s}/10</span>
-                    </div>
-                    <div className="sc-bar-track">
-                      <div className={`sc-bar-fill ${fillClass[d.b as keyof typeof fillClass]}`} style={{ "--bw": d.p } as React.CSSProperties}/>
-                    </div>
-                  </div>
-                ))}
-                <div style={{ marginTop: 24, padding: "16px 18px", background: "var(--iv)", borderLeft: "3px solid var(--fo)" }}>
-                  <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.85 }}><strong style={{ color: "var(--fo)" }}>Illustrative example.</strong> Your real score is built from blood tests, CGM data, sleep metrics and validated clinical questionnaires — not guesswork.</p>
-                </div>
-                <Link href="/book?tier=discovery" className="btn btn-fo btn-full" style={{ marginTop: 20 }}>Book Discovery Call →</Link>
-              </div>
-            </div>
+          </div>
+          <div className="hero-img-col">
+            <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo GP — Founder of Veridian Clinic" />
           </div>
         </section>
 
-        {/* ── 2. WHO THIS IS FOR ── */}
+        {/* ─────────────────────────────────────────────────────────
+            2. WHO IS THIS FOR
+        ───────────────────────────────────────────────────────── */}
         <section className="sec bg-iv2">
-          <div className="wrap">
-            <div className="g2-wide" style={{ display: "grid", gap: 48, alignItems: "center" }}>
+          <div className="wrap" style={{ maxWidth: 1060 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(36px,6vw,80px)", alignItems: "start" }}>
               <div>
-                <p className="lbl">Who This Is For</p>
-                <div className="rule" style={{ marginBottom: 22 }}/>
-                <h2 className="cg" style={{ fontSize: "clamp(1.9rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 18 }}>
+                <p className="lbl" style={{ marginBottom: 14 }}>Who Is This For?</p>
+                <div className="rule" style={{ marginBottom: 24 }}/>
+                <h2
+                  className="cg"
+                  style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.18, marginBottom: 20 }}
+                >
                   Built for adults 40+ who know something is drifting
                 </h2>
-                <p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 28 }}>
-                  Most patients arrive not in crisis, but because something has shifted and routine care has not given them a clear answer. If any of the following sound familiar, you are in the right place.
+                <p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 28 }}>
+                  Most patients arrive not in crisis, but because something has shifted and routine care has not given them a clear answer.
                 </p>
-                <ul className="symptom-grid" style={{ listStyle: "none", padding: 0, margin: "0 0 32px" }}>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px" }}>
                   {[
                     "Weight gaining around the middle",
                     "Low energy and persistent fatigue",
@@ -329,175 +338,307 @@ export default function HomePage() {
                     "Blood pressure or blood sugar drifting",
                     "Feeling older than you should",
                   ].map(s => (
-                    <li key={s} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "9px 0", borderBottom: "1px solid rgba(0,0,0,.06)" }}>
-                      <span style={{ color: "var(--fo)", fontWeight: 700, flexShrink: 0, marginTop: 1 }}>—</span>
-                      <span style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.6 }}>{s}</span>
+                    <li
+                      key={s}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
+                        padding: "11px 0",
+                        borderBottom: "1px solid rgba(0,0,0,.06)",
+                        fontSize: ".95rem",
+                        color: "var(--sl2)",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--fo)", flexShrink: 0 }}/>
+                      {s}
                     </li>
                   ))}
                 </ul>
-                <Link href="/metabolic-quiz" className="btn btn-fo">Check Your Metabolic Age — Free →</Link>
-                <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginTop: 10, fontStyle: "italic" }}>60 seconds. No account needed.</p>
+                <Link href="/book?tier=discovery" className="btn btn-fo">Book your discovery call →</Link>
               </div>
-              <div style={{ display: "grid", gap: 16 }}>
-                <div style={{ padding: "24px 26px", background: "var(--wh)", border: "1px solid rgba(0,0,0,.07)", borderLeft: "3px solid var(--fo)" }}>
-                  <p style={{ fontSize: ".78rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 8 }}>Performance Protector</p>
-                  <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.85 }}>You still perform at a high level, but your weight, recovery, blood pressure, family history or lab drift tells you something is moving in the wrong direction. You want precision before damage accumulates.</p>
+
+              <div style={{ display: "grid", gap: 16, paddingTop: 8 }}>
+                <div style={{ padding: "26px 28px", background: "var(--wh)", border: "1px solid rgba(0,0,0,.07)", borderTop: "3px solid var(--fo)" }}>
+                  <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 10 }}>High-functioning but declining</p>
+                  <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.85 }}>You still perform at a high level. But your weight, energy, recovery, blood pressure, or family history tells you something is moving in the wrong direction. You want precision before damage accumulates.</p>
                 </div>
-                <div style={{ padding: "24px 26px", background: "var(--wh)", border: "1px solid rgba(0,0,0,.07)", borderLeft: "3px solid var(--go)" }}>
-                  <p style={{ fontSize: ".78rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 8 }}>Metabolic Recovery</p>
-                  <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.85 }}>Energy is less stable. Weight is harder to shift. Cravings, poor sleep, brain fog or rising risk markers suggest metabolic dysfunction is already affecting daily life. You want a structured way back.</p>
+                <div style={{ padding: "26px 28px", background: "var(--wh)", border: "1px solid rgba(0,0,0,.07)", borderTop: "3px solid var(--go)" }}>
+                  <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 10 }}>Already feeling the drift</p>
+                  <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.85 }}>Energy is less stable. Weight is harder to shift. Cravings, poor sleep, brain fog or rising risk markers are already affecting daily life. You want a structured way back.</p>
                 </div>
-                <div style={{ padding: "16px 20px", background: "var(--iv)", borderLeft: "2px solid rgba(0,0,0,.12)" }}>
-                  <p style={{ fontSize: ".82rem", color: "var(--sl3)", lineHeight: 1.8, fontStyle: "italic" }}>We do not wait for disease. We look for the hidden pattern driving it — and act while there is still a clean window to reverse it.</p>
+                <div style={{ padding: "20px 22px", background: "var(--iv)", borderLeft: "3px solid var(--go)" }}>
+                  <p style={{ fontSize: ".84rem", color: "var(--sl3)", lineHeight: 1.8, fontStyle: "italic" }}>
+                    We do not wait for disease. We look for the hidden pattern driving it — and act while there is still a clean window to reverse it.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── TICKER ── */}
-        <div className="ticker-wrap bg-iv2"><div className="ticker-inner">{[...Array(4)].flatMap((_, k) => ["Fasting Insulin","Homocysteine","ApoB","Continuous Glucose Monitoring","Longevity Medicine","HbA1c · hs-CRP · ALT/AST","Doctor-Led Assessment","12-Week Reset Programme"].map(t => (<span key={`${k}-${t}`} className="ticker-item">{t}<span className="ticker-dot"> · </span></span>)))}</div></div>
-
-        {/* ── 3. MEET THE DOCTOR ── */}
+        {/* ─────────────────────────────────────────────────────────
+            3. MEET THE DOCTOR
+        ───────────────────────────────────────────────────────── */}
         <section id="team" className="sec bg-iv">
           <div className="wrap">
-            <div className="sh text-center">
+            <div className="sh text-center" style={{ marginBottom: 40 }}>
               <p className="lbl">Meet the Doctor</p>
               <div className="rule rule-c"/>
-              <h2 className="sh-title">Doctor-led from first assessment to final plan.</h2>
-              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 760 }}>
-                When you consult with Veridian, you are speaking to a qualified GP — not a health coach, an AI tool or a wellness brand.
-              </p>
             </div>
-
-            <div className="doc-hero-grid">
-              <div className="doc-hero-image">
-                <img src="/dr-oluwatosin-taiwo.jpg" alt="Dr Oluwatosin Taiwo — Founder and Lead GP, Veridian Clinic" />
-                <div className="doc-hero-image-overlay">
+            <div className="doc-editorial">
+              <div className="doc-editorial-img">
+                <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo — Founder and Lead GP, Veridian Clinic" />
+                <div className="doc-editorial-overlay">
                   <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--go2)", marginBottom: 6 }}>Founder &amp; Lead GP</p>
-                  <h3 className="cg" style={{ fontSize: "clamp(1.7rem,3.5vw,2.5rem)", color: "#fff", fontWeight: 500, marginBottom: 5, lineHeight: 1.15 }}>Dr Oluwatosin Taiwo</h3>
+                  <h3 className="cg" style={{ fontSize: "clamp(1.7rem,3vw,2.4rem)", color: "#fff", fontWeight: 500, marginBottom: 5, lineHeight: 1.15 }}>Dr Tosin Taiwo</h3>
                   <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.72)" }}>MBBS &nbsp;·&nbsp; MRCGP &nbsp;·&nbsp; MRCS</p>
                 </div>
               </div>
-              <div className="doc-hero-bio">
-                <p className="lbl" style={{ marginBottom: 14 }}>Why Veridian Clinic Exists</p>
+              <div className="doc-editorial-bio">
+                <p className="lbl" style={{ marginBottom: 14 }}>GP-Led Metabolic Medicine</p>
                 <div className="rule" style={{ marginBottom: 22 }}/>
-                <blockquote className="cg" style={{ fontSize: "clamp(1.45rem,2.8vw,2rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.3, marginBottom: 22, fontStyle: "italic" }}>
-                  "Conventional medicine waits for disease. I built Veridian to act long before it arrives."
-                </blockquote>
-                <p style={{ fontSize: ".96rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16 }}>
-                  Dr Taiwo founded Veridian Clinic to fill the gap between routine NHS care — which waits for thresholds to be crossed — and genuinely proactive metabolic medicine that addresses root causes while they are still reversible.
+                <h2
+                  className="cg"
+                  style={{ fontSize: "clamp(1.5rem,2.8vw,2.1rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 20 }}
+                >
+                  Doctor-led metabolic and longevity care for adults who feel something is drifting.
+                </h2>
+                <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 14 }}>
+                  Dr Taiwo is a qualified GP with a background spanning general practice, surgery and metabolic health. He leads all Veridian consultations personally — you speak to a doctor, not a health coach or AI tool.
                 </p>
                 <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 28 }}>
-                  His clinical background spans general practice, surgery, and metabolic health. His focus at Veridian is identifying the hidden drivers — insulin burden, ApoB trajectory, sleep disruption, and stress load — and designing precise, structured pathways to address them.
+                  His focus is identifying the hidden drivers — insulin burden, ApoB trajectory, sleep disruption, and stress load — and building precise, structured pathways to address them before they become harder to reverse.
                 </p>
                 <div className="doc-cred-grid">
                   {[
-                    ["MBBS", "Bachelor of Medicine, Bachelor of Surgery"],
+                    ["MBBS", "Bachelor of Medicine and Surgery"],
                     ["MRCGP", "Member of the Royal College of GPs"],
                     ["MRCS", "Member of the Royal College of Surgeons"],
-                    ["GP-Led", "All consultations led by a qualified physician"],
+                    ["CQC Regulated", "Regulated clinical services via thanksdoc.co.uk"],
                   ].map(([tag, desc]) => (
                     <div key={tag} style={{ padding: "12px 14px", background: "var(--iv)", borderLeft: "2px solid var(--go)" }}>
                       <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 3 }}>{tag}</p>
-                      <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.6 }}>{desc}</p>
+                      <p style={{ fontSize: ".77rem", color: "var(--sl3)", lineHeight: 1.6 }}>{desc}</p>
                     </div>
                   ))}
                 </div>
                 <Link href="/book?tier=discovery" className="btn btn-fo">Book a Discovery Call →</Link>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="cqc-strip" style={{ marginTop: 32 }}>
-              <div style={{ display:"flex", flexWrap:"wrap", gap:28 }}>
-                {[
-                  ["CQC Regulated Services","CQC regulated clinical services delivered through thanksdoc.co.uk"],
-                  ["GP-Led Consultations","All medical assessments led by a qualified, experienced General Practitioner"],
-                  ["Nationwide Virtual Care","Delivered remotely across the UK — no in-person requirement"]
-                ].map(([t,d]) => (
-                  <div key={t} className="cqc-item">
-                    <Shield/>
-                    <div>
-                      <p className="cqc-label">{t}</p>
-                      <p className="cqc-sub">{d}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <Link href="/book?tier=discovery" className="btn btn-go" style={{ fontSize:".8rem", padding:"11px 20px" }}>Book Discovery Call →</Link>
+        {/* ─────────────────────────────────────────────────────────
+            4. ABOUT / STORY
+        ───────────────────────────────────────────────────────── */}
+        <section id="about" className="sec bg-sl">
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <p className="lbl" style={{ color: "var(--go2)", textAlign: "center", marginBottom: 12 }}>Why Veridian Exists</p>
+            <div className="rule rule-c" style={{ background: "var(--go)", marginBottom: 40 }}/>
+            <blockquote
+              className="cg"
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(1.6rem,3.8vw,2.7rem)",
+                fontWeight: 500,
+                fontStyle: "italic",
+                color: "var(--iv)",
+                lineHeight: 1.35,
+                borderLeft: "3px solid var(--go)",
+                paddingLeft: "clamp(20px,4vw,36px)",
+                marginBottom: 40,
+              }}
+            >
+              "Conventional medicine often waits for disease.<br/>
+              I built Veridian to act long before it arrives."
+            </blockquote>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+              <p style={{ fontSize: ".95rem", color: "rgba(246,241,232,.72)", lineHeight: 1.95 }}>
+                Many of my patients were being told their blood tests were 'normal' while feeling tired, heavier, struggling with energy and sleep, and sensing something was off. Routine care had no clear answer for them.
+              </p>
+              <p style={{ fontSize: ".95rem", color: "rgba(246,241,232,.72)", lineHeight: 1.95 }}>
+                Veridian exists to bridge that gap — using the biomarkers that routine care rarely checks, structured assessment, and personalised doctor-led plans to help patients act earlier and track real progress.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* ── 4. WHAT WE DO ── */}
-        <section id="process" className="sec bg-wh">
+        {/* ─────────────────────────────────────────────────────────
+            5. SCORECARD / QUIZ INTRO
+        ───────────────────────────────────────────────────────── */}
+        <section id="scorecard" className="sec bg-iv">
+          <div className="wrap">
+            <div className="g2-wide" style={{ display: "grid", gap: "clamp(36px,6vw,72px)", alignItems: "center" }}>
+              <div>
+                <p className="lbl" style={{ marginBottom: 14 }}>Free Metabolic Assessment</p>
+                <div className="rule" style={{ marginBottom: 24 }}/>
+                <h2
+                  className="cg"
+                  style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 16 }}
+                >
+                  Four domains.<br/>One clear picture.
+                </h2>
+                <p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 12 }}>
+                  Your metabolic health is not one number. It is the combination of four domains — structural, metabolic, recovery and stress resilience.
+                </p>
+                <p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 28 }}>
+                  The free quiz estimates your metabolic age and identifies which domain is likely driving your symptoms.
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 340 }}>
+                  <Link href="/metabolic-quiz" className="btn btn-fo">
+                    Check Your Metabolic Age — Free →
+                  </Link>
+                </div>
+                <p style={{ fontSize: ".75rem", color: "var(--sl3)", marginTop: 10, fontStyle: "italic" }}>60 seconds. No account needed. Instant result.</p>
+              </div>
+              <div style={{ background: "var(--wh)", border: "1px solid rgba(0,0,0,.09)", padding: "clamp(24px,4vw,36px)", boxShadow: "0 20px 60px rgba(13,40,24,.08)", position: "relative" }}>
+                <div style={{ position: "absolute", top: 0, left: 0, width: 48, height: 3, background: "var(--go)" }}/>
+                <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: 48, background: "var(--go)" }}/>
+                <p className="lbl" style={{ marginBottom: 22 }}>Sample Domain Scorecard</p>
+                {[{ l:"Structural Health",s:6,p:"60%",b:"amr"},{ l:"Metabolic Health",s:4,p:"40%",b:"red"},{ l:"Recovery",s:5,p:"52%",b:"amr"},{ l:"Stress Resilience",s:7,p:"72%",b:"grn"}].map(d => (
+                  <div key={d.l} style={{ marginBottom: 18 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                      <span style={{ fontSize: ".9rem", fontWeight: 500, color: "var(--sl)" }}>{d.l}</span>
+                      <span style={{ fontSize: ".82rem", fontWeight: 600, color: fillHex[d.b as keyof typeof fillHex] }}>{d.s}/10</span>
+                    </div>
+                    <div className="sc-bar-track">
+                      <div className={`sc-bar-fill ${fillClass[d.b as keyof typeof fillClass]}`} style={{ "--bw": d.p } as React.CSSProperties}/>
+                    </div>
+                  </div>
+                ))}
+                <div style={{ marginTop: 20, padding: "14px 16px", background: "var(--iv)", borderLeft: "3px solid var(--fo)" }}>
+                  <p style={{ fontSize: ".8rem", color: "var(--sl2)", lineHeight: 1.8 }}><strong style={{ color: "var(--fo)" }}>Illustrative example.</strong> Your score is built from blood tests, CGM data, sleep metrics and clinical questionnaires.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────────────────────────────────────────
+            6. IDENTIFY THE ROOT CAUSE / BUILD A PLAN
+        ───────────────────────────────────────────────────────── */}
+        <section className="sec bg-wh">
+          <div className="wrap" style={{ maxWidth: 980 }}>
+            <div className="sh text-center" style={{ marginBottom: 40 }}>
+              <p className="lbl">The Veridian Method</p>
+              <div className="rule rule-c"/>
+              <h2 className="cg sh-title">Understand the cause. Build the plan.</h2>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              <div style={{ padding: "clamp(28px,5vw,44px)", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)" }}>
+                <div style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".28em", color: "var(--go)", marginBottom: 16 }}>01</div>
+                <h3 className="cg" style={{ fontSize: "clamp(1.5rem,3vw,2.1rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 14 }}>Identify the root cause</h3>
+                <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 20 }}>We run the biomarkers that routine care rarely checks — the markers most likely to explain weight gain, fatigue, cardiovascular risk, and metabolic drift.</p>
+                <ul style={{ listStyle: "none", padding: 0 }}>
+                  {["Insulin burden & glucose variability","ApoB-driven cardiovascular risk","Homocysteine & methylation stress","Sleep, HRV & recovery signals"].map(item => (
+                    <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "7px 0", borderBottom: "1px solid rgba(0,0,0,.05)", fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.6 }}>
+                      <span style={{ color: "var(--fo)", flexShrink: 0, fontWeight: 700, marginTop: 1 }}>—</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div style={{ padding: "clamp(28px,5vw,44px)", background: "var(--fo)", border: "2px solid var(--go)" }}>
+                <div style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".28em", color: "var(--go2)", marginBottom: 16 }}>02</div>
+                <h3 className="cg" style={{ fontSize: "clamp(1.5rem,3vw,2.1rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 14 }}>Build a plan</h3>
+                <p style={{ fontSize: ".93rem", color: "rgba(246,241,232,.75)", lineHeight: 1.9, marginBottom: 20 }}>You leave with a written, personalised action plan. No generic advice — your data, your drivers, your next steps.</p>
+                <ul style={{ listStyle: "none", padding: 0 }}>
+                  {["Clear written priorities and next steps","CGM where appropriate","Fortnightly coaching & accountability","GP review at programme midpoint"].map(item => (
+                    <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "7px 0", borderBottom: "1px solid rgba(246,241,232,.08)", fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.6 }}>
+                      <span style={{ color: "var(--go2)", flexShrink: 0, fontWeight: 700, marginTop: 1 }}>✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─────────────────────────────────────────────────────────
+            7. CLEAR PATHWAY — HOW IT WORKS
+        ───────────────────────────────────────────────────────── */}
+        <section id="process" className="sec bg-iv">
           <div className="wrap">
             <div className="sh text-center">
-              <p className="lbl">What We Do</p>
+              <p className="lbl">How It Works</p>
               <div className="rule rule-c"/>
-              <h2 className="sh-title">Identify the root cause. Build a plan. Measure the change.</h2>
-              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 760 }}>Veridian combines doctor-led medical assessment with advanced longevity support so the regulated and optimisation layers are clear, joined up, and built around your data.</p>
+              <h2 className="sh-title">A clear pathway from first conversation to lasting change.</h2>
+              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 700 }}>
+                Every patient starts with a conversation. From there, the pathway is structured, measurable, and GP-led at every stage.
+              </p>
             </div>
             <div className="gproc">
               {[
-                { n:"01", t:"GP-Led Clinical Assessment", d:"All consultations are led by Dr Taiwo, a qualified GP. We assess symptoms, history and goals — and look beyond routine markers to find what is actually driving your picture." },
-                { n:"02", t:"Biomarker-Led Diagnosis", d:"We run the markers most likely to reveal insulin burden, ApoB-driven cardiovascular risk, sleep dysfunction and metabolic stress — and interpret them clinically, not just numerically." },
-                { n:"03", t:"Personalised Action Plan", d:"You leave with a written, prioritised plan. No generic advice. Your data, your drivers, your next steps — with CGM and coaching available where appropriate." },
-                { n:"04", t:"Measured Progress Over Time", d:"We use biomarker review, behaviour change support and structured follow-up to keep progress practical, trackable and sustainable." },
+                { n:"01", t:"Discovery Call", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a clear written next-step recommendation — useful even if you do not progress immediately." },
+                { n:"02", t:"Veridian Baseline", d:"A full diagnostic assessment. The biomarkers most likely to reveal insulin burden, ApoB-driven risk, and metabolic dysfunction — with clinical interpretation and a clear action plan." },
+                { n:"03", t:"Personalised Plan", d:"A written, prioritised plan built around your data. CGM, nutrition, movement and behaviour protocols. Where clinically indicated, prescribing pathways including GLP-1 options are available." },
+                { n:"04", t:"Structured Follow-Up", d:"Fortnightly coaching, GP-led clinical review at midpoint, and an end-of-programme review with a 12-month forward plan. Progress is measured, not assumed." },
               ].map(s => (
                 <div key={s.n} style={{ padding:"28px 0", borderBottom:"1px solid rgba(0,0,0,.07)" }}>
                   <div style={{ fontSize:".62rem", fontWeight:700, letterSpacing:".28em", color:"var(--go)", marginBottom:10 }}>{s.n}</div>
-                  <div style={{ width:1, height:32, background:"var(--go)", opacity:.45, marginBottom:14 }}/>
-                  <h3 className="cg" style={{ fontSize:"1.65rem", fontWeight:500, color:"var(--fo)", marginBottom:8 }}>{s.t}</h3>
-                  <p style={{ fontSize:".95rem", color:"var(--sl2)", lineHeight:1.9 }}>{s.d}</p>
+                  <div style={{ width:1, height:28, background:"var(--go)", opacity:.4, marginBottom:14 }}/>
+                  <h3 className="cg" style={{ fontSize:"1.6rem", fontWeight:500, color:"var(--fo)", marginBottom:8 }}>{s.t}</h3>
+                  <p style={{ fontSize:".93rem", color:"var(--sl2)", lineHeight:1.9 }}>{s.d}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── FOUR DOMAINS ── */}
-        <section id="domains" className="sec bg-iv"><div className="wrap"><div className="sh text-center"><p className="lbl">The Framework</p><div className="rule rule-c"/><h2 className="sh-title">Four domains. One clear picture.</h2><p className="sh-body" style={{ fontSize: "1rem" }}>Each domain is scored 1–10. Red means it needs attention now. Amber means there is room to improve. Green means maintain your gains. Together they explain the outcomes you care about most.</p></div><div className="g4">{domains.map(d => (<div key={d.title} className="card" style={{ display:"flex", flexDirection:"column" }}><div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:14 }}><span className="lbl">{d.n}</span><span className={`spill ${bandClass[d.band as keyof typeof bandClass]}`}>{bandLabel[d.band as keyof typeof bandLabel]}</span></div><h3 className="cg" style={{ fontSize:"1.6rem", fontWeight:500, color:"var(--sl)", lineHeight:1.2, marginBottom:3 }}>{d.title}</h3><p style={{ fontSize:".8rem", letterSpacing:".06em", color:"var(--go)", marginBottom:12 }}>{d.sub}</p><p style={{ fontSize:".92rem", color:"var(--sl2)", lineHeight:1.9, marginBottom:16, flexGrow:1 }}>{d.desc}</p><div style={{ borderTop:"1px solid rgba(0,0,0,.06)", paddingTop:14, marginBottom:14 }}>{d.metrics.map(m => (<div key={m} style={{ display:"flex", alignItems:"center", gap:9, padding:"4px 0" }}><div style={{ width:4, height:4, borderRadius:"50%", background:"var(--fo)", flexShrink:0 }}/><span style={{ fontSize:".83rem", color:"var(--sl2)" }}>{m}</span></div>))}</div><div className="sc-bar-track"><div className={`sc-bar-fill ${fillClass[d.band as keyof typeof fillClass]}`} style={{ "--bw": d.pct } as React.CSSProperties}/></div></div>))}</div></div></section>
-
-        {/* ── 5. METABOLIC QUIZ CTA ── */}
-        <section id="scorecard" className="sec bg-wh">
+        {/* ─────────────────────────────────────────────────────────
+            8. SYMPTOMS AND BIOMARKERS — WHAT WE MEASURE
+        ───────────────────────────────────────────────────────── */}
+        <section className="sec bg-wh">
           <div className="wrap">
-            <div style={{
-              background: "linear-gradient(135deg, #0d1f1a 0%, #13212e 100%)",
-              border: "1px solid rgba(0,0,0,.08)",
-              padding: "clamp(32px,6vw,56px)",
-              display: "grid",
-              gap: 24,
-              textAlign: "center",
-              justifyItems: "center"
-            }}>
-              <p className="lbl" style={{ color: "var(--go2)", marginBottom: 0 }}>Free · 60 Seconds · Instant Result</p>
-              <h2 className="cg" style={{ fontSize: "clamp(2.1rem,4.8vw,3.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.14, maxWidth: 780, margin: 0 }}>Check Your Metabolic Age</h2>
-              <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.74)", lineHeight: 1.9, maxWidth: 680, margin: 0 }}>Answer 7 focused questions and get an estimate of your metabolic age — the key drivers behind your energy, weight trajectory, and long-term cardiometabolic risk. Free, and no account required.</p>
-              <Link href="/metabolic-quiz" className="btn btn-go">Take the Metabolic Quiz →</Link>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
-                <span style={{ fontSize: ".67rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(246,241,232,.38)" }}>Free &amp; Instant</span>
-                <span style={{ color: "rgba(246,241,232,.2)", margin: "0 4px" }}>|</span>
-                <span style={{ fontSize: ".67rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(246,241,232,.38)" }}>No account needed</span>
-                <span style={{ color: "rgba(246,241,232,.2)", margin: "0 4px" }}>|</span>
-                <span style={{ fontSize: ".67rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(246,241,232,.38)" }}>Clinical framework</span>
+            <div className="g2-wide" style={{ display:"grid", alignItems:"center" }}>
+              <div>
+                <p className="lbl">What We Measure</p>
+                <div className="rule" style={{ marginBottom: 22 }}/>
+                <h2 className="cg" style={{ fontSize:"clamp(1.9rem,3.8vw,2.7rem)", fontWeight:500, color:"var(--sl)", lineHeight:1.25, marginBottom: 18 }}>
+                  The symptoms are obvious.<br/>
+                  <em style={{ fontStyle:"italic", color:"var(--fo2)" }}>The drivers are often hidden.</em>
+                </h2>
+                <p style={{ fontSize:".97rem", color:"var(--sl2)", lineHeight:1.95, marginBottom:30 }}>
+                  A routine check-up can miss the very markers most relevant to future decline. Veridian surfaces the missing links early — particularly insulin burden, ApoB-driven vascular risk, and homocysteine-related methylation stress.
+                </p>
+                <Link href="/assessments" className="btn btn-fo">See Our Assessments →</Link>
+              </div>
+              <div style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", overflow:"hidden" }}>
+                <div style={{ background:"var(--fo)", padding:"14px 26px" }}>
+                  <p className="lbl" style={{ color:"var(--go2)" }}>What We Measure — and Why</p>
+                </div>
+                {[
+                  { o:"Insulin burden", d:"Fasting insulin · HbA1c · CGM patterns", m:"Explains weight gain, cravings, energy crashes and early insulin resistance" },
+                  { o:"ApoB-driven vascular risk", d:"ApoB · full lipid panel", m:"Shows the particle burden linked to long-term cardiovascular disease risk" },
+                  { o:"Homocysteine load", d:"Homocysteine", m:"Flags methylation stress associated with vascular and neurological risk" },
+                  { o:"Inflammation & liver stress", d:"hs-CRP · ALT · AST", m:"Reveals inflammatory load and metabolic strain that routine screening may miss" },
+                  { o:"Sleep & recovery", d:"HRV · sleep architecture · recovery signals", m:"Sleep quality directly affects glucose, appetite, and long-term metabolic function" },
+                ].map((r, i, a) => (
+                  <div key={r.o} style={{ padding:"16px 26px", borderBottom:i < a.length-1 ? "1px solid rgba(0,0,0,.06)" : "none" }}>
+                    <p style={{ fontSize:".93rem", fontWeight:600, color:"var(--sl)", marginBottom:2 }}>{r.o}</p>
+                    <p style={{ fontSize:".78rem", color:"var(--fo2)", marginBottom:2 }}>{r.d}</p>
+                    <p style={{ fontSize:".77rem", color:"var(--sl3)", lineHeight: 1.7 }}>{r.m}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── 6. WHAT WE MEASURE ── */}
-        <section className="sec bg-iv"><div className="wrap"><div className="g2-wide" style={{ display:"grid", alignItems:"center" }}><div><p className="lbl">The Missing-Link Markers</p><div className="rule"/><h2 className="cg" style={{ fontSize:"clamp(1.95rem,3.8vw,2.7rem)", fontWeight:500, color:"var(--sl)", lineHeight:1.25 }}>The symptoms are obvious.<br/><em style={{ fontStyle:"italic", color:"var(--fo2)" }}>The drivers are often hidden.</em></h2><p style={{ fontSize:"1rem", color:"var(--sl2)", lineHeight:1.95, marginTop:18, marginBottom:30 }}>A normal-looking basic check-up can miss the very markers most relevant to future decline. Veridian is built to surface the missing links early — particularly insulin burden, ApoB-driven vascular risk and homocysteine-related methylation stress.</p><Link href="/assessments" className="btn btn-fo">See Our Assessments →</Link></div><div style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", overflow:"hidden" }}><div style={{ background:"var(--fo)", padding:"14px 26px" }}><p className="lbl" style={{ color:"var(--go2)" }}>What We Measure — and Why</p></div>{[{ o:"Insulin burden", d:"Fasting insulin · HbA1c · CGM patterns", m:"Helps explain weight gain, cravings, energy crashes and early insulin resistance" },{ o:"ApoB-driven vascular risk", d:"ApoB · lipid panel", m:"Shows the particle burden linked to long-term cardiovascular disease risk" },{ o:"Homocysteine load", d:"Homocysteine", m:"Flags methylation stress associated with vascular and neurological risk" },{ o:"Inflammation & liver stress", d:"hs-CRP · ALT · AST", m:"Helps reveal inflammatory load and metabolic strain that routine screening may underplay" }].map((r, i, a) => (<div key={r.o} style={{ padding:"18px 26px", borderBottom:i < a.length-1 ? "1px solid rgba(0,0,0,.06)" : "none" }}><p style={{ fontSize:".95rem", fontWeight:600, color:"var(--sl)", marginBottom:3 }}>{r.o}</p><p style={{ fontSize:".8rem", color:"var(--fo2)", marginBottom:2 }}>{r.d}</p><p style={{ fontSize:".78rem", color:"var(--sl3)", lineHeight: 1.7 }}>{r.m}</p></div>))}</div></div></div></section>
-
-        {/* ── 7. OFFER PREVIEW ── */}
+        {/* ─────────────────────────────────────────────────────────
+            9. PRICING
+        ───────────────────────────────────────────────────────── */}
         <section id="assessments" className="sec bg-iv2">
           <div className="wrap">
             <div className="sh text-center">
               <p className="lbl">Assessments &amp; Pathways</p>
               <div className="rule rule-c"/>
               <h2 className="cg sh-title">A clear pathway from first conversation to lasting change.</h2>
-              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 740 }}>
-                Every patient starts somewhere. Choose the level of precision that matches where you are right now.
+              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 680 }}>
+                Choose the level of precision that matches where you are right now.
               </p>
             </div>
             <div className="offer-grid">
@@ -512,7 +653,7 @@ export default function HomePage() {
                     <p style={{ fontSize:".72rem", fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:6 }}>{o.tag}</p>
                     <h3 className="cg" style={{ fontSize:"1.65rem", fontWeight:500, color: o.featured ? "var(--iv)" : "var(--sl)", lineHeight:1.2, marginBottom:12 }}>{o.name}</h3>
                     <div className="offer-price">{o.price}</div>
-                    <p style={{ fontSize:".84rem", color: o.featured ? "rgba(246,241,232,.65)" : "var(--sl3)", marginTop:4, fontStyle:"italic" }}>
+                    <p style={{ fontSize:".82rem", color: o.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", marginTop:4, fontStyle:"italic" }}>
                       {o.name === "12-Week Metabolic Reset" ? "Payment plans available" : "One-off consultation"}
                     </p>
                   </div>
@@ -522,15 +663,15 @@ export default function HomePage() {
                     <ul style={{ listStyle:"none", marginBottom:20, flexGrow:1 }}>
                       {o.leave_with.map(f => (
                         <li key={f} style={{ display:"flex", alignItems:"flex-start", gap:10, padding:"5px 0", borderBottom:`1px solid ${o.featured ? "rgba(246,241,232,.07)" : "rgba(0,0,0,.05)"}` }}>
-                          <div style={{ width:14, height:14, borderRadius:"50%", border:`1px solid ${o.featured ? "var(--go)" : "var(--fo)"}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:3, fontSize:".48rem", color: o.featured ? "var(--go)" : "var(--fo)", fontWeight:700 }}>✓</div>
-                          <span style={{ fontSize:".85rem", color: o.featured ? "rgba(246,241,232,.7)" : "var(--sl2)", lineHeight:1.75 }}>{f}</span>
+                          <div style={{ width:13, height:13, borderRadius:"50%", border:`1px solid ${o.featured ? "var(--go)" : "var(--fo)"}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:3, fontSize:".44rem", color: o.featured ? "var(--go)" : "var(--fo)", fontWeight:700 }}>✓</div>
+                          <span style={{ fontSize:".84rem", color: o.featured ? "rgba(246,241,232,.7)" : "var(--sl2)", lineHeight:1.75 }}>{f}</span>
                         </li>
                       ))}
                     </ul>
                     {o.bring && (
                       <div style={{ padding:"12px 14px", background: o.featured ? "rgba(246,241,232,.06)" : "var(--iv)", borderLeft:"2px solid var(--go)", marginBottom:20 }}>
-                        <p style={{ fontSize:".76rem", fontWeight:600, color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:3 }}>Bring to your call:</p>
-                        <p style={{ fontSize:".78rem", color: o.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", lineHeight:1.7, fontStyle:"italic" }}>{o.bring}</p>
+                        <p style={{ fontSize:".75rem", fontWeight:600, color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:3 }}>Bring to your call:</p>
+                        <p style={{ fontSize:".77rem", color: o.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", lineHeight:1.7, fontStyle:"italic" }}>{o.bring}</p>
                       </div>
                     )}
                     <Link href={`/book?tier=${o.tier}`} className={`btn btn-full ${o.featured ? "btn-go" : "btn-fo"}`} style={{ marginTop:"auto" }}>
@@ -546,14 +687,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── 8. TESTIMONIALS ── */}
+        {/* ─────────────────────────────────────────────────────────
+            10. TESTIMONIALS
+        ───────────────────────────────────────────────────────── */}
         <section id="testimonials" className="sec bg-wh">
           <div className="wrap">
             <div className="sh text-center">
               <p className="lbl">Patient Experiences</p>
               <div className="rule rule-c"/>
               <h2 className="sh-title">What our patients say</h2>
-              <p className="sh-body">Experiences from patients who have completed the Veridian assessment and programme.</p>
             </div>
             <div style={{ marginBottom: 40 }}>
               {testimonials.map((t,i) => (
@@ -561,7 +703,7 @@ export default function HomePage() {
                   <div style={{ background:"var(--fo)", padding:"clamp(32px,6vw,52px)", position:"relative", overflow:"hidden" }}>
                     <div className="cg" style={{ position:"absolute", top:-20, left:28, fontSize:"12rem", lineHeight:1, color:"rgba(200,168,75,.07)", userSelect:"none" }}>"</div>
                     <Stars n={t.stars}/>
-                    <p className="cg" style={{ fontSize:"clamp(1.15rem,3vw,1.7rem)", fontWeight:400, fontStyle:"italic", color:"var(--iv)", lineHeight:1.75, marginBottom:26, position:"relative" }}>"{t.text}"</p>
+                    <p className="cg" style={{ fontSize:"clamp(1.15rem,3vw,1.65rem)", fontWeight:400, fontStyle:"italic", color:"var(--iv)", lineHeight:1.75, marginBottom:26, position:"relative" }}>"{t.text}"</p>
                     <div style={{ display:"flex", alignItems:"center", gap:14 }}>
                       <div style={{ width:44, height:44, background:"var(--go)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontFamily:"'Cormorant Garamond',serif", fontSize:"1.1rem", color:"var(--fo)", fontWeight:600 }}>{t.name[0]}</div>
                       <div>
@@ -580,10 +722,10 @@ export default function HomePage() {
             </div>
             <div className="g2">
               {testimonials.map((t,i) => (
-                <div key={i} style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", padding:"clamp(24px,5vw,40px)", position:"relative", transition:"all .3s" }}>
-                  <div className="cg" style={{ position:"absolute", top:18, left:26, fontSize:"4.5rem", lineHeight:1, color:"var(--go)", opacity:.18 }}>"</div>
+                <div key={i} style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", padding:"clamp(24px,4vw,36px)", position:"relative" }}>
+                  <div className="cg" style={{ position:"absolute", top:18, left:26, fontSize:"4rem", lineHeight:1, color:"var(--go)", opacity:.15 }}>"</div>
                   <Stars n={t.stars}/>
-                  <p style={{ fontSize:".89rem", color:"var(--sl2)", lineHeight:1.9, marginBottom:18, paddingTop:6 }}>{t.text.length > 155 ? t.text.slice(0,155)+"…" : t.text}</p>
+                  <p style={{ fontSize:".88rem", color:"var(--sl2)", lineHeight:1.9, marginBottom:18, paddingTop:4 }}>{t.text.length > 155 ? t.text.slice(0,155)+"…" : t.text}</p>
                   <div style={{ display:"flex", alignItems:"center", gap:12, borderTop:"1px solid rgba(0,0,0,.06)", paddingTop:14 }}>
                     <div style={{ width:34, height:34, background:"var(--fo)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontFamily:"'Cormorant Garamond',serif", fontSize:".9rem", color:"var(--go2)", fontWeight:500 }}>{t.name[0]}</div>
                     <div>
@@ -597,33 +739,99 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── CLINICAL INSIGHTS ── */}
-        <section className="sec bg-wh"><div className="wrap"><div className="sh text-center"><p className="lbl">Clinical Insights</p><div className="rule rule-c"/><h2 className="sh-title">Evidence-led guidance for metabolic health and longevity.</h2><p className="sh-body" style={{ fontSize: "1rem", maxWidth: 760 }}>Practical explainers on insulin resistance, cardiovascular risk, and the clinical strategies that shift long-term trajectory.</p></div><div className="g3">{insightPlaceholders.map((item) => (<article key={item.title} className="card" style={{ display: "flex", flexDirection: "column", minHeight: 320 }}><span className="lbl" style={{ marginBottom: 18 }}>{item.category}</span><h3 className="cg" style={{ fontSize: "1.75rem", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 16 }}>{item.title}</h3><p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 22, flexGrow: 1 }}>{item.body}</p><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 16, borderTop: "1px solid rgba(0,0,0,.07)" }}><span style={{ fontSize: ".72rem", fontWeight: 600, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--sl3)" }}>{item.label}</span><Link href={item.href} style={{ fontSize: ".78rem", fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--fo)" }}>{item.cta}</Link></div></article>))}</div></div></section>
+        {/* ─────────────────────────────────────────────────────────
+            11. FRAMEWORK — FOUR DOMAINS (deeper detail, lower)
+        ───────────────────────────────────────────────────────── */}
+        <section id="domains" className="sec bg-iv">
+          <div className="wrap">
+            <div className="sh text-center">
+              <p className="lbl">The Clinical Framework</p>
+              <div className="rule rule-c"/>
+              <h2 className="sh-title">Four domains. One clear picture.</h2>
+              <p className="sh-body" style={{ fontSize: "1rem" }}>Each domain is scored 1–10. Together they explain the outcomes you care about most.</p>
+            </div>
+            <div className="g4">
+              {domains.map(d => (
+                <div key={d.title} className="card" style={{ display:"flex", flexDirection:"column" }}>
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:14 }}>
+                    <span className="lbl">{d.n}</span>
+                    <span className={`spill ${bandClass[d.band as keyof typeof bandClass]}`}>{bandLabel[d.band as keyof typeof bandLabel]}</span>
+                  </div>
+                  <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color:"var(--sl)", lineHeight:1.2, marginBottom:3 }}>{d.title}</h3>
+                  <p style={{ fontSize:".78rem", letterSpacing:".06em", color:"var(--go)", marginBottom:10 }}>{d.sub}</p>
+                  <p style={{ fontSize:".9rem", color:"var(--sl2)", lineHeight:1.9, marginBottom:14, flexGrow:1 }}>{d.desc}</p>
+                  <div style={{ borderTop:"1px solid rgba(0,0,0,.06)", paddingTop:12, marginBottom:12 }}>
+                    {d.metrics.map(m => (
+                      <div key={m} style={{ display:"flex", alignItems:"center", gap:9, padding:"3px 0" }}>
+                        <div style={{ width:4, height:4, borderRadius:"50%", background:"var(--fo)", flexShrink:0 }}/>
+                        <span style={{ fontSize:".82rem", color:"var(--sl2)" }}>{m}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="sc-bar-track">
+                    <div className={`sc-bar-fill ${fillClass[d.band as keyof typeof fillClass]}`} style={{ "--bw": d.pct } as React.CSSProperties}/>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        {/* ── FAQ ── */}
-        <section id="faq" className="sec bg-iv"><div className="wrap" style={{ maxWidth: 760 }}><div className="sh text-center"><p className="lbl">FAQs</p><div className="rule rule-c"/><h2 className="sh-title">Common questions</h2></div>{faqs.map(item => <FaqItem key={item.q} item={item}/>)}</div></section>
+        {/* ─────────────────────────────────────────────────────────
+            FAQ
+        ───────────────────────────────────────────────────────── */}
+        <section id="faq" className="sec bg-wh">
+          <div className="wrap" style={{ maxWidth: 760 }}>
+            <div className="sh text-center">
+              <p className="lbl">FAQs</p>
+              <div className="rule rule-c"/>
+              <h2 className="sh-title">Common questions</h2>
+            </div>
+            {faqs.map(item => <FaqItem key={item.q} item={item}/>)}
+          </div>
+        </section>
 
-        {/* ── NEWSLETTER ── */}
-        <section id="newsletter" className="sec bg-wh"><div className="wrap" style={{ maxWidth: 980 }}><div style={{ background: "linear-gradient(135deg, rgba(13,40,24,1) 0%, rgba(19,31,46,1) 100%)", padding: "clamp(28px,6vw,54px)", display: "grid", gap: 28, border: "1px solid rgba(0,0,0,.08)" }}><div><p className="lbl" style={{ color: "var(--go2)", marginBottom: 14 }}>Veridian Intelligence</p><h2 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.18, marginBottom: 14 }}>Longevity science, translated.</h2><p style={{ fontSize: "1rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9, maxWidth: 680 }}>Get the latest metabolic research and clinical protocols delivered to your inbox.</p></div><LeadCaptureForm source="homepage-newsletter" title="Join the newsletter" subtitle="Weekly metabolic health insight, longevity thinking, and practical next steps from Veridian Clinic." ctaLabel="Join the Newsletter →" buttonClassName="btn btn-go btn-full" compact /></div></div></section>
+        {/* ─────────────────────────────────────────────────────────
+            NEWSLETTER
+        ───────────────────────────────────────────────────────── */}
+        <section id="newsletter" className="sec bg-iv">
+          <div className="wrap" style={{ maxWidth: 920 }}>
+            <div style={{ background: "linear-gradient(135deg, rgba(13,40,24,1) 0%, rgba(19,31,46,1) 100%)", padding: "clamp(28px,6vw,54px)", display: "grid", gap: 28, border: "1px solid rgba(0,0,0,.08)" }}>
+              <div>
+                <p className="lbl" style={{ color: "var(--go2)", marginBottom: 14 }}>Veridian Intelligence</p>
+                <h2 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.18, marginBottom: 12 }}>Longevity science, translated.</h2>
+                <p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.9, maxWidth: 620 }}>Weekly metabolic health insight and practical next steps from Veridian Clinic.</p>
+              </div>
+              <LeadCaptureForm source="homepage-newsletter" title="Join the newsletter" subtitle="Weekly metabolic health insight, longevity thinking, and practical next steps from Veridian Clinic." ctaLabel="Join the Newsletter →" buttonClassName="btn btn-go btn-full" compact />
+            </div>
+          </div>
+        </section>
 
-        {/* ── 9. FINAL CTA ── */}
+        {/* ─────────────────────────────────────────────────────────
+            FINAL CTA
+        ───────────────────────────────────────────────────────── */}
         <section className="sec bg-fo" style={{ textAlign:"center" }}>
-          <div style={{ maxWidth:760, margin:"0 auto" }}>
+          <div style={{ maxWidth:720, margin:"0 auto" }}>
             <div className="vline"/>
-            <h2 className="cg" style={{ fontSize:"clamp(2rem,4.5vw,3rem)", fontWeight:500, color:"var(--iv)", lineHeight:1.25, marginBottom:16 }}>Long-term health needs more than symptom management.<br/><em style={{ fontStyle:"italic", color:"var(--go2)" }}>It needs clarity, structure, and follow-through.</em></h2>
-            <p style={{ fontSize:"1rem", color:"rgba(246,241,232,.58)", lineHeight:1.95, marginBottom:24 }}>Get clarity on what is driving decline, and a plan that combines CQC regulated medical pathways with meaningful health optimisation support.</p>
+            <h2 className="cg" style={{ fontSize:"clamp(1.9rem,4vw,2.9rem)", fontWeight:500, color:"var(--iv)", lineHeight:1.25, marginBottom:16 }}>
+              Long-term health needs more than symptom management.<br/>
+              <em style={{ fontStyle:"italic", color:"var(--go2)" }}>It needs clarity, structure, and follow-through.</em>
+            </h2>
+            <p style={{ fontSize:".97rem", color:"rgba(246,241,232,.55)", lineHeight:1.95, marginBottom:28 }}>
+              Get clarity on what is driving decline, and a plan that combines CQC regulated medical care with meaningful health optimisation support.
+            </p>
             <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap", marginBottom:32 }}>
               <Link href="/book?tier=discovery" className="btn btn-go">Book Discovery Call →</Link>
               <Link href="/metabolic-quiz" className="btn btn-ol-lt">Take the Metabolic Quiz</Link>
             </div>
-            <div style={{ display:"flex", flexWrap:"wrap", gap:16, justifyContent:"center" }}>
-              <span style={{ fontSize:".67rem", fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"rgba(246,241,232,.38)" }}>CQC Regulated Services</span>
-              <span style={{ color:"rgba(246,241,232,.2)", margin:"0 4px" }}>|</span>
-              <span style={{ fontSize:".67rem", fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"rgba(246,241,232,.38)" }}>GP-Led</span>
-              <span style={{ color:"rgba(246,241,232,.2)", margin:"0 4px" }}>|</span>
-              <span style={{ fontSize:".67rem", fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"rgba(246,241,232,.38)" }}>ApoB · Insulin · Homocysteine</span>
+            <div style={{ display:"flex", flexWrap:"wrap", gap:14, justifyContent:"center", marginBottom:20 }}>
+              <span style={{ fontSize:".66rem", fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"rgba(246,241,232,.35)" }}>CQC Regulated Services</span>
+              <span style={{ color:"rgba(246,241,232,.18)" }}>|</span>
+              <span style={{ fontSize:".66rem", fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"rgba(246,241,232,.35)" }}>GP-Led</span>
+              <span style={{ color:"rgba(246,241,232,.18)" }}>|</span>
+              <span style={{ fontSize:".66rem", fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"rgba(246,241,232,.35)" }}>ApoB · Insulin · Homocysteine</span>
             </div>
-            <p style={{ fontSize:".72rem", color:"rgba(246,241,232,.28)", lineHeight:1.8, marginTop:24 }}>
+            <p style={{ fontSize:".7rem", color:"rgba(246,241,232,.24)", lineHeight:1.8 }}>
               CQC regulated clinical services are delivered under the umbrella of thanksdoc.co.uk.
             </p>
           </div>
