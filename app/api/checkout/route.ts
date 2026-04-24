@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-
-const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
-
 const SITE_URL = "https://veridian-clinic.vercel.app";
 const PAYMENT_DESCRIPTOR = "Olympus Premium Health";
 
@@ -52,12 +48,14 @@ function resolveTier(rawTier?: string) {
 
 export async function POST(request: NextRequest) {
   try {
-    if (!stripe) {
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    if (!stripeKey) {
       return NextResponse.json(
         { error: "Stripe is not configured." },
         { status: 500 }
       );
     }
+    const stripe = new Stripe(stripeKey);
 
     const payload = (await request.json()) as CheckoutPayload;
     const tier = resolveTier(payload.tier);

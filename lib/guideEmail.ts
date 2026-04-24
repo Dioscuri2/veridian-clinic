@@ -85,7 +85,7 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
           <p style="margin:0;font-size:.72rem;color:#aaa49c;line-height:1.7;">
             Veridian Clinic · A trading name of Olympus Premium Health Ltd<br>
             82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, IP28 7DE<br>
-            CQC regulated services delivered under the umbrella of Thanks.co.uk
+            CQC regulated services provided by <a href="https://thanksdoc.co.uk" style="color:#2c2a26;">Thanksdoc</a>
           </p>
         </td></tr>
 
