@@ -234,11 +234,14 @@ export default function HomePage() {
         }
         .hero-img-col img {
           position: absolute;
-          inset: 0;
+          top: -130px;
+          left: 0;
+          right: 0;
+          bottom: 0;
           width: 100%;
-          height: 100%;
+          height: calc(100% + 130px);
           object-fit: cover;
-          object-position: 50% 18%;
+          object-position: center top;
           display: block;
         }
         @media(max-width:900px) {
@@ -256,6 +259,8 @@ export default function HomePage() {
             order: 2;
           }
           .hero-img-col img {
+            top: 0;
+            height: 100%;
             object-position: 50% 12%;
           }
         }
