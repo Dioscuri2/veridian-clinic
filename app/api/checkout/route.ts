@@ -55,7 +55,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-    const stripe = new Stripe(stripeKey);
+    const stripe = new Stripe(stripeKey, {
+      httpClient: Stripe.createFetchHttpClient(),
+    });
 
     const payload = (await request.json()) as CheckoutPayload;
     const tier = resolveTier(payload.tier);
