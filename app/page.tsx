@@ -234,12 +234,12 @@ export default function HomePage() {
         }
         .hero-img-col img {
           position: absolute;
-          top: -130px;
+          top: -50px;
           left: 0;
           right: 0;
           bottom: 0;
           width: 100%;
-          height: calc(100% + 130px);
+          height: calc(100% + 50px);
           object-fit: cover;
           object-position: center top;
           display: block;
