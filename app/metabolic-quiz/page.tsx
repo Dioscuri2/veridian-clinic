@@ -10,9 +10,12 @@ type Answers = {
   sex: string;
   heightCm: string;
   waistCm: string;
+  energy: string;
   sleep: string;
+  stress: string;
   activity: string;
   diet: string;
+  gut: string;
 };
 
 const QUESTIONS = [
@@ -54,40 +57,77 @@ const QUESTIONS = [
     max: 220,
   },
   {
+    id: "energy",
+    type: "choice" as const,
+    label: "How would you describe your energy levels through the day?",
+    helper: "Post-meal energy crashes and persistent afternoon fatigue are early markers of hyperinsulinaemia — often years before fasting glucose moves.",
+    options: [
+      { label: "Consistently strong — I rarely feel a significant energy dip", value: "high" },
+      { label: "Noticeable afternoon dip, but I recover without much difficulty", value: "mid" },
+      { label: "Frequent crashes after meals, or persistent low energy most days", value: "low" },
+    ],
+  },
+  {
     id: "sleep",
     type: "choice" as const,
     label: "How would you describe your sleep?",
-    helper: "Sleep quality has a disproportionate effect on glucose regulation and metabolic recovery.",
+    helper: "Poor sleep quality disrupts insulin sensitivity, cortisol rhythm, and appetite signalling — independently of how many hours you log.",
     options: [
-      { label: "7–9 hours, mostly restorative", value: "optimal" },
-      { label: "6–7 hours, somewhat inconsistent", value: "mid" },
-      { label: "Under 6 hours or poor most nights", value: "low" },
+      { label: "7–9 hours, mostly restorative — I wake feeling refreshed", value: "optimal" },
+      { label: "6–7 hours, or I sleep enough but rarely feel fully recovered", value: "mid" },
+      { label: "Under 6 hours, or consistently poor quality most nights", value: "low" },
+    ],
+  },
+  {
+    id: "stress",
+    type: "choice" as const,
+    label: "How would you describe your stress load over the past 3 months?",
+    helper: "Chronic cortisol elevation is directly causal for visceral fat accumulation and insulin resistance — independent of diet and exercise.",
+    options: [
+      { label: "Manageable — I have good recovery between demanding periods", value: "low" },
+      { label: "Elevated but functional — I push through, though it's building", value: "mid" },
+      { label: "Chronically high — rarely switching off, frequent exhaustion or overwhelm", value: "high" },
     ],
   },
   {
     id: "activity",
     type: "choice" as const,
     label: "How active are you each week?",
-    helper: "Exercise is one of the strongest modifiable levers for metabolic health.",
+    helper: "Skeletal muscle is the primary site of glucose disposal. Regular resistance training is one of the most direct levers for reversing insulin resistance.",
     options: [
       { label: "Strength and cardio, 4 or more sessions per week", value: "high" },
-      { label: "2–3 sessions per week", value: "mid" },
-      { label: "Mostly sedentary", value: "low" },
+      { label: "2–3 sessions per week, mixed types", value: "mid" },
+      { label: "Mostly sedentary — fewer than 2 structured sessions per week", value: "low" },
     ],
   },
   {
     id: "diet",
     type: "choice" as const,
     label: "How would you rate your diet quality?",
+    helper: "Dietary insulin load, fibre intake, and ultra-processed food frequency are the three strongest dietary predictors of metabolic age drift.",
     options: [
-      { label: "Mostly whole foods, protein-forward, low processed intake", value: "high" },
-      { label: "Mixed — some processed foods and sugar", value: "mid" },
-      { label: "Frequent ultra-processed foods, snacks, or sugary drinks", value: "low" },
+      { label: "Mostly whole foods, protein-forward, low in processed intake", value: "high" },
+      { label: "Mixed — some processed foods and sugar, but not every day", value: "mid" },
+      { label: "Frequent ultra-processed foods, sugary drinks, or high-carb snacking", value: "low" },
+    ],
+  },
+  {
+    id: "gut",
+    type: "choice" as const,
+    label: "How is your digestive health?",
+    helper: "Gut dysbiosis increases intestinal permeability, triggering systemic low-grade inflammation that directly impairs insulin sensitivity and accelerates metabolic ageing.",
+    options: [
+      { label: "Good — regular, comfortable, no persistent bloating or discomfort", value: "good" },
+      { label: "Occasional bloating or irregularity — a few times per week", value: "mid" },
+      { label: "Frequent bloating, pain, or irregular bowel habits most days", value: "poor" },
     ],
   },
 ];
 
-const INITIAL: Answers = { age: "", sex: "", heightCm: "", waistCm: "", sleep: "", activity: "", diet: "" };
+const INITIAL: Answers = {
+  age: "", sex: "", heightCm: "", waistCm: "",
+  energy: "", sleep: "", stress: "", activity: "", diet: "", gut: "",
+};
 
 function computeResult(a: Answers) {
   const chrono = Number(a.age || 0);
@@ -95,35 +135,52 @@ function computeResult(a: Answers) {
   const w = Number(a.waistCm || 0);
   const whtr = h > 0 && w > 0 ? w / h : 0;
 
-  // WHtR → year delta (from original metabolic-age ruleset)
+  // WHtR → year delta
   let whtrYears = 0;
   if (whtr) {
     if (a.sex === "male") {
       whtrYears = whtr < 0.5 ? 0 : whtr < 0.55 ? 4 : whtr < 0.6 ? 7 : 10;
-    } else if (a.sex === "female") {
+    } else {
       whtrYears = whtr < 0.45 ? 0 : whtr < 0.5 ? 2 : whtr < 0.55 ? 6 : 10;
     }
   }
 
+  // Energy → year delta (hyperinsulinaemia proxy)
+  const energyYears = a.energy === "high" ? -1 : a.energy === "mid" ? 2 : 4;
+
   // Sleep → year delta
   const sleepYears = a.sleep === "optimal" ? 1 : a.sleep === "mid" ? 3 : 6;
 
-  // Activity → year delta (negative = positive metabolic protection)
+  // Stress → year delta (cortisol/visceral fat pathway)
+  const stressYears = a.stress === "low" ? 0 : a.stress === "mid" ? 3 : 6;
+
+  // Activity → year delta
   const activityYears = a.activity === "high" ? -4 : a.activity === "mid" ? -1 : 4;
 
   // Diet → year delta
   const dietYears = a.diet === "high" ? 0 : a.diet === "mid" ? 2 : 5;
 
-  const delta = whtrYears + sleepYears + activityYears + dietYears;
+  // Gut → year delta (systemic inflammation proxy)
+  const gutYears = a.gut === "good" ? 0 : a.gut === "mid" ? 1 : 3;
+
+  const rawDelta = whtrYears + energyYears + sleepYears + stressYears + activityYears + dietYears + gutYears;
+
+  // Normalise: 10-question version has higher theoretical max, scale down slightly
+  // so band thresholds remain meaningful
+  const delta = Math.round(rawDelta * 0.82);
+
   const mAge = Math.max(18, Math.min(90, Math.round(chrono + delta)));
   const band = delta <= 3 ? "strong" : delta <= 10 ? "drifting" : "high-risk";
 
-  // Weakest = highest positive year contributor (worst factor)
+  // Weakest = highest positive year contributor
   const factors = [
     { key: "waist", years: whtrYears },
+    { key: "energy", years: Math.max(0, energyYears) },
     { key: "sleep", years: sleepYears },
+    { key: "stress", years: stressYears },
     { key: "activity", years: Math.max(0, activityYears) },
     { key: "diet", years: dietYears },
+    { key: "gut", years: gutYears },
   ];
   const weakest = factors.sort((a, b) => b.years - a.years)[0].key;
 
@@ -204,10 +261,10 @@ export default function MetabolicQuizPage() {
                   margin: "0 auto 30px",
                 }}
               >
-                A fast clinical screening tool to estimate metabolic drift before it becomes obvious disease.
+                A 10-question clinical screening tool that estimates your biological age across seven metabolic pathways — before dysfunction becomes visible disease.
               </p>
               <div className="badge-row a4" style={{ justifyContent: "center", marginBottom: 36 }}>
-                <span className="badge">7 Questions</span>
+                <span className="badge">10 Questions</span>
                 <span className="badge">Clinical Framework</span>
                 <span className="badge">Instant Result</span>
                 <span className="badge">Free</span>

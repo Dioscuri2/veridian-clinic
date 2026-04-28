@@ -32,9 +32,12 @@ const BANDS = {
 
 const WEAKEST_LABELS: Record<string, string> = {
   waist: "Waist-to-height ratio — a strong proxy for visceral fat, insulin resistance, and cardiovascular risk.",
-  sleep: "Sleep quality — poor sleep directly disrupts glucose regulation, appetite signalling, and metabolic recovery.",
-  activity: "Movement — low activity is one of the most direct and modifiable drivers of metabolic decline.",
-  diet: "Diet quality — directly affects insulin load, systemic inflammation, and long-term metabolic function.",
+  energy: "Daily energy levels — persistent fatigue and post-meal crashes are early markers of hyperinsulinaemia, often detectable years before fasting glucose changes.",
+  sleep: "Sleep quality — poor sleep directly disrupts glucose regulation, cortisol rhythm, appetite signalling, and metabolic recovery.",
+  stress: "Chronic stress load — sustained cortisol elevation drives visceral fat accumulation and insulin resistance independently of diet and exercise habits.",
+  activity: "Movement — skeletal muscle is the primary site of glucose disposal. Low activity is one of the most direct and modifiable drivers of metabolic decline.",
+  diet: "Diet quality — dietary insulin load, fibre intake, and ultra-processed food frequency are the strongest dietary predictors of metabolic age drift.",
+  gut: "Gut health — chronic gut dysbiosis increases intestinal permeability, triggering systemic inflammation that directly impairs insulin sensitivity.",
 };
 
 function ResultContent() {
