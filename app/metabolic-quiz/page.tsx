@@ -148,8 +148,8 @@ function computeResult(a: Answers) {
   // Energy → year delta (hyperinsulinaemia proxy)
   const energyYears = a.energy === "high" ? -1 : a.energy === "mid" ? 2 : 4;
 
-  // Sleep → year delta
-  const sleepYears = a.sleep === "optimal" ? 1 : a.sleep === "mid" ? 3 : 6;
+  // Sleep → year delta (restorative sleep is metabolically protective, not neutral)
+  const sleepYears = a.sleep === "optimal" ? -1 : a.sleep === "mid" ? 3 : 6;
 
   // Stress → year delta (cortisol/visceral fat pathway)
   const stressYears = a.stress === "low" ? 0 : a.stress === "mid" ? 3 : 6;

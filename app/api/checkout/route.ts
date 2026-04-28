@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const SITE_URL = "https://veridian-clinic.vercel.app";
+const SITE_URL = "https://veridianclinic.com";
 const PAYMENT_DESCRIPTOR = "Olympus Premium Health";
 
 const tierAliasMap: Record<string, string> = {
@@ -18,6 +18,20 @@ const tierCatalog: Record<
     description:
       "A GP-authored practical guide covering the PERC framework, 21-day roadmap, meal plans, fasting strategies, and movement tiers for metabolic reset.",
     successPath: "/metabolic-reset-guide/thank-you",
+  },
+  discovery: {
+    name: "GP-Led Discovery Call",
+    amount: 9700,
+    description:
+      "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation.",
+    successPath: "/book/thank-you",
+  },
+  "discovery-quiz": {
+    name: "GP-Led Discovery Call — Quiz Rate",
+    amount: 9700,
+    description:
+      "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £97 (normally £195).",
+    successPath: "/book/thank-you",
   },
   baseline: {
     name: "Veridian Baseline",

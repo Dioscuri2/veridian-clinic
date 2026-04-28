@@ -248,21 +248,63 @@ function ResultContent() {
                   </p>
                 </div>
 
-                {/* Primary CTA — guide purchase */}
-                <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
-                  <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
-                    Your next step
-                  </p>
-                  <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.95)", lineHeight: 1.3, fontWeight: 500, marginBottom: 8 }}>
-                    Why Your Weight Isn't Shifting
-                  </p>
-                  <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
-                    A Doctor's 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. £19.99 · Instant download.
-                  </p>
-                  <Link href="/metabolic-reset-guide" className="btn btn-go btn-full">
-                    Get the Metabolic Reset Guide →
-                  </Link>
-                </div>
+                {/* Primary CTA — band conditional */}
+                {bandKey === "strong" ? (
+                  <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
+                    <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
+                      Confirm your advantage
+                    </p>
+                    <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.95)", lineHeight: 1.3, fontWeight: 500, marginBottom: 8 }}>
+                      Your quiz result is strong. Your biomarkers may tell a different story.
+                    </p>
+                    <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
+                      Fasting insulin, ApoB, and hsCRP don't show up in lifestyle questions — and they're often the first markers to shift in people who appear perfectly healthy. A targeted blood panel takes 10 minutes and gives you the full picture.
+                    </p>
+                    <Link href="/assessments#metabolic-panel" className="btn btn-go btn-full">
+                      Check Your Metabolic Markers →
+                    </Link>
+                  </div>
+                ) : bandKey === "drifting" ? (
+                  <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
+                    <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
+                      Your next step
+                    </p>
+                    <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.95)", lineHeight: 1.3, fontWeight: 500, marginBottom: 8 }}>
+                      Why Your Weight Isn't Shifting
+                    </p>
+                    <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
+                      A Doctor's 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. £19.99 · Instant download.
+                    </p>
+                    <Link href="/metabolic-reset-guide" className="btn btn-go btn-full">
+                      Get the Metabolic Reset Guide →
+                    </Link>
+                  </div>
+                ) : (
+                  <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                      <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600 }}>
+                        GP-Led Discovery Call
+                      </p>
+                      <span style={{ fontSize: ".72rem", background: "#c8a84b", color: "#2c2a26", fontWeight: 700, padding: "2px 8px", letterSpacing: ".06em" }}>
+                        QUIZ RATE
+                      </span>
+                    </div>
+                    <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.95)", lineHeight: 1.3, fontWeight: 500, marginBottom: 8 }}>
+                      Your pattern warrants a direct clinical conversation.
+                    </p>
+                    <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 16 }}>
+                      A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway — whether that's a targeted blood panel, a structured reset, or a full baseline assessment.
+                    </p>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 20 }}>
+                      <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£97</span>
+                      <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£195</span>
+                      <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Save £98 today</span>
+                    </div>
+                    <Link href="/book?tier=discovery&ref=quiz-high-risk" className="btn btn-go btn-full">
+                      Book My Discovery Call — £97 →
+                    </Link>
+                  </div>
+                )}
 
                 {/* Secondary CTA — free scorecard */}
                 <div style={{ padding: "16px 20px", background: "var(--iv2)", border: "1px solid rgba(0,0,0,.07)" }}>

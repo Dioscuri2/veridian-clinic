@@ -9,23 +9,31 @@ import { FONTS, CSS } from "@/components/globalStyles";
 const FORMSPREE_ID = "mkopkopb";
 
 const tiers = [
-  { value: "discovery", label: "Metabolic Discovery — £195" },
+  { value: "discovery", label: "GP Discovery Call — £195" },
   { value: "baseline", label: "Veridian Baseline — £595" },
   { value: "programme", label: "12-Week Metabolic Reset — £1,895" },
 ];
 
-const paidTiers = new Set(["baseline", "programme"]);
+const paidTiers = new Set(["discovery", "discovery-quiz", "baseline", "programme"]);
 
 const tierAliasMap: Record<string, string> = {
   advanced: "programme",
 };
 
-const tierDetails: Record<string, { title: string; price: string; description: string }> = {
+const tierDetails: Record<string, { title: string; price: string; strikethrough?: string; badge?: string; description: string }> = {
   discovery: {
-    title: "Metabolic Discovery",
+    title: "GP-Led Discovery Call",
     price: "£195",
     description:
-      "A focused clinical discovery consultation to understand your symptoms, goals, family history and likely metabolic blind spots, then recommend the right next step.",
+      "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation.",
+  },
+  "discovery-quiz": {
+    title: "GP-Led Discovery Call",
+    price: "£97",
+    strikethrough: "£195",
+    badge: "Quiz Rate — Save £98",
+    description:
+      "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway — whether that's a targeted blood panel, a structured reset, or a full baseline assessment.",
   },
   baseline: {
     title: "Veridian Baseline",
@@ -46,10 +54,16 @@ function BookingFormInner() {
   const router = useRouter();
   const tierParam = searchParams.get("tier") || "";
 
+  const refParam = searchParams.get("ref") || "";
+
   const validTier = useMemo(() => {
     const normalizedTier = tierAliasMap[tierParam] || tierParam;
-    return tiers.some((t) => t.value === normalizedTier) ? normalizedTier : "baseline";
-  }, [tierParam]);
+    // Quiz high-risk referral gets the discounted discovery rate
+    if (normalizedTier === "discovery" && refParam === "quiz-high-risk") return "discovery-quiz";
+    if (normalizedTier === "discovery-quiz") return "discovery-quiz";
+    if (tierDetails[normalizedTier]) return normalizedTier;
+    return "baseline";
+  }, [tierParam, refParam]);
 
   const [form, setForm] = useState({
     name: "",
@@ -160,9 +174,24 @@ function BookingFormInner() {
                 <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>
                   Selected pathway
                 </p>
-                <h2 className="cg" style={{ fontSize: "1.4rem", color: "var(--sl)", marginBottom: 8 }}>
-                  {tierDetails[form.tier].title} — {tierDetails[form.tier].price}
-                </h2>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 8 }}>
+                  <h2 className="cg" style={{ fontSize: "1.4rem", color: "var(--sl)", margin: 0 }}>
+                    {tierDetails[form.tier].title}
+                  </h2>
+                  <span style={{ fontSize: "1.3rem", fontWeight: 600, color: "var(--fo)" }}>
+                    {tierDetails[form.tier].price}
+                  </span>
+                  {tierDetails[form.tier].strikethrough && (
+                    <span style={{ fontSize: ".9rem", color: "var(--sl3)", textDecoration: "line-through" }}>
+                      {tierDetails[form.tier].strikethrough}
+                    </span>
+                  )}
+                  {tierDetails[form.tier].badge && (
+                    <span style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".1em", background: "var(--go)", color: "var(--fo)", padding: "2px 8px" }}>
+                      {tierDetails[form.tier].badge}
+                    </span>
+                  )}
+                </div>
                 <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.8 }}>
                   {tierDetails[form.tier].description}
                 </p>
