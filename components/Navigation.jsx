@@ -23,9 +23,9 @@ export default function Navigation() {
   const navLinks = [
     { label: "How It Works", href: anchor("#process") },
     { label: "Metabolic Quiz", href: "/metabolic-quiz" },
+    { label: "Assessments", href: "/assessments" },
+    { label: "Discovery Call", href: "/discovery-call" },
     { label: "Insights", href: "/blog" },
-    { label: "Pricing", href: "/assessments" },
-    { label: "About Us", href: anchor("#about") },
   ];
 
   return (
