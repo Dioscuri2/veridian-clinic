@@ -233,7 +233,7 @@ function BookingFormInner() {
                 <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 18 }}>
                   If you’re not completely sure which pathway is right, take the free quiz first and we’ll point you to the best starting option.
                 </p>
-                <Link href="/quiz" className="btn btn-ol">Take the Free Quiz →</Link>
+                <Link href="/metabolic-quiz" className="btn btn-ol">Take the Free Metabolic Quiz →</Link>
               </div>
             </div>
           </div>

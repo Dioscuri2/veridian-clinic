@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { FONTS, CSS } from "@/components/globalStyles";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -93,6 +94,220 @@ const comparisonRows = [
  { feature: "Priority / premium pathway", discovery: false, baseline: false, programme: false, executive: true },
 ];
 
+const bloodPanels = [
+  {
+    name: "Energy Screen",
+    subtitle: "The Fatigue & Thyroid Audit",
+    price: "£195",
+    tag: "Entry Level",
+    tagColor: "var(--sl2)",
+    description: "A targeted panel covering the most common hidden drivers of fatigue, weight plateau and brain fog — the markers your GP rarely checks together in a single screen.",
+    markers: [
+      "Full Blood Count (FBC)",
+      "Thyroid: TSH, FT3, FT4 + TPO antibodies",
+      "Fasting Insulin + C-Peptide",
+      "HbA1c + Fasting Glucose",
+      "Iron Status + Ferritin",
+      "Vitamin B12, Folate, Vitamin D",
+      "hs-CRP (inflammation)",
+      "Kidney function (eGFR, Creatinine)",
+    ],
+    youGet: "GP-reviewed digital report with written clinical interpretation — not just reference ranges. Includes a clear recommendation for what to do next.",
+    href: "/book?tier=metabolic-screen",
+    featured: false,
+  },
+  {
+    name: "Metabolic Baseline",
+    subtitle: "The Cardiovascular & Metabolic Deep Dive",
+    price: "£595",
+    tag: "Most Popular",
+    tagColor: "var(--go)",
+    description: "A comprehensive audit revealing cardiovascular risk, insulin load and the liver/hormonal drivers of weight gain and metabolic ageing — most of which routine NHS panels miss entirely.",
+    markers: [
+      "Everything in the Energy Screen",
+      "ApoB + full cardiovascular risk scoring",
+      "Apolipoprotein A-I, CII, CIII, E",
+      "Lipoprotein (a) + Small dense LDL",
+      "Metabolic hormones: Leptin, Adiponectin, Resistin",
+      "Liver health: ALT, AST, GGT",
+      "Uric acid + advanced kidney markers",
+      "60+ data points in total",
+    ],
+    youGet: "Comprehensive blood panel + 45-minute GP consultation + written clinical protocol with specific, prioritised action steps.",
+    href: "/book?tier=baseline",
+    featured: true,
+  },
+  {
+    name: "Longevity Panel",
+    subtitle: "The Biological Age Audit",
+    price: "£795",
+    tag: "Premium",
+    tagColor: "var(--fo)",
+    description: "The most complete picture of your biological age trajectory — 150+ data points spanning hormonal health, cardiovascular risk, gut integrity, Omega-3 status and pancreatic function.",
+    markers: [
+      "Everything in the Metabolic Baseline",
+      "Full hormonal profile: Testosterone, SHBG, Oestradiol, FSH, LH, Progesterone",
+      "Omega-3 index + Omega-6:3 ratio",
+      "Gut integrity: H. pylori, Anti-TTG antibodies",
+      "Pancreatic health: Amylase, Lipase",
+      "Total Antioxidant Status",
+      "150+ data points in total",
+    ],
+    youGet: "Premium blood panel + 45-minute GP consultation + comprehensive longevity report with biological age assessment and a personalised optimisation strategy.",
+    href: "/book?tier=longevity-panel",
+    featured: false,
+  },
+];
+
+const collectionMethods = [
+  { icon: "📦", label: "Post to your door", desc: "We send a home collection kit. Fingerprick sample taken at your convenience, returned by pre-paid post." },
+  { icon: "📍", label: "Walk-in near you", desc: "Book at a collection centre near you — including Holland & Barrett and Superdrug locations nationwide." },
+  { icon: "🩺", label: "Nurse home visit", desc: "A trained phlebotomist visits your home for a venous draw. Ideal for larger panels." },
+];
+
+function BloodPanelAccordion() {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div style={{ display: "grid", gap: 2 }}>
+      {bloodPanels.map((panel, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={i} style={{
+            border: panel.featured
+              ? "1.5px solid var(--go)"
+              : "1px solid rgba(0,0,0,.09)",
+            background: panel.featured
+              ? "var(--fo)"
+              : isOpen ? "var(--iv)" : "var(--wh)",
+            transition: "background .2s",
+          }}>
+            {/* Header row — always visible */}
+            <button
+              onClick={() => setOpen(isOpen ? null : i)}
+              style={{
+                width: "100%", display: "flex", alignItems: "center",
+                justifyContent: "space-between", padding: "20px 24px",
+                background: "none", border: "none", cursor: "pointer", textAlign: "left", gap: 16,
+              }}
+              aria-expanded={isOpen}
+            >
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                  <span style={{
+                    fontSize: ".62rem", fontWeight: 700, letterSpacing: ".12em",
+                    textTransform: "uppercase", color: panel.tagColor,
+                    background: panel.featured ? "rgba(200,168,75,.18)" : "rgba(0,0,0,.06)",
+                    padding: "2px 8px",
+                  }}>{panel.tag}</span>
+                  {panel.featured && (
+                    <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", background: "var(--go)", color: "var(--fo)", padding: "2px 8px" }}>
+                      RECOMMENDED
+                    </span>
+                  )}
+                </div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+                  <span className="cg" style={{
+                    fontSize: "1.2rem", fontWeight: 500,
+                    color: panel.featured ? "var(--iv)" : "var(--sl)",
+                  }}>{panel.name}</span>
+                  <span style={{
+                    fontSize: ".82rem",
+                    color: panel.featured ? "rgba(246,241,232,.55)" : "var(--sl3)",
+                    letterSpacing: ".03em",
+                  }}>{panel.subtitle}</span>
+                </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
+                <span className="cg" style={{
+                  fontSize: "1.5rem", fontWeight: 600,
+                  color: panel.featured ? "var(--go)" : "var(--fo)",
+                }}>{panel.price}</span>
+                <span style={{
+                  fontSize: "1rem",
+                  color: panel.featured ? "var(--go)" : "var(--sl3)",
+                  transition: "transform .2s",
+                  display: "inline-block",
+                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                }}>▾</span>
+              </div>
+            </button>
+
+            {/* Expanded content */}
+            {isOpen && (
+              <div style={{ padding: "0 24px 28px" }}>
+                <p style={{ fontSize: ".9rem", color: panel.featured ? "rgba(246,241,232,.72)" : "var(--sl2)", lineHeight: 1.9, marginBottom: 24, borderTop: panel.featured ? "1px solid rgba(246,241,232,.12)" : "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
+                  {panel.description}
+                </p>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,300px),1fr))", gap: 24, marginBottom: 24 }}>
+                  {/* Markers */}
+                  <div>
+                    <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>
+                      What&apos;s tested
+                    </p>
+                    <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gap: 7 }}>
+                      {panel.markers.map((m, mi) => (
+                        <li key={mi} style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: ".85rem", color: panel.featured ? "rgba(246,241,232,.78)" : "var(--sl2)", lineHeight: 1.5 }}>
+                          <span style={{ color: "var(--go)", flexShrink: 0, marginTop: 2 }}>✓</span>
+                          {m}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Right column: what you get + collection options */}
+                  <div style={{ display: "grid", gap: 20, alignContent: "start" }}>
+                    {/* What you get back */}
+                    <div style={{ padding: "14px 16px", background: panel.featured ? "rgba(246,241,232,.07)" : "var(--iv2)", borderLeft: "3px solid var(--go)" }}>
+                      <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>
+                        What you get back
+                      </p>
+                      <p style={{ fontSize: ".85rem", color: panel.featured ? "rgba(246,241,232,.72)" : "var(--sl2)", lineHeight: 1.8 }}>
+                        {panel.youGet}
+                      </p>
+                    </div>
+
+                    {/* Collection options */}
+                    <div>
+                      <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 10 }}>
+                        How your sample is collected
+                      </p>
+                      <div style={{ display: "grid", gap: 8 }}>
+                        {collectionMethods.map((method, mi) => (
+                          <div key={mi} style={{ display: "flex", gap: 10, alignItems: "flex-start", padding: "10px 12px", background: panel.featured ? "rgba(246,241,232,.07)" : "var(--wh)", border: panel.featured ? "1px solid rgba(246,241,232,.1)" : "1px solid rgba(0,0,0,.07)" }}>
+                            <span style={{ fontSize: "1rem", flexShrink: 0, lineHeight: 1.4 }}>{method.icon}</span>
+                            <div>
+                              <p style={{ fontSize: ".78rem", fontWeight: 600, color: panel.featured ? "rgba(246,241,232,.9)" : "var(--sl)", marginBottom: 2 }}>{method.label}</p>
+                              <p style={{ fontSize: ".76rem", color: panel.featured ? "rgba(246,241,232,.55)" : "var(--sl3)", lineHeight: 1.6 }}>{method.desc}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p style={{ fontSize: ".72rem", color: panel.featured ? "rgba(246,241,232,.4)" : "var(--sl3)", lineHeight: 1.6, marginTop: 10 }}>
+                        Processed by a nationally accredited UK pathology laboratory with centres across the country. Results typically within 48–72 hours.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTAs */}
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <Link href={panel.href} className={`btn ${panel.featured ? "btn-go" : "btn-fo"}`} style={{ flex: "1 1 200px" }}>
+                    Book {panel.name} — {panel.price} →
+                  </Link>
+                  <Link href="/book?tier=discovery" className={`btn ${panel.featured ? "btn-ol-lt" : "btn-ol"}`} style={{ flex: "1 1 200px" }}>
+                    Speak to a GP first →
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function Check({ val }: { val: boolean | string }) {
  if (typeof val === "string") return <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--fo)" }}>{val}</span>;
  return val
@@ -127,81 +342,18 @@ export default function AssessmentsPage() {
  </section>
  {/* Blood Test Panels — anchor target for quiz "strong" band CTA */}
  <section id="metabolic-panel" className="sec bg-wh" style={{ paddingTop: 56, paddingBottom: 56 }}>
-   <div className="wrap" style={{ maxWidth: 980 }}>
+   <div className="wrap" style={{ maxWidth: 860 }}>
      <div className="sh text-center">
        <p className="lbl">Veridian Blood Panels</p>
        <div className="rule rule-c" />
        <h2 className="sh-title">GP-analysed blood tests. Not just numbers — a clinical interpretation.</h2>
        <p className="sh-body" style={{ maxWidth: 680 }}>
-         Every panel is run through Randox Health (accredited UK pathology lab) and reviewed by a Veridian GP. You receive a written interpretation, not a PDF of reference ranges.
+         Every panel is processed by a nationally accredited UK pathology laboratory and reviewed by a Veridian GP. You receive a written clinical interpretation — not a PDF of reference ranges. Tap any panel to see what&apos;s included.
        </p>
      </div>
-     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,280px),1fr))", gap: 16, marginBottom: 28 }}>
-       {[
-         {
-           name: "Metabolic Screen",
-           subtitle: "The Energy & Fatigue Audit",
-           price: "£195",
-           randoxCode: "HSC10",
-           tag: "Entry Level",
-           tagColor: "var(--sl2)",
-           markers: ["Full Blood Count", "Thyroid (TSH, FT3, FT4 + antibodies)", "Fasting Insulin + C-Peptide", "HbA1c + Glucose", "Iron Status + Ferritin", "Vitamin B12, Folate, Vitamin D", "hsCRP (inflammation)", "Kidney function"],
-           includes: "Blood draw + GP-reviewed digital report",
-           href: "/book?tier=metabolic-screen",
-           featured: false,
-         },
-         {
-           name: "Metabolic Baseline",
-           subtitle: "The Engine Audit",
-           price: "£595",
-           randoxCode: "HSC8F/M",
-           tag: "Most Popular",
-           tagColor: "var(--go)",
-           markers: ["Everything in Metabolic Screen", "ApoB + full cardiovascular risk score", "Apolipoprotein A-I, CII, CIII, E", "Lipoprotein (a) + Small LDL", "Metabolic syndrome hormones (Leptin, Adiponectin, Resistin)", "Liver health (ALT, AST, GGT)", "Uric acid + kidney advanced markers"],
-           includes: "Advanced blood panel + 45-min GP consultation + written protocol",
-           href: "/book?tier=baseline",
-           featured: true,
-         },
-         {
-           name: "Longevity Panel",
-           subtitle: "The Biological Age Audit",
-           price: "£795",
-           randoxCode: "HSC9F/M + Omega-3",
-           tag: "Premium",
-           tagColor: "var(--fo)",
-           markers: ["Everything in Metabolic Baseline", "Full hormonal health (Testosterone, SHBG, Oestradiol, FSH, LH, Progesterone)", "Omega-3 index + Omega-6:3 ratio", "Gut markers (H. pylori, Anti-TTG antibodies)", "Pancreatic health (Amylase, Lipase)", "Total Antioxidant Status", "150+ data points in total"],
-           includes: "Premium blood panel + 45-min GP consultation + comprehensive longevity report",
-           href: "/book?tier=longevity-panel",
-           featured: false,
-         },
-       ].map((panel, i) => (
-         <div key={i} className={panel.featured ? "card card-featured" : "card"} style={{ display: "flex", flexDirection: "column", position: "relative" }}>
-           {panel.featured && <span className="plan-pill">Recommended</span>}
-           <div style={{ marginBottom: 4 }}>
-             <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: panel.tagColor, display: "inline-block", marginBottom: 8 }}>{panel.tag}</span>
-           </div>
-           <h3 className="cg" style={{ fontSize: "1.3rem", fontWeight: 500, color: panel.featured ? "var(--iv)" : "var(--sl)", lineHeight: 1.2, marginBottom: 4 }}>{panel.name}</h3>
-           <p style={{ fontSize: ".78rem", color: panel.featured ? "rgba(246,241,232,.5)" : "var(--sl3)", marginBottom: 12, letterSpacing: ".04em" }}>{panel.subtitle}</p>
-           <span className="plan-price">{panel.price}</span>
-           <ul style={{ margin: "16px 0 20px", padding: 0, listStyle: "none", display: "grid", gap: 8, flexGrow: 1 }}>
-             {panel.markers.map((m, mi) => (
-               <li key={mi} style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: ".84rem", color: panel.featured ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.5 }}>
-                 <span style={{ color: "var(--go)", flexShrink: 0, marginTop: 2 }}>✓</span>
-                 {m}
-               </li>
-             ))}
-           </ul>
-           <div style={{ padding: "10px 12px", background: panel.featured ? "rgba(246,241,232,.07)" : "var(--iv)", borderLeft: "2px solid var(--go)", marginBottom: 16, fontSize: ".78rem", color: panel.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", lineHeight: 1.7 }}>
-             {panel.includes}
-           </div>
-           <Link href={panel.href} className={`btn btn-full ${panel.featured ? "btn-go" : "btn-fo"}`}>
-             Book {panel.name} →
-           </Link>
-         </div>
-       ))}
-     </div>
-     <p style={{ fontSize: ".78rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7 }}>
-       Blood tests processed by Randox Health (accredited UK pathology). Results typically available within 48–72 hours. Not a substitute for NHS care.
+     <BloodPanelAccordion />
+     <p style={{ fontSize: ".76rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7, marginTop: 20 }}>
+       Not a substitute for NHS care. Results typically available within 48–72 hours of sample receipt.
      </p>
    </div>
  </section>

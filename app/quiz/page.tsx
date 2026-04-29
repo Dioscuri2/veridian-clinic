@@ -166,10 +166,10 @@ export default function QuizPage() {
                 Find the right Veridian starting point in <em style={{ fontStyle: "italic", color: "var(--fo)" }}>2 minutes</em>
               </h1>
               <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 620, margin: "0 auto 30px" }}>
-                Answer 8 short questions about your energy, sleep, weight, family history, and goals. We’ll recommend the most appropriate assessment tier for you.
+                Answer 10 short questions about your energy, sleep, weight, lifestyle, and goals. We’ll recommend the most appropriate assessment tier for you.
               </p>
               <div className="badge-row" style={{ justifyContent: "center", marginBottom: 32 }}>
-                <span className="badge">8 Questions</span>
+                <span className="badge">10 Questions</span>
                 <span className="badge">Free</span>
                 <span className="badge">GP-Led Logic</span>
               </div>

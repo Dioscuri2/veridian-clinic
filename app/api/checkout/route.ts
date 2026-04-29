@@ -34,7 +34,7 @@ const tierCatalog: Record<
     successPath: "/book/thank-you",
   },
   "metabolic-screen": {
-    name: "Veridian Metabolic Screen — Energy & Fatigue Audit",
+    name: "Veridian Energy Screen — Fatigue & Thyroid Audit",
     amount: 19500,
     description:
       "Targeted blood panel: FBC, Thyroid (TSH/FT3/FT4/antibodies), Fasting Insulin, C-Peptide, HbA1c, Iron Status, B12, Folate, Vitamin D, hsCRP, Kidney. Includes GP-reviewed digital report.",
