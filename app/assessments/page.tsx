@@ -125,6 +125,87 @@ export default function AssessmentsPage() {
  </div>
  </div>
  </section>
+ {/* Blood Test Panels — anchor target for quiz "strong" band CTA */}
+ <section id="metabolic-panel" className="sec bg-wh" style={{ paddingTop: 56, paddingBottom: 56 }}>
+   <div className="wrap" style={{ maxWidth: 980 }}>
+     <div className="sh text-center">
+       <p className="lbl">Veridian Blood Panels</p>
+       <div className="rule rule-c" />
+       <h2 className="sh-title">GP-analysed blood tests. Not just numbers — a clinical interpretation.</h2>
+       <p className="sh-body" style={{ maxWidth: 680 }}>
+         Every panel is run through Randox Health (accredited UK pathology lab) and reviewed by a Veridian GP. You receive a written interpretation, not a PDF of reference ranges.
+       </p>
+     </div>
+     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,280px),1fr))", gap: 16, marginBottom: 28 }}>
+       {[
+         {
+           name: "Metabolic Screen",
+           subtitle: "The Energy & Fatigue Audit",
+           price: "£195",
+           randoxCode: "HSC10",
+           tag: "Entry Level",
+           tagColor: "var(--sl2)",
+           markers: ["Full Blood Count", "Thyroid (TSH, FT3, FT4 + antibodies)", "Fasting Insulin + C-Peptide", "HbA1c + Glucose", "Iron Status + Ferritin", "Vitamin B12, Folate, Vitamin D", "hsCRP (inflammation)", "Kidney function"],
+           includes: "Blood draw + GP-reviewed digital report",
+           href: "/book?tier=metabolic-screen",
+           featured: false,
+         },
+         {
+           name: "Metabolic Baseline",
+           subtitle: "The Engine Audit",
+           price: "£595",
+           randoxCode: "HSC8F/M",
+           tag: "Most Popular",
+           tagColor: "var(--go)",
+           markers: ["Everything in Metabolic Screen", "ApoB + full cardiovascular risk score", "Apolipoprotein A-I, CII, CIII, E", "Lipoprotein (a) + Small LDL", "Metabolic syndrome hormones (Leptin, Adiponectin, Resistin)", "Liver health (ALT, AST, GGT)", "Uric acid + kidney advanced markers"],
+           includes: "Advanced blood panel + 45-min GP consultation + written protocol",
+           href: "/book?tier=baseline",
+           featured: true,
+         },
+         {
+           name: "Longevity Panel",
+           subtitle: "The Biological Age Audit",
+           price: "£795",
+           randoxCode: "HSC9F/M + Omega-3",
+           tag: "Premium",
+           tagColor: "var(--fo)",
+           markers: ["Everything in Metabolic Baseline", "Full hormonal health (Testosterone, SHBG, Oestradiol, FSH, LH, Progesterone)", "Omega-3 index + Omega-6:3 ratio", "Gut markers (H. pylori, Anti-TTG antibodies)", "Pancreatic health (Amylase, Lipase)", "Total Antioxidant Status", "150+ data points in total"],
+           includes: "Premium blood panel + 45-min GP consultation + comprehensive longevity report",
+           href: "/book?tier=longevity-panel",
+           featured: false,
+         },
+       ].map((panel, i) => (
+         <div key={i} className={panel.featured ? "card card-featured" : "card"} style={{ display: "flex", flexDirection: "column", position: "relative" }}>
+           {panel.featured && <span className="plan-pill">Recommended</span>}
+           <div style={{ marginBottom: 4 }}>
+             <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: panel.tagColor, display: "inline-block", marginBottom: 8 }}>{panel.tag}</span>
+           </div>
+           <h3 className="cg" style={{ fontSize: "1.3rem", fontWeight: 500, color: panel.featured ? "var(--iv)" : "var(--sl)", lineHeight: 1.2, marginBottom: 4 }}>{panel.name}</h3>
+           <p style={{ fontSize: ".78rem", color: panel.featured ? "rgba(246,241,232,.5)" : "var(--sl3)", marginBottom: 12, letterSpacing: ".04em" }}>{panel.subtitle}</p>
+           <span className="plan-price">{panel.price}</span>
+           <ul style={{ margin: "16px 0 20px", padding: 0, listStyle: "none", display: "grid", gap: 8, flexGrow: 1 }}>
+             {panel.markers.map((m, mi) => (
+               <li key={mi} style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: ".84rem", color: panel.featured ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.5 }}>
+                 <span style={{ color: "var(--go)", flexShrink: 0, marginTop: 2 }}>✓</span>
+                 {m}
+               </li>
+             ))}
+           </ul>
+           <div style={{ padding: "10px 12px", background: panel.featured ? "rgba(246,241,232,.07)" : "var(--iv)", borderLeft: "2px solid var(--go)", marginBottom: 16, fontSize: ".78rem", color: panel.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", lineHeight: 1.7 }}>
+             {panel.includes}
+           </div>
+           <Link href={panel.href} className={`btn btn-full ${panel.featured ? "btn-go" : "btn-fo"}`}>
+             Book {panel.name} →
+           </Link>
+         </div>
+       ))}
+     </div>
+     <p style={{ fontSize: ".78rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7 }}>
+       Blood tests processed by Randox Health (accredited UK pathology). Results typically available within 48–72 hours. Not a substitute for NHS care.
+     </p>
+   </div>
+ </section>
+
  <section className="sec bg-wh" style={{ paddingTop: 20 }}><div className="wrap"><div className="g4">{plans.map(p => (<div key={p.name} className={`card${p.feat ? " card-featured" : ""}`} style={{ position: "relative", display: "flex", flexDirection: "column" }}>{p.feat && <span className="plan-pill">Recommended</span>}<p className="plan-cadence">{p.cadence}</p><h2 className="cg" style={{ fontSize: "1.45rem", fontWeight: 500, lineHeight: 1.2, color: p.feat ? "var(--iv)" : "var(--sl)", marginBottom: 16 }}>{p.name}</h2><span className="plan-price">{p.price}</span><p style={{ fontSize: ".9rem", lineHeight: 1.9, color: p.feat ? "rgba(246,241,232,.72)" : "var(--sl2)", margin: "16px 0 20px" }}>{p.blurb}</p><div style={{ padding: "14px 16px", background: p.feat ? "rgba(246,241,232,.07)" : "var(--iv)", borderLeft: `3px solid ${p.feat ? "var(--go)" : "var(--fo)"}`, marginBottom: 20 }}><p style={{ fontSize: ".8rem", fontStyle: "italic", color: p.feat ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.75 }}>{p.right_for}</p></div><ul className="chk" style={{ marginBottom: 28, flexGrow: 1 }}>{p.feats.map(f => <li key={f}>{f}</li>)}</ul>{p.comingSoon ? <Link href="/executive-waitlist" className={`btn btn-full ${p.feat ? "btn-go" : "btn-ol"}`}>{p.cta} →</Link> : <Link href={`/book?tier=${p.tier}`} className={`btn btn-full ${p.feat ? "btn-go" : "btn-fo"}`}>{p.cta} →</Link>}</div>))}</div></div></section>
  <section className="sec bg-iv"><div className="wrap" style={{ maxWidth: 980 }}><div className="sh text-center"><p className="lbl">Baseline Marker List</p><div className="rule rule-c" /><h2 className="sh-title">What the Veridian Baseline is designed to surface</h2><p className="sh-body" style={{ fontSize: "1rem", maxWidth: 760 }}>This is the core value proposition: we focus on the markers most likely to reveal early metabolic decline and future vascular risk, not just whether a routine panel says you are “normal”.</p></div><div className="g2"><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>Exact markers visible</p><ul className="chk"><li>HbA1c</li><li>Fasting glucose</li><li>Fasting insulin</li><li>ApoB</li><li>Homocysteine</li><li>Full lipid profile</li><li>ALT</li><li>AST</li><li>hs-CRP</li></ul></div><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>What you get back</p><ul className="chk"><li>Clinical interpretation of what matters now</li><li>Explanation of how your markers connect to weight, energy and cardiovascular risk</li><li>Clear written action plan</li><li>Advice on whether you need further testing, CGM or structured follow-up</li><li>A practical next-step pathway rather than isolated lab numbers</li></ul></div></div></div></section>
  <section className="sec bg-wh"><div className="wrap"><div className="sh text-center"><p className="lbl">Side by Side</p><div className="rule rule-c" /><h2 className="sh-title">What’s included in each pathway</h2></div><div style={{ overflowX: "auto" }}><table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}><thead><tr><th style={{ textAlign: "left", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)", borderBottom: "2px solid var(--iv3)" }}>Feature</th>{["Discovery\n£195", "Baseline\n£595", "Reset\n£1,895", "Executive\nComing Soon"].map((h, i) => (<th key={i} style={{ textAlign: "center", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: i === 1 ? "var(--fo)" : "var(--sl3)", borderBottom: `2px solid ${i === 1 ? "var(--go)" : "var(--iv3)"}`, whiteSpace: "pre-line" }}>{h}</th>))}</tr></thead><tbody>{comparisonRows.map((row, idx) => (<tr key={row.feature} style={{ background: idx % 2 === 0 ? "var(--wh)" : "var(--iv)" }}><td style={{ padding: "13px 16px", fontSize: ".88rem", color: "var(--sl2)" }}>{row.feature}</td>{[row.discovery, row.baseline, row.programme, row.executive].map((v, i) => (<td key={i} style={{ padding: "13px 16px", textAlign: "center" }}><Check val={v as boolean | string} /></td>))}</tr>))}</tbody></table></div></div></section>

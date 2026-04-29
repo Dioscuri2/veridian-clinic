@@ -33,6 +33,20 @@ const tierCatalog: Record<
       "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £97 (normally £195).",
     successPath: "/book/thank-you",
   },
+  "metabolic-screen": {
+    name: "Veridian Metabolic Screen — Energy & Fatigue Audit",
+    amount: 19500,
+    description:
+      "Targeted blood panel: FBC, Thyroid (TSH/FT3/FT4/antibodies), Fasting Insulin, C-Peptide, HbA1c, Iron Status, B12, Folate, Vitamin D, hsCRP, Kidney. Includes GP-reviewed digital report.",
+    successPath: "/book/thank-you",
+  },
+  "longevity-panel": {
+    name: "Veridian Longevity Panel — Biological Age Audit",
+    amount: 79500,
+    description:
+      "150+ markers including full hormonal health, Omega-3 index, gut markers, pancreatic health, and comprehensive cardiovascular risk. Includes 45-min GP consultation and written report.",
+    successPath: "/book/thank-you",
+  },
   baseline: {
     name: "Veridian Baseline",
     amount: 59500,
