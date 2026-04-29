@@ -42,8 +42,9 @@ export default function ApoBVsLDLPage() {
       title="ApoB vs LDL, the cardiovascular risk marker question that changes the conversation"
       intro="LDL cholesterol is still the headline number on most lipid panels, but ApoB often gives the cleaner answer to the question that actually matters: how many atherogenic particles are circulating through the arterial system and capable of driving plaque formation?"
       ctas={[
-        { href: "/book?tier=baseline", label: "Book a baseline audit →" },
-        { href: "/metabolic-scorecard", label: "Take the scorecard", variant: "secondary" },
+        { href: "/book?tier=baseline", label: "Book the Metabolic Baseline — ApoB included →" },
+        { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "secondary" },
+        { href: "/metabolic-reset-guide", label: "Get the 21-Day Reset Guide — £19.99", variant: "tertiary" },
       ]}
     >
       <p style={paragraph}>

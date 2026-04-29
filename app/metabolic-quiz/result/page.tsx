@@ -49,8 +49,16 @@ function ResultContent() {
   const weakest = params.get("weakest") || "sleep";
   const band = BANDS[bandKey] ?? BANDS.drifting;
 
+  const fw = params.get("fw") ?? "0";
+  const fe = params.get("fe") ?? "0";
+  const fs = params.get("fs") ?? "0";
+  const fst = params.get("fst") ?? "0";
+  const fa = params.get("fa") ?? "0";
+  const fd = params.get("fd") ?? "0";
+  const fg = params.get("fg") ?? "0";
+
   const scorecardUrl =
-    `/metabolic-quiz/scorecard?mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${bandKey}&weakest=${weakest}`;
+    `/metabolic-quiz/scorecard?mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${bandKey}&weakest=${weakest}&fw=${fw}&fe=${fe}&fs=${fs}&fst=${fst}&fa=${fa}&fd=${fd}&fg=${fg}`;
 
   const deltaLabel = delta > 0 ? `+${delta} years` : delta < 0 ? `${delta} years` : "Matched";
   const interpretation =

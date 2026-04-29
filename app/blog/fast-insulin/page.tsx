@@ -35,8 +35,9 @@ export default function FastInsulinPage() {
       title="Fasting insulin, the missing early signal in metabolic disease"
       intro="Long before HbA1c rises or fasting glucose crosses a diagnostic threshold, insulin can already be elevated in the background. That compensatory phase is often where metabolic dysfunction begins, and it is exactly where early intervention has the greatest leverage."
       ctas={[
-        { href: "/book?tier=baseline", label: "Book baseline audit →" },
-        { href: "/metabolic-scorecard", label: "Take the scorecard", variant: "secondary" },
+        { href: "/book?tier=metabolic-screen", label: "Book the Energy Screen — fasting insulin included →" },
+        { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "secondary" },
+        { href: "/metabolic-reset-guide", label: "Get the 21-Day Reset Guide — £19.99", variant: "tertiary" },
       ]}
     >
       <p style={paragraph}>

@@ -36,7 +36,8 @@ export default function ReversingMetabolicSyndromePage() {
       intro="The goal is not perfection. It is reducing the drivers that keep insulin elevated, waist circumference expanding, and cardiovascular risk quietly climbing, then measuring whether the system is genuinely improving."
       ctas={[
         { href: "/book?tier=programme", label: "Explore the 12-week reset →" },
-        { href: "/metabolic-scorecard", label: "Take the scorecard", variant: "secondary" },
+        { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "secondary" },
+        { href: "/book?tier=baseline", label: "Start with the Baseline — £595", variant: "tertiary" },
       ]}
     >
       <p style={paragraph}>

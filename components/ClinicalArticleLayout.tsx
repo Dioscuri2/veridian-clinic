@@ -7,7 +7,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 type Cta = {
   href: string;
   label: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
 };
 
 type Props = {
@@ -46,7 +46,7 @@ export default function ClinicalArticleLayout({
                     <Link
                       key={cta.href + cta.label}
                       href={cta.href}
-                      className={cta.variant === "secondary" ? "btn btn-ol" : "btn btn-go"}
+                      className={cta.variant === "secondary" ? "btn btn-ol" : cta.variant === "tertiary" ? "btn btn-fo" : "btn btn-go"}
                     >
                       {cta.label}
                     </Link>

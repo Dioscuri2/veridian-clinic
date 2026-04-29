@@ -184,7 +184,10 @@ function computeResult(a: Answers) {
   ];
   const weakest = factors.sort((a, b) => b.years - a.years)[0].key;
 
-  return { mAge, chrono, delta, band, weakest };
+  return {
+    mAge, chrono, delta, band, weakest,
+    scores: { waist: whtrYears, energy: energyYears, sleep: sleepYears, stress: stressYears, activity: activityYears, diet: dietYears, gut: gutYears },
+  };
 }
 
 function canAdvance(step: number, answers: Answers): boolean {
@@ -215,8 +218,9 @@ export default function MetabolicQuizPage() {
   function handleNext() {
     if (!ready) return;
     if (!isLast) { setStep((s) => s + 1); return; }
-    const { mAge, chrono, delta, band, weakest } = computeResult(answers);
-    router.push(`/metabolic-quiz/result?mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${band}&weakest=${weakest}`);
+    const { mAge, chrono, delta, band, weakest, scores } = computeResult(answers);
+    const s = scores;
+    router.push(`/metabolic-quiz/result?mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${band}&weakest=${weakest}&fw=${s.waist}&fe=${s.energy}&fs=${s.sleep}&fst=${s.stress}&fa=${s.activity}&fd=${s.diet}&fg=${s.gut}`);
   }
 
   function handleBack() {
