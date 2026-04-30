@@ -136,6 +136,8 @@ function ScorecardContent() {
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) throw new Error(data?.error || "Unable to send your scorecard right now.");
       if (redirect === "discovery-quiz") {
+        sessionStorage.setItem("quiz_gate", "1");
+        document.cookie = "quiz_gate=1; path=/; max-age=7200; SameSite=Lax";
         router.push(`/book?tier=discovery-quiz`);
       } else {
         router.push(`/metabolic-quiz/thank-you?name=${encodeURIComponent(firstName.trim())}`);

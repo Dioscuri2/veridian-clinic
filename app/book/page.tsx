@@ -75,6 +75,18 @@ function BookingFormInner() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [cancelled, setCancelled] = useState(false);
+  const [gateChecked, setGateChecked] = useState(false);
+
+  useEffect(() => {
+    if (validTier === "discovery-quiz") {
+      const hasFlag = sessionStorage.getItem("quiz_gate") === "1";
+      if (!hasFlag) {
+        router.replace("/metabolic-quiz");
+        return;
+      }
+    }
+    setGateChecked(true);
+  }, [validTier, router]);
 
   useEffect(() => {
     setForm((prev) => ({ ...prev, tier: validTier }));
@@ -151,6 +163,8 @@ function BookingFormInner() {
       setSubmitting(false);
     }
   };
+
+  if (validTier === "discovery-quiz" && !gateChecked) return null;
 
   return (
     <main style={{ paddingTop: "var(--nav-h)" }}>

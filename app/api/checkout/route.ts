@@ -91,6 +91,17 @@ export async function POST(request: NextRequest) {
     const tier = resolveTier(payload.tier);
     const product = tierCatalog[tier];
 
+    if (tier === "discovery-quiz") {
+      const cookieHeader = request.headers.get("cookie") || "";
+      const hasGate = cookieHeader.split(";").some((c) => c.trim() === "quiz_gate=1");
+      if (!hasGate) {
+        return NextResponse.json(
+          { error: "This rate requires completing the free metabolic quiz first." },
+          { status: 403 }
+        );
+      }
+    }
+
     if (!product) {
       return NextResponse.json(
         { error: "Please select a valid paid assessment tier." },
