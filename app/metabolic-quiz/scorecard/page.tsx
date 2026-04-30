@@ -83,6 +83,7 @@ function ScorecardContent() {
   const delta = params.get("delta") || "";
   const band = params.get("band") || "drifting";
   const weakest = params.get("weakest") || "";
+  const redirect = params.get("redirect") || "";
 
   const factorScores: Record<string, number> = {
     waist:    Number(params.get("fw")  ?? 0),
@@ -134,7 +135,11 @@ function ScorecardContent() {
       });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) throw new Error(data?.error || "Unable to send your scorecard right now.");
-      router.push(`/metabolic-quiz/thank-you?name=${encodeURIComponent(firstName.trim())}`);
+      if (redirect === "discovery-quiz") {
+        router.push(`/book?tier=discovery-quiz`);
+      } else {
+        router.push(`/metabolic-quiz/thank-you?name=${encodeURIComponent(firstName.trim())}`);
+      }
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
@@ -266,14 +271,35 @@ function ScorecardContent() {
             <div className="card a3" style={{ padding: "clamp(28px,5vw,52px)" }}>
               <p className="lbl" style={{ marginBottom: 10 }}>Your Metabolic Scorecard</p>
               <div style={{ width: 36, height: 2, background: "var(--go)", marginBottom: 24 }} />
+
+              {redirect === "discovery-quiz" && (
+                <div style={{ padding: "14px 16px", background: "var(--fo)", marginBottom: 20 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+                    <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", background: "var(--go)", color: "var(--fo)", padding: "2px 8px" }}>
+                      QUIZ RATE UNLOCKED
+                    </span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 6 }}>
+                    <span className="cg" style={{ fontSize: "1.6rem", fontWeight: 600, color: "var(--go)" }}>£97</span>
+                    <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£195</span>
+                    <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>GP Discovery Call · Save £98</span>
+                  </div>
+                  <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.72)", lineHeight: 1.75 }}>
+                    Enter your email below. Your scorecard is sent instantly — then you&apos;ll be taken straight to book your call at £97.
+                  </p>
+                </div>
+              )}
+
               <h2
                 className="cg"
                 style={{ fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 14 }}
               >
-                Email me this breakdown
+                {redirect === "discovery-quiz" ? "Enter your email to claim your scorecard + £97 rate" : "Email me this breakdown"}
               </h2>
               <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 28 }}>
-                Get your full factor breakdown, the clinical explanation behind each score, and a personalised next-step recommendation — delivered to your inbox.
+                {redirect === "discovery-quiz"
+                  ? "Your free scorecard is sent to your inbox immediately. You'll then be taken to book your 30-minute GP Discovery Call at the quiz-taker rate of £97."
+                  : "Get your full factor breakdown, the clinical explanation behind each score, and a personalised next-step recommendation — delivered to your inbox."}
               </p>
 
               <form onSubmit={handleSubmit} style={{ display: "grid", gap: 16 }}>

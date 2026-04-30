@@ -57,8 +57,8 @@ function ResultContent() {
   const fd = params.get("fd") ?? "0";
   const fg = params.get("fg") ?? "0";
 
-  const scorecardUrl =
-    `/metabolic-quiz/scorecard?mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${bandKey}&weakest=${weakest}&fw=${fw}&fe=${fe}&fs=${fs}&fst=${fst}&fa=${fa}&fd=${fd}&fg=${fg}`;
+  const scorecardBase = `mAge=${mAge}&chrono=${chrono}&delta=${delta}&band=${bandKey}&weakest=${weakest}&fw=${fw}&fe=${fe}&fs=${fs}&fst=${fst}&fa=${fa}&fd=${fd}&fg=${fg}`;
+  const scorecardUrl = `/metabolic-quiz/scorecard?${scorecardBase}&redirect=discovery-quiz`;
 
   const deltaLabel = delta > 0 ? `+${delta} years` : delta < 0 ? `${delta} years` : "Matched";
   const interpretation =
@@ -303,13 +303,16 @@ function ResultContent() {
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 16 }}>
                       A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway — whether that's a targeted blood panel, a structured reset, or a full baseline assessment.
                     </p>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 20 }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
                       <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£97</span>
                       <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£195</span>
-                      <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Save £98 today</span>
+                      <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Save £98</span>
                     </div>
-                    <Link href="/book?tier=discovery&ref=quiz-high-risk" className="btn btn-go btn-full">
-                      Book My Discovery Call — £97 →
+                    <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.55)", lineHeight: 1.6, marginBottom: 16 }}>
+                      Enter your email for your free scorecard — your £97 rate is unlocked immediately after.
+                    </p>
+                    <Link href={scorecardUrl} className="btn btn-go btn-full">
+                      Get My Scorecard &amp; Unlock £97 →
                     </Link>
                   </div>
                 )}

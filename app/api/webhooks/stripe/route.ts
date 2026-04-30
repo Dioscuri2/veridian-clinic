@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { sendGuideEmail } from "@/lib/guideEmail";
+import { sendDiscoveryIntakeEmail } from "@/lib/discoveryEmail";
 
 export async function POST(request: NextRequest) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -30,7 +31,17 @@ export async function POST(request: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
 
-    if (session.metadata?.tier === "guide" && session.payment_status === "paid") {
+    const tier = session.metadata?.tier;
+
+    if ((tier === "discovery" || tier === "discovery-quiz") && session.payment_status === "paid") {
+      const email = session.customer_details?.email || session.customer_email || "";
+      const name = session.customer_details?.name || session.metadata?.name || "";
+      if (email) {
+        await sendDiscoveryIntakeEmail({ email, name });
+      }
+    }
+
+    if (tier === "guide" && session.payment_status === "paid") {
       const email = session.customer_details?.email || session.customer_email || "";
       const name = session.customer_details?.name || "";
       const sessionId = session.id;

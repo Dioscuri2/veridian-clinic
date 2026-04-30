@@ -108,9 +108,12 @@ export default function DiscoveryCallPage() {
                 </div>
 
                 <div style={{ padding: "16px 18px", background: "var(--iv2)", border: "1px solid rgba(200,168,75,.3)", marginBottom: 20 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
                     <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", background: "var(--go)", color: "var(--fo)", padding: "2px 8px" }}>
                       QUIZ TAKER RATE
+                    </span>
+                    <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", background: "var(--fo)", color: "var(--go)", padding: "2px 8px" }}>
+                      UNLOCK WITH QUIZ
                     </span>
                   </div>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
@@ -118,12 +121,20 @@ export default function DiscoveryCallPage() {
                     <span style={{ fontSize: ".88rem", color: "var(--sl3)", textDecoration: "line-through" }}>£195</span>
                     <span style={{ fontSize: ".78rem", color: "var(--sl2)", fontWeight: 500 }}>Save £98</span>
                   </div>
-                  <p style={{ fontSize: ".82rem", color: "var(--sl2)", lineHeight: 1.75, marginBottom: 12 }}>
-                    If you arrived here from the metabolic quiz, your result already gives us a clinical starting point — the call is shorter and more targeted as a result.
+                  <p style={{ fontSize: ".82rem", color: "var(--sl2)", lineHeight: 1.75, marginBottom: 6 }}>
+                    This rate is only available to quiz completers. To unlock it:
                   </p>
-                  <Link href="/book?tier=discovery&ref=quiz-high-risk" className="btn btn-fo btn-full">
-                    Book at Quiz Rate — £97 →
+                  <ol style={{ margin: "0 0 14px", paddingLeft: 18, fontSize: ".8rem", color: "var(--sl2)", lineHeight: 2 }}>
+                    <li>Take the free 10-question metabolic quiz (2 mins)</li>
+                    <li>Enter your email to receive your free scorecard</li>
+                    <li>Your £97 rate is unlocked immediately after</li>
+                  </ol>
+                  <Link href="/metabolic-quiz" className="btn btn-fo btn-full">
+                    Take the Quiz to Unlock £97 →
                   </Link>
+                  <p style={{ fontSize: ".72rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
+                    Discount applied after quiz + email submission. Takes 2 minutes.
+                  </p>
                 </div>
 
                 <p style={{ fontSize: ".74rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.6 }}>
