@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "A guide to the main levers behind a 12-week metabolic reset, including diet quality, waist reduction, activity, sleep, and biomarker tracking.",
   alternates: {
-    canonical: "https://veridian.clinic/blog/reversing-metabolic-syndrome",
+    canonical: "https://veridianclinic.com/blog/reversing-metabolic-syndrome",
   },
   openGraph: {
     title: "Reversing Metabolic Syndrome in 12 Weeks | Veridian Clinic",
     description:
       "How a focused 12-week reset can improve insulin burden, waist metrics, and cardiometabolic risk.",
-    url: "https://veridian.clinic/blog/reversing-metabolic-syndrome",
+    url: "https://veridianclinic.com/blog/reversing-metabolic-syndrome",
     type: "article",
   },
 };

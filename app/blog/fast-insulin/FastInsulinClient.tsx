@@ -20,9 +20,9 @@ const articleSchema = {
       publisher: {
         "@type": "Organization",
         name: "Veridian Clinic",
-        url: "https://veridian-clinic.vercel.app",
+        url: "https://veridianclinic.com",
       },
-      mainEntityOfPage: "https://veridian.clinic/blog/fast-insulin",
+      mainEntityOfPage: "https://veridianclinic.com/blog/fast-insulin",
       articleSection: "Metabolic Health",
       keywords: [
         "fasting insulin",
@@ -36,7 +36,7 @@ const articleSchema = {
     {
       "@type": "MedicalWebPage",
       name: "Fasting Insulin Clinical Guide",
-      url: "https://veridian.clinic/blog/fast-insulin",
+      url: "https://veridianclinic.com/blog/fast-insulin",
       about: [
         { "@type": "MedicalCondition", name: "Insulin Resistance" },
         { "@type": "MedicalCondition", name: "Hyperinsulinemia" },

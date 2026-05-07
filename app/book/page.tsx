@@ -10,11 +10,13 @@ const FORMSPREE_ID = "mkopkopb";
 
 const tiers = [
   { value: "discovery", label: "GP Discovery Call — £195" },
+  { value: "metabolic-screen", label: "Energy Screen — £195" },
   { value: "baseline", label: "Veridian Baseline — £595" },
+  { value: "longevity-panel", label: "Longevity Panel — £795" },
   { value: "programme", label: "12-Week Metabolic Reset — £1,895" },
 ];
 
-const paidTiers = new Set(["discovery", "discovery-quiz", "baseline", "programme"]);
+const paidTiers = new Set(["discovery", "discovery-quiz", "metabolic-screen", "baseline", "longevity-panel", "programme"]);
 
 const tierAliasMap: Record<string, string> = {
   advanced: "programme",
@@ -35,11 +37,23 @@ const tierDetails: Record<string, { title: string; price: string; strikethrough?
     description:
       "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway — whether that's a targeted blood panel, a structured reset, or a full baseline assessment.",
   },
+  "metabolic-screen": {
+    title: "Energy Screen",
+    price: "£195",
+    description:
+      "A targeted fatigue, thyroid, insulin and inflammation panel with GP-reviewed interpretation and a clear written next-step recommendation.",
+  },
   baseline: {
     title: "Veridian Baseline",
     price: "£595",
     description:
       "A longevity-focused baseline audit designed to reveal the most actionable metabolic drivers of decline before they become disease.",
+  },
+  "longevity-panel": {
+    title: "Longevity Panel",
+    price: "£795",
+    description:
+      "A premium biological-age audit covering 150+ data points, including hormones, Omega-3 index, gut integrity, pancreatic health, cardiovascular risk and GP interpretation.",
   },
   programme: {
     title: "12-Week Metabolic Reset",

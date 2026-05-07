@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Cookie Policy",
   description:
     "Cookie Policy for Veridian Clinic, including cookie categories, analytics, and cookie settings information.",
-  alternates: { canonical: "https://veridian-clinic.vercel.app/cookies" },
+  alternates: { canonical: "https://veridianclinic.com/cookies" },
   robots: { index: true, follow: true },
 };
 

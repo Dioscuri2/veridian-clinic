@@ -162,7 +162,7 @@ function timingSafeEqual(a: string, b: string): boolean {
   return result === 0;
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const ip = getIP(request);
   const { pathname } = request.nextUrl;
   const ua = request.headers.get("user-agent") || "";

@@ -102,10 +102,10 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
                     See what's actually driving your metabolic drift.
                   </h2>
                   <p style={{ fontSize: ".9rem", color: "rgba(246,241,232,.78)", lineHeight: 1.9, marginBottom: 20 }}>
-                    The guide gives you the framework and the structure. The Discovery Call is where Dr Taiwo reviews your picture specifically — your symptoms, your history, your numbers — and identifies the most important clinical levers for you personally. It's free and takes 20 minutes.
+                    The guide gives you the framework and the structure. The Discovery Call is where Dr Taiwo reviews your picture specifically — your symptoms, your history, your numbers — and identifies the most important clinical levers for you personally.
                   </p>
                   <Link href="/book?tier=discovery" className="btn btn-go">
-                    Book My Free Discovery Call →
+                    Book My Discovery Call →
                   </Link>
                 </div>
 

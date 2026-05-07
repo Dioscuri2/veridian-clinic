@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Privacy Policy for Veridian Clinic, including how we collect, use, store, and protect personal and health information.",
-  alternates: { canonical: "https://veridian-clinic.vercel.app/privacy" },
+  alternates: { canonical: "https://veridianclinic.com/privacy" },
   robots: { index: true, follow: true },
 };
 

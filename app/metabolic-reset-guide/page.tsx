@@ -184,7 +184,7 @@ function GuidePageContent() {
               The Baseline Assessment includes a 9-marker blood panel, GP clinical interpretation, and a written action plan — going beyond the guide into real diagnostic clarity.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="/book?tier=discovery" className="btn btn-fo">Book a Free Discovery Call →</a>
+              <a href="/book?tier=discovery" className="btn btn-fo">Book a Discovery Call →</a>
               <a href="/assessments" className="btn btn-ol">Compare All Pathways</a>
             </div>
           </div>

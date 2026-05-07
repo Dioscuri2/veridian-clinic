@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     "Take the Veridian Clinic Metabolic Health Scorecard. A 7-question clinical quiz using waist-to-height ratio, sleep, activity, and diet to reveal your metabolic risk snapshot.",
   alternates: {
-    canonical: "https://veridian.clinic/metabolic-scorecard",
+    canonical: "https://veridianclinic.com/metabolic-scorecard",
   },
   openGraph: {
     title: "Metabolic Health Scorecard | Veridian Clinic",
     description:
       "A free 7-question metabolic risk scorecard with waist-to-height ratio, sleep, activity, and diet scoring.",
-    url: "https://veridian.clinic/metabolic-scorecard",
+    url: "https://veridianclinic.com/metabolic-scorecard",
     type: "website",
   },
   twitter: {

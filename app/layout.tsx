@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
- metadataBase: new URL("https://veridian.clinic"),
+ metadataBase: new URL("https://veridianclinic.com"),
  title: {
  default: "Veridian Clinic | Longevity & Metabolic Health Clinic",
  template: "%s | Veridian Clinic",
@@ -10,26 +10,27 @@ export const metadata: Metadata = {
  keywords: ["metabolic health clinic UK","longevity clinic UK","health optimisation clinic","CGM monitoring UK","ApoB testing UK","HbA1c private test","12 week metabolic reset","longevity medicine UK","Dr Oluwatosin Taiwo","Veridian Clinic"],
  authors: [{ name: "Dr Oluwatosin Taiwo" }],
  openGraph: {
- type: "website", locale: "en_GB", url: "https://veridian.clinic", siteName: "Veridian Clinic",
+ type: "website", locale: "en_GB", url: "https://veridianclinic.com", siteName: "Veridian Clinic",
  title: "Veridian Clinic | Longevity & Metabolic Health",
  description: "Understand what's driving your weight, energy, and long-term health — then fix it.",
  images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Veridian Clinic" }],
  },
  twitter: { card: "summary_large_image", title: "Veridian Clinic", description: "Advanced biomarker testing, CGM, and personalised optimisation plans.", images: ["/og-image.jpg"] },
  robots: { index: true, follow: true },
- alternates: { canonical: "https://veridian.clinic" },
+ alternates: { canonical: "https://veridianclinic.com" },
 };
 
 const schema = {
  "@context": "https://schema.org", "@type": "MedicalBusiness",
  name: "Veridian Clinic",
  description: "Longevity and metabolic health clinic with CQC regulated clinical services via thanksdoc.co.uk",
- url: "https://veridian.clinic",
+ url: "https://veridianclinic.com",
  medicalSpecialty: ["Metabolic Health","Longevity Medicine","Preventive Medicine"],
  availableService: [
   { "@type": "MedicalProcedure", name: "Initial Clinical Discovery Consultation", offers: { "@type": "Offer", price: "195", priceCurrency: "GBP" } },
- { "@type": "MedicalProcedure", name: "Core Metabolic Assessment", offers: { "@type": "Offer", price: "495", priceCurrency: "GBP" } },
- { "@type": "MedicalProcedure", name: "Advanced Longevity Assessment", offers: { "@type": "Offer", price: "895", priceCurrency: "GBP" } },
+ { "@type": "MedicalProcedure", name: "Energy Screen", offers: { "@type": "Offer", price: "195", priceCurrency: "GBP" } },
+ { "@type": "MedicalProcedure", name: "Core Metabolic Assessment", offers: { "@type": "Offer", price: "595", priceCurrency: "GBP" } },
+ { "@type": "MedicalProcedure", name: "Advanced Longevity Assessment", offers: { "@type": "Offer", price: "795", priceCurrency: "GBP" } },
  { "@type": "MedicalProcedure", name: "12-Week Metabolic Reset", offers: { "@type": "Offer", price: "1895", priceCurrency: "GBP" } },
  ],
 };

@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "A deep dive into ApoB vs LDL, why apolipoprotein B is often the better marker of atherosclerotic risk, and how to interpret cardiovascular risk markers through a longevity lens.",
   alternates: {
-    canonical: "https://veridian.clinic/blog/apob-vs-ldl",
+    canonical: "https://veridianclinic.com/blog/apob-vs-ldl",
   },
   openGraph: {
     title: "ApoB vs LDL | Veridian Clinic",
     description:
       "Why ApoB often gives a more accurate read of atherogenic particle burden than LDL-C, especially in insulin resistance and longevity medicine.",
-    url: "https://veridian.clinic/blog/apob-vs-ldl",
+    url: "https://veridianclinic.com/blog/apob-vs-ldl",
     type: "article",
   },
   keywords: [
