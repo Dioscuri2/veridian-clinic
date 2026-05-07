@@ -235,9 +235,117 @@ export default function PrivacyPolicyPage() {
                   If you have concerns about how your data has been handled, please contact Veridian
                   Clinic first so we can try to resolve the matter. You also have the right to lodge a
                   complaint with the Information Commissioner’s Office (ICO) if you believe your data
-                  protection rights have been infringed.
+                  protection rights have been infringed. For complaints regarding regulated clinical care delivered through ThanksDoc, contact{" "}
+                  <a href="mailto:complaints@thanksdoc.co.uk" style={{ color: "var(--sl)" }}>complaints@thanksdoc.co.uk</a>.
                 </p>
               </section>
+            </div>
+          </div>
+        </section>
+
+        {/* ThanksDoc Privacy Policy embedded */}
+        <section className="sec" style={{ background: "var(--iv2)" }}>
+          <div className="wrap" style={{ maxWidth: 980 }}>
+            <div style={{
+              background: "var(--fo)",
+              borderRadius: 10,
+              padding: "20px 24px",
+              marginBottom: 32,
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 16,
+            }}>
+              <div style={{
+                background: "var(--go)",
+                color: "var(--fo)",
+                fontSize: ".7rem",
+                fontWeight: 700,
+                letterSpacing: ".1em",
+                padding: "4px 10px",
+                borderRadius: 4,
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                marginTop: 2,
+                textTransform: "uppercase",
+              }}>
+                Powered by ThanksDoc
+              </div>
+              <p style={{ color: "rgba(246,241,232,.85)", fontSize: ".88rem", lineHeight: 1.75, margin: 0 }}>
+                Regulated clinical services at Veridian Clinic are delivered under the umbrella of{" "}
+                <a href="https://thanksdoc.co.uk" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)", textDecoration: "underline" }}>
+                  ThanksDoc
+                </a>{" "}
+                (Endura Health Ltd · CQC Registration: 1-18826835219). ThanksDoc acts as a separate data controller for personal and health information processed in the delivery of regulated clinical care. Their full privacy policy is set out below.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: "var(--wh)",
+                border: "1px solid rgba(0,0,0,.08)",
+                boxShadow: "0 24px 70px rgba(13,40,24,.06)",
+                padding: "clamp(24px, 5vw, 52px)",
+              }}
+            >
+              <div style={{ marginBottom: 24, paddingBottom: 20, borderBottom: "1px solid rgba(0,0,0,.08)" }}>
+                <span style={{ background: "var(--fo)", color: "var(--go)", fontSize: ".7rem", fontWeight: 700, letterSpacing: ".1em", padding: "4px 10px", borderRadius: 4, textTransform: "uppercase" }}>
+                  Powered by ThanksDoc
+                </span>
+                <h2 style={{ fontSize: "clamp(1.4rem,3vw,1.9rem)", fontWeight: 500, color: "var(--sl)", marginTop: 14, marginBottom: 6 }}>
+                  ThanksDoc Privacy Policy
+                </h2>
+                <p style={{ fontSize: ".85rem", color: "var(--sl3)" }}>
+                  Data Controller: Endura Health Ltd (ThanksDoc) · Data Protection Officer: Dr Linda Odogwu · info@thanksdoc.co.uk · 0800 246 5824 · Last updated: 12/04/2025
+                </p>
+              </div>
+
+              {[
+                {
+                  title: "Introduction",
+                  body: "ThanksDoc is committed to protecting and respecting your privacy. This Privacy Policy explains how Endura Health LTD (operating as ThanksDoc) collects, uses, stores, and safeguards your personal information when you use services provided through ThanksDoc’s regulatory framework. By accessing or using regulated clinical services, you agree to the practices described in this policy. ThanksDoc processes personal data in compliance with UK data protection laws, including the GDPR, Data Protection Act 2018, and CQC Guidelines.",
+                },
+                {
+                  title: "What Data We Collect",
+                  body: "Personal Identification: full name, date of birth, contact details (address, email, phone), NHS number (if applicable). Health Information: medical history, current medications, health concerns or symptoms you disclose, diagnoses, prescriptions, treatment plans, and results of diagnostic tests (e.g., blood tests). Technical Data: IP address, device information (browser type, operating system), usage data relating to how you interact with the platform. Financial Information: payment details for services.",
+                },
+                {
+                  title: "How We Use Your Data",
+                  body: "To assess your symptoms and medical history, offer diagnoses, and prescribe appropriate treatment. To schedule and manage consultations with healthcare professionals. To maintain accurate medical records in line with legal and regulatory requirements. To contact you about appointments, test results, and follow-up care via email, phone, or SMS. To share your data with third parties when necessary for your care (e.g., specialist referrals, diagnostic tests). To process payments for appointments and other services. We will only use your data when we have a legal basis to do so.",
+                },
+                {
+                  title: "Legal Basis for Processing",
+                  body: "Under UK GDPR, ThanksDoc processes your data under: Consent (when you have given clear consent for a specific purpose); Performance of a Contract (to deliver healthcare services); Legal Obligation (compliance with applicable laws, including reporting requirements); Vital Interests (emergency situations where your life is at risk); and Public Interest (when processing is necessary for public health, such as reporting infectious diseases).",
+                },
+                {
+                  title: "How We Share Your Data",
+                  body: "ThanksDoc may share your personal data with: healthcare providers (other doctors, specialists, hospitals, labs) involved in your care; the NHS for continuity of care; pharmacies to fulfil prescriptions and deliver medication; regulatory bodies (CQC, GMC, or other relevant authorities); and third-party IT service providers (cloud storage, data security) who process data on ThanksDoc’s behalf. In exceptional circumstances, data may be shared without consent if required by law or to protect vital interests. ThanksDoc does not sell your personal information.",
+                },
+                {
+                  title: "Data Security",
+                  body: "ThanksDoc uses encryption when transmitting and storing sensitive data; access controls ensuring only authorised personnel access your data; regular audits to ensure compliance with data protection regulations; and incident management with all regulatory reporting requirements in the event of a data breach.",
+                },
+                {
+                  title: "Data Retention",
+                  body: "Medical records are retained in accordance with NHS and healthcare regulatory guidelines — typically for at least 8 years after your last interaction with the service, or longer if required by law. Personal data is kept only for as long as necessary to fulfil the purposes for which it was collected.",
+                },
+                {
+                  title: "Your Data Protection Rights",
+                  body: "You have the following rights under data protection law: Right to Access the personal data ThanksDoc holds about you; Right to Rectification of inaccurate or incomplete data; Right to Erasure in certain circumstances; Right to Restrict Processing; Right to Data Portability; Right to Object to processing based on legitimate interests; and Right to Withdraw Consent at any time. To exercise your rights, contact the ThanksDoc Data Protection Officer: info@thanksdoc.co.uk.",
+                },
+                {
+                  title: "Complaints",
+                  body: "If you have questions, concerns, or complaints regarding this Privacy Policy or how your personal data is handled, contact the ThanksDoc Data Protection Officer at info@thanksdoc.co.uk or 0800 246 5824. You also have the right to lodge a complaint with the Information Commissioner’s Office (ICO) at ico.org.uk.",
+                },
+              ].map(({ title, body }) => (
+                <section key={title} style={{ padding: "24px 0", borderTop: "1px solid rgba(0,0,0,.08)" }}>
+                  <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "var(--sl)", marginBottom: 10 }}>{title}</h3>
+                  <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.9 }}>{body}</p>
+                </section>
+              ))}
+
+              <p style={{ fontSize: ".78rem", color: "var(--sl3)", marginTop: 24, paddingTop: 16, borderTop: "1px solid rgba(0,0,0,.08)" }}>
+                Source: thanksdoc.co.uk/privacy-policy/ · ThanksDoc Privacy Policy last updated: 12/04/2025.
+              </p>
             </div>
           </div>
         </section>
