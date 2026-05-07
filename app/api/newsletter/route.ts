@@ -15,9 +15,7 @@ type LeadPayload = {
   metadata?: Record<string, unknown>;
 };
 
-const BREVO_API_KEY =
-  process.env.BREVO_API_KEY ||
-  "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";
+const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
 const FALLBACK_DIR = path.join(process.cwd(), "data");
 const FALLBACK_FILE = path.join(FALLBACK_DIR, "newsletter-leads.ndjson");
