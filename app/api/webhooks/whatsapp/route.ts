@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN || "";
+const VERIFY_TOKEN = (process.env.WHATSAPP_VERIFY_TOKEN || "").trim();
 const WA_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN || "";
 const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
 
