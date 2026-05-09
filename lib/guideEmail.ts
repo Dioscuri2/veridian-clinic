@@ -76,7 +76,7 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
 
           <p style="margin:0;font-size:.8rem;color:#8a8278;line-height:1.7;">
             Questions? Reply to this email or contact us at
-            <a href="mailto:hello@veridianclinic.com" style="color:#2c2a26;">hello@veridianclinic.com</a>
+            <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;">support@veridianclinic.com</a>
           </p>
         </td></tr>
 
@@ -105,7 +105,7 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
         "api-key": BREVO_API_KEY,
       },
       body: JSON.stringify({
-        sender: { name: "Veridian Clinic", email: "hello@veridianclinic.com" },
+        sender: { name: "Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
         subject: "Your Metabolic Reset Guide — Download Inside",
         htmlContent: html,

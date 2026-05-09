@@ -110,7 +110,7 @@ export async function sendDiscoveryIntakeEmail({ email, name }: DiscoveryEmailPa
 
           <p style="margin:0;font-size:.8rem;color:#8a8278;line-height:1.7;">
             Questions? Reply to this email or contact us at
-            <a href="mailto:hello@veridianclinic.com" style="color:#2c2a26;">hello@veridianclinic.com</a>
+            <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;">support@veridianclinic.com</a>
           </p>
         </td></tr>
 
@@ -139,9 +139,9 @@ export async function sendDiscoveryIntakeEmail({ email, name }: DiscoveryEmailPa
         "api-key": BREVO_API_KEY,
       },
       body: JSON.stringify({
-        sender: { name: "Veridian Clinic", email: "hello@veridianclinic.com" },
+        sender: { name: "Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
-        replyTo: { email: "hello@veridianclinic.com", name: "Dr Taiwo — Veridian Clinic" },
+        replyTo: { email: "support@veridianclinic.com", name: "Dr Taiwo — Veridian Clinic" },
         subject: "Your discovery call is confirmed — please reply with your intake answers",
         htmlContent: html,
         tags: ["discovery-intake"],

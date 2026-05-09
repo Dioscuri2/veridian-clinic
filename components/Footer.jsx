@@ -124,6 +124,18 @@ export default function Footer() {
             </Link>
           </div>
 
+          {/* Contact line */}
+          <p style={{ fontSize: ".8rem", color: "rgba(246,241,232,.5)", marginBottom: 8 }}>
+            General enquiries:{" "}
+            <a href="mailto:support@veridianclinic.com" style={{ color: "rgba(246,241,232,.7)", textDecoration: "underline" }}>
+              support@veridianclinic.com
+            </a>
+            <span style={{ margin: "0 10px", opacity: 0.3 }}>·</span>
+            <a href="https://wa.me/447344290497?text=Hi%2C%20I%20found%20Veridian%20Clinic%20online%20and%20I%27d%20like%20to%20find%20out%20more." target="_blank" rel="noopener noreferrer" style={{ color: "rgba(246,241,232,.7)", textDecoration: "underline" }}>
+              WhatsApp
+            </a>
+          </p>
+
           {/* Complaints line */}
           <p style={{ fontSize: ".8rem", color: "rgba(246,241,232,.45)", marginBottom: 10 }}>
             Clinical complaints:{" "}

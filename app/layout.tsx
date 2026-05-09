@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
  metadataBase: new URL("https://veridianclinic.com"),
@@ -46,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
  </head>
- <body style={{ margin: 0 }}>{children}</body>
+ <body style={{ margin: 0 }}>{children}<WhatsAppButton /></body>
  </html>
  );
 }
