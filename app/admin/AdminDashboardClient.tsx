@@ -3,68 +3,158 @@
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 
+// ── Types ─────────────────────────────────────────────────────────────────────
+
 interface Stats {
   revenue: {
-    allTime: number;
-    thisMonth: number;
-    thisWeek: number;
+    allTime: number; thisMonth: number; thisWeek: number;
     byTier: Record<string, { count: number; amount: number; name: string }>;
   };
   funnel: {
-    quizCompletions: number;
-    guidePurchases: number;
-    discoveryCalls: number;
-    bloodTests: number;
-    programmes: number;
-    totalPaidConversions: number;
-    quizToGuideRate: string;
+    quizCompletions: number; guidePurchases: number; discoveryCalls: number;
+    bloodTests: number; programmes: number; totalPaidConversions: number; quizToGuideRate: string;
   };
   leads: {
-    total: number;
-    byBand: Record<string, number>;
-    bySource: Record<string, number>;
-    recent: Array<{
-      timestamp: string;
-      email: string;
-      firstName: string;
-      source: string;
-      resultBand?: string;
-      metabolicAge?: number;
-    }>;
+    total: number; byBand: Record<string, number>; bySource: Record<string, number>;
+    recent: Array<{ timestamp: string; email: string; firstName: string; source: string; resultBand?: string; metabolicAge?: number }>;
   };
-  recentPayments: Array<{
-    id: string;
-    amount: number;
-    tier: string;
-    tierName: string;
-    customerName: string;
-    email: string;
-    createdAt: number;
-  }>;
+  recentPayments: Array<{ id: string; amount: number; tier: string; tierName: string; customerName: string; email: string; createdAt: number }>;
   generatedAt: string;
 }
 
 interface WAMessage {
-  id: string;
-  from: string;
-  name: string;
-  type: string;
-  text?: string;
-  timestamp: string;
-  replied: boolean;
-  repliedAt?: string;
+  id: string; from: string; name: string; type: string;
+  text?: string; timestamp: string; replied: boolean; repliedAt?: string;
 }
 
-function pence(amount: number) {
-  return `£${(amount / 100).toFixed(2)}`;
+// ── FAQ Templates ─────────────────────────────────────────────────────────────
+
+const TEMPLATES: { label: string; keywords: string[]; emoji: string; body: string }[] = [
+  {
+    label: "Greeting & overview",
+    emoji: "👋",
+    keywords: ["hi", "hello", "hey", "good morning", "good afternoon", "more information", "info", "find out", "services", "offer", "what do you"],
+    body: `Hi! Welcome to Veridian Clinic 👋
+
+We're a longevity and metabolic health clinic led by Dr Oluwatosin Taiwo. We help people understand what's really driving their weight, energy, and long-term health — then fix it.
+
+Our services include:
+• Metabolic assessments & blood panels
+• CGM (continuous glucose monitoring)
+• 12-week personalised programmes
+• Longevity-focused health optimisation
+
+Everything is done via video consultation — no waiting rooms!
+
+Is there something specific you'd like to know more about?`,
+  },
+  {
+    label: "Pricing",
+    emoji: "💷",
+    keywords: ["cost", "price", "how much", "fee", "afford", "expensive", "charge", "pay", "money", "pound", "£"],
+    body: `Great question — here's a quick overview of our fees:
+
+• Initial Discovery Consultation — £195 (45 min with Dr Taiwo)
+• Energy Screen — £195 (key hormones & metabolic markers)
+• Core Metabolic Assessment — £595 (full metabolic + hormonal review)
+• Advanced Longevity Assessment — £795 (comprehensive biomarker panel)
+• 12-Week Metabolic Reset Programme — £1,895 (includes consultations + monitoring)
+
+Full details are at veridianclinic.com/assessments
+
+Most patients start with the Discovery Consultation — it's the best way to find out which package fits your goals. Would you like to know more about any specific service?`,
+  },
+  {
+    label: "Assessment details",
+    emoji: "🩺",
+    keywords: ["assessment", "consultation", "what's included", "what does it involve", "what happen", "appointment", "session", "what do i get", "process"],
+    body: `Our Initial Discovery Consultation (£195, 45 minutes with Dr Taiwo) is the best starting point. We'll review your health history, current symptoms, and goals — then design a personalised plan.
+
+The Core Metabolic Assessment (£595) is our most popular package and includes:
+✓ Comprehensive blood panel (see below)
+✓ CGM (continuous glucose monitor) guidance
+✓ A full results review with Dr Taiwo
+✓ Personalised optimisation plan with specific targets
+
+All consultations are via secure video call — no travel required. You can book at veridianclinic.com/book
+
+What are your main health goals?`,
+  },
+  {
+    label: "Blood panel",
+    emoji: "🔬",
+    keywords: ["blood", "test", "panel", "result", "lab", "biomarker", "marker", "cholesterol", "glucose", "hormone", "thyroid", "apob", "hba1c"],
+    body: `Our blood panels go well beyond what most GPs test. The Core Metabolic Assessment panel includes:
+
+Metabolic markers:
+• ApoB & LDL particle size
+• HbA1c & fasting insulin
+• Fasting glucose
+
+Hormonal:
+• Full thyroid (TSH, Free T3, Free T4)
+• Testosterone, oestrogen, SHBG
+• DHEA, cortisol
+
+Inflammation & nutrients:
+• High-sensitivity CRP, homocysteine
+• Vitamin D, B12, ferritin, folate
+
+Results are typically ready within 5–7 days, then reviewed in detail with Dr Taiwo. Full marker list at veridianclinic.com/assessments
+
+Any specific markers you're interested in?`,
+  },
+  {
+    label: "How to book",
+    emoji: "📅",
+    keywords: ["book", "booking", "appointment", "available", "schedule", "when", "how do i", "next step", "start", "sign up", "register"],
+    body: `Booking is straightforward:
+
+1. Go to veridianclinic.com/book
+2. Select your preferred service
+3. Complete the short intake form
+4. You'll receive a confirmation with video call details
+
+Dr Taiwo is typically available Mon–Fri, 9am–6pm. We also offer early morning slots — just mention this when booking and we'll do our best.
+
+If you're not sure which service to start with, the Discovery Consultation (£195) is the right first step — Dr Taiwo will assess your situation and recommend the best path forward.
+
+Any questions before you book?`,
+  },
+  {
+    label: "CGM / glucose monitoring",
+    emoji: "📊",
+    keywords: ["cgm", "glucose", "monitor", "sensor", "libre", "dexcom", "continuous", "blood sugar", "insulin resistance", "metabolic age"],
+    body: `Continuous Glucose Monitoring (CGM) is a key part of our approach. A small sensor worn on your arm tracks your glucose 24/7 — no finger pricks.
+
+It shows us:
+• How your body responds to different foods
+• Your fasting glucose trends overnight
+• Whether you have hidden insulin resistance
+• How sleep, stress, and exercise affect your metabolism
+
+CGM is included as part of our Core Metabolic Assessment and 12-Week Programme. We guide you through setup and help you interpret what the data means for you specifically.
+
+Would you like to know more about what the data reveals?`,
+  },
+];
+
+function detectTemplates(text: string): typeof TEMPLATES {
+  if (!text) return [];
+  const lower = text.toLowerCase();
+  return TEMPLATES.filter(t => t.keywords.some(kw => lower.includes(kw)));
 }
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function pence(amount: number) { return `£${(amount / 100).toFixed(2)}`; }
 
 function timeAgo(ts: number) {
-  const seconds = Math.floor((Date.now() - ts * 1000) / 1000);
-  if (seconds < 60) return `${seconds}s ago`;
-  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
-  if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
-  return `${Math.floor(seconds / 86400)}d ago`;
+  const s = Math.floor((Date.now() - ts * 1000) / 1000);
+  if (s < 60) return `${s}s ago`;
+  if (s < 3600) return `${Math.floor(s / 60)}m ago`;
+  if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
+  return `${Math.floor(s / 86400)}d ago`;
 }
 
 function relTime(iso: string) {
@@ -75,20 +165,10 @@ function relTime(iso: string) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
 }
 
-const BAND_COLOURS: Record<string, string> = {
-  strong: "#145226",
-  drifting: "#8a5500",
-  "high-risk": "#7a1616",
-};
-
+const BAND_COLOURS: Record<string, string> = { strong: "#145226", drifting: "#8a5500", "high-risk": "#7a1616" };
 const TIER_BADGE: Record<string, string> = {
-  guide: "#1a3a5c",
-  discovery: "#2d4a1e",
-  "discovery-quiz": "#2d4a1e",
-  "metabolic-screen": "#3a2d0a",
-  baseline: "#1e2d3a",
-  "longevity-panel": "#2a1a3a",
-  programme: "#3a1a1a",
+  guide: "#1a3a5c", discovery: "#2d4a1e", "discovery-quiz": "#2d4a1e",
+  "metabolic-screen": "#3a2d0a", baseline: "#1e2d3a", "longevity-panel": "#2a1a3a", programme: "#3a1a1a",
 };
 
 // ── WhatsApp Inbox ────────────────────────────────────────────────────────────
@@ -101,236 +181,184 @@ function WhatsAppInbox() {
   const [replyText, setReplyText] = useState("");
   const [sending, setSending] = useState(false);
   const [sendStatus, setSendStatus] = useState<"" | "ok" | "err">("");
+  const [showAllTemplates, setShowAllTemplates] = useState(false);
 
   const load = useCallback(async () => {
-    setLoading(true);
-    setError("");
+    setLoading(true); setError("");
     try {
       const res = await fetch("/api/admin/whatsapp");
       if (!res.ok) throw new Error(`${res.status}`);
       const data = await res.json();
       setMessages(data.messages || []);
     } catch (e: any) {
-      setError("Failed to load messages — " + e.message);
-    } finally {
-      setLoading(false);
-    }
+      setError("Failed to load — " + e.message);
+    } finally { setLoading(false); }
   }, []);
 
   useEffect(() => { load(); }, [load]);
 
+  function selectMessage(msg: WAMessage) {
+    setSelected(msg);
+    setReplyText("");
+    setSendStatus("");
+    setShowAllTemplates(false);
+  }
+
+  function applyTemplate(body: string) {
+    setReplyText(body);
+    setShowAllTemplates(false);
+  }
+
   async function sendReply() {
     if (!selected || !replyText.trim()) return;
-    setSending(true);
-    setSendStatus("");
+    setSending(true); setSendStatus("");
     try {
       const res = await fetch("/api/admin/whatsapp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: selected.from,
-          text: replyText.trim(),
-          replyToMsgId: selected.id,
-          markId: selected.id,
-        }),
+        body: JSON.stringify({ to: selected.from, text: replyText.trim(), replyToMsgId: selected.id, markId: selected.id }),
       });
       if (!res.ok) throw new Error("send failed");
       setSendStatus("ok");
       setReplyText("");
-      // Optimistically mark replied
       setMessages(prev => prev.map(m => m.id === selected.id ? { ...m, replied: true } : m));
       setSelected(prev => prev ? { ...prev, replied: true } : null);
-    } catch {
-      setSendStatus("err");
-    } finally {
-      setSending(false);
-    }
+    } catch { setSendStatus("err"); }
+    finally { setSending(false); }
   }
 
-  const card = (style?: React.CSSProperties) => ({
-    background: "#1a1916",
-    border: "1px solid #2a2820",
-    borderRadius: "10px",
-    padding: "22px",
-    ...style,
-  });
+  const suggested = selected?.text ? detectTemplates(selected.text) : [];
+  const card = (extra?: React.CSSProperties) => ({ background: "#1a1916", border: "1px solid #2a2820", borderRadius: "10px", padding: "22px", ...extra });
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-      {/* Message list */}
-      <div style={card()}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "18px" }}>
-          <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: 0, letterSpacing: "0.04em" }}>
-            WhatsApp Messages
+    <div style={{ display: "grid", gridTemplateColumns: "360px 1fr", gap: "16px" }}>
+      {/* ── Message list ── */}
+      <div style={card({ padding: "18px" })}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
+          <h2 style={{ color: "#f6f1e8", fontSize: "13px", fontWeight: "600", margin: 0, letterSpacing: "0.04em", textTransform: "uppercase" }}>
+            Messages <span style={{ color: "#5a534a", fontWeight: "400" }}>({messages.length})</span>
           </h2>
-          <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-            <span style={{ color: "#5a534a", fontSize: "12px" }}>{messages.length} total</span>
-            <button
-              onClick={load}
-              style={{ background: "#2c2a26", border: "1px solid #3a3830", color: "#c8a84b", padding: "5px 12px", borderRadius: "6px", fontSize: "12px", cursor: "pointer" }}
-            >
-              Refresh
-            </button>
-          </div>
+          <button onClick={load} style={{ background: "#2c2a26", border: "1px solid #3a3830", color: "#c8a84b", padding: "4px 10px", borderRadius: "5px", fontSize: "11px", cursor: "pointer" }}>
+            Refresh
+          </button>
         </div>
 
-        {error && (
-          <p style={{ color: "#c97b7b", fontSize: "13px", margin: "0 0 12px" }}>{error}</p>
-        )}
-
-        {loading && (
-          <p style={{ color: "#5a534a", fontSize: "13px", textAlign: "center", margin: "40px 0" }}>Loading…</p>
-        )}
-
+        {error && <p style={{ color: "#c97b7b", fontSize: "12px", margin: "0 0 10px" }}>{error}</p>}
+        {loading && <p style={{ color: "#5a534a", fontSize: "12px", textAlign: "center", margin: "40px 0" }}>Loading…</p>}
         {!loading && messages.length === 0 && (
-          <p style={{ color: "#3a3830", fontSize: "13px", textAlign: "center", margin: "40px 0" }}>
-            No messages yet. They'll appear here when patients WhatsApp you.
+          <p style={{ color: "#3a3830", fontSize: "12px", textAlign: "center", margin: "40px 8px", lineHeight: 1.7 }}>
+            No messages yet.<br />They appear here when patients WhatsApp you.
           </p>
         )}
 
-        <div style={{ maxHeight: "520px", overflowY: "auto" }}>
+        <div style={{ maxHeight: "calc(100vh - 220px)", overflowY: "auto" }}>
           {messages.map(msg => (
-            <div
-              key={msg.id}
-              onClick={() => { setSelected(msg); setReplyText(""); setSendStatus(""); }}
-              style={{
-                padding: "12px 14px",
-                borderRadius: "8px",
-                marginBottom: "6px",
-                cursor: "pointer",
-                background: selected?.id === msg.id ? "#25251f" : "transparent",
-                border: selected?.id === msg.id ? "1px solid #3a3830" : "1px solid transparent",
-                transition: "background 0.15s",
-              }}
-            >
+            <div key={msg.id} onClick={() => selectMessage(msg)} style={{
+              padding: "10px 12px", borderRadius: "8px", marginBottom: "4px", cursor: "pointer",
+              background: selected?.id === msg.id ? "#25251f" : "transparent",
+              border: selected?.id === msg.id ? "1px solid #3a3830" : "1px solid transparent",
+            }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "3px" }}>
-                    <span style={{ color: "#f6f1e8", fontSize: "13px", fontWeight: "600" }}>{msg.name}</span>
-                    {msg.replied && (
-                      <span style={{ background: "#14522630", color: "#4caf82", fontSize: "10px", padding: "1px 6px", borderRadius: "4px", border: "1px solid #14522650" }}>
-                        replied
-                      </span>
-                    )}
-                    {!msg.replied && (
-                      <span style={{ background: "#3a82f720", color: "#3a82f7", fontSize: "10px", padding: "1px 6px", borderRadius: "4px", border: "1px solid #3a82f740" }}>
-                        new
-                      </span>
-                    )}
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "2px" }}>
+                    <span style={{ color: "#f6f1e8", fontSize: "12px", fontWeight: "600" }}>{msg.name}</span>
+                    {!msg.replied && <span style={{ background: "#3a82f720", color: "#3a82f7", fontSize: "9px", padding: "1px 5px", borderRadius: "3px", border: "1px solid #3a82f740" }}>NEW</span>}
+                    {msg.replied && <span style={{ background: "#14522620", color: "#4caf82", fontSize: "9px", padding: "1px 5px", borderRadius: "3px", border: "1px solid #14522640" }}>REPLIED</span>}
                   </div>
-                  <p style={{ margin: 0, color: "#5a534a", fontSize: "11px", marginBottom: "3px" }}>
-                    +{msg.from}
-                  </p>
-                  <p style={{ margin: 0, color: "#8a8278", fontSize: "12px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  <p style={{ margin: 0, color: "#8a8278", fontSize: "11px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                     {msg.type !== "text" ? `[${msg.type}]` : (msg.text || "—")}
                   </p>
                 </div>
-                <span style={{ color: "#3a3830", fontSize: "11px", marginLeft: "12px", flexShrink: 0 }}>
-                  {relTime(msg.timestamp)}
-                </span>
+                <span style={{ color: "#3a3830", fontSize: "10px", marginLeft: "8px", flexShrink: 0 }}>{relTime(msg.timestamp)}</span>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Reply panel */}
+      {/* ── Reply panel ── */}
       <div style={card()}>
         {!selected ? (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%", minHeight: "300px" }}>
-            <p style={{ color: "#3a3830", fontSize: "13px", textAlign: "center" }}>
-              Select a message to view and reply
-            </p>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%", minHeight: "400px" }}>
+            <p style={{ color: "#3a3830", fontSize: "13px", textAlign: "center" }}>Select a message to view and reply</p>
           </div>
         ) : (
-          <>
-            <div style={{ marginBottom: "18px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                <div>
-                  <h3 style={{ color: "#f6f1e8", fontSize: "15px", fontWeight: "600", margin: "0 0 4px" }}>
-                    {selected.name}
-                  </h3>
-                  <p style={{ color: "#5a534a", fontSize: "12px", margin: "0 0 2px" }}>+{selected.from}</p>
-                  <p style={{ color: "#3a3830", fontSize: "11px", margin: 0 }}>
-                    {new Date(selected.timestamp).toLocaleString("en-GB", {
-                      day: "numeric", month: "short", year: "numeric",
-                      hour: "2-digit", minute: "2-digit",
-                    })}
-                  </p>
-                </div>
-                <a
-                  href={`https://wa.me/${selected.from}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ background: "#25D36620", color: "#25D366", border: "1px solid #25D36640", padding: "6px 12px", borderRadius: "6px", fontSize: "12px", textDecoration: "none" }}
-                >
-                  Open in WA ↗
-                </a>
+          <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+            {/* Header */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
+              <div>
+                <h3 style={{ color: "#f6f1e8", fontSize: "15px", fontWeight: "600", margin: "0 0 3px" }}>{selected.name}</h3>
+                <p style={{ color: "#5a534a", fontSize: "12px", margin: "0 0 2px" }}>+{selected.from}</p>
+                <p style={{ color: "#3a3830", fontSize: "11px", margin: 0 }}>
+                  {new Date(selected.timestamp).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                </p>
               </div>
+              <a href={`https://wa.me/${selected.from}`} target="_blank" rel="noopener noreferrer"
+                style={{ background: "#25D36618", color: "#25D366", border: "1px solid #25D36630", padding: "6px 12px", borderRadius: "6px", fontSize: "12px", textDecoration: "none" }}>
+                Open in WA ↗
+              </a>
             </div>
 
             {/* Message bubble */}
-            <div style={{ background: "#111009", borderRadius: "10px", padding: "14px 16px", marginBottom: "20px", border: "1px solid #2a2820" }}>
+            <div style={{ background: "#111009", borderRadius: "10px", padding: "14px 16px", marginBottom: "16px", border: "1px solid #2a2820" }}>
               {selected.type !== "text" ? (
-                <p style={{ color: "#8a8278", fontSize: "13px", margin: 0, fontStyle: "italic" }}>
-                  [{selected.type} message — view in WhatsApp]
-                </p>
+                <p style={{ color: "#8a8278", fontSize: "13px", margin: 0, fontStyle: "italic" }}>[{selected.type} — view in WhatsApp]</p>
               ) : (
-                <p style={{ color: "#ede8df", fontSize: "14px", margin: 0, lineHeight: 1.6 }}>
-                  {selected.text || "—"}
-                </p>
+                <p style={{ color: "#ede8df", fontSize: "14px", margin: 0, lineHeight: 1.65 }}>{selected.text || "—"}</p>
               )}
             </div>
 
-            {/* Reply form */}
-            <div>
-              <label style={{ color: "#8a8278", fontSize: "11px", display: "block", marginBottom: "8px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-                Reply
-              </label>
-              <textarea
-                value={replyText}
-                onChange={e => setReplyText(e.target.value)}
-                rows={5}
-                placeholder="Type your reply…"
-                style={{
-                  width: "100%",
-                  background: "#111009",
-                  border: "1px solid #3a3830",
-                  borderRadius: "8px",
-                  color: "#f6f1e8",
-                  fontSize: "13px",
-                  fontFamily: "Georgia, serif",
-                  padding: "12px 14px",
-                  resize: "vertical",
-                  boxSizing: "border-box",
-                  outline: "none",
-                  lineHeight: 1.6,
-                }}
+            {/* Suggested replies */}
+            {suggested.length > 0 && (
+              <div style={{ marginBottom: "12px" }}>
+                <p style={{ color: "#5a534a", fontSize: "10px", margin: "0 0 8px", textTransform: "uppercase", letterSpacing: "0.06em" }}>Suggested replies</p>
+                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                  {suggested.map(t => (
+                    <button key={t.label} onClick={() => applyTemplate(t.body)}
+                      style={{ background: "#2c2a26", border: "1px solid #3a3830", color: "#c8a84b", padding: "5px 12px", borderRadius: "6px", fontSize: "12px", cursor: "pointer", display: "flex", alignItems: "center", gap: "5px" }}>
+                      {t.emoji} {t.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* All templates toggle */}
+            <div style={{ marginBottom: "12px" }}>
+              <button onClick={() => setShowAllTemplates(v => !v)}
+                style={{ background: "none", border: "none", color: "#5a534a", fontSize: "11px", cursor: "pointer", padding: 0, textDecoration: "underline" }}>
+                {showAllTemplates ? "Hide templates" : "All templates ▾"}
+              </button>
+              {showAllTemplates && (
+                <div style={{ marginTop: "8px", display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                  {TEMPLATES.map(t => (
+                    <button key={t.label} onClick={() => applyTemplate(t.body)}
+                      style={{ background: "#1a1916", border: "1px solid #2a2820", color: "#8a8278", padding: "5px 12px", borderRadius: "6px", fontSize: "12px", cursor: "pointer" }}>
+                      {t.emoji} {t.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Reply textarea */}
+            <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+              <label style={{ color: "#8a8278", fontSize: "10px", display: "block", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.05em" }}>Reply</label>
+              <textarea value={replyText} onChange={e => setReplyText(e.target.value)} rows={6}
+                placeholder="Type or select a template above…"
+                style={{ flex: 1, width: "100%", background: "#111009", border: "1px solid #3a3830", borderRadius: "8px", color: "#f6f1e8", fontSize: "13px", fontFamily: "Georgia, serif", padding: "12px 14px", resize: "vertical", boxSizing: "border-box", outline: "none", lineHeight: 1.6 }}
               />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
-                <span style={{ fontSize: "11px", color: sendStatus === "ok" ? "#4caf82" : sendStatus === "err" ? "#c97b7b" : "transparent" }}>
-                  {sendStatus === "ok" ? "✓ Sent via WhatsApp" : sendStatus === "err" ? "✗ Send failed — check Vercel logs" : "·"}
+                <span style={{ fontSize: "11px", color: sendStatus === "ok" ? "#4caf82" : sendStatus === "err" ? "#c97b7b" : "#3a3830" }}>
+                  {sendStatus === "ok" ? "✓ Sent via WhatsApp" : sendStatus === "err" ? "✗ Send failed — check logs" : replyText.length > 0 ? `${replyText.length} chars` : "·"}
                 </span>
-                <button
-                  onClick={sendReply}
-                  disabled={sending || !replyText.trim()}
-                  style={{
-                    background: sending || !replyText.trim() ? "#2a2820" : "#25D366",
-                    color: sending || !replyText.trim() ? "#5a534a" : "#fff",
-                    border: "none",
-                    padding: "9px 20px",
-                    borderRadius: "7px",
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    cursor: sending || !replyText.trim() ? "not-allowed" : "pointer",
-                    transition: "background 0.2s",
-                  }}
-                >
+                <button onClick={sendReply} disabled={sending || !replyText.trim()}
+                  style={{ background: sending || !replyText.trim() ? "#2a2820" : "#25D366", color: sending || !replyText.trim() ? "#5a534a" : "#fff", border: "none", padding: "9px 22px", borderRadius: "7px", fontSize: "13px", fontWeight: "600", cursor: sending || !replyText.trim() ? "not-allowed" : "pointer" }}>
                   {sending ? "Sending…" : "Send via WhatsApp"}
                 </button>
               </div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
@@ -340,36 +368,25 @@ function WhatsAppInbox() {
 // ── Main dashboard ────────────────────────────────────────────────────────────
 
 export default function AdminDashboardClient({
-  stats,
-  error,
+  stats, error, initialTab = "overview",
 }: {
-  stats: Stats | null;
-  error: string;
+  stats: Stats | null; error: string; initialTab?: "overview" | "whatsapp";
 }) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp">(initialTab);
 
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
     router.push("/admin/login");
   }
 
-  function refresh() {
-    router.refresh();
-  }
-
-  const tabStyle = (active: boolean) => ({
-    background: "none",
-    border: "none",
+  const tabStyle = (active: boolean): React.CSSProperties => ({
+    background: "none", border: "none",
     borderBottom: active ? "2px solid #c8a84b" : "2px solid transparent",
     color: active ? "#c8a84b" : "#5a534a",
-    padding: "0 2px",
-    paddingBottom: "4px",
-    fontSize: "13px",
-    fontWeight: active ? "600" : "400",
-    cursor: "pointer",
-    fontFamily: "Georgia, serif",
-    letterSpacing: "0.03em",
+    padding: "0 2px", paddingBottom: "4px",
+    fontSize: "13px", fontWeight: active ? "600" : "400",
+    cursor: "pointer", fontFamily: "Georgia, serif", letterSpacing: "0.03em",
   });
 
   return (
@@ -379,18 +396,14 @@ export default function AdminDashboardClient({
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ color: "#c8a84b", fontSize: "18px" }}>⚕</span>
           <span style={{ color: "#f6f1e8", fontWeight: "600", fontSize: "15px" }}>Veridian Admin</span>
-          <span style={{ background: "#c8a84b20", color: "#c8a84b", fontSize: "11px", padding: "2px 8px", borderRadius: "4px", border: "1px solid #c8a84b30", letterSpacing: "0.05em" }}>
-            CLINICAL OPS
-          </span>
+          <span style={{ background: "#c8a84b20", color: "#c8a84b", fontSize: "11px", padding: "2px 8px", borderRadius: "4px", border: "1px solid #c8a84b30", letterSpacing: "0.05em" }}>CLINICAL OPS</span>
         </div>
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           {stats && activeTab === "overview" && (
-            <span style={{ color: "#5a534a", fontSize: "12px" }}>
-              Updated {new Date(stats.generatedAt).toLocaleTimeString("en-GB")}
-            </span>
+            <span style={{ color: "#5a534a", fontSize: "12px" }}>Updated {new Date(stats.generatedAt).toLocaleTimeString("en-GB")}</span>
           )}
           {activeTab === "overview" && (
-            <button onClick={refresh} style={{ background: "#2c2a26", border: "1px solid #3a3830", color: "#c8a84b", padding: "7px 14px", borderRadius: "6px", fontSize: "13px", cursor: "pointer" }}>
+            <button onClick={() => router.refresh()} style={{ background: "#2c2a26", border: "1px solid #3a3830", color: "#c8a84b", padding: "7px 14px", borderRadius: "6px", fontSize: "13px", cursor: "pointer" }}>
               Refresh
             </button>
           )}
@@ -402,31 +415,19 @@ export default function AdminDashboardClient({
 
       {/* Tab bar */}
       <div style={{ background: "#1a1916", borderBottom: "1px solid #2a2820", padding: "0 24px", display: "flex", gap: "24px", alignItems: "center", height: "44px" }}>
-        <button style={tabStyle(activeTab === "overview")} onClick={() => setActiveTab("overview")}>
-          Overview
-        </button>
-        <button style={tabStyle(activeTab === "whatsapp")} onClick={() => setActiveTab("whatsapp")}>
-          📱 WhatsApp
-        </button>
+        <button style={tabStyle(activeTab === "overview")} onClick={() => setActiveTab("overview")}>Overview</button>
+        <button style={tabStyle(activeTab === "whatsapp")} onClick={() => setActiveTab("whatsapp")}>📱 WhatsApp</button>
       </div>
 
-      <div style={{ padding: "28px 24px", maxWidth: "1280px", margin: "0 auto" }}>
-        {/* Overview tab */}
+      <div style={{ padding: "28px 24px", maxWidth: "1400px", margin: "0 auto" }}>
+
+        {/* ── Overview tab ── */}
         {activeTab === "overview" && (
           <>
-            {error && (
-              <div style={{ background: "#7a161620", border: "1px solid #7a1616", color: "#c97b7b", padding: "14px 18px", borderRadius: "8px", marginBottom: "24px" }}>
-                {error}
-              </div>
-            )}
-
-            {!stats && !error && (
-              <p style={{ color: "#5a534a", textAlign: "center", marginTop: "80px" }}>Loading...</p>
-            )}
-
+            {error && <div style={{ background: "#7a161620", border: "1px solid #7a1616", color: "#c97b7b", padding: "14px 18px", borderRadius: "8px", marginBottom: "24px" }}>{error}</div>}
+            {!stats && !error && <p style={{ color: "#5a534a", textAlign: "center", marginTop: "80px" }}>Loading...</p>}
             {stats && (
               <>
-                {/* Revenue cards */}
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", marginBottom: "28px" }}>
                   {[
                     { label: "All-time revenue", value: pence(stats.revenue.allTime), sub: "from Stripe" },
@@ -444,13 +445,9 @@ export default function AdminDashboardClient({
                   ))}
                 </div>
 
-                {/* Two column: funnel + revenue by tier */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "28px" }}>
-                  {/* Patient flow funnel */}
                   <div style={{ background: "#1a1916", border: "1px solid #2a2820", borderRadius: "10px", padding: "22px" }}>
-                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>
-                      Patient flow funnel
-                    </h2>
+                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>Patient flow funnel</h2>
                     {[
                       { stage: "Quiz completions", count: stats.funnel.quizCompletions, colour: "#3a82f7" },
                       { stage: "Guide purchases (£19.99)", count: stats.funnel.guidePurchases, colour: "#c8a84b" },
@@ -467,42 +464,26 @@ export default function AdminDashboardClient({
                       </div>
                     ))}
                   </div>
-
-                  {/* Revenue by tier */}
                   <div style={{ background: "#1a1916", border: "1px solid #2a2820", borderRadius: "10px", padding: "22px" }}>
-                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>
-                      Revenue by product
-                    </h2>
-                    {Object.keys(stats.revenue.byTier).length === 0 && (
-                      <p style={{ color: "#3a3830", fontSize: "13px" }}>No paid sessions yet.</p>
-                    )}
-                    {Object.entries(stats.revenue.byTier)
-                      .sort((a, b) => b[1].amount - a[1].amount)
-                      .map(([tier, data]) => (
-                        <div key={tier} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: "1px solid #2a2820" }}>
-                          <div>
-                            <span style={{ background: TIER_BADGE[tier] || "#2a2820", color: "#c8a84b", fontSize: "10px", padding: "2px 7px", borderRadius: "4px", marginRight: "8px", letterSpacing: "0.05em" }}>
-                              ×{data.count}
-                            </span>
-                            <span style={{ color: "#ede8df", fontSize: "13px" }}>{data.name}</span>
-                          </div>
-                          <span style={{ color: "#c8a84b", fontWeight: "700", fontSize: "15px" }}>{pence(data.amount)}</span>
+                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>Revenue by product</h2>
+                    {Object.keys(stats.revenue.byTier).length === 0 && <p style={{ color: "#3a3830", fontSize: "13px" }}>No paid sessions yet.</p>}
+                    {Object.entries(stats.revenue.byTier).sort((a, b) => b[1].amount - a[1].amount).map(([tier, data]) => (
+                      <div key={tier} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: "1px solid #2a2820" }}>
+                        <div>
+                          <span style={{ background: TIER_BADGE[tier] || "#2a2820", color: "#c8a84b", fontSize: "10px", padding: "2px 7px", borderRadius: "4px", marginRight: "8px", letterSpacing: "0.05em" }}>×{data.count}</span>
+                          <span style={{ color: "#ede8df", fontSize: "13px" }}>{data.name}</span>
                         </div>
-                      ))}
+                        <span style={{ color: "#c8a84b", fontWeight: "700", fontSize: "15px" }}>{pence(data.amount)}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Two column: recent payments + leads */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "28px" }}>
-                  {/* Recent payments */}
                   <div style={{ background: "#1a1916", border: "1px solid #2a2820", borderRadius: "10px", padding: "22px" }}>
-                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>
-                      Recent payments
-                    </h2>
-                    {stats.recentPayments.length === 0 && (
-                      <p style={{ color: "#3a3830", fontSize: "13px" }}>No payments yet.</p>
-                    )}
-                    {stats.recentPayments.map((p) => (
+                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>Recent payments</h2>
+                    {stats.recentPayments.length === 0 && <p style={{ color: "#3a3830", fontSize: "13px" }}>No payments yet.</p>}
+                    {stats.recentPayments.map(p => (
                       <div key={p.id} style={{ padding: "10px 0", borderBottom: "1px solid #2a2820" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                           <div>
@@ -517,12 +498,8 @@ export default function AdminDashboardClient({
                       </div>
                     ))}
                   </div>
-
-                  {/* Recent leads */}
                   <div style={{ background: "#1a1916", border: "1px solid #2a2820", borderRadius: "10px", padding: "22px" }}>
-                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>
-                      Recent leads
-                    </h2>
+                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>Recent leads</h2>
                     <div style={{ display: "flex", gap: "10px", marginBottom: "16px", flexWrap: "wrap" }}>
                       {Object.entries(stats.leads.byBand).map(([band, count]) => (
                         <span key={band} style={{ background: `${BAND_COLOURS[band] || "#2a2820"}30`, border: `1px solid ${BAND_COLOURS[band] || "#3a3830"}60`, color: BAND_COLOURS[band] || "#8a8278", fontSize: "12px", padding: "4px 10px", borderRadius: "6px" }}>
@@ -530,49 +507,34 @@ export default function AdminDashboardClient({
                         </span>
                       ))}
                     </div>
-                    {stats.leads.recent.length === 0 && (
-                      <p style={{ color: "#3a3830", fontSize: "13px" }}>No leads captured yet.</p>
-                    )}
+                    {stats.leads.recent.length === 0 && <p style={{ color: "#3a3830", fontSize: "13px" }}>No leads yet.</p>}
                     {stats.leads.recent.map((lead, i) => (
                       <div key={i} style={{ padding: "9px 0", borderBottom: "1px solid #2a2820" }}>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                           <div>
-                            <p style={{ margin: "0 0 2px", color: "#ede8df", fontSize: "13px" }}>
-                              {lead.firstName ? `${lead.firstName} — ` : ""}{lead.email}
-                            </p>
+                            <p style={{ margin: "0 0 2px", color: "#ede8df", fontSize: "13px" }}>{lead.firstName ? `${lead.firstName} — ` : ""}{lead.email}</p>
                             <p style={{ margin: 0, color: "#5a534a", fontSize: "11px" }}>
                               {lead.source}
-                              {lead.resultBand && (
-                                <span style={{ marginLeft: "6px", color: BAND_COLOURS[lead.resultBand] || "#8a8278" }}>
-                                  • {lead.resultBand}{lead.metabolicAge ? ` (age ${lead.metabolicAge})` : ""}
-                                </span>
-                              )}
+                              {lead.resultBand && <span style={{ marginLeft: "6px", color: BAND_COLOURS[lead.resultBand] || "#8a8278" }}>• {lead.resultBand}{lead.metabolicAge ? ` (age ${lead.metabolicAge})` : ""}</span>}
                             </p>
                           </div>
-                          <span style={{ color: "#3a3830", fontSize: "11px" }}>
-                            {new Date(lead.timestamp).toLocaleDateString("en-GB")}
-                          </span>
+                          <span style={{ color: "#3a3830", fontSize: "11px" }}>{new Date(lead.timestamp).toLocaleDateString("en-GB")}</span>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Source breakdown */}
                 {Object.keys(stats.leads.bySource).length > 0 && (
                   <div style={{ background: "#1a1916", border: "1px solid #2a2820", borderRadius: "10px", padding: "22px" }}>
-                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 16px", letterSpacing: "0.04em" }}>
-                      Lead sources
-                    </h2>
+                    <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 16px", letterSpacing: "0.04em" }}>Lead sources</h2>
                     <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                      {Object.entries(stats.leads.bySource)
-                        .sort((a, b) => b[1] - a[1])
-                        .map(([source, count]) => (
-                          <div key={source} style={{ background: "#2a2820", border: "1px solid #3a3830", borderRadius: "8px", padding: "12px 18px", textAlign: "center" }}>
-                            <p style={{ margin: "0 0 4px", color: "#c8a84b", fontSize: "22px", fontWeight: "700" }}>{count}</p>
-                            <p style={{ margin: 0, color: "#8a8278", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.06em" }}>{source}</p>
-                          </div>
-                        ))}
+                      {Object.entries(stats.leads.bySource).sort((a, b) => b[1] - a[1]).map(([source, count]) => (
+                        <div key={source} style={{ background: "#2a2820", border: "1px solid #3a3830", borderRadius: "8px", padding: "12px 18px", textAlign: "center" }}>
+                          <p style={{ margin: "0 0 4px", color: "#c8a84b", fontSize: "22px", fontWeight: "700" }}>{count}</p>
+                          <p style={{ margin: 0, color: "#8a8278", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.06em" }}>{source}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -581,7 +543,7 @@ export default function AdminDashboardClient({
           </>
         )}
 
-        {/* WhatsApp tab */}
+        {/* ── WhatsApp tab ── */}
         {activeTab === "whatsapp" && <WhatsAppInbox />}
       </div>
     </div>

@@ -5,11 +5,18 @@ import AdminDashboardClient from "./AdminDashboardClient";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-export default async function AdminPage() {
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string>>;
+}) {
   const cookieStore = await cookies();
   const session = cookieStore.get("__va")?.value;
 
   if (!session) redirect("/admin/login");
+
+  const sp = await searchParams;
+  const initialTab = sp?.tab === "whatsapp" ? "whatsapp" : "overview";
 
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
@@ -32,5 +39,5 @@ export default async function AdminPage() {
     error = "Connection error loading stats";
   }
 
-  return <AdminDashboardClient stats={stats} error={error} />;
+  return <AdminDashboardClient stats={stats} error={error} initialTab={initialTab} />;
 }
