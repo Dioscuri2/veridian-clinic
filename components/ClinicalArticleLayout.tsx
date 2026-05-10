@@ -40,6 +40,9 @@ export default function ClinicalArticleLayout({
             </p>
             <article className="card" style={{ display: "grid", gap: 20 }}>
               {children}
+              <div style={{ fontSize: ".78rem", color: "var(--sl3)", borderTop: "1px solid rgba(44,42,38,.08)", paddingTop: 14, lineHeight: 1.75 }}>
+                <strong style={{ color: "var(--sl2)" }}>Medical disclaimer:</strong> This article is for informational purposes only and does not constitute medical advice or a clinical diagnosis. Always consult a qualified healthcare professional before making any changes to your health management. Veridian Clinic clinical services are delivered under the regulatory framework of ThanksDoc (CQC reg. 1-18826835219).
+              </div>
               {ctas.length > 0 && (
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>
                   {ctas.map((cta) => (

@@ -85,13 +85,20 @@ export default function TermsPage() {
                 <p>Veridian Clinic is <strong>not an emergency service</strong>. If you are experiencing a medical emergency — including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or severe allergic reactions — call <strong>999 immediately</strong> or attend your nearest A&amp;E. If unsure, call NHS 111.</p>
               </Section>
 
-              <Section title="4. Purchases and Payments">
+              <Section title="4. Purchases, Payments, and Right to Cancel">
                 <p>All prices are displayed in GBP and are inclusive of VAT where applicable. Payments are processed securely via Stripe. Payment descriptors on bank statements may appear as &quot;Olympus Premium Health&quot;.</p>
-                <p style={{ marginTop: 10 }}>Digital products (such as the Metabolic Reset Guide) are delivered electronically and are non-refundable once downloaded. If you experience any issue with delivery, please contact us at hello@veridianclinic.com within 14 days.</p>
+
+                <p style={{ marginTop: 14, fontWeight: 600, color: "var(--sl)" }}>Your right to cancel — Consumer Contracts Regulations 2013</p>
+                <p style={{ marginTop: 6 }}>Under the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, you have the right to cancel orders for services within <strong>14 calendar days</strong> of booking, without giving a reason. To cancel, email us at <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a> within 14 days of your booking confirmation. A full refund will be issued within 14 days of receiving your cancellation.</p>
+                <p style={{ marginTop: 10 }}>If you request that we begin providing the service before the 14-day cancellation period expires — for example by confirming your appointment and requesting an earlier date — you expressly consent to early commencement. If the service is fully performed within the cancellation period following such a request, you lose your right to cancel in respect of that service.</p>
+
+                <p style={{ marginTop: 14, fontWeight: 600, color: "var(--sl)" }}>Digital content (Metabolic Reset Guide — £19.99)</p>
+                <p style={{ marginTop: 6 }}>The Metabolic Reset Guide is digital content supplied by electronic download. Under Regulation 37 of the Consumer Contracts Regulations 2013, you acknowledge that: (a) the digital content will be supplied immediately upon payment; and (b) by accessing or downloading the content, you lose your 14-day cancellation right in respect of that digital purchase. If your download link is not received within 24 hours of payment, contact <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a> and we will resend it or issue a full refund.</p>
               </Section>
 
               <Section title="5. Clinical Services and Cancellations">
                 <p>Consultations cancelled with less than 24 hours notice may be subject to a cancellation fee of up to 50% of the session cost. We reserve the right to reschedule appointments where necessary and will provide at least 24 hours notice where possible.</p>
+                <p style={{ marginTop: 10 }}>The 14-day Consumer Contracts right to cancel (Section 4 above) applies to clinical service bookings. Cancellation requests received after 14 days from booking, or after the service has been performed, are not eligible for a full refund under the Regulations, though we will review requests sympathetically on a case-by-case basis.</p>
               </Section>
 
               <Section title="6. Intellectual Property">

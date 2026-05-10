@@ -95,7 +95,7 @@ export default function Footer() {
               <a href="https://thanksdoc.co.uk" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(246,241,232,.85)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.35)" }}>
                 ThanksDoc
               </a>
-              {" "}· CQC regulated clinical services · www.thanksdoc.co.uk
+              {" "}· CQC regulated clinical services (reg. 1-18826835219) · www.thanksdoc.co.uk
             </p>
             <p style={{ margin: "0 0 10px" }}>
               Veridian Clinic is a trading name of Olympus Premium Health Ltd.
