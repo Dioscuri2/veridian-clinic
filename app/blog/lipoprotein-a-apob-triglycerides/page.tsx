@@ -196,31 +196,130 @@ export default function LpaApoBTriglyceridesPage() {
         <p style={paragraph}>
           On the NHS, none of these markers are routinely available. Lp(a) is offered only in limited specialist settings (primarily familial hypercholesterolaemia workup). ApoB is not offered as a standard NHS test. Private advanced lipid testing in the UK ranges from around £30–60 for a single Lp(a) measurement to comprehensive panels at £169–795 depending on the scope of additional markers included.
         </p>
+        <div style={{ ...callout, borderColor: "var(--go)", background: "rgba(200,168,75,.06)" }}>
+          <p style={{ fontSize: ".95rem", color: "var(--sl)", lineHeight: 1.85 }}>
+            <strong style={{ color: "var(--fo)", display: "block", marginBottom: 8 }}>What to do with the results depends on which markers are elevated — and they are not treated the same way.</strong>
+            Lp(a) — largely genetically fixed — becomes a multiplier that demands more aggressive management of everything <em>else</em> you can change: drive LDL-C and non-HDL-C lower than you otherwise would, tighten blood pressure to below 120/80 mmHg, optimise glucose and insulin resistance, and treat smoking as non-negotiable. An elevated Lp(a) justifies earlier coronary artery calcium scoring and, where appropriate, consideration of PCSK9 inhibitors — not because they are specific to Lp(a), but because they reduce overall atherogenic particle burden while achieving ~25% Lp(a) reduction as a secondary effect. ApoB responds well to dietary fat quality changes, body composition improvement, soluble fibre, sustained exercise, and where indicated statins, ezetimibe, or PCSK9 inhibitors. Triglycerides are the most immediately lifestyle-responsive of the three — and the most important to move first, because normalising them simultaneously reduces ApoB through the VLDL-to-small-dense-LDL cascade.
+          </p>
+        </div>
+
+        <h2 className="cg" style={sectionHeading}>The clinical approach: one size does not fit all three markers</h2>
         <p style={paragraph}>
-          The question of what to do with results depends significantly on which markers are abnormal. Lp(a) — largely immutable — becomes a driver of more aggressive management of the markers you <em>can</em> change. An elevated Lp(a) is a reason to be more aggressive about LDL-C reduction, blood pressure control, and to consider earlier coronary calcium scoring. ApoB elevation responds well to dietary changes, weight loss, statins, ezetimibe, and PCSK9 inhibitors. Elevated triglycerides and TRL burden respond most powerfully to carbohydrate modification, alcohol reduction, sustained weight loss, and high-dose omega-3 EPA supplementation — with pharmacological options including fibrates and, for appropriate patients, GLP-1 receptor agonists, which can reduce triglycerides by 20–40% in the context of meaningful weight loss.
+          The biggest clinical mistake when managing this triple pattern is treating Lp(a), ApoB, and triglycerides identically. They have fundamentally different degrees of modifiability through lifestyle, and misunderstanding this leads either to unrealistic expectations for patients with genetic Lp(a) elevation, or to under-treatment of patients whose ApoB and triglycerides are actually highly responsive to well-targeted intervention. The honest clinical picture, marker by marker, is as follows.
+        </p>
+
+        <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Lp(a): the genetically stubborn one — change everything around it</h2>
+        <p style={paragraph}>
+          With Lp(a) 70–90% genetically determined, lifestyle has a hard ceiling on what it can achieve. A low-carbohydrate dietary pattern may reduce Lp(a) by approximately 10–15%. A whole-food plant-based diet following the Portfolio Diet model — nuts, legumes, oats, berries, twelve or more servings of fruit and vegetables daily — has shown approximately 16% reduction within four weeks in some studies. Amla (Indian gooseberry) has been reported in some trials to reduce Lp(a) by around 20%, though industry funding in this area warrants caution about the evidence quality. Exercise and general lifestyle changes have no reliable direct effect on Lp(a) itself.
+        </p>
+        <p style={paragraph}>
+          Lipoprotein apheresis — a process analogous to dialysis, applied to blood lipoproteins — can reduce Lp(a) by 60–75% per session and 25–40% with sustained bi-weekly treatment. It is currently the only method that substantially lowers Lp(a), but it is costly, has limited NHS availability (primarily for familial hypercholesterolaemia with LDL above 13 mmol/L), and is approved by the FDA and EMA only for Lp(a) above 60 mg/dL in the context of established cardiovascular disease.
         </p>
 
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>A note on statins and Lp(a):</strong> statins do not lower Lp(a). Many patients assume that being on a statin covers all their lipid-related cardiovascular risk. For the Lp(a) pathway specifically, this is not the case — and statins may modestly raise Lp(a) in some individuals. This is one of the most important pieces of clinical information that patients with elevated Lp(a) are rarely given.
+            <strong style={{ color: "var(--fo)" }}>A note on statins and Lp(a):</strong> statins do not lower Lp(a) — and may modestly raise it in some individuals. Many patients assume that being on a statin covers all their lipid-related cardiovascular risk. For the Lp(a) pathway specifically, this is not the case. This is one of the most important pieces of information that patients with elevated Lp(a) are rarely given by their GP.
           </p>
         </div>
 
         <p style={paragraph}>
-          The emerging pharmacological pipeline for Lp(a) — particularly pelacarsen, olpasiran, and muvalaplin — represents the most anticipated development in lipid medicine since PCSK9 inhibitors. Phase 3 trial results are expected from 2025–2028. In the meantime, identifying patients with elevated Lp(a) now means those patients will be correctly positioned to access these therapies the moment they receive regulatory approval — rather than discovering their Lp(a) status only after a first cardiovascular event.
+          The real clinical strategy for elevated Lp(a) is therefore not to chase the number directly through lifestyle — it is to use the knowledge of elevated Lp(a) as a signal to be more aggressive about every other modifiable risk factor. It functions as a risk multiplier that raises the bar for LDL-C targets, blood pressure targets, and the threshold at which pharmacological support is warranted.
+        </p>
+
+        <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>ApoB: moderately responsive, with clear and proven levers</h2>
+        <p style={paragraph}>
+          ApoB is the most clinically important metric in a private preventive medicine setting because it captures atherogenic particle burden across all lipoprotein classes, not just LDL. The 2026 ACC/AHA guidelines now specifically endorse ApoB testing to assess residual risk beyond LDL-C, particularly in patients with high triglycerides, insulin resistance, or metabolic syndrome. Targets: below 90 mg/dL for primary prevention, below 70 mg/dL for high-risk patients or established ASCVD.
+        </p>
+
+        <div style={{ overflowX: "auto", margin: "8px 0 20px" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: ".88rem", color: "var(--sl2)" }}>
+            <thead>
+              <tr style={{ background: "rgba(200,168,75,.08)", borderBottom: "2px solid rgba(200,168,75,.3)" }}>
+                <th style={{ textAlign: "left", padding: "10px 14px", fontWeight: 700, color: "var(--fo)", letterSpacing: ".04em" }}>Intervention</th>
+                <th style={{ textAlign: "left", padding: "10px 14px", fontWeight: 700, color: "var(--fo)", letterSpacing: ".04em" }}>Mechanism</th>
+                <th style={{ textAlign: "left", padding: "10px 14px", fontWeight: 700, color: "var(--fo)", letterSpacing: ".04em" }}>Magnitude</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Replace saturated fat with unsaturated fat", "Upregulates LDL receptors in liver", "Moderate"],
+                ["Mediterranean / Portfolio diet", "Reduces LDL particle production, improves clearance", "Moderate–significant"],
+                ["Aerobic exercise (consistent)", "Lowers VLDL production, improves insulin sensitivity", "Moderate"],
+                ["Resistance training", "Improves muscle glucose disposal, reduces hepatic fat", "Moderate"],
+                ["Weight loss (even modest — 5–10%)", "Reduces hepatic VLDL secretion", "Significant"],
+                ["Soluble fibre (psyllium, oats, legumes)", "Interrupts cholesterol reabsorption in gut", "Modest"],
+                ["Alcohol reduction", "Reduces hepatic fat burden and VLDL production", "Significant if relevant"],
+              ].map(([a, b, c], i) => (
+                <tr key={i} style={{ borderBottom: "1px solid rgba(0,0,0,.06)", background: i % 2 === 0 ? "transparent" : "rgba(0,0,0,.015)" }}>
+                  <td style={{ padding: "9px 14px", fontWeight: 600, color: "var(--sl)" }}>{a}</td>
+                  <td style={{ padding: "9px 14px" }}>{b}</td>
+                  <td style={{ padding: "9px 14px", color: "var(--go)", fontWeight: 600 }}>{c}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Triglycerides: the most lifestyle-responsive — and the most important to move first</h2>
+        <p style={paragraph}>
+          Triglycerides are the best real-time window into a patient's insulin sensitivity. They are also the most directly modifiable of the three through targeted lifestyle changes — and they are clinically the most important to normalise first, because the metabolic dysfunction that drives high triglycerides (VLDL overproduction, impaired clearance) is the same process that generates the small, dense, high-particle-count LDL that elevates ApoB. Fix the upstream metabolic problem and ApoB often improves substantially as a downstream consequence.
+        </p>
+        <ul className="chk">
+          <li><strong>Reduce refined carbohydrates and added sugars</strong> — the single most powerful dietary lever. Rapidly absorbed carbohydrates drive hepatic VLDL production directly. This is a first-line, non-pharmacological intervention with results visible within weeks.</li>
+          <li><strong>Marine omega-3s (EPA/DHA) at clinical doses</strong> — 2–4g/day produces consistent 20–50% triglyceride reduction by reducing hepatic VLDL synthesis and enhancing TRL clearance. This is among the best-evidenced dietary supplement interventions in all of cardiovascular medicine.</li>
+          <li><strong>Aerobic exercise</strong> — a single bout can lower triglycerides the following day through upregulation of lipoprotein lipase in skeletal muscle; chronic training compounds this effect significantly.</li>
+          <li><strong>Alcohol restriction</strong> — alcohol acutely and chronically raises hepatic triglyceride production. In private practice patients who drink regularly, this is frequently an under-recognised driver of persistently elevated triglycerides.</li>
+          <li><strong>Visceral fat reduction</strong> — particularly the reduction of abdominal fat dramatically improves hepatic lipid output and VLDL production. Even a 5% reduction in body weight can lower triglycerides by 20–30%.</li>
+          <li><strong>Mediterranean-style eating</strong> — emphasising whole grains, vegetables, legumes, nuts, fish, and olive oil addresses the upstream insulin resistance driver of elevated triglyceride-rich lipoproteins.</li>
+        </ul>
+
+        <h2 className="cg" style={sectionHeading}>The clinical priority order when all three are elevated</h2>
+        <p style={paragraph}>
+          When a patient presents with all three markers elevated, the order of clinical priority for intervention is: triglycerides first — ApoB second — Lp(a) third (as a risk context, not a direct target). This is not arbitrary. Triglycerides respond fastest to dietary changes, their elevation signals the insulin resistance that is the root cause driving elevated ApoB, and reducing them substantially often improves ApoB without separate direct intervention. ApoB is then targeted with dietary fat quality, exercise, and body composition work over three to six months, retested to confirm response. Lp(a) is measured once, communicated as a lifetime risk modifier, and used to justify more aggressive targets for everything else — not chased directly with lifestyle.
+        </p>
+
+        <div style={callout}>
+          <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
+            <strong style={{ color: "var(--fo)" }}>Validated by the 2026 ACC/AHA guidelines:</strong> the updated March 2026 ACC/AHA lipid guidelines specifically endorse Lp(a), ApoB, hsCRP, and triglycerides as a risk-refinement toolkit beyond standard LDL-C. This is precisely the panel that Veridian's Core Metabolic Assessment and Advanced Longevity Assessment include — a comprehensive workup that reflects where the evidence has now arrived, even though routine NHS care has not yet caught up.
+          </p>
+        </div>
+
+        <p style={paragraph}>
+          The emerging pharmacological pipeline for Lp(a) — particularly pelacarsen, olpasiran, and muvalaplin — represents the most anticipated development in lipid medicine since PCSK9 inhibitors. Phase 3 trial results are expected between 2025 and 2028. Identifying elevated Lp(a) now means being correctly positioned to access these therapies the moment they receive regulatory approval — rather than discovering the result only after a first cardiovascular event.
         </p>
 
         <p style={paragraph}>
-          The broader message is this: cardiovascular risk is not a single-number problem. The standard cholesterol panel was a necessary simplification for mass-population screening. But for individuals who want to understand and actively manage their own vascular biology — particularly those with any family history, metabolic features, or early warning signs — three of the most important risk pathways are currently invisible in routine care. Measuring them does not create anxiety. It creates clarity, and in most cases, clear and actionable next steps.
+          The broader message is this: cardiovascular risk is not a single-number problem. The standard cholesterol panel was a necessary simplification for mass-population screening. For individuals who want to understand and actively manage their own vascular biology, three of the most important risk pathways are currently invisible in routine NHS care. Measuring them does not create anxiety. It creates clarity — and in most cases, a clear, sequenced, and entirely actionable plan.
         </p>
+
+        {/* CTA block */}
+        <div style={{ background: "var(--sl)", borderRadius: 12, padding: "28px 28px 24px", margin: "8px 0" }}>
+          <p style={{ color: "var(--go)", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", margin: "0 0 10px" }}>
+            Measure all three — Lp(a), ApoB, and triglycerides
+          </p>
+          <p style={{ color: "rgba(246,241,232,.92)", fontSize: "1.15rem", fontWeight: 500, lineHeight: 1.45, margin: "0 0 12px", fontFamily: "Georgia, serif" }}>
+            Veridian's Core Metabolic Assessment includes the complete triple-threat panel alongside fasting insulin, HbA1c, full thyroid, sex hormones, and inflammatory markers — reviewed in detail with Dr Taiwo.
+          </p>
+          <p style={{ color: "rgba(246,241,232,.65)", fontSize: ".88rem", lineHeight: 1.75, margin: "0 0 20px" }}>
+            You will leave with your Lp(a) level (reported in nmol/L, not the ambiguous mg/L scale used by most NHS labs), your ApoB with an evidence-based target, your triglyceride burden in fasting and clinical context, and a personalised plan that sequences interventions in the right order for your specific pattern.
+          </p>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Link href="/book?tier=baseline" className="btn btn-go" style={{ fontSize: ".88rem" }}>
+              Book the Core Metabolic Assessment — £595 →
+            </Link>
+            <Link href="/book?tier=longevity-panel" className="btn" style={{ fontSize: ".88rem", background: "transparent", border: "1px solid rgba(246,241,232,.25)", color: "rgba(246,241,232,.8)" }}>
+              Advanced Longevity Assessment — £795
+            </Link>
+          </div>
+        </div>
 
         <ul className="chk">
           <li>Lipoprotein(a) is genetically determined, affects 1 in 5 people, and is not measured on the NHS as part of routine cardiovascular screening.</li>
           <li>ApoB measures atherogenic particle number — the most direct handle on arterial exposure — and is frequently elevated even when LDL-C looks normal.</li>
-          <li>Triglyceride-rich remnant particles are directly atherogenic, enter the arterial wall without oxidation, and are most dangerous in the postprandial state — not just when fasting.</li>
-          <li>When all three pathways are active simultaneously, risk compounds; having a "normal" NHS cholesterol result does not exclude this triple pattern.</li>
-          <li>ApoB and triglycerides respond well to targeted intervention. Lp(a) does not — but knowing it is elevated changes what you do about everything else.</li>
-          <li>Private advanced lipid testing in the UK is the only practical way most adults will access this information.</li>
+          <li>Triglyceride-rich remnant particles are directly atherogenic and are the most lifestyle-responsive of the three — normalising them first often improves ApoB as a downstream consequence.</li>
+          <li>When all three pathways are active simultaneously, risk compounds. The clinical priority order is: triglycerides → ApoB → use Lp(a) to justify tighter targets elsewhere.</li>
+          <li>The 2026 ACC/AHA guidelines now explicitly endorse this panel — Lp(a), ApoB, hsCRP, and triglycerides — as the standard risk-refinement toolkit beyond LDL-C.</li>
+          <li>Private advanced lipid testing in the UK is the only practical way most adults will access this information before a cardiovascular event makes it urgent.</li>
         </ul>
 
         <p style={{ fontSize: ".9rem", color: "var(--sl3)", lineHeight: 1.8, borderTop: "1px solid rgba(0,0,0,.08)", paddingTop: 16 }}>
