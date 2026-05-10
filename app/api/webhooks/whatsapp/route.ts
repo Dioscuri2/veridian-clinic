@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 const VERIFY_TOKEN = (process.env.WHATSAPP_VERIFY_TOKEN || "").trim();
 const WA_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN || "";
 const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
+const GIST_ID = process.env.GITHUB_GIST_WA_ID || "";
+const GH_TOKEN = process.env.GITHUB_TOKEN || "";
 
 // ── GET — Meta webhook verification handshake ────────────────────────────────
 export async function GET(req: NextRequest) {
@@ -36,35 +38,34 @@ export async function POST(req: NextRequest) {
   }
 
   for (const msg of messages) {
-    const from = msg.from as string;           // sender phone number
+    const from = msg.from as string;
     const msgId = msg.id as string;
-    const type = msg.type as string;           // text | image | audio | etc.
+    const type = msg.type as string;
     const text = msg.text?.body as string | undefined;
     const contact = value?.contacts?.[0];
     const senderName = contact?.profile?.name ?? from;
     const timestamp = new Date(Number(msg.timestamp) * 1000).toISOString();
 
-    // 1. Auto-reply: send acknowledgement so the patient knows we received it
+    // 1. Auto-reply acknowledgement
     if (WA_TOKEN && (type === "text" || type === "image" || type === "audio")) {
       await sendWhatsAppReply(from, msgId,
         "Thank you for messaging Veridian Clinic. We've received your message and will respond within a few hours during clinic hours (Mon–Fri, 9am–6pm). If this is a medical emergency, please call 999."
       );
     }
 
-    // 2. Alert via Discord
+    // 2. Discord alert
     if (DISCORD_WEBHOOK) {
       await notifyDiscord({ from, senderName, type, text, timestamp, msgId });
     }
 
-    // 3. Log to console so Benji / server logs capture it
+    // 3. Persist to GitHub Gist for admin inbox
+    if (GIST_ID && GH_TOKEN) {
+      await appendToGist({ id: msgId, from, name: senderName, type, text, timestamp });
+    }
+
     console.log(JSON.stringify({
       event: "whatsapp_message",
-      from,
-      senderName,
-      type,
-      text: text?.slice(0, 200),
-      timestamp,
-      msgId,
+      from, senderName, type, text: text?.slice(0, 200), timestamp, msgId,
     }));
   }
 
@@ -97,12 +98,40 @@ async function notifyDiscord({ from, senderName, type, text, timestamp }: {
   from: string; senderName: string; type: string; text?: string; timestamp: string; msgId: string;
 }) {
   const preview = text ? `\n> "${text.slice(0, 200)}"` : "";
-  const payload = {
-    content: `📱 **WhatsApp message — Veridian Clinic**\n**From:** ${senderName} (+${from})\n**Type:** ${type}\n**Time:** ${timestamp}${preview}\n\nReply via Meta Business Suite or WhatsApp Manager.`,
-  };
   await fetch(DISCORD_WEBHOOK, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      content: `📱 **WhatsApp message — Veridian Clinic**\n**From:** ${senderName} (+${from})\n**Type:** ${type}\n**Time:** ${timestamp}${preview}\n\nReply via Meta Business Suite or the admin inbox at veridianclinic.com/admin`,
+    }),
   }).catch(() => null);
+}
+
+async function appendToGist(msg: {
+  id: string; from: string; name: string; type: string; text?: string; timestamp: string;
+}) {
+  try {
+    const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      headers: { Authorization: `token ${GH_TOKEN}`, "User-Agent": "veridian-clinic" },
+    });
+    if (!res.ok) return;
+    const data = await res.json();
+    const raw = data?.files?.["wa_messages.json"]?.content || '{"messages":[]}';
+    const parsed = JSON.parse(raw);
+    const messages: any[] = parsed.messages || [];
+    messages.push({ ...msg, replied: false });
+    // Keep last 500 messages
+    const trimmed = messages.slice(-500);
+    await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `token ${GH_TOKEN}`,
+        "Content-Type": "application/json",
+        "User-Agent": "veridian-clinic",
+      },
+      body: JSON.stringify({
+        files: { "wa_messages.json": { content: JSON.stringify({ messages: trimmed }, null, 2) } },
+      }),
+    });
+  } catch { /* non-fatal — messages still logged and alerted */ }
 }
