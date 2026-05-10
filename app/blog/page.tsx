@@ -11,6 +11,13 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: "lipoprotein-a-apob-triglycerides",
+    title: "The cardiovascular triple threat — Lipoprotein(a), ApoB, and triglycerides",
+    excerpt: "Three independent atherogenic pathways your standard NHS cholesterol panel does not measure — and why having all three elevated compounds your risk in ways that standard screening completely misses.",
+    tag: "Cardiovascular Risk",
+    readTime: "12 min read",
+  },
+  {
     slug: "apob-vs-ldl",
     title: "ApoB vs LDL — the cardiovascular risk marker question that changes the conversation",
     excerpt: "LDL cholesterol is still the headline number on most lipid panels, but ApoB often gives the cleaner answer to the question that actually matters: how many atherogenic particles are circulating through the arterial system?",
@@ -19,17 +26,17 @@ const articles = [
   },
   {
     slug: "fast-insulin",
-    title: "Fasting insulin, hyperinsulinaemia, and why normal glucose markers can miss early metabolic dysfunction",
-    excerpt: "Fasting glucose and HbA1c can look perfectly normal while hyperinsulinaemia silently drives visceral fat accumulation, fatigue, and vascular risk. Here's what fasting insulin actually tells you.",
+    title: "Fasting insulin — the missing early signal in metabolic disease",
+    excerpt: "Fasting glucose and HbA1c can look perfectly normal while hyperinsulinaemia silently drives visceral fat accumulation, fatigue, and vascular risk. Here is what fasting insulin actually tells you, what a normal range looks like, and who should be tested.",
     tag: "Metabolic Health",
-    readTime: "7 min read",
+    readTime: "10 min read",
   },
   {
     slug: "reversing-metabolic-syndrome",
     title: "Reversing metabolic syndrome — what the evidence actually supports",
-    excerpt: "Metabolic syndrome is not a diagnosis with a fixed trajectory. The clinical evidence on reversal is more optimistic than most patients are told. Here is what the data shows and where to start.",
+    excerpt: "Metabolic syndrome affects 1 in 4 UK adults and is among the most reversible of all cardiometabolic conditions. The clinical evidence on reversal is more optimistic than most patients are told. Here is what the data shows and where to start.",
     tag: "Metabolic Syndrome",
-    readTime: "9 min read",
+    readTime: "11 min read",
   },
 ];
 

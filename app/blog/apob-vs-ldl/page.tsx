@@ -1,26 +1,34 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "ApoB vs LDL | Why ApoB Better Reflects Cardiovascular Risk",
+  title: "ApoB vs LDL — Why ApoB Better Reflects Cardiovascular Risk | Veridian Clinic",
   description:
-    "A deep dive into ApoB vs LDL, why apolipoprotein B is often the better marker of atherosclerotic risk, and how to interpret cardiovascular risk markers through a longevity lens.",
+    "ApoB measures the number of atherogenic lipoprotein particles circulating in your blood — a more direct handle on cardiovascular risk than LDL-C, especially in insulin resistance and metabolic dysfunction. Here is what it measures, when it matters, and what to do with the result.",
   alternates: {
     canonical: "https://veridianclinic.com/blog/apob-vs-ldl",
   },
   openGraph: {
-    title: "ApoB vs LDL | Veridian Clinic",
+    title: "ApoB vs LDL — Cardiovascular Risk Markers Explained | Veridian Clinic",
     description:
-      "Why ApoB often gives a more accurate read of atherogenic particle burden than LDL-C, especially in insulin resistance and longevity medicine.",
+      "Why ApoB gives a more accurate read of atherogenic particle burden than LDL-C, especially in insulin resistance and metabolic dysfunction.",
     url: "https://veridianclinic.com/blog/apob-vs-ldl",
     type: "article",
   },
   keywords: [
     "ApoB vs LDL",
-    "cardiovascular risk markers",
+    "ApoB test UK private",
+    "apolipoprotein B blood test UK",
+    "cardiovascular risk markers UK",
     "apolipoprotein B longevity",
     "ApoB cardiovascular risk",
     "LDL particle count",
+    "ApoB normal range UK",
+    "advanced cardiovascular blood test UK",
+    "atherogenic particle count",
+    "LDL discordance ApoB",
+    "ApoB insulin resistance",
   ],
 };
 
@@ -36,8 +44,32 @@ const sectionHeading = {
   color: "var(--sl)",
 } as const;
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "ApoB vs LDL — Why ApoB Better Reflects Cardiovascular Risk",
+  description:
+    "ApoB measures the number of atherogenic lipoprotein particles — a more direct handle on cardiovascular risk than LDL-C, especially in insulin resistance and metabolic dysfunction.",
+  author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
+  publisher: {
+    "@type": "Organization",
+    name: "Veridian Clinic",
+    url: "https://veridianclinic.com",
+    logo: { "@type": "ImageObject", url: "https://veridianclinic.com/og-image.jpg" },
+  },
+  datePublished: "2026-05-10",
+  dateModified: "2026-05-10",
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://veridianclinic.com/blog/apob-vs-ldl" },
+  image: "https://veridianclinic.com/og-image.jpg",
+};
+
 export default function ApoBVsLDLPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
     <ClinicalArticleLayout
       title="ApoB vs LDL, the cardiovascular risk marker question that changes the conversation"
       intro="LDL cholesterol is still the headline number on most lipid panels, but ApoB often gives the cleaner answer to the question that actually matters: how many atherogenic particles are circulating through the arterial system and capable of driving plaque formation?"
@@ -89,12 +121,12 @@ export default function ApoBVsLDLPage() {
         This also helps explain why treatment that reduces ApoB is so relevant. Trials comparing lipid-lowering strategies have shown that interventions which further reduce ApoB and other atherogenic fractions can improve target attainment beyond simple statin dose escalation. While clinicians treat patients, not biomarkers, ApoB provides a more direct handle on the burden we are trying to reduce.
       </p>
 
-      <h2 className="cg" style={sectionHeading}>Where Dr Eric Berg’s framing overlaps, and where clinical nuance matters</h2>
+      <h2 className="cg" style={sectionHeading}>What ApoB does not replace — and why clinical context still matters</h2>
       <p style={paragraph}>
-        Dr Eric Berg has helped popularise the idea that conventional lipid interpretation can miss the real drivers of cardiometabolic risk. On that broad point, there is something useful here. Many patients are indeed told their cholesterol is "fine" while insulin resistance, triglyceride elevation, visceral adiposity, poor sleep, and inflammatory load are all pushing them toward a more atherogenic state. ApoB often surfaces that hidden burden more effectively than LDL-C alone.
+        The growing awareness of ApoB has led some to treat it as the single definitive cardiovascular number. That creates a different kind of oversimplification. ApoB is powerful because it is grounded in particle biology — but it does not capture every relevant risk dimension. Lipoprotein(a) is mechanistically independent of ApoB: a patient can have a perfectly controlled ApoB while carrying a severely elevated Lp(a) and facing three times the average risk of a heart attack. Blood pressure, family history, inflammatory markers, insulin burden, and where appropriate coronary calcium scoring all remain clinically relevant.
       </p>
       <p style={paragraph}>
-        The nuance is that longevity medicine should not replace one oversimplification with another. ApoB is powerful because it is grounded in particle biology and arterial exposure, not because it magically overrides every other risk factor. We still want to interpret ApoB alongside blood pressure, family history, lipoprotein(a), insulin burden, waist-to-height ratio, glucose variability, inflammatory context, and where appropriate imaging such as coronary artery calcium. The best use of ApoB is inside a coherent clinical model, not as a standalone obsession.
+        The best use of ApoB is inside a coherent clinical model — as a direct, quantitative handle on atherogenic particle burden that substantially improves on LDL-C, particularly in metabolically stressed patients where the two markers diverge most. Combined with fasting insulin, triglycerides, and Lp(a), it gives a far more complete picture of cardiovascular trajectory than any single cholesterol number can offer.
       </p>
 
       <h2 className="cg" style={sectionHeading}>Why ApoB matters even more in metabolic dysfunction</h2>
@@ -133,8 +165,24 @@ export default function ApoBVsLDLPage() {
         <li>ApoB reflects the number of atherogenic particles, not just cholesterol content.</li>
         <li>Discordance between LDL-C and ApoB is common in insulin resistance and mixed dyslipidaemia.</li>
         <li>ApoB is often the better marker when the goal is early detection of plaque-driving risk.</li>
-        <li>Best interpretation comes from pairing ApoB with insulin burden, waist metrics, inflammation, and broader clinical context.</li>
+        <li>Best interpretation comes from pairing ApoB with fasting insulin, Lp(a), triglycerides, waist metrics, and broader clinical context.</li>
       </ul>
+
+      <p style={{ fontSize: ".9rem", color: "var(--sl3)", lineHeight: 1.8, borderTop: "1px solid rgba(0,0,0,.08)", paddingTop: 16 }}>
+        Related reading:{" "}
+        <Link href="/blog/lipoprotein-a-apob-triglycerides" style={{ color: "var(--go)", textDecoration: "underline" }}>
+          Lp(a), ApoB, and triglycerides — the triple cardiovascular threat
+        </Link>
+        {" · "}
+        <Link href="/blog/fast-insulin" style={{ color: "var(--go)", textDecoration: "underline" }}>
+          Fasting insulin and early metabolic dysfunction
+        </Link>
+        {" · "}
+        <Link href="/blog/reversing-metabolic-syndrome" style={{ color: "var(--go)", textDecoration: "underline" }}>
+          Reversing metabolic syndrome
+        </Link>
+      </p>
     </ClinicalArticleLayout>
+    </>
   );
 }
