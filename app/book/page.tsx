@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 const FORMSPREE_ID = "mkopkopb";
 
@@ -90,6 +91,7 @@ function BookingFormInner() {
   const [submitting, setSubmitting] = useState(false);
   const [cancelled, setCancelled] = useState(false);
   const [gateChecked, setGateChecked] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   useEffect(() => {
     if (validTier === "discovery-quiz") {
@@ -158,6 +160,7 @@ function BookingFormInner() {
             phone: form.phone,
             tier: form.tier,
             notes: form.notes,
+            turnstileToken,
           }),
         });
 
@@ -234,6 +237,11 @@ function BookingFormInner() {
                   ))}
                 </select>
                 <textarea className="form-field" name="notes" placeholder="Anything useful to know before we contact you?" rows={5} value={form.notes} onChange={onChange} />
+                <TurnstileWidget
+                  onVerify={setTurnstileToken}
+                  onExpire={() => setTurnstileToken("")}
+                  onError={() => setTurnstileToken("")}
+                />
                 {cancelled && !error ? (
                   <p style={{ color: "var(--fo)", fontSize: ".82rem" }}>
                     Checkout was cancelled. Your form details are still here if you want to try again.

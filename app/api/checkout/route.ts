@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 const SITE_URL = "https://veridianclinic.com";
 const PAYMENT_DESCRIPTOR = "Olympus Premium Health";
@@ -67,6 +68,7 @@ type CheckoutPayload = {
   email?: string;
   phone?: string;
   notes?: string;
+  turnstileToken?: string;
 };
 
 function resolveTier(rawTier?: string) {
@@ -88,6 +90,13 @@ export async function POST(request: NextRequest) {
     });
 
     const payload = (await request.json()) as CheckoutPayload;
+
+    const clientIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined;
+    const turnstileOk = await verifyTurnstileToken(payload.turnstileToken || "", clientIp);
+    if (!turnstileOk) {
+      return NextResponse.json({ error: "Security check failed. Please refresh and try again." }, { status: 400 });
+    }
+
     const tier = resolveTier(payload.tier);
     const product = tierCatalog[tier];
 

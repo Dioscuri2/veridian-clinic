@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { mkdir, appendFile } from "node:fs/promises";
 import path from "node:path";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 type LeadPayload = {
   firstName?: string;
@@ -13,6 +14,7 @@ type LeadPayload = {
   metabolicAge?: number;
   resultBand?: string;
   metadata?: Record<string, unknown>;
+  turnstileToken?: string;
 };
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
@@ -141,6 +143,12 @@ export async function POST(request: NextRequest) {
 
     if (!email || !isValidEmail(email)) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
+
+    const clientIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined;
+    const turnstileOk = await verifyTurnstileToken(payload.turnstileToken || "", clientIp);
+    if (!turnstileOk) {
+      return NextResponse.json({ error: "Security check failed. Please refresh and try again." }, { status: 400 });
     }
 
     if (listKey === "executive_waitlist" && !payload.firstName?.trim()) {

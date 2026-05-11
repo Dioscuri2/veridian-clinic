@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 const FACTOR_META: Record<string, { label: string; subtitle: string; greenNote: string; redNote: string }> = {
   waist: {
@@ -102,8 +103,10 @@ function ScorecardContent() {
   const [consent, setConsent] = useState(true);
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
-  const canSubmit = firstName.trim() && email.trim() && consent && status !== "submitting";
+  const siteKeySet = !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const canSubmit = firstName.trim() && email.trim() && consent && status !== "submitting" && (!siteKeySet || turnstileToken);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -119,6 +122,7 @@ function ScorecardContent() {
           firstName: firstName.trim(),
           email: email.trim(),
           consent,
+          turnstileToken,
           source: "metabolic-quiz-scorecard",
           list: "newsletter",
           metabolicAge: mAge ? Number(mAge) : undefined,
@@ -330,6 +334,11 @@ function ScorecardContent() {
                   />
                   <span>I agree to receive Veridian Clinic emails, including my scorecard, metabolic health guidance, and occasional updates.</span>
                 </label>
+                <TurnstileWidget
+                  onVerify={setTurnstileToken}
+                  onExpire={() => setTurnstileToken("")}
+                  onError={() => setTurnstileToken("")}
+                />
                 {errorMsg && (
                   <div style={{ padding: "12px 14px", borderLeft: "3px solid var(--red)", background: "rgba(122,22,22,.06)" }}>
                     <p style={{ fontSize: ".82rem", color: "var(--red)", lineHeight: 1.7 }}>{errorMsg}</p>
