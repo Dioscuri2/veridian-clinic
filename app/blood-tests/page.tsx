@@ -1,0 +1,225 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { FONTS, CSS } from "@/components/globalStyles";
+
+export const metadata: Metadata = {
+  title: "Private Blood Tests UK — Advanced Metabolic & Longevity Testing | Veridian Clinic",
+  description:
+    "GP-ordered private blood tests for high-intent health screening in the UK. ApoB, fasting insulin, Lp(a), biological age, and metabolic fatigue panels — results interpreted by a GP with a personalised action plan.",
+  alternates: {
+    canonical: "https://veridianclinic.com/blood-tests",
+  },
+  openGraph: {
+    title: "Private Blood Tests UK — Veridian Clinic",
+    description:
+      "Advanced metabolic and longevity blood tests ordered by a UK GP. Includes ApoB, fasting insulin, Lp(a), and biological age estimation.",
+    url: "https://veridianclinic.com/blood-tests",
+    type: "website",
+  },
+  keywords: [
+    "private blood tests UK",
+    "advanced metabolic blood test UK",
+    "longevity blood test UK",
+    "ApoB test UK",
+    "fasting insulin test UK",
+    "Lp(a) test UK",
+    "biological age blood test UK",
+    "fatigue blood test UK",
+    "GP private blood test UK",
+    "metabolic screening UK",
+  ],
+};
+
+const tests = [
+  {
+    slug: "apob",
+    title: "ApoB Blood Test",
+    excerpt:
+      "Apolipoprotein B measures the number of atherogenic lipoprotein particles in your bloodstream — a more direct indicator of cardiovascular risk than LDL cholesterol, especially in insulin resistance and metabolic syndrome.",
+    tag: "Cardiovascular Risk",
+    price: "From £595",
+    includedIn: "Metabolic Baseline & Longevity Panel",
+  },
+  {
+    slug: "fasting-insulin",
+    title: "Fasting Insulin Test",
+    excerpt:
+      "Fasting insulin reveals early insulin resistance years before HbA1c or fasting glucose become abnormal. The NHS does not routinely test it — yet it is one of the most clinically actionable markers in preventive metabolic medicine.",
+    tag: "Metabolic Health",
+    price: "From £195",
+    includedIn: "Energy Screen & Metabolic Baseline",
+  },
+  {
+    slug: "lipoprotein-a",
+    title: "Lipoprotein(a) Blood Test",
+    excerpt:
+      "Lp(a) is a genetically determined cardiovascular risk marker that is largely independent of lifestyle. NHS screening does not include it, yet it affects 1 in 5 people and carries significant implications for lifetime heart disease risk.",
+    tag: "Cardiovascular Risk",
+    price: "From £795",
+    includedIn: "Longevity Panel",
+  },
+  {
+    slug: "biological-age",
+    title: "Biological Age Blood Test",
+    excerpt:
+      "A 150+ marker Longevity Panel that estimates your biological age alongside organ function, inflammation, hormones, and metabolic health — giving a far richer picture than any single number can provide.",
+    tag: "Longevity",
+    price: "£795",
+    includedIn: "Longevity Panel",
+  },
+  {
+    slug: "metabolic-screen",
+    title: "Fatigue & Energy Blood Test",
+    excerpt:
+      "Unexplained fatigue can originate from thyroid dysfunction, insulin resistance, iron deficiency, B12 depletion, cortisol pattern, or low testosterone. Standard GP panels rarely test all these simultaneously. The Energy Screen does.",
+    tag: "Energy & Fatigue",
+    price: "£195",
+    includedIn: "Energy Screen",
+  },
+];
+
+export default function BloodTestsIndexPage() {
+  return (
+    <>
+      <style>{FONTS + CSS}</style>
+      <Navigation />
+      <main style={{ paddingTop: "var(--nav-h)" }}>
+
+        {/* Header */}
+        <section className="sec bg-iv" style={{ paddingBottom: 0 }}>
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <p className="lbl a1">Private Blood Tests</p>
+            <div className="rule a1" />
+            <h1
+              className="cg a2"
+              style={{ fontSize: "clamp(2.2rem,5vw,3.6rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.15, marginBottom: 16 }}
+            >
+              Advanced blood tests your NHS panel doesn&apos;t include.
+            </h1>
+            <p
+              className="a3"
+              style={{ fontSize: "clamp(.92rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 640, marginBottom: 0 }}
+            >
+              GP-ordered testing for the markers that reveal metabolic dysfunction, cardiovascular risk, and biological ageing — interpreted by a doctor with a personalised action plan, not just a PDF of numbers.
+            </p>
+          </div>
+        </section>
+
+        {/* Test list */}
+        <section className="sec bg-iv">
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <div style={{ display: "grid", gap: 2 }}>
+              {tests.map((test, i) => (
+                <Link
+                  key={test.slug}
+                  href={`/blood-tests/${test.slug}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <article
+                    className="a1"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr auto",
+                      gap: 20,
+                      alignItems: "start",
+                      padding: "32px 0",
+                      borderBottom: i < tests.length - 1 ? "1px solid rgba(0,0,0,.07)" : "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10, flexWrap: "wrap" }}>
+                        <span style={{
+                          fontSize: ".62rem", fontWeight: 700, letterSpacing: ".14em",
+                          textTransform: "uppercase", color: "var(--go)", padding: "3px 8px",
+                          border: "1px solid rgba(200,168,75,.3)", background: "rgba(200,168,75,.06)"
+                        }}>
+                          {test.tag}
+                        </span>
+                        <span style={{ fontSize: ".72rem", color: "var(--sl3)", letterSpacing: ".06em" }}>
+                          {test.price}
+                        </span>
+                        <span style={{ fontSize: ".72rem", color: "var(--sl3)", letterSpacing: ".04em" }}>
+                          Included in: {test.includedIn}
+                        </span>
+                      </div>
+                      <h2
+                        className="cg"
+                        style={{ fontSize: "clamp(1.1rem,2.5vw,1.45rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.3, marginBottom: 10 }}
+                      >
+                        {test.title}
+                      </h2>
+                      <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, maxWidth: 680 }}>
+                        {test.excerpt}
+                      </p>
+                    </div>
+                    <span style={{
+                      fontSize: "1.2rem", color: "var(--fo)", marginTop: 4,
+                      transition: "transform .2s", flexShrink: 0,
+                    }}>
+                      →
+                    </span>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How it works strip */}
+        <section className="sec bg-wh">
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <p className="lbl">How It Works</p>
+            <div className="rule" />
+            <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 32 }}>
+              Doctor-ordered. Lab-processed. GP-interpreted.
+            </h2>
+            <div className="g3" style={{ gap: 24 }}>
+              {[
+                { n: "1", heading: "Book online", body: "Select your panel and book. No GP referral needed — we handle the clinical ordering." },
+                { n: "2", heading: "Sample collected", body: "Home phlebotomy kit, walk-in draw, or nurse home visit. Your choice, across the UK." },
+                { n: "3", heading: "Results + GP report", body: "Processed by an accredited UK lab. Results with a written GP interpretation and next-step action plan." },
+              ].map((step) => (
+                <div key={step.n} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <div style={{
+                    width: 40, height: 40, background: "var(--fo)", color: "var(--go2)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", fontWeight: 500, flexShrink: 0,
+                  }}>
+                    {step.n}
+                  </div>
+                  <div>
+                    <p style={{ fontWeight: 600, color: "var(--sl)", marginBottom: 6, fontSize: ".93rem" }}>{step.heading}</p>
+                    <p style={{ fontSize: ".87rem", color: "var(--sl2)", lineHeight: 1.85 }}>{step.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Quiz CTA */}
+        <section className="sec bg-iv">
+          <div className="wrap" style={{ maxWidth: 720, textAlign: "center" }}>
+            <p className="lbl">Not sure which test you need?</p>
+            <div className="rule rule-c" />
+            <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.6rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 14 }}>
+              Check your metabolic age in 60 seconds.
+            </h2>
+            <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 28, maxWidth: 520, margin: "0 auto 28px" }}>
+              A free clinical screening tool that estimates where your metabolism is tracking — and recommends the most relevant test panel for your pattern.
+            </p>
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/metabolic-quiz" className="btn btn-fo">Check My Metabolic Age — Free →</Link>
+              <Link href="/assessments" className="btn btn-ol">View All Panels</Link>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </>
+  );
+}
