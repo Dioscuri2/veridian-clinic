@@ -11,6 +11,7 @@ const FORMSPREE_ID = "mkopkopb";
 
 const tiers = [
   { value: "discovery", label: "GP Discovery Call — £195" },
+  { value: "discovery-quiz", label: "GP Discovery Call — £97 (Quiz Rate)" },
   { value: "metabolic-screen", label: "Energy Screen — £195" },
   { value: "baseline", label: "Veridian Baseline — £595" },
   { value: "longevity-panel", label: "Longevity Panel — £795" },
