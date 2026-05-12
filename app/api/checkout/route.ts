@@ -22,7 +22,7 @@ const tierCatalog: Record<
   },
   discovery: {
     name: "GP-Led Discovery Call",
-    amount: 9700,
+    amount: 19500,
     description:
       "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation.",
     successPath: "/book/thank-you",
@@ -127,6 +127,7 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       billing_address_collection: "required",
+      allow_promotion_codes: true,
       payment_method_types: ["card"],
       customer_creation: "always",
       customer_email: payload.email?.trim() || undefined,

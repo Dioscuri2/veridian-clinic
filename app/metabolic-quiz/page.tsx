@@ -270,7 +270,6 @@ export default function MetabolicQuizPage() {
               <div className="badge-row a4" style={{ justifyContent: "center", marginBottom: 36 }}>
                 <span className="badge">10 Questions</span>
                 <span className="badge">Clinical Framework</span>
-                <span className="badge">Instant Result</span>
                 <span className="badge">Free</span>
               </div>
               <button

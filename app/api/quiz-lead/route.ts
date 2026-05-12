@@ -40,7 +40,52 @@ async function ensureBrevoList(listName: string): Promise<number | null> {
   return created?.id ?? null;
 }
 
-function buildEmail1(firstName: string, mAge: number, band: string, delta: number): string {
+type FactorScores = { fw: number; fe: number; fs: number; fst: number; fa: number; fd: number; fg: number };
+
+const FACTOR_NAMES: [keyof FactorScores, string][] = [
+  ["fw",  "Waist-to-height ratio"],
+  ["fs",  "Sleep quality"],
+  ["fst", "Stress load"],
+  ["fd",  "Diet quality"],
+  ["fe",  "Energy levels"],
+  ["fa",  "Movement / activity"],
+  ["fg",  "Gut health"],
+];
+
+function scorecardColor(score: number): string {
+  if (score <= 0) return "#145226";
+  if (score <= 3) return "#8a5500";
+  return "#7a1616";
+}
+
+function scorecardLabel(score: number): string {
+  if (score <= 0) return "Protective";
+  if (score <= 3) return "Moderate";
+  return "High Impact";
+}
+
+function buildScorecardRows(scores: FactorScores): string {
+  const maxScore = 10;
+  return FACTOR_NAMES.map(([key, label]) => {
+    const raw = scores[key] ?? 0;
+    const score = Number(raw);
+    const color = scorecardColor(score);
+    const lbl = scorecardLabel(score);
+    const barWidth = Math.max(4, Math.min(100, Math.abs(score) / maxScore * 100));
+    const scoreText = score > 0 ? `+${score} yrs` : score < 0 ? `${score} yrs` : "0 yrs";
+    return `<tr>
+      <td style="font-size:.8rem;color:#5a534a;padding:7px 0;width:160px;vertical-align:middle;">${label}</td>
+      <td style="padding:7px 10px;vertical-align:middle;">
+        <div style="background:#ede8df;height:7px;width:120px;border-radius:2px;overflow:hidden;">
+          <div style="background:${color};height:7px;width:${barWidth}%;border-radius:2px;"></div>
+        </div>
+      </td>
+      <td style="font-size:.74rem;font-weight:700;color:${color};white-space:nowrap;vertical-align:middle;padding-left:4px;">${scoreText} · ${lbl}</td>
+    </tr>`;
+  }).join("");
+}
+
+function buildEmail1(firstName: string, mAge: number, band: string, delta: number, scores: FactorScores): string {
   const greeting = firstName || "there";
   const tone = BAND_LABELS[band] || "Needs Attention";
   const deltaText =
@@ -62,6 +107,9 @@ function buildEmail1(firstName: string, mAge: number, band: string, delta: numbe
         ? "Book My Discovery Call →"
         : "Get the Metabolic Reset Guide →";
 
+  const bandBg = band === "strong" ? "rgba(20,82,38,.08)" : band === "high-risk" ? "rgba(122,22,22,.08)" : "rgba(138,85,0,.08)";
+  const bandColor = band === "strong" ? "#145226" : band === "high-risk" ? "#7a1616" : "#8a5500";
+
   return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#f6f1e8;font-family:Georgia,serif;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#f6f1e8;padding:32px 16px;">
@@ -71,14 +119,40 @@ function buildEmail1(firstName: string, mAge: number, band: string, delta: numbe
         <p style="margin:0;font-family:Georgia,serif;font-size:1.1rem;font-weight:700;letter-spacing:.18em;color:#f6f1e8;text-transform:uppercase;">VERIDIAN</p>
         <p style="margin:4px 0 0;font-size:.65rem;font-weight:700;letter-spacing:.28em;color:#c8a84b;text-transform:uppercase;">Clinic</p>
       </td></tr>
-      <tr><td style="padding:40px 36px;">
-        <p style="margin:0 0 8px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8a84b;">Your Metabolic Age Result</p>
-        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting} — your metabolic age is <strong style="color:#2c2a26;">${mAge}</strong>.</h1>
-        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">Your metabolism is running ${deltaText}. Your result band is <strong>${tone}</strong>.</p>
-        <p style="margin:0 0 28px;font-size:.95rem;color:#5a534a;line-height:1.9;">This isn't a diagnosis — it's a signal. The quiz maps seven metabolic pathways using the same clinical framework Dr Taiwo uses with patients. Your result points to where the most meaningful gains are available now.</p>
-        <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;"><tr><td style="background:#2c2a26;padding:0;">
+      <tr><td style="padding:40px 36px 28px;">
+        <p style="margin:0 0 8px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8a84b;">Your Metabolic Scorecard</p>
+        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting} — your metabolic age is <strong style="color:${bandColor};">${mAge}</strong>.</h1>
+        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">Your metabolism is running ${deltaText}. Your result band is <strong style="color:${bandColor};">${tone}</strong>.</p>
+
+        <!-- Band badge -->
+        <div style="display:inline-block;padding:7px 16px;background:${bandBg};color:${bandColor};font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px;">${tone}</div>
+
+        <!-- Scorecard -->
+        <p style="margin:0 0 12px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2c2a26;">Seven-factor breakdown</p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;border-top:1px solid rgba(0,0,0,.07);padding-top:8px;">
+          <tr><td colspan="3" style="padding-bottom:4px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              ${buildScorecardRows(scores)}
+            </table>
+          </td></tr>
+        </table>
+        <p style="margin:0 0 8px;font-size:.76rem;color:#8a8278;line-height:1.6;border-top:1px solid rgba(0,0,0,.07);padding-top:14px;">Scores reflect estimated years of metabolic drift attributable to each factor. Negative values indicate a protective effect. This is not a clinical diagnosis.</p>
+
+        <!-- Primary CTA -->
+        <table cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="background:#2c2a26;padding:0;">
           <a href="${ctaHref}" style="display:block;padding:15px 36px;font-size:.9rem;font-weight:600;letter-spacing:.04em;color:#f6f1e8;text-decoration:none;">${ctaText}</a>
         </td></tr></table>
+
+        <!-- VERIDIAN50 upsell -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#f6f1e8;border:1.5px solid #c8a84b;margin-bottom:24px;">
+          <tr><td style="padding:18px 20px;">
+            <p style="margin:0 0 6px;font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8a84b;">Quiz-taker offer</p>
+            <p style="margin:0 0 10px;font-size:.9rem;color:#2c2a26;font-weight:500;line-height:1.4;">Book a GP Discovery Call at half price.</p>
+            <p style="margin:0 0 12px;font-size:.84rem;color:#5a534a;line-height:1.8;">Use code <strong style="color:#2c2a26;letter-spacing:.06em;">VERIDIAN50</strong> at checkout to reduce the price from £195 to <strong>£97</strong>.</p>
+            <a href="https://veridianclinic.com/book?tier=discovery" style="font-size:.84rem;font-weight:600;color:#2c2a26;text-decoration:underline;">Book now and enter VERIDIAN50 at checkout →</a>
+          </td></tr>
+        </table>
+
         <p style="margin:0;font-size:.8rem;color:#8a8278;line-height:1.7;">Questions? Reply to this email or contact <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;">support@veridianclinic.com</a></p>
       </td></tr>
       <tr><td style="padding:20px 36px;border-top:1px solid rgba(0,0,0,.07);">
@@ -193,6 +267,15 @@ export async function POST(request: NextRequest) {
     const mAge = Number(payload.mAge || 0);
     const band = (payload.band || "drifting") as string;
     const delta = Number(payload.delta || 0);
+    const scores: FactorScores = {
+      fw: Number(payload.fw ?? 0),
+      fe: Number(payload.fe ?? 0),
+      fs: Number(payload.fs ?? 0),
+      fst: Number(payload.fst ?? 0),
+      fa: Number(payload.fa ?? 0),
+      fd: Number(payload.fd ?? 0),
+      fg: Number(payload.fg ?? 0),
+    };
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
@@ -224,7 +307,7 @@ export async function POST(request: NextRequest) {
     const day5 = new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000).toISOString();
 
     await Promise.all([
-      sendBrevoEmail(email, displayName, "Your Metabolic Age Result — Veridian Clinic", buildEmail1(firstName, mAge, band, delta)),
+      sendBrevoEmail(email, displayName, "Your Metabolic Scorecard — Veridian Clinic", buildEmail1(firstName, mAge, band, delta, scores)),
       sendBrevoEmail(email, displayName, "The biomarker most GPs never check — Veridian Clinic", buildEmail2(firstName), day2),
       sendBrevoEmail(email, displayName, "Your next step — Veridian Clinic", buildEmail3(firstName, band), day5),
     ]);

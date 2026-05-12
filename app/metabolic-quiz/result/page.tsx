@@ -97,7 +97,7 @@ function ResultContent() {
       const res = await fetch("/api/quiz-lead", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: gEmail.trim(), firstName: gName.trim(), mAge, band: bandKey, delta, weakest }),
+        body: JSON.stringify({ email: gEmail.trim(), firstName: gName.trim(), mAge, band: bandKey, delta, weakest, fw: Number(fw), fe: Number(fe), fs: Number(fs), fst: Number(fst), fa: Number(fa), fd: Number(fd), fg: Number(fg) }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -135,7 +135,7 @@ function ResultContent() {
                   Your result is ready.
                 </h1>
                 <p className="a3" style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.9 }}>
-                  Enter your email to see your metabolic age estimate and receive a personalised breakdown.
+                  Enter your email to receive your full scorecard breakdown — your metabolic age and a colour-coded report across all seven factors.
                 </p>
               </div>
               <form onSubmit={handleGateSubmit} className="a4" style={{ display: "grid", gap: 14 }}>
@@ -451,6 +451,26 @@ function ResultContent() {
                   </p>
                   <Link href={scorecardUrl} style={{ fontSize: ".86rem", color: "var(--fo)", fontWeight: 600, textDecoration: "underline" }}>
                     Email me my free scorecard →
+                  </Link>
+                </div>
+
+                {/* VERIDIAN50 discovery call upsell */}
+                <div style={{ padding: "20px 22px", border: "1.5px solid var(--go)", background: "rgba(200,168,75,.06)" }}>
+                  <p style={{ fontSize: ".66rem", color: "var(--go)", letterSpacing: ".16em", textTransform: "uppercase", fontWeight: 700, marginBottom: 8 }}>
+                    Quiz-taker offer
+                  </p>
+                  <p style={{ fontSize: ".93rem", color: "var(--sl)", fontWeight: 500, lineHeight: 1.4, marginBottom: 6 }}>
+                    Book a GP Discovery Call at half price.
+                  </p>
+                  <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14 }}>
+                    A 30-minute GP-led review of your result — enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>VERIDIAN50</strong> at checkout to reduce the price from £195 to £97.
+                  </p>
+                  <Link
+                    href="/book?tier=discovery"
+                    style={{ fontSize: ".86rem", fontWeight: 600, color: "var(--fo)", textDecoration: "underline" }}
+                    onClick={() => fbq("InitiateCheckout", { value: 97, currency: "GBP", content_name: "Discovery Call VERIDIAN50" })}
+                  >
+                    Book now — use VERIDIAN50 at checkout →
                   </Link>
                 </div>
               </div>
