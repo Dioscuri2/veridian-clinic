@@ -1,5 +1,5 @@
 "use client";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
@@ -40,6 +40,10 @@ const WEAKEST_LABELS: Record<string, string> = {
   gut: "Gut health — chronic gut dysbiosis increases intestinal permeability, triggering systemic inflammation that directly impairs insulin sensitivity.",
 };
 
+function fbq(event: string, data?: Record<string, unknown>) {
+  (window as any).fbq?.("track", event, data);
+}
+
 function ResultContent() {
   const params = useSearchParams();
   const mAge = Number(params.get("mAge") || 0);
@@ -67,6 +71,114 @@ function ResultContent() {
       : delta < 0
         ? `Your metabolic age is tracking behind your calendar age — a positive sign of metabolic resilience.`
         : "Your metabolic age closely matches your chronological age.";
+
+  const [submitted, setSubmitted] = useState(false);
+  const [gEmail, setGEmail] = useState("");
+  const [gName, setGName] = useState("");
+  const [gLoading, setGLoading] = useState(false);
+  const [gError, setGError] = useState("");
+
+  useEffect(() => {
+    if (sessionStorage.getItem("vc_quiz_gate") === "1") setSubmitted(true);
+  }, []);
+
+  useEffect(() => {
+    if (submitted) {
+      fbq("ViewContent", { content_name: "Metabolic Age Result", content_category: bandKey });
+    }
+  }, [submitted, bandKey]);
+
+  async function handleGateSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!gEmail.trim()) { setGError("Please enter your email address."); return; }
+    setGLoading(true);
+    setGError("");
+    try {
+      const res = await fetch("/api/quiz-lead", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: gEmail.trim(), firstName: gName.trim(), mAge, band: bandKey, delta, weakest }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setGError((data as any).error || "Something went wrong. Please try again.");
+        setGLoading(false);
+        return;
+      }
+      fbq("Lead", { value: 0, currency: "GBP", content_name: "Metabolic Quiz" });
+      sessionStorage.setItem("vc_quiz_gate", "1");
+      setSubmitted(true);
+    } catch {
+      setGError("Something went wrong. Please try again.");
+      setGLoading(false);
+    }
+  }
+
+  if (!submitted) {
+    return (
+      <>
+        <style>{FONTS + CSS}</style>
+        <Navigation />
+        <main style={{ paddingTop: "var(--nav-h)" }}>
+          <section
+            className="sec bg-iv"
+            style={{ minHeight: "calc(100svh - var(--nav-h))", display: "flex", alignItems: "center" }}
+          >
+            <div className="wrap" style={{ maxWidth: 540 }}>
+              <div className="text-center a1" style={{ marginBottom: 36 }}>
+                <p className="lbl">Metabolic Age Result</p>
+                <div className="rule rule-c" />
+                <h1
+                  className="cg a2"
+                  style={{ fontSize: "clamp(1.9rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 14 }}
+                >
+                  Your result is ready.
+                </h1>
+                <p className="a3" style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.9 }}>
+                  Enter your email to see your metabolic age estimate and receive a personalised breakdown.
+                </p>
+              </div>
+              <form onSubmit={handleGateSubmit} className="a4" style={{ display: "grid", gap: 14 }}>
+                <input
+                  type="text"
+                  placeholder="First name (optional)"
+                  value={gName}
+                  onChange={(e) => setGName(e.target.value)}
+                  className="form-field"
+                  disabled={gLoading}
+                />
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  value={gEmail}
+                  onChange={(e) => setGEmail(e.target.value)}
+                  className="form-field"
+                  required
+                  disabled={gLoading}
+                  autoFocus
+                />
+                {gError && (
+                  <p style={{ fontSize: ".85rem", color: "var(--red)", margin: 0 }}>{gError}</p>
+                )}
+                <button
+                  type="submit"
+                  className="btn btn-fo"
+                  disabled={gLoading}
+                  style={{ width: "100%", padding: "15px 32px" }}
+                >
+                  {gLoading ? "Loading…" : "See My Metabolic Age →"}
+                </button>
+                <p style={{ fontSize: ".75rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7 }}>
+                  No spam. You&apos;ll get your result now plus 2 clinical follow-up emails. Unsubscribe anytime.
+                </p>
+              </form>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -268,7 +380,11 @@ function ResultContent() {
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
                       Fasting insulin, ApoB, and hsCRP don't show up in lifestyle questions — and they're often the first markers to shift in people who appear perfectly healthy. A targeted blood panel takes 10 minutes and gives you the full picture.
                     </p>
-                    <Link href="/assessments#metabolic-panel" className="btn btn-go btn-full">
+                    <Link
+                      href="/assessments#metabolic-panel"
+                      className="btn btn-go btn-full"
+                      onClick={() => fbq("InitiateCheckout", { value: 195, currency: "GBP", content_name: "Metabolic Screen" })}
+                    >
                       Check Your Metabolic Markers →
                     </Link>
                   </div>
@@ -278,12 +394,16 @@ function ResultContent() {
                       Your next step
                     </p>
                     <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.95)", lineHeight: 1.3, fontWeight: 500, marginBottom: 8 }}>
-                      Why Your Weight Isn't Shifting
+                      Why Your Weight Isn&apos;t Shifting
                     </p>
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
-                      A Doctor's 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. £19.99 · Instant download.
+                      A Doctor&apos;s 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. £19.99 · Instant download.
                     </p>
-                    <Link href="/metabolic-reset-guide" className="btn btn-go btn-full">
+                    <Link
+                      href="/metabolic-reset-guide"
+                      className="btn btn-go btn-full"
+                      onClick={() => fbq("InitiateCheckout", { value: 19.99, currency: "GBP", content_name: "Metabolic Reset Guide" })}
+                    >
                       Get the Metabolic Reset Guide →
                     </Link>
                   </div>
@@ -301,7 +421,7 @@ function ResultContent() {
                       Your pattern warrants a direct clinical conversation.
                     </p>
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 16 }}>
-                      A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway — whether that's a targeted blood panel, a structured reset, or a full baseline assessment.
+                      A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway — whether that&apos;s a targeted blood panel, a structured reset, or a full baseline assessment.
                     </p>
                     <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
                       <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£97</span>
@@ -311,7 +431,11 @@ function ResultContent() {
                     <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.55)", lineHeight: 1.6, marginBottom: 16 }}>
                       Enter your email for your free scorecard — your £97 rate is unlocked immediately after.
                     </p>
-                    <Link href={scorecardUrl} className="btn btn-go btn-full">
+                    <Link
+                      href={scorecardUrl}
+                      className="btn btn-go btn-full"
+                      onClick={() => fbq("InitiateCheckout", { value: 97, currency: "GBP", content_name: "Discovery Call" })}
+                    >
                       Get My Scorecard &amp; Unlock £97 →
                     </Link>
                   </div>
