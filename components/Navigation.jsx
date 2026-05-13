@@ -59,7 +59,7 @@ export default function Navigation() {
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <Link href="/book?tier=discovery" className="btn btn-fo" id="nav-cta"
               style={{ padding: "10px 18px", fontSize: ".78rem", display: "none" }}>
-              Book Discovery Call →
+              Book Your Appointment →
             </Link>
             <button className="mob-btn" onClick={() => setMobOpen(!mobOpen)} aria-label={mobOpen ? "Close menu" : "Open menu"} aria-expanded={mobOpen} aria-controls="mobile-navigation-menu">
               {mobOpen ? "✕" : "☰"}
@@ -73,7 +73,7 @@ export default function Navigation() {
               <Link key={label} href={href} className="mob-link">{label}</Link>
             ))}
             <Link href="/book?tier=discovery" className="btn btn-fo btn-full" style={{ marginTop: 16 }}>
-              Book Discovery Call →
+              Book Your Appointment →
             </Link>
           </div>
         )}

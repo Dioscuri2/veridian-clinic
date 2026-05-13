@@ -19,7 +19,7 @@ const plans = [
  "Written next-step recommendation",
  "Nationwide virtual delivery",
  ],
- cta: "Book Discovery Call",
+ cta: "Book Your Appointment",
  feat: false,
  right_for: "Right for you if you want expert metabolic direction before choosing a full assessment.",
  },
@@ -330,7 +330,7 @@ export default function AssessmentsPage() {
  <br /><em style={{ fontStyle: "italic", color: "var(--fo)" }}>From first clarity to full metabolic reset.</em>
  </h1>
  <p className="a3" style={{ fontSize: "clamp(1rem,2.4vw,1.12rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 700, margin: "20px auto 0" }}>
- Every pathway is clinically structured and designed to identify the missing-link drivers standard screening often misses — particularly insulin burden, ApoB-driven vascular risk and homocysteine load.
+ Every pathway is clinically structured and designed to surface the markers that standard screening often misses — the hidden drivers behind low energy, weight gain, poor sleep and early vascular risk.
  </p>
  <div className="badge-row a4" style={{ justifyContent: "center", marginTop: 24 }}>
  <span className="badge"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3.8v3.2c0 2.4 1.9 4.5 4.5 5.2 2.6-.7 4.5-2.8 4.5-5.2V3.8z" fill="var(--fo)" stroke="var(--go)" strokeWidth=".6"/><path d="M4.5 6.5l1.5 1.5 2.5-2.5" stroke="var(--go)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/></svg>GP-Led &amp; CQC Regulated</span>

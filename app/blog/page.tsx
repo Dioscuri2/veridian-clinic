@@ -56,7 +56,7 @@ export default function BlogIndexPage() {
               className="cg a2"
               style={{ fontSize: "clamp(2.2rem,5vw,3.6rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.15, marginBottom: 16 }}
             >
-              Evidence-based thinking on metabolic health and longevity.
+              Doctor-written insights on energy, metabolism, and how to stay healthier for longer.
             </h1>
             <p
               className="a3"

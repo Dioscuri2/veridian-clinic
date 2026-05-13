@@ -103,7 +103,7 @@ export default function DiscoveryCallPage() {
                     GP-led 30-minute consultation, written summary within 24 hours, pathway recommendation.
                   </p>
                   <Link href="/book?tier=discovery" className="btn btn-go btn-full">
-                    Book Discovery Call →
+                    Book Your Appointment →
                   </Link>
                 </div>
 
@@ -249,7 +249,7 @@ export default function DiscoveryCallPage() {
               ))}
             </div>
             <Link href="/book?tier=discovery" className="btn btn-go">
-              Book Discovery Call →
+              Book Your Appointment →
             </Link>
           </div>
         </section>

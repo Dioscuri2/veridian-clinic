@@ -265,7 +265,7 @@ export default function MetabolicQuizPage() {
                   margin: "0 auto 30px",
                 }}
               >
-                A 10-question clinical screening tool that estimates your biological age across seven metabolic pathways — before dysfunction becomes visible disease.
+                A free 10-question tool that estimates how your metabolism is tracking — and where the early warning signs are showing up before they become bigger problems.
               </p>
               <div className="badge-row a4" style={{ justifyContent: "center", marginBottom: 36 }}>
                 <span className="badge">10 Questions</span>
