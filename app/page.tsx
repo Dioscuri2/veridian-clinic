@@ -557,7 +557,34 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            5. ABOUT / STORY
+            5. QUIZ CTA — simple strip
+        ══════════════════════════════════════════════════ */}
+        <section id="scorecard" className="sec bg-wh">
+          <div className="wrap">
+            <div style={{
+              background: "linear-gradient(135deg, #0d1f1a 0%, #13212e 100%)",
+              padding: "clamp(28px,5vw,44px) clamp(24px,6vw,80px)",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 20,
+            }}>
+              <div>
+                <p className="lbl" style={{ color: "var(--go2)", marginBottom: 6 }}>Free · No account needed</p>
+                <h2 className="cg" style={{ fontSize: "clamp(1.5rem,3.5vw,2.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.15, margin: 0 }}>
+                  Check your metabolic age for free
+                </h2>
+              </div>
+              <Link href="/metabolic-quiz" className="btn btn-go" style={{ flexShrink: 0, whiteSpace: "nowrap" }}>
+                Take the quiz →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════
+            6. ABOUT / STORY
         ══════════════════════════════════════════════════ */}
         <section id="about" className="sec bg-sl">
           <div className="wrap" style={{ maxWidth: 820 }}>
@@ -588,31 +615,6 @@ export default function HomePage() {
                 Veridian bridges that gap — using the biomarkers that routine care rarely checks, structured assessment, and personalised doctor-led plans to help patients act earlier and track real progress.
               </p>
             </div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════════════
-            6. QUIZ CTA — simple strip
-        ══════════════════════════════════════════════════ */}
-        <section id="scorecard" className="sec bg-wh" style={{ paddingTop: 0, paddingBottom: 0 }}>
-          <div style={{
-            background: "linear-gradient(135deg, #0d1f1a 0%, #13212e 100%)",
-            padding: "clamp(28px,5vw,44px) clamp(24px,6vw,80px)",
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 20,
-          }}>
-            <div>
-              <p className="lbl" style={{ color: "var(--go2)", marginBottom: 6 }}>Free · Instant · No account needed</p>
-              <h2 className="cg" style={{ fontSize: "clamp(1.5rem,3.5vw,2.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.15, margin: 0 }}>
-                Check your metabolic age for free
-              </h2>
-            </div>
-            <Link href="/metabolic-quiz" className="btn btn-go" style={{ flexShrink: 0, whiteSpace: "nowrap" }}>
-              Take the quiz →
-            </Link>
           </div>
         </section>
 
