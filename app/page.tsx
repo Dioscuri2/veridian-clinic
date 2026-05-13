@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
+import ScrollReveal from "@/components/ScrollReveal";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const domains = [
@@ -214,6 +215,10 @@ export default function HomePage() {
     <>
       <style>{FONTS + CSS + `
         /* ── Hero split layout ── */
+        @keyframes heroglow {
+          0%,100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
         .hero-split {
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
@@ -226,25 +231,24 @@ export default function HomePage() {
           flex-direction: column;
           justify-content: center;
           padding: clamp(48px,7vh,88px) clamp(32px,6vw,80px);
-          background: var(--iv);
+          background: linear-gradient(135deg, #f6f1e8 0%, #ede5d4 50%, #f6f1e8 100%);
+          background-size: 200% 200%;
+          animation: heroglow 12s ease infinite;
           order: 1;
         }
         .hero-img-col {
           position: relative;
           overflow: hidden;
-          background: #e8e4dc;
+          background: #0d2818;
           order: 2;
         }
-        .hero-img-col img {
+        .hero-img-col video {
           position: absolute;
-          top: -50px;
+          top: 0;
           left: 0;
-          right: 0;
-          bottom: 0;
           width: 100%;
-          height: calc(100% + 50px);
+          height: 100%;
           object-fit: cover;
-          object-position: center top;
           display: block;
         }
         @media(max-width:900px) {
@@ -258,13 +262,12 @@ export default function HomePage() {
             order: 1;
           }
           .hero-img-col {
-            height: 420px;
+            height: 340px;
             order: 2;
           }
-          .hero-img-col img {
+          .hero-img-col video {
             top: 0;
             height: 100%;
-            object-position: 50% 12%;
           }
         }
 
@@ -417,7 +420,15 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-img-col">
-            <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo GP — Veridian Clinic" />
+            <video autoPlay muted loop playsInline>
+              <source src="/hero.mp4" type="video/mp4" />
+            </video>
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(246,241,232,0.18) 0%, transparent 40%)" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(13,40,24,0.55) 0%, transparent 50%)" }} />
+            <div style={{ position: "absolute", bottom: 28, left: 28, right: 28 }}>
+              <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(200,168,75,.85)", marginBottom: 5 }}>Veridian Clinic</p>
+              <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.7)", lineHeight: 1.6 }}>Private metabolic &amp; longevity medicine</p>
+            </div>
           </div>
         </section>
 
@@ -426,14 +437,16 @@ export default function HomePage() {
         ══════════════════════════════════════════════════ */}
         <section className="sec bg-iv2">
           <div className="wrap" style={{ maxWidth: 1000 }}>
-            <div className="sh text-center" style={{ marginBottom: 32 }}>
-              <p className="lbl">Who Is This For?</p>
-              <div className="rule rule-c"/>
-              <h2 className="cg sh-title" style={{ marginBottom: 8 }}>Built for adults 40+</h2>
-              <p className="sh-body" style={{ maxWidth: 600, margin: "0 auto" }}>
-                For adults over 40 who feel their body changing — and want real answers, not guesswork.
-              </p>
-            </div>
+            <ScrollReveal>
+              <div className="sh text-center" style={{ marginBottom: 32 }}>
+                <p className="lbl">Who Is This For?</p>
+                <div className="rule rule-c"/>
+                <h2 className="cg sh-title" style={{ marginBottom: 8 }}>Built for adults 40+</h2>
+                <p className="sh-body" style={{ maxWidth: 600, margin: "0 auto" }}>
+                  For adults over 40 who feel their body changing — and want real answers, not guesswork.
+                </p>
+              </div>
+            </ScrollReveal>
             <div className="who-grid" style={{ marginBottom: 32 }}>
               {whoItems.map(item => (
                 <WhoCard key={item.title} title={item.title} detail={item.detail} />
@@ -502,14 +515,16 @@ export default function HomePage() {
         ══════════════════════════════════════════════════ */}
         <section id="assessments" className="sec bg-iv2">
           <div className="wrap">
-            <div className="sh text-center">
-              <p className="lbl">Assessments &amp; Pathways</p>
-              <div className="rule rule-c"/>
-              <h2 className="cg sh-title">A clear pathway from first conversation to lasting change.</h2>
-              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 620 }}>
-                Choose the level of precision that matches where you are right now.
-              </p>
-            </div>
+            <ScrollReveal>
+              <div className="sh text-center">
+                <p className="lbl">Assessments &amp; Pathways</p>
+                <div className="rule rule-c"/>
+                <h2 className="cg sh-title">A clear pathway from first conversation to lasting change.</h2>
+                <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 620 }}>
+                  Choose the level of precision that matches where you are right now.
+                </p>
+              </div>
+            </ScrollReveal>
             <div className="offer-grid">
               {offers.map((o) => (
                 <div key={o.name} className={`offer-card${o.featured ? " offer-card-featured" : ""}`}>
@@ -590,23 +605,25 @@ export default function HomePage() {
           <div className="wrap" style={{ maxWidth: 820 }}>
             <p className="lbl" style={{ color: "var(--go2)", textAlign: "center", marginBottom: 12 }}>Why Veridian Exists</p>
             <div className="rule rule-c" style={{ background: "var(--go)", marginBottom: 36 }}/>
-            <blockquote
-              className="cg"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(1.55rem,3.6vw,2.6rem)",
-                fontWeight: 500,
-                fontStyle: "italic",
-                color: "var(--iv)",
-                lineHeight: 1.35,
-                borderLeft: "3px solid var(--go)",
-                paddingLeft: "clamp(18px,4vw,32px)",
-                marginBottom: 36,
-              }}
-            >
-              "Conventional medicine often waits for disease.<br/>
-              I built Veridian to act long before it arrives."
-            </blockquote>
+            <ScrollReveal delay={100}>
+              <blockquote
+                className="cg"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(1.55rem,3.6vw,2.6rem)",
+                  fontWeight: 500,
+                  fontStyle: "italic",
+                  color: "var(--iv)",
+                  lineHeight: 1.35,
+                  borderLeft: "3px solid var(--go)",
+                  paddingLeft: "clamp(18px,4vw,32px)",
+                  marginBottom: 36,
+                }}
+              >
+                "Conventional medicine often waits for disease.<br/>
+                I built Veridian to act long before it arrives."
+              </blockquote>
+            </ScrollReveal>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
               <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.95 }}>
                 Many of my patients were being told their blood tests were 'normal' while feeling tired, heavier, struggling with energy and sleep, and sensing something was off. Routine care had no clear answer.
@@ -675,13 +692,15 @@ export default function HomePage() {
                 { n:"02", t:"Veridian Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms — with clinical interpretation and a clear written action plan." },
                 { n:"03", t:"Personalised Plan", d:"A written, prioritised plan built around your data. CGM, nutrition, movement and behaviour protocols. Where clinically indicated, prescribing pathways including GLP-1 options are available." },
                 { n:"04", t:"Structured Follow-Up", d:"Fortnightly coaching, GP-led clinical review at midpoint, and an end-of-programme review with a 12-month forward plan. Progress is measured, not assumed." },
-              ].map(s => (
-                <div key={s.n} style={{ padding:"26px 0", borderBottom:"1px solid rgba(0,0,0,.07)" }}>
-                  <div style={{ fontSize:".62rem", fontWeight:700, letterSpacing:".28em", color:"var(--go)", marginBottom:10 }}>{s.n}</div>
-                  <div style={{ width:1, height:26, background:"var(--go)", opacity:.4, marginBottom:12 }}/>
-                  <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color:"var(--fo)", marginBottom:7 }}>{s.t}</h3>
-                  <p style={{ fontSize:".92rem", color:"var(--sl2)", lineHeight:1.9 }}>{s.d}</p>
-                </div>
+              ].map((s, i) => (
+                <ScrollReveal key={s.n} delay={i * 80}>
+                  <div style={{ padding:"26px 0", borderBottom:"1px solid rgba(0,0,0,.07)" }}>
+                    <div style={{ fontSize:".62rem", fontWeight:700, letterSpacing:".28em", color:"var(--go)", marginBottom:10 }}>{s.n}</div>
+                    <div style={{ width:1, height:26, background:"var(--go)", opacity:.4, marginBottom:12 }}/>
+                    <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color:"var(--fo)", marginBottom:7 }}>{s.t}</h3>
+                    <p style={{ fontSize:".92rem", color:"var(--sl2)", lineHeight:1.9 }}>{s.d}</p>
+                  </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -831,8 +850,9 @@ export default function HomePage() {
               <p className="sh-body" style={{ fontSize: "1rem" }}>Each domain is scored 1–10. Together they explain the outcomes you care about most.</p>
             </div>
             <div className="g4">
-              {domains.map(d => (
-                <div key={d.title} className="card" style={{ display:"flex", flexDirection:"column" }}>
+              {domains.map((d, i) => (
+                <ScrollReveal key={d.title} delay={i * 90}>
+                <div className="card" style={{ display:"flex", flexDirection:"column" }}>
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:12 }}>
                     <span className="lbl">{d.n}</span>
                     <span className={`spill ${bandClass[d.band as keyof typeof bandClass]}`}>{bandLabel[d.band as keyof typeof bandLabel]}</span>
@@ -852,6 +872,7 @@ export default function HomePage() {
                     <div className={`sc-bar-fill ${fillClass[d.band as keyof typeof fillClass]}`} style={{ "--bw": d.pct } as React.CSSProperties}/>
                   </div>
                 </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>

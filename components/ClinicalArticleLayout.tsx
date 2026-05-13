@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ReadingProgress from "@/components/ReadingProgress";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 type Cta = {
@@ -34,6 +35,7 @@ export default function ClinicalArticleLayout({
     <>
       <style>{FONTS + CSS}</style>
       <Navigation />
+      <ReadingProgress />
       <main style={{ paddingTop: "var(--nav-h)", background: "var(--iv)" }}>
         <section className="sec bg-iv">
           <div className="wrap" style={{ maxWidth: 860 }}>

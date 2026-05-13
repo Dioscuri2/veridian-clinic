@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "ApoB vs LDL — Why ApoB Better Reflects Cardiovascular Risk | Veridian Clinic",
@@ -15,6 +16,14 @@ export const metadata: Metadata = {
       "Why ApoB gives a more accurate read of atherogenic particle burden than LDL-C, especially in insulin resistance and metabolic dysfunction.",
     url: "https://veridianclinic.com/blog/apob-vs-ldl",
     type: "article",
+    images: [
+      {
+        url: "https://veridianclinic.com/blog/apob-vs-ldl.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Lipoprotein particles in blood plasma — ApoB cardiovascular risk visualization",
+      },
+    ],
   },
   keywords: [
     "ApoB vs LDL",
@@ -60,7 +69,7 @@ const schema = {
   datePublished: "2026-05-10",
   dateModified: "2026-05-10",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://veridianclinic.com/blog/apob-vs-ldl" },
-  image: "https://veridianclinic.com/og-image.jpg",
+  image: "https://veridianclinic.com/blog/apob-vs-ldl.jpg",
 };
 
 export default function ApoBVsLDLPage() {
@@ -101,6 +110,16 @@ export default function ApoBVsLDLPage() {
         This is the core reason ApoB has become such an important marker in preventive cardiology and longevity medicine. Atherosclerosis is driven by cumulative exposure to apoB-containing particles over time. If particle traffic is higher, arterial exposure is higher, even when the conventional cholesterol number looks only modestly abnormal. That is why the question of ApoB vs LDL matters so much for patients who want to detect risk early rather than waiting for late-stage disease.
       </p>
 
+      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", margin: "32px 0", overflow: "hidden" }}>
+        <Image
+          src="/blog/apob-vs-ldl-scan.jpg"
+          alt="Coronary CT angiography scan showing arterial anatomy"
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 900px) 100vw, 828px"
+        />
+      </div>
+
       <h2 className="cg" style={sectionHeading}>The discordance problem, why LDL can look acceptable while ApoB stays high</h2>
       <p style={paragraph}>
         One of the most important concepts in lipid interpretation is discordance. This happens when LDL-C and ApoB point in different directions. A patient may have an LDL-C that appears borderline or even reassuring, while ApoB remains elevated. When this happens, relying on LDL-C alone can understate risk.
@@ -123,12 +142,12 @@ export default function ApoBVsLDLPage() {
         This also helps explain why treatment that reduces ApoB is so relevant. Trials comparing lipid-lowering strategies have shown that interventions which further reduce ApoB and other atherogenic fractions can improve target attainment beyond simple statin dose escalation. While clinicians treat patients, not biomarkers, ApoB provides a more direct handle on the burden we are trying to reduce.
       </p>
 
-      <h2 className="cg" style={sectionHeading}>What ApoB does not replace — and why clinical context still matters</h2>
+      <h2 className="cg" style={sectionHeading}>What ApoB does not replace, and why clinical context still matters</h2>
       <p style={paragraph}>
-        The growing awareness of ApoB has led some to treat it as the single definitive cardiovascular number. That creates a different kind of oversimplification. ApoB is powerful because it is grounded in particle biology — but it does not capture every relevant risk dimension. Lipoprotein(a) is mechanistically independent of ApoB: a patient can have a perfectly controlled ApoB while carrying a severely elevated Lp(a) and facing three times the average risk of a heart attack. Blood pressure, family history, inflammatory markers, insulin burden, and where appropriate coronary calcium scoring all remain clinically relevant.
+        The growing awareness of ApoB has led some to treat it as the single definitive cardiovascular number. That creates a different kind of oversimplification. ApoB is powerful because it is grounded in particle biology, but it does not capture every relevant risk dimension. Lipoprotein(a) is mechanistically independent of ApoB: a patient can have a perfectly controlled ApoB while carrying a severely elevated Lp(a) and facing three times the average risk of a heart attack. Blood pressure, family history, inflammatory markers, insulin burden, and where appropriate coronary calcium scoring all remain clinically relevant.
       </p>
       <p style={paragraph}>
-        The best use of ApoB is inside a coherent clinical model — as a direct, quantitative handle on atherogenic particle burden that substantially improves on LDL-C, particularly in metabolically stressed patients where the two markers diverge most. Combined with fasting insulin, triglycerides, and Lp(a), it gives a far more complete picture of cardiovascular trajectory than any single cholesterol number can offer.
+        The best use of ApoB is inside a coherent clinical model: as a direct, quantitative handle on atherogenic particle burden that substantially improves on LDL-C, particularly in metabolically stressed patients where the two markers diverge most. Combined with fasting insulin, triglycerides, and Lp(a), it gives a far more complete picture of cardiovascular trajectory than any single cholesterol number can offer.
       </p>
 
       <h2 className="cg" style={sectionHeading}>Why ApoB matters even more in metabolic dysfunction</h2>
@@ -173,7 +192,7 @@ export default function ApoBVsLDLPage() {
       <p style={{ fontSize: ".9rem", color: "var(--sl3)", lineHeight: 1.8, borderTop: "1px solid rgba(0,0,0,.08)", paddingTop: 16 }}>
         Related reading:{" "}
         <Link href="/blog/lipoprotein-a-apob-triglycerides" style={{ color: "var(--go)", textDecoration: "underline" }}>
-          Lp(a), ApoB, and triglycerides — the triple cardiovascular threat
+          Lp(a), ApoB, and triglycerides: the triple cardiovascular threat
         </Link>
         {" · "}
         <Link href="/blog/fast-insulin" style={{ color: "var(--go)", textDecoration: "underline" }}>

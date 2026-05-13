@@ -66,6 +66,10 @@ button, input, select, textarea { font: inherit; }
 .a4 { animation: rise .75s .40s ease both; }
 .a5 { animation: rise .75s .52s ease both; }
 
+/* ── Scroll reveal ── */
+.sr-hidden { opacity: 0; transform: translateY(26px); transition: opacity .72s ease, transform .72s ease; }
+.sr-visible { opacity: 1; transform: translateY(0); }
+
 .gold-shine {
  background: linear-gradient(90deg, var(--go), var(--go2), var(--go3), var(--go2), var(--go));
  background-size: 250% auto;
