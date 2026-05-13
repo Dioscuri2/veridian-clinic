@@ -403,9 +403,9 @@ export default function HomePage() {
             >
               <span style={{ display:"flex", alignItems:"center", gap:6 }}><Shield/>GP-led</span>
               <span style={{ color:"rgba(0,0,0,.2)" }}>·</span>
-              <span>CQC regulated (Care Quality Commission)</span>
+              <span>Virtual care, available UK-wide</span>
               <span style={{ color:"rgba(0,0,0,.2)" }}>·</span>
-              <span>Nationwide</span>
+              <span>Blood tests at local centres or at home</span>
             </p>
             <div className="a3" style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 380 }}>
               <Link href="/book?tier=discovery" className="btn btn-go" style={{ textAlign: "center", padding: "16px 24px" }}>
@@ -470,10 +470,10 @@ export default function HomePage() {
                   className="cg"
                   style={{ fontSize: "clamp(1.4rem,2.8vw,2rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.3, marginBottom: 18 }}
                 >
-                  Doctor-led metabolic and longevity care for adults who feel something is drifting.
+                  Personalised doctor-led care for people who want to understand what's really driving their health.
                 </h2>
                 <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 14 }}>
-                  Dr Taiwo is a qualified GP with a background spanning general practice, surgery and metabolic health. He leads all Veridian consultations personally — you speak to a doctor, not a health coach or AI tool.
+                  Dr Taiwo is a qualified GP with a background spanning general practice, surgery and metabolic health. He leads all Veridian consultations personally, offering patient-centred care tailored to your specific picture.
                 </p>
                 <p style={{ fontSize: ".91rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 26 }}>
                   His focus is identifying the real causes behind energy loss, weight gain, and poor sleep — blood sugar patterns, cholesterol quality, recovery capacity, and stress load — and building a structured plan to address them before they become harder to reverse.
