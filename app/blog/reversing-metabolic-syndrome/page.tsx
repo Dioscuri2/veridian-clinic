@@ -63,6 +63,8 @@ export default function ReversingMetabolicSyndromePage() {
       <ClinicalArticleLayout
         title="Reversing metabolic syndrome — what the evidence actually supports"
         intro="The goal is not perfection. It is reducing the drivers that keep insulin elevated, waist circumference expanding, and cardiovascular risk quietly climbing — then measuring whether the system is genuinely improving. Metabolic syndrome is a cluster of abnormalities, not a fixed diagnosis with a fixed trajectory."
+        heroImage="/blog/reversing-metabolic-syndrome.jpg"
+        heroAlt="Mitochondrial cellular regeneration visualization — metabolic health transformation"
         ctas={[
           { href: "/book?tier=programme", label: "Explore the 12-week Metabolic Reset →" },
           { href: "/book?tier=baseline", label: "Start with the Core Metabolic Assessment — £595", variant: "secondary" },

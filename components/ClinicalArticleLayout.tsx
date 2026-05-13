@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -16,6 +17,8 @@ type Props = {
   intro: string;
   children: ReactNode;
   ctas?: Cta[];
+  heroImage?: string;
+  heroAlt?: string;
 };
 
 export default function ClinicalArticleLayout({
@@ -24,6 +27,8 @@ export default function ClinicalArticleLayout({
   intro,
   children,
   ctas = [],
+  heroImage,
+  heroAlt = "",
 }: Props) {
   return (
     <>
@@ -38,6 +43,18 @@ export default function ClinicalArticleLayout({
             <p className="sh-body" style={{ margin: "16px 0 28px", maxWidth: 760 }}>
               {intro}
             </p>
+            {heroImage && (
+              <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", marginBottom: 28, overflow: "hidden" }}>
+                <Image
+                  src={heroImage}
+                  alt={heroAlt}
+                  fill
+                  priority
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 900px) 100vw, 860px"
+                />
+              </div>
+            )}
             <article className="card" style={{ display: "grid", gap: 20 }}>
               {children}
               <div style={{ fontSize: ".78rem", color: "var(--sl3)", borderTop: "1px solid rgba(44,42,38,.08)", paddingTop: 14, lineHeight: 1.75 }}>

@@ -72,6 +72,8 @@ export default function LpaApoBTriglyceridesPage() {
       <ClinicalArticleLayout
         title="The cardiovascular triple threat — Lipoprotein(a), ApoB, and triglycerides"
         intro="Your standard NHS cholesterol panel measures LDL-C, HDL-C, and total triglycerides. What it does not measure are three independent atherogenic pathways that between them explain a large proportion of heart attacks in people who were told their cholesterol was fine."
+        heroImage="/blog/lipoprotein-a-apob-triglycerides.jpg"
+        heroAlt="Arterial cross-section showing Lp(a), ApoB, and triglyceride cardiovascular risk"
         ctas={[
           { href: "/book?tier=baseline", label: "Book the Core Metabolic Assessment — includes ApoB and Lp(a) →" },
           { href: "/book?tier=longevity-panel", label: "Book the Advanced Longevity Assessment — £795", variant: "secondary" },

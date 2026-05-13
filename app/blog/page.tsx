@@ -11,6 +11,13 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: "homocysteine",
+    title: "Homocysteine — the cardiovascular risk marker most GPs don't check",
+    excerpt: "Homocysteine is an independent cardiovascular and cognitive risk marker not included in standard NHS panels. Elevated levels are most commonly caused by low folate or B12 — yet they silently drive endothelial damage, inflammation, and vascular risk that conventional screening completely misses.",
+    tag: "Cardiovascular Risk",
+    readTime: "14 min read",
+  },
+  {
     slug: "lipoprotein-a-apob-triglycerides",
     title: "The cardiovascular triple threat — Lipoprotein(a), ApoB, and triglycerides",
     excerpt: "Three independent atherogenic pathways your standard NHS cholesterol panel does not measure — and why having all three elevated compounds your risk in ways that standard screening completely misses.",
