@@ -4,7 +4,6 @@ import Stripe from "stripe";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
-import { sendGuideEmail } from "@/lib/guideEmail";
 
 export const metadata: Metadata = {
   title: "Guide Purchase Confirmed | Veridian Clinic",
@@ -21,25 +20,16 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
   let verified = false;
   let customerEmail = "";
   let customerName = "";
-  let emailSent = false;
 
   if (session_id && process.env.STRIPE_SECRET_KEY) {
     try {
-      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+        httpClient: Stripe.createFetchHttpClient(),
+      });
       const session = await stripe.checkout.sessions.retrieve(session_id);
       verified = session.payment_status === "paid";
       customerEmail = session.customer_details?.email || session.customer_email || "";
       customerName = session.customer_details?.name || "";
-
-      if (verified && customerEmail) {
-        const siteUrl =
-          process.env.NEXT_PUBLIC_SITE_URL ||
-          process.env.SITE_URL ||
-          process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-          "https://veridianclinic.com";
-        const downloadUrl = `${siteUrl}/api/guide-download?session_id=${session_id}`;
-        emailSent = await sendGuideEmail({ email: customerEmail, name: customerName, downloadUrl });
-      }
     } catch {
       // Stripe error — still show page, download button included
     }
@@ -73,7 +63,7 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
                 </h1>
                 <p style={{ fontSize: ".94rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 560, margin: "0 auto 32px" }}>
                   Download your 21-Day Metabolic Reset Guide below.
-                  {emailSent && customerEmail ? ` We've also sent a download link to ${customerEmail} so you can access it anytime.` : " Save it somewhere easy to find."}
+                  {customerEmail ? ` A receipt email will be sent to ${customerEmail}.` : " Save it somewhere easy to find."}
                 </p>
 
                 {/* Download CTA */}
@@ -86,11 +76,6 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
                   >
                     Download Your Guide (PDF) ↓
                   </a>
-                  {emailSent && (
-                    <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
-                      A copy has been sent to your email.
-                    </p>
-                  )}
                 </div>
 
                 {/* What's next / discovery call upsell */}

@@ -26,7 +26,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Stripe not configured" }, { status: 500 });
   }
 
-  const stripe = new Stripe(stripeKey);
+  const stripe = new Stripe(stripeKey, {
+    httpClient: Stripe.createFetchHttpClient(),
+  });
   const now = new Date();
   const monthStart = Math.floor(new Date(now.getFullYear(), now.getMonth(), 1).getTime() / 1000);
   const weekStart = Math.floor((Date.now() - 7 * 24 * 60 * 60 * 1000) / 1000);

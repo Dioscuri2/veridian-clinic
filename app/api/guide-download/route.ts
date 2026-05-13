@@ -15,7 +15,9 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      httpClient: Stripe.createFetchHttpClient(),
+    });
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status !== "paid") {
@@ -24,7 +26,7 @@ export async function GET(request: NextRequest) {
 
     // Verify this was a guide purchase
     const tier = session.metadata?.tier;
-    if (tier && tier !== "guide") {
+    if (tier !== "guide") {
       return new NextResponse("Invalid access", { status: 403 });
     }
   } catch {

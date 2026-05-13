@@ -11,7 +11,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Stripe not configured" }, { status: 500 });
   }
 
-  const stripe = new Stripe(stripeKey);
+  const stripe = new Stripe(stripeKey, {
+    httpClient: Stripe.createFetchHttpClient(),
+  });
   const body = await request.text();
   const sig = request.headers.get("stripe-signature") || "";
 
@@ -45,15 +47,24 @@ export async function POST(request: NextRequest) {
       const email = session.customer_details?.email || session.customer_email || "";
       const name = session.customer_details?.name || "";
       const sessionId = session.id;
+      const alreadySent = session.metadata?.guide_email_sent_at;
 
-      if (email && sessionId) {
+      if (!alreadySent && email && sessionId) {
         const siteUrl =
           process.env.NEXT_PUBLIC_SITE_URL ||
           process.env.SITE_URL ||
           process.env.VERCEL_PROJECT_PRODUCTION_URL ||
           "https://veridianclinic.com";
         const downloadUrl = `${siteUrl}/api/guide-download?session_id=${sessionId}`;
-        await sendGuideEmail({ email, name, downloadUrl });
+        const sent = await sendGuideEmail({ email, name, downloadUrl });
+        if (sent) {
+          await stripe.checkout.sessions.update(sessionId, {
+            metadata: {
+              ...session.metadata,
+              guide_email_sent_at: new Date().toISOString(),
+            },
+          });
+        }
       }
     }
   }
