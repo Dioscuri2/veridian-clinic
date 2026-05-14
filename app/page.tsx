@@ -438,8 +438,10 @@ export default function HomePage() {
               </div>
             </ScrollReveal>
             <div className="who-grid" style={{ marginBottom: 32 }}>
-              {whoItems.map(item => (
-                <WhoCard key={item.title} title={item.title} detail={item.detail} />
+              {whoItems.map((item, i) => (
+                <div key={item.title} data-aos="fade-up" data-aos-delay={i * 55}>
+                  <WhoCard title={item.title} detail={item.detail} />
+                </div>
               ))}
             </div>
             <div style={{ textAlign: "center" }}>
@@ -614,10 +616,10 @@ export default function HomePage() {
               </blockquote>
             </ScrollReveal>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
-              <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.95 }}>
+              <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.95 }} data-aos="fade-right" data-aos-delay="60">
                 Many of my patients were being told their blood tests were 'normal' while feeling tired, heavier, struggling with energy and sleep, and sensing something was off. Routine care had no clear answer.
               </p>
-              <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.95 }}>
+              <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.95 }} data-aos="fade-left" data-aos-delay="120">
                 Veridian bridges that gap — using the biomarkers that routine care rarely checks, structured assessment, and personalised doctor-led plans to help patients act earlier and track real progress.
               </p>
             </div>
@@ -635,29 +637,33 @@ export default function HomePage() {
               <h2 className="cg sh-title">Understand the cause. Build the plan.</h2>
             </div>
             <div className="method-grid">
-              <MethodCard
-                num="01"
-                title="Identify the root cause"
-                points={[
-                  "Blood sugar patterns and insulin levels",
-                  "Heart and vascular risk factors",
-                  "Key inflammation and nerve health markers",
-                  "Sleep quality and recovery capacity",
-                  "Liver health and inflammation signals",
-                ]}
-              />
-              <MethodCard
-                num="02"
-                title="Build a plan"
-                dark
-                points={[
-                  "Clear written priorities and next steps",
-                  "CGM where clinically appropriate",
-                  "Fortnightly coaching & accountability",
-                  "GP review at programme midpoint",
-                  "12-month forward plan at completion",
-                ]}
-              />
+              <div data-aos="fade-right">
+                <MethodCard
+                  num="01"
+                  title="Identify the root cause"
+                  points={[
+                    "Blood sugar patterns and insulin levels",
+                    "Heart and vascular risk factors",
+                    "Key inflammation and nerve health markers",
+                    "Sleep quality and recovery capacity",
+                    "Liver health and inflammation signals",
+                  ]}
+                />
+              </div>
+              <div data-aos="fade-left" data-aos-delay="100">
+                <MethodCard
+                  num="02"
+                  title="Build a plan"
+                  dark
+                  points={[
+                    "Clear written priorities and next steps",
+                    "CGM where clinically appropriate",
+                    "Fortnightly coaching & accountability",
+                    "GP review at programme midpoint",
+                    "12-month forward plan at completion",
+                  ]}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -832,7 +838,7 @@ export default function HomePage() {
         ══════════════════════════════════════════════════ */}
         <section id="domains" className="sec bg-iv">
           <div className="wrap">
-            <div className="sh text-center">
+            <div className="sh text-center" data-aos="fade-up">
               <p className="lbl">The Clinical Framework</p>
               <div className="rule rule-c"/>
               <h2 className="sh-title">Four domains, one clear picture.</h2>
@@ -901,7 +907,7 @@ export default function HomePage() {
             FINAL CTA
         ══════════════════════════════════════════════════ */}
         <section className="sec bg-fo" style={{ textAlign:"center" }}>
-          <div style={{ maxWidth:680, margin:"0 auto" }}>
+          <div style={{ maxWidth:680, margin:"0 auto" }} data-aos="fade-up">
             <div className="vline"/>
             <h2 className="cg" style={{ fontSize:"clamp(1.8rem,3.8vw,2.8rem)", fontWeight:500, color:"var(--iv)", lineHeight:1.25, marginBottom:14 }}>
               Long-term health needs clarity, structure, and follow-through.
