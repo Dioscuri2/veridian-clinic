@@ -486,7 +486,6 @@ export default function HomePage() {
                     ["MBBS", "Bachelor of Medicine and Surgery"],
                     ["MRCGP", "Member of the Royal College of GPs"],
                     ["MRCS", "Member of the Royal College of Surgeons"],
-                    ["CQC Regulated", "Regulated clinical services via thanksdoc.co.uk"],
                   ].map(([tag, desc]) => (
                     <div key={tag} style={{ padding: "11px 13px", background: "var(--iv)", borderLeft: "2px solid var(--go)" }}>
                       <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--fo)", marginBottom: 2 }}>{tag}</p>
