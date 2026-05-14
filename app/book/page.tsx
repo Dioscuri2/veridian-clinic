@@ -1,278 +1,260 @@
 "use client";
-import { Suspense, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
-import TurnstileWidget from "@/components/TurnstileWidget";
 
-const FORMSPREE_ID = "mkopkopb";
+// Set NEXT_PUBLIC_CALENDLY_URL in Vercel env vars once Calendly account is ready.
+// Different event types per tier are optional — use one URL initially.
+const CALENDLY_BASE = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 
-const tiers = [
-  { value: "discovery", label: "GP Discovery Call — £195" },
-  { value: "metabolic-screen", label: "Energy Screen — £195" },
-  { value: "baseline", label: "Veridian Baseline — £595" },
-  { value: "longevity-panel", label: "Longevity Panel — £795" },
-  { value: "programme", label: "12-Week Metabolic Reset — £1,895" },
-];
-
-const paidTiers = new Set(["discovery", "discovery-quiz", "metabolic-screen", "baseline", "longevity-panel", "programme"]);
-
-const tierAliasMap: Record<string, string> = {
-  advanced: "programme",
-};
-
-const tierDetails: Record<string, { title: string; price: string; strikethrough?: string; badge?: string; description: string }> = {
+const tierDetails: Record<string, {
+  title: string; price: string; duration: string;
+  description: string; strikethrough?: string; badge?: string;
+}> = {
   discovery: {
-    title: "GP-Led Discovery Call",
+    title: "GP Discovery Call",
     price: "£195",
-    description:
-      "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation.",
+    duration: "30 min",
+    description: "A GP-led review of your metabolic picture, key risk factors, and a personalised clinical pathway recommendation.",
   },
   "discovery-quiz": {
-    title: "GP-Led Discovery Call",
+    title: "GP Discovery Call",
     price: "£97",
     strikethrough: "£195",
-    badge: "Quiz Rate — Save £98",
-    description:
-      "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway — whether that's a targeted blood panel, a structured reset, or a full baseline assessment.",
+    badge: "Quiz rate — save £98",
+    duration: "30 min",
+    description: "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation.",
   },
   "metabolic-screen": {
     title: "Energy Screen",
     price: "£195",
-    description:
-      "A targeted fatigue, thyroid, insulin and inflammation panel with GP-reviewed interpretation and a clear written next-step recommendation.",
+    duration: "45 min",
+    description: "A targeted fatigue, thyroid, insulin and inflammation panel with GP-reviewed interpretation and a clear written next-step recommendation.",
   },
   baseline: {
     title: "Veridian Baseline",
     price: "£595",
-    description:
-      "A longevity-focused baseline audit designed to reveal the most actionable metabolic drivers of decline before they become disease.",
+    duration: "60 min",
+    description: "A longevity-focused baseline audit designed to reveal the most actionable metabolic drivers before they become disease.",
   },
   "longevity-panel": {
     title: "Longevity Panel",
     price: "£795",
-    description:
-      "A premium biological-age audit covering 150+ data points, including hormones, Omega-3 index, gut integrity, pancreatic health, cardiovascular risk and GP interpretation.",
+    duration: "60 min",
+    description: "A premium biological-age audit covering 150+ data points with GP interpretation.",
   },
   programme: {
     title: "12-Week Metabolic Reset",
     price: "£1,895",
-    description:
-      "A structured reset for patients who need guided implementation, accountability and follow-through, not just a report.",
+    duration: "90 min",
+    description: "A structured reset with guided implementation, accountability and follow-through.",
   },
 };
 
-function BookingFormInner() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const tierParam = searchParams.get("tier") || "";
+const aliasMap: Record<string, string> = { advanced: "programme" };
 
+function Shield() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 15 15" fill="none" style={{ flexShrink: 0, marginTop: 1 }}>
+      <path d="M7.5 1.2L2 4.2v3.5c0 2.8 2.1 5 5.5 5.8 3.4-.8 5.5-3 5.5-5.8V4.2z" fill="var(--fo)" stroke="var(--go)" strokeWidth=".7"/>
+      <path d="M5 7.5l1.7 1.7 2.8-2.8" stroke="var(--go)" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+type Step = "calendar" | "pay" | "submitting" | "done" | "no-calendly";
+
+function BookingInner() {
+  const searchParams = useSearchParams();
+  const rawTier = searchParams.get("tier") || "discovery";
   const refParam = searchParams.get("ref") || "";
 
-  const validTier = useMemo(() => {
-    const normalizedTier = tierAliasMap[tierParam] || tierParam;
-    // Quiz high-risk referral gets the discounted discovery rate
-    if (normalizedTier === "discovery" && refParam === "quiz-high-risk") return "discovery-quiz";
-    if (normalizedTier === "discovery-quiz") return "discovery-quiz";
-    if (tierDetails[normalizedTier]) return normalizedTier;
-    return "baseline";
-  }, [tierParam, refParam]);
+  const resolvedTier = (() => {
+    const t = aliasMap[rawTier] || rawTier;
+    if (t === "discovery" && refParam === "quiz-high-risk") return "discovery-quiz";
+    return tierDetails[t] ? t : "discovery";
+  })();
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    tier: validTier,
-    notes: "",
-  });
-  const [error, setError] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [cancelled, setCancelled] = useState(false);
-  const [gateChecked, setGateChecked] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState("");
+  const details = tierDetails[resolvedTier];
 
+  const [step, setStep] = useState<Step>(CALENDLY_BASE ? "calendar" : "no-calendly");
+  const [invitee, setInvitee] = useState<{ name: string; email: string } | null>(null);
+  const [slotLabel, setSlotLabel] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  // Load Calendly widget script once
   useEffect(() => {
-    if (validTier === "discovery-quiz") {
-      const hasFlag = sessionStorage.getItem("quiz_gate") === "1";
-      if (!hasFlag) {
-        router.replace("/metabolic-quiz");
-        return;
+    if (!CALENDLY_BASE) return;
+    if (document.querySelector('script[src*="calendly.com/assets"]')) return;
+    const s = document.createElement("script");
+    s.src = "https://assets.calendly.com/assets/external/widget.js";
+    s.async = true;
+    document.head.appendChild(s);
+  }, []);
+
+  // Detect when patient completes Calendly booking
+  useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (e.data?.event !== "calendly.event_scheduled") return;
+      const payload = e.data.payload ?? {};
+      const name: string = payload.invitee?.name ?? "";
+      const email: string = payload.invitee?.email ?? "";
+      const startTime: string = payload.event?.start_time ?? "";
+      setInvitee({ name, email });
+      if (startTime) {
+        setSlotLabel(
+          new Date(startTime).toLocaleString("en-GB", {
+            weekday: "long", day: "numeric", month: "long",
+            year: "numeric", hour: "2-digit", minute: "2-digit",
+          })
+        );
       }
-    }
-    setGateChecked(true);
-  }, [validTier, router]);
+      setStep("pay");
+      // Scroll to payment section smoothly
+      setTimeout(() => {
+        document.getElementById("pay-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 200);
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, []);
 
-  useEffect(() => {
-    setForm((prev) => ({ ...prev, tier: validTier }));
-  }, [validTier]);
-
-  useEffect(() => {
-    setCancelled(searchParams.get("cancelled") === "1");
-  }, [searchParams]);
-
-  const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-
-    if (!form.name.trim() || !form.email.trim() || !form.tier.trim()) {
-      setError("Please complete your name, email, and assessment tier.");
-      return;
-    }
-
-    setSubmitting(true);
+  const onPay = async () => {
+    if (!invitee) return;
+    setStep("submitting");
+    setErrorMsg("");
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch("/api/checkout", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          tier: form.tier,
-          notes: form.notes,
-          source: "Veridian Clinic website",
+          name: invitee.name,
+          email: invitee.email,
+          tier: resolvedTier,
+          notes: slotLabel ? `Calendly slot: ${slotLabel}` : "",
+          turnstileToken: "",
         }),
       });
-
-      if (!res.ok) throw new Error("Submission failed");
-
-      if (paidTiers.has(form.tier)) {
-        const checkoutRes = await fetch("/api/checkout", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            phone: form.phone,
-            tier: form.tier,
-            notes: form.notes,
-            turnstileToken,
-          }),
-        });
-
-        const checkoutData = await checkoutRes.json();
-        if (!checkoutRes.ok || !checkoutData?.url) {
-          throw new Error(checkoutData?.error || "Checkout session failed");
-        }
-
-        window.location.href = checkoutData.url;
-        return;
-      }
-
-      router.push(`/book/thank-you?tier=${encodeURIComponent(form.tier)}`);
-    } catch {
-      setError("There was a problem submitting your request. Please try again.");
-    } finally {
-      setSubmitting(false);
+      const data = await res.json();
+      if (!res.ok || !data?.url) throw new Error(data?.error || "Checkout session failed");
+      window.location.href = data.url;
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : "Payment setup failed. Please try again.");
+      setStep("pay");
     }
   };
 
-  if (validTier === "discovery-quiz" && !gateChecked) return null;
+  const embedUrl = `${CALENDLY_BASE}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=f6f1e8&text_color=131f2e&primary_color=c8a84b`;
 
   return (
-    <main style={{ paddingTop: "var(--nav-h)" }}>
+    <main style={{ paddingTop: "var(--nav-h)", background: "var(--iv)" }}>
       <section className="sec bg-iv">
-        <div className="wrap">
-          <div className="g2-wide" style={{ display: "grid", alignItems: "start" }}>
-            <div>
-              <p className="lbl">Booking Request</p>
-              <div className="rule" />
-              <h1 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.15, marginBottom: 18 }}>
-                Book your assessment.
-                <br /><em style={{ fontStyle: "italic", color: "var(--fo)" }}>Start with clarity.</em>
-              </h1>
-              <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 18 }}>
-                Complete the short form below. Your chosen assessment will be pre-selected if you arrived here from the quiz or pricing page.
-              </p>
-              <p style={{ fontSize: ".82rem", color: "var(--sl3)", lineHeight: 1.85, marginBottom: 18 }}>
-                CQC regulated clinical services — including prescribing where indicated — are delivered under the umbrella of thanksdoc.co.uk.
-              </p>
-              <div className="card" style={{ marginBottom: 28 }}>
-                <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>
-                  Selected pathway
-                </p>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 8 }}>
-                  <h2 className="cg" style={{ fontSize: "1.4rem", color: "var(--sl)", margin: 0 }}>
-                    {tierDetails[form.tier].title}
-                  </h2>
-                  <span style={{ fontSize: "1.3rem", fontWeight: 600, color: "var(--fo)" }}>
-                    {tierDetails[form.tier].price}
-                  </span>
-                  {tierDetails[form.tier].strikethrough && (
-                    <span style={{ fontSize: ".9rem", color: "var(--sl3)", textDecoration: "line-through" }}>
-                      {tierDetails[form.tier].strikethrough}
-                    </span>
-                  )}
-                  {tierDetails[form.tier].badge && (
-                    <span style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".1em", background: "var(--go)", color: "var(--fo)", padding: "2px 8px" }}>
-                      {tierDetails[form.tier].badge}
-                    </span>
-                  )}
-                </div>
-                <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-                  {tierDetails[form.tier].description}
-                </p>
-              </div>
-              <form onSubmit={onSubmit} className="card" style={{ display: "grid", gap: 14 }}>
-                <input className="form-field" name="name" placeholder="Full name" value={form.name} onChange={onChange} required />
-                <input className="form-field" name="email" type="email" placeholder="Email address" value={form.email} onChange={onChange} required />
-                <input className="form-field" name="phone" placeholder="Phone number (optional)" value={form.phone} onChange={onChange} />
-                <select className="form-field form-select" name="tier" value={form.tier} onChange={onChange}>
-                  {tiers.map((tier) => (
-                    <option key={tier.value} value={tier.value}>{tier.label}</option>
-                  ))}
-                </select>
-                <textarea className="form-field" name="notes" placeholder="Anything useful to know before we contact you?" rows={5} value={form.notes} onChange={onChange} />
-                <TurnstileWidget
-                  onVerify={setTurnstileToken}
-                  onExpire={() => setTurnstileToken("")}
-                  onError={() => setTurnstileToken("")}
-                />
-                {cancelled && !error ? (
-                  <p style={{ color: "var(--fo)", fontSize: ".82rem" }}>
-                    Checkout was cancelled. Your form details are still here if you want to try again.
-                  </p>
-                ) : null}
-                {error && <p style={{ color: "var(--red)", fontSize: ".82rem" }}>{error}</p>}
-                <button type="submit" className="btn btn-fo" disabled={submitting} style={{ opacity: submitting ? 0.6 : 1, cursor: submitting ? "wait" : "pointer" }}>
-                  {submitting ? "Submitting..." : paidTiers.has(form.tier) ? "Continue to Secure Payment →" : "Request Booking →"}
-                </button>
-              </form>
+        <div className="wrap" style={{ maxWidth: 860 }}>
+
+          {/* Header */}
+          <p className="lbl">Booking</p>
+          <div className="rule" />
+          <h1 className="cg" style={{ fontSize: "clamp(2rem,4.2vw,3rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.15, marginBottom: 20 }}>
+            {step === "pay" || step === "submitting"
+              ? <><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Your slot is reserved.</em><br />Pay now to confirm.</>
+              : <>Choose your time.<br /><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Pay to confirm.</em></>
+            }
+          </h1>
+
+          {/* Tier summary card */}
+          <div className="card" style={{ maxWidth: 580, marginBottom: 36 }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", marginBottom: 8 }}>
+              <span style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--go)", border: "1px solid rgba(200,168,75,.3)", padding: "2px 8px" }}>
+                {details.duration}
+              </span>
+              <h2 className="cg" style={{ fontSize: "1.35rem", color: "var(--sl)", margin: 0 }}>{details.title}</h2>
+              <span style={{ fontSize: "1.25rem", fontWeight: 600, color: "var(--fo)" }}>{details.price}</span>
+              {details.strikethrough && (
+                <span style={{ fontSize: ".88rem", color: "var(--sl3)", textDecoration: "line-through" }}>{details.strikethrough}</span>
+              )}
+              {details.badge && (
+                <span style={{ fontSize: ".66rem", fontWeight: 700, letterSpacing: ".1em", background: "var(--go)", color: "var(--fo)", padding: "2px 8px" }}>{details.badge}</span>
+              )}
             </div>
-            <div style={{ display: "grid", gap: 20 }}>
-              <div className="card-fo">
-                <p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>What to expect</p>
-                <ul className="chk">
-                  <li>Virtual, UK-wide delivery</li>
-                  <li>Clinical review via trusted medical partners where needed</li>
-                  <li>Pricing aligned to your selected pathway</li>
-                  <li>Clear next steps after booking</li>
-                  <li>Secure intake available after confirmation</li>
-                </ul>
-              </div>
-              <div className="card">
-                <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>Need help choosing?</p>
-                <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 18 }}>
-                  If you’re not completely sure which pathway is right, take the free quiz first and we’ll point you to the best starting option.
-                </p>
-                <Link href="/metabolic-quiz" className="btn btn-ol">Take the Free Metabolic Quiz →</Link>
-              </div>
-            </div>
+            <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85 }}>{details.description}</p>
           </div>
+
+          {/* STEP 1: Calendly embed */}
+          {step !== "no-calendly" && (
+            <div style={{ marginBottom: 48 }}>
+              <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 14 }}>
+                Step 1 — Pick a date and time
+              </p>
+              <div
+                className="calendly-inline-widget"
+                data-url={embedUrl}
+                style={{ minWidth: 280, height: 660, border: "1px solid rgba(0,0,0,.08)" }}
+              />
+            </div>
+          )}
+
+          {/* Fallback: Calendly not yet configured */}
+          {step === "no-calendly" && (
+            <div className="card" style={{ borderLeft: "3px solid var(--go)", maxWidth: 580, marginBottom: 36 }}>
+              <p style={{ fontSize: ".8rem", fontWeight: 600, color: "var(--fo)", marginBottom: 6 }}>Online booking coming shortly</p>
+              <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 16 }}>
+                To book your appointment right now, email us at{" "}
+                <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)", fontWeight: 500 }}>hello@veridianclinic.com</a>{" "}
+                or call and we'll confirm your slot directly.
+              </p>
+              <p style={{ fontSize: ".8rem", color: "var(--sl3)", lineHeight: 1.75 }}>
+                Available: alternate Wednesdays &amp; Fridays
+              </p>
+            </div>
+          )}
+
+          {/* STEP 2: Pay to confirm */}
+          {(step === "pay" || step === "submitting") && invitee && (
+            <div id="pay-section" style={{ marginBottom: 48 }}>
+              <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 14 }}>
+                Step 2 — Confirm payment
+              </p>
+              <div className="card" style={{ borderLeft: "3px solid var(--go)", maxWidth: 580 }}>
+                <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 10 }}>
+                  Slot reserved
+                </p>
+                {slotLabel && (
+                  <p className="cg" style={{ fontSize: "1.4rem", fontWeight: 500, color: "var(--sl)", marginBottom: 5, lineHeight: 1.25 }}>
+                    {slotLabel}
+                  </p>
+                )}
+                <p style={{ fontSize: ".9rem", color: "var(--sl2)", marginBottom: 4 }}>
+                  {details.title} · {details.price}
+                </p>
+                <p style={{ fontSize: ".8rem", color: "var(--sl3)", marginBottom: 20 }}>
+                  {invitee.name} · {invitee.email}
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: ".8rem", color: "var(--sl3)", lineHeight: 1.7, marginBottom: 22 }}>
+                  <Shield />
+                  <span>Secure payment via Stripe. Confirmation sent immediately after payment.</span>
+                </div>
+                {errorMsg && (
+                  <p style={{ color: "var(--red)", fontSize: ".82rem", marginBottom: 14 }}>{errorMsg}</p>
+                )}
+                <button
+                  className="btn btn-go"
+                  onClick={onPay}
+                  disabled={step === "submitting"}
+                  style={{ opacity: step === "submitting" ? 0.65 : 1, cursor: step === "submitting" ? "wait" : "pointer" }}
+                >
+                  {step === "submitting" ? "Redirecting to payment…" : `Pay ${details.price} to Confirm →`}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Trust footer */}
+          <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.85, maxWidth: 560, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
+            CQC regulated clinical services are delivered under the umbrella of thanksdoc.co.uk. All consultations are virtual, available UK-wide. Refund policy available on request.
+          </p>
+
         </div>
       </section>
     </main>
@@ -284,8 +266,12 @@ export default function BookingPage() {
     <>
       <style>{FONTS + CSS}</style>
       <Navigation />
-      <Suspense fallback={<main style={{ paddingTop: "var(--nav-h)" }}><section className="sec bg-iv"><div className="wrap"><p>Loading booking form…</p></div></section></main>}>
-        <BookingFormInner />
+      <Suspense fallback={
+        <main style={{ paddingTop: "var(--nav-h)" }}>
+          <section className="sec bg-iv"><div className="wrap"><p>Loading…</p></div></section>
+        </main>
+      }>
+        <BookingInner />
       </Suspense>
       <Footer />
     </>
