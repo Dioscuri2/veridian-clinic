@@ -215,10 +215,6 @@ export default function HomePage() {
     <>
       <style>{FONTS + CSS + `
         /* ── Hero split layout ── */
-        @keyframes heroglow {
-          0%,100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
         .hero-split {
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
@@ -231,24 +227,25 @@ export default function HomePage() {
           flex-direction: column;
           justify-content: center;
           padding: clamp(48px,7vh,88px) clamp(32px,6vw,80px);
-          background: linear-gradient(135deg, #f6f1e8 0%, #ede5d4 50%, #f6f1e8 100%);
-          background-size: 200% 200%;
-          animation: heroglow 12s ease infinite;
+          background: var(--iv);
           order: 1;
         }
         .hero-img-col {
           position: relative;
           overflow: hidden;
-          background: #0d2818;
+          background: #e8e4dc;
           order: 2;
         }
-        .hero-img-col video {
+        .hero-img-col img {
           position: absolute;
-          top: 0;
+          top: -50px;
           left: 0;
+          right: 0;
+          bottom: 0;
           width: 100%;
-          height: 100%;
+          height: calc(100% + 50px);
           object-fit: cover;
+          object-position: center top;
           display: block;
         }
         @media(max-width:900px) {
@@ -262,12 +259,13 @@ export default function HomePage() {
             order: 1;
           }
           .hero-img-col {
-            height: 340px;
+            height: 420px;
             order: 2;
           }
-          .hero-img-col video {
+          .hero-img-col img {
             top: 0;
             height: 100%;
+            object-position: 50% 12%;
           }
         }
 
@@ -420,15 +418,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-img-col">
-            <video autoPlay muted loop playsInline>
-              <source src="/hero.mp4" type="video/mp4" />
-            </video>
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(246,241,232,0.18) 0%, transparent 40%)" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(13,40,24,0.55) 0%, transparent 50%)" }} />
-            <div style={{ position: "absolute", bottom: 28, left: 28, right: 28 }}>
-              <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(200,168,75,.85)", marginBottom: 5 }}>Veridian Clinic</p>
-              <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.7)", lineHeight: 1.6 }}>Private metabolic &amp; longevity medicine</p>
-            </div>
+            <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo GP — Veridian Clinic" />
           </div>
         </section>
 
