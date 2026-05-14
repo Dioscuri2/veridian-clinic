@@ -370,7 +370,7 @@ export default function HomePage() {
             1. HERO — text first (desktop + mobile), image below on mobile
         ══════════════════════════════════════════════════ */}
         <section className="hero-split">
-          <div className="hero-text-col">
+          <div className="hero-text-col" data-aos="fade-right">
             <p className="lbl a1" style={{ marginBottom: 10 }}>Metabolic &amp; Longevity Medicine</p>
             <div className="rule a1" style={{ marginBottom: 22 }}/>
             <h1
@@ -417,7 +417,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="hero-img-col">
+          <div className="hero-img-col" data-aos="fade-left" data-aos-delay="120">
             <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo GP — Veridian Clinic" />
           </div>
         </section>
@@ -458,7 +458,7 @@ export default function HomePage() {
               <div className="rule rule-c"/>
             </div>
             <div className="doc-editorial">
-              <div className="doc-editorial-img">
+              <div className="doc-editorial-img" data-aos="fade-right">
                 <img src="/dr-oluwatosin-taiwo.jpg" alt="Dr Tosin Taiwo — Founder and Lead GP, Veridian Clinic" />
                 <div className="doc-editorial-overlay">
                   <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--go2)", marginBottom: 6 }}>Founder &amp; Lead GP</p>
@@ -466,7 +466,7 @@ export default function HomePage() {
                   <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.72)" }}>MBBS &nbsp;·&nbsp; MRCGP &nbsp;·&nbsp; MRCS</p>
                 </div>
               </div>
-              <div className="doc-editorial-bio">
+              <div className="doc-editorial-bio" data-aos="fade-left" data-aos-delay="100">
                 <p className="lbl" style={{ marginBottom: 14 }}>Your Health, Led by an Expert Doctor</p>
                 <div className="rule" style={{ marginBottom: 20 }}/>
                 <h2
@@ -515,8 +515,8 @@ export default function HomePage() {
               </div>
             </ScrollReveal>
             <div className="offer-grid">
-              {offers.map((o) => (
-                <div key={o.name} className={`offer-card${o.featured ? " offer-card-featured" : ""}`}>
+              {offers.map((o, i) => (
+                <div key={o.name} className={`offer-card${o.featured ? " offer-card-featured" : ""}`} data-aos="fade-up" data-aos-delay={i * 80}>
                   {o.featured && (
                     <div style={{ position:"absolute", top:-1, left:24, background:"var(--go)", padding:"3px 12px", fontSize:".66rem", fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"var(--fo)" }}>
                       Most popular
@@ -665,13 +665,13 @@ export default function HomePage() {
         {/* ══════════════════════════════════════════════════
             8. HOW IT WORKS — clear pathway
         ══════════════════════════════════════════════════ */}
-        <section id="process" className="sec bg-iv">
+        <section id="process" className="sec bg-fo">
           <div className="wrap">
             <div className="sh text-center">
-              <p className="lbl">How It Works</p>
-              <div className="rule rule-c"/>
-              <h2 className="sh-title">A clear pathway from first conversation to lasting change.</h2>
-              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 660 }}>
+              <p className="lbl" style={{ color: "var(--go2)" }}>How It Works</p>
+              <div className="rule rule-c" style={{ background: "var(--go)" }}/>
+              <h2 className="sh-title" style={{ color: "var(--iv)" }}>A clear pathway from first conversation to lasting change.</h2>
+              <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 660, color: "rgba(246,241,232,.6)" }}>
                 Every patient starts with a conversation. From there, the pathway is structured, measurable, and GP-led at every stage.
               </p>
             </div>
@@ -683,11 +683,11 @@ export default function HomePage() {
                 { n:"04", t:"Structured Follow-Up", d:"Fortnightly coaching, GP-led clinical review at midpoint, and an end-of-programme review with a 12-month forward plan. Progress is measured, not assumed." },
               ].map((s, i) => (
                 <ScrollReveal key={s.n} delay={i * 80}>
-                  <div style={{ padding:"26px 0", borderBottom:"1px solid rgba(0,0,0,.07)" }}>
+                  <div style={{ padding:"26px 0", borderBottom:"1px solid rgba(255,255,255,.08)" }}>
                     <div style={{ fontSize:".62rem", fontWeight:700, letterSpacing:".28em", color:"var(--go)", marginBottom:10 }}>{s.n}</div>
                     <div style={{ width:1, height:26, background:"var(--go)", opacity:.4, marginBottom:12 }}/>
-                    <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color:"var(--fo)", marginBottom:7 }}>{s.t}</h3>
-                    <p style={{ fontSize:".92rem", color:"var(--sl2)", lineHeight:1.9 }}>{s.d}</p>
+                    <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color:"var(--iv)", marginBottom:7 }}>{s.t}</h3>
+                    <p style={{ fontSize:".92rem", color:"rgba(246,241,232,.65)", lineHeight:1.9 }}>{s.d}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -708,7 +708,7 @@ export default function HomePage() {
                 Each domain is scored 1–10. Together they explain the outcomes you care about most.
               </p>
             </div>
-            <div style={{ background: "var(--wh)", border: "1px solid rgba(0,0,0,.09)", padding: "clamp(28px,5vw,48px)", position: "relative", maxWidth: 600, margin: "0 auto" }}>
+            <div style={{ background: "var(--wh)", border: "1px solid rgba(0,0,0,.09)", padding: "clamp(28px,5vw,48px)", position: "relative", maxWidth: 600, margin: "0 auto" }} data-aos="fade-up">
               <div style={{ position: "absolute", top: 0, left: 0, width: 48, height: 3, background: "var(--go)" }}/>
               <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: 48, background: "var(--go)" }}/>
               <p className="lbl" style={{ marginBottom: 24 }}>Sample Domain Scorecard</p>
@@ -741,7 +741,7 @@ export default function HomePage() {
         <section className="sec bg-iv">
           <div className="wrap">
             <div className="g2-wide" style={{ display:"grid", alignItems:"center" }}>
-              <div>
+              <div data-aos="fade-right">
                 <p className="lbl">What We Measure</p>
                 <div className="rule" style={{ marginBottom: 22 }}/>
                 <h2 className="cg" style={{ fontSize:"clamp(1.9rem,3.8vw,2.7rem)", fontWeight:500, color:"var(--sl)", lineHeight:1.25, marginBottom: 16 }}>
@@ -753,7 +753,7 @@ export default function HomePage() {
                 </p>
                 <Link href="/assessments" className="btn btn-fo">See Our Assessments →</Link>
               </div>
-              <div style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", overflow:"hidden" }}>
+              <div style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", overflow:"hidden" }} data-aos="fade-left" data-aos-delay="100">
                 <div style={{ background:"var(--fo)", padding:"14px 24px" }}>
                   <p className="lbl" style={{ color:"var(--go2)" }}>What We Measure — and Why</p>
                 </div>
@@ -788,7 +788,7 @@ export default function HomePage() {
             <div style={{ marginBottom: 36 }}>
               {testimonials.map((t,i) => (
                 <div key={i} style={{ display: i === tIdx ? "block" : "none" }}>
-                  <div style={{ background:"var(--fo)", padding:"clamp(28px,5vw,48px)", position:"relative", overflow:"hidden" }}>
+                  <div style={{ background:"var(--fo)", padding:"clamp(28px,5vw,48px)", position:"relative", overflow:"hidden" }} data-aos="fade-up">
                     <div className="cg" style={{ position:"absolute", top:-20, left:28, fontSize:"10rem", lineHeight:1, color:"rgba(200,168,75,.07)", userSelect:"none" }}>"</div>
                     <Stars n={t.stars}/>
                     <p className="cg" style={{ fontSize:"clamp(1.1rem,2.8vw,1.6rem)", fontWeight:400, fontStyle:"italic", color:"var(--iv)", lineHeight:1.75, marginBottom:24, position:"relative" }}>"{t.text}"</p>
@@ -886,7 +886,7 @@ export default function HomePage() {
         ══════════════════════════════════════════════════ */}
         <section id="newsletter" className="sec bg-iv">
           <div className="wrap" style={{ maxWidth: 900 }}>
-            <div style={{ background: "linear-gradient(135deg, rgba(13,40,24,1) 0%, rgba(19,31,46,1) 100%)", padding: "clamp(28px,6vw,52px)", display: "grid", gap: 24, border: "1px solid rgba(0,0,0,.08)" }}>
+            <div style={{ background: "linear-gradient(135deg, rgba(13,40,24,1) 0%, rgba(19,31,46,1) 100%)", padding: "clamp(28px,6vw,52px)", display: "grid", gap: 24, border: "1px solid rgba(0,0,0,.08)" }} data-aos="fade-up">
               <div>
                 <p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Veridian Intelligence</p>
                 <h2 className="cg" style={{ fontSize: "clamp(1.7rem,3.8vw,2.7rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 10 }}>Longevity science, translated.</h2>
