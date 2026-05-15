@@ -29,12 +29,12 @@ function PixelPurchase() {
     };
     const value = tierMap[tier as keyof typeof tierMap] ?? 0;
     if (value > 0 && typeof window !== 'undefined') {
-      (window).fbq?.('track', 'Purchase', {
+      (window as any).fbq?.('track', 'Purchase', {
         value: value,
         currency: 'GBP',
         content_name: 'Veridian ' + (tier || 'Assessment')
       });
-      (window).fbq?.('track', 'PurchaseVerified', {
+      (window as any).fbq?.('track', 'PurchaseVerified', {
         value: value,
         currency: 'GBP',
         content_name: 'Veridian ' + (tier || 'Assessment')
