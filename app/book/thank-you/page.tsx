@@ -2,6 +2,8 @@
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const nextSteps = [
@@ -11,11 +13,43 @@ const nextSteps = [
  "You can now complete your secure clinical intake to make the consultation more useful.",
 ];
 
-export default function ThankYouPage() {
+
+function PixelPurchase() {
+  const params = useSearchParams();
+  const tier = params.get('tier') || '';
+  
+  useEffect(() => {
+    const tierMap = {
+      'discovery': 195,
+      'discovery-quiz': 97,
+      'metabolic-screen': 195,
+      'baseline': 595,
+      'longevity-panel': 795,
+      'programme': 1895
+    };
+    const value = tierMap[tier as keyof typeof tierMap] ?? 0;
+    if (value > 0 && typeof window !== 'undefined') {
+      (window).fbq?.('track', 'Purchase', {
+        value: value,
+        currency: 'GBP',
+        content_name: 'Veridian ' + (tier || 'Assessment')
+      });
+      (window).fbq?.('track', 'PurchaseVerified', {
+        value: value,
+        currency: 'GBP',
+        content_name: 'Veridian ' + (tier || 'Assessment')
+      });
+    }
+  }, [tier]);
+  return null;
+}
+
+function ThankYouContent() {
  return (
  <>
  <style>{FONTS + CSS}</style>
  <Navigation />
+ <Suspense fallback={null}><PixelPurchase /></Suspense>
  <main style={{ paddingTop: "var(--nav-h)" }}>
  <section className="sec bg-iv" style={{ minHeight: "calc(100svh - var(--nav-h))", display: "flex", alignItems: "center" }}>
  <div className="wrap" style={{ maxWidth: 820, textAlign: "center" }}>
@@ -56,3 +90,6 @@ export default function ThankYouPage() {
  </>
  );
 }
+
+
+export default function ThankYouPage() { return <ThankYouContent />; }
