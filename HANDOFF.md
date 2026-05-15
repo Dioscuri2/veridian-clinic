@@ -1,6 +1,6 @@
 # Veridian Clinic — Developer Handoff Document
 
-**Last updated:** 2026-04-24  
+**Last updated:** 2026-05-15 (session 4 — Railway migration attempt, DNS reverted to Vercel)  
 **Authored by:** Claude (Anthropic) — claude-sonnet-4-6  
 **Purpose:** Source-of-truth handoff for any AI agent or developer continuing this project. Read this before touching any file.
 
@@ -61,7 +61,7 @@ Single plaintext file. All API keys, tokens, and passwords for all OPH/Veridian 
 
 ### Vercel Token
 ```
-vcp_6y6DlCCEclsGlOahCuC2tiyMCEqLHwNjuK9bC33uo85bceQK8H2aWStG
+vcp_REDACTED — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md
 ```
 Used in every Vercel CLI command. Pass as `--token=<value>` (not `--token <value>` with a space — the space form fails).
 
@@ -242,6 +242,55 @@ Flexibility. We can change amounts, names, and descriptions without touching the
 
 ## 8. What Is Currently Incomplete
 
+### Stripe Payment Methods — Card Only
+
+The OPH Stripe account **does not have Klarna or bank transfer (customer_balance) activated**. The original code included both which caused a hard `invalid_request_error` on every checkout session creation — the root cause of the "Stripe connection error" on the guide page and all paid tiers.
+
+**Fixed 2026-04-24:** `payment_method_types` reduced to `["card"]` only. The `payment_method_options.customer_balance` block was removed entirely. All three paid tiers confirmed working via direct Stripe API tests before deploy:
+- `guide` £19.99 → `cs_live_a1u2QC...` ✅
+- `baseline` £595 → `cs_live_a1f7f9...` ✅
+- `programme` £1,895 → `cs_live_a1Ams...` ✅
+
+**If Klarna or bank transfer are activated later in the Stripe Dashboard** (Settings → Payment methods), add them back to `payment_method_types` in `/app/api/checkout/route.ts` and for `customer_balance` restore the `payment_method_options` block:
+```ts
+payment_method_options: {
+  customer_balance: {
+    funding_type: "bank_transfer",
+    bank_transfer: { type: "gb_bank_transfer" },
+  },
+},
+```
+
+### Critical: Stripe SDK Must Use Fetch HTTP Client
+
+**Symptom:** `"An error occurred with our connection to Stripe. Request was retried 2 times."` — returned on every checkout request, even after moving Stripe init inside the handler and marking stripe as `serverExternalPackages`.
+
+**Root cause:** The Stripe SDK's default HTTP client uses Node.js's `https` module. In this deployment (Next.js 16.2.2 + Turbopack on Vercel), that module cannot reach `api.stripe.com` from within the serverless function. The cause is specific to this environment configuration — direct `curl` calls to Stripe's API work fine.
+
+**Fix (2026-04-24):** Force the Stripe SDK to use the native `fetch` API instead:
+
+```ts
+const stripe = new Stripe(stripeKey, {
+  httpClient: Stripe.createFetchHttpClient(),
+});
+```
+
+This is documented by Stripe for edge/serverless environments. **Any route that initialises a Stripe client must use this option.** Current routes:
+
+| Route | Uses fetch HTTP client? |
+|---|---|
+| `/app/api/checkout/route.ts` | ✅ Yes (fixed) |
+| `/app/api/guide-download/route.ts` | ⚠️ Not yet — add if it starts failing |
+| `/app/api/webhooks/stripe/route.ts` | ⚠️ Not yet — add if it starts failing |
+| `/app/metabolic-reset-guide/thank-you/page.tsx` | ⚠️ Not yet — add if it starts failing |
+
+**Confirmed working after fix:**
+- Guide £19.99 → `cs_live_a1zCkU7...` ✅
+- Baseline £595 → `cs_live_a1Wym0Vl...` ✅
+- Programme £1,895 → `cs_live_a1R4hmFa...` ✅
+
+---
+
 ### STRIPE_WEBHOOK_SECRET — Not Set
 
 **Risk:** Medium. Functionality is not broken because the thank-you page sends the guide email directly on redirect. But the webhook backup delivery is unsigned and will accept any POST to `/api/webhooks/stripe` — a spoofing vector.
@@ -253,7 +302,7 @@ Flexibility. We can change amounts, names, and descriptions without touching the
 4. Copy the signing secret (`whsec_...`)
 5. Run:
 ```bash
-echo "whsec_..." | npx vercel env add STRIPE_WEBHOOK_SECRET production --token=vcp_6y6DlCCEclsGlOahCuC2tiyMCEqLHwNjuK9bC33uo85bceQK8H2aWStG --force
+echo "whsec_..." | npx vercel env add STRIPE_WEBHOOK_SECRET production --token=vcp_REDACTED — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md --force
 ```
 6. Redeploy (see Section 10).
 
@@ -352,10 +401,10 @@ git commit -m "Short description of what and why"
 git push origin master
 
 # OR: manual deploy to production
-npx vercel --prod --yes --token=vcp_6y6DlCCEclsGlOahCuC2tiyMCEqLHwNjuK9bC33uo85bceQK8H2aWStG
+npx vercel --prod --yes --token=vcp_REDACTED — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md
 
 # 5. If you need to re-alias the deployment
-npx vercel alias set <deployment-url> veridianclinic.vercel.app --token=vcp_6y6DlCCEclsGlOahCuC2tiyMCEqLHwNjuK9bC33uo85bceQK8H2aWStG
+npx vercel alias set <deployment-url> veridianclinic.vercel.app --token=vcp_REDACTED — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md
 ```
 
 **After any env var change, redeploy.** `NEXT_PUBLIC_` vars are baked at build time. Server-side vars (like `STRIPE_SECRET_KEY`) are read at runtime in API routes — but a fresh deploy is still safest.
@@ -397,7 +446,7 @@ Make all changes, commit, verify locally if possible, then deploy. Never deploy 
 |---|---|---|---|
 | Stripe | Olympus Premium Health (`51KF3R6EpNyYBy2JC`) | Vercel env: `STRIPE_SECRET_KEY` | Payment processing |
 | Brevo | OPH account | Vercel env: `BREVO_API_KEY` | Transactional email (guide delivery, confirmations) |
-| Vercel | `dioscuri2@gmail.com` | Vault: `vcp_6y...` | Hosting, env var management |
+| Vercel | `dioscuri2@gmail.com` | Vault: `vcp_REDACTED — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md...` | Hosting, env var management |
 | GitHub | `Dioscuri2` | Standard SSH/HTTPS | Source code |
 | Hostinger | OPH account | Vault: `FZFEPbMmvE2y...` | DNS management for custom domains |
 
@@ -434,16 +483,195 @@ This is the Stripe account's registered business name. The legal entity (Veridia
 
 ---
 
+## 18. Session 4 — Railway Migration (2026-05-15) — INCOMPLETE, Site on Vercel
+
+### Current Status: SITE IS LIVE ON VERCEL. DNS reverted. Railway is standing by.
+
+The site `veridianclinic.com` is live and serving correctly on Vercel as of session end. DNS was temporarily cut to Railway, which caused a ~90 minute outage, then reverted. **Nothing is broken from a user perspective.**
+
+---
+
+### What Was Completed This Session
+
+1. **Railway Hobby account confirmed** — `martintaiwo1987@gmail.com`, Railway CLI v4.58.0 authenticated.
+2. **Railway project created** — `veridian-clinic` in workspace `Martin's Projects`.
+   - Project ID: `bd0e559e-00b8-4c96-bad5-2cc4d9512296`
+   - Service ID: `7ef6d0a8-17c9-4ab9-aa1d-dc249d2f35e3`
+   - Environment ID: `0f0c1f24-8a32-4b3b-86c5-6555823ac141`
+   - Dashboard: `https://railway.com/project/bd0e559e-00b8-4c96-bad5-2cc4d9512296`
+3. **App deployed and healthy on Railway** — `https://veridian-clinic-production.up.railway.app` returns HTTP 200.
+4. **All 15 env vars set in Railway** — Stripe, Brevo, WhatsApp, GA4, GitHub Gist, Discord, Admin password, site URLs. All confirmed via `railway variables`.
+5. **Two TypeScript errors fixed** in `app/book/thank-you/page.tsx` — `tierMap[tier]` cast and `window as any` for fbq. Both committed and pushed to master.
+6. **`railway.json` added** — build/start config committed to master.
+7. **`.node-version` file added** — pins Node 20 (Railway defaulted to Node 18 which fails Next.js 16). Committed to master.
+8. **Hostinger DNS API working** — API token `HOSTINGER_TOKEN — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md` confirmed functional for full DNS zone management.
+9. **DNS was changed and reverted**:
+   - Changed: `A @ → 66.33.22.183` (Railway IP), `CNAME www → 3q71yzvv.up.railway.app`
+   - Reverted: `A @ → 76.76.21.21` (Vercel IP), `CNAME www → cname.vercel-dns.com`
+
+---
+
+### What Is Blocking the Railway Cutover
+
+**The Railway custom domain is not routing correctly.**
+
+A custom domain `veridianclinic.com` was added to Railway via GraphQL API (domain ID: `91af5a93-4d28-43ba-a4d9-5da4e358345c`), but it was created without `targetPort: 8080`. Railway's edge returns HTTP 404 with `x-railway-fallback: true` for the domain, meaning the edge can't match the domain to a service.
+
+**Root cause:** The `customDomainCreate` GraphQL mutation did not include `targetPort`. The Railway CLI returns "Unauthorized" for all custom domain operations (`railway domain <custom-domain>`), and the GraphQL API returns "Not Authorized" for `customDomainUpdate` and `customDomainDelete`. The session is locked to read-only + create-only for domains.
+
+**The fix is a 2-minute manual step in the Railway dashboard:**
+
+1. Go to `https://railway.com/project/bd0e559e-00b8-4c96-bad5-2cc4d9512296`
+2. Click the `veridian-clinic` service
+3. Go to **Settings** tab → **Networking** section
+4. You will see `veridianclinic.com` listed — **delete it**
+5. Click **Generate Domain** or **Add Custom Domain** → enter `veridianclinic.com` → Railway will show you DNS records
+6. Also add `www.veridianclinic.com` as a second custom domain
+
+Railway will display CNAME targets. The expected values based on our setup:
+- Root (`@`): CNAME/ALIAS → `3q71yzvv.up.railway.app`
+- www: CNAME → `3q71yzvv.up.railway.app`
+
+---
+
+### How to Complete the Migration After the Dashboard Fix
+
+Once Railway shows the correct custom domains in its dashboard, do the DNS cutover via the Hostinger API (credentials are in vault):
+
+```bash
+# Set root ALIAS → Railway
+curl -s -X PUT "https://developers.hostinger.com/api/dns/v1/zones/veridianclinic.com" \
+  -H "Authorization: Bearer HOSTINGER_TOKEN — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "overwrite": true,
+    "zone": [
+      {"name": "@",   "type": "ALIAS", "ttl": 300, "records": [{"content": "3q71yzvv.up.railway.app."}]},
+      {"name": "www", "type": "CNAME", "ttl": 300, "records": [{"content": "3q71yzvv.up.railway.app."}]}
+    ]
+  }'
+
+# Then delete the A record at root (conflicts with ALIAS)
+curl -s -X DELETE "https://developers.hostinger.com/api/dns/v1/zones/veridianclinic.com" \
+  -H "Authorization: Bearer HOSTINGER_TOKEN — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md" \
+  -H "Content-Type: application/json" \
+  -d '{"filters": [{"name": "@", "type": "A"}]}'
+```
+
+After DNS propagates (~2-5 min), poll: `until curl -s https://veridianclinic.com/ | grep -q "200"; do sleep 10; done`
+
+---
+
+### To Revert DNS to Vercel (if needed)
+
+```bash
+curl -s -X DELETE "https://developers.hostinger.com/api/dns/v1/zones/veridianclinic.com" \
+  -H "Authorization: Bearer HOSTINGER_TOKEN — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md" \
+  -H "Content-Type: application/json" \
+  -d '{"filters": [{"name": "@", "type": "ALIAS"}]}'
+
+curl -s -X PUT "https://developers.hostinger.com/api/dns/v1/zones/veridianclinic.com" \
+  -H "Authorization: Bearer HOSTINGER_TOKEN — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "overwrite": true,
+    "zone": [
+      {"name": "@",   "type": "A",     "ttl": 300, "records": [{"content": "76.76.21.21"}]},
+      {"name": "www", "type": "CNAME", "ttl": 300, "records": [{"content": "cname.vercel-dns.com."}]}
+    ]
+  }'
+```
+
+---
+
+### Railway Deploy Flow (Once Migration Is Complete)
+
+The new deploy command after Railway is live will be:
+
+```bash
+cd /Users/tosin/.openclaw/workspace-main/veridian-clinic
+git add [files] && git commit -m "message" && git push origin master
+railway up --detach  # until GitHub auto-deploy is wired
+```
+
+To wire GitHub auto-deploy (eliminating `railway up`): Railway dashboard → service → Settings → Source → Connect Repo → `Dioscuri2/veridian-clinic` → branch `master`.
+
+---
+
+### Railway Credentials in Vault
+
+Add to `/Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md`:
+```
+## Railway
+- Account: martintaiwo1987@gmail.com
+- Plan: Hobby (£5/month, 12 months free, $15/month extra usage)
+- Project: veridian-clinic (bd0e559e-00b8-4c96-bad5-2cc4d9512296)
+- Service: veridian-clinic (7ef6d0a8-17c9-4ab9-aa1d-dc249d2f35e3)
+- Railway app URL: https://veridian-clinic-production.up.railway.app
+- CLI token (API): 2f828ce0-803d-42f8-8fb1-11fecae1474e (scoped to Martin's Projects)
+```
+
+---
+
 ## 14. Handoff Checklist — What to Do When Starting a New Session
 
 Run through this every time:
 
 - [ ] Read this file from top to bottom
 - [ ] `git pull origin master` from `/Users/tosin/.openclaw/workspace-main/veridian-clinic`
-- [ ] `npx vercel env ls --token=vcp_6y6DlCCEclsGlOahCuC2tiyMCEqLHwNjuK9bC33uo85bceQK8H2aWStG` — confirm env vars match Section 4
+- [ ] `npx vercel env ls --token=vcp_REDACTED — see /Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md` — confirm env vars match Section 4
 - [ ] Check `CREDENTIALS.md` in the vault before asking the user for any credentials
 - [ ] Understand what the user's task touches before opening any files
 - [ ] Read every file you intend to modify before modifying it
+
+---
+
+## 17. Session 3 — Stripe Connection Fix + Footer (2026-04-24)
+
+### Stripe Connection Error — Full Diagnostic Trail
+
+**Symptom reported:** "Stripe connection error / tried too many times" on guide buy button.
+
+**Diagnostic steps taken (in order):**
+1. Called Stripe API directly with restricted key via curl → session created ✅ (proved key is valid)
+2. Called live checkout endpoint via curl → `StripeConnectionError, retried 2 times` ❌
+3. Moved Stripe init from module scope into request handler → still failed ❌
+4. Added `serverExternalPackages: ['stripe']` to next.config.js → still failed ❌
+5. Added `httpClient: Stripe.createFetchHttpClient()` → **success** ✅
+
+**Conclusion:** The Node.js `https` module cannot reach `api.stripe.com` from within this Vercel function configuration. Switching to the fetch-based HTTP client resolved it immediately.
+
+**Files changed:**
+- `app/api/checkout/route.ts` — fetch HTTP client added, Stripe init inside handler
+- `next.config.js` — `serverExternalPackages: ['stripe']` added (kept, belt-and-braces)
+- `components/Footer.jsx` — "Thanks.co.uk" → linked "Thanksdoc" (thanksdoc.co.uk)
+- `lib/guideEmail.ts` — same CQC text fix in purchase confirmation email
+
+### Footer CQC Text Fix
+
+Footer previously read: `"CQC regulated services delivered under the umbrella of Thanks.co.uk"`
+
+Corrected to: `"CQC regulated services provided by Thanksdoc"` with hyperlink to `https://thanksdoc.co.uk`. The same fix was applied to the purchase confirmation email in `lib/guideEmail.ts`.
+
+---
+
+## 16. Session 2 — Stripe Diagnostics (2026-04-24)
+
+### Root Cause Found and Fixed
+
+**Symptom:** "Stripe connection error" on `/metabolic-reset-guide` buy button. All paid tiers affected.
+
+**Diagnosis method:**
+1. Called Stripe API directly with the live restricted key to verify key works → success (key is valid)
+2. Created a test checkout session with `card` only → success
+3. Created a test checkout session with `klarna` included → `invalid_request_error: klarna is invalid`
+4. Created a test checkout session with `customer_balance` included → `invalid_request_error: customer_balance is invalid`
+
+**Root cause:** `klarna` and `customer_balance` are not activated on the OPH Stripe account (`acct_1KF3R6EpNyYBy2JC`). Both were listed in `payment_method_types` in the checkout route, causing 100% failure rate on all checkout session creation.
+
+**Fix:** Single edit to `/app/api/checkout/route.ts` — `payment_method_types` changed from `["card", "klarna", "customer_balance"]` to `["card"]`. The `payment_method_options.customer_balance` block removed. Deployed to production at 2026-04-24.
+
+**Payments confirmed live:** Guide (£19.99), Baseline (£595), Programme (£1,895) — all create Stripe sessions successfully. Discovery (£195) uses Formspree only, no Stripe.
 
 ---
 
