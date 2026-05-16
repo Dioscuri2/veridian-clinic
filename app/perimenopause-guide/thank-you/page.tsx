@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 interface Props {
-  searchParams: Promise<{ session_id?: string; tier?: string }>;
+  searchParams: Promise<{ session_id?: string }>;
 }
 
-export default async function GuideThankyouPage({ searchParams }: Props) {
+export default async function PeriGuideThankyouPage({ searchParams }: Props) {
   const { session_id } = await searchParams;
 
   let verified = false;
@@ -32,7 +32,7 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
       customerEmail = session.customer_details?.email || session.customer_email || "";
       customerName = session.customer_details?.name || "";
     } catch {
-      // Stripe error — still show page, download button included
+      // Stripe error — still show page
     }
   }
 
@@ -48,7 +48,6 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
 
             {verified ? (
               <>
-                {/* Success icon */}
                 <div style={{ width: 78, height: 78, margin: "0 auto 26px", borderRadius: "50%", background: "var(--fo)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
                     <circle cx="17" cy="17" r="16" stroke="var(--go2)" strokeWidth="1.5" />
@@ -57,43 +56,47 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
                 </div>
 
                 <p className="lbl">Payment Confirmed</p>
-                <PixelPurchase value={9.99} content_name="Metabolic Reset Guide" />
+                <PixelPurchase value={9.99} content_name="Perimenopause Reset Guide" />
                 <div className="rule rule-c" />
                 <h1 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 16 }}>
                   Your guide is ready,{" "}
                   <em style={{ fontStyle: "italic", color: "var(--fo)" }}>{firstName}.</em>
                 </h1>
                 <p style={{ fontSize: ".94rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 560, margin: "0 auto 32px" }}>
-                  Download your 21-Day Metabolic Reset Guide below.
+                  Download The Perimenopause Reset Guide below.
                   {customerEmail ? ` A receipt email will be sent to ${customerEmail}.` : " Save it somewhere easy to find."}
                 </p>
 
-                {/* Download CTA */}
                 <div style={{ marginBottom: 40 }}>
                   <a
                     href={`/api/guide-download?session_id=${session_id}`}
                     className="btn btn-fo"
                     style={{ padding: "16px 48px", fontSize: ".95rem" }}
-                    download="Veridian-Metabolic-Reset-Guide.pdf"
+                    download="Veridian-Perimenopause-Reset-Guide.pdf"
                   >
                     Download Your Guide (PDF) ↓
                   </a>
                 </div>
 
-                {/* What's next / discovery call upsell */}
+                {/* Blood test upsell */}
                 <div className="card" style={{ textAlign: "left", maxWidth: 760, margin: "0 auto 28px", background: "var(--fo)" }}>
                   <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
                     Your next step
                   </p>
                   <h2 className="cg" style={{ fontSize: "clamp(1.5rem,3.5vw,2.1rem)", fontWeight: 500, color: "rgba(246,241,232,.95)", lineHeight: 1.3, marginBottom: 12 }}>
-                    See what's actually driving your metabolic drift.
+                    Find out exactly what your hormones and metabolism are doing.
                   </h2>
                   <p style={{ fontSize: ".9rem", color: "rgba(246,241,232,.78)", lineHeight: 1.9, marginBottom: 20 }}>
-                    The guide gives you the framework and the structure. The Discovery Call is where Dr Taiwo reviews your picture specifically — your symptoms, your history, your numbers — and identifies the most important clinical levers for you personally.
+                    The guide gives you the framework. A comprehensive blood panel — oestradiol, FSH, LH, SHBG, thyroid, fasting insulin, and full metabolic markers — gives you the data. Dr Taiwo reviews every result personally and provides a written clinical report with your next steps.
                   </p>
-                  <Link href="/book?tier=discovery" className="btn btn-go">
-                    Book My Discovery Call →
-                  </Link>
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                    <Link href="/book?tier=baseline" className="btn btn-go">
+                      Book a Comprehensive Blood Test →
+                    </Link>
+                    <Link href="/book?tier=discovery" className="btn btn-ol" style={{ borderColor: "rgba(246,241,232,.3)", color: "var(--go2)" }}>
+                      Book a Discovery Call First
+                    </Link>
+                  </div>
                 </div>
 
                 <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7 }}>
@@ -112,7 +115,7 @@ export default async function GuideThankyouPage({ searchParams }: Props) {
                   <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a>{" "}
                   and we'll send your guide manually within a few hours.
                 </p>
-                <Link href="/metabolic-reset-guide" className="btn btn-fo">
+                <Link href="/perimenopause-guide" className="btn btn-fo">
                   Back to Guide Page →
                 </Link>
               </>

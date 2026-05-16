@@ -11,14 +11,23 @@ const tierAliasMap: Record<string, string> = {
 
 const tierCatalog: Record<
   string,
-  { name: string; amount: number; description: string; successPath?: string }
+  { name: string; amount: number; description: string; successPath?: string; cancelPath?: string }
 > = {
   guide: {
     name: "Why Your Weight Isn't Shifting — Doctor's 21-Day Metabolic Reset Guide",
-    amount: 1999,
+    amount: 999,
     description:
       "A GP-authored practical guide covering the PERC framework, 21-day roadmap, meal plans, fasting strategies, and movement tiers for metabolic reset.",
     successPath: "/metabolic-reset-guide/thank-you",
+    cancelPath: "/metabolic-reset-guide",
+  },
+  "peri-guide": {
+    name: "The Perimenopause Reset — A Doctor's Guide to Hormonal & Metabolic Health",
+    amount: 999,
+    description:
+      "A GP-authored guide covering the hormonal shift of perimenopause, its metabolic effects, and a practical framework for energy, sleep, weight and wellbeing.",
+    successPath: "/perimenopause-guide/thank-you",
+    cancelPath: "/perimenopause-guide",
   },
   discovery: {
     name: "GP-Led Discovery Call",
@@ -160,7 +169,7 @@ export async function POST(request: NextRequest) {
       success_url: `${baseUrl}${product.successPath ?? "/book/thank-you"}?tier=${encodeURIComponent(
         tier
       )}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}${tier === "guide" ? "/metabolic-reset-guide" : "/book"}?tier=${encodeURIComponent(tier)}&cancelled=1`,
+      cancel_url: `${baseUrl}${product.cancelPath ?? "/book"}?tier=${encodeURIComponent(tier)}&cancelled=1`,
     });
 
     if (!session.url) {
