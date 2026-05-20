@@ -97,14 +97,8 @@ export default function Footer() {
               </a>
               .
             </p>
-            <p style={{ margin: "0 0 10px" }}>
-              Veridian Clinic is a trading name of Olympus Premium Health Ltd.
-            </p>
-            <p style={{ margin: "0 0 10px" }}>
-              Registered Business Address: 82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, England, IP28 7DE.
-            </p>
             <p style={{ margin: 0 }}>
-              Company Registration Number: 13621708.
+              Veridian Clinic is a trading name of Olympus Premium Health Ltd.
             </p>
           </div>
 
