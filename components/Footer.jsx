@@ -97,9 +97,6 @@ export default function Footer() {
               </a>
               .
             </p>
-            <p style={{ margin: 0 }}>
-              Veridian Clinic is a trading name of Olympus Premium Health Ltd.
-            </p>
           </div>
 
           {/* Legal links */}
