@@ -136,7 +136,7 @@ export default function Footer() {
           </p>
 
           <p style={{ fontSize: ".8rem", color: "rgba(246,241,232,.4)" }}>
-            © {new Date().getFullYear()} Veridian Clinic, a trading name of Olympus Premium Health Ltd. All rights reserved.
+            © {new Date().getFullYear()} Veridian Clinic. All rights reserved.
           </p>
         </div>
       </footer>
