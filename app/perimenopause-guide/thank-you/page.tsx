@@ -78,25 +78,41 @@ export default async function PeriGuideThankyouPage({ searchParams }: Props) {
                   </a>
                 </div>
 
-                {/* Blood test upsell */}
-                <div className="card" style={{ textAlign: "left", maxWidth: 760, margin: "0 auto 28px", background: "var(--fo)" }}>
-                  <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
-                    Your next step
+                {/* Upsell 1 — Perimenopause Blood Panel */}
+                <div className="card" style={{ textAlign: "left", maxWidth: 760, margin: "0 auto 20px", background: "var(--fo)" }}>
+                  <p style={{ fontSize: ".68rem", color: "var(--go)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
+                    Step 1 in your guide: Know Your Numbers
                   </p>
-                  <h2 className="cg" style={{ fontSize: "clamp(1.5rem,3.5vw,2.1rem)", fontWeight: 500, color: "rgba(246,241,232,.95)", lineHeight: 1.3, marginBottom: 12 }}>
-                    Find out exactly what your hormones and metabolism are doing.
+                  <h2 className="cg" style={{ fontSize: "clamp(1.4rem,3vw,2rem)", fontWeight: 500, color: "rgba(246,241,232,.95)", lineHeight: 1.3, marginBottom: 12 }}>
+                    The Veridian Women's Hormone & Health Panel
                   </h2>
-                  <p style={{ fontSize: ".9rem", color: "rgba(246,241,232,.78)", lineHeight: 1.9, marginBottom: 20 }}>
-                    The guide gives you the framework. A comprehensive blood panel — oestradiol, FSH, LH, SHBG, thyroid, fasting insulin, and full metabolic markers — gives you the data. Dr Taiwo reviews every result personally and provides a written clinical report with your next steps.
+                  <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.75)", lineHeight: 1.9, marginBottom: 14 }}>
+                    Dr Tosin recommends getting your baseline blood work done before starting the reset. This panel covers every marker discussed in the guide — oestradiol, progesterone, FSH, LH, testosterone, DHEA-S, thyroid (TSH/fT4/fT3), fasting glucose, HbA1c, vitamin D, and ferritin. You'll receive a GP-reviewed digital report with your personalised next steps.
                   </p>
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                    <Link href="/book?tier=baseline" className="btn btn-go">
-                      Book a Comprehensive Blood Test →
-                    </Link>
-                    <Link href="/book?tier=discovery" className="btn btn-ol" style={{ borderColor: "rgba(246,241,232,.3)", color: "var(--go2)" }}>
-                      Book a Discovery Call First
-                    </Link>
-                  </div>
+                  <ul style={{ margin: "0 0 20px 0", padding: 0, listStyle: "none", display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {["Oestradiol", "Progesterone", "FSH & LH", "Testosterone", "DHEA-S", "Thyroid Panel", "HbA1c", "Vitamin D", "Ferritin"].map(m => (
+                      <li key={m} style={{ fontSize: ".72rem", fontWeight: 600, letterSpacing: ".08em", color: "var(--go)", border: "1px solid rgba(200,168,75,.3)", padding: "3px 9px" }}>{m}</li>
+                    ))}
+                  </ul>
+                  <Link href="/book?tier=perimenopause-panel" className="btn btn-go" style={{ display: "inline-block" }}>
+                    Book the Women's Hormone Panel — £295 →
+                  </Link>
+                </div>
+
+                {/* Upsell 2 — Discovery call (softer) */}
+                <div className="card" style={{ textAlign: "left", maxWidth: 760, margin: "0 auto 28px", background: "rgba(44,42,38,.6)", border: "1px solid rgba(200,168,75,.2)" }}>
+                  <p style={{ fontSize: ".68rem", color: "rgba(246,241,232,.5)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
+                    Not sure if you're ready for blood tests?
+                  </p>
+                  <h3 className="cg" style={{ fontSize: "clamp(1.1rem,2.5vw,1.5rem)", fontWeight: 500, color: "rgba(246,241,232,.9)", lineHeight: 1.3, marginBottom: 10 }}>
+                    Start with a GP conversation — £97 (guide-buyer rate)
+                  </h3>
+                  <p style={{ fontSize: ".86rem", color: "rgba(246,241,232,.62)", lineHeight: 1.85, marginBottom: 18 }}>
+                    A 30-minute 1:1 with Dr Tosin to review your symptoms, discuss what blood tests are relevant for you, and map out your personal reset plan. Normally £195 — guide buyers pay £97.
+                  </p>
+                  <Link href="/book?tier=discovery-quiz" className="btn btn-ol" style={{ borderColor: "rgba(246,241,232,.25)", color: "var(--go2)", display: "inline-block" }}>
+                    Book a Discovery Call — £97 →
+                  </Link>
                 </div>
 
                 <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7 }}>

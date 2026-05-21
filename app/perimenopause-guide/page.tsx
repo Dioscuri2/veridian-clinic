@@ -117,49 +117,106 @@ function PeriGuideContent() {
       <Navigation />
       <main style={{ paddingTop: "var(--nav-h)" }}>
 
-        {/* ── Hero ── dark background, above-fold CTA */}
+        {/* ── Hero ── dark, two-column with 3D book mockup */}
         <section className="sec bg-fo" style={{ minHeight: "calc(100svh - var(--nav-h))", display: "flex", alignItems: "center", paddingTop: 64, paddingBottom: 72 }}>
-          <div className="wrap" style={{ maxWidth: 820, textAlign: "center" }}>
-            <p className="lbl a1" style={{ color: "var(--go)", letterSpacing: ".18em" }}>GP-Authored · Women 35–55 · Instant Download</p>
-            <div className="rule rule-c a1" style={{ background: "var(--go)" }} />
-            <h1
-              className="cg a2"
-              style={{ fontSize: "clamp(2.6rem,6vw,4.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.08, marginBottom: 24 }}
-            >
-              You're not imagining it.
-            </h1>
-            <p
-              className="cg a2"
-              style={{ fontSize: "clamp(1.4rem,3.2vw,2rem)", fontStyle: "italic", color: "var(--go2)", lineHeight: 1.4, marginBottom: 20 }}
-            >
-              Perimenopause changes your metabolism, your sleep, your weight and your mood — often years before your period stops.
-            </p>
-            <p
-              className="a3"
-              style={{ fontSize: "clamp(.92rem,2vw,1.02rem)", color: "rgba(246,241,232,.72)", lineHeight: 1.95, maxWidth: 620, margin: "0 auto 36px" }}
-            >
-              This GP-authored guide explains exactly what's happening to your body — and gives you a practical, clinically-grounded framework to do something about it.
-            </p>
+          <div className="wrap" style={{ maxWidth: 1020 }}>
+            <div style={{ display: "flex", gap: "clamp(40px,8vw,80px)", alignItems: "center", flexWrap: "wrap" }}>
 
-            {cancelled && (
-              <div style={{ maxWidth: 480, margin: "0 auto 24px", padding: "12px 16px", borderLeft: "3px solid var(--go)", background: "rgba(200,168,75,.08)", textAlign: "left" }}>
-                <p style={{ fontSize: ".84rem", color: "var(--go2)", lineHeight: 1.7 }}>
-                  No payment was taken. You can purchase the guide below whenever you're ready.
+              {/* Left — text + CTA */}
+              <div style={{ flex: "1 1 340px", minWidth: 300 }}>
+                <p className="lbl a1" style={{ color: "var(--go)", letterSpacing: ".18em" }}>GP-Authored · Women 35–52 · Instant Download</p>
+                <div className="rule a1" style={{ background: "var(--go)", width: 48, height: 2, margin: "14px 0 22px" }} />
+                <h1
+                  className="cg a2"
+                  style={{ fontSize: "clamp(2.2rem,5.5vw,3.8rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.1, marginBottom: 20 }}
+                >
+                  The Perimenopause Reset
+                </h1>
+                <p
+                  className="cg a2"
+                  style={{ fontSize: "clamp(1.15rem,2.5vw,1.55rem)", fontStyle: "italic", color: "var(--go)", lineHeight: 1.4, marginBottom: 18 }}
+                >
+                  A Six-Week Guide to Reclaim Your Sleep, Brain and Body
                 </p>
-              </div>
-            )}
+                <p
+                  className="a3"
+                  style={{ fontSize: ".97rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9, marginBottom: 32 }}
+                >
+                  A structured blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight — written by a practising UK GP.
+                </p>
 
-            {error && (
-              <div style={{ maxWidth: 480, margin: "0 auto 24px", padding: "12px 16px", borderLeft: "3px solid #c94a4a", background: "rgba(201,74,74,.08)", textAlign: "left" }}>
-                <p style={{ fontSize: ".84rem", color: "#e88", lineHeight: 1.7 }}>{error}</p>
-              </div>
-            )}
+                {cancelled && (
+                  <div style={{ marginBottom: 20, padding: "12px 16px", borderLeft: "3px solid var(--go)", background: "rgba(200,168,75,.08)" }}>
+                    <p style={{ fontSize: ".84rem", color: "var(--go2)", lineHeight: 1.7 }}>
+                      No payment was taken. You can purchase the guide below whenever you're ready.
+                    </p>
+                  </div>
+                )}
+                {error && (
+                  <div style={{ marginBottom: 20, padding: "12px 16px", borderLeft: "3px solid #c94a4a", background: "rgba(201,74,74,.08)" }}>
+                    <p style={{ fontSize: ".84rem", color: "#e88", lineHeight: 1.7 }}>{error}</p>
+                  </div>
+                )}
 
-            <div className="a4">
-              <BuyButton loading={loading} onClick={handleBuy} />
-              <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.45)", marginTop: 12, lineHeight: 1.6 }}>
-                Secure payment via Stripe · Instant PDF download · One-off payment, no subscription
-              </p>
+                <div className="a4" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 10 }}>
+                  <BuyButton loading={loading} onClick={handleBuy} />
+                  <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.38)", lineHeight: 1.7 }}>
+                    Secure payment via Stripe · Instant PDF · No subscription
+                  </p>
+                  <div style={{ display: "flex", gap: 16, marginTop: 4, flexWrap: "wrap" }}>
+                    {["6-Week Plan", "Daily Checklists", "Supplement Guide", "GP-Written"].map(b => (
+                      <span key={b} style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--go)", border: "1px solid rgba(200,168,75,.3)", padding: "4px 10px" }}>{b}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right — 3D book mockup */}
+              <div className="a3" style={{ flex: "0 0 auto", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div style={{ position: "relative", width: "clamp(200px,28vw,300px)" }}>
+                  {/* Spine */}
+                  <div style={{
+                    position: "absolute",
+                    left: 0,
+                    top: "2%",
+                    width: "8%",
+                    height: "96%",
+                    background: "linear-gradient(to right, #0d1f1a, #1a3a2e)",
+                    transform: "rotateY(60deg) translateX(-50%)",
+                    transformOrigin: "right center",
+                    borderRadius: "2px 0 0 2px",
+                    boxShadow: "-6px 0 18px rgba(0,0,0,.6)",
+                  }} />
+                  {/* Cover */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/perimenopause-cover.jpg"
+                    alt="The Perimenopause Reset Guide — Dr Tosin Taiwo"
+                    style={{
+                      width: "100%",
+                      display: "block",
+                      borderRadius: "0 4px 4px 0",
+                      transform: "perspective(800px) rotateY(-12deg) rotateX(2deg)",
+                      boxShadow: "clamp(8px,2vw,20px) clamp(8px,2vw,20px) clamp(40px,6vw,80px) rgba(0,0,0,.6), -4px 4px 16px rgba(0,0,0,.3)",
+                      transformOrigin: "left center",
+                    }}
+                  />
+                  {/* Reflection strip */}
+                  <div style={{
+                    position: "absolute",
+                    bottom: "-8%",
+                    left: "5%",
+                    right: "5%",
+                    height: "18%",
+                    background: "linear-gradient(to bottom, rgba(246,241,232,.08), transparent)",
+                    transform: "perspective(800px) rotateX(-30deg) scaleY(-1) rotateY(-12deg)",
+                    transformOrigin: "top center",
+                    filter: "blur(4px)",
+                    pointerEvents: "none",
+                  }} />
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

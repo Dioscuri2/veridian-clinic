@@ -22,12 +22,19 @@ const tierCatalog: Record<
     cancelPath: "/metabolic-reset-guide",
   },
   "peri-guide": {
-    name: "The Perimenopause Reset — A Doctor's Guide to Hormonal & Metabolic Health",
+    name: "The Perimenopause Reset — A Six-Week Guide to Reclaim Your Sleep, Brain and Body",
     amount: 999,
     description:
-      "A GP-authored guide covering the hormonal shift of perimenopause, its metabolic effects, and a practical framework for energy, sleep, weight and wellbeing.",
+      "A GP-authored six-week blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight. Includes the PERC framework, daily checklists, supplement guide, and symptom tracker.",
     successPath: "/perimenopause-guide/thank-you",
     cancelPath: "/perimenopause-guide",
+  },
+  "perimenopause-panel": {
+    name: "Veridian Women's Hormone & Health Panel",
+    amount: 29500,
+    description:
+      "Comprehensive hormonal and metabolic blood panel for women in perimenopause. Includes: Oestradiol (E2), Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Thyroid (TSH/fT4/fT3), FBC, Fasting Glucose & HbA1c, Vitamin D, Ferritin. GP-reviewed digital report included.",
+    successPath: "/book/thank-you",
   },
   discovery: {
     name: "GP-Led Discovery Call",

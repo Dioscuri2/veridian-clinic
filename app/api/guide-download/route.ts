@@ -5,7 +5,7 @@ import path from "node:path";
 
 const GUIDE_MAP: Record<string, { file: string; displayName: string }> = {
   "guide": { file: "metabolic-reset-guide.pdf", displayName: "Veridian-Metabolic-Reset-Guide.pdf" },
-  "peri-guide": { file: "perimenopause-guide.pdf", displayName: "Veridian-Perimenopause-Reset-Guide.pdf" },
+  "peri-guide": { file: "perimenopause-guide.pdf", displayName: "Veridian-Perimenopause-Reset-Guide.pdf" }, // v6 with embedded links
 };
 
 export async function GET(request: NextRequest) {
