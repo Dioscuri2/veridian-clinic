@@ -33,7 +33,7 @@ const tierCatalog: Record<
     name: "Veridian Women's Hormone & Health Panel",
     amount: 29500,
     description:
-      "Comprehensive hormonal and metabolic blood panel for women in perimenopause. Includes: Oestradiol (E2), Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Thyroid (TSH/fT4/fT3), FBC, Fasting Glucose & HbA1c, Vitamin D, Ferritin. GP-reviewed digital report included.",
+      "Comprehensive hormonal and metabolic blood panel for women in perimenopause. Includes: Oestradiol (E2), Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Thyroid (TSH/fT4/fT3), FBC, Fasting Glucose & HbA1c, Vitamin D, Ferritin, Prolactin, Cortisol, Anti-thyroid antibodies, Iron status, Vitamin B12. GP-reviewed digital report included.",
     successPath: "/book/thank-you",
   },
   discovery: {

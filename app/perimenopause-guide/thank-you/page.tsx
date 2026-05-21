@@ -87,10 +87,10 @@ export default async function PeriGuideThankyouPage({ searchParams }: Props) {
                     The Veridian Women's Hormone & Health Panel
                   </h2>
                   <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.75)", lineHeight: 1.9, marginBottom: 14 }}>
-                    Dr Tosin recommends getting your baseline blood work done before starting the reset. This panel covers every marker discussed in the guide — oestradiol, progesterone, FSH, LH, testosterone, DHEA-S, thyroid (TSH/fT4/fT3), fasting glucose, HbA1c, vitamin D, and ferritin. You'll receive a GP-reviewed digital report with your personalised next steps.
+                    Dr Tosin recommends getting your baseline blood work done before starting the reset. This panel covers every marker discussed in the guide — oestradiol, progesterone, FSH, LH, testosterone (total & free), DHEA-S, full thyroid (TSH/fT4/fT3 + antibodies), fasting glucose, HbA1c, vitamin D, ferritin, prolactin, cortisol, iron status, and vitamin B12. You'll receive a GP-reviewed digital report with your personalised next steps.
                   </p>
                   <ul style={{ margin: "0 0 20px 0", padding: 0, listStyle: "none", display: "flex", flexWrap: "wrap", gap: 8 }}>
-                    {["Oestradiol", "Progesterone", "FSH & LH", "Testosterone", "DHEA-S", "Thyroid Panel", "HbA1c", "Vitamin D", "Ferritin"].map(m => (
+                    {["Oestradiol", "Progesterone", "FSH & LH", "Testosterone", "DHEA-S", "Thyroid Panel", "Prolactin", "Cortisol", "HbA1c", "Vitamin D", "Ferritin", "Vitamin B12"].map(m => (
                       <li key={m} style={{ fontSize: ".72rem", fontWeight: 600, letterSpacing: ".08em", color: "var(--go)", border: "1px solid rgba(200,168,75,.3)", padding: "3px 9px" }}>{m}</li>
                     ))}
                   </ul>
