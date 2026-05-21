@@ -84,19 +84,23 @@ export default async function PeriGuideThankyouPage({ searchParams }: Props) {
                     Step 1 in your guide: Know Your Numbers
                   </p>
                   <h2 className="cg" style={{ fontSize: "clamp(1.4rem,3vw,2rem)", fontWeight: 500, color: "rgba(246,241,232,.95)", lineHeight: 1.3, marginBottom: 12 }}>
-                    The Veridian Women's Hormone & Health Panel
+                    The Veridian Women's Advanced Health Panel
                   </h2>
                   <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.75)", lineHeight: 1.9, marginBottom: 14 }}>
-                    Dr Tosin recommends getting your baseline blood work done before starting the reset. This panel covers every marker discussed in the guide — oestradiol, progesterone, FSH, LH, testosterone (total & free), DHEA-S, full thyroid (TSH/fT4/fT3 + antibodies), fasting glucose, HbA1c, vitamin D, ferritin, prolactin, cortisol, iron status, and vitamin B12. You'll receive a GP-reviewed digital report with your personalised next steps.
+                    Dr Tosin recommends getting your baseline done before starting the reset. This is our most comprehensive female panel — 150+ markers covering hormones, thyroid, metabolic health, cardiovascular risk, liver, kidney, bone, immunity, and nutrition. You'll receive a GP-reviewed digital report with your personalised next steps within 72 hours of your blood draw.
                   </p>
-                  <ul style={{ margin: "0 0 20px 0", padding: 0, listStyle: "none", display: "flex", flexWrap: "wrap", gap: 8 }}>
-                    {["Oestradiol", "Progesterone", "FSH & LH", "Testosterone", "DHEA-S", "Thyroid Panel", "Prolactin", "Cortisol", "HbA1c", "Vitamin D", "Ferritin", "Vitamin B12"].map(m => (
+                  <ul style={{ margin: "0 0 14px 0", padding: 0, listStyle: "none", display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {["Oestradiol", "Progesterone", "FSH & LH", "Testosterone & Free T", "DHEA-S", "Full Thyroid + Abs", "HbA1c & Insulin", "Vitamin D", "Ferritin & Iron", "Vitamin B12 & Folate", "Full Lipid Panel", "Apolipoproteins", "Leptin & Adiponectin", "CA-125", "Liver Panel", "Kidney Panel", "hsCRP & Complement", "IgE (Allergy)", "H. Pylori", "Full Blood Count"].map(m => (
                       <li key={m} style={{ fontSize: ".72rem", fontWeight: 600, letterSpacing: ".08em", color: "var(--go)", border: "1px solid rgba(200,168,75,.3)", padding: "3px 9px" }}>{m}</li>
                     ))}
                   </ul>
+                  <div style={{ background: "rgba(200,168,75,.12)", border: "1px solid rgba(200,168,75,.25)", padding: "10px 14px", marginBottom: 20, fontSize: ".78rem", color: "rgba(246,241,232,.7)", lineHeight: 1.7 }}>
+                    <strong style={{ color: "var(--go)" }}>Blood draw:</strong> Attend your nearest Randox Health clinic. Clinic phlebotomy fee: <strong style={{ color: "var(--go)" }}>£30</strong>, paid on the day. Randox clinics nationwide — London, Manchester, Birmingham and more.
+                  </div>
                   <Link href="/book?tier=perimenopause-panel" className="btn btn-go" style={{ display: "inline-block" }}>
-                    Book the Women's Hormone Panel — £295 →
+                    Book the Advanced Health Panel — £295 →
                   </Link>
+                  <p style={{ marginTop: 8, fontSize: ".72rem", color: "rgba(246,241,232,.45)" }}>Panel: £295 · Clinic blood draw: £30 (paid at Randox)</p>
                 </div>
 
                 {/* Upsell 2 — Discovery call (softer) */}

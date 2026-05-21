@@ -30,11 +30,12 @@ const tierCatalog: Record<
     cancelPath: "/perimenopause-guide",
   },
   "perimenopause-panel": {
-    name: "Veridian Women's Hormone & Health Panel",
+    name: "Veridian Women's Advanced Health Panel",
     amount: 29500,
     description:
-      "Comprehensive hormonal and metabolic blood panel for women in perimenopause. Includes: Oestradiol (E2), Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Thyroid (TSH/fT4/fT3), FBC, Fasting Glucose & HbA1c, Vitamin D, Ferritin, Prolactin, Cortisol, Anti-thyroid antibodies, Iron status, Vitamin B12. GP-reviewed digital report included.",
+      "150+ marker comprehensive panel (Advanced GP3 Female + DHEA-S + Free Testosterone). Hormones: Oestradiol, Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Prolactin, SHBG. Thyroid: TSH, fT3, fT4, Anti-TG, Anti-TPO. Metabolic: Glucose, HbA1c, Insulin, C-Peptide, Leptin, Adiponectin, Resistin. Cardiovascular: Full lipid panel + Apolipoproteins + Lipoprotein(a) + Cardiovascular Risk Score. Blood: Full Blood Count. Nutrition: Vitamin D, B12, Folate, Iron status, Ferritin, Total Antioxidant Status. Organ health: Liver, Kidney (inc. Cystatin C), Pancreatic. Bone: Calcium, PTH, Vitamin D. Inflammation: hsCRP, Complement C3/C4, Immunoglobulins. Digestive: H. Pylori, Anti-TTG. Tumour marker: CA-125. Allergy: IgE. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
     successPath: "/book/thank-you",
+    cancelPath: "/perimenopause-guide",
   },
   discovery: {
     name: "GP-Led Discovery Call",
