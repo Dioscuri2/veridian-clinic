@@ -164,35 +164,35 @@ export default function PerimenopauseQuizPage() {
 
               {/* Header */}
               <div style={{ textAlign: "center", marginBottom: 40 }}>
-                <p className="lbl">Free Perimenopause Symptom Check</p>
+                <p className="lbl" style={{ fontSize: ".75rem", letterSpacing: ".18em" }}>Free Perimenopause Symptom Check</p>
                 <div className="rule rule-c" />
-                <h1 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 12 }}>
+                <h1 className="cg" style={{ fontSize: "clamp(2.4rem,6vw,3.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.1, marginBottom: 16 }}>
                   Is this perimenopause?
                 </h1>
-                <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.85 }}>
+                <p style={{ fontSize: "clamp(1rem,2.5vw,1.1rem)", color: "var(--sl2)", lineHeight: 1.85 }}>
                   8 questions · Under 2 minutes · Written by a GP
                 </p>
               </div>
 
               {/* Progress bar */}
               <div style={{ marginBottom: 36 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                  <span style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+                  <span style={{ fontSize: ".8rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)" }}>
                     Question {step + 1} of {QUESTIONS.length}
                   </span>
-                  <span style={{ fontSize: ".72rem", color: "var(--sl3)" }}>{progress}%</span>
+                  <span style={{ fontSize: ".8rem", color: "var(--sl3)" }}>{progress}%</span>
                 </div>
-                <div style={{ height: 4, background: "rgba(0,0,0,.08)", borderRadius: 2 }}>
-                  <div style={{ height: "100%", width: `${progress}%`, background: "var(--go)", borderRadius: 2, transition: "width .4s ease" }} />
+                <div style={{ height: 6, background: "rgba(0,0,0,.08)", borderRadius: 3 }}>
+                  <div style={{ height: "100%", width: `${progress}%`, background: "var(--go)", borderRadius: 3, transition: "width .4s ease" }} />
                 </div>
               </div>
 
               {/* Question */}
-              <div className="card" style={{ marginBottom: 24 }}>
-                <p style={{ fontSize: "clamp(1rem,2.2vw,1.2rem)", fontWeight: 600, color: "var(--sl)", lineHeight: 1.55, marginBottom: 28 }}>
+              <div className="card" style={{ marginBottom: 24, padding: "clamp(20px,5vw,36px)" }}>
+                <p style={{ fontSize: "clamp(1.2rem,3.5vw,1.5rem)", fontWeight: 600, color: "var(--sl)", lineHeight: 1.5, marginBottom: 28 }}>
                   {current.text}
                 </p>
-                <div style={{ display: "grid", gap: 12 }}>
+                <div style={{ display: "grid", gap: 14 }}>
                   {current.options.map((opt, i) => {
                     const selected = answers[current.id] === current.scores[i];
                     return (
@@ -201,15 +201,16 @@ export default function PerimenopauseQuizPage() {
                         onClick={() => select(current.scores[i])}
                         style={{
                           textAlign: "left",
-                          padding: "14px 18px",
+                          padding: "clamp(14px,3vw,18px) clamp(16px,4vw,24px)",
                           background: selected ? "var(--fo)" : "rgba(0,0,0,.03)",
-                          border: `1.5px solid ${selected ? "var(--fo)" : "rgba(0,0,0,.1)"}`,
+                          border: `2px solid ${selected ? "var(--fo)" : "rgba(0,0,0,.1)"}`,
                           color: selected ? "var(--iv)" : "var(--sl)",
-                          fontSize: ".92rem",
-                          lineHeight: 1.5,
+                          fontSize: "clamp(1rem,2.5vw,1.08rem)",
+                          lineHeight: 1.55,
                           cursor: "pointer",
                           transition: "all .18s ease",
                           fontFamily: "inherit",
+                          borderRadius: 2,
                         }}
                       >
                         {opt}
@@ -222,7 +223,7 @@ export default function PerimenopauseQuizPage() {
               {step > 0 && (
                 <button
                   onClick={() => setStep(s => s - 1)}
-                  style={{ background: "none", border: "none", color: "var(--sl3)", fontSize: ".84rem", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+                  style={{ background: "none", border: "none", color: "var(--sl3)", fontSize: ".95rem", cursor: "pointer", fontFamily: "inherit", padding: "8px 0", minHeight: 44 }}
                 >
                   ← Back
                 </button>
@@ -246,11 +247,11 @@ export default function PerimenopauseQuizPage() {
                 <span style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: result.colour }}>{result.label}</span>
               </div>
 
-              <h2 className="cg" style={{ fontSize: "clamp(1.6rem,4vw,2.6rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 20 }}>
+              <h2 className="cg" style={{ fontSize: "clamp(1.9rem,4.5vw,3rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.15, marginBottom: 20 }}>
                 {result.headline}
               </h2>
 
-              <p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 600, margin: "0 auto 36px" }}>
+              <p style={{ fontSize: "clamp(1rem,2.5vw,1.1rem)", color: "var(--sl2)", lineHeight: 2, maxWidth: 600, margin: "0 auto 36px" }}>
                 {result.body}
               </p>
 

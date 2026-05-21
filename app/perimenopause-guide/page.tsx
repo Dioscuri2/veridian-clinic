@@ -173,7 +173,16 @@ function PeriGuideContent() {
 
               {/* Right — 3D book mockup */}
               <div className="a3" style={{ flex: "0 0 auto", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <div style={{ position: "relative", width: "clamp(200px,28vw,300px)" }}>
+                <div style={{ position: "relative", width: "clamp(240px,32vw,360px)" }}>
+                  {/* Ambient glow behind book */}
+                  <div style={{
+                    position: "absolute",
+                    inset: "-20%",
+                    background: "radial-gradient(ellipse at 60% 50%, rgba(200,168,75,.18) 0%, rgba(20,82,38,.12) 50%, transparent 75%)",
+                    filter: "blur(24px)",
+                    pointerEvents: "none",
+                    zIndex: 0,
+                  }} />
                   {/* Spine */}
                   <div style={{
                     position: "absolute",
@@ -181,11 +190,12 @@ function PeriGuideContent() {
                     top: "2%",
                     width: "8%",
                     height: "96%",
-                    background: "linear-gradient(to right, #0d1f1a, #1a3a2e)",
+                    background: "linear-gradient(to right, #0a1812, #1a3a2e)",
                     transform: "rotateY(60deg) translateX(-50%)",
                     transformOrigin: "right center",
                     borderRadius: "2px 0 0 2px",
-                    boxShadow: "-6px 0 18px rgba(0,0,0,.6)",
+                    boxShadow: "-8px 0 20px rgba(0,0,0,.7)",
+                    zIndex: 1,
                   }} />
                   {/* Cover */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -195,24 +205,47 @@ function PeriGuideContent() {
                     style={{
                       width: "100%",
                       display: "block",
-                      borderRadius: "0 4px 4px 0",
-                      transform: "perspective(800px) rotateY(-12deg) rotateX(2deg)",
-                      boxShadow: "clamp(8px,2vw,20px) clamp(8px,2vw,20px) clamp(40px,6vw,80px) rgba(0,0,0,.6), -4px 4px 16px rgba(0,0,0,.3)",
+                      borderRadius: "0 5px 5px 0",
+                      transform: "perspective(900px) rotateY(-14deg) rotateX(3deg)",
+                      boxShadow: "28px 28px 80px rgba(0,0,0,.75), -4px 4px 18px rgba(0,0,0,.4), 0 0 60px rgba(200,168,75,.08)",
                       transformOrigin: "left center",
+                      position: "relative",
+                      zIndex: 1,
                     }}
                   />
+                  {/* Price badge */}
+                  <div style={{
+                    position: "absolute",
+                    bottom: "8%",
+                    right: "-8%",
+                    background: "var(--go)",
+                    color: "var(--fo)",
+                    padding: "10px 16px",
+                    fontSize: ".75rem",
+                    fontWeight: 700,
+                    letterSpacing: ".08em",
+                    textTransform: "uppercase",
+                    boxShadow: "0 6px 24px rgba(0,0,0,.4)",
+                    zIndex: 2,
+                    lineHeight: 1.3,
+                    textAlign: "center",
+                  }}>
+                    <span style={{ fontSize: "1.4rem", display: "block", letterSpacing: 0, fontFamily: "Georgia, serif" }}>£9.99</span>
+                    Instant PDF
+                  </div>
                   {/* Reflection strip */}
                   <div style={{
                     position: "absolute",
-                    bottom: "-8%",
+                    bottom: "-10%",
                     left: "5%",
                     right: "5%",
-                    height: "18%",
-                    background: "linear-gradient(to bottom, rgba(246,241,232,.08), transparent)",
-                    transform: "perspective(800px) rotateX(-30deg) scaleY(-1) rotateY(-12deg)",
+                    height: "20%",
+                    background: "linear-gradient(to bottom, rgba(246,241,232,.07), transparent)",
+                    transform: "perspective(900px) rotateX(-30deg) scaleY(-1) rotateY(-14deg)",
                     transformOrigin: "top center",
-                    filter: "blur(4px)",
+                    filter: "blur(5px)",
                     pointerEvents: "none",
+                    zIndex: 1,
                   }} />
                 </div>
               </div>
