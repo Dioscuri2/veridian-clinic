@@ -106,6 +106,7 @@ function ResultContent() {
         return;
       }
       fbq("Lead", { value: 0, currency: "GBP", content_name: "Metabolic Quiz" });
+      fbq("QuizComplete", { content_name: "Metabolic Quiz", content_category: bandKey, score: mAge });
       sessionStorage.setItem("vc_quiz_gate", "1");
       setSubmitted(true);
     } catch {
