@@ -5,82 +5,101 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
+type AgeGroup = "under45" | "45plus";
+
+const AGE_OPTIONS: { label: string; group: AgeGroup }[] = [
+  { label: "Under 40", group: "under45" },
+  { label: "40–44", group: "under45" },
+  { label: "45–50", group: "45plus" },
+  { label: "51 or over / post-menopause", group: "45plus" },
+];
+
 const QUESTIONS = [
   {
     id: "sleep",
-    text: "How often do you wake between 2–4am and struggle to get back to sleep?",
-    options: ["Rarely or never", "Once or twice a week", "Most nights", "Almost every night"],
+    text: "Do you wake between 2–4am with your mind racing, unable to get back to sleep — even when you're exhausted?",
+    options: [
+      "Rarely or never",
+      "Once or twice a week",
+      "Most nights — I'm awake for an hour or more",
+      "Almost every night — I'm running on broken sleep",
+    ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "brain",
-    text: "How would you describe your mental clarity and memory lately?",
+    text: "Have you been losing words mid-sentence, forgetting why you walked into a room, or feeling like your sharpness has gone?",
     options: [
-      "Sharp — no change",
+      "No — my memory and focus feel normal",
       "Occasionally foggy, minor forgetfulness",
-      "Noticeably worse — losing words, forgetting things I never would have before",
-      "Significant brain fog — affecting work or daily life",
+      "Yes — noticeably worse. I'd never have forgotten things like this before",
+      "Significant brain fog — it's affecting my work and daily life",
     ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "weight",
-    text: "Have you noticed weight gain around your middle that won't shift, despite no obvious change in diet or exercise?",
+    text: "Has weight appeared around your middle seemingly overnight — and won't budge no matter what you eat or how much you exercise?",
     options: [
       "No change",
       "Slight increase I can explain",
       "Yes — stubborn belly weight, nothing I try is working",
-      "Significant change that's affecting how I feel about my body",
+      "Significant change that's affecting how I feel in my body",
     ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "mood",
-    text: "How often do you experience sudden irritability, rage or mood swings that feel out of proportion?",
-    options: ["Rarely", "Occasionally", "Regularly — it doesn't feel like me", "Frequently — affecting my relationships"],
+    text: "Do you experience sudden flashes of rage, irritability, or emotion that feel completely out of proportion — then feel fine ten minutes later?",
+    options: [
+      "Rarely — my moods feel even",
+      "Occasionally",
+      "Regularly — it genuinely doesn't feel like me",
+      "Frequently — it's affecting my relationships",
+    ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "heat",
-    text: "Do you experience hot flushes or night sweats?",
+    text: "Do you experience sudden waves of heat, flushing, or wake up drenched in sweat at night?",
     options: [
       "No",
       "Mild warmth occasionally",
       "Hot flushes or night sweats several times a week",
-      "Daily or disruptive hot flushes / heavy night sweats",
+      "Daily or severely disruptive hot flushes / heavy night sweats",
     ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "energy",
-    text: "How would you describe your energy levels across the day?",
+    text: "Even after a full night's sleep, do you feel like you're running on empty by mid-morning — a tiredness that rest doesn't fix?",
     options: [
-      "Consistent and good",
+      "No — my energy is consistent and good",
       "Some afternoon dips",
       "Tired most of the day despite sleeping",
-      "Exhausted — even rested sleep doesn't restore me",
+      "Exhausted — even good sleep doesn't restore me",
     ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "anxiety",
-    text: "Have you noticed new or worsened anxiety — especially physical anxiety, heart racing, or a sense of dread?",
+    text: "Have you noticed a new physical anxiety — heart pounding for no reason, waves of dread, or a sense of 'impending doom' that comes out of nowhere?",
     options: [
       "No",
       "Mild and manageable",
-      "Yes — feels different from any anxiety I've had before",
-      "Significant — interfering with daily life",
+      "Yes — it feels different from any anxiety I've had before",
+      "Significant — it's interfering with my daily life",
     ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "cycles",
-    text: "Have your menstrual cycles changed — shorter, longer, heavier, more irregular, or skipped months?",
+    text: "Have your periods become unpredictable — shorter, heavier, skipped months, or flooding that's hard to manage?",
     options: [
       "No change / I'm post-menopause",
       "Minor variations",
       "Noticeable changes in the last 6–12 months",
-      "Significant irregularity or very heavy periods",
+      "Significant irregularity or very heavy / flooding periods",
     ],
     scores: [0, 0, 2, 3],
   },
@@ -129,6 +148,7 @@ const RESULTS: Record<Band, {
 };
 
 export default function PerimenopauseQuizPage() {
+  const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
@@ -140,6 +160,10 @@ export default function PerimenopauseQuizPage() {
   const maxScore = QUESTIONS.reduce((a, q) => a + Math.max(...q.scores), 0);
   const pct = Math.round((totalScore / maxScore) * 100);
 
+  function selectAge(group: AgeGroup) {
+    setAgeGroup(group);
+  }
+
   function select(score: number) {
     const next = { ...answers, [current.id]: score };
     setAnswers(next);
@@ -150,7 +174,65 @@ export default function PerimenopauseQuizPage() {
     }
   }
 
-  const progress = submitted ? 100 : Math.round(((step) / QUESTIONS.length) * 100);
+  const totalSteps = QUESTIONS.length;
+  const progress = submitted ? 100 : Math.round((step / totalSteps) * 100);
+
+  // Age selection screen
+  if (!ageGroup) {
+    return (
+      <>
+        <style>{FONTS + CSS}</style>
+        <Navigation />
+        <main style={{ paddingTop: "var(--nav-h)", minHeight: "100svh", background: "var(--iv)" }}>
+          <section className="sec" style={{ paddingTop: 56, paddingBottom: 80 }}>
+            <div className="wrap" style={{ maxWidth: 680 }}>
+              <div style={{ textAlign: "center", marginBottom: 40 }}>
+                <p className="lbl" style={{ fontSize: ".75rem", letterSpacing: ".18em" }}>Free Perimenopause Symptom Check</p>
+                <div className="rule rule-c" />
+                <h1 className="cg" style={{ fontSize: "clamp(2.4rem,6vw,3.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.1, marginBottom: 16 }}>
+                  Is this perimenopause?
+                </h1>
+                <p style={{ fontSize: "clamp(1rem,2.5vw,1.1rem)", color: "var(--sl2)", lineHeight: 1.85 }}>
+                  8 questions · Under 2 minutes · Written by a GP
+                </p>
+              </div>
+
+              <div className="card" style={{ padding: "clamp(20px,5vw,36px)" }}>
+                <p style={{ fontSize: "clamp(1.2rem,3.5vw,1.5rem)", fontWeight: 600, color: "var(--sl)", lineHeight: 1.5, marginBottom: 28 }}>
+                  First — how old are you?
+                </p>
+                <div style={{ display: "grid", gap: 14 }}>
+                  {AGE_OPTIONS.map(opt => (
+                    <button
+                      key={opt.label}
+                      onClick={() => selectAge(opt.group)}
+                      style={{
+                        textAlign: "left",
+                        padding: "clamp(14px,3vw,18px) clamp(16px,4vw,24px)",
+                        background: "rgba(0,0,0,.03)",
+                        border: "2px solid rgba(0,0,0,.1)",
+                        color: "var(--sl)",
+                        fontSize: "clamp(1rem,2.5vw,1.08rem)",
+                        lineHeight: 1.55,
+                        cursor: "pointer",
+                        transition: "all .18s ease",
+                        fontFamily: "inherit",
+                        borderRadius: 2,
+                        minHeight: 44,
+                      }}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -211,6 +293,7 @@ export default function PerimenopauseQuizPage() {
                           transition: "all .18s ease",
                           fontFamily: "inherit",
                           borderRadius: 2,
+                          minHeight: 44,
                         }}
                       >
                         {opt}
@@ -220,14 +303,12 @@ export default function PerimenopauseQuizPage() {
                 </div>
               </div>
 
-              {step > 0 && (
-                <button
-                  onClick={() => setStep(s => s - 1)}
-                  style={{ background: "none", border: "none", color: "var(--sl3)", fontSize: ".95rem", cursor: "pointer", fontFamily: "inherit", padding: "8px 0", minHeight: 44 }}
-                >
-                  ← Back
-                </button>
-              )}
+              <button
+                onClick={() => step === 0 ? setAgeGroup(null) : setStep(s => s - 1)}
+                style={{ background: "none", border: "none", color: "var(--sl3)", fontSize: ".95rem", cursor: "pointer", fontFamily: "inherit", padding: "8px 0", minHeight: 44 }}
+              >
+                ← Back
+              </button>
             </div>
           </section>
 
@@ -254,6 +335,18 @@ export default function PerimenopauseQuizPage() {
               <p style={{ fontSize: "clamp(1rem,2.5vw,1.1rem)", color: "var(--sl2)", lineHeight: 2, maxWidth: 600, margin: "0 auto 36px" }}>
                 {result.body}
               </p>
+
+              {/* Under-45 NICE guidance */}
+              {ageGroup === "under45" && (
+                <div style={{ maxWidth: 600, margin: "0 auto 32px", textAlign: "left", background: "rgba(20,82,38,.06)", border: "1px solid rgba(20,82,38,.25)", padding: "18px 22px" }}>
+                  <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "#145226", marginBottom: 8 }}>
+                    Important — because you're under 45
+                  </p>
+                  <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.85, margin: 0 }}>
+                    Although these symptoms are consistent with perimenopause, <strong style={{ color: "var(--sl)" }}>NICE guidelines (NG23) recommend blood tests to confirm the diagnosis in women under 45</strong> — symptoms alone are not sufficient at this age. A hormone panel (FSH, oestradiol, thyroid) can give you clarity on what's actually happening and rule out other causes. The blood panel below is the most thorough way to do this.
+                  </p>
+                </div>
+              )}
 
               {/* Score breakdown */}
               <div className="card" style={{ maxWidth: 560, margin: "0 auto 36px", textAlign: "left" }}>
@@ -284,8 +377,25 @@ export default function PerimenopauseQuizPage() {
                 The guide includes a full section on knowing your numbers, understanding your results, and when to seek clinical assessment.
               </p>
 
+              {/* Blood panel CTA — all bands */}
+              <div style={{ maxWidth: 600, margin: "32px auto 0", textAlign: "left", background: "var(--fo)", padding: "clamp(20px,4vw,28px)" }}>
+                <p style={{ fontSize: ".68rem", color: "var(--go)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
+                  {ageGroup === "under45" ? "Recommended for women under 45 — NICE NG23" : "Know your numbers"}
+                </p>
+                <h3 className="cg" style={{ fontSize: "clamp(1.1rem,2.8vw,1.5rem)", fontWeight: 500, color: "rgba(246,241,232,.95)", lineHeight: 1.3, marginBottom: 10 }}>
+                  Veridian Women's Advanced Health Panel — £295
+                </h3>
+                <p style={{ fontSize: ".86rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 16 }}>
+                  150+ markers covering hormones (oestradiol, progesterone, FSH, LH, testosterone), full thyroid including antibodies, insulin, HbA1c, vitamin D, ferritin, B12, cardiovascular risk, and more. Includes a GP-reviewed digital report with your personalised next steps. Clinic blood draw: £30 (paid at Randox, nationwide clinics).
+                </p>
+                <Link href="/book?tier=perimenopause-panel" className="btn btn-go" style={{ display: "inline-block" }}>
+                  Book the Advanced Health Panel — £295 →
+                </Link>
+                <p style={{ marginTop: 8, fontSize: ".72rem", color: "rgba(246,241,232,.4)" }}>Panel: £295 · Clinic blood draw: £30 (paid at Randox on the day)</p>
+              </div>
+
               {band === "high" && (
-                <div style={{ marginTop: 28, maxWidth: 560, margin: "28px auto 0" }}>
+                <div style={{ marginTop: 20, maxWidth: 600, margin: "20px auto 0" }}>
                   <Link href="/book?tier=discovery" className="btn btn-fo" style={{ padding: "13px 32px", fontSize: ".9rem" }}>
                     Book a Clinical Review with Dr Tosin — £195 →
                   </Link>
