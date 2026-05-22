@@ -5,91 +5,136 @@ import Footer from "@/components/Footer";
 import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { FONTS, CSS } from "@/components/globalStyles";
+import CalendlyInline from "@/components/CalendlyInline";
 
-const nextSteps = [
- "Your booking request has been sent to Veridian Clinic.",
- "You’ll receive a confirmation email with next steps.",
- "If relevant, we’ll send details for blood testing, CGM, or pre-consultation prep.",
- "You can now complete your secure clinical intake to make the consultation more useful.",
-];
+const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 
+const REVIEW_TIERS = ["discovery", "discovery-quiz"];
 
 function PixelPurchase() {
   const params = useSearchParams();
-  const tier = params.get('tier') || '';
-  
+  const tier = params.get("tier") || "";
   useEffect(() => {
-    const tierMap = {
-      'discovery': 195,
-      'discovery-quiz': 97,
-      'metabolic-screen': 195,
-      'baseline': 595,
-      'longevity-panel': 795,
-      'programme': 1895
+    const tierMap: Record<string, number> = {
+      discovery: 195,
+      "discovery-quiz": 97,
+      "metabolic-screen": 195,
+      baseline: 595,
+      "longevity-panel": 795,
+      programme: 1895,
     };
-    const value = tierMap[tier as keyof typeof tierMap] ?? 0;
-    if (value > 0 && typeof window !== 'undefined') {
-      (window as any).fbq?.('track', 'Purchase', {
-        value: value,
-        currency: 'GBP',
-        content_name: 'Veridian ' + (tier || 'Assessment')
-      });
-      (window as any).fbq?.('track', 'PurchaseVerified', {
-        value: value,
-        currency: 'GBP',
-        content_name: 'Veridian ' + (tier || 'Assessment')
-      });
+    const value = tierMap[tier] ?? 0;
+    if (value > 0 && typeof window !== "undefined") {
+      (window as Window & { fbq?: Function }).fbq?.("track", "Purchase", { value, currency: "GBP", content_name: "Veridian " + tier });
     }
   }, [tier]);
   return null;
 }
 
 function ThankYouContent() {
- return (
- <>
- <style>{FONTS + CSS}</style>
- <Navigation />
- <Suspense fallback={null}><PixelPurchase /></Suspense>
- <main style={{ paddingTop: "var(--nav-h)" }}>
- <section className="sec bg-iv" style={{ minHeight: "calc(100svh - var(--nav-h))", display: "flex", alignItems: "center" }}>
- <div className="wrap" style={{ maxWidth: 820, textAlign: "center" }}>
- <div style={{ width: 78, height: 78, margin: "0 auto 26px", borderRadius: "50%", background: "var(--fo)", display: "flex", alignItems: "center", justifyContent: "center" }}>
- <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
- <circle cx="17" cy="17" r="16" stroke="var(--go2)" strokeWidth="1.5" />
- <path d="M10 17.5l4.3 4.3L24 12" stroke="var(--go2)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
- </svg>
- </div>
- <p className="lbl">Booking Request Received</p>
- <div className="rule rule-c" />
- <h1 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 16 }}>
- Thank you.
- <br /><em style={{ fontStyle: "italic", color: "var(--fo)" }}>You’re in.</em>
- </h1>
- <p style={{ fontSize: ".94rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 620, margin: "0 auto 32px" }}>
- Your request has been submitted successfully. The next useful step is to complete your secure clinical intake so Dr Taiwo has the right context ahead of your consultation.
- </p>
- <div className="card" style={{ textAlign: "left", maxWidth: 760, margin: "0 auto 28px" }}>
- <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>What happens next</p>
- <div style={{ display: "grid", gap: 14 }}>
- {nextSteps.map((step, i) => (
- <div key={step} style={{ display: "flex", gap: 14, alignItems: "flex-start", paddingBottom: 14, borderBottom: i < nextSteps.length - 1 ? "1px solid rgba(0,0,0,.06)" : "none" }}>
- <div style={{ width: 28, height: 28, background: "var(--fo)", color: "var(--go2)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".8rem", fontWeight: 700, flexShrink: 0 }}>{i + 1}</div>
- <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85 }}>{step}</p>
- </div>
- ))}
- </div>
- </div>
- <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
- <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>
- <Link href="/" className="btn btn-ol">Return to Home</Link>
- </div>
- </div>
- </section>
- </main>
- <Footer />
- </>
- );
+  const params = useSearchParams();
+  const tier = params.get("tier") || "";
+  const isReviewTier = REVIEW_TIERS.includes(tier);
+
+  return (
+    <>
+      <style>{FONTS + CSS}</style>
+      <Navigation />
+      <Suspense fallback={null}><PixelPurchase /></Suspense>
+      <main style={{ paddingTop: "var(--nav-h)" }}>
+
+        {/* ── Confirmation header ── */}
+        <section className="sec bg-fo" style={{ paddingTop: 64, paddingBottom: isReviewTier && CALENDLY_URL ? 56 : 80 }}>
+          <div className="wrap" style={{ maxWidth: 760, textAlign: "center" }}>
+            <div style={{ width: 72, height: 72, margin: "0 auto 22px", borderRadius: "50%", background: "rgba(200,168,75,.15)", border: "1.5px solid var(--go)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M7 15.5l5 5L23 10" stroke="#c8a84b" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <p className="lbl" style={{ color: "var(--go)" }}>Payment Confirmed</p>
+            <div className="rule rule-c" style={{ background: "var(--go)" }} />
+            <h1 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 16 }}>
+              {isReviewTier ? "You're booked in." : "Thank you."}
+              {" "}<em style={{ fontStyle: "italic", color: "var(--go)" }}>
+                {isReviewTier ? "Now pick your time." : "You're in."}
+              </em>
+            </h1>
+            <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.65)", lineHeight: 1.95, maxWidth: 580, margin: "0 auto" }}>
+              {isReviewTier
+                ? "Your payment is confirmed. Select a date and time below to schedule your virtual clinical review with Dr Tosin. You'll receive a video call link by email before your appointment."
+                : "Your booking request has been submitted successfully. We'll be in touch within 24 hours to confirm next steps."}
+            </p>
+          </div>
+        </section>
+
+        {/* ── Calendly slot picker (review tiers only) ── */}
+        {isReviewTier && CALENDLY_URL && (
+          <section className="sec bg-iv" style={{ paddingTop: 56, paddingBottom: 72 }}>
+            <div className="wrap" style={{ maxWidth: 900 }}>
+              <div style={{ textAlign: "center", marginBottom: 32 }}>
+                <p className="lbl">Step 2 of 2</p>
+                <div className="rule rule-c" />
+                <h2 className="cg" style={{ fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 10 }}>
+                  Choose your appointment slot
+                </h2>
+                <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.8 }}>
+                  30-minute virtual clinical review · Video call · Dr Tosin Taiwo
+                </p>
+              </div>
+              <CalendlyInline url={CALENDLY_URL} height={700} />
+            </div>
+          </section>
+        )}
+
+        {/* ── Fallback next steps (no Calendly URL set, or non-review tier) ── */}
+        {(!CALENDLY_URL || !isReviewTier) && (
+          <section className="sec bg-iv" style={{ paddingTop: 56, paddingBottom: 72 }}>
+            <div className="wrap" style={{ maxWidth: 760, textAlign: "center" }}>
+              <div className="card" style={{ textAlign: "left", maxWidth: 680, margin: "0 auto 28px" }}>
+                <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>What happens next</p>
+                <div style={{ display: "grid", gap: 14 }}>
+                  {(isReviewTier
+                    ? [
+                        "Your payment is confirmed and your appointment is reserved.",
+                        "You'll receive a confirmation email with a video call link within 24 hours.",
+                        "If relevant, we'll ask for any blood test results to review before your call.",
+                        "You can complete your clinical intake form ahead of the appointment.",
+                      ]
+                    : [
+                        "Your booking request has been sent to Veridian Clinic.",
+                        "You'll receive a confirmation email with next steps.",
+                        "If relevant, we'll send details for blood testing, CGM, or pre-consultation prep.",
+                        "You can now complete your secure clinical intake to make the consultation more useful.",
+                      ]
+                  ).map((step, i, arr) => (
+                    <div key={step} style={{ display: "flex", gap: 14, alignItems: "flex-start", paddingBottom: 14, borderBottom: i < arr.length - 1 ? "1px solid rgba(0,0,0,.06)" : "none" }}>
+                      <div style={{ width: 28, height: 28, background: "var(--fo)", color: "var(--go2)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".8rem", fontWeight: 700, flexShrink: 0 }}>{i + 1}</div>
+                      <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85 }}>{step}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+                {isReviewTier
+                  ? <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>
+                  : <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>
+                }
+                <Link href="/" className="btn btn-ol">Return to Home</Link>
+              </div>
+            </div>
+          </section>
+        )}
+
+      </main>
+      <Footer />
+    </>
+  );
 }
 
-
-export default function ThankYouPage() { return <ThankYouContent />; }
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={null}>
+      <ThankYouContent />
+    </Suspense>
+  );
+}
