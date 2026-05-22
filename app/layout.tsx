@@ -44,9 +44,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
  <html lang="en-GB">
  <head>
  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
- <meta name="theme-color" content="#0d2818" />
- <link rel="icon" href="/favicon.ico" />
- <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <meta name="theme-color" content="#111009" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
  </head>
