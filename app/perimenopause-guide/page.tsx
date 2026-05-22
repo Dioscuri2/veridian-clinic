@@ -175,6 +175,25 @@ export default function PerimenopauseGuidePage() {
                 </p>
 
                 <div className="a4">
+                  {/* Primary CTA — quiz */}
+                  <a
+                    href="/perimenopause-quiz"
+                    className="btn btn-go"
+                    style={{ padding: "16px 36px", fontSize: ".95rem", display: "inline-block", marginBottom: 14 }}
+                  >
+                    Take the Free 90-Second Quiz →
+                  </a>
+                  <p style={{ fontSize: ".75rem", color: "rgba(246,241,232,.45)", marginBottom: 22, lineHeight: 1.6 }}>
+                    4 questions — get your personalised guide based on your results
+                  </p>
+
+                  {/* Divider */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, maxWidth: 420 }}>
+                    <div style={{ flex: 1, height: 1, background: "rgba(246,241,232,.12)" }} />
+                    <span style={{ fontSize: ".72rem", color: "rgba(246,241,232,.35)", letterSpacing: ".1em", textTransform: "uppercase" }}>or download directly</span>
+                    <div style={{ flex: 1, height: 1, background: "rgba(246,241,232,.12)" }} />
+                  </div>
+
                   <EmailForm dark />
                   <div style={{ display: "flex", gap: 16, marginTop: 16, flexWrap: "wrap" }}>
                     {["6-Week Plan", "Daily Checklists", "Supplement Guide", "GP-Written"].map(b => (

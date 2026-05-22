@@ -35,7 +35,12 @@ async function ensureBrevoList(): Promise<number | null> {
 
 export async function POST(request: NextRequest) {
   try {
-    const { firstName, email } = await request.json() as { firstName?: string; email?: string };
+    const { firstName, email, source, metadata } = await request.json() as {
+      firstName?: string;
+      email?: string;
+      source?: string;
+      metadata?: Record<string, unknown>;
+    };
     const cleanEmail = email?.trim().toLowerCase() || "";
     const cleanName = firstName?.trim() || "";
 
@@ -43,11 +48,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
     }
 
+    const cleanSource = source?.trim() || "perimenopause-guide";
     const entry = {
       timestamp: new Date().toISOString(),
       email: cleanEmail,
       firstName: cleanName,
-      source: "perimenopause-guide",
+      source: cleanSource,
+      metadata: metadata ?? null,
       ip: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "",
       ua: request.headers.get("user-agent") || "",
     };
@@ -64,7 +71,10 @@ export async function POST(request: NextRequest) {
           updateEnabled: true,
           attributes: {
             FIRSTNAME: cleanName,
-            SOURCE: "perimenopause-guide",
+            SOURCE: cleanSource,
+            RESULTBAND: String(metadata?.band ?? ""),
+            QUIZSCORE: String(metadata?.score ?? ""),
+            METADATA: metadata ? JSON.stringify(metadata) : "",
           },
         }),
       });
