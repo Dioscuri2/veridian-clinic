@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
@@ -53,6 +51,10 @@ const OUTCOMES = [
 
 const FAQS = [
   {
+    q: "Why is the guide free?",
+    a: "Because getting the right information into the right hands matters more than the £9.99. Dr Tosin believes every woman in perimenopause deserves to understand what's happening to her body — and to arrive at any clinical appointment informed. The guide is free. If you want deeper support — your hormone panel or a clinical review — those are available when you're ready.",
+  },
+  {
     q: "Is this just another wellness guide?",
     a: "No. It's written by a practising GP and grounded in clinical evidence, not trends. There are no detox protocols, no miracle supplements, and no generic advice that could apply to anyone. Every section is built around the specific hormonal biology of perimenopause.",
   },
@@ -62,49 +64,47 @@ const FAQS = [
   },
   {
     q: "My symptoms feel quite severe. What if I need more than a guide?",
-    a: "The guide includes a red flags section and clear guidance on when symptoms require urgent clinical assessment — not just lifestyle changes. If you need clinical depth, Veridian's blood panel and consultation pathway is there. The guide tells you exactly when to escalate.",
+    a: "The guide includes a red flags section and clear guidance on when symptoms require urgent clinical assessment. If you need clinical depth, Veridian's blood panel and discounted consultation pathway is there. The guide tells you exactly when to escalate.",
   },
   {
     q: "Will this tell me whether I need HRT?",
     a: "Not directly — that's a clinical decision between you and your doctor. What it does is give you the understanding and vocabulary to have that conversation from an informed position, rather than walking in uncertain about what you're experiencing.",
   },
-  {
-    q: "Is £9.99 really worth it?",
-    a: "It's less than a single round of coffee. Most women who read it say it answers questions they've held for years. The blood test tracker alone is worth the cost of a clinical appointment it saves you from having without the right preparation.",
-  },
 ];
 
-function BuyButton({ loading, onClick }: { loading: boolean; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      disabled={loading}
-      className="btn btn-go"
-      style={{ padding: "16px 48px", fontSize: ".95rem", opacity: loading ? 0.65 : 1 }}
-    >
-      {loading ? "Redirecting to checkout…" : "Get the Guide for £9.99 →"}
-    </button>
-  );
-}
-
-function PeriGuideContent() {
+function EmailForm({ dark = false }: { dark?: boolean }) {
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const params = useSearchParams();
-  const cancelled = params.get("cancelled") === "1";
 
-  async function handleBuy() {
-    setLoading(true);
+  const inputStyle: React.CSSProperties = {
+    padding: "13px 16px",
+    fontSize: ".95rem",
+    fontFamily: "inherit",
+    border: `1.5px solid ${dark ? "rgba(200,168,75,.3)" : "rgba(0,0,0,.15)"}`,
+    background: dark ? "rgba(255,255,255,.06)" : "#fff",
+    color: dark ? "var(--iv)" : "var(--sl)",
+    outline: "none",
+    borderRadius: 2,
+    width: "100%",
+    boxSizing: "border-box" as const,
+  };
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
     setError("");
+    if (!email.trim()) { setError("Please enter your email address."); return; }
+    setLoading(true);
     try {
-      const resp = await fetch("/api/checkout", {
+      const res = await fetch("/api/peri-guide-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tier: "peri-guide" }),
+        body: JSON.stringify({ firstName: firstName.trim(), email: email.trim() }),
       });
-      const data = await resp.json();
-      if (!resp.ok || !data.url) throw new Error(data.error || "Unable to start checkout.");
-      window.location.href = data.url;
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      window.location.href = "/perimenopause-guide/thank-you";
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setLoading(false);
@@ -112,58 +112,71 @@ function PeriGuideContent() {
   }
 
   return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 420 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+        <input
+          type="text"
+          placeholder="First name"
+          value={firstName}
+          onChange={e => setFirstName(e.target.value)}
+          style={inputStyle}
+          aria-label="First name"
+        />
+        <input
+          type="email"
+          placeholder="Email address"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          style={inputStyle}
+          aria-label="Email address"
+        />
+      </div>
+      {error && <p style={{ fontSize: ".82rem", color: dark ? "#f88" : "#c94a4a", margin: 0 }}>{error}</p>}
+      <button
+        type="submit"
+        disabled={loading}
+        className="btn btn-go"
+        style={{ padding: "15px 32px", fontSize: ".95rem", opacity: loading ? 0.65 : 1, cursor: loading ? "default" : "pointer" }}
+      >
+        {loading ? "Sending…" : "Get the Free Guide →"}
+      </button>
+      <p style={{ fontSize: ".72rem", color: dark ? "rgba(246,241,232,.38)" : "var(--sl3)", lineHeight: 1.7, margin: 0 }}>
+        No payment. No spam. Instant PDF download on the next page.
+      </p>
+    </form>
+  );
+}
+
+export default function PerimenopauseGuidePage() {
+  return (
     <>
       <style>{FONTS + CSS}</style>
       <Navigation />
       <main style={{ paddingTop: "var(--nav-h)" }}>
 
-        {/* ── Hero ── dark, two-column with 3D book mockup */}
+        {/* ── Hero ── */}
         <section className="sec bg-fo" style={{ minHeight: "calc(100svh - var(--nav-h))", display: "flex", alignItems: "center", paddingTop: 64, paddingBottom: 72 }}>
           <div className="wrap" style={{ maxWidth: 1020 }}>
             <div style={{ display: "flex", gap: "clamp(40px,8vw,80px)", alignItems: "center", flexWrap: "wrap" }}>
 
-              {/* Left — text + CTA */}
+              {/* Left — text + email form */}
               <div style={{ flex: "1 1 340px", minWidth: 300 }}>
-                <p className="lbl a1" style={{ color: "var(--go)", letterSpacing: ".18em" }}>GP-Authored · Women 35–52 · Instant Download</p>
+                <p className="lbl a1" style={{ color: "var(--go)", letterSpacing: ".18em" }}>GP-Authored · Women 35–52 · Free Instant Download</p>
                 <div className="rule a1" style={{ background: "var(--go)", width: 48, height: 2, margin: "14px 0 22px" }} />
-                <h1
-                  className="cg a2"
-                  style={{ fontSize: "clamp(2.2rem,5.5vw,3.8rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.1, marginBottom: 20 }}
-                >
+                <h1 className="cg a2" style={{ fontSize: "clamp(2.2rem,5.5vw,3.8rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.1, marginBottom: 20 }}>
                   The Perimenopause Reset
                 </h1>
-                <p
-                  className="cg a2"
-                  style={{ fontSize: "clamp(1.15rem,2.5vw,1.55rem)", fontStyle: "italic", color: "var(--go)", lineHeight: 1.4, marginBottom: 18 }}
-                >
+                <p className="cg a2" style={{ fontSize: "clamp(1.15rem,2.5vw,1.55rem)", fontStyle: "italic", color: "var(--go)", lineHeight: 1.4, marginBottom: 18 }}>
                   A Six-Week Guide to Reclaim Your Sleep, Brain and Body
                 </p>
-                <p
-                  className="a3"
-                  style={{ fontSize: ".97rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9, marginBottom: 32 }}
-                >
-                  A structured blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight — written by a practising UK GP.
+                <p className="a3" style={{ fontSize: ".97rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9, marginBottom: 32 }}>
+                  A structured blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight — written by a practising UK GP. <strong style={{ color: "var(--go2)" }}>Free.</strong>
                 </p>
 
-                {cancelled && (
-                  <div style={{ marginBottom: 20, padding: "12px 16px", borderLeft: "3px solid var(--go)", background: "rgba(200,168,75,.08)" }}>
-                    <p style={{ fontSize: ".84rem", color: "var(--go2)", lineHeight: 1.7 }}>
-                      No payment was taken. You can purchase the guide below whenever you're ready.
-                    </p>
-                  </div>
-                )}
-                {error && (
-                  <div style={{ marginBottom: 20, padding: "12px 16px", borderLeft: "3px solid #c94a4a", background: "rgba(201,74,74,.08)" }}>
-                    <p style={{ fontSize: ".84rem", color: "#e88", lineHeight: 1.7 }}>{error}</p>
-                  </div>
-                )}
-
-                <div className="a4" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 10 }}>
-                  <BuyButton loading={loading} onClick={handleBuy} />
-                  <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.38)", lineHeight: 1.7 }}>
-                    Secure payment via Stripe · Instant PDF · No subscription
-                  </p>
-                  <div style={{ display: "flex", gap: 16, marginTop: 4, flexWrap: "wrap" }}>
+                <div className="a4">
+                  <EmailForm dark />
+                  <div style={{ display: "flex", gap: 16, marginTop: 16, flexWrap: "wrap" }}>
                     {["6-Week Plan", "Daily Checklists", "Supplement Guide", "GP-Written"].map(b => (
                       <span key={b} style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--go)", border: "1px solid rgba(200,168,75,.3)", padding: "4px 10px" }}>{b}</span>
                     ))}
@@ -174,79 +187,20 @@ function PeriGuideContent() {
               {/* Right — 3D book mockup */}
               <div className="a3" style={{ flex: "0 0 auto", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div style={{ position: "relative", width: "clamp(240px,32vw,360px)" }}>
-                  {/* Ambient glow behind book */}
-                  <div style={{
-                    position: "absolute",
-                    inset: "-20%",
-                    background: "radial-gradient(ellipse at 60% 50%, rgba(200,168,75,.18) 0%, rgba(20,82,38,.12) 50%, transparent 75%)",
-                    filter: "blur(24px)",
-                    pointerEvents: "none",
-                    zIndex: 0,
-                  }} />
-                  {/* Spine */}
-                  <div style={{
-                    position: "absolute",
-                    left: 0,
-                    top: "2%",
-                    width: "8%",
-                    height: "96%",
-                    background: "linear-gradient(to right, #0a1812, #1a3a2e)",
-                    transform: "rotateY(60deg) translateX(-50%)",
-                    transformOrigin: "right center",
-                    borderRadius: "2px 0 0 2px",
-                    boxShadow: "-8px 0 20px rgba(0,0,0,.7)",
-                    zIndex: 1,
-                  }} />
-                  {/* Cover */}
+                  <div style={{ position: "absolute", inset: "-20%", background: "radial-gradient(ellipse at 60% 50%, rgba(200,168,75,.18) 0%, rgba(20,82,38,.12) 50%, transparent 75%)", filter: "blur(24px)", pointerEvents: "none", zIndex: 0 }} />
+                  <div style={{ position: "absolute", left: 0, top: "2%", width: "8%", height: "96%", background: "linear-gradient(to right, #0a1812, #1a3a2e)", transform: "rotateY(60deg) translateX(-50%)", transformOrigin: "right center", borderRadius: "2px 0 0 2px", boxShadow: "-8px 0 20px rgba(0,0,0,.7)", zIndex: 1 }} />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/perimenopause-cover.jpg"
                     alt="The Perimenopause Reset Guide — Dr Tosin Taiwo"
-                    style={{
-                      width: "100%",
-                      display: "block",
-                      borderRadius: "0 5px 5px 0",
-                      transform: "perspective(900px) rotateY(-14deg) rotateX(3deg)",
-                      boxShadow: "28px 28px 80px rgba(0,0,0,.75), -4px 4px 18px rgba(0,0,0,.4), 0 0 60px rgba(200,168,75,.08)",
-                      transformOrigin: "left center",
-                      position: "relative",
-                      zIndex: 1,
-                    }}
+                    style={{ width: "100%", display: "block", borderRadius: "0 5px 5px 0", transform: "perspective(900px) rotateY(-14deg) rotateX(3deg)", boxShadow: "28px 28px 80px rgba(0,0,0,.75), -4px 4px 18px rgba(0,0,0,.4), 0 0 60px rgba(200,168,75,.08)", transformOrigin: "left center", position: "relative", zIndex: 1 }}
                   />
-                  {/* Price badge */}
-                  <div style={{
-                    position: "absolute",
-                    bottom: "8%",
-                    right: "-8%",
-                    background: "var(--go)",
-                    color: "var(--fo)",
-                    padding: "10px 16px",
-                    fontSize: ".75rem",
-                    fontWeight: 700,
-                    letterSpacing: ".08em",
-                    textTransform: "uppercase",
-                    boxShadow: "0 6px 24px rgba(0,0,0,.4)",
-                    zIndex: 2,
-                    lineHeight: 1.3,
-                    textAlign: "center",
-                  }}>
-                    <span style={{ fontSize: "1.4rem", display: "block", letterSpacing: 0, fontFamily: "Georgia, serif" }}>£9.99</span>
+                  {/* FREE badge */}
+                  <div style={{ position: "absolute", bottom: "8%", right: "-8%", background: "var(--go)", color: "var(--fo)", padding: "10px 16px", fontSize: ".75rem", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", boxShadow: "0 6px 24px rgba(0,0,0,.4)", zIndex: 2, lineHeight: 1.3, textAlign: "center" }}>
+                    <span style={{ fontSize: "1.4rem", display: "block", letterSpacing: 0, fontFamily: "Georgia, serif" }}>FREE</span>
                     Instant PDF
                   </div>
-                  {/* Reflection strip */}
-                  <div style={{
-                    position: "absolute",
-                    bottom: "-10%",
-                    left: "5%",
-                    right: "5%",
-                    height: "20%",
-                    background: "linear-gradient(to bottom, rgba(246,241,232,.07), transparent)",
-                    transform: "perspective(900px) rotateX(-30deg) scaleY(-1) rotateY(-14deg)",
-                    transformOrigin: "top center",
-                    filter: "blur(5px)",
-                    pointerEvents: "none",
-                    zIndex: 1,
-                  }} />
+                  <div style={{ position: "absolute", bottom: "-10%", left: "5%", right: "5%", height: "20%", background: "linear-gradient(to bottom, rgba(246,241,232,.07), transparent)", transform: "perspective(900px) rotateX(-30deg) scaleY(-1) rotateY(-14deg)", transformOrigin: "top center", filter: "blur(5px)", pointerEvents: "none", zIndex: 1 }} />
                 </div>
               </div>
 
@@ -275,7 +229,7 @@ function PeriGuideContent() {
           </div>
         </section>
 
-        {/* ── Clinical facts / what most women don't know ── */}
+        {/* ── Clinical facts ── */}
         <section className="sec bg-wh">
           <div className="wrap" style={{ maxWidth: 980 }}>
             <div className="sh text-center">
@@ -314,13 +268,15 @@ function PeriGuideContent() {
               ))}
             </div>
             <div style={{ textAlign: "center", marginTop: 48 }}>
-              <BuyButton loading={loading} onClick={handleBuy} />
-              <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginTop: 10 }}>£9.99 · Instant PDF · No subscription</p>
+              <p style={{ fontSize: "1.05rem", color: "var(--sl2)", marginBottom: 24 }}>Enter your email — get the full guide instantly. No payment, no subscription.</p>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <EmailForm />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ── Author credibility ── dark */}
+        {/* ── Author credibility ── */}
         <section className="sec bg-fo">
           <div className="wrap" style={{ maxWidth: 780 }}>
             <div style={{ display: "flex", gap: 40, alignItems: "flex-start", flexWrap: "wrap" }}>
@@ -391,34 +347,19 @@ function PeriGuideContent() {
           </div>
         </section>
 
-        {/* ── Final CTA ── dark */}
+        {/* ── Final CTA ── */}
         <section className="sec bg-fo" style={{ paddingTop: 80, paddingBottom: 96 }}>
           <div className="wrap" style={{ maxWidth: 700, textAlign: "center" }}>
             <p className="lbl a1" style={{ color: "var(--go)" }}>The Perimenopause Reset Guide</p>
             <div className="rule rule-c" style={{ background: "var(--go)" }} />
-            <h2
-              className="cg a2"
-              style={{ fontSize: "clamp(2rem,5vw,3.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.15, marginBottom: 20 }}
-            >
+            <h2 className="cg a2" style={{ fontSize: "clamp(2rem,5vw,3.4rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.15, marginBottom: 20 }}>
               You've been managing this alone long enough.
             </h2>
-            <p
-              className="a3"
-              style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, maxWidth: 540, margin: "0 auto 36px" }}
-            >
-              For £9.99 you get a GP-authored clinical framework, a symptom tracker, a supplement guide with evidence, and a clear pathway to the clinical support that's right for you.
+            <p className="a3" style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, maxWidth: 540, margin: "0 auto 36px" }}>
+              A GP-authored clinical framework, a symptom tracker, a supplement guide with evidence, and a clear pathway to the clinical support that's right for you. It's free. Enter your email and download it now.
             </p>
-            {error && (
-              <div style={{ maxWidth: 480, margin: "0 auto 24px", padding: "12px 16px", borderLeft: "3px solid #c94a4a", background: "rgba(201,74,74,.08)", textAlign: "left" }}>
-                <p style={{ fontSize: ".84rem", color: "#e88", lineHeight: 1.7 }}>{error}</p>
-              </div>
-            )}
-            <div className="a4">
-              <BuyButton loading={loading} onClick={handleBuy} />
-              <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.38)", marginTop: 14, lineHeight: 1.7 }}>
-                Secure payment via Stripe · Instant PDF download · One-off payment, no subscription
-                <br />Questions? <a href="mailto:hello@veridianclinic.com" style={{ color: "rgba(246,241,232,.55)" }}>hello@veridianclinic.com</a>
-              </p>
+            <div className="a4" style={{ display: "flex", justifyContent: "center" }}>
+              <EmailForm dark />
             </div>
           </div>
         </section>
@@ -426,13 +367,5 @@ function PeriGuideContent() {
       </main>
       <Footer />
     </>
-  );
-}
-
-export default function PerimenopauseGuidePage() {
-  return (
-    <Suspense fallback={null}>
-      <PeriGuideContent />
-    </Suspense>
   );
 }

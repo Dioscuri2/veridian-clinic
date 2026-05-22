@@ -21,15 +21,7 @@ const tierCatalog: Record<
     successPath: "/metabolic-reset-guide/thank-you",
     cancelPath: "/metabolic-reset-guide",
   },
-  "peri-guide": {
-    name: "The Perimenopause Reset — A Six-Week Guide to Reclaim Your Sleep, Brain and Body",
-    amount: 999,
-    description:
-      "A GP-authored six-week blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight. Includes the PERC framework, daily checklists, supplement guide, and symptom tracker.",
-    successPath: "/perimenopause-guide/thank-you",
-    cancelPath: "/perimenopause-guide",
-  },
-  "perimenopause-panel": {
+"perimenopause-panel": {
     name: "Veridian Women's Advanced Health Panel",
     amount: 29500,
     description:
