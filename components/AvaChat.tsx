@@ -120,6 +120,7 @@ export default function AvaChat() {
       {/* Panel */}
       {open && (
         <div
+          className="ava-panel"
           role="dialog"
           aria-label="Ava — Veridian health assistant"
           aria-modal="true"
@@ -371,7 +372,13 @@ export default function AvaChat() {
           to { transform: rotate(360deg); }
         }
         @media (max-width: 480px) {
-          /* panel is fixed-positioned, handled by inline style override below */
+          .ava-panel {
+            width: calc(100vw - 16px) !important;
+            height: calc(100dvh - 100px) !important;
+            right: 8px !important;
+            bottom: 76px !important;
+            border-radius: 12px !important;
+          }
         }
       `}</style>
     </>
