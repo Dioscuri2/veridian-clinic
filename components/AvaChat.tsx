@@ -15,6 +15,7 @@ const COLORS = {
 
 export default function AvaChat() {
   const [open, setOpen] = useState(false);
+  const [nudge, setNudge] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
@@ -33,6 +34,18 @@ export default function AvaChat() {
       inputRef.current?.focus();
     }
   }, [open, messages]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("ava_nudge_seen")) return;
+    const t = setTimeout(() => setNudge(true), 4000);
+    return () => clearTimeout(t);
+  }, []);
+
+  const handleToggle = () => {
+    setOpen((o) => !o);
+    setNudge(false);
+    sessionStorage.setItem("ava_nudge_seen", "1");
+  };
 
   const submit = useCallback(async () => {
     const text = input.trim();
@@ -78,9 +91,72 @@ export default function AvaChat() {
 
   return (
     <>
+      {/* Nudge bubble */}
+      {nudge && !open && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 92,
+            right: 24,
+            zIndex: 9999,
+            background: COLORS.brand,
+            color: COLORS.ivory,
+            borderRadius: 12,
+            padding: "10px 14px",
+            fontSize: 13,
+            lineHeight: 1.4,
+            maxWidth: 220,
+            boxShadow: "0 4px 20px rgba(44,42,38,0.3)",
+            cursor: "pointer",
+            animation: "ava-nudge-in 0.3s ease",
+          }}
+          onClick={handleToggle}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); setNudge(false); sessionStorage.setItem("ava_nudge_seen", "1"); }}
+            aria-label="Dismiss"
+            style={{
+              position: "absolute",
+              top: 6,
+              right: 8,
+              background: "none",
+              border: "none",
+              color: COLORS.muted,
+              cursor: "pointer",
+              fontSize: 14,
+              lineHeight: 1,
+              padding: 0,
+            }}
+          >
+            ×
+          </button>
+          <span style={{ color: COLORS.gold, fontWeight: 600, display: "block", marginBottom: 2, paddingRight: 14 }}>
+            Have questions?
+          </span>
+          Get instant answers from Ava, our health assistant.
+          {/* Arrow pointing down */}
+          <div style={{
+            position: "absolute",
+            bottom: -7,
+            right: 22,
+            width: 14,
+            height: 7,
+            overflow: "hidden",
+          }}>
+            <div style={{
+              width: 14,
+              height: 14,
+              background: COLORS.brand,
+              transform: "rotate(45deg)",
+              transformOrigin: "top left",
+            }} />
+          </div>
+        </div>
+      )}
+
       {/* Toggle button */}
       <button
-        onClick={() => setOpen((o) => !o)}
+        onClick={handleToggle}
         aria-label={open ? "Close Ava chat" : "Chat with Ava"}
         aria-expanded={open}
         style={{
@@ -392,6 +468,10 @@ export default function AvaChat() {
         }
         @keyframes ava-spin {
           to { transform: rotate(360deg); }
+        }
+        @keyframes ava-nudge-in {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 480px) {
           .ava-panel {
