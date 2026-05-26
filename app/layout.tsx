@@ -3,6 +3,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import CookieConsent from "@/components/CookieConsent";
 import Analytics from "@/components/Analytics";
 import AOSInit from "@/components/AOSInit";
+import AvaChat from "@/components/AvaChat";
 
 export const metadata: Metadata = {
  metadataBase: new URL("https://veridianclinic.com"),
@@ -49,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
  </head>
- <body style={{ margin: 0 }}><AOSInit />{children}<WhatsAppButton /><CookieConsent /><Analytics /></body>
+ <body style={{ margin: 0 }}><AOSInit />{children}<WhatsAppButton /><AvaChat /><CookieConsent /><Analytics /></body>
  </html>
  );
 }
