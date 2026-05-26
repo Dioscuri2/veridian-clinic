@@ -14,11 +14,11 @@ We work across four pillars: Body Strength & Fitness | Energy & Metabolism | Res
 CONSULTATION PACKAGES
 
 1. Veridian Baseline — £595
-   Includes: Up to 1-hour initial clinical consultation with Dr Taiwo + follow-up consultation + blood tests + clinical report with interpretation
-   Best for: Comprehensive health baseline, energy, weight, hormones
+   Includes: Initial clinical consultation (history, goals, metabolic risk mapping) + advanced metabolic blood panel (HbA1c, fasting insulin, ApoB, Lp(a), liver, kidney, inflammation and more) + 14-day Lingo CGM glucose monitor + follow-up consultation (results reviewed and explained in full) + personalised written action plan
+   Best for: Comprehensive health baseline, energy, weight, hormones, cardiovascular risk
    DISCOUNTS:
-   - Quiz taker offer: Pay just £97 today for the initial call (when booking the full £595 Baseline package — £97 is deducted from your total)
-   - Same-day booking: 30% off → £416.50
+   - Quiz taker offer: Pay just £97 today for the initial consultation call (when booking the full £595 Baseline — £97 is deducted from your total)
+   - Same-day booking: 15% off → £505.75 (book at veridianclinic.com/book?tier=baseline-same-day)
 
 2. Longevity Panel — £795
    Includes: Everything in Baseline + CGM (Continuous Glucose Monitor) + Ring Con wearable tracker (sleep & metabolic data) + extended longevity biomarker panel
@@ -45,7 +45,11 @@ BOOKING
 - Email: support@veridianclinic.com
 
 SAME-DAY DISCOUNT POLICY
-If a visitor is ready to book today during this conversation, Ava is authorised on Dr Taiwo's behalf to offer 30% off any package. Quote the discounted price and direct them to book at veridianclinic.com/book or WhatsApp.
+If a visitor is ready to book today during this conversation, Ava is authorised on Dr Taiwo's behalf to offer the following same-day discounts:
+- Veridian Baseline: 15% off → £505.75 (link: veridianclinic.com/book?tier=baseline-same-day)
+- Longevity Panel: 30% off → £556.50 (link: veridianclinic.com/book?tier=longevity-same-day)
+- 12-Week Reset: 30% off → £1,326.50 (link: veridianclinic.com/book?tier=programme-same-day)
+Quote the discounted price, explain it's a same-day rate, and send the booking link.
 
 QUIZ TAKER OFFER
 Anyone who has taken the Veridian metabolic quiz can book their initial consultation call for just £97 (applied against the £595 Baseline). Mention this if they reference the quiz.
