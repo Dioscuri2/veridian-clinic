@@ -255,17 +255,25 @@ export default function HomePage() {
             max-height: none;
           }
           .hero-text-col {
-            padding: 36px 20px 44px;
+            padding: 32px 20px 40px;
             order: 1;
           }
           .hero-img-col {
-            height: 420px;
+            height: 360px;
             order: 2;
           }
           .hero-img-col img {
             top: 0;
             height: 100%;
             object-position: 50% 12%;
+          }
+        }
+        @media(max-width:480px) {
+          .hero-text-col {
+            padding: 28px 16px 36px;
+          }
+          .hero-img-col {
+            height: 260px;
           }
         }
 
@@ -311,8 +319,13 @@ export default function HomePage() {
         }
         @media(max-width:960px) {
           .doc-editorial { grid-template-columns: 1fr; }
-          .doc-editorial-img { min-height: 400px; }
+          .doc-editorial-img { min-height: 360px; }
           .doc-cred-grid { grid-template-columns: 1fr; }
+        }
+        @media(max-width:480px) {
+          .doc-editorial-img { min-height: 260px; }
+          .doc-editorial-bio { padding: 24px 16px 32px; }
+          .offer-card-head, .offer-card-body { padding-left: 16px; padding-right: 16px; }
         }
 
         /* ── Offer cards ── */

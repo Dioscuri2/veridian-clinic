@@ -94,6 +94,7 @@ export default function AvaChat() {
       {/* Nudge bubble */}
       {nudge && !open && (
         <div
+          className="ava-nudge"
           style={{
             position: "fixed",
             bottom: 92,
@@ -159,6 +160,7 @@ export default function AvaChat() {
         onClick={handleToggle}
         aria-label={open ? "Close Ava chat" : "Chat with Ava"}
         aria-expanded={open}
+        className="ava-toggle"
         style={{
           position: "fixed",
           bottom: 24,
@@ -308,6 +310,7 @@ export default function AvaChat() {
             style={{
               flex: 1,
               overflowY: "auto",
+              overscrollBehavior: "contain",
               padding: "14px 14px 6px",
               display: "flex",
               flexDirection: "column",
@@ -476,10 +479,24 @@ export default function AvaChat() {
         @media (max-width: 480px) {
           .ava-panel {
             width: calc(100vw - 16px) !important;
-            height: calc(100dvh - 100px) !important;
+            height: calc(100svh - 88px) !important;
             right: 8px !important;
-            bottom: 76px !important;
-            border-radius: 12px !important;
+            bottom: 72px !important;
+            bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+            border-radius: 14px !important;
+          }
+          .ava-toggle {
+            bottom: 20px !important;
+            bottom: calc(20px + env(safe-area-inset-bottom)) !important;
+            right: 20px !important;
+            width: 52px !important;
+            height: 52px !important;
+          }
+          .ava-nudge {
+            right: 8px !important;
+            bottom: 84px !important;
+            bottom: calc(84px + env(safe-area-inset-bottom)) !important;
+            max-width: calc(100vw - 80px) !important;
           }
         }
       `}</style>

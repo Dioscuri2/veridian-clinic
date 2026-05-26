@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import WhatsAppButton from "@/components/WhatsAppButton";
-
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
@@ -85,8 +83,6 @@ export default function Navigation() {
         `}</style>
       </header>
 
-      {/* Floating WhatsApp button — appears on every page */}
-      <WhatsAppButton />
     </>
   );
 }

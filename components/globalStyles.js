@@ -40,7 +40,9 @@ body {
  line-height: 1.75;
  -webkit-font-smoothing: antialiased;
  overflow-x: hidden;
+ -webkit-text-size-adjust: 100%;
 }
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 main { overflow-x: clip; }
 img, svg { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
@@ -310,6 +312,10 @@ button, input, select, textarea { font: inherit; }
 /* ── Vline ── */
 .vline { width: 1px; height: 64px; background: linear-gradient(to bottom, transparent, var(--go), transparent); margin: 0 auto 24px; }
 
+/* ── Scrollable table container ── */
+.tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl-scroll table { min-width: 620px; }
+
 /* ════════════════════════════════════════════════
  TABLET 640px+
  ════════════════════════════════════════════════ */
@@ -341,21 +347,26 @@ button, input, select, textarea { font: inherit; }
  MOBILE overrides
  ════════════════════════════════════════════════ */
 @media (max-width: 639px) {
- :root { --pad: 16px; --nav-h: 72px; }
- .plan-price { font-size: 2.4rem; }
- .btn { width: 100%; font-size: .8rem; padding: 13px 18px; letter-spacing: .06em; }
+ :root { --pad: 16px; --nav-h: 60px; }
+ .plan-price { font-size: 2.2rem; }
+ .btn { width: 100%; font-size: .82rem; padding: 15px 18px; letter-spacing: .06em; min-height: 52px; }
  .badge { padding: 7px 12px; font-size: .62rem; letter-spacing: .11em; }
- .card, .card-iv, .card-fo { padding: 20px; }
- .sec { padding: 64px var(--pad); }
- .sh { margin-bottom: 40px; }
- .sh-body { font-size: .92rem; }
+ .card, .card-iv, .card-fo { padding: 20px 16px; }
+ .sec { padding: 56px var(--pad); }
+ .sh { margin-bottom: 36px; }
+ .sh-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+ .sh-body { font-size: .9rem; max-width: 100%; }
  .nav { background: rgba(246,241,232,.97); backdrop-filter: blur(14px); box-shadow: 0 2px 24px rgba(0,0,0,.05); border-bottom: 1px solid rgba(0,0,0,.06); }
  .nav-inner { padding: 0 var(--pad); }
- .logo-mark svg { width: 28px; height: 28px; flex-shrink: 0; }
- .logo-text-main { font-size: 1.3rem; letter-spacing: .14em; }
- .logo-text-sub { font-size: .62rem; letter-spacing: .24em; }
- .ticker-item { padding: 0 24px; font-size: .68rem; }
- .cqc-strip { padding: 20px; }
- table { min-width: 680px !important; }
+ .logo-mark svg { width: 26px; height: 26px; flex-shrink: 0; }
+ .logo-text-main { font-size: 1.2rem; letter-spacing: .12em; }
+ .logo-text-sub { font-size: .6rem; letter-spacing: .22em; }
+ .ticker-item { padding: 0 20px; font-size: .66rem; }
+ .cqc-strip { padding: 16px; gap: 14px; }
+ .cqc-item { gap: 8px; }
+ .intake-step { gap: 14px; padding: 18px 14px; }
+ .doc-card { padding: 20px 16px; }
+ .mob-menu { padding: 8px 16px 20px; }
+ .mob-link { font-size: .95rem; }
  }
 `;
