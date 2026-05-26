@@ -28,18 +28,17 @@ const plans = [
  price: "£595",
  cadence: "Core assessment",
  tier: "baseline",
- blurb: "A longevity-focused baseline audit designed to reveal the most actionable metabolic drivers of decline before they become disease.",
+ blurb: "A longevity-focused baseline audit revealing the most actionable metabolic drivers of decline — with two clinical consultations, advanced biomarker testing, and a 14-day CGM to capture what blood tests alone can't show.",
  feats: [
- "Biomarker panel including HbA1c, fasting glucose, fasting insulin",
- "ApoB, homocysteine and full lipid profile",
- "ALT, AST and liver-metabolic stress review",
- "hs-CRP and core inflammation assessment",
- "Clinical interpretation with outcome mapping",
- "Clear written action plan and next-step recommendations",
+ "Consultation 1 — initial clinical session: full history, goal-mapping and metabolic risk review",
+ "Advanced panel: HbA1c, fasting insulin, ApoB, Lp(a), liver, kidney, inflammation and more",
+ "14-day Lingo CGM — personal glucose pattern analysis",
+ "Consultation 2 — results reviewed and explained in full with Dr Taiwo",
+ "Personalised written clinical action plan with prioritised next steps",
  ],
- cta: "Book Baseline Audit",
+ cta: "Book Veridian Baseline",
  feat: true,
- right_for: "Right for you if you want a high-value, high-clarity baseline on the markers most likely to explain drifting energy, weight and vascular risk.",
+ right_for: "Right for you if you want high-clarity answers on the markers most likely to explain drifting energy, weight and vascular risk — with two dedicated clinical sessions to act on them.",
  },
  {
  name: "12-Week Metabolic Reset",
@@ -49,7 +48,7 @@ const plans = [
  blurb: "A structured reset for patients who need guided implementation, accountability and follow-through — not just a report.",
  feats: [
  "Everything in the Veridian Baseline",
- "One 14-day CGM cycle with interpretation",
+ "Second CGM cycle — extended glucose monitoring over a further 14 days",
  "Fortnightly coaching support",
  "Clinical review via partner providers where indicated",
  "Personalised nutrition, movement and recovery protocol",
@@ -87,7 +86,7 @@ const comparisonRows = [
  { feature: "Homocysteine", discovery: false, baseline: true, programme: true, executive: true },
  { feature: "ALT / AST", discovery: false, baseline: true, programme: true, executive: true },
  { feature: "hs-CRP", discovery: false, baseline: true, programme: true, executive: true },
- { feature: "CGM cycle", discovery: false, baseline: false, programme: true, executive: true },
+ { feature: "CGM cycle (14-day)", discovery: false, baseline: true, programme: "2nd cycle", executive: true },
  { feature: "Fortnightly coaching", discovery: false, baseline: false, programme: true, executive: true },
  { feature: "GP-led clinical review where indicated", discovery: false, baseline: false, programme: true, executive: true },
  { feature: "Written action plan", discovery: true, baseline: true, programme: true, executive: true },
@@ -131,9 +130,10 @@ const bloodPanels = [
       "Metabolic hormones: Leptin, Adiponectin, Resistin",
       "Liver health: ALT, AST, GGT",
       "Uric acid + advanced kidney markers",
+      "14-day Lingo CGM — glucose patterns, meal response, metabolic flexibility",
       "60+ data points in total",
     ],
-    youGet: "Comprehensive blood panel + 45-minute GP consultation + written clinical protocol with specific, prioritised action steps.",
+    youGet: "Full metabolic blood panel + 14-day Lingo CGM + two GP consultations (initial clinical session and blood results review) + personalised written action plan with prioritised next steps.",
     href: "/book?tier=baseline",
     featured: true,
   },
@@ -153,7 +153,7 @@ const bloodPanels = [
       "Total Antioxidant Status",
       "150+ data points in total",
     ],
-    youGet: "Premium blood panel + 45-minute GP consultation + comprehensive longevity report with biological age assessment and a personalised optimisation strategy.",
+    youGet: "Premium longevity blood panel + two GP consultations (initial assessment + results deep-dive) + comprehensive longevity report with biological age assessment and a personalised optimisation strategy.",
     href: "/book?tier=longevity-panel",
     featured: false,
   },
@@ -361,7 +361,7 @@ export default function AssessmentsPage() {
  <section className="sec bg-wh" style={{ paddingTop: 20 }}><div className="wrap"><div className="g4">{plans.map(p => (<div key={p.name} className={`card${p.feat ? " card-featured" : ""}`} style={{ position: "relative", display: "flex", flexDirection: "column" }}>{p.feat && <span className="plan-pill">Recommended</span>}<p className="plan-cadence">{p.cadence}</p><h2 className="cg" style={{ fontSize: "1.45rem", fontWeight: 500, lineHeight: 1.2, color: p.feat ? "var(--iv)" : "var(--sl)", marginBottom: 16 }}>{p.name}</h2><span className="plan-price">{p.price}</span><p style={{ fontSize: ".9rem", lineHeight: 1.9, color: p.feat ? "rgba(246,241,232,.72)" : "var(--sl2)", margin: "16px 0 20px" }}>{p.blurb}</p><div style={{ padding: "14px 16px", background: p.feat ? "rgba(246,241,232,.07)" : "var(--iv)", borderLeft: `3px solid ${p.feat ? "var(--go)" : "var(--fo)"}`, marginBottom: 20 }}><p style={{ fontSize: ".8rem", fontStyle: "italic", color: p.feat ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.75 }}>{p.right_for}</p></div><ul className="chk" style={{ marginBottom: 28, flexGrow: 1 }}>{p.feats.map(f => <li key={f}>{f}</li>)}</ul>{p.comingSoon ? <Link href="/executive-waitlist" className={`btn btn-full ${p.feat ? "btn-go" : "btn-ol"}`}>{p.cta} →</Link> : <Link href={`/book?tier=${p.tier}`} className={`btn btn-full ${p.feat ? "btn-go" : "btn-fo"}`}>{p.cta} →</Link>}</div>))}</div></div></section>
  <section className="sec bg-iv"><div className="wrap" style={{ maxWidth: 980 }}><div className="sh text-center"><p className="lbl">Baseline Marker List</p><div className="rule rule-c" /><h2 className="sh-title">What the Veridian Baseline is designed to surface</h2><p className="sh-body" style={{ fontSize: "1rem", maxWidth: 760 }}>This is the core value proposition: we focus on the markers most likely to reveal early metabolic decline and future vascular risk, not just whether a routine panel says you are “normal”.</p></div><div className="g2"><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>Exact markers visible</p><ul className="chk"><li>HbA1c</li><li>Fasting glucose</li><li>Fasting insulin</li><li>ApoB</li><li>Homocysteine</li><li>Full lipid profile</li><li>ALT</li><li>AST</li><li>hs-CRP</li></ul></div><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>What you get back</p><ul className="chk"><li>Clinical interpretation of what matters now</li><li>Explanation of how your markers connect to weight, energy and cardiovascular risk</li><li>Clear written action plan</li><li>Advice on whether you need further testing, CGM or structured follow-up</li><li>A practical next-step pathway rather than isolated lab numbers</li></ul></div></div></div></section>
  <section className="sec bg-wh"><div className="wrap"><div className="sh text-center"><p className="lbl">Side by Side</p><div className="rule rule-c" /><h2 className="sh-title">What’s included in each pathway</h2></div><div style={{ overflowX: "auto" }}><table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}><thead><tr><th style={{ textAlign: "left", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)", borderBottom: "2px solid var(--iv3)" }}>Feature</th>{["Discovery\n£195", "Baseline\n£595", "Reset\n£1,895", "Executive\nComing Soon"].map((h, i) => (<th key={i} style={{ textAlign: "center", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: i === 1 ? "var(--fo)" : "var(--sl3)", borderBottom: `2px solid ${i === 1 ? "var(--go)" : "var(--iv3)"}`, whiteSpace: "pre-line" }}>{h}</th>))}</tr></thead><tbody>{comparisonRows.map((row, idx) => (<tr key={row.feature} style={{ background: idx % 2 === 0 ? "var(--wh)" : "var(--iv)" }}><td style={{ padding: "13px 16px", fontSize: ".88rem", color: "var(--sl2)" }}>{row.feature}</td>{[row.discovery, row.baseline, row.programme, row.executive].map((v, i) => (<td key={i} style={{ padding: "13px 16px", textAlign: "center" }}><Check val={v as boolean | string} /></td>))}</tr>))}</tbody></table></div></div></section>
- <section className="bg-fo" style={{ padding: "60px 24px" }}><div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}><p className="lbl" style={{ color: "var(--go2)" }}>The structured intervention pathway</p><div className="rule rule-c" style={{ background: "var(--go)" }} /><h2 className="cg" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, marginBottom: 16 }}>12-Week Metabolic Reset — £1,895</h2><p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, marginBottom: 28, maxWidth: 640, margin: "0 auto 28px" }}>For people who already know something is off and want accountability, structured follow-through and integrated clinical support — not just another information pack.</p><div className="g3" style={{ textAlign: "left" }}><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Includes</p><ul className="chk"><li>Everything in the Veridian Baseline</li><li>One 14-day CGM cycle</li><li>Fortnightly coaching touchpoints</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Clinical oversight</p><ul className="chk"><li>Clinical review via partner providers where indicated</li><li>Programme adaptation based on response</li><li>Medication or therapy review where clinically appropriate</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Outcome focus</p><ul className="chk"><li>Better glucose stability and energy control</li><li>More consistent adherence and behaviour change</li><li>Clear next-stage forward plan</li></ul></div></div><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 28 }}><Link href="/book?tier=programme" className="btn btn-go">Apply for Reset →</Link><Link href="/book?tier=baseline" className="btn btn-ol-lt">Book Baseline Audit</Link></div></div></section>
+ <section className="bg-fo" style={{ padding: "60px 24px" }}><div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}><p className="lbl" style={{ color: "var(--go2)" }}>The structured intervention pathway</p><div className="rule rule-c" style={{ background: "var(--go)" }} /><h2 className="cg" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, marginBottom: 16 }}>12-Week Metabolic Reset — £1,895</h2><p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, marginBottom: 28, maxWidth: 640, margin: "0 auto 28px" }}>For people who already know something is off and want accountability, structured follow-through and integrated clinical support — not just another information pack.</p><div className="g3" style={{ textAlign: "left" }}><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Includes</p><ul className="chk"><li>Everything in the Veridian Baseline</li><li>Second CGM cycle — extended glucose monitoring</li><li>Fortnightly coaching touchpoints</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Clinical oversight</p><ul className="chk"><li>Clinical review via partner providers where indicated</li><li>Programme adaptation based on response</li><li>Medication or therapy review where clinically appropriate</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Outcome focus</p><ul className="chk"><li>Better glucose stability and energy control</li><li>More consistent adherence and behaviour change</li><li>Clear next-stage forward plan</li></ul></div></div><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 28 }}><Link href="/book?tier=programme" className="btn btn-go">Apply for Reset →</Link><Link href="/book?tier=baseline" className="btn btn-ol-lt">Book Baseline Audit</Link></div></div></section>
  <section className="sec bg-wh"><div className="wrap" style={{ maxWidth: 800, textAlign: "center" }}><p className="lbl">Need help choosing?</p><div className="rule rule-c" /><h2 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 16 }}>If you want the highest-value entry point, start with the Baseline.</h2><p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 32, maxWidth: 620, margin: "0 auto 32px" }}>It gives you the clearest early read on metabolic risk and the markers most often missed in routine care — with a straightforward clinical plan for what to do next.</p><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}><Link href="/book?tier=baseline" className="btn btn-fo">Book Baseline Audit →</Link><Link href="/book?tier=discovery" className="btn btn-ol">Start with Discovery</Link></div></div></section>
  </main>
  <Footer />
