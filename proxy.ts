@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Redis } from "@upstash/redis";
+import { Ratelimit } from "@upstash/ratelimit";
 
 // ── Security headers on every response ───────────────────────────────────────
 const SECURITY_HEADERS: Record<string, string> = {
@@ -94,11 +96,29 @@ const RATE_LIMIT_RULES: Array<{ prefix: string; limit: number }> = [
 ];
 const WINDOW_MS = 60_000;
 
-// ── In-process stores (live within a warm Edge instance) ─────────────────────
-// Note: these reset on cold starts and are per-instance.
-// For production-grade distributed rate limiting, add Upstash Redis.
+// ── In-process fallback (used when Redis is unavailable) ─────────────────────
 const rateLimitStore = new Map<string, { hits: number; windowEnd: number }>();
 const bannedIPs = new Set<string>();
+
+// ── Upstash Redis — distributed rate limiting ─────────────────────────────────
+// Lazily initialised so the module loads even without env vars (local dev / fallback).
+let _redis: Redis | null = null;
+const _limiters = new Map<number, Ratelimit>();
+
+function getRedisLimiter(limit: number): Ratelimit | null {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) return null;
+  if (!_redis) _redis = new Redis({ url, token });
+  if (!_limiters.has(limit)) {
+    _limiters.set(limit, new Ratelimit({
+      redis: _redis,
+      limiter: Ratelimit.slidingWindow(limit, "60 s"),
+      prefix: "vc_rl",
+    }));
+  }
+  return _limiters.get(limit)!;
+}
 
 function getIP(req: NextRequest): string {
   return (
@@ -120,18 +140,27 @@ function getRateLimitForPath(pathname: string): number {
   return 120;
 }
 
-function isRateLimited(ip: string, pathname: string): boolean {
+async function isRateLimited(ip: string, pathname: string): Promise<boolean> {
   const limit = getRateLimitForPath(pathname);
-  // Bucket key: IP + first 3 path segments (groups related endpoints)
   const bucket = `${ip}::${pathname.split("/").slice(0, 3).join("/")}`;
+
+  const limiter = getRedisLimiter(limit);
+  if (limiter) {
+    try {
+      const { success } = await limiter.limit(bucket);
+      return !success;
+    } catch {
+      // Redis unavailable — fall through to in-memory
+    }
+  }
+
+  // In-memory fallback
   const now = Date.now();
   const entry = rateLimitStore.get(bucket);
-
   if (!entry || now > entry.windowEnd) {
     rateLimitStore.set(bucket, { hits: 1, windowEnd: now + WINDOW_MS });
     return false;
   }
-
   entry.hits++;
   return entry.hits > limit;
 }
@@ -219,7 +248,7 @@ export async function proxy(request: NextRequest) {
   }
 
   // 5. Rate limiting
-  if (isRateLimited(ip, pathname)) {
+  if (await isRateLimited(ip, pathname)) {
     const limit = getRateLimitForPath(pathname);
     return NextResponse.json(
       { error: "Too many requests. Please try again shortly." },
