@@ -113,7 +113,7 @@ export default function Footer() {
               Our services complement, but do not replace, NHS care.
             </p>
             <p style={{ margin: "0 0 12px" }}>
-              CQC regulated activities provided by{" "}
+              Registered activities via{" "}
               <a href="https://thanksdoc.co.uk" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(246,241,232,.65)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
                 ThanksDoc
               </a>

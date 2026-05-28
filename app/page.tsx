@@ -80,10 +80,10 @@ const testimonials = [
 
 const faqs = [
   { q:"Is Veridian a replacement for my NHS GP?", a:"No. We are a private preventive and optimisation service that complements your NHS care. We communicate with your GP where clinically appropriate." },
-  { q:"Are your clinical services CQC regulated?", a:"Yes. CQC regulated clinical services are delivered under the umbrella of thanksdoc.co.uk. Veridian Clinic delivers the longevity-focused health optimisation layer, and regulated medical care — including prescribing where indicated — is provided through that CQC regulated structure." },
-  { q:"How is care delivered?", a:"All consultations are delivered virtually, nationwide. Regulated medical care is provided through a CQC regulated structure, while our health optimisation and coaching work is delivered by the Veridian team directly." },
+  { q:"Are your clinical services regulated?", a:"Yes. Registered clinical activities are delivered via ThanksDoc (thanksdoc.co.uk). Veridian Clinic delivers the longevity-focused health optimisation layer, and regulated medical care — including prescribing where indicated — is provided through that registered structure." },
+  { q:"How is care delivered?", a:"All consultations are delivered virtually, nationwide. Regulated medical care is provided through ThanksDoc's registered clinical structure, while our health optimisation and coaching work is delivered by the Veridian team directly." },
   { q:"What blood tests are included?", a:"The Veridian Baseline includes HbA1c, fasting insulin, fasting glucose, ApoB, homocysteine, full lipid panel, ALT, AST, hs-CRP and broader metabolic markers." },
-  { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through our CQC regulated clinical structure — never as an isolated shortcut, always as part of a structured programme." },
+  { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through ThanksDoc's registered clinical structure — never as an isolated shortcut, always as part of a structured programme." },
   { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5–7 working days." },
   { q:"Are you an emergency service?", a:"No. Veridian Clinic is not an emergency service and cannot respond to medical emergencies. If you are experiencing a medical emergency — including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or a severe allergic reaction — call 999 immediately or attend your nearest A&E. If you are unsure whether your situation is urgent, call NHS 111. Our services are for health optimisation and preventive care only." },
   { q:"Which conditions, services and medications are not covered?", a:"In line with our regulatory framework through ThanksDoc, we do not provide emergency medical care, NHS referrals, or prescriptions for controlled medications — including opioids, benzodiazepines, gabapentinoids, Z-drugs (Zopiclone, Zolpidem, Zaleplon), stimulants, or any Schedule 1–5 controlled substances under the Misuse of Drugs Act 1971. We do not cover pregnancy complications, major trauma, dental problems, patients located outside the UK during consultation, or conditions requiring immediate hospital care." },
@@ -933,7 +933,7 @@ export default function HomePage() {
               <Link href="/metabolic-quiz" className="btn btn-ol-lt">Take the Metabolic Quiz</Link>
             </div>
             <p style={{ fontSize:".7rem", color:"rgba(246,241,232,.24)", lineHeight:1.8 }}>
-              CQC regulated clinical services are delivered under the umbrella of thanksdoc.co.uk.
+              Registered clinical activities via ThanksDoc (thanksdoc.co.uk).
             </p>
           </div>
         </section>

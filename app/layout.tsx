@@ -10,7 +10,7 @@ export const metadata: Metadata = {
  default: "Veridian Clinic | Longevity & Metabolic Health Clinic",
  template: "%s | Veridian Clinic",
  },
- description: "Longevity-focused clinic for metabolic health, advanced biomarker testing, CGM monitoring, and personalised optimisation plans. CQC regulated clinical services are delivered under the umbrella of thanksdoc.co.uk.",
+ description: "Longevity-focused clinic for metabolic health, advanced biomarker testing, CGM monitoring, and personalised optimisation plans. Registered clinical activities via ThanksDoc (thanksdoc.co.uk).",
  keywords: ["metabolic health clinic UK","longevity clinic UK","health optimisation clinic","CGM monitoring UK","ApoB testing UK","HbA1c private test","12 week metabolic reset","longevity medicine UK","Dr Oluwatosin Taiwo","Veridian Clinic"],
  authors: [{ name: "Dr Oluwatosin Taiwo" }],
  openGraph: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const schema = {
  "@context": "https://schema.org", "@type": "MedicalBusiness",
  name: "Veridian Clinic",
- description: "Longevity and metabolic health clinic with CQC regulated clinical services via thanksdoc.co.uk",
+ description: "Longevity and metabolic health clinic with registered clinical activities via ThanksDoc (thanksdoc.co.uk).",
  url: "https://veridianclinic.com",
  medicalSpecialty: ["Metabolic Health","Longevity Medicine","Preventive Medicine"],
  availableService: [

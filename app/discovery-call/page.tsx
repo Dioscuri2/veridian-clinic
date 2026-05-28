@@ -77,7 +77,7 @@ export default function DiscoveryCallPage() {
                 </p>
                 <div style={{ padding: "18px 20px", background: "var(--iv2)", borderLeft: "3px solid var(--go)", marginBottom: 28 }}>
                   <p style={{ fontSize: ".85rem", color: "var(--sl2)", lineHeight: 1.85 }}>
-                    <strong style={{ color: "var(--fo)" }}>CQC regulated.</strong> Clinical services are delivered under the umbrella of Thanksdoc (thanksdoc.co.uk), a registered CQC provider.
+                    <strong style={{ color: "var(--fo)" }}>Registered clinical activities.</strong> Delivered via ThanksDoc (thanksdoc.co.uk).
                   </p>
                 </div>
                 <div className="badge-row a4" style={{ flexWrap: "wrap" }}>

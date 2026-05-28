@@ -156,7 +156,7 @@ function buildEmail1(firstName: string, mAge: number, band: string, delta: numbe
         <p style="margin:0;font-size:.8rem;color:#8a8278;line-height:1.7;">Questions? Reply to this email or contact <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;">support@veridianclinic.com</a></p>
       </td></tr>
       <tr><td style="padding:20px 36px;border-top:1px solid rgba(0,0,0,.07);">
-        <p style="margin:0;font-size:.72rem;color:#aaa49c;line-height:1.7;">Veridian Clinic · A trading name of Olympus Premium Health Ltd<br>82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, IP28 7DE<br>CQC regulated services provided by <a href="https://thanksdoc.co.uk" style="color:#aaa49c;">Thanksdoc</a> (CQC reg. 1-18826835219)<br><br>You received this because you completed the metabolic age quiz at veridianclinic.com.</p>
+        <p style="margin:0;font-size:.72rem;color:#aaa49c;line-height:1.7;">Veridian Clinic · A trading name of Olympus Premium Health Ltd<br>82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, IP28 7DE<br>Registered clinical activities via <a href="https://thanksdoc.co.uk" style="color:#aaa49c;">ThanksDoc</a><br><br>You received this because you completed the metabolic age quiz at veridianclinic.com.</p>
       </td></tr>
     </table>
   </td></tr>
@@ -193,7 +193,7 @@ function buildEmail2(firstName: string): string {
         <p style="margin:0;font-size:.8rem;color:#8a8278;line-height:1.7;">Questions? Reply to this email or contact <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;">support@veridianclinic.com</a></p>
       </td></tr>
       <tr><td style="padding:20px 36px;border-top:1px solid rgba(0,0,0,.07);">
-        <p style="margin:0;font-size:.72rem;color:#aaa49c;line-height:1.7;">Veridian Clinic · A trading name of Olympus Premium Health Ltd<br>82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, IP28 7DE<br>CQC regulated services provided by <a href="https://thanksdoc.co.uk" style="color:#aaa49c;">Thanksdoc</a> (CQC reg. 1-18826835219)<br><br>You received this because you completed the metabolic age quiz at veridianclinic.com.</p>
+        <p style="margin:0;font-size:.72rem;color:#aaa49c;line-height:1.7;">Veridian Clinic · A trading name of Olympus Premium Health Ltd<br>82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, IP28 7DE<br>Registered clinical activities via <a href="https://thanksdoc.co.uk" style="color:#aaa49c;">ThanksDoc</a><br><br>You received this because you completed the metabolic age quiz at veridianclinic.com.</p>
       </td></tr>
     </table>
   </td></tr>
@@ -234,7 +234,7 @@ function buildEmail3(firstName: string, band: string): string {
         <p style="margin:0;font-size:.8rem;color:#8a8278;line-height:1.7;">Questions? Reply to this email or contact <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;">support@veridianclinic.com</a></p>
       </td></tr>
       <tr><td style="padding:20px 36px;border-top:1px solid rgba(0,0,0,.07);">
-        <p style="margin:0;font-size:.72rem;color:#aaa49c;line-height:1.7;">Veridian Clinic · A trading name of Olympus Premium Health Ltd<br>82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, IP28 7DE<br>CQC regulated services provided by <a href="https://thanksdoc.co.uk" style="color:#aaa49c;">Thanksdoc</a> (CQC reg. 1-18826835219)<br><br>You received this because you completed the metabolic age quiz at veridianclinic.com.</p>
+        <p style="margin:0;font-size:.72rem;color:#aaa49c;line-height:1.7;">Veridian Clinic · A trading name of Olympus Premium Health Ltd<br>82A James Carter Road, Mildenhall, Bury St. Edmunds, Suffolk, IP28 7DE<br>Registered clinical activities via <a href="https://thanksdoc.co.uk" style="color:#aaa49c;">ThanksDoc</a><br><br>You received this because you completed the metabolic age quiz at veridianclinic.com.</p>
       </td></tr>
     </table>
   </td></tr>

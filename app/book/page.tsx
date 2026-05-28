@@ -252,7 +252,7 @@ function BookingInner() {
 
           {/* Trust footer */}
           <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.85, maxWidth: 560, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
-            CQC regulated clinical services are delivered under the umbrella of thanksdoc.co.uk. All consultations are virtual, available UK-wide. Refund policy available on request.
+            Registered clinical activities via ThanksDoc (thanksdoc.co.uk). All consultations are virtual, available UK-wide. Refund policy available on request.
           </p>
 
         </div>

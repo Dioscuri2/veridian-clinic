@@ -312,7 +312,7 @@ export default function PerimenopauseGuidePage() {
                 </p>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                   <span className="badge" style={{ background: "rgba(200,168,75,.12)", borderColor: "rgba(200,168,75,.3)", color: "var(--go2)" }}>MRCGP</span>
-                  <span className="badge" style={{ background: "rgba(200,168,75,.12)", borderColor: "rgba(200,168,75,.3)", color: "var(--go2)" }}>CQC Regulated</span>
+                  <span className="badge" style={{ background: "rgba(200,168,75,.12)", borderColor: "rgba(200,168,75,.3)", color: "var(--go2)" }}>Registered via ThanksDoc</span>
                   <span className="badge" style={{ background: "rgba(200,168,75,.12)", borderColor: "rgba(200,168,75,.3)", color: "var(--go2)" }}>Veridian Clinic</span>
                 </div>
               </div>
