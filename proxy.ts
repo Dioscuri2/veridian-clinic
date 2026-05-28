@@ -5,16 +5,19 @@ const SECURITY_HEADERS: Record<string, string> = {
   "X-Frame-Options": "DENY",
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
-  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\")",
+  "X-Permitted-Cross-Domain-Policies": "none",
+  "Cross-Origin-Opener-Policy": "same-origin",
+  "Cross-Origin-Resource-Policy": "same-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(self \"https://js.stripe.com\"), interest-cohort=()",
   "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
   "Content-Security-Policy": [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' https://js.stripe.com",
+    "script-src 'self' 'unsafe-inline' https://js.stripe.com https://challenges.cloudflare.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "img-src 'self' data: blob:",
+    "img-src 'self' data: blob: https://challenges.cloudflare.com",
     "font-src 'self' https://fonts.gstatic.com",
-    "frame-src https://js.stripe.com https://hooks.stripe.com",
-    "connect-src 'self' https://api.stripe.com https://checkout.stripe.com",
+    "frame-src https://js.stripe.com https://hooks.stripe.com https://challenges.cloudflare.com",
+    "connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://challenges.cloudflare.com",
     "form-action 'self' https://checkout.stripe.com",
     "object-src 'none'",
     "base-uri 'self'",
@@ -81,7 +84,10 @@ const BAD_UA_PATTERNS = [
 const RATE_LIMIT_RULES: Array<{ prefix: string; limit: number }> = [
   { prefix: "/api/checkout",       limit: 5  },  // Card-testing protection
   { prefix: "/api/guide-download", limit: 3  },  // Prevent PDF scraping
+  { prefix: "/api/peri-guide-download", limit: 3 },
+  { prefix: "/api/ava-chat",       limit: 12 },  // Groq API cost protection
   { prefix: "/api/newsletter",     limit: 8  },  // Anti-spam
+  { prefix: "/api/quiz-lead",      limit: 10 },
   { prefix: "/api/admin",          limit: 15 },
   { prefix: "/api/",              limit: 30 },
   { prefix: "/admin",             limit: 20 },
