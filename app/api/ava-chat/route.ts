@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import Groq from "groq-sdk";
 import { AVA_SYSTEM_PROMPT } from "@/lib/ava-knowledge";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
 const MAX_HISTORY = 10;
 
 type HistoryEntry = { role: "user" | "assistant"; content: string };
@@ -27,6 +25,7 @@ export async function POST(req: NextRequest) {
   if (!process.env.GROQ_API_KEY) {
     return NextResponse.json({ error: "Service unavailable" }, { status: 503 });
   }
+  const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
   let body: unknown;
   try {
