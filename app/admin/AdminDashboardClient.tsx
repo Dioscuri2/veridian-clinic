@@ -450,7 +450,7 @@ export default function AdminDashboardClient({
                     <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>Patient flow funnel</h2>
                     {[
                       { stage: "Quiz completions", count: stats.funnel.quizCompletions, colour: "#3a82f7" },
-                      { stage: "Guide purchases (£19.99)", count: stats.funnel.guidePurchases, colour: "#c8a84b" },
+                      { stage: "Guide downloads (free)", count: stats.funnel.guidePurchases, colour: "#c8a84b" },
                       { stage: "Discovery calls (£97–£195)", count: stats.funnel.discoveryCalls, colour: "#145226" },
                       { stage: "Blood tests (£195–£795)", count: stats.funnel.bloodTests, colour: "#8b5cf6" },
                       { stage: "12-week programme (£1,895)", count: stats.funnel.programmes, colour: "#ef4444" },
