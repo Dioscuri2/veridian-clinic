@@ -98,7 +98,7 @@ const WINDOW_MS = 60_000;
 
 // ── In-process fallback (used when Redis is unavailable) ─────────────────────
 const rateLimitStore = new Map<string, { hits: number; windowEnd: number }>();
-const bannedIPs = new Set<string>();
+const bannedIPs = new Map<string, number>(); // IP → ban expiry timestamp
 
 // ── Upstash Redis — distributed rate limiting ─────────────────────────────────
 // Lazily initialised so the module loads even without env vars (local dev / fallback).
@@ -206,13 +206,13 @@ export async function proxy(request: NextRequest) {
   const isAdmin = pathname.startsWith("/admin");
 
   // 1. Banned IPs — hard block
-  if (bannedIPs.has(ip)) {
+  if ((bannedIPs.get(ip) ?? 0) > Date.now()) {
     return new NextResponse("Forbidden", { status: 403 });
   }
 
   // 2. Honeypot trap — ban the IP and return a convincing 404
   if (isHoneypotPath(pathname)) {
-    bannedIPs.add(ip);
+    bannedIPs.set(ip, Date.now() + 3_600_000); // 1-hour TTL
     return new NextResponse("Not Found", { status: 404 });
   }
 
