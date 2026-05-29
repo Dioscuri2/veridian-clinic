@@ -259,13 +259,13 @@ export default function HomePage() {
             order: 1;
           }
           .hero-img-col {
-            height: 360px;
+            height: 500px;
             order: 2;
           }
           .hero-img-col img {
             top: 0;
             height: 100%;
-            object-position: 50% 12%;
+            object-position: center top;
           }
         }
         @media(max-width:480px) {
@@ -273,7 +273,7 @@ export default function HomePage() {
             padding: 28px 16px 36px;
           }
           .hero-img-col {
-            height: 260px;
+            height: 420px;
           }
         }
 
@@ -319,11 +319,11 @@ export default function HomePage() {
         }
         @media(max-width:960px) {
           .doc-editorial { grid-template-columns: 1fr; }
-          .doc-editorial-img { min-height: 360px; }
+          .doc-editorial-img { min-height: 500px; }
           .doc-cred-grid { grid-template-columns: 1fr; }
         }
         @media(max-width:480px) {
-          .doc-editorial-img { min-height: 260px; }
+          .doc-editorial-img { min-height: 420px; }
           .doc-editorial-bio { padding: 24px 16px 32px; }
           .offer-card-head, .offer-card-body { padding-left: 16px; padding-right: 16px; }
         }
