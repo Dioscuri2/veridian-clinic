@@ -398,14 +398,14 @@ function ResultContent() {
                       Why Your Weight Isn&apos;t Shifting
                     </p>
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
-                      A Doctor&apos;s 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. £19.99 · Instant download.
+                      A Doctor&apos;s 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. Free · Instant download.
                     </p>
                     <Link
                       href="/metabolic-reset-guide"
                       className="btn btn-go btn-full"
-                      onClick={() => fbq("InitiateCheckout", { value: 19.99, currency: "GBP", content_name: "Metabolic Reset Guide" })}
+                      onClick={() => fbq("Lead", { content_name: "Metabolic Reset Guide" })}
                     >
-                      Get the Metabolic Reset Guide →
+                      Get the Free Metabolic Reset Guide →
                     </Link>
                   </div>
                 ) : (

@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
@@ -17,24 +15,26 @@ const WHAT_IS_INSIDE = [
   { title: "Busy Day Plan + Rapid Reset", body: "A stripped-back fallback for chaotic days and a Rapid Reset Protocol to recover from a slip in 24–48 hours." },
 ];
 
-function GuidePageContent() {
+export default function MetabolicResetGuidePage() {
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const params = useSearchParams();
-  const cancelled = params.get("cancelled") === "1";
 
-  async function handleBuy() {
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email.trim()) { setError("Please enter your email address."); return; }
     setLoading(true);
     setError("");
     try {
-      const resp = await fetch("/api/checkout", {
+      const res = await fetch("/api/guide-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tier: "guide" }),
+        body: JSON.stringify({ firstName: firstName.trim(), email: email.trim() }),
       });
-      const data = await resp.json();
-      if (!resp.ok || !data.url) throw new Error(data.error || "Unable to start checkout.");
-      window.location.href = data.url;
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      window.location.href = "/metabolic-reset-guide/thank-you";
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setLoading(false);
@@ -50,7 +50,7 @@ function GuidePageContent() {
         {/* Hero */}
         <section className="sec bg-iv" style={{ paddingBottom: 48 }}>
           <div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}>
-            <p className="lbl a1">GP-Authored · Instant Download</p>
+            <p className="lbl a1">GP-Authored · Free Instant Download</p>
             <div className="rule rule-c a1" />
             <h1
               className="cg a2"
@@ -74,36 +74,52 @@ function GuidePageContent() {
               <span className="badge">GP-Authored</span>
               <span className="badge">Instant Download</span>
               <span className="badge">21-Day Plan</span>
-              <span className="badge">£9.99</span>
+              <span className="badge">Free</span>
             </div>
 
-            {cancelled && (
-              <div style={{ maxWidth: 480, margin: "0 auto 20px", padding: "12px 16px", borderLeft: "3px solid var(--amr)", background: "rgba(138,85,0,.06)", textAlign: "left" }}>
-                <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.7 }}>
-                  No payment was taken. You can purchase the guide below whenever you're ready.
-                </p>
-              </div>
-            )}
-
-            {error && (
-              <div style={{ maxWidth: 480, margin: "0 auto 20px", padding: "12px 16px", borderLeft: "3px solid var(--red)", background: "rgba(122,22,22,.06)", textAlign: "left" }}>
-                <p style={{ fontSize: ".84rem", color: "var(--red)", lineHeight: 1.7 }}>{error}</p>
-              </div>
-            )}
-
-            <div className="a4">
+            <form onSubmit={handleSubmit} className="a4" style={{ maxWidth: 480, margin: "0 auto" }}>
+              <input
+                type="text"
+                placeholder="First name (optional)"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                style={{
+                  width: "100%", padding: "13px 16px", fontSize: ".92rem",
+                  border: "1px solid rgba(0,0,0,.15)", marginBottom: 10,
+                  background: "var(--wh)", color: "var(--sl)",
+                  outline: "none", boxSizing: "border-box",
+                }}
+              />
+              <input
+                type="email"
+                placeholder="Your email address *"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                style={{
+                  width: "100%", padding: "13px 16px", fontSize: ".92rem",
+                  border: "1px solid rgba(0,0,0,.15)", marginBottom: 10,
+                  background: "var(--wh)", color: "var(--sl)",
+                  outline: "none", boxSizing: "border-box",
+                }}
+              />
+              {error && (
+                <div style={{ marginBottom: 10, padding: "10px 14px", borderLeft: "3px solid var(--red)", background: "rgba(122,22,22,.06)", textAlign: "left" }}>
+                  <p style={{ fontSize: ".82rem", color: "var(--red)", lineHeight: 1.7 }}>{error}</p>
+                </div>
+              )}
               <button
-                onClick={handleBuy}
+                type="submit"
                 disabled={loading}
                 className="btn btn-fo"
-                style={{ padding: "15px 44px", fontSize: ".9rem", opacity: loading ? 0.65 : 1 }}
+                style={{ width: "100%", opacity: loading ? 0.65 : 1 }}
               >
-                {loading ? "Redirecting to checkout…" : "Get the Guide for £9.99 →"}
+                {loading ? "Sending…" : "Get the Free Guide →"}
               </button>
-              <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
-                Secure payment via Stripe · Instant PDF download · One-off payment
+              <p style={{ fontSize: ".72rem", color: "var(--sl3)", marginTop: 8, lineHeight: 1.6 }}>
+                No payment. No spam. Instant PDF download on the next page.
               </p>
-            </div>
+            </form>
           </div>
         </section>
 
@@ -147,23 +163,29 @@ function GuidePageContent() {
                 <p style={{ fontSize: ".8rem", color: "var(--sl3)", lineHeight: 1.7, marginBottom: 20 }}>
                   <strong>Safety note:</strong> This guide is for informational purposes and does not replace professional medical advice. If you are on insulin, sulfonylureas, SGLT2 inhibitors, or blood pressure medication — or have kidney disease, type 1 diabetes, or a recent cardiac event — consult your clinician before making dietary changes.
                 </p>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 6 }}>
-                  <span className="cg" style={{ fontSize: "2.4rem", fontWeight: 400, color: "var(--fo)", lineHeight: 1 }}>£9.99</span>
-                  <span style={{ fontSize: ".82rem", color: "var(--sl3)" }}>One-off payment · Instant download</span>
-                </div>
-                {error && (
-                  <div style={{ marginBottom: 14, padding: "10px 14px", borderLeft: "3px solid var(--red)", background: "rgba(122,22,22,.06)" }}>
-                    <p style={{ fontSize: ".82rem", color: "var(--red)", lineHeight: 1.7 }}>{error}</p>
-                  </div>
-                )}
-                <button
-                  onClick={handleBuy}
-                  disabled={loading}
-                  className="btn btn-fo"
-                  style={{ opacity: loading ? 0.65 : 1 }}
-                >
-                  {loading ? "Redirecting to checkout…" : "Get the Guide →"}
-                </button>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="email"
+                    placeholder="Your email address *"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    style={{
+                      width: "100%", padding: "13px 16px", fontSize: ".92rem",
+                      border: "1px solid rgba(0,0,0,.15)", marginBottom: 10,
+                      background: "var(--wh)", color: "var(--sl)",
+                      outline: "none", boxSizing: "border-box",
+                    }}
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="btn btn-fo"
+                    style={{ opacity: loading ? 0.65 : 1 }}
+                  >
+                    {loading ? "Sending…" : "Get the Free Guide →"}
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -192,13 +214,5 @@ function GuidePageContent() {
       </main>
       <Footer />
     </>
-  );
-}
-
-export default function MetabolicResetGuidePage() {
-  return (
-    <Suspense fallback={null}>
-      <GuidePageContent />
-    </Suspense>
   );
 }

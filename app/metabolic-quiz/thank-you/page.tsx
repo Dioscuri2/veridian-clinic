@@ -79,7 +79,7 @@ function ThankYouContent() {
           </div>
         </section>
 
-        {/* £19.99 guide offer */}
+        {/* Free guide offer */}
         <section className="sec bg-wh">
           <div className="wrap" style={{ maxWidth: 860 }}>
             <div className="text-center" style={{ marginBottom: 40 }}>
@@ -95,7 +95,7 @@ function ThankYouContent() {
                   marginBottom: 14,
                 }}
               >
-                The Metabolic Reset Guide
+                The Metabolic Reset Guide — Free
               </h2>
               <p
                 style={{
@@ -106,7 +106,7 @@ function ThankYouContent() {
                   margin: "0 auto",
                 }}
               >
-                A doctor-led practical guide for people who want to start improving the hidden drivers of weight gain, poor energy, and metabolic stress — now.
+                A doctor-led practical guide for people who want to start improving the hidden drivers of weight gain, poor energy, and metabolic stress — now. No payment, just your email.
               </p>
             </div>
 
@@ -116,9 +116,9 @@ function ThankYouContent() {
                   className="cg"
                   style={{ fontSize: "2.8rem", fontWeight: 400, color: "var(--fo)", lineHeight: 1 }}
                 >
-                  £19.99
+                  Free
                 </span>
-                <span style={{ fontSize: ".88rem", color: "var(--sl3)" }}>one-off · instant download</span>
+                <span style={{ fontSize: ".88rem", color: "var(--sl3)" }}>instant download · no payment</span>
               </div>
 
               <ul className="chk" style={{ marginBottom: 28 }}>
@@ -130,7 +130,7 @@ function ThankYouContent() {
               </ul>
 
               <Link href="/metabolic-reset-guide" className="btn btn-fo btn-full" style={{ marginBottom: 14 }}>
-                Get the Guide for £19.99 →
+                Get the Free Guide →
               </Link>
               <p
                 style={{
