@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import { scheduleGuideSequence } from "@/lib/guideEmailSequence";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
@@ -72,6 +73,9 @@ export async function POST(request: NextRequest) {
       await mkdir(FALLBACK_DIR, { recursive: true });
       await appendFile(FALLBACK_FILE, `${JSON.stringify(entry)}\n`, "utf8");
     } catch { /* read-only filesystem on some runtimes */ }
+
+    // Schedule 4-email sequence (fire-and-forget — never blocks the response)
+    scheduleGuideSequence(cleanEmail, cleanName, "metabolic").catch(() => {});
 
     return NextResponse.json({ ok: true });
   } catch {
