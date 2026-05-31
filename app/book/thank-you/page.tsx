@@ -10,6 +10,7 @@ import CalendlyInline from "@/components/CalendlyInline";
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 
 const REVIEW_TIERS = ["discovery", "discovery-quiz"];
+const BLOOD_TEST_TIERS = ["metabolic-screen", "womens-hormones", "mens-testosterone", "cardiovascular-risk", "fatigue-energy", "metabolic-weight", "optimiser-baseline"];
 
 function PixelPurchase() {
   const params = useSearchParams();
@@ -22,6 +23,12 @@ function PixelPurchase() {
       baseline: 595,
       "longevity-panel": 795,
       programme: 1895,
+      "womens-hormones": 325,
+      "mens-testosterone": 325,
+      "cardiovascular-risk": 349,
+      "fatigue-energy": 249,
+      "metabolic-weight": 199,
+      "optimiser-baseline": 395,
     };
     const value = tierMap[tier] ?? 0;
     if (value > 0 && typeof window !== "undefined") {
@@ -35,6 +42,7 @@ function ThankYouContent() {
   const params = useSearchParams();
   const tier = params.get("tier") || "";
   const isReviewTier = REVIEW_TIERS.includes(tier);
+  const isBloodTestTier = BLOOD_TEST_TIERS.includes(tier);
 
   return (
     <>
@@ -54,14 +62,16 @@ function ThankYouContent() {
             <p className="lbl" style={{ color: "var(--go)" }}>Payment Confirmed</p>
             <div className="rule rule-c" style={{ background: "var(--go)" }} />
             <h1 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 16 }}>
-              {isReviewTier ? "You're booked in." : "Thank you."}
+              {isReviewTier ? "You're booked in." : isBloodTestTier ? "Your test is confirmed." : "Thank you."}
               {" "}<em style={{ fontStyle: "italic", color: "var(--go)" }}>
-                {isReviewTier ? "Now pick your time." : "You're in."}
+                {isReviewTier ? "Now pick your time." : isBloodTestTier ? "We'll be in touch shortly." : "You're in."}
               </em>
             </h1>
             <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.65)", lineHeight: 1.95, maxWidth: 580, margin: "0 auto" }}>
               {isReviewTier
                 ? "Your payment is confirmed. Select a date and time below to schedule your virtual clinical review with Dr Tosin. You'll receive a video call link by email before your appointment."
+                : isBloodTestTier
+                ? "Payment confirmed. A confirmation email is on its way with everything you need — what's being tested, how your sample is collected, and what to expect. Dr Tosin will contact you within 24 hours to arrange your kit or walk-in booking."
                 : "Your booking request has been submitted successfully. We'll be in touch within 24 hours to confirm next steps."}
             </p>
           </div>
@@ -99,6 +109,13 @@ function ThankYouContent() {
                         "You'll receive a confirmation email with a video call link within 24 hours.",
                         "If relevant, we'll ask for any blood test results to review before your call.",
                         "You can complete your clinical intake form ahead of the appointment.",
+                      ]
+                    : isBloodTestTier
+                    ? [
+                        "A confirmation email is on its way — check your inbox (and spam folder) now.",
+                        "Dr Tosin will contact you within 24 hours to confirm your preferred sample collection method.",
+                        "Your sample is processed by our nationally accredited UK laboratory — results within 48–72 hours of receipt.",
+                        "Dr Tosin's written clinical interpretation and personalised next-step plan is sent directly to your email.",
                       ]
                     : [
                         "Your booking request has been sent to Veridian Clinic.",

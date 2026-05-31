@@ -2,6 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { sendGuideEmail } from "@/lib/guideEmail";
 import { sendDiscoveryIntakeEmail } from "@/lib/discoveryEmail";
+import { sendBloodTestConfirmation } from "@/lib/bloodTestEmail";
+
+const BLOOD_TEST_TIERS = new Set([
+  "metabolic-screen", "womens-hormones", "mens-testosterone",
+  "cardiovascular-risk", "fatigue-energy", "metabolic-weight", "optimiser-baseline",
+]);
 
 export async function POST(request: NextRequest) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -39,6 +45,14 @@ export async function POST(request: NextRequest) {
       const name = session.customer_details?.name || session.metadata?.name || "";
       if (email) {
         await sendDiscoveryIntakeEmail({ email, name });
+      }
+    }
+
+    if (tier && BLOOD_TEST_TIERS.has(tier) && session.payment_status === "paid") {
+      const email = session.customer_details?.email || session.customer_email || "";
+      const name = session.customer_details?.name || session.metadata?.name || "";
+      if (email) {
+        await sendBloodTestConfirmation({ email, name, tier, stripeSessionId: session.id });
       }
     }
 
