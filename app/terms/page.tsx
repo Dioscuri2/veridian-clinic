@@ -114,7 +114,7 @@ export default function TermsPage() {
               </Section>
 
               <Section title="9. Contact">
-                <p>For questions about these terms, contact us at <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a> or via the <a href="/contact" style={{ color: "var(--fo)" }}>contact page</a>.</p>
+                <p>For questions about these terms, contact us at <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a> or via the <a href="/contact" style={{ color: "var(--fo)" }}>contact page</a>.</p>
               </Section>
             </div>
 

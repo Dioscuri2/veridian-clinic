@@ -351,7 +351,7 @@ function BookingInner() {
               </div>
               <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.75 }}>
                 Questions before paying?{" "}
-                <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a>
+                <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a>
               </p>
             </div>
           )}
@@ -429,7 +429,7 @@ function BookingInner() {
               </button>
               <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.75, margin: 0 }}>
                 Dr Tosin typically responds within a few hours during working hours. Or email directly:{" "}
-                <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a>
+                <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a>
               </p>
             </form>
           )}

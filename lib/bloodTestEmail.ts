@@ -206,7 +206,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
             Questions in the meantime? Reply to this email directly — it goes straight to the Veridian clinical inbox.
           </p>
           <p style="margin:0;font-size:.86rem;color:#5a534a;">
-            Or email: <a href="mailto:hello@veridianclinic.com" style="color:#2c2a26;font-weight:600;">hello@veridianclinic.com</a>
+            Or email: <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;font-weight:600;">support@veridianclinic.com</a>
           </p>
         </td></tr>
 
@@ -272,9 +272,9 @@ export async function sendBloodTestConfirmation(params: {
       method: "POST",
       headers: { "accept": "application/json", "content-type": "application/json", "api-key": BREVO_API_KEY },
       body: JSON.stringify({
-        sender: { name: "Dr Tosin Taiwo | Veridian Clinic", email: "hello@veridianclinic.com" },
+        sender: { name: "Dr Tosin Taiwo | Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
-        replyTo: { email: "hello@veridianclinic.com", name: "Veridian Clinic" },
+        replyTo: { email: "support@veridianclinic.com", name: "Veridian Clinic" },
         subject: `Your blood test is confirmed — ${panel.name}`,
         htmlContent: buildPatientEmail(firstName, panel),
         tags: ["blood-test-confirmation"],
@@ -286,8 +286,8 @@ export async function sendBloodTestConfirmation(params: {
       method: "POST",
       headers: { "accept": "application/json", "content-type": "application/json", "api-key": BREVO_API_KEY },
       body: JSON.stringify({
-        sender: { name: "Veridian Bookings", email: "hello@veridianclinic.com" },
-        to: [{ email: "hello@veridianclinic.com", name: "Dr Tosin Taiwo" }],
+        sender: { name: "Veridian Bookings", email: "support@veridianclinic.com" },
+        to: [{ email: "support@veridianclinic.com", name: "Dr Tosin Taiwo" }],
         replyTo: { email, name },
         subject: `New paid blood test — ${panel.name} · ${panel.price}`,
         htmlContent: buildDrTosinNotification(name, email, panel, stripeSessionId),

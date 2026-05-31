@@ -98,8 +98,8 @@ export async function POST(req: NextRequest) {
         accept: "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Veridian Clinic Bookings", email: "hello@veridianclinic.com" },
-        to: [{ email: "hello@veridianclinic.com", name: "Dr Tosin Taiwo" }],
+        sender: { name: "Veridian Clinic Bookings", email: "support@veridianclinic.com" },
+        to: [{ email: "support@veridianclinic.com", name: "Dr Tosin Taiwo" }],
         subject: `New booking enquiry — ${tierLabel}`,
         htmlContent: (() => {
           const randox = RANDOX_CODES[tier] || null;
@@ -137,7 +137,7 @@ export async function POST(req: NextRequest) {
         accept: "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Dr Tosin Taiwo | Veridian Clinic", email: "hello@veridianclinic.com" },
+        sender: { name: "Dr Tosin Taiwo | Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
         subject: "We've received your enquiry — Veridian Clinic",
         htmlContent: `
@@ -169,7 +169,7 @@ export async function POST(req: NextRequest) {
     `**Email:** ${email}\n` +
     `**Phone:** ${phone || "—"}\n` +
     (message ? `**Message:** ${message.slice(0, 200)}\n` : "") +
-    `\nReply at hello@veridianclinic.com`
+    `\nReply at support@veridianclinic.com`
   );
 
   return NextResponse.json({ ok: true });

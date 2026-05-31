@@ -73,7 +73,7 @@ function ThankYouContent() {
             >
               <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8 }}>
                 <strong style={{ color: "var(--sl)" }}>Check your inbox.</strong>{" "}
-                If it doesn't arrive within 5 minutes, check your spam folder and add hello@veridianclinic.com to your contacts.
+                If it doesn't arrive within 5 minutes, check your spam folder and add support@veridianclinic.com to your contacts.
               </p>
             </div>
           </div>

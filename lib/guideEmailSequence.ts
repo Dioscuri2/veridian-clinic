@@ -11,7 +11,7 @@
  */
 
 const BREVO_BASE = "https://api.brevo.com/v3";
-const FROM = { name: "Dr Tosin Taiwo | Veridian Clinic", email: "hello@veridianclinic.com" };
+const FROM = { name: "Dr Tosin Taiwo | Veridian Clinic", email: "support@veridianclinic.com" };
 const SITE = "https://veridianclinic.com";
 
 // ─── HTML shell ────────────────────────────────────────────────────────────────

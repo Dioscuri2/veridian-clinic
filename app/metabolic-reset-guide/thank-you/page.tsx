@@ -99,7 +99,7 @@ export default function GuideThankyouPage() {
             </div>
 
             <p style={{ textAlign: "center", marginTop: 28, fontSize: ".8rem", color: "var(--sl3)" }}>
-              Questions? <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a>
+              Questions? <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a>
             </p>
           </div>
         </section>

@@ -180,7 +180,7 @@ export default function PeriGuideUpsells() {
         </div>
 
         <p style={{ marginTop: 14, fontSize: ".72rem", color: "var(--sl3)", lineHeight: 1.6 }}>
-          After payment you'll receive a booking link to schedule your video call at a time that suits you. Questions? <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a>
+          After payment you'll receive a booking link to schedule your video call at a time that suits you. Questions? <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a>
         </p>
       </div>
 

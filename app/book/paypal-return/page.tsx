@@ -36,7 +36,7 @@ function PayPalReturnInner() {
       })
       .catch(() => {
         setStatus("error");
-        setErrMsg("Connection error. Please email hello@veridianclinic.com if payment was taken.");
+        setErrMsg("Connection error. Please email support@veridianclinic.com if payment was taken.");
       });
   }, [token, tier, router]);
 
@@ -73,7 +73,7 @@ function PayPalReturnInner() {
                 <a href={`/book?tier=${encodeURIComponent(tier)}`} className="btn btn-fo">
                   Try again →
                 </a>
-                <a href="mailto:hello@veridianclinic.com" className="btn btn-ol">
+                <a href="mailto:support@veridianclinic.com" className="btn btn-ol">
                   Contact us
                 </a>
               </div>
