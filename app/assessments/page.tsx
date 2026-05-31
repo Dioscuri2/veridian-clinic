@@ -159,6 +159,122 @@ const bloodPanels = [
   },
 ];
 
+const targetedPanels = [
+  {
+    name: "Is It My Hormones?",
+    subtitle: "Women's Hormonal Deep Dive",
+    price: "£325",
+    tag: "Women's Health",
+    tagColor: "#9d5c8a",
+    description: "Chronic fatigue, mood changes, weight gain, poor sleep, low libido — these aren't 'just getting older'. This panel is designed to reveal whether your hormones are the missing link, and which ones.",
+    markers: [
+      "Full female hormones: Oestradiol, FSH, LH, Progesterone, Prolactin, SHBG",
+      "Testosterone (total + free) — for energy, mood and drive",
+      "Thyroid: TSH, FT3, FT4 + TPO antibodies",
+      "Cortisol — stress-hormone axis",
+      "Lipoprotein (a) — often elevated in hormonal transitions",
+      "Fasting insulin + HbA1c",
+      "Vitamin D",
+    ],
+    youGet: "GP-reviewed written interpretation of your full hormonal picture, with a clear explanation of what your results mean for your specific symptoms — not just reference ranges.",
+    href: "/book?tier=womens-hormones",
+  },
+  {
+    name: "Running on Empty",
+    subtitle: "Men's Energy & Hormone Panel",
+    price: "£325",
+    tag: "Men's Health",
+    tagColor: "#3d7ab5",
+    description: "Low drive, poor recovery, foggy thinking, a body that won't respond the way it used to. This panel tests the hormonal and metabolic drivers that most GPs don't screen for together.",
+    markers: [
+      "Total + Free Testosterone — the functional metric GPs rarely test",
+      "SHBG, LH, FSH, Prolactin, DHEA-S",
+      "Cortisol — adrenal function and stress axis",
+      "Lipoprotein (a) — cardiovascular risk often missed in men",
+      "Fasting insulin + HbA1c",
+      "Full Blood Count + hs-CRP",
+    ],
+    youGet: "GP-reviewed interpretation of your hormonal and metabolic markers, with a written clinical summary and a clear next-step recommendation tailored to your results.",
+    href: "/book?tier=mens-testosterone",
+  },
+  {
+    name: "What Your Cholesterol Test Missed",
+    subtitle: "Advanced Cardiovascular Risk Panel",
+    price: "£349",
+    tag: "Cardiovascular",
+    tagColor: "#b04040",
+    description: "A normal cholesterol result does not mean a normal cardiovascular risk. This panel reveals the markers your GP rarely checks — and that research shows matter far more than total cholesterol.",
+    markers: [
+      "ApoB — the most predictive cardiovascular risk marker",
+      "Lipoprotein (a) — genetic risk factor missed by standard cholesterol tests",
+      "Small dense LDL — the dangerous LDL sub-fraction",
+      "Homocysteine — endothelial damage and inflammation",
+      "hs-CRP — systemic inflammatory load",
+      "Full lipid profile + ApoA-I",
+      "Fasting insulin + HbA1c — metabolic driver of vascular risk",
+    ],
+    youGet: "GP-reviewed cardiovascular risk summary with a written interpretation of your ApoB, Lp(a) and inflammatory markers — and a clear recommendation on what to do next.",
+    href: "/book?tier=cardiovascular-risk",
+  },
+  {
+    name: "Tired of Being Told You're Fine",
+    subtitle: "Energy & Fatigue Deep Screen",
+    price: "£249",
+    tag: "Energy & Fatigue",
+    tagColor: "#8a6a25",
+    description: "Persistent fatigue, brain fog and low energy — with a normal GP blood test result every time. This panel goes beyond standard screening to find what those tests miss.",
+    markers: [
+      "Full Blood Count — anaemia, immune load",
+      "Thyroid: TSH, FT3, FT4 + TPO antibodies — including subclinical dysfunction",
+      "Ferritin + full iron studies",
+      "Vitamin B12, Folate, Vitamin D",
+      "Fasting insulin — the commonest missed energy driver",
+      "Uric acid — linked to mitochondrial fatigue",
+      "hs-CRP + kidney function",
+    ],
+    youGet: "GP-reviewed written report identifying which markers are likely driving your fatigue — with clinical interpretation and actionable next steps.",
+    href: "/book?tier=fatigue-energy",
+  },
+  {
+    name: "Why Won't The Weight Budge?",
+    subtitle: "Metabolic Weight Resistance Panel",
+    price: "£199",
+    tag: "Weight & Metabolism",
+    tagColor: "#4a7a40",
+    description: "You're eating well. You're moving. But the weight won't shift. This panel identifies the metabolic blockers — insulin resistance, hormonal imbalance and hidden inflammation — that make fat loss physiologically difficult.",
+    markers: [
+      "Fasting insulin + HbA1c + HOMA-IR (insulin resistance index)",
+      "Uric acid — linked to metabolic syndrome and fat-loss resistance",
+      "Lipoprotein (a) — elevated in metabolic dysfunction",
+      "Leptin + Adiponectin — hunger and fat-cell signalling hormones",
+      "TSH — thyroid contribution to weight regulation",
+      "Liver markers: ALT, AST",
+      "Fasting lipid profile",
+    ],
+    youGet: "GP-reviewed metabolic interpretation identifying why your body is resisting fat loss — with a written, prioritised recommendation for what to address first.",
+    href: "/book?tier=metabolic-weight",
+  },
+  {
+    name: "The Optimiser's Baseline",
+    subtitle: "Performance & Safety Panel",
+    price: "£395",
+    tag: "Performance",
+    tagColor: "var(--fo)",
+    description: "For those who take their biology seriously — whether that's training optimisation, biohacking or self-administered peptides. Know your baseline before you optimise. Know you're safe.",
+    markers: [
+      "IGF-1 — the primary growth factor marker",
+      "Fasting insulin + HbA1c",
+      "Cortisol (AM) — adrenal and recovery status",
+      "Total + Free Testosterone, SHBG, LH, FSH, DHEA-S",
+      "Full Blood Count + liver function (ALT, AST, GGT)",
+      "Kidney function + eGFR + Creatinine",
+      "Lipoprotein (a) + full lipid profile + hs-CRP",
+    ],
+    youGet: "GP-reviewed baseline report across growth, hormonal, metabolic and organ-safety markers — giving you a clear clinical picture to optimise from and a benchmark to return to.",
+    href: "/book?tier=optimiser-baseline",
+  },
+];
+
 const collectionMethods = [
   { icon: "📦", label: "Post to your door", desc: "We send a home collection kit. Fingerprick sample taken at your convenience, returned by pre-paid post." },
   { icon: "📍", label: "Walk-in near you", desc: "Book at a collection centre near you — including Holland & Barrett and Superdrug locations nationwide." },
@@ -308,6 +424,115 @@ function BloodPanelAccordion() {
   );
 }
 
+function TargetedPanelAccordion() {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div style={{ display: "grid", gap: 2 }}>
+      {targetedPanels.map((panel, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={i} style={{
+            border: "1px solid rgba(0,0,0,.09)",
+            background: isOpen ? "var(--iv)" : "var(--wh)",
+            transition: "background .2s",
+          }}>
+            <button
+              onClick={() => setOpen(isOpen ? null : i)}
+              style={{
+                width: "100%", display: "flex", alignItems: "center",
+                justifyContent: "space-between", padding: "20px 24px",
+                background: "none", border: "none", cursor: "pointer", textAlign: "left", gap: 16,
+              }}
+              aria-expanded={isOpen}
+            >
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                  <span style={{
+                    fontSize: ".62rem", fontWeight: 700, letterSpacing: ".12em",
+                    textTransform: "uppercase", color: panel.tagColor,
+                    background: "rgba(0,0,0,.06)", padding: "2px 8px",
+                  }}>{panel.tag}</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
+                  <span className="cg" style={{ fontSize: "1.2rem", fontWeight: 500, color: "var(--sl)" }}>{panel.name}</span>
+                  <span style={{ fontSize: ".82rem", color: "var(--sl3)", letterSpacing: ".03em" }}>{panel.subtitle}</span>
+                </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
+                <span className="cg" style={{ fontSize: "1.5rem", fontWeight: 600, color: "var(--fo)" }}>{panel.price}</span>
+                <span style={{
+                  fontSize: "1rem", color: "var(--sl3)", transition: "transform .2s",
+                  display: "inline-block", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                }}>▾</span>
+              </div>
+            </button>
+
+            {isOpen && (
+              <div style={{ padding: "0 24px 28px" }}>
+                <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 24, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
+                  {panel.description}
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,300px),1fr))", gap: 24, marginBottom: 24 }}>
+                  <div>
+                    <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>
+                      What&apos;s tested
+                    </p>
+                    <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "grid", gap: 7 }}>
+                      {panel.markers.map((m, mi) => (
+                        <li key={mi} style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: ".85rem", color: "var(--sl2)", lineHeight: 1.5 }}>
+                          <span style={{ color: "var(--go)", flexShrink: 0, marginTop: 2 }}>✓</span>
+                          {m}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div style={{ display: "grid", gap: 20, alignContent: "start" }}>
+                    <div style={{ padding: "14px 16px", background: "var(--iv2)", borderLeft: "3px solid var(--go)" }}>
+                      <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>
+                        What you get back
+                      </p>
+                      <p style={{ fontSize: ".85rem", color: "var(--sl2)", lineHeight: 1.8 }}>
+                        {panel.youGet}
+                      </p>
+                    </div>
+                    <div>
+                      <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 10 }}>
+                        How your sample is collected
+                      </p>
+                      <div style={{ display: "grid", gap: 8 }}>
+                        {collectionMethods.map((method, mi) => (
+                          <div key={mi} style={{ display: "flex", gap: 10, alignItems: "flex-start", padding: "10px 12px", background: "var(--wh)", border: "1px solid rgba(0,0,0,.07)" }}>
+                            <span style={{ fontSize: "1rem", flexShrink: 0, lineHeight: 1.4 }}>{method.icon}</span>
+                            <div>
+                              <p style={{ fontSize: ".78rem", fontWeight: 600, color: "var(--sl)", marginBottom: 2 }}>{method.label}</p>
+                              <p style={{ fontSize: ".76rem", color: "var(--sl3)", lineHeight: 1.6 }}>{method.desc}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p style={{ fontSize: ".72rem", color: "var(--sl3)", lineHeight: 1.6, marginTop: 10 }}>
+                        Processed by a nationally accredited UK pathology laboratory. Results typically within 48–72 hours.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <Link href={panel.href} className="btn btn-fo" style={{ flex: "1 1 200px" }}>
+                    Book {panel.name} — {panel.price} →
+                  </Link>
+                  <Link href="/book?tier=discovery" className="btn btn-ol" style={{ flex: "1 1 200px" }}>
+                    Speak to a GP first →
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function Check({ val }: { val: boolean | string }) {
  if (typeof val === "string") return <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--fo)" }}>{val}</span>;
  return val
@@ -354,6 +579,24 @@ export default function AssessmentsPage() {
      <BloodPanelAccordion />
      <p style={{ fontSize: ".76rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7, marginTop: 20 }}>
        Not a substitute for NHS care. Results typically available within 48–72 hours of sample receipt.
+     </p>
+   </div>
+ </section>
+
+ {/* Targeted Blood Panels */}
+ <section id="targeted-panels" className="sec bg-wh" style={{ paddingTop: 56, paddingBottom: 56 }}>
+   <div className="wrap" style={{ maxWidth: 860 }}>
+     <div className="sh text-center">
+       <p className="lbl">Targeted Blood Panels</p>
+       <div className="rule rule-c" />
+       <h2 className="sh-title">Test for your specific symptoms — not just a general screen.</h2>
+       <p className="sh-body" style={{ maxWidth: 680 }}>
+         Each panel is built around a specific clinical question — the one you&apos;ve been asking but haven&apos;t been given a straight answer to. Tested at a nationally accredited UK laboratory and reviewed by a Veridian GP.
+       </p>
+     </div>
+     <TargetedPanelAccordion />
+     <p style={{ fontSize: ".76rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7, marginTop: 20 }}>
+       Blood test only — GP-reviewed written report included. Add a GP Discovery Call (£195) if you&apos;d like clinical interpretation by video.
      </p>
    </div>
  </section>

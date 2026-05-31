@@ -51,6 +51,42 @@ const tierDetails: Record<string, {
     duration: "90 min",
     description: "A structured reset with guided implementation, accountability and follow-through.",
   },
+  "womens-hormones": {
+    title: "Is It My Hormones? — Women's Panel",
+    price: "£325",
+    duration: "Blood test",
+    description: "Full female hormonal profile including oestradiol, progesterone, testosterone, thyroid, Lp(a), fasting insulin and vitamin D — GP-reviewed written interpretation included.",
+  },
+  "mens-testosterone": {
+    title: "Running on Empty — Men's Panel",
+    price: "£325",
+    duration: "Blood test",
+    description: "Full male hormonal panel including free testosterone, SHBG, DHEA-S, cortisol, Lp(a) and fasting insulin — GP-reviewed written interpretation included.",
+  },
+  "cardiovascular-risk": {
+    title: "What Your Cholesterol Test Missed",
+    price: "£349",
+    duration: "Blood test",
+    description: "Advanced cardiovascular panel: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP and fasting insulin — the markers standard cholesterol tests omit. GP-reviewed report included.",
+  },
+  "fatigue-energy": {
+    title: "Tired of Being Told You're Fine",
+    price: "£249",
+    duration: "Blood test",
+    description: "Deep fatigue screen covering thyroid (including TPO antibodies), ferritin, fasting insulin, uric acid, vitamins and inflammation — GP-reviewed written report included.",
+  },
+  "metabolic-weight": {
+    title: "Why Won't The Weight Budge?",
+    price: "£199",
+    duration: "Blood test",
+    description: "Metabolic weight-resistance panel covering fasting insulin, HOMA-IR, uric acid, Lp(a), leptin, adiponectin and thyroid. GP-reviewed interpretation of why fat loss is physiologically difficult.",
+  },
+  "optimiser-baseline": {
+    title: "The Optimiser's Baseline",
+    price: "£395",
+    duration: "Blood test",
+    description: "Performance and safety baseline covering IGF-1, testosterone, cortisol, insulin, liver and kidney function, Lp(a) and full lipid profile. GP-reviewed report included.",
+  },
 };
 
 const aliasMap: Record<string, string> = { advanced: "programme" };
@@ -64,7 +100,7 @@ function Shield() {
   );
 }
 
-type Step = "calendar" | "pay" | "submitting" | "done" | "no-calendly";
+type Step = "calendar" | "pay" | "submitting" | "done" | "no-calendly" | "enquiry-sent";
 
 function BookingInner() {
   const searchParams = useSearchParams();
@@ -83,6 +119,33 @@ function BookingInner() {
   const [invitee, setInvitee] = useState<{ name: string; email: string } | null>(null);
   const [slotLabel, setSlotLabel] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+
+  const [formName, setFormName] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [formPhone, setFormPhone] = useState("");
+  const [formMessage, setFormMessage] = useState("");
+  const [formError, setFormError] = useState("");
+  const [formSubmitting, setFormSubmitting] = useState(false);
+
+  const handleEnquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormError("");
+    setFormSubmitting(true);
+    try {
+      const res = await fetch("/api/book-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: formName, email: formEmail, phone: formPhone, tier: resolvedTier, message: formMessage }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || "Something went wrong. Please try again.");
+      setStep("enquiry-sent");
+    } catch (err: unknown) {
+      setFormError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setFormSubmitting(false);
+    }
+  };
 
   // Load Calendly widget script once
   useEffect(() => {
@@ -159,6 +222,10 @@ function BookingInner() {
           <h1 className="cg" style={{ fontSize: "clamp(2rem,4.2vw,3rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.15, marginBottom: 20 }}>
             {step === "pay" || step === "submitting"
               ? <><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Your slot is reserved.</em><br />Pay now to confirm.</>
+              : step === "enquiry-sent"
+              ? <><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Enquiry received.</em><br />We&apos;ll be in touch soon.</>
+              : step === "no-calendly"
+              ? <>Send your enquiry.<br /><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>We&apos;ll confirm your slot directly.</em></>
               : <>Choose your time.<br /><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Pay to confirm.</em></>
             }
           </h1>
@@ -195,17 +262,84 @@ function BookingInner() {
             </div>
           )}
 
-          {/* Fallback: Calendly not yet configured */}
+          {/* Intake form — shown when Calendly not yet configured */}
           {step === "no-calendly" && (
-            <div className="card" style={{ borderLeft: "3px solid var(--go)", maxWidth: 580, marginBottom: 36 }}>
-              <p style={{ fontSize: ".8rem", fontWeight: 600, color: "var(--fo)", marginBottom: 6 }}>Online booking coming shortly</p>
-              <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 16 }}>
-                To book your appointment right now, email us at{" "}
-                <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)", fontWeight: 500 }}>hello@veridianclinic.com</a>{" "}
-                or call and we'll confirm your slot directly.
+            <form onSubmit={handleEnquirySubmit} style={{ maxWidth: 580, marginBottom: 36, display: "grid", gap: 18 }}>
+              <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85, margin: 0 }}>
+                Complete the form below and Dr Taiwo will be in touch within 24 hours to confirm your appointment details.
               </p>
-              <p style={{ fontSize: ".8rem", color: "var(--sl3)", lineHeight: 1.75 }}>
-                Available: alternate Wednesdays &amp; Fridays
+              <div>
+                <label style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sl3)", display: "block", marginBottom: 6 }}>Full name *</label>
+                <input
+                  type="text"
+                  required
+                  value={formName}
+                  onChange={e => setFormName(e.target.value)}
+                  placeholder="Your full name"
+                  style={{ width: "100%", padding: "12px 14px", border: "1px solid rgba(0,0,0,.12)", background: "var(--wh)", fontSize: ".92rem", color: "var(--sl)", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sl3)", display: "block", marginBottom: 6 }}>Email address *</label>
+                <input
+                  type="email"
+                  required
+                  value={formEmail}
+                  onChange={e => setFormEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  style={{ width: "100%", padding: "12px 14px", border: "1px solid rgba(0,0,0,.12)", background: "var(--wh)", fontSize: ".92rem", color: "var(--sl)", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sl3)", display: "block", marginBottom: 6 }}>Phone number (optional)</label>
+                <input
+                  type="tel"
+                  value={formPhone}
+                  onChange={e => setFormPhone(e.target.value)}
+                  placeholder="+44 7700 000000"
+                  style={{ width: "100%", padding: "12px 14px", border: "1px solid rgba(0,0,0,.12)", background: "var(--wh)", fontSize: ".92rem", color: "var(--sl)", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div>
+                <label style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sl3)", display: "block", marginBottom: 6 }}>Message (optional)</label>
+                <textarea
+                  value={formMessage}
+                  onChange={e => setFormMessage(e.target.value)}
+                  placeholder="Anything you'd like Dr Taiwo to know before getting in touch..."
+                  rows={4}
+                  style={{ width: "100%", padding: "12px 14px", border: "1px solid rgba(0,0,0,.12)", background: "var(--wh)", fontSize: ".92rem", color: "var(--sl)", outline: "none", boxSizing: "border-box", resize: "vertical", fontFamily: "inherit", lineHeight: 1.7 }}
+                />
+              </div>
+              {formError && <p style={{ color: "var(--red)", fontSize: ".82rem", margin: 0 }}>{formError}</p>}
+              <button
+                type="submit"
+                className="btn btn-fo"
+                disabled={formSubmitting}
+                style={{ opacity: formSubmitting ? 0.65 : 1, cursor: formSubmitting ? "wait" : "pointer" }}
+              >
+                {formSubmitting ? "Sending enquiry…" : "Send enquiry →"}
+              </button>
+              <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.75, margin: 0 }}>
+                Dr Tosin typically responds within a few hours during working hours. Or email directly:{" "}
+                <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a>
+              </p>
+            </form>
+          )}
+
+          {/* Enquiry confirmation */}
+          {step === "enquiry-sent" && (
+            <div className="card" style={{ borderLeft: "3px solid var(--go)", maxWidth: 580, marginBottom: 36 }}>
+              <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>
+                Enquiry received
+              </p>
+              <p className="cg" style={{ fontSize: "1.4rem", fontWeight: 500, color: "var(--sl)", marginBottom: 12, lineHeight: 1.25 }}>
+                Thank you{formName ? `, ${formName.split(" ")[0]}` : ""}.
+              </p>
+              <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 6 }}>
+                We&apos;ve received your enquiry for <strong style={{ color: "var(--sl)" }}>{details.title}</strong>.
+              </p>
+              <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85 }}>
+                Dr Tosin will be in touch within 24 hours — usually sooner — to confirm your appointment details.
               </p>
             </div>
           )}
