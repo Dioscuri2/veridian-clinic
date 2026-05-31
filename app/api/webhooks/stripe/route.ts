@@ -4,6 +4,17 @@ import { sendGuideEmail } from "@/lib/guideEmail";
 import { sendDiscoveryIntakeEmail } from "@/lib/discoveryEmail";
 import { sendBloodTestConfirmation } from "@/lib/bloodTestEmail";
 
+const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
+
+async function pingDiscord(message: string) {
+  if (!DISCORD_WEBHOOK) return;
+  await fetch(DISCORD_WEBHOOK, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content: message }),
+  }).catch(() => {});
+}
+
 const BLOOD_TEST_TIERS = new Set([
   "metabolic-screen", "womens-hormones", "mens-testosterone",
   "cardiovascular-risk", "fatigue-energy", "metabolic-weight", "optimiser-baseline",
@@ -43,17 +54,35 @@ export async function POST(request: NextRequest) {
     if ((tier === "discovery" || tier === "discovery-quiz") && session.payment_status === "paid") {
       const email = session.customer_details?.email || session.customer_email || "";
       const name = session.customer_details?.name || session.metadata?.name || "";
+      const amountGBP = session.amount_total ? `£${(session.amount_total / 100).toFixed(2)}` : "";
       if (email) {
         await sendDiscoveryIntakeEmail({ email, name });
       }
+      await pingDiscord(
+        `📞 **Discovery call PAID — Veridian Clinic**\n` +
+        `**Amount:** ${amountGBP}\n` +
+        `**Patient:** ${name || "—"}\n` +
+        `**Email:** ${email || "—"}\n` +
+        `\nIntake email sent to patient. Schedule call in ThanksDoc.`
+      );
     }
 
     if (tier && BLOOD_TEST_TIERS.has(tier) && session.payment_status === "paid") {
       const email = session.customer_details?.email || session.customer_email || "";
       const name = session.customer_details?.name || session.metadata?.name || "";
+      const amountGBP = session.amount_total ? `£${(session.amount_total / 100).toFixed(2)}` : "";
       if (email) {
         await sendBloodTestConfirmation({ email, name, tier, stripeSessionId: session.id });
       }
+      await pingDiscord(
+        `💳 **Blood test PAID — Veridian Clinic**\n` +
+        `**Panel:** ${tier}\n` +
+        `**Amount:** ${amountGBP}\n` +
+        `**Patient:** ${name || "—"}\n` +
+        `**Email:** ${email || "—"}\n` +
+        `**Stripe session:** ${session.id}\n` +
+        `\n⚠️ Action: contact patient within 24h to arrange collection. Randox order details in notification email.`
+      );
     }
 
     if (tier === "guide" && session.payment_status === "paid") {

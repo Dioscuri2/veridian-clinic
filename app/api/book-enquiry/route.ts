@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE = "https://api.brevo.com/v3";
+const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
+
+async function pingDiscord(message: string) {
+  if (!DISCORD_WEBHOOK) return;
+  await fetch(DISCORD_WEBHOOK, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content: message }),
+  }).catch(() => {});
+}
 
 const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
   "womens-hormones":    { code: "HSC7F + RP7 + Lp(a) + Fasting Insulin + Vit D", notes: "Use HSC7F as base panel; add-ons ordered separately. Include TPO antibodies." },
@@ -150,6 +160,17 @@ export async function POST(req: NextRequest) {
       }),
     }).catch(() => {});
   }
+
+  // Discord ping
+  await pingDiscord(
+    `📋 **New booking enquiry — Veridian Clinic**\n` +
+    `**Product:** ${tierLabel}\n` +
+    `**Name:** ${name}\n` +
+    `**Email:** ${email}\n` +
+    `**Phone:** ${phone || "—"}\n` +
+    (message ? `**Message:** ${message.slice(0, 200)}\n` : "") +
+    `\nReply at hello@veridianclinic.com`
+  );
 
   return NextResponse.json({ ok: true });
 }
