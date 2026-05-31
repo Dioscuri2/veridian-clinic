@@ -334,28 +334,20 @@ function BookingInner() {
 
               {btError && <p style={{ color: "var(--red)", fontSize: ".82rem", marginBottom: 14 }}>{btError}</p>}
 
-              <div style={{ display: "grid", gap: 10, marginBottom: 20 }}>
+              <div style={{ marginBottom: 20 }}>
                 <button
                   className="btn btn-go"
                   onClick={onStripePayBloodTest}
                   disabled={!!btSubmitting}
-                  style={{ opacity: btSubmitting ? 0.65 : 1, cursor: btSubmitting ? "wait" : "pointer" }}
+                  style={{ opacity: btSubmitting ? 0.65 : 1, cursor: btSubmitting ? "wait" : "pointer", width: "100%" }}
                 >
                   {btSubmitting === "stripe" ? "Redirecting to payment…" : `Pay ${details.price} by Card →`}
-                </button>
-                <button
-                  className="btn btn-ol"
-                  onClick={onPayPalBloodTest}
-                  disabled={!!btSubmitting}
-                  style={{ opacity: btSubmitting ? 0.65 : 1, cursor: btSubmitting ? "wait" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
-                >
-                  {btSubmitting === "paypal" ? "Redirecting to PayPal…" : "Pay with PayPal →"}
                 </button>
               </div>
 
               <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7, marginBottom: 16 }}>
                 <Shield />
-                <span>Secure payment via Stripe (card) or PayPal. Your blood test kit will be arranged by Dr Taiwo after payment — collection instructions sent within 24 hours.</span>
+                <span>Secure payment via Stripe. Accepts all major cards including Visa, Mastercard and Amex. Your blood test kit will be arranged by Dr Taiwo after payment — collection instructions sent within 24 hours.</span>
               </div>
               <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.75 }}>
                 Questions before paying?{" "}
