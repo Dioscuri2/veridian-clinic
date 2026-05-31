@@ -100,7 +100,12 @@ function Shield() {
   );
 }
 
-type Step = "calendar" | "pay" | "submitting" | "done" | "no-calendly" | "enquiry-sent";
+type Step = "calendar" | "pay" | "submitting" | "done" | "no-calendly" | "enquiry-sent" | "blood-test-pay";
+
+const BLOOD_TEST_TIERS = new Set([
+  "metabolic-screen", "womens-hormones", "mens-testosterone",
+  "cardiovascular-risk", "fatigue-energy", "metabolic-weight", "optimiser-baseline",
+]);
 
 function BookingInner() {
   const searchParams = useSearchParams();
@@ -115,7 +120,11 @@ function BookingInner() {
 
   const details = tierDetails[resolvedTier];
 
-  const [step, setStep] = useState<Step>(CALENDLY_BASE ? "calendar" : "no-calendly");
+  const [step, setStep] = useState<Step>(
+    BLOOD_TEST_TIERS.has(resolvedTier)
+      ? "blood-test-pay"
+      : CALENDLY_BASE ? "calendar" : "no-calendly"
+  );
   const [invitee, setInvitee] = useState<{ name: string; email: string } | null>(null);
   const [slotLabel, setSlotLabel] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -144,6 +153,48 @@ function BookingInner() {
       setFormError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setFormSubmitting(false);
+    }
+  };
+
+  // Blood-test direct payment state
+  const [btName, setBtName] = useState("");
+  const [btEmail, setBtEmail] = useState("");
+  const [btError, setBtError] = useState("");
+  const [btSubmitting, setBtSubmitting] = useState<"stripe" | "paypal" | false>(false);
+
+  const onStripePayBloodTest = async () => {
+    if (!btName.trim() || !btEmail.trim()) { setBtError("Please enter your name and email before paying."); return; }
+    setBtError(""); setBtSubmitting("stripe");
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: btName, email: btEmail, tier: resolvedTier, turnstileToken: "" }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.url) throw new Error(data?.error || "Checkout session failed");
+      window.location.href = data.url;
+    } catch (err: unknown) {
+      setBtError(err instanceof Error ? err.message : "Payment setup failed. Please try again.");
+      setBtSubmitting(false);
+    }
+  };
+
+  const onPayPalBloodTest = async () => {
+    if (!btName.trim() || !btEmail.trim()) { setBtError("Please enter your name and email before paying."); return; }
+    setBtError(""); setBtSubmitting("paypal");
+    try {
+      const res = await fetch("/api/paypal-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tier: resolvedTier, name: btName, email: btEmail }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.url) throw new Error(data?.error || "PayPal unavailable");
+      window.location.href = data.url;
+    } catch (err: unknown) {
+      setBtError(err instanceof Error ? err.message : "PayPal is currently unavailable. Please use card payment.");
+      setBtSubmitting(false);
     }
   };
 
@@ -226,6 +277,8 @@ function BookingInner() {
               ? <><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Enquiry received.</em><br />We&apos;ll be in touch soon.</>
               : step === "no-calendly"
               ? <>Send your enquiry.<br /><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>We&apos;ll confirm your slot directly.</em></>
+              : step === "blood-test-pay"
+              ? <>Confirm your blood test.<br /><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Pay to secure your order.</em></>
               : <>Choose your time.<br /><em style={{ fontStyle: "italic", color: "var(--fo2)" }}>Pay to confirm.</em></>
             }
           </h1>
@@ -248,8 +301,71 @@ function BookingInner() {
             <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85 }}>{details.description}</p>
           </div>
 
+          {/* Blood test direct payment — no scheduling needed */}
+          {step === "blood-test-pay" && (
+            <div style={{ maxWidth: 540, marginBottom: 36 }}>
+              <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 18 }}>
+                Your details — then choose how to pay
+              </p>
+              <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
+                <div>
+                  <label style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sl3)", display: "block", marginBottom: 6 }}>Full name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={btName}
+                    onChange={e => setBtName(e.target.value)}
+                    placeholder="Your full name"
+                    style={{ width: "100%", padding: "12px 14px", border: "1px solid rgba(0,0,0,.12)", background: "var(--wh)", fontSize: ".92rem", color: "var(--sl)", outline: "none", boxSizing: "border-box" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sl3)", display: "block", marginBottom: 6 }}>Email address *</label>
+                  <input
+                    type="email"
+                    required
+                    value={btEmail}
+                    onChange={e => setBtEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    style={{ width: "100%", padding: "12px 14px", border: "1px solid rgba(0,0,0,.12)", background: "var(--wh)", fontSize: ".92rem", color: "var(--sl)", outline: "none", boxSizing: "border-box" }}
+                  />
+                </div>
+              </div>
+
+              {btError && <p style={{ color: "var(--red)", fontSize: ".82rem", marginBottom: 14 }}>{btError}</p>}
+
+              <div style={{ display: "grid", gap: 10, marginBottom: 20 }}>
+                <button
+                  className="btn btn-go"
+                  onClick={onStripePayBloodTest}
+                  disabled={!!btSubmitting}
+                  style={{ opacity: btSubmitting ? 0.65 : 1, cursor: btSubmitting ? "wait" : "pointer" }}
+                >
+                  {btSubmitting === "stripe" ? "Redirecting to payment…" : `Pay ${details.price} by Card →`}
+                </button>
+                <button
+                  className="btn btn-ol"
+                  onClick={onPayPalBloodTest}
+                  disabled={!!btSubmitting}
+                  style={{ opacity: btSubmitting ? 0.65 : 1, cursor: btSubmitting ? "wait" : "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
+                >
+                  {btSubmitting === "paypal" ? "Redirecting to PayPal…" : "Pay with PayPal →"}
+                </button>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7, marginBottom: 16 }}>
+                <Shield />
+                <span>Secure payment via Stripe (card) or PayPal. Your blood test kit will be arranged by Dr Taiwo after payment — collection instructions sent within 24 hours.</span>
+              </div>
+              <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.75 }}>
+                Questions before paying?{" "}
+                <a href="mailto:hello@veridianclinic.com" style={{ color: "var(--fo)" }}>hello@veridianclinic.com</a>
+              </p>
+            </div>
+          )}
+
           {/* STEP 1: Calendly embed */}
-          {step !== "no-calendly" && (
+          {step !== "no-calendly" && step !== "blood-test-pay" && (
             <div style={{ marginBottom: 48 }}>
               <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 14 }}>
                 Step 1 — Pick a date and time

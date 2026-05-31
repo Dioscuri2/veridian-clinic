@@ -3,6 +3,21 @@ import { NextRequest, NextResponse } from "next/server";
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE = "https://api.brevo.com/v3";
 
+const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
+  "womens-hormones":    { code: "HSC7F + RP7 + Lp(a) + Fasting Insulin + Vit D", notes: "Use HSC7F as base panel; add-ons ordered separately. Include TPO antibodies." },
+  "mens-testosterone":  { code: "HSC7M + RP7 + Free Testosterone + Lp(a) + Fasting Insulin", notes: "Free T calculated from Total T + SHBG. Include DHEA-S + Cortisol." },
+  "cardiovascular-risk":{ code: "RP10 + Lp(a) + ApoB + Homocysteine + hsCRP + Small Dense LDL + Fasting Insulin", notes: "RP10 as base; cardiovascular add-ons listed. Include HbA1c." },
+  "fatigue-energy":     { code: "HSC10 + Fasting Insulin + Uric Acid + Vit D", notes: "HSC10 base includes FBC, thyroid (FT3/FT4/TSH/TPO), iron, B12, folate, CRP, kidney." },
+  "metabolic-weight":   { code: "RP3 + RP4 + Fasting Insulin + Uric Acid + Lp(a)", notes: "Two Randox panels combined. Include Leptin + Adiponectin as add-ons." },
+  "optimiser-baseline": { code: "HSC8M or HSC8F + IGF-1 + Fasting Insulin + Cortisol (AM) + Testosterone", notes: "HSC8M for male patients, HSC8F for female. Add Lp(a) + full lipids if not in base." },
+  "metabolic-screen":   { code: "HSC7 (Energy Screen)", notes: "Standard Veridian Energy Screen — single panel code." },
+  baseline:             { code: "Veridian Baseline — custom metabolic panel", notes: "Full ThanksDoc clinical programme. Also includes 14-day Lingo CGM — order separately." },
+  "longevity-panel":    { code: "Longevity Panel — 150+ markers", notes: "Full ThanksDoc clinical programme. Confirm panel code with Randox account manager." },
+  programme:            { code: "12-Week Reset — includes Baseline + CGM ×2", notes: "ThanksDoc programme. Two CGM cycles required — order second at Week 6 review." },
+  discovery:            { code: "No Randox order — GP consultation only", notes: "Schedule in ThanksDoc calendar. No phlebotomy required." },
+  "discovery-quiz":     { code: "No Randox order — GP consultation only", notes: "Schedule in ThanksDoc calendar. Quiz-rate pricing confirmed." },
+};
+
 const TIER_LABELS: Record<string, string> = {
   discovery: "GP Discovery Call (£195)",
   "discovery-quiz": "GP Discovery Call — guide rate (£97)",
@@ -76,7 +91,9 @@ export async function POST(req: NextRequest) {
         sender: { name: "Veridian Clinic Bookings", email: "hello@veridianclinic.com" },
         to: [{ email: "hello@veridianclinic.com", name: "Dr Tosin Taiwo" }],
         subject: `New booking enquiry — ${tierLabel}`,
-        htmlContent: `
+        htmlContent: (() => {
+          const randox = RANDOX_CODES[tier] || null;
+          return `
           <div style="font-family:Arial,sans-serif;max-width:600px;padding:32px;">
             <h2 style="color:#2c2a26;font-size:20px;margin-bottom:24px;">New Booking Enquiry</h2>
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -86,11 +103,17 @@ export async function POST(req: NextRequest) {
               <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Phone</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;color:#2c2a26;font-size:14px;">${phone || "Not provided"}</td></tr>
               <tr><td style="padding:10px 0;color:#5a534a;font-size:14px;vertical-align:top;"><strong>Message</strong></td><td style="padding:10px 0;color:#2c2a26;font-size:14px;line-height:1.7;">${message || "—"}</td></tr>
             </table>
-            <div style="margin-top:28px;padding:16px 20px;background:#f6f1e8;border-left:3px solid #c8a84b;">
+            ${randox ? `
+            <div style="margin-top:24px;padding:16px 20px;background:#2c2a26;border-left:3px solid #c8a84b;">
+              <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c8a84b;">Randox Order Reference</p>
+              <p style="margin:0 0 6px;font-size:14px;color:#f6f1e8;font-weight:600;">${randox.code}</p>
+              <p style="margin:0;font-size:12px;color:#8a8278;line-height:1.6;">${randox.notes}</p>
+            </div>` : ""}
+            <div style="margin-top:16px;padding:16px 20px;background:#f6f1e8;border-left:3px solid #c8a84b;">
               <p style="margin:0;font-size:13px;color:#5a534a;">Reply directly to this email to contact the patient, or <a href="mailto:${email}" style="color:#c8a84b;">click here</a> to open a reply.</p>
             </div>
           </div>
-        `,
+        `})(),
         replyTo: { email, name },
       }),
     }).catch(() => {});
