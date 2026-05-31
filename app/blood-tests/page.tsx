@@ -78,6 +78,33 @@ const tests = [
     price: "£195",
     includedIn: "Energy Screen",
   },
+  {
+    slug: "womens-hormones",
+    title: "Perimenopause & Women's Hormone Blood Test",
+    excerpt:
+      "Fatigue, weight gain, poor sleep, low mood, irregular cycles — and a normal blood test result. This panel measures the full hormonal picture: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, thyroid, Lp(a) and fasting insulin. Interpreted by a GP.",
+    tag: "Women's Health",
+    price: "£325",
+    includedIn: "Is It My Hormones? Panel",
+  },
+  {
+    slug: "mens-testosterone",
+    title: "Testosterone & Men's Hormone Blood Test",
+    excerpt:
+      "Total testosterone alone misses the picture in most men where free testosterone — determined by SHBG — is the clinically relevant value. This panel measures free testosterone, SHBG, LH, FSH, DHEA-S, cortisol, Lp(a) and fasting insulin. GP-reviewed.",
+    tag: "Men's Health",
+    price: "£325",
+    includedIn: "Running on Empty Panel",
+  },
+  {
+    slug: "fatigue-energy",
+    title: "Fatigue & Energy Deep Screen",
+    excerpt:
+      "For people who have already had a standard thyroid and blood count and been told everything is normal. This panel adds TPO antibodies, fasting insulin, uric acid, full iron studies and ferritin at the optimal threshold — the markers that explain the majority of cases where standard tests return nothing.",
+    tag: "Energy & Fatigue",
+    price: "£249",
+    includedIn: "Tired of Being Told You're Fine Panel",
+  },
 ];
 
 export default function BloodTestsIndexPage() {
