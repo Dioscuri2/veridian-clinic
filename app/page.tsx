@@ -208,6 +208,60 @@ function MethodCard({ num, title, points, dark }: { num: string; title: string; 
   );
 }
 
+function OfferCard({ o, delay }: { o: typeof offers[0]; delay: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`offer-card${o.featured ? " offer-card-featured" : ""}`} data-aos="fade-up" data-aos-delay={delay}>
+      {o.featured && (
+        <div style={{ position:"absolute", top:-1, left:24, background:"var(--go)", padding:"3px 12px", fontSize:".66rem", fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"var(--fo)" }}>
+          Most popular
+        </div>
+      )}
+      <div className="offer-card-head" style={{ paddingTop: o.featured ? 34 : 24 }}>
+        <p style={{ fontSize:".7rem", fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:5 }}>{o.tag}</p>
+        <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color: o.featured ? "var(--iv)" : "var(--sl)", lineHeight:1.2, marginBottom:10 }}>{o.name}</h3>
+        <div className="offer-price">{o.price}</div>
+        {!o.featured && (
+          <p style={{ fontSize:".8rem", color:"var(--sl3)", marginTop:3, fontStyle:"italic" }}>
+            {o.name === "12-Week Metabolic Reset" ? "Payment plans available" : "One-off consultation"}
+          </p>
+        )}
+      </div>
+      <div className="offer-card-body">
+        <p style={{ fontSize:".9rem", color: o.featured ? "rgba(246,241,232,.78)" : "var(--sl2)", lineHeight:1.9, marginBottom:18 }}>{o.blurb}</p>
+        <button
+          type="button"
+          onClick={() => setOpen(v => !v)}
+          style={{ display:"flex", justifyContent:"space-between", alignItems:"center", width:"100%", background:"none", border:"none", borderBottom:`1px solid ${o.featured ? "rgba(246,241,232,.12)" : "rgba(0,0,0,.08)"}`, padding:"0 0 8px", cursor:"pointer", marginBottom:8 }}
+        >
+          <p style={{ fontSize:".7rem", fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color: o.featured ? "var(--go2)" : "var(--fo)", margin:0 }}>What you leave with</p>
+          <span style={{ fontSize:"1.1rem", color: o.featured ? "var(--go)" : "var(--fo)", fontWeight:300, transition:"transform .2s", transform: open ? "rotate(45deg)" : "none", display:"inline-block", lineHeight:1 }}>+</span>
+        </button>
+        {open && (
+          <ul style={{ listStyle:"none", marginBottom:18, flexGrow:1 }}>
+            {o.leave_with.map(f => (
+              <li key={f} style={{ display:"flex", alignItems:"flex-start", gap:9, padding:"4px 0", borderBottom:`1px solid ${o.featured ? "rgba(246,241,232,.07)" : "rgba(0,0,0,.05)"}` }}>
+                <div style={{ width:13, height:13, borderRadius:"50%", border:`1px solid ${o.featured ? "var(--go)" : "var(--fo)"}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:3, fontSize:".44rem", color: o.featured ? "var(--go)" : "var(--fo)", fontWeight:700 }}>✓</div>
+                <span style={{ fontSize:".83rem", color: o.featured ? "rgba(246,241,232,.7)" : "var(--sl2)", lineHeight:1.7 }}>{f}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {!open && <div style={{ marginBottom:18 }} />}
+        {o.bring && (
+          <div style={{ padding:"11px 13px", background: o.featured ? "rgba(246,241,232,.06)" : "var(--iv)", borderLeft:"2px solid var(--go)", marginBottom:18 }}>
+            <p style={{ fontSize:".74rem", fontWeight:600, color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:2 }}>Bring to your call:</p>
+            <p style={{ fontSize:".76rem", color: o.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", lineHeight:1.7, fontStyle:"italic" }}>{o.bring}</p>
+          </div>
+        )}
+        <Link href={`/book?tier=${o.tier}`} className={`btn btn-full ${o.featured ? "btn-go" : "btn-fo"}`} style={{ marginTop:"auto" }}>
+          {o.cta} →
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [tIdx, setTIdx] = useState(0);
 
@@ -536,44 +590,7 @@ export default function HomePage() {
             </ScrollReveal>
             <div className="offer-grid">
               {offers.map((o, i) => (
-                <div key={o.name} className={`offer-card${o.featured ? " offer-card-featured" : ""}`} data-aos="fade-up" data-aos-delay={i * 80}>
-                  {o.featured && (
-                    <div style={{ position:"absolute", top:-1, left:24, background:"var(--go)", padding:"3px 12px", fontSize:".66rem", fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color:"var(--fo)" }}>
-                      Most popular
-                    </div>
-                  )}
-                  <div className="offer-card-head" style={{ paddingTop: o.featured ? 34 : 24 }}>
-                    <p style={{ fontSize:".7rem", fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:5 }}>{o.tag}</p>
-                    <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color: o.featured ? "var(--iv)" : "var(--sl)", lineHeight:1.2, marginBottom:10 }}>{o.name}</h3>
-                    <div className="offer-price">{o.price}</div>
-                    {!o.featured && (
-                      <p style={{ fontSize:".8rem", color:"var(--sl3)", marginTop:3, fontStyle:"italic" }}>
-                        {o.name === "12-Week Metabolic Reset" ? "Payment plans available" : "One-off consultation"}
-                      </p>
-                    )}
-                  </div>
-                  <div className="offer-card-body">
-                    <p style={{ fontSize:".9rem", color: o.featured ? "rgba(246,241,232,.78)" : "var(--sl2)", lineHeight:1.9, marginBottom:18 }}>{o.blurb}</p>
-                    <p style={{ fontSize:".7rem", fontWeight:700, letterSpacing:".1em", textTransform:"uppercase", color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:8 }}>What you leave with</p>
-                    <ul style={{ listStyle:"none", marginBottom:18, flexGrow:1 }}>
-                      {o.leave_with.map(f => (
-                        <li key={f} style={{ display:"flex", alignItems:"flex-start", gap:9, padding:"4px 0", borderBottom:`1px solid ${o.featured ? "rgba(246,241,232,.07)" : "rgba(0,0,0,.05)"}` }}>
-                          <div style={{ width:13, height:13, borderRadius:"50%", border:`1px solid ${o.featured ? "var(--go)" : "var(--fo)"}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:3, fontSize:".44rem", color: o.featured ? "var(--go)" : "var(--fo)", fontWeight:700 }}>✓</div>
-                          <span style={{ fontSize:".83rem", color: o.featured ? "rgba(246,241,232,.7)" : "var(--sl2)", lineHeight:1.7 }}>{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    {o.bring && (
-                      <div style={{ padding:"11px 13px", background: o.featured ? "rgba(246,241,232,.06)" : "var(--iv)", borderLeft:"2px solid var(--go)", marginBottom:18 }}>
-                        <p style={{ fontSize:".74rem", fontWeight:600, color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:2 }}>Bring to your call:</p>
-                        <p style={{ fontSize:".76rem", color: o.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", lineHeight:1.7, fontStyle:"italic" }}>{o.bring}</p>
-                      </div>
-                    )}
-                    <Link href={`/book?tier=${o.tier}`} className={`btn btn-full ${o.featured ? "btn-go" : "btn-fo"}`} style={{ marginTop:"auto" }}>
-                      {o.cta} →
-                    </Link>
-                  </div>
-                </div>
+                <OfferCard key={o.name} o={o} delay={i * 80} />
               ))}
             </div>
             <div style={{ textAlign:"center", marginTop:24 }}>
