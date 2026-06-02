@@ -107,7 +107,7 @@ export default function MarkersGuidePage() {
                   }}
                 >
                   Most people are shown glucose, total cholesterol, and a vague reassurance that everything looks fine.
-                  This guide explains the biomarkers that often matter earlier — the ones that can reveal hidden
+                  This guide explains the biomarkers that often matter earlier the ones that can reveal hidden
                   metabolic strain, vascular risk, inflammation, liver stress, and foundational optimisation gaps.
                 </p>
                 <p

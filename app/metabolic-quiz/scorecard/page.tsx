@@ -17,7 +17,7 @@ const FACTOR_META: Record<string, { label: string; subtitle: string; greenNote: 
     label: "Energy & Fatigue",
     subtitle: "Hyperinsulinaemia proxy",
     greenNote: "Consistent energy levels suggest your insulin and cortisol rhythms are well-regulated.",
-    redNote: "Persistent fatigue and post-meal crashes are early markers of hyperinsulinaemia — often detectable years before glucose changes.",
+    redNote: "Persistent fatigue and post-meal crashes are early markers of hyperinsulinaemia often detectable years before glucose changes.",
   },
   sleep: {
     label: "Sleep Quality",
@@ -29,7 +29,7 @@ const FACTOR_META: Record<string, { label: string; subtitle: string; greenNote: 
     label: "Chronic Stress",
     subtitle: "Cortisol load & visceral fat",
     greenNote: "Low chronic stress keeps cortisol rhythms healthy and visceral fat accumulation in check.",
-    redNote: "Sustained cortisol elevation drives visceral fat accumulation and insulin resistance — independent of diet and exercise.",
+    redNote: "Sustained cortisol elevation drives visceral fat accumulation and insulin resistance independent of diet and exercise.",
   },
   activity: {
     label: "Movement & Exercise",
@@ -198,7 +198,7 @@ function ScorecardContent() {
                       {Number(delta) > 0
                         ? `Your metabolism is running approximately ${delta} year${Number(delta) === 1 ? "" : "s"} ahead.`
                         : Number(delta) < 0
-                        ? `Your metabolism is tracking ${Math.abs(Number(delta))} year${Math.abs(Number(delta)) === 1 ? "" : "s"} behind your age — a positive sign.`
+                        ? `Your metabolism is tracking ${Math.abs(Number(delta))} year${Math.abs(Number(delta)) === 1 ? "" : "s"} behind your age a positive sign.`
                         : "Your metabolic age closely matches your chronological age."}
                     </p>
                   )}
@@ -291,7 +291,7 @@ function ScorecardContent() {
                     <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>GP Discovery Call · Save £98</span>
                   </div>
                   <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.72)", lineHeight: 1.75 }}>
-                    Enter your email below. Your scorecard is sent instantly — then you&apos;ll be taken straight to book your call at £97.
+                    Enter your email below. Your scorecard is sent instantly then you&apos;ll be taken straight to book your call at £97.
                   </p>
                 </div>
               )}
@@ -305,7 +305,7 @@ function ScorecardContent() {
               <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 28 }}>
                 {redirect === "discovery-quiz"
                   ? "Your free scorecard is sent to your inbox immediately. You'll then be taken to book your 30-minute GP Discovery Call at the quiz-taker rate of £97."
-                  : "Get your full factor breakdown, the clinical explanation behind each score, and a personalised next-step recommendation — delivered to your inbox."}
+                  : "Get your full factor breakdown, the clinical explanation behind each score, and a personalised next-step recommendation delivered to your inbox."}
               </p>
 
               <form onSubmit={handleSubmit} style={{ display: "grid", gap: 16 }}>

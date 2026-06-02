@@ -38,8 +38,8 @@ const questions = [
     options: [
       { label: "No", score: 0 },
       { label: "Not sure", score: 1 },
-      { label: "Yes — one close relative", score: 2 },
-      { label: "Yes — multiple close relatives", score: 3 },
+      { label: "Yes one close relative", score: 2 },
+      { label: "Yes multiple close relatives", score: 3 },
     ],
   },
   {
@@ -85,13 +85,13 @@ const resultMap = {
     tier: "initial",
     title: "Initial GP Consultation",
     price: "£195",
-    summary: "You’d likely benefit most from a focused GP consultation first — a clear, efficient starting point to map symptoms, goals, and the right diagnostic next step.",
+    summary: "You’d likely benefit most from a focused GP consultation first a clear, efficient starting point to map symptoms, goals, and the right diagnostic next step.",
   },
   core: {
     tier: "core",
     title: "Core Metabolic Assessment",
     price: "£495",
-    summary: "Your answers suggest the Core Metabolic Assessment is likely the best fit — enough depth to identify the main drivers of your weight, energy, and cardiometabolic risk.",
+    summary: "Your answers suggest the Core Metabolic Assessment is likely the best fit enough depth to identify the main drivers of your weight, energy, and cardiometabolic risk.",
   },
   advanced: {
     tier: "advanced",

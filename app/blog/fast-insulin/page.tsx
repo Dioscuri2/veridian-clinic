@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Fasting Insulin Test UK — What It Measures and Why It Matters | Veridian Clinic",
+  title: "Fasting Insulin Test UK What It Measures and Why It Matters | Veridian Clinic",
   description:
     "Fasting insulin is one of the most clinically useful but under-requested markers in UK preventive medicine. It reveals early insulin resistance years before HbA1c or fasting glucose become abnormal, identifying who is at risk while intervention is still most effective.",
   alternates: {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Fasting Insulin — The Missing Early Signal in Metabolic Disease",
+  headline: "Fasting Insulin The Missing Early Signal in Metabolic Disease",
   description:
     "Fasting insulin reveals early insulin resistance years before HbA1c or fasting glucose become abnormal. It is one of the most under-requested and clinically useful markers in preventive metabolic medicine.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
@@ -75,8 +75,8 @@ export default function FastInsulinPage() {
         heroImage="/blog/fasting-insulin.jpg"
         heroAlt="Clinical blood test vials for fasting insulin and metabolic assessment"
         ctas={[
-          { href: "/book?tier=metabolic-screen", label: "Book the Energy Screen — fasting insulin included →" },
-          { href: "/book?tier=baseline", label: "Book the Core Metabolic Assessment — £595", variant: "secondary" },
+          { href: "/book?tier=metabolic-screen", label: "Book the Energy Screen fasting insulin included →" },
+          { href: "/book?tier=baseline", label: "Book the Core Metabolic Assessment £595", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >

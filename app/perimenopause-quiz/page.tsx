@@ -16,12 +16,12 @@ const AGE_OPTIONS: { label: string; group: AgeGroup }[] = [
 const QUESTIONS = [
   {
     id: "sleep",
-    text: "Do you wake between 2–4am with your mind racing, unable to get back to sleep — even when you're exhausted?",
+    text: "Do you wake between 2–4am with your mind racing, unable to get back to sleep even when you're exhausted?",
     options: [
       "Rarely or never",
       "Once or twice a week",
-      "Most nights — I'm awake for an hour or more",
-      "Almost every night — I'm running on broken sleep",
+      "Most nights I'm awake for an hour or more",
+      "Almost every night I'm running on broken sleep",
     ],
     scores: [0, 1, 2, 3],
   },
@@ -29,32 +29,32 @@ const QUESTIONS = [
     id: "brain",
     text: "Have you been losing words mid-sentence, forgetting why you walked into a room, or feeling like your sharpness has gone?",
     options: [
-      "No — my memory and focus feel normal",
+      "No my memory and focus feel normal",
       "Occasionally foggy, minor forgetfulness",
-      "Yes — noticeably worse. I'd never have forgotten things like this before",
-      "Significant brain fog — it's affecting my work and daily life",
+      "Yes noticeably worse. I'd never have forgotten things like this before",
+      "Significant brain fog it's affecting my work and daily life",
     ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "weight",
-    text: "Has weight appeared around your middle seemingly overnight — and won't budge no matter what you eat or how much you exercise?",
+    text: "Has weight appeared around your middle seemingly overnight and won't budge no matter what you eat or how much you exercise?",
     options: [
       "No change",
       "Slight increase I can explain",
-      "Yes — stubborn belly weight, nothing I try is working",
+      "Yes stubborn belly weight, nothing I try is working",
       "Significant change that's affecting how I feel in my body",
     ],
     scores: [0, 1, 2, 3],
   },
   {
     id: "mood",
-    text: "Do you experience sudden flashes of rage, irritability, or emotion completely out of proportion — then feel fine ten minutes later?",
+    text: "Do you experience sudden flashes of rage, irritability, or emotion completely out of proportion then feel fine ten minutes later?",
     options: [
-      "Rarely — my moods feel even",
+      "Rarely my moods feel even",
       "Occasionally",
-      "Regularly — it genuinely doesn't feel like me",
-      "Frequently — it's affecting my relationships",
+      "Regularly it genuinely doesn't feel like me",
+      "Frequently it's affecting my relationships",
     ],
     scores: [0, 1, 2, 3],
   },
@@ -71,14 +71,14 @@ function getBand(score: number): Band {
 const RESULTS: Record<Band, { label: string; headline: string; body: string; colour: string }> = {
   low: {
     label: "Early Stage / Low Burden",
-    headline: "Your symptoms are mild — but the shift may be beginning.",
+    headline: "Your symptoms are mild but the shift may be beginning.",
     body: "You're likely in the early stages of the transition, or managing symptoms well. The right habits now protect your sleep, metabolism and mental clarity over the next decade.",
     colour: "#145226",
   },
   moderate: {
     label: "Moderate Symptom Burden",
     headline: "Classic perimenopause. Your body is telling you something is shifting.",
-    body: "Brain fog, disrupted sleep, and changing weight at this level are almost always oestrogen–progesterone fluctuation — not stress, not age. The six-week Reset Guide was built for exactly this stage.",
+    body: "Brain fog, disrupted sleep, and changing weight at this level are almost always oestrogen–progesterone fluctuation not stress, not age. The six-week Reset Guide was built for exactly this stage.",
     colour: "#8a5500",
   },
   high: {
@@ -189,7 +189,7 @@ export default function PerimenopauseQuizPage() {
               </div>
               <div className="card" style={{ padding: "clamp(20px,5vw,36px)" }}>
                 <p style={{ fontSize: "clamp(1.2rem,3.5vw,1.45rem)", fontWeight: 600, color: "var(--sl)", lineHeight: 1.5, marginBottom: 24 }}>
-                  First — how old are you?
+                  First how old are you?
                 </p>
                 <div style={{ display: "grid", gap: 12 }}>
                   {AGE_OPTIONS.map(opt => (
@@ -322,21 +322,21 @@ export default function PerimenopauseQuizPage() {
               {ageGroup === "under45" && (
                 <div style={{ marginBottom: 24, padding: "14px 18px", background: "rgba(20,82,38,.05)", border: "1px solid rgba(20,82,38,.2)" }}>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, margin: 0 }}>
-                    <strong style={{ color: "#145226" }}>Because you're under 45:</strong> NICE guidelines (NG23) recommend blood tests to confirm perimenopause at this age — the free guide covers exactly which tests to request.
+                    <strong style={{ color: "#145226" }}>Because you're under 45:</strong> NICE guidelines (NG23) recommend blood tests to confirm perimenopause at this age the free guide covers exactly which tests to request.
                   </p>
                 </div>
               )}
 
-              {/* Email capture — guide as the reward */}
+              {/* Email capture guide as the reward */}
               <div className="card" style={{ background: "var(--fo)", padding: "clamp(22px,5vw,36px)", textAlign: "center" }}>
                 <p style={{ fontSize: ".68rem", color: "var(--go)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 10 }}>
-                  Free — based on your results
+                  Free based on your results
                 </p>
                 <h3 className="cg" style={{ fontSize: "clamp(1.2rem,3vw,1.7rem)", fontWeight: 500, color: "rgba(246,241,232,.95)", lineHeight: 1.3, marginBottom: 10 }}>
                   Get your personalised Reset Guide
                 </h3>
                 <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.62)", lineHeight: 1.8, marginBottom: 22, maxWidth: 420, margin: "0 auto 22px" }}>
-                  The six-week GP-authored guide, with your blood test checklist and the next clinical steps matched to your symptom level. Enter your email — download it instantly.
+                  The six-week GP-authored guide, with your blood test checklist and the next clinical steps matched to your symptom level. Enter your email download it instantly.
                 </p>
 
                 <form onSubmit={handleEmailSubmit} style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 380, margin: "0 auto" }}>

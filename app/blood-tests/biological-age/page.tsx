@@ -3,16 +3,16 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Biological Age Blood Test UK — Longevity Panel | Veridian Clinic",
+  title: "Biological Age Blood Test UK Longevity Panel | Veridian Clinic",
   description:
-    "A private biological age blood test in the UK. The Longevity Panel analyses 150+ markers — inflammation, metabolic function, organ health, hormones, and cardiovascular risk — to estimate how your body is ageing relative to your chronological age. £795, GP-interpreted.",
+    "A private biological age blood test in the UK. The Longevity Panel analyses 150+ markers inflammation, metabolic function, organ health, hormones, and cardiovascular risk to estimate how your body is ageing relative to your chronological age. £795, GP-interpreted.",
   alternates: {
     canonical: "https://veridianclinic.com/blood-tests/biological-age",
   },
   openGraph: {
-    title: "Biological Age Blood Test UK — Longevity Panel | Veridian Clinic",
+    title: "Biological Age Blood Test UK Longevity Panel | Veridian Clinic",
     description:
-      "Private biological age testing in the UK. 150+ markers across metabolic health, organ function, inflammation, and cardiovascular risk — with a GP-written report and biological age estimate.",
+      "Private biological age testing in the UK. 150+ markers across metabolic health, organ function, inflammation, and cardiovascular risk with a GP-written report and biological age estimate.",
     url: "https://veridianclinic.com/blood-tests/biological-age",
     type: "article",
   },
@@ -39,9 +39,9 @@ const callout = { padding: "18px 20px", background: "var(--iv)", borderLeft: "3p
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Biological Age Blood Test UK — Longevity Panel",
+  headline: "Biological Age Blood Test UK Longevity Panel",
   description:
-    "A comprehensive 150+ marker longevity blood test that estimates biological age alongside organ function, metabolic health, inflammation, and cardiovascular risk — with a GP-written results report and personalised action plan.",
+    "A comprehensive 150+ marker longevity blood test that estimates biological age alongside organ function, metabolic health, inflammation, and cardiovascular risk with a GP-written results report and personalised action plan.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: {
     "@type": "Organization",
@@ -64,15 +64,15 @@ export default function BiologicalAgeTestPage() {
       />
       <ClinicalArticleLayout
         eyebrow="Private Blood Tests UK"
-        title="Biological age blood test UK — what 150+ markers reveal about how your body is actually ageing"
-        intro="Your chronological age is the number of years since you were born. Your biological age is how old your organs, metabolic systems, and inflammatory pathways are actually functioning. These two numbers can diverge significantly — and understanding the gap between them is one of the most actionable things a high-functioning adult can do for their long-term health."
+        title="Biological age blood test UK what 150+ markers reveal about how your body is actually ageing"
+        intro="Your chronological age is the number of years since you were born. Your biological age is how old your organs, metabolic systems, and inflammatory pathways are actually functioning. These two numbers can diverge significantly and understanding the gap between them is one of the most actionable things a high-functioning adult can do for their long-term health."
         ctas={[
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel — £795 →" },
+          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel £795 →" },
           { href: "/metabolic-quiz", label: "Check Your Metabolic Age Free →", variant: "secondary" },
         ]}
       >
         <p style={paragraph}>
-          Most standard health checks answer the question: &apos;do you have a diagnosable disease right now?&apos; A biological age blood test asks a different and arguably more useful question: &apos;how well are your systems functioning relative to your age, and where is the early deterioration already happening?&apos; The answer gives you a map of your health trajectory — not a snapshot of today&apos;s absence of illness, but a forward-looking picture of where you are heading and what you can do about it.
+          Most standard health checks answer the question: &apos;do you have a diagnosable disease right now?&apos; A biological age blood test asks a different and arguably more useful question: &apos;how well are your systems functioning relative to your age, and where is the early deterioration already happening?&apos; The answer gives you a map of your health trajectory not a snapshot of today&apos;s absence of illness, but a forward-looking picture of where you are heading and what you can do about it.
         </p>
 
         <div style={callout}>
@@ -96,22 +96,22 @@ export default function BiologicalAgeTestPage() {
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Metabolic function</p>
         <p style={paragraph}>
-          Fasting glucose, HbA1c, fasting insulin, HOMA-IR, triglycerides, lipid profile, ApoB, and liver enzymes. This domain reveals the insulin/glucose axis, atherogenic particle burden, and hepatic metabolic load — the cluster most strongly associated with cardiovascular disease, type 2 diabetes, and accelerated vascular ageing.
+          Fasting glucose, HbA1c, fasting insulin, HOMA-IR, triglycerides, lipid profile, ApoB, and liver enzymes. This domain reveals the insulin/glucose axis, atherogenic particle burden, and hepatic metabolic load the cluster most strongly associated with cardiovascular disease, type 2 diabetes, and accelerated vascular ageing.
         </p>
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Cardiovascular risk</p>
         <p style={paragraph}>
-          ApoB, Lp(a), HDL-C, non-HDL-C, total cholesterol ratio, hs-CRP, homocysteine, and blood pressure correlation markers. Lp(a) is included as standard — the genetically determined cardiovascular risk factor that NHS panels routinely omit and that is most consequential when identified early.
+          ApoB, Lp(a), HDL-C, non-HDL-C, total cholesterol ratio, hs-CRP, homocysteine, and blood pressure correlation markers. Lp(a) is included as standard the genetically determined cardiovascular risk factor that NHS panels routinely omit and that is most consequential when identified early.
         </p>
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Systemic inflammation</p>
         <p style={paragraph}>
-          High-sensitivity C-reactive protein (hs-CRP), ESR, ferritin, and white cell differential. Chronic low-grade inflammation is one of the most consistent biological hallmarks of accelerated ageing. Elevated hs-CRP — even at sub-clinical levels — independently predicts cardiovascular events, cognitive decline, and biological age advance. The inflammatory domain often reveals dysfunction years before it becomes symptomatic.
+          High-sensitivity C-reactive protein (hs-CRP), ESR, ferritin, and white cell differential. Chronic low-grade inflammation is one of the most consistent biological hallmarks of accelerated ageing. Elevated hs-CRP even at sub-clinical levels independently predicts cardiovascular events, cognitive decline, and biological age advance. The inflammatory domain often reveals dysfunction years before it becomes symptomatic.
         </p>
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Organ function</p>
         <p style={paragraph}>
-          Kidney function (eGFR, creatinine, urea), liver function (ALT, AST, GGT, bilirubin, albumin), thyroid function (TSH, free T4, free T3), and full blood count. Declining organ function is a direct marker of biological age advance. Early changes in eGFR, GGT, or thyroid dynamics often precede symptomatic organ dysfunction by years — and are highly responsive to targeted intervention when caught early.
+          Kidney function (eGFR, creatinine, urea), liver function (ALT, AST, GGT, bilirubin, albumin), thyroid function (TSH, free T4, free T3), and full blood count. Declining organ function is a direct marker of biological age advance. Early changes in eGFR, GGT, or thyroid dynamics often precede symptomatic organ dysfunction by years and are highly responsive to targeted intervention when caught early.
         </p>
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Hormonal status</p>
@@ -126,15 +126,15 @@ export default function BiologicalAgeTestPage() {
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Haematological function</p>
         <p style={paragraph}>
-          Full blood count including red cell indices, white cell differential, and platelet count. Anaemia, macrocytosis, neutrophilia, and lymphopenia can each reflect systemic processes relevant to biological ageing and overall resilience — from B12/folate deficiency to chronic inflammation to early bone marrow changes.
+          Full blood count including red cell indices, white cell differential, and platelet count. Anaemia, macrocytosis, neutrophilia, and lymphopenia can each reflect systemic processes relevant to biological ageing and overall resilience from B12/folate deficiency to chronic inflammation to early bone marrow changes.
         </p>
 
         <h2 className="cg" style={sectionHeading}>How biological age differs from the &apos;metabolic age&apos; calculation on fitness trackers</h2>
         <p style={paragraph}>
-          Consumer fitness trackers and online calculators often produce a &apos;metabolic age&apos; estimate from VO2 max, heart rate, or body composition alone. These are proxy measures of one aspect of physiological function — they do not capture organ health, hormonal status, inflammatory tone, or cardiovascular particle burden. They also cannot distinguish between someone who is lean because they are genuinely healthy and someone who is lean because they have poor muscle mass and nutritional deficiency.
+          Consumer fitness trackers and online calculators often produce a &apos;metabolic age&apos; estimate from VO2 max, heart rate, or body composition alone. These are proxy measures of one aspect of physiological function they do not capture organ health, hormonal status, inflammatory tone, or cardiovascular particle burden. They also cannot distinguish between someone who is lean because they are genuinely healthy and someone who is lean because they have poor muscle mass and nutritional deficiency.
         </p>
         <p style={paragraph}>
-          A blood-based longevity panel addresses the domains that are clinically most predictive of long-term health outcomes and most amenable to targeted intervention. It is not a replacement for physical fitness assessment — it is a complementary picture of what is happening biochemically beneath the surface of how someone looks and feels.
+          A blood-based longevity panel addresses the domains that are clinically most predictive of long-term health outcomes and most amenable to targeted intervention. It is not a replacement for physical fitness assessment it is a complementary picture of what is happening biochemically beneath the surface of how someone looks and feels.
         </p>
 
         <h2 className="cg" style={sectionHeading}>Who benefits most from a biological age blood test?</h2>
@@ -143,7 +143,7 @@ export default function BiologicalAgeTestPage() {
           <li>High-performing professionals experiencing unexplained energy decline, cognitive fog, sleep disruption, or performance regression.</li>
           <li>Anyone with a family history of early cardiovascular disease, metabolic syndrome, or dementia who wants to identify risk early.</li>
           <li>Anyone who has been told their standard NHS results are &apos;normal&apos; but suspects their health is not where it should be for their age.</li>
-          <li>Anyone investing in longevity-focused interventions — training, nutrition, sleep, supplementation — who wants objective data to guide and measure that investment.</li>
+          <li>Anyone investing in longevity-focused interventions training, nutrition, sleep, supplementation who wants objective data to guide and measure that investment.</li>
           <li>Anyone approaching a major health decision (career change, relocation, family planning) who wants a complete biological picture first.</li>
         </ul>
 
@@ -152,9 +152,9 @@ export default function BiologicalAgeTestPage() {
           The Longevity Panel is Veridian&apos;s most comprehensive assessment. At £795, it includes 150+ markers processed by a nationally accredited UK laboratory, a biological age estimate derived from the panel results, and a full GP-written report. The report covers:
         </p>
         <ul className="chk">
-          <li>A biological age estimate with explanatory context — which systems are tracking younger or older than chronological age norms.</li>
+          <li>A biological age estimate with explanatory context which systems are tracking younger or older than chronological age norms.</li>
           <li>Interpretation of every key marker across all seven domains, flagging values that require attention or monitoring.</li>
-          <li>Identification of any high-priority findings — significant Lp(a) elevation, ApoB discordance with LDL-C, sub-clinical thyroid dysfunction, hormonal decline, or inflammatory elevation.</li>
+          <li>Identification of any high-priority findings significant Lp(a) elevation, ApoB discordance with LDL-C, sub-clinical thyroid dysfunction, hormonal decline, or inflammatory elevation.</li>
           <li>A prioritised action plan specifying which interventions are likely to have the greatest impact on reducing biological age and long-term disease risk.</li>
           <li>Guidance on which findings warrant further investigation, specialist referral, or follow-up testing at a defined interval.</li>
         </ul>
@@ -162,15 +162,15 @@ export default function BiologicalAgeTestPage() {
         <p style={{ fontSize: ".9rem", color: "var(--sl3)", lineHeight: 1.8, borderTop: "1px solid rgba(0,0,0,.08)", paddingTop: 16 }}>
           Related reading:{" "}
           <Link href="/blog/lipoprotein-a-apob-triglycerides" style={{ color: "var(--go)", textDecoration: "underline" }}>
-            Lp(a), ApoB, and triglycerides — the triple cardiovascular threat
+            Lp(a), ApoB, and triglycerides the triple cardiovascular threat
           </Link>
           {" · "}
           <Link href="/blog/reversing-metabolic-syndrome" style={{ color: "var(--go)", textDecoration: "underline" }}>
-            Reversing metabolic syndrome — what the evidence supports
+            Reversing metabolic syndrome what the evidence supports
           </Link>
           {" · "}
           <Link href="/blog/apob-vs-ldl" style={{ color: "var(--go)", textDecoration: "underline" }}>
-            ApoB vs LDL — cardiovascular particle count explained
+            ApoB vs LDL cardiovascular particle count explained
           </Link>
         </p>
 
@@ -179,9 +179,9 @@ export default function BiologicalAgeTestPage() {
           <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
           <div style={{ display: "grid", gap: 10 }}>
             {[
-              { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Test", note: "From £795 — Longevity Panel" },
-              { href: "/blood-tests/apob", label: "ApoB Blood Test", note: "From £595 — Metabolic Baseline" },
-              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 — Energy Screen" },
+              { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Test", note: "From £795 Longevity Panel" },
+              { href: "/blood-tests/apob", label: "ApoB Blood Test", note: "From £595 Metabolic Baseline" },
+              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 Energy Screen" },
               { href: "/blood-tests/metabolic-screen", label: "Fatigue & Energy Screen", note: "£195" },
             ].map((t) => (
               <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>

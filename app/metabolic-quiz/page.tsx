@@ -42,7 +42,7 @@ const QUESTIONS = [
     id: "heightCm",
     type: "number" as const,
     label: "What is your height in cm?",
-    helper: "Used to calculate your waist-to-height ratio — a stronger metabolic predictor than BMI.",
+    helper: "Used to calculate your waist-to-height ratio a stronger metabolic predictor than BMI.",
     placeholder: "e.g. 175",
     min: 100,
     max: 250,
@@ -60,9 +60,9 @@ const QUESTIONS = [
     id: "energy",
     type: "choice" as const,
     label: "How would you describe your energy levels through the day?",
-    helper: "Post-meal energy crashes and persistent afternoon fatigue are early markers of hyperinsulinaemia — often years before fasting glucose moves.",
+    helper: "Post-meal energy crashes and persistent afternoon fatigue are early markers of hyperinsulinaemia often years before fasting glucose moves.",
     options: [
-      { label: "Consistently strong — I rarely feel a significant energy dip", value: "high" },
+      { label: "Consistently strong I rarely feel a significant energy dip", value: "high" },
       { label: "Noticeable afternoon dip, but I recover without much difficulty", value: "mid" },
       { label: "Frequent crashes after meals, or persistent low energy most days", value: "low" },
     ],
@@ -71,9 +71,9 @@ const QUESTIONS = [
     id: "sleep",
     type: "choice" as const,
     label: "How would you describe your sleep?",
-    helper: "Poor sleep quality disrupts insulin sensitivity, cortisol rhythm, and appetite signalling — independently of how many hours you log.",
+    helper: "Poor sleep quality disrupts insulin sensitivity, cortisol rhythm, and appetite signalling independently of how many hours you log.",
     options: [
-      { label: "7–9 hours, mostly restorative — I wake feeling refreshed", value: "optimal" },
+      { label: "7–9 hours, mostly restorative I wake feeling refreshed", value: "optimal" },
       { label: "6–7 hours, or I sleep enough but rarely feel fully recovered", value: "mid" },
       { label: "Under 6 hours, or consistently poor quality most nights", value: "low" },
     ],
@@ -82,11 +82,11 @@ const QUESTIONS = [
     id: "stress",
     type: "choice" as const,
     label: "How would you describe your stress load over the past 3 months?",
-    helper: "Chronic cortisol elevation is directly causal for visceral fat accumulation and insulin resistance — independent of diet and exercise.",
+    helper: "Chronic cortisol elevation is directly causal for visceral fat accumulation and insulin resistance independent of diet and exercise.",
     options: [
-      { label: "Manageable — I have good recovery between demanding periods", value: "low" },
-      { label: "Elevated but functional — I push through, though it's building", value: "mid" },
-      { label: "Chronically high — rarely switching off, frequent exhaustion or overwhelm", value: "high" },
+      { label: "Manageable I have good recovery between demanding periods", value: "low" },
+      { label: "Elevated but functional I push through, though it's building", value: "mid" },
+      { label: "Chronically high rarely switching off, frequent exhaustion or overwhelm", value: "high" },
     ],
   },
   {
@@ -97,7 +97,7 @@ const QUESTIONS = [
     options: [
       { label: "Strength and cardio, 4 or more sessions per week", value: "high" },
       { label: "2–3 sessions per week, mixed types", value: "mid" },
-      { label: "Mostly sedentary — fewer than 2 structured sessions per week", value: "low" },
+      { label: "Mostly sedentary fewer than 2 structured sessions per week", value: "low" },
     ],
   },
   {
@@ -107,7 +107,7 @@ const QUESTIONS = [
     helper: "Dietary insulin load, fibre intake, and ultra-processed food frequency are the three strongest dietary predictors of metabolic age drift.",
     options: [
       { label: "Mostly whole foods, protein-forward, low in processed intake", value: "high" },
-      { label: "Mixed — some processed foods and sugar, but not every day", value: "mid" },
+      { label: "Mixed some processed foods and sugar, but not every day", value: "mid" },
       { label: "Frequent ultra-processed foods, sugary drinks, or high-carb snacking", value: "low" },
     ],
   },
@@ -117,8 +117,8 @@ const QUESTIONS = [
     label: "How is your digestive health?",
     helper: "Gut dysbiosis increases intestinal permeability, triggering systemic low-grade inflammation that directly impairs insulin sensitivity and accelerates metabolic ageing.",
     options: [
-      { label: "Good — regular, comfortable, no persistent bloating or discomfort", value: "good" },
-      { label: "Occasional bloating or irregularity — a few times per week", value: "mid" },
+      { label: "Good regular, comfortable, no persistent bloating or discomfort", value: "good" },
+      { label: "Occasional bloating or irregularity a few times per week", value: "mid" },
       { label: "Frequent bloating, pain, or irregular bowel habits most days", value: "poor" },
     ],
   },
@@ -265,7 +265,7 @@ export default function MetabolicQuizPage() {
                   margin: "0 auto 30px",
                 }}
               >
-                A free 10-question tool that estimates how your metabolism is tracking — and where the early warning signs are showing up before they become bigger problems.
+                A free 10-question tool that estimates how your metabolism is tracking and where the early warning signs are showing up before they become bigger problems.
               </p>
               <div className="badge-row a4" style={{ justifyContent: "center", marginBottom: 36 }}>
                 <span className="badge">10 Questions</span>

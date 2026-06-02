@@ -18,7 +18,7 @@ export default function PeriGuideUpsells() {
           Know your numbers before you begin.
         </h2>
         <p style={{ fontSize: "clamp(.95rem,2vw,1.05rem)", color: "var(--sl2)", lineHeight: 1.9, maxWidth: 580, margin: "0 auto" }}>
-          The guide explains what to test and why. The Advanced Health Panel gives you the actual numbers — so you can reset with a complete picture of where your hormones, metabolism, and nutritional status sit right now.
+          The guide explains what to test and why. The Advanced Health Panel gives you the actual numbers so you can reset with a complete picture of where your hormones, metabolism, and nutritional status sit right now.
         </p>
       </div>
 
@@ -37,7 +37,7 @@ export default function PeriGuideUpsells() {
         {panelDeclined ? (
           <div style={{ textAlign: "center", padding: "8px 0" }}>
             <p style={{ fontSize: ".86rem", color: "rgba(246,241,232,.55)", lineHeight: 1.7, margin: "0 0 10px" }}>
-              You can always book the blood panel later — it will still be here when you're ready.
+              You can always book the blood panel later it will still be here when you're ready.
             </p>
             <button
               onClick={() => setPanelDeclined(false)}
@@ -55,7 +55,7 @@ export default function PeriGuideUpsells() {
               150+ markers. GP-reviewed report. Know your baseline.
             </h3>
             <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.68)", lineHeight: 1.9, marginBottom: 20 }}>
-              The most comprehensive female hormonal and metabolic panel available — oestradiol, progesterone, FSH, LH, testosterone, full thyroid including antibodies, HbA1c, insulin, vitamin D, ferritin, B12, cardiovascular risk, inflammation, and more. GP-reviewed digital report with personalised next steps within 72 hours.
+              The most comprehensive female hormonal and metabolic panel available oestradiol, progesterone, FSH, LH, testosterone, full thyroid including antibodies, HbA1c, insulin, vitamin D, ferritin, B12, cardiovascular risk, inflammation, and more. GP-reviewed digital report with personalised next steps within 72 hours.
             </p>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 24px", marginBottom: 22 }}>
@@ -78,14 +78,14 @@ export default function PeriGuideUpsells() {
 
             <div style={{ background: "rgba(200,168,75,.1)", border: "1px solid rgba(200,168,75,.22)", padding: "12px 16px", marginBottom: 22 }}>
               <p style={{ fontSize: ".8rem", color: "rgba(246,241,232,.65)", lineHeight: 1.7, margin: 0 }}>
-                <strong style={{ color: "var(--go)" }}>Blood draw:</strong> Attend your nearest Randox Health clinic — London, Manchester, Birmingham and nationwide. Phlebotomy fee: <strong style={{ color: "var(--go)" }}>£30</strong>, paid on the day at Randox. This is a clinic visit, not a home visit or postal kit.
+                <strong style={{ color: "var(--go)" }}>Blood draw:</strong> Attend your nearest Randox Health clinic London, Manchester, Birmingham and nationwide. Phlebotomy fee: <strong style={{ color: "var(--go)" }}>£30</strong>, paid on the day at Randox. This is a clinic visit, not a home visit or postal kit.
               </p>
             </div>
 
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
               <div>
                 <Link href="/book?tier=perimenopause-panel" className="btn btn-go" style={{ display: "inline-block" }}>
-                  Book the Advanced Health Panel — £295 →
+                  Book the Advanced Health Panel £295 →
                 </Link>
                 <p style={{ fontSize: ".72rem", color: "rgba(246,241,232,.35)", marginTop: 6, lineHeight: 1.5 }}>
                   Panel: £295 · Blood draw: £30 at Randox (paid on the day)
@@ -99,7 +99,7 @@ export default function PeriGuideUpsells() {
                 onClick={() => setPanelDeclined(true)}
                 style={{ background: "none", border: "none", color: "rgba(246,241,232,.35)", fontSize: ".8rem", cursor: "pointer", fontFamily: "inherit", lineHeight: 1.6 }}
               >
-                No, thank you — I'll skip the blood tests for now ↓
+                No, thank you I'll skip the blood tests for now ↓
               </button>
             </div>
           </>
@@ -125,7 +125,7 @@ export default function PeriGuideUpsells() {
         )}
 
         <p style={{ fontSize: ".68rem", color: "var(--sl3)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 10 }}>
-          Virtual Clinical Review — Video Call
+          Virtual Clinical Review Video Call
         </p>
         <h3 className="cg" style={{ fontSize: "clamp(1.2rem,2.8vw,1.7rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.3, marginBottom: 6 }}>
           Book a Clinical Review with Dr Tosin
@@ -133,19 +133,19 @@ export default function PeriGuideUpsells() {
         <p style={{ fontSize: ".9rem", color: "var(--sl3)", marginBottom: 18 }}>
           <strong style={{ color: "var(--sl)", fontSize: "1.1rem" }}>£97</strong>
           <span style={{ marginLeft: 10, textDecoration: "line-through" }}>£195</span>
-          <span style={{ marginLeft: 10, fontSize: ".8rem" }}>— guide reader rate</span>
+          <span style={{ marginLeft: 10, fontSize: ".8rem" }}>  guide reader rate</span>
         </p>
 
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 20 }}>
-          A 30-minute one-to-one video call with Dr Tosin. Review your symptoms, your blood results (if you have them), and your options — including HRT. This is a <strong>virtual appointment via video call</strong>, not a face-to-face clinic visit.
+          A 30-minute one-to-one video call with Dr Tosin. Review your symptoms, your blood results (if you have them), and your options including HRT. This is a <strong>virtual appointment via video call</strong>, not a face-to-face clinic visit.
         </p>
 
         <ul style={{ margin: "0 0 24px 0", padding: 0, listStyle: "none", display: "grid", gap: 10 }}>
           {[
             "Full hormonal & metabolic risk assessment",
             "30-minute 1:1 with Dr Tosin (video call)",
-            "Your treatment options explained — including HRT",
-            "What to manage and live with now — practical guidance",
+            "Your treatment options explained including HRT",
+            "What to manage and live with now practical guidance",
             "Personalised blood test recommendations",
           ].map(item => (
             <li key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
@@ -155,10 +155,10 @@ export default function PeriGuideUpsells() {
           ))}
         </ul>
 
-        {/* CTAs — Stripe payment + Calendly option */}
+        {/* CTAs Stripe payment + Calendly option */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <Link href="/book?tier=discovery-quiz" className="btn btn-fo" style={{ padding: "14px 32px", fontSize: ".92rem", display: "inline-block", textAlign: "center" }}>
-            Book & Pay — £97 →
+            Book & Pay £97 →
           </Link>
 
           {CALENDLY_URL && (

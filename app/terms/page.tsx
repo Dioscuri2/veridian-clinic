@@ -68,7 +68,7 @@ export default function TermsPage() {
             {/* Veridian terms */}
             <div className="card" style={{ padding: "clamp(24px,5vw,48px)", marginBottom: 40 }}>
               <p style={{ fontSize: ".82rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 28 }}>
-                Part A — Veridian Clinic Terms
+                Part A Veridian Clinic Terms
               </p>
 
               <Section title="1. About Veridian Clinic">
@@ -82,15 +82,15 @@ export default function TermsPage() {
               </Section>
 
               <Section title="3. Not an Emergency Service">
-                <p>Veridian Clinic is <strong>not an emergency service</strong>. If you are experiencing a medical emergency — including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or severe allergic reactions — call <strong>999 immediately</strong> or attend your nearest A&amp;E. If unsure, call NHS 111.</p>
+                <p>Veridian Clinic is <strong>not an emergency service</strong>. If you are experiencing a medical emergency including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or severe allergic reactions call <strong>999 immediately</strong> or attend your nearest A&amp;E. If unsure, call NHS 111.</p>
               </Section>
 
               <Section title="4. Purchases, Payments, and Right to Cancel">
                 <p>All prices are displayed in GBP and are inclusive of VAT where applicable. Payments are processed securely via Stripe. Payment descriptors on bank statements may appear as &quot;Olympus Premium Health&quot;.</p>
 
-                <p style={{ marginTop: 14, fontWeight: 600, color: "var(--sl)" }}>Your right to cancel — Consumer Contracts Regulations 2013</p>
+                <p style={{ marginTop: 14, fontWeight: 600, color: "var(--sl)" }}>Your right to cancel Consumer Contracts Regulations 2013</p>
                 <p style={{ marginTop: 6 }}>Under the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013, you have the right to cancel orders for services within <strong>14 calendar days</strong> of booking, without giving a reason. To cancel, email us at <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a> within 14 days of your booking confirmation. A full refund will be issued within 14 days of receiving your cancellation.</p>
-                <p style={{ marginTop: 10 }}>If you request that we begin providing the service before the 14-day cancellation period expires — for example by confirming your appointment and requesting an earlier date — you expressly consent to early commencement. If the service is fully performed within the cancellation period following such a request, you lose your right to cancel in respect of that service.</p>
+                <p style={{ marginTop: 10 }}>If you request that we begin providing the service before the 14-day cancellation period expires for example by confirming your appointment and requesting an earlier date you expressly consent to early commencement. If the service is fully performed within the cancellation period following such a request, you lose your right to cancel in respect of that service.</p>
 
                 <p style={{ marginTop: 14, fontWeight: 600, color: "var(--sl)" }}>Free digital content (Metabolic Reset Guide &amp; Perimenopause Reset Guide)</p>
                 <p style={{ marginTop: 6 }}>The Metabolic Reset Guide and Perimenopause Reset Guide are provided free of charge as educational resources. They are supplied immediately on email submission. As no payment is taken, Consumer Contracts cancellation rights do not apply. If you experience any issue downloading a guide, contact <a href="mailto:support@veridianclinic.com" style={{ color: "var(--fo)" }}>support@veridianclinic.com</a>.</p>
@@ -118,7 +118,7 @@ export default function TermsPage() {
               </Section>
             </div>
 
-            {/* ThanksDoc T&Cs — live link */}
+            {/* ThanksDoc T&Cs live link */}
             <div className="card" style={{ padding: "clamp(24px,5vw,48px)", textAlign: "center" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
                 <span style={{ background: "var(--fo)", color: "var(--go)", fontSize: ".7rem", fontWeight: 700, letterSpacing: ".1em", padding: "4px 10px", borderRadius: 4, textTransform: "uppercase" }}>

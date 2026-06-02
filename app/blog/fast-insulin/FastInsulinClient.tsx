@@ -170,11 +170,11 @@ function KraftCurve() {
   const ty = (v: number) => PAD.top + cH - (v / maxY) * cH;
 
   const patterns = [
-    { id: "I", label: "Pattern I — Normal", color: "#4CAF7C", values: [8, 72, 55, 18, 8], dash: "" },
-    { id: "II", label: "Pattern II — Delayed Peak (early IR)", color: "#C9A84C", values: [10, 45, 88, 60, 18], dash: "6,3" },
-    { id: "III", label: "Pattern III — Late Peak (established IR)", color: "#E08A3C", values: [12, 30, 55, 110, 75], dash: "4,4" },
-    { id: "IV", label: "Pattern IV — Overt IR (high fasting)", color: "#D94F4F", values: [55, 80, 130, 170, 145], dash: "8,3,2,3" },
-    { id: "V", label: "Pattern V — Insulinopenic", color: "#7B9EB8", values: [6, 14, 18, 14, 8], dash: "3,3" },
+    { id: "I", label: "Pattern I Normal", color: "#4CAF7C", values: [8, 72, 55, 18, 8], dash: "" },
+    { id: "II", label: "Pattern II Delayed Peak (early IR)", color: "#C9A84C", values: [10, 45, 88, 60, 18], dash: "6,3" },
+    { id: "III", label: "Pattern III Late Peak (established IR)", color: "#E08A3C", values: [12, 30, 55, 110, 75], dash: "4,4" },
+    { id: "IV", label: "Pattern IV Overt IR (high fasting)", color: "#D94F4F", values: [55, 80, 130, 170, 145], dash: "8,3,2,3" },
+    { id: "V", label: "Pattern V Insulinopenic", color: "#7B9EB8", values: [6, 14, 18, 14, 8], dash: "3,3" },
   ];
 
   function smoothPath(pts: Array<[number, number]>) {

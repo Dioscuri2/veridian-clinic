@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Lipoprotein(a), ApoB and Triglycerides — The Cardiovascular Triple Threat | Veridian Clinic",
+  title: "Lipoprotein(a), ApoB and Triglycerides The Cardiovascular Triple Threat | Veridian Clinic",
   description:
     "Lipoprotein(a), ApoB, and triglyceride-rich remnant particles are three independent cardiovascular risk pathways your NHS cholesterol test does not measure. Here is what they are, why they matter together, and what to do about them in the UK.",
   alternates: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Cardiovascular Triple Threat: Lp(a), ApoB and Triglycerides | Veridian Clinic",
     description:
-      "Three independent atherogenic pathways your standard cholesterol panel completely misses — and why having all three elevated multiplies your risk.",
+      "Three independent atherogenic pathways your standard cholesterol panel completely misses and why having all three elevated multiplies your risk.",
     url: "https://veridianclinic.com/blog/lipoprotein-a-apob-triglycerides",
     type: "article",
     images: [
@@ -84,8 +84,8 @@ export default function LpaApoBTriglyceridesPage() {
         heroImage="/blog/lipoprotein-a-apob-triglycerides.jpg"
         heroAlt="Arterial cross-section showing Lp(a), ApoB, and triglyceride cardiovascular risk"
         ctas={[
-          { href: "/book?tier=baseline", label: "Book the Core Metabolic Assessment — includes ApoB and Lp(a) →" },
-          { href: "/book?tier=longevity-panel", label: "Book the Advanced Longevity Assessment — £795", variant: "secondary" },
+          { href: "/book?tier=baseline", label: "Book the Core Metabolic Assessment includes ApoB and Lp(a) →" },
+          { href: "/book?tier=longevity-panel", label: "Book the Advanced Longevity Assessment £795", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >
@@ -326,10 +326,10 @@ export default function LpaApoBTriglyceridesPage() {
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link href="/book?tier=baseline" className="btn btn-go" style={{ fontSize: ".88rem" }}>
-              Book the Core Metabolic Assessment — £595 →
+              Book the Core Metabolic Assessment £595 →
             </Link>
             <Link href="/book?tier=longevity-panel" className="btn" style={{ fontSize: ".88rem", background: "transparent", border: "1px solid rgba(246,241,232,.25)", color: "rgba(246,241,232,.8)" }}>
-              Advanced Longevity Assessment — £795
+              Advanced Longevity Assessment £795
             </Link>
           </div>
         </div>

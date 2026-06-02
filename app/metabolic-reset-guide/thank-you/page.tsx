@@ -32,7 +32,7 @@ export default function GuideThankyouPage() {
               The 21-Day Metabolic Reset Guide
             </h1>
             <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.65)", lineHeight: 1.9, maxWidth: 520, margin: "0 auto 32px" }}>
-              Download your guide below. Save it somewhere easy to find — you'll want to refer back to specific chapters as you work through the 21-day reset.
+              Download your guide below. Save it somewhere easy to find you'll want to refer back to specific chapters as you work through the 21-day reset.
             </p>
 
             <a
@@ -57,7 +57,7 @@ export default function GuideThankyouPage() {
               <p className="lbl">Your next step</p>
               <div className="rule rule-c" />
               <h2 className="sh-title">See what's actually driving your metabolic drift.</h2>
-              <p className="sh-body">The guide gives you the framework. Clinical work gives you your specific picture — your markers, your drivers, your plan.</p>
+              <p className="sh-body">The guide gives you the framework. Clinical work gives you your specific picture your markers, your drivers, your plan.</p>
             </div>
 
             <div className="g2">
@@ -68,7 +68,7 @@ export default function GuideThankyouPage() {
                   Discovery Call
                 </h3>
                 <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
-                  30-minute call with Dr Taiwo. Review your symptoms, history, and goals — then get a personalised plan for what to investigate next.
+                  30-minute call with Dr Taiwo. Review your symptoms, history, and goals then get a personalised plan for what to investigate next.
                 </p>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 20 }}>
                   <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--go)", lineHeight: 1 }}>£97</span>
@@ -86,7 +86,7 @@ export default function GuideThankyouPage() {
                   Metabolic Blood Panel
                 </h3>
                 <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 20 }}>
-                  9-marker blood panel with GP clinical interpretation and a written action plan. See exactly what your biology is doing — not just whether it's "normal".
+                  9-marker blood panel with GP clinical interpretation and a written action plan. See exactly what your biology is doing not just whether it's "normal".
                 </p>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 20 }}>
                   <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--fo)", lineHeight: 1 }}>£595</span>

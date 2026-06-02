@@ -5,12 +5,12 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const WHAT_IS_INSIDE = [
-  { title: "PERC Framework", body: "Four pillars — Prepare, Eat & Eliminate, Reset, Condition — giving you a structured mental model before you change a single habit." },
-  { title: "21-Day Roadmap", body: "Day-by-day action plan across three phases. Not a vague programme — a specific daily structure with clear checkpoints." },
+  { title: "PERC Framework", body: "Four pillars Prepare, Eat & Eliminate, Reset, Condition giving you a structured mental model before you change a single habit." },
+  { title: "21-Day Roadmap", body: "Day-by-day action plan across three phases. Not a vague programme a specific daily structure with clear checkpoints." },
   { title: "7-Day Meal Plan", body: "Clean, real-food meals available in any UK supermarket. Protein-first plate template with balanced meal guide included." },
-  { title: "Fasting Cheat Sheet", body: "Two tracks — beginner and advanced. Timing strategies with the physiological reasoning behind them." },
+  { title: "Fasting Cheat Sheet", body: "Two tracks beginner and advanced. Timing strategies with the physiological reasoning behind them." },
   { title: "Movement Ladder", body: "Three tiers from sedentary to active. Structured activity tiers matched to your current fitness starting point." },
-  { title: "Supplement Stack", body: "Sleep and gut support stack — the supplements most relevant to metabolic function, with clinical context." },
+  { title: "Supplement Stack", body: "Sleep and gut support stack the supplements most relevant to metabolic function, with clinical context." },
   { title: "Shopping List & Tracker", body: "One-page printable shopping list by category and a 21-day daily tick-box habit tracker." },
   { title: "Busy Day Plan + Rapid Reset", body: "A stripped-back fallback for chaotic days and a Rapid Reset Protocol to recover from a slip in 24–48 hours." },
 ];
@@ -68,7 +68,7 @@ export default function MetabolicResetGuidePage() {
               className="a3"
               style={{ fontSize: "clamp(.9rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 640, margin: "0 auto 28px" }}
             >
-              Lower blood sugar · Ease blood pressure · Get your energy back. A practical, clinically-grounded guide for adults 40+ ready to address the hidden drivers of metabolic drift — without waiting for the next GP appointment.
+              Lower blood sugar · Ease blood pressure · Get your energy back. A practical, clinically-grounded guide for adults 40+ ready to address the hidden drivers of metabolic drift without waiting for the next GP appointment.
             </p>
             <div className="badge-row a4" style={{ justifyContent: "center", marginBottom: 32 }}>
               <span className="badge">GP-Authored</span>
@@ -153,7 +153,7 @@ export default function MetabolicResetGuidePage() {
             </div>
             <div className="card">
               <ul className="chk" style={{ marginBottom: 32 }}>
-                <li>Weight that isn't moving despite trying — and you want to understand why</li>
+                <li>Weight that isn't moving despite trying and you want to understand why</li>
                 <li>Blood sugar creeping up, energy dropping, sleep not recovering you</li>
                 <li>You've been told things are "borderline" but given no clear next step</li>
                 <li>You want a structured plan to start from, not another information pile</li>
@@ -161,7 +161,7 @@ export default function MetabolicResetGuidePage() {
               </ul>
               <div style={{ paddingTop: 24, borderTop: "1px solid rgba(0,0,0,.07)" }}>
                 <p style={{ fontSize: ".8rem", color: "var(--sl3)", lineHeight: 1.7, marginBottom: 20 }}>
-                  <strong>Safety note:</strong> This guide is for informational purposes and does not replace professional medical advice. If you are on insulin, sulfonylureas, SGLT2 inhibitors, or blood pressure medication — or have kidney disease, type 1 diabetes, or a recent cardiac event — consult your clinician before making dietary changes.
+                  <strong>Safety note:</strong> This guide is for informational purposes and does not replace professional medical advice. If you are on insulin, sulfonylureas, SGLT2 inhibitors, or blood pressure medication or have kidney disease, type 1 diabetes, or a recent cardiac event consult your clinician before making dietary changes.
                 </p>
                 <form onSubmit={handleSubmit}>
                   <input
@@ -203,7 +203,7 @@ export default function MetabolicResetGuidePage() {
               The Veridian Baseline gives you the full clinical picture.
             </h2>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 28, maxWidth: 560, margin: "0 auto 28px" }}>
-              The Baseline Assessment includes a 9-marker blood panel, GP clinical interpretation, and a written action plan — going beyond the guide into real diagnostic clarity.
+              The Baseline Assessment includes a 9-marker blood panel, GP clinical interpretation, and a written action plan going beyond the guide into real diagnostic clarity.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <a href="/book?tier=discovery" className="btn btn-fo">Book a Discovery Call →</a>

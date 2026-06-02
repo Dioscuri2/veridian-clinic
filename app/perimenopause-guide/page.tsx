@@ -5,54 +5,54 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const SYMPTOMS = [
-  "Weight gathering around your middle — despite no change in what you eat or how much you move",
+  "Weight gathering around your middle despite no change in what you eat or how much you move",
   "Waking between 2am and 4am, often with your heart racing, body hot, or mind already spinning",
-  "Concentration not what it was — losing words mid-sentence, forgetting things you'd never have forgotten",
+  "Concentration not what it was losing words mid-sentence, forgetting things you'd never have forgotten",
   "Mood dropping sharply before your period, or seemingly at random, in a way that doesn't feel like you",
   "Cycles changing: shorter, longer, heavier, or arriving when you least expect them",
-  "Anxiety that feels physical and newer — different from anything you've experienced before",
-  "A GP told you your bloods are 'normal' — but nothing about this feels normal",
+  "Anxiety that feels physical and newer different from anything you've experienced before",
+  "A GP told you your bloods are 'normal' but nothing about this feels normal",
   "You've started wondering whether this is just stress, or whether something has fundamentally shifted",
 ];
 
 const CLINICAL_FACTS = [
   {
     heading: "Perimenopause starts earlier than anyone tells you",
-    body: "Average onset is 40–44. It can begin in the mid-30s. The hormonal shift that drives every symptom you're experiencing starts years — sometimes a decade — before your period stops. Most women aren't told this.",
+    body: "Average onset is 40–44. It can begin in the mid-30s. The hormonal shift that drives every symptom you're experiencing starts years sometimes a decade before your period stops. Most women aren't told this.",
   },
   {
     heading: "'Normal' bloods don't mean 'optimal for you'",
     body: "Standard reference ranges are population averages, not your personal baseline. Oestrogen can fluctuate dramatically within the 'normal' band and still drive weight gain, broken sleep, and mood shifts. Normal on paper is not the same as normal for you.",
   },
   {
-    heading: "Most symptoms are metabolic — not just hormonal",
+    heading: "Most symptoms are metabolic not just hormonal",
     body: "Oestrogen directly regulates insulin sensitivity, fat distribution, sleep architecture, and neurotransmitter balance. When it shifts, so does your entire metabolic environment. This is why lifestyle changes that worked at 35 no longer work the same way at 42.",
   },
 ];
 
 const WHAT_IS_INSIDE = [
-  { title: "The Perimenopause Window", body: "A plain-language explanation of what's happening hormonally — oestrogen fluctuation, progesterone decline, and the cascade effect on every system that depends on them." },
+  { title: "The Perimenopause Window", body: "A plain-language explanation of what's happening hormonally oestrogen fluctuation, progesterone decline, and the cascade effect on every system that depends on them." },
   { title: "Your Metabolic Shift", body: "Why weight now accumulates differently, particularly abdominally. The oestrogen–insulin connection explained. Why the approach that worked at 35 won't work the same way now." },
   { title: "Eating for Hormonal Balance", body: "A protein-first plate framework, phytoestrogen-rich foods, and what to reduce. UK supermarket-friendly. No elimination diets, no unsustainable restriction." },
   { title: "Sleep & the Hormonal Loop", body: "How falling oestrogen disrupts sleep architecture and worsens night sweats. Evidence-based evening protocols designed for this specific hormonal environment." },
-  { title: "Movement That Works Now", body: "Resistance training for bone density and insulin sensitivity. Three tiers from low to high activity. Why cardio alone is not enough — and what to do instead." },
-  { title: "Supplement Stack", body: "Magnesium glycinate, Vitamin D3/K2, Omega-3, and adaptogenic support. Clinical context for each — what the evidence actually says, not what wellness brands say." },
-  { title: "Symptom & Cycle Tracker", body: "A printable one-page tracker for hot flushes, mood, energy, cycle length, and sleep quality — so you arrive at any clinical appointment with data, not just a vague sense that something is wrong." },
+  { title: "Movement That Works Now", body: "Resistance training for bone density and insulin sensitivity. Three tiers from low to high activity. Why cardio alone is not enough and what to do instead." },
+  { title: "Supplement Stack", body: "Magnesium glycinate, Vitamin D3/K2, Omega-3, and adaptogenic support. Clinical context for each what the evidence actually says, not what wellness brands say." },
+  { title: "Symptom & Cycle Tracker", body: "A printable one-page tracker for hot flushes, mood, energy, cycle length, and sleep quality so you arrive at any clinical appointment with data, not just a vague sense that something is wrong." },
   { title: "When to Seek Clinical Assessment", body: "Red flags that warrant urgent review. What blood tests to ask for, what the results mean, and how to have the HRT conversation with confidence." },
 ];
 
 const OUTCOMES = [
-  "Exactly which hormonal changes are driving each symptom you're experiencing — and why",
+  "Exactly which hormonal changes are driving each symptom you're experiencing and why",
   "How to eat to support oestrogen clearance and reduce the insulin resistance that's driving the weight",
   "Which supplements have real clinical evidence behind them and the correct form and dose",
   "Which blood tests to request, what 'normal' ranges actually mean for you, and what to push back on",
-  "When lifestyle intervention is enough — and when to seek HRT or specialist assessment",
+  "When lifestyle intervention is enough and when to seek HRT or specialist assessment",
 ];
 
 const FAQS = [
   {
     q: "Why is the guide free?",
-    a: "Because getting the right information into the right hands matters more than the £9.99. Dr Tosin believes every woman in perimenopause deserves to understand what's happening to her body — and to arrive at any clinical appointment informed. The guide is free. If you want deeper support — your hormone panel or a clinical review — those are available when you're ready.",
+    a: "Because getting the right information into the right hands matters more than the £9.99. Dr Tosin believes every woman in perimenopause deserves to understand what's happening to her body and to arrive at any clinical appointment informed. The guide is free. If you want deeper support your hormone panel or a clinical review those are available when you're ready.",
   },
   {
     q: "Is this just another wellness guide?",
@@ -60,7 +60,7 @@ const FAQS = [
   },
   {
     q: "I'm already on HRT. Is this still relevant?",
-    a: "Yes. HRT addresses the hormonal deficit, but it doesn't automatically fix insulin resistance, poor sleep habits, nutritional gaps, or bone density decline. The guide works alongside HRT — or without it.",
+    a: "Yes. HRT addresses the hormonal deficit, but it doesn't automatically fix insulin resistance, poor sleep habits, nutritional gaps, or bone density decline. The guide works alongside HRT or without it.",
   },
   {
     q: "My symptoms feel quite severe. What if I need more than a guide?",
@@ -68,7 +68,7 @@ const FAQS = [
   },
   {
     q: "Will this tell me whether I need HRT?",
-    a: "Not directly — that's a clinical decision between you and your doctor. What it does is give you the understanding and vocabulary to have that conversation from an informed position, rather than walking in uncertain about what you're experiencing.",
+    a: "Not directly that's a clinical decision between you and your doctor. What it does is give you the understanding and vocabulary to have that conversation from an informed position, rather than walking in uncertain about what you're experiencing.",
   },
 ];
 
@@ -160,7 +160,7 @@ export default function PerimenopauseGuidePage() {
           <div className="wrap" style={{ maxWidth: 1020 }}>
             <div style={{ display: "flex", gap: "clamp(40px,8vw,80px)", alignItems: "center", flexWrap: "wrap" }}>
 
-              {/* Left — text + email form */}
+              {/* Left text + email form */}
               <div style={{ flex: "1 1 340px", minWidth: 300 }}>
                 <p className="lbl a1" style={{ color: "var(--go)", letterSpacing: ".18em" }}>GP-Authored · Women 35–52 · Free Instant Download</p>
                 <div className="rule a1" style={{ background: "var(--go)", width: 48, height: 2, margin: "14px 0 22px" }} />
@@ -171,11 +171,11 @@ export default function PerimenopauseGuidePage() {
                   A Six-Week Guide to Reclaim Your Sleep, Brain and Body
                 </p>
                 <p className="a3" style={{ fontSize: ".97rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9, marginBottom: 32 }}>
-                  A structured blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight — written by a practising UK GP. <strong style={{ color: "var(--go2)" }}>Free.</strong>
+                  A structured blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight written by a practising UK GP. <strong style={{ color: "var(--go2)" }}>Free.</strong>
                 </p>
 
                 <div className="a4">
-                  {/* Primary CTA — quiz */}
+                  {/* Primary CTA quiz */}
                   <a
                     href="/perimenopause-quiz"
                     className="btn btn-go"
@@ -184,7 +184,7 @@ export default function PerimenopauseGuidePage() {
                     Take the Free 90-Second Quiz →
                   </a>
                   <p style={{ fontSize: ".75rem", color: "rgba(246,241,232,.45)", marginBottom: 22, lineHeight: 1.6 }}>
-                    4 questions — get your personalised guide based on your results
+                    4 questions get your personalised guide based on your results
                   </p>
 
                   {/* Divider */}
@@ -203,7 +203,7 @@ export default function PerimenopauseGuidePage() {
                 </div>
               </div>
 
-              {/* Right — 3D book mockup */}
+              {/* Right 3D book mockup */}
               <div className="a3" style={{ flex: "0 0 auto", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div style={{ position: "relative", width: "clamp(240px,32vw,360px)" }}>
                   <div style={{ position: "absolute", inset: "-20%", background: "radial-gradient(ellipse at 60% 50%, rgba(200,168,75,.18) 0%, rgba(20,82,38,.12) 50%, transparent 75%)", filter: "blur(24px)", pointerEvents: "none", zIndex: 0 }} />
@@ -211,7 +211,7 @@ export default function PerimenopauseGuidePage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/perimenopause-cover.jpg"
-                    alt="The Perimenopause Reset Guide — Dr Tosin Taiwo"
+                    alt="The Perimenopause Reset Guide Dr Tosin Taiwo"
                     style={{ width: "100%", display: "block", borderRadius: "0 5px 5px 0", transform: "perspective(900px) rotateY(-14deg) rotateX(3deg)", boxShadow: "28px 28px 80px rgba(0,0,0,.75), -4px 4px 18px rgba(0,0,0,.4), 0 0 60px rgba(200,168,75,.08)", transformOrigin: "left center", position: "relative", zIndex: 1 }}
                   />
                   {/* FREE badge */}
@@ -242,7 +242,7 @@ export default function PerimenopauseGuidePage() {
                 ))}
               </ul>
               <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(0,0,0,.06)" }}>
-                These are not signs of ageing, weakness, or stress. They are signs of a specific hormonal transition that has a name, a mechanism, and — crucially — a response.
+                These are not signs of ageing, weakness, or stress. They are signs of a specific hormonal transition that has a name, a mechanism, and crucially a response.
               </p>
             </div>
           </div>
@@ -275,7 +275,7 @@ export default function PerimenopauseGuidePage() {
               <p className="lbl">What's inside</p>
               <div className="rule rule-c" />
               <h2 className="sh-title">The conversation your GP didn't have 90 minutes for.</h2>
-              <p className="sh-body">Eight clinically-grounded chapters covering every domain that shifts during perimenopause — hormones, metabolism, sleep, nutrition, movement, and clinical next steps.</p>
+              <p className="sh-body">Eight clinically-grounded chapters covering every domain that shifts during perimenopause hormones, metabolism, sleep, nutrition, movement, and clinical next steps.</p>
             </div>
             <div className="g3">
               {WHAT_IS_INSIDE.map((item, i) => (
@@ -287,7 +287,7 @@ export default function PerimenopauseGuidePage() {
               ))}
             </div>
             <div style={{ textAlign: "center", marginTop: 48 }}>
-              <p style={{ fontSize: "1.05rem", color: "var(--sl2)", marginBottom: 24 }}>Enter your email — get the full guide instantly. No payment, no subscription.</p>
+              <p style={{ fontSize: "1.05rem", color: "var(--sl2)", marginBottom: 24 }}>Enter your email get the full guide instantly. No payment, no subscription.</p>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <EmailForm />
               </div>
@@ -308,7 +308,7 @@ export default function PerimenopauseGuidePage() {
                 <p className="lbl" style={{ color: "var(--go)", marginBottom: 8 }}>Written by</p>
                 <h3 className="cg" style={{ fontSize: "clamp(1.6rem,3.5vw,2.2rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 14 }}>Dr Tosin Taiwo, GP</h3>
                 <p style={{ fontSize: ".9rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9, marginBottom: 16 }}>
-                  "In a standard appointment I have seven minutes. Perimenopause deserves far more than that. I wrote this guide for every patient who left my consulting room with answers that still didn't add up — and for every woman who hasn't yet made it through the door."
+                  "In a standard appointment I have seven minutes. Perimenopause deserves far more than that. I wrote this guide for every patient who left my consulting room with answers that still didn't add up and for every woman who hasn't yet made it through the door."
                 </p>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                   <span className="badge" style={{ background: "rgba(200,168,75,.12)", borderColor: "rgba(200,168,75,.3)", color: "var(--go2)" }}>MRCGP</span>

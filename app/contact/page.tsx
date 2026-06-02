@@ -44,7 +44,7 @@ export default function ContactPage() {
           <div className="wrap" style={{ maxWidth: 900 }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,380px),1fr))", gap: 48, alignItems: "start" }}>
 
-              {/* Left — info */}
+              {/* Left info */}
               <div>
                 <p className="lbl a1">Get in touch</p>
                 <div className="rule a1" />
@@ -52,7 +52,7 @@ export default function ContactPage() {
                   We're here to help you find the right pathway.
                 </h1>
                 <p className="a3" style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 32 }}>
-                  Whether you have a question about our assessments, want to understand which pathway is right for you, or simply want to speak with someone before committing — reach out.
+                  Whether you have a question about our assessments, want to understand which pathway is right for you, or simply want to speak with someone before committing reach out.
                 </p>
 
                 <div style={{ display: "grid", gap: 16, marginBottom: 32 }}>
@@ -83,7 +83,7 @@ export default function ContactPage() {
 
                 <div style={{ padding: "16px 18px", background: "var(--iv2)", borderLeft: "3px solid var(--go)" }}>
                   <p style={{ fontSize: ".8rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-                    <strong style={{ color: "var(--fo)" }}>Not sure which pathway is right?</strong> Take the free metabolic quiz first — it'll take 60 seconds and point you in the right direction.
+                    <strong style={{ color: "var(--fo)" }}>Not sure which pathway is right?</strong> Take the free metabolic quiz first it'll take 60 seconds and point you in the right direction.
                   </p>
                   <Link href="/metabolic-quiz" style={{ fontSize: ".82rem", color: "var(--fo)", fontWeight: 600, textDecoration: "underline", display: "inline-block", marginTop: 8 }}>
                     Take the free quiz →
@@ -91,7 +91,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Right — form */}
+              {/* Right form */}
               <div className="card a2" style={{ padding: "clamp(24px,5vw,44px)" }}>
                 {status === "done" ? (
                   <div style={{ textAlign: "center", padding: "32px 0" }}>

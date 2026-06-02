@@ -16,7 +16,7 @@ export const metadata: Metadata = {
  openGraph: {
  type: "website", locale: "en_GB", url: "https://veridianclinic.com", siteName: "Veridian Clinic",
  title: "Veridian Clinic | Longevity & Metabolic Health",
- description: "Understand what's driving your weight, energy, and long-term health — then fix it.",
+ description: "Understand what's driving your weight, energy, and long-term health then fix it.",
  images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Veridian Clinic" }],
  },
  twitter: { card: "summary_large_image", title: "Veridian Clinic", description: "Advanced biomarker testing, CGM, and personalised optimisation plans.", images: ["/og-image.jpg"] },

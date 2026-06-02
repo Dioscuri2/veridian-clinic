@@ -4,14 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Homocysteine Test UK — What It Is, When to Test, and What High Levels Mean | Veridian Clinic",
+  title: "Homocysteine Test UK What It Is, When to Test, and What High Levels Mean | Veridian Clinic",
   description:
     "Homocysteine is an independent cardiovascular risk marker that NHS panels routinely omit. This GP-authored guide explains what homocysteine is, what a high result means, and how private testing in the UK can reveal risk that standard cholesterol panels miss.",
   alternates: {
     canonical: "https://veridianclinic.com/blog/homocysteine",
   },
   openGraph: {
-    title: "Homocysteine Test UK — The Cardiovascular Marker Most GPs Don't Check | Veridian Clinic",
+    title: "Homocysteine Test UK The Cardiovascular Marker Most GPs Don't Check | Veridian Clinic",
     description:
       "Homocysteine is an independent cardiovascular risk marker. Here is what it measures, why elevated levels matter, and when a private homocysteine test in the UK is worth requesting.",
     url: "https://veridianclinic.com/blog/homocysteine",
@@ -56,7 +56,7 @@ const sectionHeading = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Homocysteine Test UK — What It Is, When to Test, and What High Levels Mean",
+  headline: "Homocysteine Test UK What It Is, When to Test, and What High Levels Mean",
   description:
     "Homocysteine is an independent cardiovascular risk marker that NHS panels routinely omit. This GP-authored guide explains what homocysteine is, what a high result means, and how private testing in the UK can reveal hidden risk.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
@@ -136,8 +136,8 @@ export default function HomocysteinePage() {
         heroImage="/blog/homocysteine.jpg"
         heroAlt="Homocysteine molecular structure and cardiovascular risk visualization"
         ctas={[
-          { href: "/book?tier=baseline", label: "Book Metabolic Baseline — homocysteine included →" },
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel — 150+ markers →", variant: "secondary" },
+          { href: "/book?tier=baseline", label: "Book Metabolic Baseline homocysteine included →" },
+          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel 150+ markers →", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >

@@ -95,7 +95,7 @@ function ThankYouContent() {
                   marginBottom: 14,
                 }}
               >
-                The Metabolic Reset Guide — Free
+                The Metabolic Reset Guide Free
               </h2>
               <p
                 style={{
@@ -106,7 +106,7 @@ function ThankYouContent() {
                   margin: "0 auto",
                 }}
               >
-                A doctor-led practical guide for people who want to start improving the hidden drivers of weight gain, poor energy, and metabolic stress — now. No payment, just your email.
+                A doctor-led practical guide for people who want to start improving the hidden drivers of weight gain, poor energy, and metabolic stress now. No payment, just your email.
               </p>
             </div>
 

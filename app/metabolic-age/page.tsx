@@ -146,7 +146,7 @@ function getBand(riskDelta: number): ResultBand {
     label: "Accelerated",
     tone: "High Priority",
     color: "var(--red)",
-    note: "Your pattern suggests multiple drivers of accelerated metabolic ageing. That does not mean the outcome is fixed — it means the next move matters.",
+    note: "Your pattern suggests multiple drivers of accelerated metabolic ageing. That does not mean the outcome is fixed it means the next move matters.",
   };
 }
 
@@ -271,7 +271,7 @@ export default function MetabolicAgePage() {
                 Metabolic Age Calculator
               </h1>
               <p style={{ fontSize: "1rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 22 }}>
-                In under two minutes, estimate whether your metabolism is ageing faster than the calendar suggests — then unlock your personalised Metabolic Health Scorecard and Longevity Roadmap.
+                In under two minutes, estimate whether your metabolism is ageing faster than the calendar suggests then unlock your personalised Metabolic Health Scorecard and Longevity Roadmap.
               </p>
               <div className="badge-row" style={{ justifyContent: "center" }}>
                 <span className="badge">7 questions</span>
@@ -353,7 +353,7 @@ export default function MetabolicAgePage() {
                         What are your body metrics?
                       </h2>
                       <p style={{ fontSize: ".84rem", color: "var(--sl3)", lineHeight: 1.8, marginBottom: 22 }}>
-                        Height, weight, and waist circumference let us calculate waist-to-height ratio — one of the strongest simple proxies for visceral fat risk.
+                        Height, weight, and waist circumference let us calculate waist-to-height ratio one of the strongest simple proxies for visceral fat risk.
                       </p>
 
                       <div style={{ display: "grid", gap: 14, marginBottom: 26 }}>
@@ -495,11 +495,11 @@ export default function MetabolicAgePage() {
                     This version estimates age deviation, not just a generic score.
                   </h3>
                   <p style={{ fontSize: ".92rem", color: "rgba(246,241,232,.74)", lineHeight: 1.9, marginBottom: 18 }}>
-                    We’re combining waist-to-height ratio, exercise exposure, energy stability, sleep quality, and recovery strain to estimate how many years your metabolism may be running ahead of — or behind — your chronological age.
+                    We’re combining waist-to-height ratio, exercise exposure, energy stability, sleep quality, and recovery strain to estimate how many years your metabolism may be running ahead of or behind your chronological age.
                   </p>
                   <div style={{ padding: "16px 18px", background: "rgba(246,241,232,.05)", borderLeft: "3px solid var(--go)" }}>
                     <p style={{ fontSize: ".8rem", color: "rgba(246,241,232,.7)", lineHeight: 1.8 }}>
-                      After your result, you can request the full Metabolic Health Scorecard and Longevity Roadmap — including the 7 missing markers most people never get checked.
+                      After your result, you can request the full Metabolic Health Scorecard and Longevity Roadmap including the 7 missing markers most people never get checked.
                     </p>
                   </div>
                   <div style={{ marginTop: 22, display: "grid", gap: 10 }}>
@@ -543,12 +543,12 @@ export default function MetabolicAgePage() {
                       This directional estimate uses age deviation logic: <strong style={{ color: "var(--fo)" }}>Estimated Age = Chronological Age + Risk Delta</strong>.
                     </p>
                     <p style={{ fontSize: ".82rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-                      WHtR: <strong style={{ color: "var(--fo)" }}>{waistToHeightRatio?.toFixed(2) ?? "—"}</strong> ({whtrYears >= 0 ? `+${whtrYears}` : whtrYears} years) · BMI context: <strong style={{ color: "var(--fo)" }}>{bmi?.toFixed(1) ?? "—"}</strong> ({bmiContextYears >= 0 ? `+${bmiContextYears}` : bmiContextYears} years)
+                      WHtR: <strong style={{ color: "var(--fo)" }}>{waistToHeightRatio?.toFixed(2) ?? " "}</strong> ({whtrYears >= 0 ? `+${whtrYears}` : whtrYears} years) · BMI context: <strong style={{ color: "var(--fo)" }}>{bmi?.toFixed(1) ?? " "}</strong> ({bmiContextYears >= 0 ? `+${bmiContextYears}` : bmiContextYears} years)
                     </p>
                   </div>
                   <div style={{ padding: "18px 20px", background: "rgba(200,168,75,.08)", borderLeft: "3px solid var(--go)", marginBottom: 22 }}>
                     <p style={{ fontSize: ".82rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-                      Next verification step: confirm the blind spots with the <strong style={{ color: "var(--fo)" }}>7 Missing Markers</strong> — especially <strong style={{ color: "var(--fo)" }}>ApoB, Homocysteine, and Fasting Insulin</strong>.
+                      Next verification step: confirm the blind spots with the <strong style={{ color: "var(--fo)" }}>7 Missing Markers</strong> especially <strong style={{ color: "var(--fo)" }}>ApoB, Homocysteine, and Fasting Insulin</strong>.
                     </p>
                   </div>
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -567,7 +567,7 @@ export default function MetabolicAgePage() {
                     subtitle="Enter your details to generate your personalised report, including your age deviation result, clinical interpretation, and the 7 Missing Markers to verify next."
                     ctaLabel="Generate My Scorecard →"
                     submittingLabel="Generating your Metabolic Health Scorecard and Longevity Roadmap..."
-                    successMessage="Your personalised scorecard request is in. Check your inbox next, then use the 7 Missing Markers — especially ApoB, Homocysteine, and Fasting Insulin — as your verification step."
+                    successMessage="Your personalised scorecard request is in. Check your inbox next, then use the 7 Missing Markers especially ApoB, Homocysteine, and Fasting Insulin as your verification step."
                     metadata={{
                       chronologicalAge: Math.round(parsedAge),
                       biologicalSex: sex,

@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 // Set NEXT_PUBLIC_CALENDLY_URL in Vercel env vars once Calendly account is ready.
-// Different event types per tier are optional — use one URL initially.
+// Different event types per tier are optional use one URL initially.
 const CALENDLY_BASE = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 
 const tierDetails: Record<string, {
@@ -23,7 +23,7 @@ const tierDetails: Record<string, {
     title: "GP Discovery Call",
     price: "£97",
     strikethrough: "£195",
-    badge: "Quiz rate — save £98",
+    badge: "Quiz rate save £98",
     duration: "30 min",
     description: "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation.",
   },
@@ -52,28 +52,28 @@ const tierDetails: Record<string, {
     description: "A structured reset with guided implementation, accountability and follow-through.",
   },
   "womens-hormones": {
-    title: "Is It My Hormones? — Women's Panel",
+    title: "Is It My Hormones? Women's Panel",
     price: "£325",
     duration: "Blood test",
-    description: "Full female hormonal profile including oestradiol, progesterone, testosterone, thyroid, Lp(a), fasting insulin and vitamin D — GP-reviewed written interpretation included.",
+    description: "Full female hormonal profile including oestradiol, progesterone, testosterone, thyroid, Lp(a), fasting insulin and vitamin D GP-reviewed written interpretation included.",
   },
   "mens-testosterone": {
-    title: "Running on Empty — Men's Panel",
+    title: "Running on Empty Men's Panel",
     price: "£325",
     duration: "Blood test",
-    description: "Full male hormonal panel including free testosterone, SHBG, DHEA-S, cortisol, Lp(a) and fasting insulin — GP-reviewed written interpretation included.",
+    description: "Full male hormonal panel including free testosterone, SHBG, DHEA-S, cortisol, Lp(a) and fasting insulin GP-reviewed written interpretation included.",
   },
   "cardiovascular-risk": {
     title: "What Your Cholesterol Test Missed",
     price: "£349",
     duration: "Blood test",
-    description: "Advanced cardiovascular panel: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP and fasting insulin — the markers standard cholesterol tests omit. GP-reviewed report included.",
+    description: "Advanced cardiovascular panel: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP and fasting insulin the markers standard cholesterol tests omit. GP-reviewed report included.",
   },
   "fatigue-energy": {
     title: "Tired of Being Told You're Fine",
     price: "£249",
     duration: "Blood test",
-    description: "Deep fatigue screen covering thyroid (including TPO antibodies), ferritin, fasting insulin, uric acid, vitamins and inflammation — GP-reviewed written report included.",
+    description: "Deep fatigue screen covering thyroid (including TPO antibodies), ferritin, fasting insulin, uric acid, vitamins and inflammation GP-reviewed written report included.",
   },
   "metabolic-weight": {
     title: "Why Won't The Weight Budge?",
@@ -301,11 +301,11 @@ function BookingInner() {
             <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85 }}>{details.description}</p>
           </div>
 
-          {/* Blood test direct payment — no scheduling needed */}
+          {/* Blood test direct payment no scheduling needed */}
           {step === "blood-test-pay" && (
             <div style={{ maxWidth: 540, marginBottom: 36 }}>
               <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 18 }}>
-                Your details — then choose how to pay
+                Your details then choose how to pay
               </p>
               <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
                 <div>
@@ -347,7 +347,7 @@ function BookingInner() {
 
               <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7, marginBottom: 16 }}>
                 <Shield />
-                <span>Secure payment via Stripe. Accepts all major cards including Visa, Mastercard and Amex. Your blood test kit will be arranged by Dr Taiwo after payment — collection instructions sent within 24 hours.</span>
+                <span>Secure payment via Stripe. Accepts all major cards including Visa, Mastercard and Amex. Your blood test kit will be arranged by Dr Taiwo after payment collection instructions sent within 24 hours.</span>
               </div>
               <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.75 }}>
                 Questions before paying?{" "}
@@ -360,7 +360,7 @@ function BookingInner() {
           {step !== "no-calendly" && step !== "blood-test-pay" && (
             <div style={{ marginBottom: 48 }}>
               <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 14 }}>
-                Step 1 — Pick a date and time
+                Step 1 Pick a date and time
               </p>
               <div
                 className="calendly-inline-widget"
@@ -370,7 +370,7 @@ function BookingInner() {
             </div>
           )}
 
-          {/* Intake form — shown when Calendly not yet configured */}
+          {/* Intake form shown when Calendly not yet configured */}
           {step === "no-calendly" && (
             <form onSubmit={handleEnquirySubmit} style={{ maxWidth: 580, marginBottom: 36, display: "grid", gap: 18 }}>
               <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85, margin: 0 }}>
@@ -447,7 +447,7 @@ function BookingInner() {
                 We&apos;ve received your enquiry for <strong style={{ color: "var(--sl)" }}>{details.title}</strong>.
               </p>
               <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85 }}>
-                Dr Tosin will be in touch within 24 hours — usually sooner — to confirm your appointment details.
+                Dr Tosin will be in touch within 24 hours usually sooner to confirm your appointment details.
               </p>
             </div>
           )}
@@ -456,7 +456,7 @@ function BookingInner() {
           {(step === "pay" || step === "submitting") && invitee && (
             <div id="pay-section" style={{ marginBottom: 48 }}>
               <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".22em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 14 }}>
-                Step 2 — Confirm payment
+                Step 2 Confirm payment
               </p>
               <div className="card" style={{ borderLeft: "3px solid var(--go)", maxWidth: 580 }}>
                 <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 10 }}>

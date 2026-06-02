@@ -4,14 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "ApoB vs LDL — Why ApoB Better Reflects Cardiovascular Risk | Veridian Clinic",
+  title: "ApoB vs LDL Why ApoB Better Reflects Cardiovascular Risk | Veridian Clinic",
   description:
-    "ApoB measures the number of atherogenic lipoprotein particles circulating in your blood — a more direct handle on cardiovascular risk than LDL-C, especially in insulin resistance and metabolic dysfunction. Here is what it measures, when it matters, and what to do with the result.",
+    "ApoB measures the number of atherogenic lipoprotein particles circulating in your blood a more direct handle on cardiovascular risk than LDL-C, especially in insulin resistance and metabolic dysfunction. Here is what it measures, when it matters, and what to do with the result.",
   alternates: {
     canonical: "https://veridianclinic.com/blog/apob-vs-ldl",
   },
   openGraph: {
-    title: "ApoB vs LDL — Cardiovascular Risk Markers Explained | Veridian Clinic",
+    title: "ApoB vs LDL Cardiovascular Risk Markers Explained | Veridian Clinic",
     description:
       "Why ApoB gives a more accurate read of atherogenic particle burden than LDL-C, especially in insulin resistance and metabolic dysfunction.",
     url: "https://veridianclinic.com/blog/apob-vs-ldl",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://veridianclinic.com/blog/apob-vs-ldl.jpg",
         width: 1200,
         height: 675,
-        alt: "Lipoprotein particles in blood plasma — ApoB cardiovascular risk visualization",
+        alt: "Lipoprotein particles in blood plasma ApoB cardiovascular risk visualization",
       },
     ],
   },
@@ -56,9 +56,9 @@ const sectionHeading = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "ApoB vs LDL — Why ApoB Better Reflects Cardiovascular Risk",
+  headline: "ApoB vs LDL Why ApoB Better Reflects Cardiovascular Risk",
   description:
-    "ApoB measures the number of atherogenic lipoprotein particles — a more direct handle on cardiovascular risk than LDL-C, especially in insulin resistance and metabolic dysfunction.",
+    "ApoB measures the number of atherogenic lipoprotein particles a more direct handle on cardiovascular risk than LDL-C, especially in insulin resistance and metabolic dysfunction.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: {
     "@type": "Organization",
@@ -83,11 +83,11 @@ export default function ApoBVsLDLPage() {
       title="ApoB vs LDL, the cardiovascular risk marker question that changes the conversation"
       intro="LDL cholesterol is still the headline number on most lipid panels, but ApoB often gives the cleaner answer to the question that actually matters: how many atherogenic particles are circulating through the arterial system and capable of driving plaque formation?"
       heroImage="/blog/apob-vs-ldl.jpg"
-      heroAlt="Lipoprotein particles in blood plasma — ApoB cardiovascular risk visualization"
+      heroAlt="Lipoprotein particles in blood plasma ApoB cardiovascular risk visualization"
       ctas={[
-        { href: "/book?tier=baseline", label: "Book the Metabolic Baseline — ApoB included →" },
+        { href: "/book?tier=baseline", label: "Book the Metabolic Baseline ApoB included →" },
         { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "secondary" },
-        { href: "/metabolic-reset-guide", label: "Get the 21-Day Reset Guide — £19.99", variant: "tertiary" },
+        { href: "/metabolic-reset-guide", label: "Get the 21-Day Reset Guide £19.99", variant: "tertiary" },
       ]}
     >
       <p style={paragraph}>

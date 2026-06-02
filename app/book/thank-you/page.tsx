@@ -71,7 +71,7 @@ function ThankYouContent() {
               {isReviewTier
                 ? "Your payment is confirmed. Select a date and time below to schedule your virtual clinical review with Dr Tosin. You'll receive a video call link by email before your appointment."
                 : isBloodTestTier
-                ? "Payment confirmed. A confirmation email is on its way with everything you need — what's being tested, how your sample is collected, and what to expect. Dr Tosin will contact you within 24 hours to arrange your kit or walk-in booking."
+                ? "Payment confirmed. A confirmation email is on its way with everything you need what's being tested, how your sample is collected, and what to expect. Dr Tosin will contact you within 24 hours to arrange your kit or walk-in booking."
                 : "Your booking request has been submitted successfully. We'll be in touch within 24 hours to confirm next steps."}
             </p>
           </div>
@@ -112,9 +112,9 @@ function ThankYouContent() {
                       ]
                     : isBloodTestTier
                     ? [
-                        "A confirmation email is on its way — check your inbox (and spam folder) now.",
+                        "A confirmation email is on its way check your inbox (and spam folder) now.",
                         "Dr Tosin will contact you within 24 hours to confirm your preferred sample collection method.",
-                        "Your sample is processed by our nationally accredited UK laboratory — results within 48–72 hours of receipt.",
+                        "Your sample is processed by our nationally accredited UK laboratory results within 48–72 hours of receipt.",
                         "Dr Tosin's written clinical interpretation and personalised next-step plan is sent directly to your email.",
                       ]
                     : [

@@ -19,25 +19,25 @@ const BANDS = {
     color: "var(--amr)",
     bg: "rgba(138,85,0,.08)",
     border: "rgba(138,85,0,.22)",
-    note: "There are early signs of metabolic drift. This is often the best intervention window — before more obvious dysfunction becomes established.",
+    note: "There are early signs of metabolic drift. This is often the best intervention window before more obvious dysfunction becomes established.",
   },
   "high-risk": {
     tone: "High Priority",
     color: "var(--red)",
     bg: "rgba(122,22,22,.08)",
     border: "rgba(122,22,22,.22)",
-    note: "Your pattern shows multiple drivers of metabolic stress. That does not make the outcome fixed — but it does mean the next move matters.",
+    note: "Your pattern shows multiple drivers of metabolic stress. That does not make the outcome fixed but it does mean the next move matters.",
   },
 };
 
 const WEAKEST_LABELS: Record<string, string> = {
-  waist: "Waist-to-height ratio — a strong proxy for visceral fat, insulin resistance, and cardiovascular risk.",
-  energy: "Daily energy levels — persistent fatigue and post-meal crashes are early markers of hyperinsulinaemia, often detectable years before fasting glucose changes.",
-  sleep: "Sleep quality — poor sleep directly disrupts glucose regulation, cortisol rhythm, appetite signalling, and metabolic recovery.",
-  stress: "Chronic stress load — sustained cortisol elevation drives visceral fat accumulation and insulin resistance independently of diet and exercise habits.",
-  activity: "Movement — skeletal muscle is the primary site of glucose disposal. Low activity is one of the most direct and modifiable drivers of metabolic decline.",
-  diet: "Diet quality — dietary insulin load, fibre intake, and ultra-processed food frequency are the strongest dietary predictors of metabolic age drift.",
-  gut: "Gut health — chronic gut dysbiosis increases intestinal permeability, triggering systemic inflammation that directly impairs insulin sensitivity.",
+  waist: "Waist-to-height ratio a strong proxy for visceral fat, insulin resistance, and cardiovascular risk.",
+  energy: "Daily energy levels persistent fatigue and post-meal crashes are early markers of hyperinsulinaemia, often detectable years before fasting glucose changes.",
+  sleep: "Sleep quality poor sleep directly disrupts glucose regulation, cortisol rhythm, appetite signalling, and metabolic recovery.",
+  stress: "Chronic stress load sustained cortisol elevation drives visceral fat accumulation and insulin resistance independently of diet and exercise habits.",
+  activity: "Movement skeletal muscle is the primary site of glucose disposal. Low activity is one of the most direct and modifiable drivers of metabolic decline.",
+  diet: "Diet quality dietary insulin load, fibre intake, and ultra-processed food frequency are the strongest dietary predictors of metabolic age drift.",
+  gut: "Gut health chronic gut dysbiosis increases intestinal permeability, triggering systemic inflammation that directly impairs insulin sensitivity.",
 };
 
 function fbq(event: string, data?: Record<string, unknown>) {
@@ -69,7 +69,7 @@ function ResultContent() {
     delta > 0
       ? `Your metabolism appears to be running approximately ${delta} year${delta === 1 ? "" : "s"} ahead of your calendar age.`
       : delta < 0
-        ? `Your metabolic age is tracking behind your calendar age — a positive sign of metabolic resilience.`
+        ? `Your metabolic age is tracking behind your calendar age a positive sign of metabolic resilience.`
         : "Your metabolic age closely matches your chronological age.";
 
   const [submitted, setSubmitted] = useState(false);
@@ -136,7 +136,7 @@ function ResultContent() {
                   Your result is ready.
                 </h1>
                 <p className="a3" style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.9 }}>
-                  Enter your email to receive your full scorecard breakdown — your metabolic age and a colour-coded report across all seven factors.
+                  Enter your email to receive your full scorecard breakdown your metabolic age and a colour-coded report across all seven factors.
                 </p>
               </div>
               <form onSubmit={handleGateSubmit} className="a4" style={{ display: "grid", gap: 14 }}>
@@ -369,7 +369,7 @@ function ResultContent() {
                   </p>
                 </div>
 
-                {/* Primary CTA — band conditional */}
+                {/* Primary CTA band conditional */}
                 {bandKey === "strong" ? (
                   <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
                     <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>
@@ -379,7 +379,7 @@ function ResultContent() {
                       Your quiz result is strong. Your biomarkers may tell a different story.
                     </p>
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
-                      Fasting insulin, ApoB, and hsCRP don't show up in lifestyle questions — and they're often the first markers to shift in people who appear perfectly healthy. A targeted blood panel takes 10 minutes and gives you the full picture.
+                      Fasting insulin, ApoB, and hsCRP don't show up in lifestyle questions and they're often the first markers to shift in people who appear perfectly healthy. A targeted blood panel takes 10 minutes and gives you the full picture.
                     </p>
                     <Link
                       href="/assessments#metabolic-panel"
@@ -398,7 +398,7 @@ function ResultContent() {
                       Why Your Weight Isn&apos;t Shifting
                     </p>
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
-                      A Doctor&apos;s 21-Day Metabolic Reset Guide — the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. Free · Instant download.
+                      A Doctor&apos;s 21-Day Metabolic Reset Guide the structured reset protocol matched to your result, with meal plans, fasting strategies, and movement tiers. Free · Instant download.
                     </p>
                     <Link
                       href="/metabolic-reset-guide"
@@ -422,7 +422,7 @@ function ResultContent() {
                       Your pattern warrants a direct clinical conversation.
                     </p>
                     <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 16 }}>
-                      A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway — whether that&apos;s a targeted blood panel, a structured reset, or a full baseline assessment.
+                      A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway whether that&apos;s a targeted blood panel, a structured reset, or a full baseline assessment.
                     </p>
                     <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
                       <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£97</span>
@@ -430,7 +430,7 @@ function ResultContent() {
                       <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Save £98</span>
                     </div>
                     <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.55)", lineHeight: 1.6, marginBottom: 16 }}>
-                      Enter your email for your free scorecard — your £97 rate is unlocked immediately after.
+                      Enter your email for your free scorecard your £97 rate is unlocked immediately after.
                     </p>
                     <Link
                       href={scorecardUrl}
@@ -442,7 +442,7 @@ function ResultContent() {
                   </div>
                 )}
 
-                {/* Secondary CTA — free scorecard */}
+                {/* Secondary CTA free scorecard */}
                 <div style={{ padding: "16px 20px", background: "var(--iv2)", border: "1px solid rgba(0,0,0,.07)" }}>
                   <p style={{ fontSize: ".72rem", color: "var(--sl3)", letterSpacing: ".1em", textTransform: "uppercase", fontWeight: 600, marginBottom: 6 }}>
                     Free option
@@ -464,14 +464,14 @@ function ResultContent() {
                     Book a GP Discovery Call at half price.
                   </p>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14 }}>
-                    A 30-minute GP-led review of your result — enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>VERIDIAN50</strong> at checkout to reduce the price from £195 to £97.
+                    A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>VERIDIAN50</strong> at checkout to reduce the price from £195 to £97.
                   </p>
                   <Link
                     href="/book?tier=discovery"
                     style={{ fontSize: ".86rem", fontWeight: 600, color: "var(--fo)", textDecoration: "underline" }}
                     onClick={() => fbq("InitiateCheckout", { value: 97, currency: "GBP", content_name: "Discovery Call VERIDIAN50" })}
                   >
-                    Book now — use VERIDIAN50 at checkout →
+                    Book now use VERIDIAN50 at checkout →
                   </Link>
                 </div>
               </div>

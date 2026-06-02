@@ -33,7 +33,7 @@ export default function PeriGuideThankyouPage() {
               The Perimenopause Reset Guide
             </h1>
             <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.65)", lineHeight: 1.9, maxWidth: 520, margin: "0 auto 32px" }}>
-              Download your guide below. Save it somewhere easy to find — you'll want to refer back to specific chapters as you work through the six-week reset.
+              Download your guide below. Save it somewhere easy to find you'll want to refer back to specific chapters as you work through the six-week reset.
             </p>
 
             <a
@@ -51,7 +51,7 @@ export default function PeriGuideThankyouPage() {
           </div>
         </section>
 
-        {/* ── Recommended next step — upsell/downsell ── */}
+        {/* ── Recommended next step upsell/downsell ── */}
         <section className="sec bg-iv" style={{ paddingTop: 64, paddingBottom: 72 }}>
           <PeriGuideUpsells />
         </section>

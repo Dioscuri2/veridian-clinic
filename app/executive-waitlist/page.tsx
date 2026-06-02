@@ -13,7 +13,7 @@ const benefits = [
 const pillars = [
   {
     title: "Clinical depth",
-    body: "A more expansive review of metabolic, cardiovascular, recovery, and longevity risk — built for people who need precision, not generic reassurance.",
+    body: "A more expansive review of metabolic, cardiovascular, recovery, and longevity risk built for people who need precision, not generic reassurance.",
   },
   {
     title: "Continuity",
@@ -28,7 +28,7 @@ const pillars = [
 export const metadata = {
   title: "Executive Healthspan Waitlist | Veridian Clinic",
   description:
-    "Apply for priority access to Veridian Clinic’s Executive Healthspan pathway — an exclusive, high-touch clinical experience.",
+    "Apply for priority access to Veridian Clinic’s Executive Healthspan pathway an exclusive, high-touch clinical experience.",
 };
 
 export default function ExecutiveWaitlistPage() {
@@ -164,7 +164,7 @@ export default function ExecutiveWaitlistPage() {
               <div className="rule rule-c" />
               <h2 className="sh-title">A more strategic form of preventive medicine.</h2>
               <p className="sh-body" style={{ maxWidth: 760 }}>
-                Executive Healthspan is designed for people whose health decisions carry disproportionate consequences — professionally, personally, and over the long term.
+                Executive Healthspan is designed for people whose health decisions carry disproportionate consequences professionally, personally, and over the long term.
               </p>
             </div>
 

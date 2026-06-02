@@ -12,35 +12,35 @@ export const metadata: Metadata = {
 const articles = [
   {
     slug: "homocysteine",
-    title: "Homocysteine — the cardiovascular risk marker most GPs don't check",
-    excerpt: "Homocysteine is an independent cardiovascular and cognitive risk marker not included in standard NHS panels. Elevated levels are most commonly caused by low folate or B12 — yet they silently drive endothelial damage, inflammation, and vascular risk that conventional screening completely misses.",
+    title: "Homocysteine the cardiovascular risk marker most GPs don't check",
+    excerpt: "Homocysteine is an independent cardiovascular and cognitive risk marker not included in standard NHS panels. Elevated levels are most commonly caused by low folate or B12 yet they silently drive endothelial damage, inflammation, and vascular risk that conventional screening completely misses.",
     tag: "Cardiovascular Risk",
     readTime: "14 min read",
   },
   {
     slug: "lipoprotein-a-apob-triglycerides",
-    title: "The cardiovascular triple threat — Lipoprotein(a), ApoB, and triglycerides",
-    excerpt: "Three independent atherogenic pathways your standard NHS cholesterol panel does not measure — and why having all three elevated compounds your risk in ways that standard screening completely misses.",
+    title: "The cardiovascular triple threat Lipoprotein(a), ApoB, and triglycerides",
+    excerpt: "Three independent atherogenic pathways your standard NHS cholesterol panel does not measure and why having all three elevated compounds your risk in ways that standard screening completely misses.",
     tag: "Cardiovascular Risk",
     readTime: "12 min read",
   },
   {
     slug: "apob-vs-ldl",
-    title: "ApoB vs LDL — the cardiovascular risk marker question that changes the conversation",
+    title: "ApoB vs LDL the cardiovascular risk marker question that changes the conversation",
     excerpt: "LDL cholesterol is still the headline number on most lipid panels, but ApoB often gives the cleaner answer to the question that actually matters: how many atherogenic particles are circulating through the arterial system?",
     tag: "Cardiovascular Risk",
     readTime: "8 min read",
   },
   {
     slug: "fast-insulin",
-    title: "Fasting insulin — the missing early signal in metabolic disease",
+    title: "Fasting insulin the missing early signal in metabolic disease",
     excerpt: "Fasting glucose and HbA1c can look perfectly normal while hyperinsulinaemia silently drives visceral fat accumulation, fatigue, and vascular risk. Here is what fasting insulin actually tells you, what a normal range looks like, and who should be tested.",
     tag: "Metabolic Health",
     readTime: "10 min read",
   },
   {
     slug: "reversing-metabolic-syndrome",
-    title: "Reversing metabolic syndrome — what the evidence actually supports",
+    title: "Reversing metabolic syndrome what the evidence actually supports",
     excerpt: "Metabolic syndrome affects 1 in 4 UK adults and is among the most reversible of all cardiometabolic conditions. The clinical evidence on reversal is more optimistic than most patients are told. Here is what the data shows and where to start.",
     tag: "Metabolic Syndrome",
     readTime: "11 min read",
@@ -69,7 +69,7 @@ export default function BlogIndexPage() {
               className="a3"
               style={{ fontSize: "clamp(.92rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 620, marginBottom: 0 }}
             >
-              GP-authored articles on the markers, mechanisms, and interventions that matter most for people who want to act early — before dysfunction becomes disease.
+              GP-authored articles on the markers, mechanisms, and interventions that matter most for people who want to act early before dysfunction becomes disease.
             </p>
           </div>
         </section>
@@ -141,10 +141,10 @@ export default function BlogIndexPage() {
               Check your metabolic age in 60 seconds.
             </h2>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 28, maxWidth: 520, margin: "0 auto 28px" }}>
-              A free clinical screening tool that estimates where your metabolism is tracking — and points you to the most relevant next step.
+              A free clinical screening tool that estimates where your metabolism is tracking and points you to the most relevant next step.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/metabolic-quiz" className="btn btn-fo">Check My Metabolic Age — Free →</Link>
+              <Link href="/metabolic-quiz" className="btn btn-fo">Check My Metabolic Age Free →</Link>
               <Link href="/assessments" className="btn btn-ol">View All Pathways</Link>
             </div>
           </div>

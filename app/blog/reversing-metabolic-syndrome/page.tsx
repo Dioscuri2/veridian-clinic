@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Reversing Metabolic Syndrome — What the Evidence Actually Supports | Veridian Clinic",
+  title: "Reversing Metabolic Syndrome What the Evidence Actually Supports | Veridian Clinic",
   description:
     "Metabolic syndrome is not a fixed diagnosis. Clinical evidence shows meaningful reversal is achievable in 12 weeks through targeted changes to diet, activity, sleep, and body composition, with objective biomarker tracking to confirm what is actually improving.",
   alternates: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://veridianclinic.com/blog/reversing-metabolic-syndrome.jpg",
         width: 1200,
         height: 675,
-        alt: "Mitochondrial cellular regeneration visualization — metabolic health transformation",
+        alt: "Mitochondrial cellular regeneration visualization metabolic health transformation",
       },
     ],
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Reversing Metabolic Syndrome — What the Evidence Actually Supports",
+  headline: "Reversing Metabolic Syndrome What the Evidence Actually Supports",
   description:
     "Metabolic syndrome is reversible. Clinical evidence shows targeted changes to diet, activity, sleep, and body composition can substantially improve the underlying metabolic pattern within 12 weeks.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
@@ -73,10 +73,10 @@ export default function ReversingMetabolicSyndromePage() {
         title="Reversing metabolic syndrome: what the evidence actually supports"
         intro="The goal is not perfection. It is reducing the drivers that keep insulin elevated, waist circumference expanding, and cardiovascular risk quietly climbing. Then measuring whether the system is genuinely improving. Metabolic syndrome is a cluster of abnormalities, not a fixed diagnosis with a fixed trajectory."
         heroImage="/blog/reversing-metabolic-syndrome.jpg"
-        heroAlt="Mitochondrial cellular regeneration visualization — metabolic health transformation"
+        heroAlt="Mitochondrial cellular regeneration visualization metabolic health transformation"
         ctas={[
           { href: "/book?tier=programme", label: "Explore the 12-week Metabolic Reset →" },
-          { href: "/book?tier=baseline", label: "Start with the Core Metabolic Assessment — £595", variant: "secondary" },
+          { href: "/book?tier=baseline", label: "Start with the Core Metabolic Assessment £595", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >

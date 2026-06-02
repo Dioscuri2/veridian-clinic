@@ -11,7 +11,7 @@ const plans = [
  price: "£195",
  cadence: "Focused starting point",
  tier: "discovery",
- blurb: "A focused clinical discovery consultation to understand your symptoms, goals, family history and likely metabolic blind spots — then recommend the right next diagnostic step.",
+ blurb: "A focused clinical discovery consultation to understand your symptoms, goals, family history and likely metabolic blind spots then recommend the right next diagnostic step.",
  feats: [
  "30-minute clinical discovery consultation",
  "Review of symptoms, weight, energy, sleep and family history",
@@ -28,27 +28,27 @@ const plans = [
  price: "£595",
  cadence: "Core assessment",
  tier: "baseline",
- blurb: "A longevity-focused baseline audit revealing the most actionable metabolic drivers of decline — with two clinical consultations, advanced biomarker testing, and a 14-day CGM to capture what blood tests alone can't show.",
+ blurb: "A longevity-focused baseline audit revealing the most actionable metabolic drivers of decline with two clinical consultations, advanced biomarker testing, and a 14-day CGM to capture what blood tests alone can't show.",
  feats: [
- "Consultation 1 — initial clinical session: full history, goal-mapping and metabolic risk review",
+ "Consultation 1 initial clinical session: full history, goal-mapping and metabolic risk review",
  "Advanced panel: HbA1c, fasting insulin, ApoB, Lp(a), liver, kidney, inflammation and more",
- "14-day Lingo CGM — personal glucose pattern analysis",
- "Consultation 2 — results reviewed and explained in full with Dr Taiwo",
+ "14-day Lingo CGM personal glucose pattern analysis",
+ "Consultation 2 results reviewed and explained in full with Dr Taiwo",
  "Personalised written clinical action plan with prioritised next steps",
  ],
  cta: "Book Veridian Baseline",
  feat: true,
- right_for: "Right for you if you want high-clarity answers on the markers most likely to explain drifting energy, weight and vascular risk — with two dedicated clinical sessions to act on them.",
+ right_for: "Right for you if you want high-clarity answers on the markers most likely to explain drifting energy, weight and vascular risk with two dedicated clinical sessions to act on them.",
  },
  {
  name: "12-Week Metabolic Reset",
  price: "£1,895",
  cadence: "Structured intervention",
  tier: "programme",
- blurb: "A structured reset for patients who need guided implementation, accountability and follow-through — not just a report.",
+ blurb: "A structured reset for patients who need guided implementation, accountability and follow-through not just a report.",
  feats: [
  "Everything in the Veridian Baseline",
- "Second CGM cycle — extended glucose monitoring over a further 14 days",
+ "Second CGM cycle extended glucose monitoring over a further 14 days",
  "Fortnightly coaching support",
  "Clinical review via partner providers where indicated",
  "Personalised nutrition, movement and recovery protocol",
@@ -100,7 +100,7 @@ const bloodPanels = [
     price: "£195",
     tag: "Entry Level",
     tagColor: "var(--sl2)",
-    description: "A targeted panel covering the most common hidden drivers of fatigue, weight plateau and brain fog — the markers your GP rarely checks together in a single screen.",
+    description: "A targeted panel covering the most common hidden drivers of fatigue, weight plateau and brain fog the markers your GP rarely checks together in a single screen.",
     markers: [
       "Full Blood Count (FBC)",
       "Thyroid: TSH, FT3, FT4 + TPO antibodies",
@@ -111,7 +111,7 @@ const bloodPanels = [
       "hs-CRP (inflammation)",
       "Kidney function (eGFR, Creatinine)",
     ],
-    youGet: "GP-reviewed digital report with written clinical interpretation — not just reference ranges. Includes a clear recommendation for what to do next.",
+    youGet: "GP-reviewed digital report with written clinical interpretation not just reference ranges. Includes a clear recommendation for what to do next.",
     href: "/book?tier=metabolic-screen",
     featured: false,
   },
@@ -121,7 +121,7 @@ const bloodPanels = [
     price: "£595",
     tag: "Most Popular",
     tagColor: "var(--go)",
-    description: "A comprehensive audit revealing cardiovascular risk, insulin load and the liver/hormonal drivers of weight gain and metabolic ageing — most of which routine NHS panels miss entirely.",
+    description: "A comprehensive audit revealing cardiovascular risk, insulin load and the liver/hormonal drivers of weight gain and metabolic ageing most of which routine NHS panels miss entirely.",
     markers: [
       "Everything in the Energy Screen",
       "ApoB + full cardiovascular risk scoring",
@@ -130,7 +130,7 @@ const bloodPanels = [
       "Metabolic hormones: Leptin, Adiponectin, Resistin",
       "Liver health: ALT, AST, GGT",
       "Uric acid + advanced kidney markers",
-      "14-day Lingo CGM — glucose patterns, meal response, metabolic flexibility",
+      "14-day Lingo CGM glucose patterns, meal response, metabolic flexibility",
       "60+ data points in total",
     ],
     youGet: "Full metabolic blood panel + 14-day Lingo CGM + two GP consultations (initial clinical session and blood results review) + personalised written action plan with prioritised next steps.",
@@ -143,7 +143,7 @@ const bloodPanels = [
     price: "£795",
     tag: "Premium",
     tagColor: "var(--fo)",
-    description: "The most complete picture of your biological age trajectory — 150+ data points spanning hormonal health, cardiovascular risk, gut integrity, Omega-3 status and pancreatic function.",
+    description: "The most complete picture of your biological age trajectory 150+ data points spanning hormonal health, cardiovascular risk, gut integrity, Omega-3 status and pancreatic function.",
     markers: [
       "Everything in the Metabolic Baseline",
       "Full hormonal profile: Testosterone, SHBG, Oestradiol, FSH, LH, Progesterone",
@@ -166,17 +166,17 @@ const targetedPanels = [
     price: "£325",
     tag: "Women's Health",
     tagColor: "#9d5c8a",
-    description: "Chronic fatigue, mood changes, weight gain, poor sleep, low libido — these aren't 'just getting older'. This panel is designed to reveal whether your hormones are the missing link, and which ones.",
+    description: "Chronic fatigue, mood changes, weight gain, poor sleep, low libido these aren't 'just getting older'. This panel is designed to reveal whether your hormones are the missing link, and which ones.",
     markers: [
       "Full female hormones: Oestradiol, FSH, LH, Progesterone, Prolactin, SHBG",
-      "Testosterone (total + free) — for energy, mood and drive",
+      "Testosterone (total + free) for energy, mood and drive",
       "Thyroid: TSH, FT3, FT4 + TPO antibodies",
-      "Cortisol — stress-hormone axis",
-      "Lipoprotein (a) — often elevated in hormonal transitions",
+      "Cortisol stress-hormone axis",
+      "Lipoprotein (a) often elevated in hormonal transitions",
       "Fasting insulin + HbA1c",
       "Vitamin D",
     ],
-    youGet: "GP-reviewed written interpretation of your full hormonal picture, with a clear explanation of what your results mean for your specific symptoms — not just reference ranges.",
+    youGet: "GP-reviewed written interpretation of your full hormonal picture, with a clear explanation of what your results mean for your specific symptoms not just reference ranges.",
     href: "/book?tier=womens-hormones",
   },
   {
@@ -187,10 +187,10 @@ const targetedPanels = [
     tagColor: "#3d7ab5",
     description: "Low drive, poor recovery, foggy thinking, a body that won't respond the way it used to. This panel tests the hormonal and metabolic drivers that most GPs don't screen for together.",
     markers: [
-      "Total + Free Testosterone — the functional metric GPs rarely test",
+      "Total + Free Testosterone the functional metric GPs rarely test",
       "SHBG, LH, FSH, Prolactin, DHEA-S",
-      "Cortisol — adrenal function and stress axis",
-      "Lipoprotein (a) — cardiovascular risk often missed in men",
+      "Cortisol adrenal function and stress axis",
+      "Lipoprotein (a) cardiovascular risk often missed in men",
       "Fasting insulin + HbA1c",
       "Full Blood Count + hs-CRP",
     ],
@@ -203,17 +203,17 @@ const targetedPanels = [
     price: "£349",
     tag: "Cardiovascular",
     tagColor: "#b04040",
-    description: "A normal cholesterol result does not mean a normal cardiovascular risk. This panel reveals the markers your GP rarely checks — and that research shows matter far more than total cholesterol.",
+    description: "A normal cholesterol result does not mean a normal cardiovascular risk. This panel reveals the markers your GP rarely checks and that research shows matter far more than total cholesterol.",
     markers: [
-      "ApoB — the most predictive cardiovascular risk marker",
-      "Lipoprotein (a) — genetic risk factor missed by standard cholesterol tests",
-      "Small dense LDL — the dangerous LDL sub-fraction",
-      "Homocysteine — endothelial damage and inflammation",
-      "hs-CRP — systemic inflammatory load",
+      "ApoB the most predictive cardiovascular risk marker",
+      "Lipoprotein (a) genetic risk factor missed by standard cholesterol tests",
+      "Small dense LDL the dangerous LDL sub-fraction",
+      "Homocysteine endothelial damage and inflammation",
+      "hs-CRP systemic inflammatory load",
       "Full lipid profile + ApoA-I",
-      "Fasting insulin + HbA1c — metabolic driver of vascular risk",
+      "Fasting insulin + HbA1c metabolic driver of vascular risk",
     ],
-    youGet: "GP-reviewed cardiovascular risk summary with a written interpretation of your ApoB, Lp(a) and inflammatory markers — and a clear recommendation on what to do next.",
+    youGet: "GP-reviewed cardiovascular risk summary with a written interpretation of your ApoB, Lp(a) and inflammatory markers and a clear recommendation on what to do next.",
     href: "/book?tier=cardiovascular-risk",
   },
   {
@@ -222,17 +222,17 @@ const targetedPanels = [
     price: "£249",
     tag: "Energy & Fatigue",
     tagColor: "#8a6a25",
-    description: "Persistent fatigue, brain fog and low energy — with a normal GP blood test result every time. This panel goes beyond standard screening to find what those tests miss.",
+    description: "Persistent fatigue, brain fog and low energy with a normal GP blood test result every time. This panel goes beyond standard screening to find what those tests miss.",
     markers: [
-      "Full Blood Count — anaemia, immune load",
-      "Thyroid: TSH, FT3, FT4 + TPO antibodies — including subclinical dysfunction",
+      "Full Blood Count anaemia, immune load",
+      "Thyroid: TSH, FT3, FT4 + TPO antibodies including subclinical dysfunction",
       "Ferritin + full iron studies",
       "Vitamin B12, Folate, Vitamin D",
-      "Fasting insulin — the commonest missed energy driver",
-      "Uric acid — linked to mitochondrial fatigue",
+      "Fasting insulin the commonest missed energy driver",
+      "Uric acid linked to mitochondrial fatigue",
       "hs-CRP + kidney function",
     ],
-    youGet: "GP-reviewed written report identifying which markers are likely driving your fatigue — with clinical interpretation and actionable next steps.",
+    youGet: "GP-reviewed written report identifying which markers are likely driving your fatigue with clinical interpretation and actionable next steps.",
     href: "/book?tier=fatigue-energy",
   },
   {
@@ -241,17 +241,17 @@ const targetedPanels = [
     price: "£199",
     tag: "Weight & Metabolism",
     tagColor: "#4a7a40",
-    description: "You're eating well. You're moving. But the weight won't shift. This panel identifies the metabolic blockers — insulin resistance, hormonal imbalance and hidden inflammation — that make fat loss physiologically difficult.",
+    description: "You're eating well. You're moving. But the weight won't shift. This panel identifies the metabolic blockers insulin resistance, hormonal imbalance and hidden inflammation that make fat loss physiologically difficult.",
     markers: [
       "Fasting insulin + HbA1c + HOMA-IR (insulin resistance index)",
-      "Uric acid — linked to metabolic syndrome and fat-loss resistance",
-      "Lipoprotein (a) — elevated in metabolic dysfunction",
-      "Leptin + Adiponectin — hunger and fat-cell signalling hormones",
-      "TSH — thyroid contribution to weight regulation",
+      "Uric acid linked to metabolic syndrome and fat-loss resistance",
+      "Lipoprotein (a) elevated in metabolic dysfunction",
+      "Leptin + Adiponectin hunger and fat-cell signalling hormones",
+      "TSH thyroid contribution to weight regulation",
       "Liver markers: ALT, AST",
       "Fasting lipid profile",
     ],
-    youGet: "GP-reviewed metabolic interpretation identifying why your body is resisting fat loss — with a written, prioritised recommendation for what to address first.",
+    youGet: "GP-reviewed metabolic interpretation identifying why your body is resisting fat loss with a written, prioritised recommendation for what to address first.",
     href: "/book?tier=metabolic-weight",
   },
   {
@@ -260,24 +260,24 @@ const targetedPanels = [
     price: "£395",
     tag: "Performance",
     tagColor: "var(--fo)",
-    description: "For those who take their biology seriously — whether that's training optimisation, biohacking or self-administered peptides. Know your baseline before you optimise. Know you're safe.",
+    description: "For those who take their biology seriously whether that's training optimisation, biohacking or self-administered peptides. Know your baseline before you optimise. Know you're safe.",
     markers: [
-      "IGF-1 — the primary growth factor marker",
+      "IGF-1 the primary growth factor marker",
       "Fasting insulin + HbA1c",
-      "Cortisol (AM) — adrenal and recovery status",
+      "Cortisol (AM) adrenal and recovery status",
       "Total + Free Testosterone, SHBG, LH, FSH, DHEA-S",
       "Full Blood Count + liver function (ALT, AST, GGT)",
       "Kidney function + eGFR + Creatinine",
       "Lipoprotein (a) + full lipid profile + hs-CRP",
     ],
-    youGet: "GP-reviewed baseline report across growth, hormonal, metabolic and organ-safety markers — giving you a clear clinical picture to optimise from and a benchmark to return to.",
+    youGet: "GP-reviewed baseline report across growth, hormonal, metabolic and organ-safety markers giving you a clear clinical picture to optimise from and a benchmark to return to.",
     href: "/book?tier=optimiser-baseline",
   },
 ];
 
 const collectionMethods = [
   { icon: "📦", label: "Post to your door", desc: "We send a home collection kit. Fingerprick sample taken at your convenience, returned by pre-paid post." },
-  { icon: "📍", label: "Walk-in near you", desc: "Book at a collection centre near you — including Holland & Barrett and Superdrug locations nationwide." },
+  { icon: "📍", label: "Walk-in near you", desc: "Book at a collection centre near you including Holland & Barrett and Superdrug locations nationwide." },
   { icon: "🩺", label: "Nurse home visit", desc: "A trained phlebotomist visits your home for a venous draw. Ideal for larger panels." },
 ];
 
@@ -297,7 +297,7 @@ function BloodPanelAccordion() {
               : isOpen ? "var(--iv)" : "var(--wh)",
             transition: "background .2s",
           }}>
-            {/* Header row — always visible */}
+            {/* Header row always visible */}
             <button
               onClick={() => setOpen(isOpen ? null : i)}
               style={{
@@ -409,7 +409,7 @@ function BloodPanelAccordion() {
                 {/* CTAs */}
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <Link href={panel.href} className={`btn ${panel.featured ? "btn-go" : "btn-fo"}`} style={{ flex: "1 1 200px" }}>
-                    Book {panel.name} — {panel.price} →
+                    Book {panel.name} {panel.price} →
                   </Link>
                   <Link href="/book?tier=discovery" className={`btn ${panel.featured ? "btn-ol-lt" : "btn-ol"}`} style={{ flex: "1 1 200px" }}>
                     Speak to a GP first →
@@ -518,7 +518,7 @@ function TargetedPanelAccordion() {
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <Link href={panel.href} className="btn btn-fo" style={{ flex: "1 1 200px" }}>
-                    Book {panel.name} — {panel.price} →
+                    Book {panel.name} {panel.price} →
                   </Link>
                   <Link href="/book?tier=discovery" className="btn btn-ol" style={{ flex: "1 1 200px" }}>
                     Speak to a GP first →
@@ -537,7 +537,7 @@ function Check({ val }: { val: boolean | string }) {
  if (typeof val === "string") return <span style={{ fontSize: ".82rem", fontWeight: 500, color: "var(--fo)" }}>{val}</span>;
  return val
  ? <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="var(--fo)"/><path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="var(--go2)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
- : <span style={{ fontSize: "1rem", color: "var(--sl3)", opacity: .4 }}>—</span>;
+ : <span style={{ fontSize: "1rem", color: "var(--sl3)", opacity: .4 }}> </span>;
 }
 
 export default function AssessmentsPage() {
@@ -555,7 +555,7 @@ export default function AssessmentsPage() {
  <br /><em style={{ fontStyle: "italic", color: "var(--fo)" }}>From first clarity to full metabolic reset.</em>
  </h1>
  <p className="a3" style={{ fontSize: "clamp(1rem,2.4vw,1.12rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 700, margin: "20px auto 0" }}>
- Every pathway is clinically structured and designed to surface the markers that standard screening often misses — the hidden drivers behind low energy, weight gain, poor sleep and early vascular risk.
+ Every pathway is clinically structured and designed to surface the markers that standard screening often misses the hidden drivers behind low energy, weight gain, poor sleep and early vascular risk.
  </p>
  <div className="badge-row a4" style={{ justifyContent: "center", marginTop: 24 }}>
  <span className="badge"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3.8v3.2c0 2.4 1.9 4.5 4.5 5.2 2.6-.7 4.5-2.8 4.5-5.2V3.8z" fill="var(--fo)" stroke="var(--go)" strokeWidth=".6"/><path d="M4.5 6.5l1.5 1.5 2.5-2.5" stroke="var(--go)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/></svg>GP-Led · Registered via ThanksDoc</span>
@@ -565,15 +565,15 @@ export default function AssessmentsPage() {
  </div>
  </div>
  </section>
- {/* Blood Test Panels — anchor target for quiz "strong" band CTA */}
+ {/* Blood Test Panels anchor target for quiz "strong" band CTA */}
  <section id="metabolic-panel" className="sec bg-wh" style={{ paddingTop: 56, paddingBottom: 56 }}>
    <div className="wrap" style={{ maxWidth: 860 }}>
      <div className="sh text-center">
        <p className="lbl">Veridian Blood Panels</p>
        <div className="rule rule-c" />
-       <h2 className="sh-title">GP-analysed blood tests. Not just numbers — a clinical interpretation.</h2>
+       <h2 className="sh-title">GP-analysed blood tests. Not just numbers a clinical interpretation.</h2>
        <p className="sh-body" style={{ maxWidth: 680 }}>
-         Every panel is processed by a nationally accredited UK pathology laboratory and reviewed by a Veridian GP. You receive a written clinical interpretation — not a PDF of reference ranges. Tap any panel to see what&apos;s included.
+         Every panel is processed by a nationally accredited UK pathology laboratory and reviewed by a Veridian GP. You receive a written clinical interpretation not a PDF of reference ranges. Tap any panel to see what&apos;s included.
        </p>
      </div>
      <BloodPanelAccordion />
@@ -589,14 +589,14 @@ export default function AssessmentsPage() {
      <div className="sh text-center">
        <p className="lbl">Targeted Blood Panels</p>
        <div className="rule rule-c" />
-       <h2 className="sh-title">Test for your specific symptoms — not just a general screen.</h2>
+       <h2 className="sh-title">Test for your specific symptoms not just a general screen.</h2>
        <p className="sh-body" style={{ maxWidth: 680 }}>
-         Each panel is built around a specific clinical question — the one you&apos;ve been asking but haven&apos;t been given a straight answer to. Tested at a nationally accredited UK laboratory and reviewed by a Veridian GP.
+         Each panel is built around a specific clinical question the one you&apos;ve been asking but haven&apos;t been given a straight answer to. Tested at a nationally accredited UK laboratory and reviewed by a Veridian GP.
        </p>
      </div>
      <TargetedPanelAccordion />
      <p style={{ fontSize: ".76rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7, marginTop: 20 }}>
-       Blood test only — GP-reviewed written report included. Add a GP Discovery Call (£195) if you&apos;d like clinical interpretation by video.
+       Blood test only GP-reviewed written report included. Add a GP Discovery Call (£195) if you&apos;d like clinical interpretation by video.
      </p>
    </div>
  </section>
@@ -604,8 +604,8 @@ export default function AssessmentsPage() {
  <section className="sec bg-wh" style={{ paddingTop: 20 }}><div className="wrap"><div className="g4">{plans.map(p => (<div key={p.name} className={`card${p.feat ? " card-featured" : ""}`} style={{ position: "relative", display: "flex", flexDirection: "column" }}>{p.feat && <span className="plan-pill">Recommended</span>}<p className="plan-cadence">{p.cadence}</p><h2 className="cg" style={{ fontSize: "1.45rem", fontWeight: 500, lineHeight: 1.2, color: p.feat ? "var(--iv)" : "var(--sl)", marginBottom: 16 }}>{p.name}</h2><span className="plan-price">{p.price}</span><p style={{ fontSize: ".9rem", lineHeight: 1.9, color: p.feat ? "rgba(246,241,232,.72)" : "var(--sl2)", margin: "16px 0 20px" }}>{p.blurb}</p><div style={{ padding: "14px 16px", background: p.feat ? "rgba(246,241,232,.07)" : "var(--iv)", borderLeft: `3px solid ${p.feat ? "var(--go)" : "var(--fo)"}`, marginBottom: 20 }}><p style={{ fontSize: ".8rem", fontStyle: "italic", color: p.feat ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.75 }}>{p.right_for}</p></div><ul className="chk" style={{ marginBottom: 28, flexGrow: 1 }}>{p.feats.map(f => <li key={f}>{f}</li>)}</ul>{p.comingSoon ? <Link href="/executive-waitlist" className={`btn btn-full ${p.feat ? "btn-go" : "btn-ol"}`}>{p.cta} →</Link> : <Link href={`/book?tier=${p.tier}`} className={`btn btn-full ${p.feat ? "btn-go" : "btn-fo"}`}>{p.cta} →</Link>}</div>))}</div></div></section>
  <section className="sec bg-iv"><div className="wrap" style={{ maxWidth: 980 }}><div className="sh text-center"><p className="lbl">Baseline Marker List</p><div className="rule rule-c" /><h2 className="sh-title">What the Veridian Baseline is designed to surface</h2><p className="sh-body" style={{ fontSize: "1rem", maxWidth: 760 }}>This is the core value proposition: we focus on the markers most likely to reveal early metabolic decline and future vascular risk, not just whether a routine panel says you are “normal”.</p></div><div className="g2"><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>Exact markers visible</p><ul className="chk"><li>HbA1c</li><li>Fasting glucose</li><li>Fasting insulin</li><li>ApoB</li><li>Homocysteine</li><li>Full lipid profile</li><li>ALT</li><li>AST</li><li>hs-CRP</li></ul></div><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>What you get back</p><ul className="chk"><li>Clinical interpretation of what matters now</li><li>Explanation of how your markers connect to weight, energy and cardiovascular risk</li><li>Clear written action plan</li><li>Advice on whether you need further testing, CGM or structured follow-up</li><li>A practical next-step pathway rather than isolated lab numbers</li></ul></div></div></div></section>
  <section className="sec bg-wh"><div className="wrap"><div className="sh text-center"><p className="lbl">Side by Side</p><div className="rule rule-c" /><h2 className="sh-title">What’s included in each pathway</h2></div><div style={{ overflowX: "auto" }}><table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}><thead><tr><th style={{ textAlign: "left", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)", borderBottom: "2px solid var(--iv3)" }}>Feature</th>{["Discovery\n£195", "Baseline\n£595", "Reset\n£1,895", "Executive\nComing Soon"].map((h, i) => (<th key={i} style={{ textAlign: "center", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: i === 1 ? "var(--fo)" : "var(--sl3)", borderBottom: `2px solid ${i === 1 ? "var(--go)" : "var(--iv3)"}`, whiteSpace: "pre-line" }}>{h}</th>))}</tr></thead><tbody>{comparisonRows.map((row, idx) => (<tr key={row.feature} style={{ background: idx % 2 === 0 ? "var(--wh)" : "var(--iv)" }}><td style={{ padding: "13px 16px", fontSize: ".88rem", color: "var(--sl2)" }}>{row.feature}</td>{[row.discovery, row.baseline, row.programme, row.executive].map((v, i) => (<td key={i} style={{ padding: "13px 16px", textAlign: "center" }}><Check val={v as boolean | string} /></td>))}</tr>))}</tbody></table></div></div></section>
- <section className="bg-fo" style={{ padding: "60px 24px" }}><div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}><p className="lbl" style={{ color: "var(--go2)" }}>The structured intervention pathway</p><div className="rule rule-c" style={{ background: "var(--go)" }} /><h2 className="cg" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, marginBottom: 16 }}>12-Week Metabolic Reset — £1,895</h2><p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, marginBottom: 28, maxWidth: 640, margin: "0 auto 28px" }}>For people who already know something is off and want accountability, structured follow-through and integrated clinical support — not just another information pack.</p><div className="g3" style={{ textAlign: "left" }}><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Includes</p><ul className="chk"><li>Everything in the Veridian Baseline</li><li>Second CGM cycle — extended glucose monitoring</li><li>Fortnightly coaching touchpoints</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Clinical oversight</p><ul className="chk"><li>Clinical review via partner providers where indicated</li><li>Programme adaptation based on response</li><li>Medication or therapy review where clinically appropriate</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Outcome focus</p><ul className="chk"><li>Better glucose stability and energy control</li><li>More consistent adherence and behaviour change</li><li>Clear next-stage forward plan</li></ul></div></div><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 28 }}><Link href="/book?tier=programme" className="btn btn-go">Apply for Reset →</Link><Link href="/book?tier=baseline" className="btn btn-ol-lt">Book Baseline Audit</Link></div></div></section>
- <section className="sec bg-wh"><div className="wrap" style={{ maxWidth: 800, textAlign: "center" }}><p className="lbl">Need help choosing?</p><div className="rule rule-c" /><h2 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 16 }}>If you want the highest-value entry point, start with the Baseline.</h2><p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 32, maxWidth: 620, margin: "0 auto 32px" }}>It gives you the clearest early read on metabolic risk and the markers most often missed in routine care — with a straightforward clinical plan for what to do next.</p><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}><Link href="/book?tier=baseline" className="btn btn-fo">Book Baseline Audit →</Link><Link href="/book?tier=discovery" className="btn btn-ol">Start with Discovery</Link></div></div></section>
+ <section className="bg-fo" style={{ padding: "60px 24px" }}><div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}><p className="lbl" style={{ color: "var(--go2)" }}>The structured intervention pathway</p><div className="rule rule-c" style={{ background: "var(--go)" }} /><h2 className="cg" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, marginBottom: 16 }}>12-Week Metabolic Reset £1,895</h2><p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, marginBottom: 28, maxWidth: 640, margin: "0 auto 28px" }}>For people who already know something is off and want accountability, structured follow-through and integrated clinical support not just another information pack.</p><div className="g3" style={{ textAlign: "left" }}><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Includes</p><ul className="chk"><li>Everything in the Veridian Baseline</li><li>Second CGM cycle extended glucose monitoring</li><li>Fortnightly coaching touchpoints</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Clinical oversight</p><ul className="chk"><li>Clinical review via partner providers where indicated</li><li>Programme adaptation based on response</li><li>Medication or therapy review where clinically appropriate</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Outcome focus</p><ul className="chk"><li>Better glucose stability and energy control</li><li>More consistent adherence and behaviour change</li><li>Clear next-stage forward plan</li></ul></div></div><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 28 }}><Link href="/book?tier=programme" className="btn btn-go">Apply for Reset →</Link><Link href="/book?tier=baseline" className="btn btn-ol-lt">Book Baseline Audit</Link></div></div></section>
+ <section className="sec bg-wh"><div className="wrap" style={{ maxWidth: 800, textAlign: "center" }}><p className="lbl">Need help choosing?</p><div className="rule rule-c" /><h2 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 16 }}>If you want the highest-value entry point, start with the Baseline.</h2><p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 32, maxWidth: 620, margin: "0 auto 32px" }}>It gives you the clearest early read on metabolic risk and the markers most often missed in routine care with a straightforward clinical plan for what to do next.</p><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}><Link href="/book?tier=baseline" className="btn btn-fo">Book Baseline Audit →</Link><Link href="/book?tier=discovery" className="btn btn-ol">Start with Discovery</Link></div></div></section>
  </main>
  <Footer />
  </>

@@ -243,7 +243,7 @@ export default function PrivacyPolicyPage() {
           </div>
         </section>
 
-        {/* ThanksDoc Privacy Policy — live link */}
+        {/* ThanksDoc Privacy Policy live link */}
         <section className="sec" style={{ background: "var(--iv2)" }}>
           <div className="wrap" style={{ maxWidth: 980 }}>
             <div style={{

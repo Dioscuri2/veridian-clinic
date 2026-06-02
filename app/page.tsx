@@ -8,9 +8,9 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const domains = [
-  { n:"01", title:"Body Strength & Fitness", sub:"Your physical base", desc:"Your cardiovascular fitness, strength, body composition and movement capacity — the physical reserve that protects independence, performance and long-term resilience.", metrics:["Resting heart rate","Fitness and endurance","Body composition","Strength and movement"], band:"amr", pct:"56%" },
-  { n:"02", title:"Energy & Metabolism", sub:"How your body uses fuel", desc:"This is where we look for the hidden drivers of low energy and weight gain — blood sugar balance, insulin levels, cholesterol quality and other markers that often shift long before symptoms become obvious.", metrics:["Blood sugar & HbA1c","Insulin and cholesterol markers","Continuous glucose patterns","Energy and fatigue signals"], band:"red", pct:"40%" },
-  { n:"03", title:"Rest & Repair", sub:"How you recover and restore", desc:"Sleep quality and recovery capacity determine whether your body can restore itself after stress, training, work and life load — or slowly slide into fatigue and dysfunction.", metrics:["Sleep duration & consistency","Recovery signals","Sleep efficiency","Nervous system balance"], band:"amr", pct:"52%" },
+  { n:"01", title:"Body Strength & Fitness", sub:"Your physical base", desc:"Your cardiovascular fitness, strength, body composition and movement capacity the physical reserve that protects independence, performance and long-term resilience.", metrics:["Resting heart rate","Fitness and endurance","Body composition","Strength and movement"], band:"amr", pct:"56%" },
+  { n:"02", title:"Energy & Metabolism", sub:"How your body uses fuel", desc:"This is where we look for the hidden drivers of low energy and weight gain blood sugar balance, insulin levels, cholesterol quality and other markers that often shift long before symptoms become obvious.", metrics:["Blood sugar & HbA1c","Insulin and cholesterol markers","Continuous glucose patterns","Energy and fatigue signals"], band:"red", pct:"40%" },
+  { n:"03", title:"Rest & Repair", sub:"How you recover and restore", desc:"Sleep quality and recovery capacity determine whether your body can restore itself after stress, training, work and life load or slowly slide into fatigue and dysfunction.", metrics:["Sleep duration & consistency","Recovery signals","Sleep efficiency","Nervous system balance"], band:"amr", pct:"52%" },
   { n:"04", title:"Stress Management", sub:"How you hold pressure", desc:"How often and how long your body stays in a stress state directly affects appetite, blood pressure, blood sugar control, sleep quality and long-term cardiovascular risk.", metrics:["Validated stress screening","Subjective load review","Physical stress markers","Behavioural patterns"], band:"grn", pct:"72%" },
 ];
 
@@ -25,7 +25,7 @@ const offers = [
     price: "£195",
     tier: "discovery",
     tag: "First conversation",
-    blurb: "A 30-minute GP-led consultation to review your concerns, history and goals. Useful even if you don't progress immediately — you leave with clarity and a clear written next-step plan.",
+    blurb: "A 30-minute GP-led consultation to review your concerns, history and goals. Useful even if you don't progress immediately you leave with clarity and a clear written next-step plan.",
     leave_with: [
       "Expert GP assessment of your symptoms and likely metabolic drivers",
       "Clear written action summary and next-step recommendations",
@@ -41,12 +41,17 @@ const offers = [
     price: "£595",
     tier: "baseline",
     tag: "Diagnostic assessment",
-    blurb: "The deeper clinical work-up. A structured assessment built around the biomarkers most likely to reveal what is driving your symptoms — with clinical interpretation and a clear action plan.",
+    blurb: "The deeper clinical work-up. A structured assessment built around the biomarkers most likely to reveal what is driving your symptoms, with clinical interpretation and a clear action plan.",
     leave_with: [
-      "Full blood panel: HbA1c, fasting insulin, ApoB, homocysteine, lipid profile, hs-CRP, ALT, AST",
-      "Clinical interpretation — not just numbers, but what they mean for you",
-      "Written action plan with specific, prioritised next steps",
-      "Clear guidance on next steps including CGM or structured programme",
+      "HbA1c and fasting glucose: your full blood sugar picture",
+      "Fasting insulin: the metabolic marker most GPs never order",
+      "ApoB, Lp(a) and homocysteine: cardiovascular risk beyond standard cholesterol",
+      "Full lipid panel: total cholesterol, LDL, HDL and triglycerides",
+      "hs-CRP: systemic inflammation level",
+      "ALT and AST: liver function markers",
+      "Full blood count, kidney function (eGFR) and thyroid (TSH)",
+      "Vitamin D, B12 and folate: energy and neurological markers",
+      "Written clinical interpretation and prioritised action plan from Dr Tosin",
     ],
     bring: null,
     cta: "Book Baseline",
@@ -80,23 +85,23 @@ const testimonials = [
 
 const faqs = [
   { q:"Is Veridian a replacement for my NHS GP?", a:"No. We are a private preventive and optimisation service that complements your NHS care. We communicate with your GP where clinically appropriate." },
-  { q:"Are your clinical services regulated?", a:"Yes. Registered clinical activities are delivered via ThanksDoc (thanksdoc.co.uk). Veridian Clinic delivers the longevity-focused health optimisation layer, and regulated medical care — including prescribing where indicated — is provided through that registered structure." },
+  { q:"Are your clinical services regulated?", a:"Yes. Registered clinical activities are delivered via ThanksDoc (thanksdoc.co.uk). Veridian Clinic delivers the longevity-focused health optimisation layer, and regulated medical care including prescribing where indicated is provided through that registered structure." },
   { q:"How is care delivered?", a:"All consultations are delivered virtually, nationwide. Regulated medical care is provided through ThanksDoc's registered clinical structure, while our health optimisation and coaching work is delivered by the Veridian team directly." },
   { q:"What blood tests are included?", a:"The Veridian Baseline includes HbA1c, fasting insulin, fasting glucose, ApoB, homocysteine, full lipid panel, ALT, AST, hs-CRP and broader metabolic markers." },
-  { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through ThanksDoc's registered clinical structure — never as an isolated shortcut, always as part of a structured programme." },
+  { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through ThanksDoc's registered clinical structure never as an isolated shortcut, always as part of a structured programme." },
   { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5–7 working days." },
-  { q:"Are you an emergency service?", a:"No. Veridian Clinic is not an emergency service and cannot respond to medical emergencies. If you are experiencing a medical emergency — including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or a severe allergic reaction — call 999 immediately or attend your nearest A&E. If you are unsure whether your situation is urgent, call NHS 111. Our services are for health optimisation and preventive care only." },
-  { q:"Which conditions, services and medications are not covered?", a:"In line with our regulatory framework through ThanksDoc, we do not provide emergency medical care, NHS referrals, or prescriptions for controlled medications — including opioids, benzodiazepines, gabapentinoids, Z-drugs (Zopiclone, Zolpidem, Zaleplon), stimulants, or any Schedule 1–5 controlled substances under the Misuse of Drugs Act 1971. We do not cover pregnancy complications, major trauma, dental problems, patients located outside the UK during consultation, or conditions requiring immediate hospital care." },
+  { q:"Are you an emergency service?", a:"No. Veridian Clinic is not an emergency service and cannot respond to medical emergencies. If you are experiencing a medical emergency including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or a severe allergic reaction call 999 immediately or attend your nearest A&E. If you are unsure whether your situation is urgent, call NHS 111. Our services are for health optimisation and preventive care only." },
+  { q:"Which conditions, services and medications are not covered?", a:"In line with our regulatory framework through ThanksDoc, we do not provide emergency medical care, NHS referrals, or prescriptions for controlled medications including opioids, benzodiazepines, gabapentinoids, Z-drugs (Zopiclone, Zolpidem, Zaleplon), stimulants, or any Schedule 1–5 controlled substances under the Misuse of Drugs Act 1971. We do not cover pregnancy complications, major trauma, dental problems, patients located outside the UK during consultation, or conditions requiring immediate hospital care." },
   { q:"How do I make a complaint?", a:"As our regulated clinical services are delivered under the ThanksDoc umbrella, complaints regarding regulated medical care should be directed to ThanksDoc at complaints@thanksdoc.co.uk. For concerns about your experience with Veridian Clinic specifically, contact us at support@veridianclinic.com and we will address your concern promptly." },
 ];
 
 const whoItems = [
   { title: "Weight gaining around the middle", detail: "Often driven by insulin resistance or metabolic adaptation that standard diet advice does not address. We identify the exact driver so the plan can target it directly." },
-  { title: "Low energy and persistent fatigue", detail: "Consistent fatigue and afternoon energy crashes are often linked to glucose dysregulation, poor sleep architecture, or early adrenal strain — not just 'being busy'." },
+  { title: "Low energy and persistent fatigue", detail: "Consistent fatigue and afternoon energy crashes are often linked to glucose dysregulation, poor sleep architecture, or early adrenal strain not just 'being busy'." },
   { title: "Poor sleep and slow recovery", detail: "You sleep enough hours but wake unrefreshed. HRV and sleep architecture often reveal what a mattress upgrade cannot. Recovery is a measurable metabolic signal." },
   { title: "Stress, burnout or difficulty switching off", detail: "How often and how long your body stays in a stress state directly affects appetite, blood pressure, glucose control, sleep quality and long-term cardiovascular risk." },
-  { title: "Blood pressure or blood sugar drifting", detail: "Your GP says everything is 'normal' — but fasting insulin, ApoB and homocysteine tell a different story if anyone bothers to check them. We check them." },
-  { title: "Feeling older than you should", detail: "Reduced performance, heavier, slower recovery — these are often early metabolic signals, not inevitable ageing. The right biomarker picture tells us what is actually happening." },
+  { title: "Blood pressure or blood sugar drifting", detail: "Your GP says everything is 'normal' but fasting insulin, ApoB and homocysteine tell a different story if anyone bothers to check them. We check them." },
+  { title: "Feeling older than you should", detail: "Reduced performance, heavier, slower recovery these are often early metabolic signals, not inevitable ageing. The right biomarker picture tells us what is actually happening." },
 ];
 
 function Stars({ n }: { n: number }) {
@@ -188,7 +193,7 @@ function MethodCard({ num, title, points, dark }: { num: string; title: string; 
         <ul style={{ listStyle: "none", padding: 0, marginTop: 18 }}>
           {points.map(item => (
             <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "7px 0", borderBottom: `1px solid ${dark ? "rgba(246,241,232,.08)" : "rgba(0,0,0,.05)"}`, fontSize: ".88rem", color: dark ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.65 }}>
-              <span style={{ color: dark ? "var(--go2)" : "var(--fo)", flexShrink: 0, fontWeight: 700, marginTop: 1 }}>{dark ? "✓" : "—"}</span>
+              <span style={{ color: dark ? "var(--go2)" : "var(--fo)", flexShrink: 0, fontWeight: 700, marginTop: 1 }}>{dark ? "✓" : " "}</span>
               {item}
             </li>
           ))}
@@ -380,7 +385,7 @@ export default function HomePage() {
       <main>
 
         {/* ══════════════════════════════════════════════════
-            1. HERO — text first (desktop + mobile), image below on mobile
+            1. HERO text first (desktop + mobile), image below on mobile
         ══════════════════════════════════════════════════ */}
         <section className="hero-split">
           <div className="hero-text-col" data-aos="fade-right">
@@ -426,17 +431,17 @@ export default function HomePage() {
                 Book Your Appointment →
               </Link>
               <Link href="/metabolic-quiz" className="btn btn-fo" style={{ textAlign: "center", padding: "14px 24px" }}>
-                Check your metabolic age — Free
+                Check your metabolic age Free
               </Link>
             </div>
           </div>
           <div className="hero-img-col" data-aos="fade-left" data-aos-delay="120">
-            <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo GP — Veridian Clinic" />
+            <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo GP Veridian Clinic" />
           </div>
         </section>
 
         {/* ══════════════════════════════════════════════════
-            2. WHO IS THIS FOR — clickable accordion cards
+            2. WHO IS THIS FOR clickable accordion cards
         ══════════════════════════════════════════════════ */}
         <section className="sec bg-iv2">
           <div className="wrap" style={{ maxWidth: 1000 }}>
@@ -446,7 +451,7 @@ export default function HomePage() {
                 <div className="rule rule-c"/>
                 <h2 className="cg sh-title" style={{ marginBottom: 8 }}>Built for adults 40+</h2>
                 <p className="sh-body" style={{ maxWidth: 600, margin: "0 auto" }}>
-                  For adults over 40 who feel their body changing — and want real answers, not guesswork.
+                  For adults over 40 who feel their body changing and want real answers, not guesswork.
                 </p>
               </div>
             </ScrollReveal>
@@ -464,7 +469,7 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            3. MEET THE DOCTOR — restored editorial image
+            3. MEET THE DOCTOR restored editorial image
         ══════════════════════════════════════════════════ */}
         <section id="team" className="sec bg-iv">
           <div className="wrap">
@@ -474,7 +479,7 @@ export default function HomePage() {
             </div>
             <div className="doc-editorial">
               <div className="doc-editorial-img" data-aos="fade-right">
-                <img src="/dr-oluwatosin-taiwo.jpg" alt="Dr Tosin Taiwo — Founder and Lead GP, Veridian Clinic" />
+                <img src="/dr-oluwatosin-taiwo.jpg" alt="Dr Tosin Taiwo Founder and Lead GP, Veridian Clinic" />
                 <div className="doc-editorial-overlay">
                   <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--go2)", marginBottom: 6 }}>Founder &amp; Lead GP</p>
                   <h3 className="cg" style={{ fontSize: "clamp(1.7rem,3vw,2.4rem)", color: "#fff", fontWeight: 500, marginBottom: 5, lineHeight: 1.15 }}>Dr Tosin Taiwo</h3>
@@ -494,7 +499,7 @@ export default function HomePage() {
                   Dr Taiwo is a qualified GP with a background spanning general practice, surgery and metabolic health. He leads all Veridian consultations personally, offering patient-centred care tailored to your specific picture.
                 </p>
                 <p style={{ fontSize: ".91rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 26 }}>
-                  His focus is identifying the real causes behind energy loss, weight gain, and poor sleep — blood sugar patterns, cholesterol quality, recovery capacity, and stress load — and building a structured plan to address them before they become harder to reverse.
+                  His focus is identifying the real causes behind energy loss, weight gain, and poor sleep blood sugar patterns, cholesterol quality, recovery capacity, and stress load and building a structured plan to address them before they become harder to reverse.
                 </p>
                 <div className="doc-cred-grid">
                   {[
@@ -515,7 +520,7 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            4. PRICING — moved up, directly after Meet the Doctor
+            4. PRICING moved up, directly after Meet the Doctor
         ══════════════════════════════════════════════════ */}
         <section id="assessments" className="sec bg-iv2">
           <div className="wrap">
@@ -541,9 +546,11 @@ export default function HomePage() {
                     <p style={{ fontSize:".7rem", fontWeight:700, letterSpacing:".12em", textTransform:"uppercase", color: o.featured ? "var(--go2)" : "var(--fo)", marginBottom:5 }}>{o.tag}</p>
                     <h3 className="cg" style={{ fontSize:"1.55rem", fontWeight:500, color: o.featured ? "var(--iv)" : "var(--sl)", lineHeight:1.2, marginBottom:10 }}>{o.name}</h3>
                     <div className="offer-price">{o.price}</div>
-                    <p style={{ fontSize:".8rem", color: o.featured ? "rgba(246,241,232,.55)" : "var(--sl3)", marginTop:3, fontStyle:"italic" }}>
-                      {o.name === "12-Week Metabolic Reset" ? "Payment plans available" : "One-off consultation"}
-                    </p>
+                    {!o.featured && (
+                      <p style={{ fontSize:".8rem", color:"var(--sl3)", marginTop:3, fontStyle:"italic" }}>
+                        {o.name === "12-Week Metabolic Reset" ? "Payment plans available" : "One-off consultation"}
+                      </p>
+                    )}
                   </div>
                   <div className="offer-card-body">
                     <p style={{ fontSize:".9rem", color: o.featured ? "rgba(246,241,232,.78)" : "var(--sl2)", lineHeight:1.9, marginBottom:18 }}>{o.blurb}</p>
@@ -576,7 +583,7 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            5. QUIZ CTA — simple strip
+            5. QUIZ CTA simple strip
         ══════════════════════════════════════════════════ */}
         <section id="scorecard" className="sec bg-wh">
           <div className="wrap">
@@ -633,14 +640,14 @@ export default function HomePage() {
                 Many of my patients were being told their blood tests were 'normal' while feeling tired, heavier, struggling with energy and sleep, and sensing something was off. Routine care had no clear answer.
               </p>
               <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.95 }} data-aos="fade-left" data-aos-delay="120">
-                Veridian bridges that gap — using the biomarkers that routine care rarely checks, structured assessment, and personalised doctor-led plans to help patients act earlier and track real progress.
+                Veridian bridges that gap using the biomarkers that routine care rarely checks, structured assessment, and personalised doctor-led plans to help patients act earlier and track real progress.
               </p>
             </div>
           </div>
         </section>
 
         {/* ══════════════════════════════════════════════════
-            7. IDENTIFY ROOT CAUSE / BUILD A PLAN — clickable
+            7. IDENTIFY ROOT CAUSE / BUILD A PLAN clickable
         ══════════════════════════════════════════════════ */}
         <section className="sec bg-wh">
           <div className="wrap" style={{ maxWidth: 940 }}>
@@ -682,7 +689,7 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            8. HOW IT WORKS — clear pathway
+            8. HOW IT WORKS clear pathway
         ══════════════════════════════════════════════════ */}
         <section id="process" className="sec bg-fo">
           <div className="wrap">
@@ -696,8 +703,8 @@ export default function HomePage() {
             </div>
             <div className="gproc">
               {[
-                { n:"01", t:"Discovery Call", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a written next-step recommendation — useful even if you do not progress immediately." },
-                { n:"02", t:"Veridian Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms — with clinical interpretation and a clear written action plan." },
+                { n:"01", t:"Discovery Call", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a written next-step recommendation useful even if you do not progress immediately." },
+                { n:"02", t:"Veridian Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms with clinical interpretation and a clear written action plan." },
                 { n:"03", t:"Personalised Plan", d:"A written, prioritised plan built around your data. CGM, nutrition, movement and behaviour protocols. Where clinically indicated, prescribing pathways including GLP-1 options are available." },
                 { n:"04", t:"Structured Follow-Up", d:"Fortnightly coaching, GP-led clinical review at midpoint, and an end-of-programme review with a 12-month forward plan. Progress is measured, not assumed." },
               ].map((s, i) => (
@@ -715,7 +722,7 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            9. SAMPLE SCORECARD — after How It Works
+            9. SAMPLE SCORECARD after How It Works
         ══════════════════════════════════════════════════ */}
         <section className="sec bg-wh">
           <div className="wrap" style={{ maxWidth: 820 }}>
@@ -748,7 +755,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div style={{ marginTop: 18, textAlign: "center" }}>
-                <Link href="/metabolic-quiz" className="btn btn-fo">Check your metabolic age — Free →</Link>
+                <Link href="/metabolic-quiz" className="btn btn-fo">Check your metabolic age Free →</Link>
               </div>
             </div>
           </div>
@@ -774,7 +781,7 @@ export default function HomePage() {
               </div>
               <div style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", overflow:"hidden" }} data-aos="fade-left" data-aos-delay="100">
                 <div style={{ background:"var(--fo)", padding:"14px 24px" }}>
-                  <p className="lbl" style={{ color:"var(--go2)" }}>What We Measure — and Why</p>
+                  <p className="lbl" style={{ color:"var(--go2)" }}>What We Measure and Why</p>
                 </div>
                 {[
                   { o:"Blood sugar & insulin", d:"Fasting insulin · HbA1c · CGM patterns", m:"Explains weight gain, cravings, energy crashes and early blood sugar problems" },
@@ -847,7 +854,7 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            12. FRAMEWORK — FOUR DOMAINS (one instance, at bottom)
+            12. FRAMEWORK FOUR DOMAINS (one instance, at bottom)
         ══════════════════════════════════════════════════ */}
         <section id="domains" className="sec bg-iv">
           <div className="wrap">

@@ -1,0 +1,313 @@
+{
+  "timestamp": "2026-05-29T05:55:35.204Z",
+  "pass": [
+    {
+      "label": "/",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-quiz",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-quiz/result?mAge=42&chrono=38&delta=4&band=drifting&weakest=insulin",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-quiz/thank-you",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-quiz/scorecard",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-reset-guide",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-reset-guide/thank-you",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/perimenopause-guide",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/perimenopause-guide/thank-you",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/perimenopause-quiz",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/discovery-call",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/book",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/book?tier=discovery",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/book?tier=guide",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/book?tier=baseline",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/book?tier=longevity-panel",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/book?tier=metabolic-screen",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/assessments",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blood-tests",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blood-tests/apob",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blood-tests/fasting-insulin",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blood-tests/lipoprotein-a",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blood-tests/biological-age",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blood-tests/metabolic-screen",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blog",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blog/apob-vs-ldl",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blog/fast-insulin",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blog/homocysteine",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blog/lipoprotein-a-apob-triglycerides",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/blog/reversing-metabolic-syndrome",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/privacy",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/terms",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/cookies",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/contact",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/markers-guide",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-age",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/metabolic-scorecard",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/quiz",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/scorecard",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/executive-waitlist",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/intake",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/admin",
+      "detail": "redirects → https://veridianclinic.com/admin/login"
+    },
+    {
+      "label": "/sitemap.xml",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "/robots.txt",
+      "detail": "HTTP 200"
+    },
+    {
+      "label": "Header: x-frame-options",
+      "detail": "DENY"
+    },
+    {
+      "label": "Header: x-content-type-options",
+      "detail": "nosniff"
+    },
+    {
+      "label": "Header: strict-transport-security",
+      "detail": "max-age=63072000; includeSubDomains; preload"
+    },
+    {
+      "label": "Header: content-security-policy",
+      "detail": "default-src 'self'; script-src 'self' 'unsafe-inline' https:"
+    },
+    {
+      "label": "Header: referrer-policy",
+      "detail": "strict-origin-when-cross-origin"
+    },
+    {
+      "label": "HSTS max-age",
+      "detail": ">= 1 year"
+    },
+    {
+      "label": "Header: x-permitted-cross-domain-policies",
+      "detail": ""
+    },
+    {
+      "label": "Header: cross-origin-opener-policy",
+      "detail": ""
+    },
+    {
+      "label": "Honeypot: /wp-admin",
+      "detail": "returns 404"
+    },
+    {
+      "label": "Honeypot: /.env",
+      "detail": "returns 403"
+    },
+    {
+      "label": "Honeypot: /phpmyadmin",
+      "detail": "returns 403"
+    },
+    {
+      "label": "Honeypot: /wp-login.php",
+      "detail": "returns 403"
+    },
+    {
+      "label": "Honeypot: /xmlrpc.php",
+      "detail": "returns 403"
+    },
+    {
+      "label": "Honeypot: /admin/config",
+      "detail": "returns 403"
+    },
+    {
+      "label": "Guide download — unauthenticated",
+      "detail": "correctly returns 403"
+    },
+    {
+      "label": "Peri-guide download — unauthenticated",
+      "detail": "correctly returns 403"
+    },
+    {
+      "label": "Admin protection",
+      "detail": "→ https://veridianclinic.com/admin"
+    }
+  ],
+  "fail": [
+    {
+      "label": "Ava chatbot API",
+      "detail": "HTTP 403 — Forbidden"
+    },
+    {
+      "label": "WhatsApp link",
+      "detail": "no wa.me or whatsapp links found on homepage"
+    }
+  ],
+  "warn": [
+    {
+      "label": "/admin/login",
+      "detail": "expected 200, got 304"
+    },
+    {
+      "label": "Ava message length cap",
+      "detail": "expected 400, got 403"
+    },
+    {
+      "label": "Newsletter API",
+      "detail": "HTTP 403 — Forbidden"
+    },
+    {
+      "label": "Metabolic Reset Guide — price not found on page",
+      "detail": ""
+    },
+    {
+      "label": "Metabolic Reset Guide — no CTA button found",
+      "detail": ""
+    },
+    {
+      "label": "Perimenopause Guide page",
+      "detail": "very little content"
+    },
+    {
+      "label": "Footer WhatsApp bar",
+      "detail": "no wa.me link on homepage — may be in footer below fold"
+    },
+    {
+      "label": "Book/Discovery — pricing",
+      "detail": "no price visible on page — check /book?tier=discovery"
+    },
+    {
+      "label": "Metabolic Guide £19.99",
+      "detail": "expected 19.99 or £19 — not visible on page"
+    },
+    {
+      "label": "Assessments £195/£595/£795",
+      "detail": "expected 195 or 595 or 795 — not visible on page"
+    },
+    {
+      "label": "Discovery Call £195/£97",
+      "detail": "expected 195 or 97 — not visible on page"
+    },
+    {
+      "label": "Book guide £19.99",
+      "detail": "expected 19.99 or 19 — not visible on page"
+    },
+    {
+      "label": "Rate limiting on /api/ava-chat",
+      "detail": "no 429 after 15 rapid requests — Redis or middleware may still be propagating"
+    }
+  ]
+}
