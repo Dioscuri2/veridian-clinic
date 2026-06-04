@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import TurnstileWidget from "@/components/TurnstileWidget";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 // ── Types ──────────────────────────────────────────────────────────────────
@@ -180,6 +181,19 @@ const QUESTIONS: Question[] = [
     ],
   },
   {
+    id: "appetite",
+    label: "How would you describe your hunger and appetite patterns?",
+    helper: "GLP-1 medicines work partly by reducing appetite and slowing gastric emptying. This helps us understand how the medicine is likely to work for you.",
+    type: "choice",
+    options: [
+      { label: "I often eat past fullness or find it hard to stop once I start", value: "past-fullness" },
+      { label: "I snack frequently between meals even when not physically hungry", value: "frequent-snacking" },
+      { label: "I have strong cravings for carbohydrates, sugar, or processed foods", value: "cravings" },
+      { label: "Stress, boredom, or emotions drive most of my eating", value: "emotional" },
+      { label: "My appetite feels relatively normal — I eat mostly when genuinely hungry", value: "normal" },
+    ],
+  },
+  {
     id: "contact",
     label: "Last step — where should we send your results?",
     helper: "We will send a copy of your eligibility summary and a link to book your consultation.",
@@ -271,6 +285,7 @@ function WlQuiz() {
   const [state, setState] = useState<QuizState>({ screen: "start" });
   const [answers, setAnswers] = useState<Answers>({});
   const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const quizRef = useRef<HTMLDivElement>(null);
 
   function scrollToQuiz() {
@@ -315,6 +330,12 @@ function WlQuiz() {
         document.cookie = "wl_quiz=1; path=/; max-age=86400";
       }
 
+      // Honeypot check — bots fill hidden fields, humans don't
+      if (answers["_hp"] && String(answers["_hp"]).trim().length > 0) {
+        setSubmitting(false);
+        return; // silent drop
+      }
+
       // Send lead to book-enquiry API
       try {
         await fetch("/api/book-enquiry", {
@@ -325,7 +346,8 @@ function WlQuiz() {
             email: String(answers["email"] || ""),
             phone: "",
             tier: "weight-loss-quiz",
-            message: `BMI: ${bmi.toFixed(1)} | Goal: ${answers["goal"]} | Diabetes: ${answers["diabetes"]} | Conditions: ${JSON.stringify(answers["conditions"])}`,
+            turnstileToken,
+            message: `BMI: ${bmi.toFixed(1)} | Goal: ${answers["goal"]} | Appetite: ${answers["appetite"]} | Diabetes: ${answers["diabetes"]} | Conditions: ${JSON.stringify(answers["conditions"])}`,
           }),
         });
       } catch { /* silent */ }
@@ -447,18 +469,23 @@ function WlQuiz() {
         {/* Text pair */}
         {q.type === "text-pair" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {/* Honeypot — hidden from humans, bots fill it */}
+            <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+              <input tabIndex={-1} type="text" name="_hp" autoComplete="off" value={String(answers["_hp"] ?? "")} onChange={e => setAnswer("_hp", e.target.value)} />
+            </div>
             {q.fields!.map(f => (
               <div key={f.id}>
                 <label style={{ display: "block", fontSize: ".76rem", fontWeight: 700, color: "var(--sl2)", marginBottom: 6, letterSpacing: ".06em", textTransform: "uppercase" }}>{f.label}</label>
                 <input
                   type={f.id === "email" ? "email" : "text"}
                   placeholder={f.placeholder}
-                  value={answers[f.id] ?? ""}
+                  value={String(answers[f.id] ?? "")}
                   onChange={e => setAnswer(f.id, e.target.value)}
                   style={{ width: "100%", padding: "12px 14px", border: "1.5px solid rgba(0,0,0,.12)", outline: "none", fontSize: ".92rem", color: "var(--fo)", background: "#fff", boxSizing: "border-box" }}
                 />
               </div>
             ))}
+            <TurnstileWidget onVerify={token => setTurnstileToken(token)} theme="light" />
           </div>
         )}
 

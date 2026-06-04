@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE = "https://api.brevo.com/v3";
@@ -60,6 +61,19 @@ export async function POST(req: NextRequest) {
   const phone = (body.phone || "").trim();
   const tier = (body.tier || "").trim();
   const message = (body.message || "").trim();
+  const turnstileToken = (body.turnstileToken || "").trim();
+
+  // Honeypot check
+  if (body._hp && String(body._hp).trim().length > 0) {
+    return NextResponse.json({ ok: true }); // silent drop
+  }
+
+  // Turnstile verification (only enforced if key is set)
+  const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined;
+  const turnstileOk = await verifyTurnstileToken(turnstileToken, clientIp);
+  if (!turnstileOk) {
+    return NextResponse.json({ error: "Security check failed. Please refresh and try again." }, { status: 400 });
+  }
 
   if (!name || !email || !isValidEmail(email)) {
     return NextResponse.json({ error: "Name and a valid email are required." }, { status: 400 });
