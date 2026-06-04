@@ -142,6 +142,22 @@ const tierCatalog: Record<
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },
+  "wl-consultation": {
+    name: "Weight Loss Consultation — 50 Minutes with Dr Tosin",
+    amount: 6000,
+    description:
+      "Private 50-minute GP consultation for weight loss medicine assessment. Covers medical history, medicine selection (tirzepatide or semaglutide), dose titration plan, safety review, and private prescription if clinically appropriate.",
+    successPath: "/book/thank-you",
+    cancelPath: "/weight-loss/consultation",
+  },
+  "wl-consultation-quiz": {
+    name: "Weight Loss Consultation — Quiz Rate",
+    amount: 5500,
+    description:
+      "Private 50-minute GP consultation for weight loss medicine assessment (quiz rate). Covers medical history, medicine selection, dose titration plan, safety review, and private prescription if clinically appropriate.",
+    successPath: "/book/thank-you",
+    cancelPath: "/weight-loss/consultation",
+  },
 };
 
 type CheckoutPayload = {
@@ -188,6 +204,17 @@ export async function POST(request: NextRequest) {
       if (!hasGate) {
         return NextResponse.json(
           { error: "This rate requires completing the free metabolic quiz first." },
+          { status: 403 }
+        );
+      }
+    }
+
+    if (tier === "wl-consultation-quiz") {
+      const cookieHeader = request.headers.get("cookie") || "";
+      const hasWlQuiz = cookieHeader.split(";").some((c) => c.trim().startsWith("wl_quiz="));
+      if (!hasWlQuiz) {
+        return NextResponse.json(
+          { error: "This rate requires completing the weight loss eligibility quiz first." },
           { status: 403 }
         );
       }

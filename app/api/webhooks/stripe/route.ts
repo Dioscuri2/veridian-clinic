@@ -85,6 +85,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if ((tier === "wl-consultation" || tier === "wl-consultation-quiz") && session.payment_status === "paid") {
+      const email = session.customer_details?.email || session.customer_email || "";
+      const name = session.customer_details?.name || session.metadata?.name || "";
+      const amountGBP = session.amount_total ? `£${(session.amount_total / 100).toFixed(2)}` : "";
+      const rateLabel = tier === "wl-consultation-quiz" ? "quiz rate" : "standard rate";
+      if (email) {
+        await sendDiscoveryIntakeEmail({ email, name });
+      }
+      await pingDiscord(
+        `💉 **Weight Loss Consultation PAID — Veridian Clinic**\n` +
+        `**Rate:** ${rateLabel}\n` +
+        `**Amount:** ${amountGBP}\n` +
+        `**Patient:** ${name || "—"}\n` +
+        `**Email:** ${email || "—"}\n` +
+        `\nAction: contact patient to schedule 50-min virtual consultation. Intake email sent.`
+      );
+    }
+
     if (tier === "guide" && session.payment_status === "paid") {
       const email = session.customer_details?.email || session.customer_email || "";
       const name = session.customer_details?.name || "";
