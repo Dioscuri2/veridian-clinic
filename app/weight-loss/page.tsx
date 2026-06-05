@@ -603,7 +603,7 @@ function WlQuiz() {
           Your answers suggest you may be a suitable candidate for a GLP-1 weight loss medicine.
         </h3>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 28 }}>
-          The next step is a 50-minute private consultation with Dr Tosin to review your full medical history, choose the right medicine, and put a safe treatment plan in place. As you have completed the eligibility check, your consultation is at the reduced rate.
+          The next step is a 15-minute private consultation with Dr Tosin to review your case, choose the right medicine, and put a safe treatment plan in place. As you have completed the eligibility check, your consultation is at the reduced rate.
         </p>
         <div className="card" style={{ textAlign: "left", marginBottom: 24 }}>
           <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--go)", marginBottom: 12 }}>Your quiz rate consultation includes</p>
@@ -620,7 +620,7 @@ function WlQuiz() {
               <p style={{ fontSize: ".7rem", color: "rgba(246,241,232,.55)", fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 2 }}>Quiz rate</p>
               <p style={{ fontSize: "2rem", fontWeight: 800, color: "var(--iv)", lineHeight: 1 }}>£55 <span style={{ fontSize: ".9rem", fontWeight: 400, color: "rgba(246,241,232,.5)" }}>was £60</span></p>
             </div>
-            <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.6)", lineHeight: 1.6, maxWidth: 200 }}>50-minute virtual consultation. Private prescription pathway if appropriate.</p>
+            <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.6)", lineHeight: 1.6, maxWidth: 200 }}>15-minute virtual consultation. Private prescription pathway if appropriate.</p>
           </div>
         </div>
         <Link href="/weight-loss/consultation?quiz=1" className="btn btn-go" style={{ display: "block", textAlign: "center", width: "100%", boxSizing: "border-box" }}>
@@ -755,7 +755,7 @@ export default function WeightLossPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 2 }}>
               {[
                 { n: "01", t: "Eligibility check", d: "Complete the free 10-question quiz above. It screens for the main contraindications and calculates your BMI. No commitment required." },
-                { n: "02", t: "Book consultation", d: "Book your 50-minute virtual consultation with Dr Tosin. £55 at the quiz rate. He reviews your full history and selects the right medicine." },
+                { n: "02", t: "Book consultation", d: "Book your 15-minute virtual consultation with Dr Tosin. £55 at the quiz rate. He reviews your case and selects the right medicine." },
                 { n: "03", t: "Prescription", d: "If appropriate, Dr Tosin issues a private prescription. You collect from any UK pharmacy or use a registered online pharmacy." },
                 { n: "04", t: "Ongoing support", d: "Monitoring appointments available as you titrate your dose. Dr Tosin is available for review as your treatment progresses." },
               ].map((step, i) => (

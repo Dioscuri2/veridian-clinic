@@ -81,12 +81,12 @@ function ConsultationContent() {
             <p className="lbl">Weight loss consultation</p>
             <div className="rule" />
             <h1 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 16 }}>
-              50-Minute Private Consultation
+              15-Minute Private Consultation
               <br />
               <em style={{ fontStyle: "italic", color: "var(--go)" }}>with Dr Tosin</em>
             </h1>
             <p style={{ fontSize: ".96rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 560 }}>
-              A dedicated clinical assessment for adults seeking a GLP-1 weight loss medicine. Dr Tosin reviews your full medical history, selects the right medicine for your profile, and issues a private prescription if appropriate.
+              A focused 15-minute clinical assessment for adults seeking a GLP-1 weight loss medicine. Dr Tosin reviews your case, selects the right medicine for your profile, and issues a private prescription if appropriate.
             </p>
           </div>
         </section>
@@ -133,7 +133,7 @@ function ConsultationContent() {
                     <span style={{ fontSize: "2.4rem", fontWeight: 800, color: "var(--iv)", lineHeight: 1 }}>{price}</span>
                     {quizRate && <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.4)", textDecoration: "line-through" }}>£60</span>}
                   </div>
-                  <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.55)", marginTop: 4 }}>50-minute virtual consultation · Video call</p>
+                  <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.55)", marginTop: 4 }}>15-minute virtual consultation · Video call</p>
                 </div>
 
                 {/* Form */}

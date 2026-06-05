@@ -143,10 +143,10 @@ const tierCatalog: Record<
     cancelPath: "/assessments",
   },
   "wl-consultation": {
-    name: "Weight Loss Consultation — 50 Minutes with Dr Tosin",
+    name: "Weight Loss Consultation — 15 Minutes with Dr Tosin",
     amount: 6000,
     description:
-      "Private 50-minute GP consultation for weight loss medicine assessment. Covers medical history, medicine selection (tirzepatide or semaglutide), dose titration plan, safety review, and private prescription if clinically appropriate.",
+      "Private 15-minute GP consultation for weight loss medicine assessment. Covers medical history, medicine selection (tirzepatide or semaglutide), dose titration plan, safety review, and private prescription if clinically appropriate.",
     successPath: "/book/thank-you",
     cancelPath: "/weight-loss/consultation",
   },
@@ -154,7 +154,7 @@ const tierCatalog: Record<
     name: "Weight Loss Consultation — Quiz Rate",
     amount: 5500,
     description:
-      "Private 50-minute GP consultation for weight loss medicine assessment (quiz rate). Covers medical history, medicine selection, dose titration plan, safety review, and private prescription if clinically appropriate.",
+      "Private 15-minute GP consultation for weight loss medicine assessment (quiz rate). Covers medical history, medicine selection, dose titration plan, safety review, and private prescription if clinically appropriate.",
     successPath: "/book/thank-you",
     cancelPath: "/weight-loss/consultation",
   },
