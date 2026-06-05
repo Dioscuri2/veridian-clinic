@@ -22,6 +22,7 @@ export default function Navigation() {
     { label: "How It Works", href: anchor("#process") },
     { label: "Metabolic Quiz", href: "/metabolic-quiz" },
     { label: "Assessments", href: "/assessments" },
+    { label: "Weight Loss", href: "/weight-loss" },
     { label: "Discovery Call", href: "/discovery-call" },
     { label: "Insights", href: "/blog" },
   ];

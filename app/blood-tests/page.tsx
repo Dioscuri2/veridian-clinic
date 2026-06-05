@@ -105,6 +105,33 @@ const tests = [
     price: "£249",
     includedIn: "Tired of Being Told You're Fine Panel",
   },
+  {
+    slug: "cardiovascular-risk",
+    title: "Cardiovascular Risk Beyond Cholesterol",
+    excerpt:
+      "Half of all heart attacks happen in people with normal cholesterol. ApoB, Lp(a), homocysteine, small dense LDL, hs-CRP and fasting insulin are the markers that actually predict cardiovascular events. Almost none are included in a standard cholesterol test.",
+    tag: "Cardiovascular Risk",
+    price: "£349",
+    includedIn: "What Your Cholesterol Test Missed Panel",
+  },
+  {
+    slug: "metabolic-weight",
+    title: "Metabolic Weight Resistance Panel",
+    excerpt:
+      "If diet and exercise are not shifting the weight, the answer is almost always in the blood. Fasting insulin, HOMA-IR, leptin, adiponectin, uric acid and thyroid markers reveal the specific metabolic block that standard tests never look for.",
+    tag: "Metabolic Health",
+    price: "£199",
+    includedIn: "Why Won't The Weight Budge? Panel",
+  },
+  {
+    slug: "optimiser-baseline",
+    title: "The Optimiser's Baseline",
+    excerpt:
+      "A comprehensive performance and longevity panel for health optimisers. IGF-1, testosterone, cortisol, fasting insulin, Lp(a), full organ function and inflammatory markers — a documented baseline you can measure against year after year.",
+    tag: "Longevity",
+    price: "£395",
+    includedIn: "Optimiser's Baseline Panel",
+  },
 ];
 
 export default function BloodTestsIndexPage() {

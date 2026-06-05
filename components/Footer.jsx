@@ -97,6 +97,9 @@ export default function Footer() {
             <Link href="/assessments" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
               Assessments
             </Link>
+            <Link href="/weight-loss" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
+              Weight Loss Injections
+            </Link>
             <Link href="/book?tier=discovery" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
               Book Now
             </Link>
