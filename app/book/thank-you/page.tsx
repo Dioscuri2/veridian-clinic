@@ -5,11 +5,9 @@ import Footer from "@/components/Footer";
 import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { FONTS, CSS } from "@/components/globalStyles";
-import CalendlyInline from "@/components/CalendlyInline";
+const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 
-const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
-
-const REVIEW_TIERS = ["discovery", "discovery-quiz"];
+const REVIEW_TIERS = ["discovery", "discovery-quiz", "wl-consultation", "wl-consultation-quiz"];
 const BLOOD_TEST_TIERS = ["metabolic-screen", "womens-hormones", "mens-testosterone", "cardiovascular-risk", "fatigue-energy", "metabolic-weight", "optimiser-baseline"];
 
 function PixelPurchase() {
@@ -29,6 +27,8 @@ function PixelPurchase() {
       "fatigue-energy": 249,
       "metabolic-weight": 199,
       "optimiser-baseline": 395,
+      "wl-consultation": 60,
+      "wl-consultation-quiz": 55,
     };
     const value = tierMap[tier] ?? 0;
     if (value > 0 && typeof window !== "undefined") {
@@ -52,7 +52,7 @@ function ThankYouContent() {
       <main style={{ paddingTop: "var(--nav-h)" }}>
 
         {/* ── Confirmation header ── */}
-        <section className="sec bg-fo" style={{ paddingTop: 64, paddingBottom: isReviewTier && CALENDLY_URL ? 56 : 80 }}>
+        <section className="sec bg-fo" style={{ paddingTop: 64, paddingBottom: isReviewTier ? 56 : 80 }}>
           <div className="wrap" style={{ maxWidth: 760, textAlign: "center" }}>
             <div style={{ width: 72, height: 72, margin: "0 auto 22px", borderRadius: "50%", background: "rgba(200,168,75,.15)", border: "1.5px solid var(--go)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -62,14 +62,14 @@ function ThankYouContent() {
             <p className="lbl" style={{ color: "var(--go)" }}>Payment Confirmed</p>
             <div className="rule rule-c" style={{ background: "var(--go)" }} />
             <h1 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 16 }}>
-              {isReviewTier ? "You're booked in." : isBloodTestTier ? "Your test is confirmed." : "Thank you."}
+              {isReviewTier ? "Payment confirmed." : isBloodTestTier ? "Your test is confirmed." : "Thank you."}
               {" "}<em style={{ fontStyle: "italic", color: "var(--go)" }}>
-                {isReviewTier ? "Now pick your time." : isBloodTestTier ? "We'll be in touch shortly." : "You're in."}
+                {isReviewTier ? "Now book your slot." : isBloodTestTier ? "We'll be in touch shortly." : "You're in."}
               </em>
             </h1>
             <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.65)", lineHeight: 1.95, maxWidth: 580, margin: "0 auto" }}>
               {isReviewTier
-                ? "Your payment is confirmed. Select a date and time below to schedule your virtual clinical review with Dr Tosin. You'll receive a video call link by email before your appointment."
+                ? "Your payment is confirmed. Select a date and time on ThanksDoc to schedule your virtual consultation with Dr Tosin. You will receive a video call link by email before your appointment."
                 : isBloodTestTier
                 ? "Payment confirmed. A confirmation email is on its way with everything you need what's being tested, how your sample is collected, and what to expect. Dr Tosin will contact you within 24 hours to arrange your kit or walk-in booking."
                 : "Your booking request has been submitted successfully. We'll be in touch within 24 hours to confirm next steps."}
@@ -77,27 +77,36 @@ function ThankYouContent() {
           </div>
         </section>
 
-        {/* ── Calendly slot picker (review tiers only) ── */}
-        {isReviewTier && CALENDLY_URL && (
+        {/* ── ThanksDoc booking CTA (consultation tiers) ── */}
+        {isReviewTier && (
           <section className="sec bg-iv" style={{ paddingTop: 56, paddingBottom: 72 }}>
-            <div className="wrap" style={{ maxWidth: 900 }}>
-              <div style={{ textAlign: "center", marginBottom: 32 }}>
-                <p className="lbl">Step 2 of 2</p>
-                <div className="rule rule-c" />
-                <h2 className="cg" style={{ fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 10 }}>
-                  Choose your appointment slot
-                </h2>
-                <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-                  30-minute virtual clinical review · Video call · Dr Tosin Taiwo
-                </p>
-              </div>
-              <CalendlyInline url={CALENDLY_URL} height={700} />
+            <div className="wrap" style={{ maxWidth: 680, textAlign: "center" }}>
+              <p className="lbl">Step 2 of 2</p>
+              <div className="rule rule-c" />
+              <h2 className="cg" style={{ fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 12 }}>
+                Choose your appointment slot
+              </h2>
+              <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 36 }}>
+                Virtual consultation · Video call · Dr Tosin Taiwo
+              </p>
+              <a
+                href={THANKSDOC_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-fo"
+                style={{ fontSize: "1rem", padding: "16px 36px", display: "inline-block", marginBottom: 16 }}
+              >
+                Book your appointment slot →
+              </a>
+              <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7 }}>
+                Opens ThanksDoc — our secure clinical booking system. Select any available slot and you will receive a video call link by email.
+              </p>
             </div>
           </section>
         )}
 
-        {/* ── Fallback next steps (no Calendly URL set, or non-review tier) ── */}
-        {(!CALENDLY_URL || !isReviewTier) && (
+        {/* ── Next steps (non-consultation tiers) ── */}
+        {!isReviewTier && (
           <section className="sec bg-iv" style={{ paddingTop: 56, paddingBottom: 72 }}>
             <div className="wrap" style={{ maxWidth: 760, textAlign: "center" }}>
               <div className="card" style={{ textAlign: "left", maxWidth: 680, margin: "0 auto 28px" }}>
@@ -132,10 +141,7 @@ function ThankYouContent() {
                 </div>
               </div>
               <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                {isReviewTier
-                  ? <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>
-                  : <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>
-                }
+                <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>
                 <Link href="/" className="btn btn-ol">Return to Home</Link>
               </div>
             </div>
