@@ -38,7 +38,7 @@ const questions: Question[] = [
     helper: "Frequent crashes can act as a useful real-world proxy for poor glycaemic stability and insulin burden.",
     options: [
       { label: "Rarely", value: "rarely", years: 1 },
-      { label: "1–2 times a week", value: "weekly", years: 2 },
+      { label: "1-2 times a week", value: "weekly", years: 2 },
       { label: "Most weekdays", value: "most-weekdays", years: 4 },
       { label: "Almost every day", value: "daily", years: 6 },
     ],
@@ -61,7 +61,7 @@ const questions: Question[] = [
     options: [
       { label: "Strength + cardio 4+ times per week", value: "high", years: -4 },
       { label: "3 consistent sessions per week", value: "moderate", years: -2 },
-      { label: "1–2 sessions per week", value: "low", years: 1 },
+      { label: "1-2 sessions per week", value: "low", years: 1 },
       { label: "Mostly sedentary", value: "sedentary", years: 4 },
     ],
   },

@@ -79,7 +79,7 @@ export default function MensTestosteronePage() {
 
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> in the UK, the NHS reference range for total testosterone is typically 8.7–29 nmol/L. A result of 10 nmol/L will be reported as normal. But clinical experience consistently shows that many men do not feel well below 15–17 nmol/L and that free testosterone, not total, is the more accurate reflection of functional hormonal status.
+            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> in the UK, the NHS reference range for total testosterone is typically 8.7-29 nmol/L. A result of 10 nmol/L will be reported as normal. But clinical experience consistently shows that many men do not feel well below 15-17 nmol/L and that free testosterone, not total, is the more accurate reflection of functional hormonal status.
           </p>
         </div>
 
@@ -108,11 +108,11 @@ export default function MensTestosteronePage() {
 
         <h2 className="cg" style={sectionHeading}>What optimal testosterone looks like vs laboratory normal</h2>
         <p style={paragraph}>
-          UK laboratory reference ranges for total testosterone (typically 8.7–29 nmol/L) encompass a very wide population including men in their 80s, men with obesity-related hypogonadism, and men who are functionally low but not below the diagnostic cut-off. In preventive and longevity medicine, the clinically meaningful thresholds are different:
+          UK laboratory reference ranges for total testosterone (typically 8.7-29 nmol/L) encompass a very wide population including men in their 80s, men with obesity-related hypogonadism, and men who are functionally low but not below the diagnostic cut-off. In preventive and longevity medicine, the clinically meaningful thresholds are different:
         </p>
         <ul className="chk">
-          <li><strong>Total testosterone above 18–20 nmol/L + free testosterone above 0.4 nmol/L:</strong> associated with maintained energy, muscle mass, libido and cognitive function in most men.</li>
-          <li><strong>Total testosterone 12–17 nmol/L:</strong> a grey zone clinical significance depends on free testosterone, SHBG and symptom burden. Many symptomatic men in this range benefit from intervention.</li>
+          <li><strong>Total testosterone above 18-20 nmol/L + free testosterone above 0.4 nmol/L:</strong> associated with maintained energy, muscle mass, libido and cognitive function in most men.</li>
+          <li><strong>Total testosterone 12-17 nmol/L:</strong> a grey zone clinical significance depends on free testosterone, SHBG and symptom burden. Many symptomatic men in this range benefit from intervention.</li>
           <li><strong>Total testosterone below 12 nmol/L + symptoms:</strong> consistent with androgen deficiency warranting active management, regardless of whether it falls within the NHS &apos;normal&apos; range.</li>
         </ul>
         <p style={paragraph}>
@@ -141,7 +141,7 @@ export default function MensTestosteronePage() {
           <li>Lp(a), fasting insulin, HbA1c metabolic and cardiovascular crossover.</li>
           <li>Full Blood Count + hs-CRP.</li>
           <li>GP-reviewed written report with personalised clinical interpretation and next-step plan.</li>
-          <li>Nationally accredited UK laboratory. Results typically within 48–72 hours.</li>
+          <li>Nationally accredited UK laboratory. Results typically within 48-72 hours.</li>
         </ul>
 
         {/* Related tests */}

@@ -86,7 +86,7 @@ export default function FastingInsulinTestPage() {
           A fasting insulin test measures the concentration of insulin in the blood after a minimum of eight to ten hours without caloric intake. It reflects the baseline insulin the body requires to maintain stable blood glucose during the rested, fasted state. An elevated result indicates that the pancreas is producing more insulin than would be expected for a given glucose level the hallmark of insulin resistance, where tissues have become less responsive to insulin&apos;s signal and the body compensates by secreting more.
         </p>
         <p style={paragraph}>
-          In the UK, laboratory reference ranges for fasting insulin vary by assay but are commonly quoted as 2–25 mIU/L or 3–17 mIU/L. These are population-derived ranges, not optimal values. A fasting insulin of 20 mIU/L may be flagged as &apos;normal&apos; while representing clinically significant hyperinsulinaemia with real-world consequences for cardiovascular risk, fat metabolism, energy, and hormonal function.
+          In the UK, laboratory reference ranges for fasting insulin vary by assay but are commonly quoted as 2-25 mIU/L or 3-17 mIU/L. These are population-derived ranges, not optimal values. A fasting insulin of 20 mIU/L may be flagged as &apos;normal&apos; while representing clinically significant hyperinsulinaemia with real-world consequences for cardiovascular risk, fat metabolism, energy, and hormonal function.
         </p>
 
         <h2 className="cg" style={sectionHeading}>Optimal fasting insulin ranges vs laboratory normal</h2>
@@ -94,10 +94,10 @@ export default function FastingInsulinTestPage() {
           In preventive and longevity medicine, the clinically meaningful thresholds are significantly tighter than standard laboratory ranges:
         </p>
         <ul className="chk">
-          <li><strong>Optimal:</strong> fasting insulin 2–6 mIU/L associated with strong insulin sensitivity and low metabolic risk.</li>
-          <li><strong>Borderline:</strong> 6–10 mIU/L warrants dietary, exercise, and lifestyle review; trend should be tracked.</li>
-          <li><strong>Elevated:</strong> 10–15 mIU/L consistent with early-to-moderate insulin resistance; active intervention indicated.</li>
-          <li><strong>Significantly elevated:</strong> above 15–20 mIU/L established hyperinsulinaemia; associated with meaningful cardiometabolic risk and often visible in central adiposity, dyslipidaemia, and elevated blood pressure.</li>
+          <li><strong>Optimal:</strong> fasting insulin 2-6 mIU/L associated with strong insulin sensitivity and low metabolic risk.</li>
+          <li><strong>Borderline:</strong> 6-10 mIU/L warrants dietary, exercise, and lifestyle review; trend should be tracked.</li>
+          <li><strong>Elevated:</strong> 10-15 mIU/L consistent with early-to-moderate insulin resistance; active intervention indicated.</li>
+          <li><strong>Significantly elevated:</strong> above 15-20 mIU/L established hyperinsulinaemia; associated with meaningful cardiometabolic risk and often visible in central adiposity, dyslipidaemia, and elevated blood pressure.</li>
         </ul>
         <p style={paragraph}>
           Context matters enormously. These thresholds are guides rather than diagnostic cut-offs. A fasting insulin of 11 mIU/L in a 44-year-old with a waist circumference of 102 cm, triglycerides of 2.1 mmol/L, and poor sleep carries a very different clinical message than the same number in a lean, active 28-year-old. At Veridian, every fasting insulin result is interpreted alongside the full metabolic panel, not in isolation.
@@ -112,8 +112,8 @@ export default function FastingInsulinTestPage() {
         </p>
         <ul className="chk">
           <li><strong>Below 1.0:</strong> insulin-sensitive generally optimal.</li>
-          <li><strong>1.0–1.9:</strong> borderline worth monitoring and addressing lifestyle contributors.</li>
-          <li><strong>2.0–2.9:</strong> meaningful insulin resistance active metabolic management needed.</li>
+          <li><strong>1.0-1.9:</strong> borderline worth monitoring and addressing lifestyle contributors.</li>
+          <li><strong>2.0-2.9:</strong> meaningful insulin resistance active metabolic management needed.</li>
           <li><strong>Above 3.0:</strong> significant insulin resistance associated with metabolic syndrome, elevated cardiovascular risk, and MASLD.</li>
         </ul>
         <p style={paragraph}>
@@ -133,7 +133,7 @@ export default function FastingInsulinTestPage() {
 
         <h2 className="cg" style={sectionHeading}>Who should consider a private fasting insulin test in the UK?</h2>
         <ul className="chk">
-          <li><strong>PCOS:</strong> insulin resistance is present in 65–80% of PCOS cases and directly drives the hormonal dysregulation, androgen excess, and anovulatory cycles. Most NHS PCOS workups do not include fasting insulin leaving the primary driver unaddressed.</li>
+          <li><strong>PCOS:</strong> insulin resistance is present in 65-80% of PCOS cases and directly drives the hormonal dysregulation, androgen excess, and anovulatory cycles. Most NHS PCOS workups do not include fasting insulin leaving the primary driver unaddressed.</li>
           <li><strong>Central adiposity:</strong> anyone with a waist circumference above 94 cm (men) or 80 cm (women), regardless of BMI visceral fat drives insulin resistance and is itself driven by chronically elevated insulin.</li>
           <li><strong>Elevated triglycerides:</strong> TG above 1.5 mmol/L on a routine lipid panel is often the earliest measurable signal of insulin resistance and atherogenic dyslipidaemia.</li>
           <li><strong>Unexplained fatigue, energy crashes, or carbohydrate cravings:</strong> the energy instability driven by postprandial glucose variability is a direct downstream consequence of hyperinsulinaemia in many patients.</li>

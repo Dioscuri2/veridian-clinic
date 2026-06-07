@@ -6,7 +6,7 @@ const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
 const GIST_ID = process.env.GITHUB_GIST_WA_ID || "";
 const GH_TOKEN = process.env.GITHUB_TOKEN || "";
 
-// ── GET — Meta webhook verification handshake ────────────────────────────────
+// ── GET, Meta webhook verification handshake ────────────────────────────────
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const mode = searchParams.get("hub.mode");
@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 }
 
-// ── POST — incoming WhatsApp messages ────────────────────────────────────────
+// ── POST, incoming WhatsApp messages ────────────────────────────────────────
 export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
   try {
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
     // 1. Auto-reply acknowledgement
     if (WA_TOKEN && (type === "text" || type === "image" || type === "audio")) {
       await sendWhatsAppReply(from, msgId,
-        "Thank you for messaging Veridian Clinic. We've received your message and will respond within a few hours during clinic hours (Mon–Fri, 9am–6pm). If this is a medical emergency, please call 999."
+        "Thank you for messaging Veridian Clinic. We've received your message and will respond within a few hours during clinic hours (Mon-Fri, 9am-6pm). If this is a medical emergency, please call 999."
       );
     }
 
@@ -102,7 +102,7 @@ async function notifyDiscord({ from, senderName, type, text, timestamp }: {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      content: `📱 **WhatsApp message — Veridian Clinic**\n**From:** ${senderName} (+${from})\n**Type:** ${type}\n**Time:** ${timestamp}${preview}\n\nReply via Meta Business Suite or the admin inbox at veridianclinic.com/admin`,
+      content: `📱 **WhatsApp message, Veridian Clinic**\n**From:** ${senderName} (+${from})\n**Type:** ${type}\n**Time:** ${timestamp}${preview}\n\nReply via Meta Business Suite or the admin inbox at veridianclinic.com/admin`,
     }),
   }).catch(() => null);
 }
@@ -133,5 +133,5 @@ async function appendToGist(msg: {
         files: { "wa_messages.json": { content: JSON.stringify({ messages: trimmed }, null, 2) } },
       }),
     });
-  } catch { /* non-fatal — messages still logged and alerted */ }
+  } catch { /* non-fatal, messages still logged and alerted */ }
 }

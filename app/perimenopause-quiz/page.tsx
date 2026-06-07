@@ -8,15 +8,15 @@ type AgeGroup = "under45" | "45plus";
 
 const AGE_OPTIONS: { label: string; group: AgeGroup }[] = [
   { label: "Under 40", group: "under45" },
-  { label: "40–44", group: "under45" },
-  { label: "45–50", group: "45plus" },
+  { label: "40-44", group: "under45" },
+  { label: "45-50", group: "45plus" },
   { label: "51 or over / post-menopause", group: "45plus" },
 ];
 
 const QUESTIONS = [
   {
     id: "sleep",
-    text: "Do you wake between 2–4am with your mind racing, unable to get back to sleep even when you're exhausted?",
+    text: "Do you wake between 2-4am with your mind racing, unable to get back to sleep even when you're exhausted?",
     options: [
       "Rarely or never",
       "Once or twice a week",
@@ -78,7 +78,7 @@ const RESULTS: Record<Band, { label: string; headline: string; body: string; col
   moderate: {
     label: "Moderate Symptom Burden",
     headline: "Classic perimenopause. Your body is telling you something is shifting.",
-    body: "Brain fog, disrupted sleep, and changing weight at this level are almost always oestrogen–progesterone fluctuation not stress, not age. The six-week Reset Guide was built for exactly this stage.",
+    body: "Brain fog, disrupted sleep, and changing weight at this level are almost always oestrogen-progesterone fluctuation not stress, not age. The six-week Reset Guide was built for exactly this stage.",
     colour: "#8a5500",
   },
   high: {

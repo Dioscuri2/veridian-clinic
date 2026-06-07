@@ -21,23 +21,23 @@ const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
   "fatigue-energy":     { code: "HSC10 + Fasting Insulin + Uric Acid + Vit D", notes: "HSC10 base includes FBC, thyroid (FT3/FT4/TSH/TPO), iron, B12, folate, CRP, kidney." },
   "metabolic-weight":   { code: "RP3 + RP4 + Fasting Insulin + Uric Acid + Lp(a)", notes: "Two Randox panels combined. Include Leptin + Adiponectin as add-ons." },
   "optimiser-baseline": { code: "HSC8M or HSC8F + IGF-1 + Fasting Insulin + Cortisol (AM) + Testosterone", notes: "HSC8M for male patients, HSC8F for female. Add Lp(a) + full lipids if not in base." },
-  "metabolic-screen":   { code: "HSC7 (Energy Screen)", notes: "Standard Veridian Energy Screen — single panel code." },
-  baseline:             { code: "Veridian Baseline — custom metabolic panel", notes: "Full ThanksDoc clinical programme. Also includes 14-day Lingo CGM — order separately." },
-  "longevity-panel":    { code: "Longevity Panel — 150+ markers", notes: "Full ThanksDoc clinical programme. Confirm panel code with Randox account manager." },
-  programme:            { code: "12-Week Reset — includes Baseline + CGM ×2", notes: "ThanksDoc programme. Two CGM cycles required — order second at Week 6 review." },
-  discovery:            { code: "No Randox order — GP consultation only", notes: "Schedule in ThanksDoc calendar. No phlebotomy required." },
-  "discovery-quiz":     { code: "No Randox order — GP consultation only", notes: "Schedule in ThanksDoc calendar. Quiz-rate pricing confirmed." },
+  "metabolic-screen":   { code: "HSC7 (Energy Screen)", notes: "Standard Veridian Energy Screen, single panel code." },
+  baseline:             { code: "Veridian Baseline, custom metabolic panel", notes: "Full ThanksDoc clinical programme. Also includes 14-day Lingo CGM, order separately." },
+  "longevity-panel":    { code: "Longevity Panel, 150+ markers", notes: "Full ThanksDoc clinical programme. Confirm panel code with Randox account manager." },
+  programme:            { code: "12-Week Reset, includes Baseline + CGM ×2", notes: "ThanksDoc programme. Two CGM cycles required, order second at Week 6 review." },
+  discovery:            { code: "No Randox order, GP consultation only", notes: "Schedule in ThanksDoc calendar. No phlebotomy required." },
+  "discovery-quiz":     { code: "No Randox order, GP consultation only", notes: "Schedule in ThanksDoc calendar. Quiz-rate pricing confirmed." },
 };
 
 const TIER_LABELS: Record<string, string> = {
   discovery: "GP Discovery Call (£195)",
-  "discovery-quiz": "GP Discovery Call — guide rate (£97)",
+  "discovery-quiz": "GP Discovery Call, guide rate (£97)",
   "metabolic-screen": "Energy Screen (£195)",
   baseline: "Veridian Baseline (£595)",
   "longevity-panel": "Longevity Panel (£795)",
   programme: "12-Week Metabolic Reset (£1,895)",
-  "womens-hormones": "Is It My Hormones? — Women's Panel (£325)",
-  "mens-testosterone": "Running on Empty — Men's Panel (£325)",
+  "womens-hormones": "Is It My Hormones?, Women's Panel (£325)",
+  "mens-testosterone": "Running on Empty, Men's Panel (£325)",
   "cardiovascular-risk": "What Your Cholesterol Test Missed (£349)",
   "fatigue-energy": "Tired of Being Told You're Fine (£249)",
   "metabolic-weight": "Why Won't The Weight Budge? (£199)",
@@ -114,7 +114,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         sender: { name: "Veridian Clinic Bookings", email: "support@veridianclinic.com" },
         to: [{ email: "support@veridianclinic.com", name: "Dr Tosin Taiwo" }],
-        subject: `New booking enquiry — ${tierLabel}`,
+        subject: `New booking enquiry, ${tierLabel}`,
         htmlContent: (() => {
           const randox = RANDOX_CODES[tier] || null;
           return `
@@ -125,7 +125,7 @@ export async function POST(req: NextRequest) {
               <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Name</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;color:#2c2a26;font-size:14px;">${name}</td></tr>
               <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Email</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;font-size:14px;"><a href="mailto:${email}" style="color:#c8a84b;">${email}</a></td></tr>
               <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Phone</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;color:#2c2a26;font-size:14px;">${phone || "Not provided"}</td></tr>
-              <tr><td style="padding:10px 0;color:#5a534a;font-size:14px;vertical-align:top;"><strong>Message</strong></td><td style="padding:10px 0;color:#2c2a26;font-size:14px;line-height:1.7;">${message || "—"}</td></tr>
+              <tr><td style="padding:10px 0;color:#5a534a;font-size:14px;vertical-align:top;"><strong>Message</strong></td><td style="padding:10px 0;color:#2c2a26;font-size:14px;line-height:1.7;">${message || "-"}</td></tr>
             </table>
             ${randox ? `
             <div style="margin-top:24px;padding:16px 20px;background:#2c2a26;border-left:3px solid #c8a84b;">
@@ -153,7 +153,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         sender: { name: "Dr Tosin Taiwo | Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
-        subject: "We've received your enquiry — Veridian Clinic",
+        subject: "We've received your enquiry, Veridian Clinic",
         htmlContent: `
           <div style="font-family:Arial,sans-serif;max-width:600px;background:#ffffff;">
             <div style="background:#2c2a26;padding:28px 40px;text-align:center;">
@@ -163,7 +163,7 @@ export async function POST(req: NextRequest) {
             <div style="padding:40px 40px 32px;background:#ffffff;">
               <p style="font-size:15px;color:#5a534a;line-height:1.9;margin-bottom:16px;">Thank you, ${name.split(" ")[0]}.</p>
               <p style="font-size:15px;color:#5a534a;line-height:1.9;margin-bottom:16px;">We've received your enquiry for <strong style="color:#2c2a26;">${tierLabel}</strong>.</p>
-              <p style="font-size:15px;color:#5a534a;line-height:1.9;margin-bottom:24px;">Dr Tosin will be in touch within 24 hours — usually sooner — to confirm your appointment details.</p>
+              <p style="font-size:15px;color:#5a534a;line-height:1.9;margin-bottom:24px;">Dr Tosin will be in touch within 24 hours, usually sooner, to confirm your appointment details.</p>
               <p style="font-size:15px;color:#5a534a;line-height:1.9;">In the meantime, if you have any questions, reply to this email directly.</p>
             </div>
             <div style="padding:20px 40px;background:#f6f1e8;border-top:1px solid rgba(0,0,0,.07);text-align:center;">
@@ -177,11 +177,11 @@ export async function POST(req: NextRequest) {
 
   // Discord ping
   await pingDiscord(
-    `📋 **New booking enquiry — Veridian Clinic**\n` +
+    `📋 **New booking enquiry, Veridian Clinic**\n` +
     `**Product:** ${tierLabel}\n` +
     `**Name:** ${name}\n` +
     `**Email:** ${email}\n` +
-    `**Phone:** ${phone || "—"}\n` +
+    `**Phone:** ${phone || "-"}\n` +
     (message ? `**Message:** ${message.slice(0, 200)}\n` : "") +
     `\nReply at support@veridianclinic.com`
   );

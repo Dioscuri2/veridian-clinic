@@ -14,7 +14,7 @@ const tierCatalog: Record<
   { name: string; amount: number; description: string; successPath?: string; cancelPath?: string }
 > = {
   guide: {
-    name: "Why Your Weight Isn't Shifting — Doctor's 21-Day Metabolic Reset Guide",
+    name: "Why Your Weight Isn't Shifting, Doctor's 21-Day Metabolic Reset Guide",
     amount: 999,
     description:
       "A GP-authored practical guide covering the PERC framework, 21-day roadmap, meal plans, fasting strategies, and movement tiers for metabolic reset.",
@@ -37,21 +37,21 @@ const tierCatalog: Record<
     successPath: "/book/thank-you",
   },
   "discovery-quiz": {
-    name: "GP-Led Discovery Call — Quiz Rate",
+    name: "GP-Led Discovery Call, Quiz Rate",
     amount: 9700,
     description:
       "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £97 (normally £195).",
     successPath: "/book/thank-you",
   },
   "metabolic-screen": {
-    name: "Veridian Energy Screen — Fatigue & Thyroid Audit",
+    name: "Veridian Energy Screen, Fatigue & Thyroid Audit",
     amount: 19500,
     description:
       "Targeted blood panel: FBC, Thyroid (TSH/FT3/FT4/antibodies), Fasting Insulin, C-Peptide, HbA1c, Iron Status, B12, Folate, Vitamin D, hsCRP, Kidney. Includes GP-reviewed digital report.",
     successPath: "/book/thank-you",
   },
   "longevity-panel": {
-    name: "Veridian Longevity Panel — Biological Age Audit",
+    name: "Veridian Longevity Panel, Biological Age Audit",
     amount: 79500,
     description:
       "150+ markers including full hormonal health, Omega-3 index, gut markers, pancreatic health, and comprehensive cardiovascular risk. Includes 45-min GP consultation and written report.",
@@ -65,7 +65,7 @@ const tierCatalog: Record<
     successPath: "/book/thank-you",
   },
   "baseline-same-day": {
-    name: "Veridian Baseline — Same-Day Rate",
+    name: "Veridian Baseline, Same-Day Rate",
     amount: 50575,
     description:
       "Same-day booking rate (15% discount). Two GP consultations (initial clinical session + blood results review), advanced metabolic blood panel (HbA1c, fasting insulin, ApoB, Lp(a), liver, kidney, inflammation and more), 14-day Lingo CGM glucose monitor, and personalised written clinical action plan.",
@@ -73,7 +73,7 @@ const tierCatalog: Record<
     cancelPath: "/assessments",
   },
   "longevity-same-day": {
-    name: "Veridian Longevity Panel — Same-Day Rate",
+    name: "Veridian Longevity Panel, Same-Day Rate",
     amount: 55650,
     description:
       "Same-day booking rate (30% discount). 150+ marker longevity panel including two GP consultations, full hormonal profile, Omega-3 index, gut markers, pancreatic health, and comprehensive cardiovascular risk. Comprehensive longevity report with biological age assessment.",
@@ -81,7 +81,7 @@ const tierCatalog: Record<
     cancelPath: "/assessments",
   },
   "programme-same-day": {
-    name: "12-Week Metabolic Reset — Same-Day Rate",
+    name: "12-Week Metabolic Reset, Same-Day Rate",
     amount: 132650,
     description:
       "Same-day booking rate (30% discount). 12-week structured reset including everything in the Veridian Baseline, second CGM cycle, fortnightly coaching, clinical review via partner providers where indicated, and personalised nutrition, movement and recovery protocol.",
@@ -95,7 +95,7 @@ const tierCatalog: Record<
       "A 12-week reset with structured implementation, accountability, and clinical oversight via trusted medical partners where indicated.",
   },
   "womens-hormones": {
-    name: "Is It My Hormones? — Women's Hormone & Perimenopause Panel",
+    name: "Is It My Hormones?, Women's Hormone & Perimenopause Panel",
     amount: 32500,
     description:
       "Full female hormonal profile: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, cortisol. Thyroid: TSH, FT3, FT4, TPO antibodies. Plus Lp(a), fasting insulin, HbA1c, vitamin D. GP-reviewed written report with personalised clinical interpretation included.",
@@ -103,7 +103,7 @@ const tierCatalog: Record<
     cancelPath: "/blood-tests/womens-hormones",
   },
   "mens-testosterone": {
-    name: "Running on Empty — Men's Testosterone & Hormone Panel",
+    name: "Running on Empty, Men's Testosterone & Hormone Panel",
     amount: 32500,
     description:
       "Total + free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, cortisol. Lp(a), fasting insulin, HbA1c, Full Blood Count, hs-CRP. GP-reviewed written report with personalised clinical interpretation included.",
@@ -111,7 +111,7 @@ const tierCatalog: Record<
     cancelPath: "/blood-tests/mens-testosterone",
   },
   "cardiovascular-risk": {
-    name: "What Your Cholesterol Test Missed — Cardiovascular Risk Panel",
+    name: "What Your Cholesterol Test Missed, Cardiovascular Risk Panel",
     amount: 34900,
     description:
       "ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, full lipid profile, ApoA-I, fasting insulin, HbA1c. GP-reviewed cardiovascular risk summary with written interpretation and next-step recommendations.",
@@ -119,7 +119,7 @@ const tierCatalog: Record<
     cancelPath: "/assessments",
   },
   "fatigue-energy": {
-    name: "Tired of Being Told You're Fine — Fatigue & Energy Deep Screen",
+    name: "Tired of Being Told You're Fine, Fatigue & Energy Deep Screen",
     amount: 24900,
     description:
       "Full Blood Count, thyroid (TSH/FT3/FT4/TPO antibodies), ferritin + full iron studies, vitamin B12, folate, vitamin D, fasting insulin, uric acid, hs-CRP, kidney function. GP-reviewed written report included.",
@@ -127,7 +127,7 @@ const tierCatalog: Record<
     cancelPath: "/blood-tests/fatigue-energy",
   },
   "metabolic-weight": {
-    name: "Why Won't The Weight Budge? — Metabolic Weight Resistance Panel",
+    name: "Why Won't The Weight Budge?, Metabolic Weight Resistance Panel",
     amount: 19900,
     description:
       "Fasting insulin + HbA1c + HOMA-IR, uric acid, Lp(a), leptin, adiponectin, TSH, liver markers (ALT, AST), fasting lipid profile. GP-reviewed metabolic interpretation with prioritised recommendations.",
@@ -135,7 +135,7 @@ const tierCatalog: Record<
     cancelPath: "/assessments",
   },
   "optimiser-baseline": {
-    name: "The Optimiser's Baseline — Performance & Safety Panel",
+    name: "The Optimiser's Baseline, Performance & Safety Panel",
     amount: 39500,
     description:
       "IGF-1, fasting insulin, HbA1c, cortisol (AM), total + free testosterone, SHBG, LH, FSH, DHEA-S, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, Lp(a), full lipid profile, hs-CRP. GP-reviewed baseline report included.",
@@ -143,7 +143,7 @@ const tierCatalog: Record<
     cancelPath: "/assessments",
   },
   "wl-consultation": {
-    name: "Weight Loss Consultation — 15 Minutes with Dr Tosin",
+    name: "Weight Loss Consultation, 15 Minutes with Dr Tosin",
     amount: 6000,
     description:
       "Private 15-minute GP consultation for weight loss medicine assessment. Covers medical history, medicine selection (tirzepatide or semaglutide), dose titration plan, safety review, and private prescription if clinically appropriate.",
@@ -151,7 +151,7 @@ const tierCatalog: Record<
     cancelPath: "/weight-loss/consultation",
   },
   "wl-consultation-quiz": {
-    name: "Weight Loss Consultation — Quiz Rate",
+    name: "Weight Loss Consultation, Quiz Rate",
     amount: 5500,
     description:
       "Private 15-minute GP consultation for weight loss medicine assessment (quiz rate). Covers medical history, medicine selection, dose titration plan, safety review, and private prescription if clinically appropriate.",

@@ -111,7 +111,7 @@ export default function ReversingMetabolicSyndromePage() {
 
         <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Waist reduction through body composition change</h2>
         <p style={paragraph}>
-          Visceral fat, the fat deposited around abdominal organs rather than subcutaneous fat under the skin, is the primary driver of metabolic syndrome pathophysiology. It is metabolically active, releasing free fatty acids and pro-inflammatory cytokines that drive insulin resistance directly. Even modest visceral fat reduction produces disproportionate metabolic benefit: a 5–10% reduction in body weight has been shown to reduce fasting insulin by 20–35%, triglycerides by 20–30%, blood pressure by 5–8 mmHg systolic, and improve HDL-C meaningfully.
+          Visceral fat, the fat deposited around abdominal organs rather than subcutaneous fat under the skin, is the primary driver of metabolic syndrome pathophysiology. It is metabolically active, releasing free fatty acids and pro-inflammatory cytokines that drive insulin resistance directly. Even modest visceral fat reduction produces disproportionate metabolic benefit: a 5-10% reduction in body weight has been shown to reduce fasting insulin by 20-35%, triglycerides by 20-30%, blood pressure by 5-8 mmHg systolic, and improve HDL-C meaningfully.
         </p>
         <p style={paragraph}>
           Waist-to-height ratio (below 0.5 is the general target) is more sensitive than BMI or waist circumference alone for tracking this. It accounts for height and gives a better read on the ratio of central adiposity to overall body size. At Veridian we track this alongside fasting insulin rather than relying on weight alone, because two patients can lose identical body weight while one improves their metabolic profile dramatically and the other loses mainly lean mass and makes no meaningful metabolic progress.
@@ -135,15 +135,15 @@ export default function ReversingMetabolicSyndromePage() {
           A 2023 NutriNet-Santé cohort analysis (n&gt;100,000) showed a dose-response relationship between UPF consumption and metabolic syndrome prevalence. Randomised feeding studies show that moving from a UPF-dominant diet to a minimally processed one, holding calories constant, improves insulin sensitivity, reduces triglycerides, lowers inflammatory markers, and spontaneously reduces energy intake by an average of 508 kcal/day.
         </p>
         <p style={paragraph}>
-          Specifically, reducing rapidly digestible carbohydrates (sugary drinks, white bread, breakfast cereals, confectionery) has the most direct impact on fasting insulin and triglycerides. Adequate protein (1.6–2.0g per kg of body weight daily) supports the lean mass retention that makes metabolic improvement durable, and simultaneously reduces appetite-driving signals, improving adherence without calorie counting.
+          Specifically, reducing rapidly digestible carbohydrates (sugary drinks, white bread, breakfast cereals, confectionery) has the most direct impact on fasting insulin and triglycerides. Adequate protein (1.6-2.0g per kg of body weight daily) supports the lean mass retention that makes metabolic improvement durable, and simultaneously reduces appetite-driving signals, improving adherence without calorie counting.
         </p>
 
         <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Resistance training: the most underused metabolic intervention</h2>
         <p style={paragraph}>
-          Resistance training improves insulin sensitivity through a mechanism completely separate from weight loss: it increases skeletal muscle mass and, critically, the density of GLUT4 glucose transporters in those muscle cells. More GLUT4 means more glucose can be cleared from the bloodstream per unit of insulin, reducing the insulin demand required to maintain normal glucose. This effect persists for 24–48 hours after each session and accumulates with consistent training over weeks and months.
+          Resistance training improves insulin sensitivity through a mechanism completely separate from weight loss: it increases skeletal muscle mass and, critically, the density of GLUT4 glucose transporters in those muscle cells. More GLUT4 means more glucose can be cleared from the bloodstream per unit of insulin, reducing the insulin demand required to maintain normal glucose. This effect persists for 24-48 hours after each session and accumulates with consistent training over weeks and months.
         </p>
         <p style={paragraph}>
-          Studies specifically in metabolic syndrome populations show that 12 weeks of progressive resistance training, three times weekly, reduces fasting insulin by 15–25%, lowers triglycerides by 10–20%, increases HDL by 5–10%, and can reduce waist circumference by 3–5 cm even without significant changes in total body weight. The metabolic benefit is independent of and additive to the benefit of dietary improvement.
+          Studies specifically in metabolic syndrome populations show that 12 weeks of progressive resistance training, three times weekly, reduces fasting insulin by 15-25%, lowers triglycerides by 10-20%, increases HDL by 5-10%, and can reduce waist circumference by 3-5 cm even without significant changes in total body weight. The metabolic benefit is independent of and additive to the benefit of dietary improvement.
         </p>
 
         <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Sleep: the frequently missed metabolic lever</h2>
@@ -165,9 +165,9 @@ export default function ReversingMetabolicSyndromePage() {
         <h2 className="cg" style={sectionHeading}>The 12-week focus areas in practice</h2>
         <ul className="chk">
           <li>Reduce waist-to-height ratio to below 0.5 through sustained nutrition and activity changes.</li>
-          <li>Prioritise protein (1.6–2.0g/kg/day), meal structure, and lower ultra-processed food intake as the dietary foundation.</li>
+          <li>Prioritise protein (1.6-2.0g/kg/day), meal structure, and lower ultra-processed food intake as the dietary foundation.</li>
           <li>Use progressive resistance training (3×/week minimum) to improve glucose disposal and insulin sensitivity.</li>
-          <li>Anchor sleep to 7–9 hours consistently so appetite, cortisol, and glucose regulation all improve.</li>
+          <li>Anchor sleep to 7-9 hours consistently so appetite, cortisol, and glucose regulation all improve.</li>
           <li>Track fasting insulin, ApoB, triglycerides, and waist metrics, not just weight, so progress is confirmed objectively rather than assumed from how clothes fit.</li>
           <li>Use CGM where appropriate to link food choices, sleep, and exercise patterns directly to glucose behaviour.</li>
         </ul>

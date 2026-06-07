@@ -100,7 +100,7 @@ Inflammation & nutrients:
 • High-sensitivity CRP, homocysteine
 • Vitamin D, B12, ferritin, folate
 
-Results are typically ready within 5–7 days, then reviewed in detail with Dr Taiwo. Full marker list at veridianclinic.com/assessments
+Results are typically ready within 5-7 days, then reviewed in detail with Dr Taiwo. Full marker list at veridianclinic.com/assessments
 
 Any specific markers you're interested in?`,
   },
@@ -115,7 +115,7 @@ Any specific markers you're interested in?`,
 3. Complete the short intake form
 4. You'll receive a confirmation with video call details
 
-Dr Taiwo is typically available Mon–Fri, 9am–6pm. We also offer early morning slots just mention this when booking and we'll do our best.
+Dr Taiwo is typically available Mon-Fri, 9am-6pm. We also offer early morning slots just mention this when booking and we'll do our best.
 
 If you're not sure which service to start with, the Discovery Consultation (£195) is the right first step Dr Taiwo will assess your situation and recommend the best path forward.
 
@@ -451,8 +451,8 @@ export default function AdminDashboardClient({
                     {[
                       { stage: "Quiz completions", count: stats.funnel.quizCompletions, colour: "#3a82f7" },
                       { stage: "Guide downloads (free)", count: stats.funnel.guidePurchases, colour: "#c8a84b" },
-                      { stage: "Discovery calls (£97–£195)", count: stats.funnel.discoveryCalls, colour: "#145226" },
-                      { stage: "Blood tests (£195–£795)", count: stats.funnel.bloodTests, colour: "#8b5cf6" },
+                      { stage: "Discovery calls (£97-£195)", count: stats.funnel.discoveryCalls, colour: "#145226" },
+                      { stage: "Blood tests (£195-£795)", count: stats.funnel.bloodTests, colour: "#8b5cf6" },
                       { stage: "12-week programme (£1,895)", count: stats.funnel.programmes, colour: "#ef4444" },
                     ].map(({ stage, count, colour }) => (
                       <div key={stage} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: "1px solid #2a2820" }}>

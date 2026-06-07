@@ -197,7 +197,7 @@ function KraftCurve() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         style={{ width: "100%", maxWidth: W, display: "block", margin: "0 auto" }}
-        aria-label="Kraft Insulin Response Curve Patterns I–V"
+        aria-label="Kraft Insulin Response Curve Patterns I-V"
         role="img"
       >
         <style>{`

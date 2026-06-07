@@ -92,7 +92,7 @@ function buildEmail1(firstName: string, mAge: number, band: string, delta: numbe
     delta > 0
       ? `${delta} years ahead of your calendar age`
       : delta < 0
-        ? `${Math.abs(delta)} years behind your calendar age — a positive sign of metabolic resilience`
+        ? `${Math.abs(delta)} years behind your calendar age, a positive sign of metabolic resilience`
         : "closely aligned with your calendar age";
   const ctaHref =
     band === "strong"
@@ -121,7 +121,7 @@ function buildEmail1(firstName: string, mAge: number, band: string, delta: numbe
       </td></tr>
       <tr><td style="padding:40px 36px 28px;">
         <p style="margin:0 0 8px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8a84b;">Your Metabolic Scorecard</p>
-        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting} — your metabolic age is <strong style="color:${bandColor};">${mAge}</strong>.</h1>
+        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting}, your metabolic age is <strong style="color:${bandColor};">${mAge}</strong>.</h1>
         <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">Your metabolism is running ${deltaText}. Your result band is <strong style="color:${bandColor};">${tone}</strong>.</p>
 
         <!-- Band badge -->
@@ -177,17 +177,17 @@ function buildEmail2(firstName: string): string {
       </td></tr>
       <tr><td style="padding:40px 36px;">
         <p style="margin:0 0 8px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8a84b;">The clinical context</p>
-        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting} — the biomarker most GPs never check.</h1>
-        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">Fasting insulin is the most sensitive early marker of metabolic dysfunction — and it's absent from standard NHS bloods. By the time HbA1c rises, insulin resistance has often been present for a decade.</p>
-        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">This matters because your metabolic age quiz captures lifestyle signals. The lab fills in the gaps — confirming or adjusting the picture before dysfunction becomes established disease.</p>
+        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting}, the biomarker most GPs never check.</h1>
+        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">Fasting insulin is the most sensitive early marker of metabolic dysfunction, and it's absent from standard NHS bloods. By the time HbA1c rises, insulin resistance has often been present for a decade.</p>
+        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">This matters because your metabolic age quiz captures lifestyle signals. The lab fills in the gaps, confirming or adjusting the picture before dysfunction becomes established disease.</p>
         <table cellpadding="0" cellspacing="0" width="100%" style="background:#f6f1e8;border-left:3px solid #c8a84b;margin-bottom:28px;">
           <tr><td style="padding:20px 22px;">
             <p style="margin:0 0 8px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2c2a26;">From the clinical library</p>
-            <p style="margin:0 0 14px;font-size:.88rem;color:#5a534a;line-height:1.85;">Dr Taiwo has written a clinical primer on why fasting insulin is the metabolic test that changes everything — including how to interpret your result and what optimal actually looks like.</p>
+            <p style="margin:0 0 14px;font-size:.88rem;color:#5a534a;line-height:1.85;">Dr Taiwo has written a clinical primer on why fasting insulin is the metabolic test that changes everything, including how to interpret your result and what optimal actually looks like.</p>
             <a href="https://veridianclinic.com/blog/fast-insulin" style="font-size:.85rem;font-weight:600;color:#2c2a26;text-decoration:underline;">Read: The Case for Fasting Insulin →</a>
           </td></tr>
         </table>
-        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">ApoB and lipoprotein(a) follow the same pattern — clinically significant, rarely measured in primary care, and each capable of tripling cardiovascular risk in people who appear metabolically normal by standard measures.</p>
+        <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">ApoB and lipoprotein(a) follow the same pattern, clinically significant, rarely measured in primary care, and each capable of tripling cardiovascular risk in people who appear metabolically normal by standard measures.</p>
         <a href="https://veridianclinic.com/blood-tests/apob-test-uk" style="font-size:.85rem;font-weight:600;color:#2c2a26;text-decoration:underline;">Read: Why ApoB Matters More Than LDL →</a>
         <br><br>
         <p style="margin:0;font-size:.8rem;color:#8a8278;line-height:1.7;">Questions? Reply to this email or contact <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;">support@veridianclinic.com</a></p>
@@ -208,11 +208,11 @@ function buildEmail3(firstName: string, band: string): string {
     ? "https://veridianclinic.com/book?tier=discovery"
     : "https://veridianclinic.com/book?tier=metabolic-screen";
   const ctaText = isHighRisk
-    ? "Book My Discovery Call — £97 →"
-    : "Book My Metabolic Screen — £195 →";
+    ? "Book My Discovery Call, £97 →"
+    : "Book My Metabolic Screen, £195 →";
   const body = isHighRisk
-    ? "Your quiz result flagged multiple concurrent drivers of metabolic stress. The next step isn't a supplement — it's a direct clinical conversation. Dr Taiwo will review your specific pattern, identify your highest-priority levers, and map a structured pathway forward."
-    : "A Metabolic Screen is the natural next step: fasting insulin, ApoB, hsCRP, HbA1c, vitamin D, and thyroid function — the markers that your lifestyle quiz can't capture — reviewed by Dr Taiwo in a focused 20-minute consultation.";
+    ? "Your quiz result flagged multiple concurrent drivers of metabolic stress. The next step isn't a supplement, it's a direct clinical conversation. Dr Taiwo will review your specific pattern, identify your highest-priority levers, and map a structured pathway forward."
+    : "A Metabolic Screen is the natural next step: fasting insulin, ApoB, hsCRP, HbA1c, vitamin D, and thyroid function, the markers that your lifestyle quiz can't capture, reviewed by Dr Taiwo in a focused 20-minute consultation.";
 
   return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#f6f1e8;font-family:Georgia,serif;">
@@ -225,9 +225,9 @@ function buildEmail3(firstName: string, band: string): string {
       </td></tr>
       <tr><td style="padding:40px 36px;">
         <p style="margin:0 0 8px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8a84b;">Your next clinical step</p>
-        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting} — here's where to go next.</h1>
+        <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">Hi ${greeting}, here's where to go next.</h1>
         <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">${body}</p>
-        <p style="margin:0 0 28px;font-size:.95rem;color:#5a534a;line-height:1.9;">This is a GP-led private service — not a supplement programme or a generic health app. Everything is built around your actual clinical picture, not a population average.</p>
+        <p style="margin:0 0 28px;font-size:.95rem;color:#5a534a;line-height:1.9;">This is a GP-led private service, not a supplement programme or a generic health app. Everything is built around your actual clinical picture, not a population average.</p>
         <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;"><tr><td style="background:#2c2a26;padding:0;">
           <a href="${ctaHref}" style="display:block;padding:15px 36px;font-size:.9rem;font-weight:600;letter-spacing:.04em;color:#f6f1e8;text-decoration:none;">${ctaText}</a>
         </td></tr></table>
@@ -245,7 +245,7 @@ function buildEmail3(firstName: string, band: string): string {
 async function sendBrevoEmail(to: string, name: string, subject: string, html: string, scheduledAt?: string) {
   if (!BREVO_API_KEY) return;
   const body: Record<string, unknown> = {
-    sender: { name: "Dr Tosin Taiwo — Veridian Clinic", email: "support@veridianclinic.com" },
+    sender: { name: "Dr Tosin Taiwo, Veridian Clinic", email: "support@veridianclinic.com" },
     to: [{ email: to, name: name || to }],
     subject,
     htmlContent: html,
@@ -307,9 +307,9 @@ export async function POST(request: NextRequest) {
     const day5 = new Date(now.getTime() + 5 * 24 * 60 * 60 * 1000).toISOString();
 
     await Promise.all([
-      sendBrevoEmail(email, displayName, "Your Metabolic Scorecard — Veridian Clinic", buildEmail1(firstName, mAge, band, delta, scores)),
-      sendBrevoEmail(email, displayName, "The biomarker most GPs never check — Veridian Clinic", buildEmail2(firstName), day2),
-      sendBrevoEmail(email, displayName, "Your next step — Veridian Clinic", buildEmail3(firstName, band), day5),
+      sendBrevoEmail(email, displayName, "Your Metabolic Scorecard, Veridian Clinic", buildEmail1(firstName, mAge, band, delta, scores)),
+      sendBrevoEmail(email, displayName, "The biomarker most GPs never check, Veridian Clinic", buildEmail2(firstName), day2),
+      sendBrevoEmail(email, displayName, "Your next step, Veridian Clinic", buildEmail3(firstName, band), day5),
     ]);
 
     return NextResponse.json({ ok: true });

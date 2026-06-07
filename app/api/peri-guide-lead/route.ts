@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       await appendFile(FALLBACK_FILE, `${JSON.stringify(entry)}\n`, "utf8");
     } catch { /* read-only filesystem on some runtimes */ }
 
-    // Schedule 4-email sequence (fire-and-forget — never blocks the response)
+    // Schedule 4-email sequence (fire-and-forget, never blocks the response)
     scheduleGuideSequence(cleanEmail, cleanName, "peri").catch(() => {});
 
     return NextResponse.json({ ok: true });

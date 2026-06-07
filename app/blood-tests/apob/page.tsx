@@ -105,12 +105,12 @@ export default function ApoBTestPage() {
 
         <h2 className="cg" style={sectionHeading}>What are optimal ApoB levels?</h2>
         <p style={paragraph}>
-          Laboratory reference ranges in the UK typically quote ApoB as normal below 1.2–1.3 g/L. These population-based ranges are not the same as optimal preventive targets. In cardiovascular prevention and longevity medicine, clinicians commonly use the following working thresholds:
+          Laboratory reference ranges in the UK typically quote ApoB as normal below 1.2-1.3 g/L. These population-based ranges are not the same as optimal preventive targets. In cardiovascular prevention and longevity medicine, clinicians commonly use the following working thresholds:
         </p>
         <ul className="chk">
           <li><strong>Optimal for low-risk individuals:</strong> ApoB below 0.9 g/L.</li>
           <li><strong>Target for moderate cardiovascular risk:</strong> ApoB below 0.8 g/L.</li>
-          <li><strong>Target for high cardiovascular risk</strong> (established ASCVD, diabetes, elevated Lp(a)): ApoB below 0.65–0.7 g/L.</li>
+          <li><strong>Target for high cardiovascular risk</strong> (established ASCVD, diabetes, elevated Lp(a)): ApoB below 0.65-0.7 g/L.</li>
           <li><strong>Elevated:</strong> ApoB above 1.0 g/L in the context of other metabolic risk factors warrants active management.</li>
         </ul>
         <p style={paragraph}>

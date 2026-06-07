@@ -96,14 +96,14 @@ function ConsultationContent() {
         <section className="sec bg-iv">
           <div className="wrap" style={{ maxWidth: 900, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
 
-            {/* Left — what's included */}
+            {/* Left, what's included */}
             <div>
               <h2 className="cg" style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--fo)", marginBottom: 20 }}>What this consultation covers</h2>
               {[
                 { title: "Full medical history review", detail: "Dr Tosin reviews your weight history, medical conditions, current medications, and relevant family history before any prescribing decision." },
-                { title: "Medicine selection", detail: "Tirzepatide (Mounjaro) or semaglutide (Wegovy) — Dr Tosin selects based on your diabetes status, other conditions, and personal profile." },
+                { title: "Medicine selection", detail: "Tirzepatide (Mounjaro) or semaglutide (Wegovy), Dr Tosin selects based on your diabetes status, other conditions, and personal profile." },
                 { title: "Safety and contraindication check", detail: "Comprehensive review of all contraindications including thyroid history, pancreatitis, kidney function, and interactions with your current medicines." },
-                { title: "Dose titration plan", detail: "A clear, personalised plan for starting dose and escalation schedule — including what to expect at each stage and how to manage side effects." },
+                { title: "Dose titration plan", detail: "A clear, personalised plan for starting dose and escalation schedule, including what to expect at each stage and how to manage side effects." },
                 { title: "Private prescription", detail: "If clinically appropriate, Dr Tosin issues a private prescription you can take to any registered UK pharmacy or an online pharmacy." },
                 { title: "Written clinical summary", detail: "A written post-consultation summary with your agreed plan, monitoring schedule, and when to return for review." },
               ].map(item => (
@@ -124,7 +124,7 @@ function ConsultationContent() {
               </div>
             </div>
 
-            {/* Right — booking form */}
+            {/* Right, booking form */}
             <div>
               <div className="card" style={{ padding: "32px 28px" }}>
                 {/* Price block */}
@@ -168,7 +168,7 @@ function ConsultationContent() {
                   className="btn btn-fo btn-full"
                   style={{ display: "block", textAlign: "center", marginBottom: 12 }}
                 >
-                  Book consultation — {price}
+                  Book consultation, {price}
                 </a>
 
                 <div style={{ display: "flex", alignItems: "center", gap: 6, justifyContent: "center", marginBottom: 16 }}>
@@ -178,7 +178,7 @@ function ConsultationContent() {
 
                 <div style={{ borderTop: "1px solid rgba(0,0,0,.06)", paddingTop: 16, display: "flex", flexDirection: "column", gap: 6 }}>
                   {[
-                    "Video call — accessible from any device",
+                    "Video call, accessible from any device",
                     "Confirmation email with call link sent immediately",
                     "Dr Tosin contacts you to confirm your appointment time",
                   ].map(t => (

@@ -95,7 +95,7 @@ export default function MetabolicScreenPage() {
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>3. Iron and ferritin depletion</p>
         <p style={paragraph}>
-          Iron deficiency anaemia will eventually show up on a full blood count as low haemoglobin. But depleted ferritin the body&apos;s iron storage protein causes significant fatigue, exercise intolerance, poor concentration, hair thinning, and restless legs well before anaemia develops. A ferritin below 30–40 ng/mL is associated with symptoms in a significant proportion of patients even when haemoglobin remains normal. Standard panels may check iron studies but will often not flag low-normal ferritin as clinically significant unless haemoglobin is already affected.
+          Iron deficiency anaemia will eventually show up on a full blood count as low haemoglobin. But depleted ferritin the body&apos;s iron storage protein causes significant fatigue, exercise intolerance, poor concentration, hair thinning, and restless legs well before anaemia develops. A ferritin below 30-40 ng/mL is associated with symptoms in a significant proportion of patients even when haemoglobin remains normal. Standard panels may check iron studies but will often not flag low-normal ferritin as clinically significant unless haemoglobin is already affected.
         </p>
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>4. B12 and folate</p>

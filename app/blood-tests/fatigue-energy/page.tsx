@@ -79,13 +79,13 @@ export default function FatigueEnergyPage() {
 
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> the most common missed causes of persistent fatigue in people with &apos;normal&apos; blood tests are: (1) subclinical hypothyroidism with normal TSH but elevated TPO antibodies, (2) ferritin in the low-normal range (30–60 µg/L) where the NHS flags no deficiency but symptoms persist, (3) undetected insulin resistance, and (4) uric acid elevation impairing mitochondrial energy production.
+            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> the most common missed causes of persistent fatigue in people with &apos;normal&apos; blood tests are: (1) subclinical hypothyroidism with normal TSH but elevated TPO antibodies, (2) ferritin in the low-normal range (30-60 µg/L) where the NHS flags no deficiency but symptoms persist, (3) undetected insulin resistance, and (4) uric acid elevation impairing mitochondrial energy production.
           </p>
         </div>
 
         <h2 className="cg" style={sectionHeading}>Why standard thyroid tests miss subclinical dysfunction</h2>
         <p style={paragraph}>
-          NHS thyroid screening typically measures TSH alone. If TSH is below 4.0–4.5 mIU/L, the result is reported as normal and thyroid disease is excluded. But TSH is a pituitary signal it tells you how hard the pituitary is working to stimulate the thyroid, not how well the thyroid is actually functioning or how much active thyroid hormone is reaching the tissues.
+          NHS thyroid screening typically measures TSH alone. If TSH is below 4.0-4.5 mIU/L, the result is reported as normal and thyroid disease is excluded. But TSH is a pituitary signal it tells you how hard the pituitary is working to stimulate the thyroid, not how well the thyroid is actually functioning or how much active thyroid hormone is reaching the tissues.
         </p>
         <p style={paragraph}>
           Three clinically important thyroid scenarios escape detection from TSH alone:
@@ -98,7 +98,7 @@ export default function FatigueEnergyPage() {
 
         <h2 className="cg" style={sectionHeading}>The ferritin threshold problem</h2>
         <p style={paragraph}>
-          Ferritin is the storage form of iron. NHS reference ranges typically flag ferritin below 12–15 µg/L as deficient. But clinical and research evidence consistently shows that symptoms fatigue, hair loss, poor exercise tolerance, restless legs, brain fog begin to resolve only when ferritin rises above 50–70 µg/L in most people, and closer to 80–100 µg/L in women of reproductive age.
+          Ferritin is the storage form of iron. NHS reference ranges typically flag ferritin below 12-15 µg/L as deficient. But clinical and research evidence consistently shows that symptoms fatigue, hair loss, poor exercise tolerance, restless legs, brain fog begin to resolve only when ferritin rises above 50-70 µg/L in most people, and closer to 80-100 µg/L in women of reproductive age.
         </p>
         <p style={paragraph}>
           This creates a large symptomatic grey zone: a ferritin of 22 µg/L is above the NHS lower limit of normal, so no deficiency is flagged and no treatment is recommended. Yet a substantial body of evidence supports iron supplementation targeting ferritin above 50 µg/L in symptomatic patients. This panel measures ferritin alongside full iron studies serum iron, transferrin, transferrin saturation to give a complete picture of iron status rather than a single marker that can be misleading in isolation.
@@ -155,7 +155,7 @@ export default function FatigueEnergyPage() {
           <li>Fasting insulin + uric acid the markers standard panels miss.</li>
           <li>hs-CRP + Full Blood Count + kidney function.</li>
           <li>GP-reviewed written report with personalised interpretation and next-step action plan.</li>
-          <li>Nationally accredited UK laboratory. Results typically within 48–72 hours.</li>
+          <li>Nationally accredited UK laboratory. Results typically within 48-72 hours.</li>
           <li>Home collection kit, walk-in centre, or nurse home visit.</li>
         </ul>
 

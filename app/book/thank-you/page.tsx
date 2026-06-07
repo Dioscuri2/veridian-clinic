@@ -99,7 +99,7 @@ function ThankYouContent() {
                 Book your appointment slot →
               </a>
               <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.7 }}>
-                Opens ThanksDoc — our secure clinical booking system. Select any available slot and you will receive a video call link by email.
+                Opens ThanksDoc, our secure clinical booking system. Select any available slot and you will receive a video call link by email.
               </p>
             </div>
           </section>
@@ -123,7 +123,7 @@ function ThankYouContent() {
                     ? [
                         "A confirmation email is on its way check your inbox (and spam folder) now.",
                         "Dr Tosin will contact you within 24 hours to confirm your preferred sample collection method.",
-                        "Your sample is processed by our nationally accredited UK laboratory results within 48–72 hours of receipt.",
+                        "Your sample is processed by our nationally accredited UK laboratory results within 48-72 hours of receipt.",
                         "Dr Tosin's written clinical interpretation and personalised next-step plan is sent directly to your email.",
                       ]
                     : [

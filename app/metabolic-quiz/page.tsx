@@ -73,8 +73,8 @@ const QUESTIONS = [
     label: "How would you describe your sleep?",
     helper: "Poor sleep quality disrupts insulin sensitivity, cortisol rhythm, and appetite signalling independently of how many hours you log.",
     options: [
-      { label: "7–9 hours, mostly restorative I wake feeling refreshed", value: "optimal" },
-      { label: "6–7 hours, or I sleep enough but rarely feel fully recovered", value: "mid" },
+      { label: "7-9 hours, mostly restorative I wake feeling refreshed", value: "optimal" },
+      { label: "6-7 hours, or I sleep enough but rarely feel fully recovered", value: "mid" },
       { label: "Under 6 hours, or consistently poor quality most nights", value: "low" },
     ],
   },
@@ -96,7 +96,7 @@ const QUESTIONS = [
     helper: "Skeletal muscle is the primary site of glucose disposal. Regular resistance training is one of the most direct levers for reversing insulin resistance.",
     options: [
       { label: "Strength and cardio, 4 or more sessions per week", value: "high" },
-      { label: "2–3 sessions per week, mixed types", value: "mid" },
+      { label: "2-3 sessions per week, mixed types", value: "mid" },
       { label: "Mostly sedentary fewer than 2 structured sessions per week", value: "low" },
     ],
   },

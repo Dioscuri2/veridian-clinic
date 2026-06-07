@@ -8,7 +8,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 const CALENDLY_BASE = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 
-// Consultation tiers now booked and paid via ThanksDoc — not Stripe
+// Consultation tiers now booked and paid via ThanksDoc, not Stripe
 const THANKSDOC_TIERS = new Set(["discovery", "discovery-quiz", "wl-consultation", "wl-consultation-quiz"]);
 
 const tierDetails: Record<string, {

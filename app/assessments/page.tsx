@@ -400,7 +400,7 @@ function BloodPanelAccordion() {
                         ))}
                       </div>
                       <p style={{ fontSize: ".72rem", color: panel.featured ? "rgba(246,241,232,.4)" : "var(--sl3)", lineHeight: 1.6, marginTop: 10 }}>
-                        Processed by a nationally accredited UK pathology laboratory with centres across the country. Results typically within 48–72 hours.
+                        Processed by a nationally accredited UK pathology laboratory with centres across the country. Results typically within 48-72 hours.
                       </p>
                     </div>
                   </div>
@@ -511,7 +511,7 @@ function TargetedPanelAccordion() {
                         ))}
                       </div>
                       <p style={{ fontSize: ".72rem", color: "var(--sl3)", lineHeight: 1.6, marginTop: 10 }}>
-                        Processed by a nationally accredited UK pathology laboratory. Results typically within 48–72 hours.
+                        Processed by a nationally accredited UK pathology laboratory. Results typically within 48-72 hours.
                       </p>
                     </div>
                   </div>
@@ -578,7 +578,7 @@ export default function AssessmentsPage() {
      </div>
      <BloodPanelAccordion />
      <p style={{ fontSize: ".76rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.7, marginTop: 20 }}>
-       Not a substitute for NHS care. Results typically available within 48–72 hours of sample receipt.
+       Not a substitute for NHS care. Results typically available within 48-72 hours of sample receipt.
      </p>
    </div>
  </section>

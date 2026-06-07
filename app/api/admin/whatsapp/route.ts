@@ -33,14 +33,14 @@ async function writeGist(messages: any[]) {
   });
 }
 
-// GET — list messages newest first
+// GET, list messages newest first
 export async function GET(req: NextRequest) {
   if (!verifyAdminRequest(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const messages = await readGist();
   return NextResponse.json({ messages: [...messages].reverse() });
 }
 
-// POST — send reply + optionally mark message replied
+// POST, send reply + optionally mark message replied
 export async function POST(req: NextRequest) {
   if (!verifyAdminRequest(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 

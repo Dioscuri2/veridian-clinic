@@ -5,11 +5,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Private Cardiovascular Risk Blood Test UK Beyond Cholesterol | Veridian Clinic",
   description:
-    "Your cholesterol result misses the most important cardiovascular risk markers. ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin — private GP-interpreted cardiovascular panel. £349.",
+    "Your cholesterol result misses the most important cardiovascular risk markers. ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin, private GP-interpreted cardiovascular panel. £349.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/cardiovascular-risk" },
   openGraph: {
     title: "Private Cardiovascular Risk Blood Test UK Beyond Cholesterol | Veridian Clinic",
-    description: "ApoB, Lp(a), homocysteine, small dense LDL — the cardiovascular markers your NHS test didn't include. GP-reviewed written report. £349.",
+    description: "ApoB, Lp(a), homocysteine, small dense LDL, the cardiovascular markers your NHS test didn't include. GP-reviewed written report. £349.",
     url: "https://veridianclinic.com/blood-tests/cardiovascular-risk",
     type: "article",
   },
@@ -39,7 +39,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Private Cardiovascular Risk Blood Test UK: Beyond Cholesterol",
-  description: "A private cardiovascular risk panel including ApoB, Lp(a), homocysteine, small dense LDL, hsCRP and fasting insulin — the markers your standard cholesterol test does not include.",
+  description: "A private cardiovascular risk panel including ApoB, Lp(a), homocysteine, small dense LDL, hsCRP and fasting insulin, the markers your standard cholesterol test does not include.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: { "@type": "Organization", name: "Veridian Clinic", url: "https://veridianclinic.com" },
   url: "https://veridianclinic.com/blood-tests/cardiovascular-risk",
@@ -55,15 +55,15 @@ export default function CardiovascularRiskPage() {
       <ClinicalArticleLayout
       eyebrow="Cardiovascular risk panel · £349"
       title="Your cholesterol test didn't tell you the whole story."
-      intro="Total cholesterol is one number. Cardiovascular risk is built from twelve. The markers that actually predict a heart attack — ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin — are almost never included in a standard NHS or GP cholesterol test."
+      intro="Total cholesterol is one number. Cardiovascular risk is built from twelve. The markers that actually predict a heart attack, ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin, are almost never included in a standard NHS or GP cholesterol test."
       ctas={[
-        { label: "Book What Your Cholesterol Test Missed — £349", href: "/book?tier=cardiovascular-risk", variant: "primary" },
+        { label: "Book What Your Cholesterol Test Missed, £349", href: "/book?tier=cardiovascular-risk", variant: "primary" },
         { label: "Book a GP Discovery Call first", href: "/book?tier=discovery" },
       ]}
     >
       <h2 className="cg" style={sectionHeading}>Why cholesterol alone is not enough</h2>
       <p style={paragraph}>
-        For decades, total cholesterol — and later LDL cholesterol — was treated as the primary cardiovascular risk marker. The problem is that roughly half of all people who have a heart attack have a normal cholesterol level at the time. Cholesterol is carried in particles of varying size and density. It is the number and type of those particles, not the total amount of cholesterol, that determines whether they penetrate artery walls and trigger inflammation.
+        For decades, total cholesterol, and later LDL cholesterol, was treated as the primary cardiovascular risk marker. The problem is that roughly half of all people who have a heart attack have a normal cholesterol level at the time. Cholesterol is carried in particles of varying size and density. It is the number and type of those particles, not the total amount of cholesterol, that determines whether they penetrate artery walls and trigger inflammation.
       </p>
       <p style={paragraph}>
         A standard cholesterol test measures how much cholesterol is circulating. It tells you almost nothing about the particles carrying it, the inflammation driving plaque formation, or the metabolic dysfunction that accelerates arterial damage over time.
@@ -75,13 +75,13 @@ export default function CardiovascularRiskPage() {
       </p>
       <div style={{ display: "grid", gap: 12, margin: "20px 0" }}>
         {[
-          { marker: "ApoB", why: "The single best predictor of cardiovascular risk. Counts every atherogenic particle — not just LDL. A normal LDL with high ApoB is a significant risk signal that standard tests miss entirely." },
+          { marker: "ApoB", why: "The single best predictor of cardiovascular risk. Counts every atherogenic particle, not just LDL. A normal LDL with high ApoB is a significant risk signal that standard tests miss entirely." },
           { marker: "Lp(a)", why: "Inherited and unaffected by diet or statins, Lp(a) is an independent risk factor for heart attack and stroke. One in five people carry elevated levels without knowing it." },
-          { marker: "Homocysteine", why: "An amino acid that damages artery walls at elevated levels. Strongly associated with cardiovascular disease, stroke, and cognitive decline. Correctable with B vitamins — but only if measured." },
+          { marker: "Homocysteine", why: "An amino acid that damages artery walls at elevated levels. Strongly associated with cardiovascular disease, stroke, and cognitive decline. Correctable with B vitamins, but only if measured." },
           { marker: "Small dense LDL", why: "Standard cholesterol tests measure LDL quantity, not particle size. Small dense LDL particles are far more atherogenic than large LDL. High small dense LDL with normal total LDL is a common hidden risk pattern." },
-          { marker: "hs-CRP", why: "High-sensitivity C-reactive protein measures systemic inflammation — the process that drives plaque rupture. Independently predictive of cardiovascular events even with normal cholesterol." },
+          { marker: "hs-CRP", why: "High-sensitivity C-reactive protein measures systemic inflammation, the process that drives plaque rupture. Independently predictive of cardiovascular events even with normal cholesterol." },
           { marker: "Fasting insulin and HbA1c", why: "Insulin resistance accelerates atherosclerosis years before glucose rises. The link between metabolic dysfunction and cardiovascular risk is causal, not just correlational." },
-          { marker: "Full lipid profile", why: "Total cholesterol, LDL, HDL, triglycerides, and TC:HDL ratio — the context for interpreting ApoB and particle data." },
+          { marker: "Full lipid profile", why: "Total cholesterol, LDL, HDL, triglycerides, and TC:HDL ratio, the context for interpreting ApoB and particle data." },
         ].map(item => (
           <div key={item.marker} style={callout}>
             <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>{item.marker}</p>
@@ -97,7 +97,7 @@ export default function CardiovascularRiskPage() {
       <ul style={{ paddingLeft: 20, color: "var(--sl2)", lineHeight: 2.1, fontSize: ".95rem" }}>
         <li>You have been told your cholesterol is normal but you have a family history of early heart disease or stroke</li>
         <li>You have been prescribed a statin but want to understand your full risk picture</li>
-        <li>You have risk factors — overweight, high blood pressure, type 2 diabetes, or heavy smoking history — that were not fully reflected in your last test</li>
+        <li>You have risk factors, overweight, high blood pressure, type 2 diabetes, or heavy smoking history, that were not fully reflected in your last test</li>
         <li>You are a man over 40 or post-menopausal woman, where cardiovascular risk rises independently of cholesterol level</li>
         <li>You have previously had a cardiac event and want to understand your residual risk</li>
         <li>You simply want to know what your risk actually is, not just whether a single number is in range</li>
@@ -105,7 +105,7 @@ export default function CardiovascularRiskPage() {
 
       <h2 className="cg" style={sectionHeading}>Optimal ranges vs lab normals</h2>
       <p style={paragraph}>
-        Standard labs flag results as abnormal only when they are statistically unusual — not when they indicate elevated risk. Veridian uses cardiovascular optimal thresholds:
+        Standard labs flag results as abnormal only when they are statistically unusual, not when they indicate elevated risk. Veridian uses cardiovascular optimal thresholds:
       </p>
       <div style={{ overflowX: "auto", margin: "16px 0" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: ".88rem" }}>
@@ -140,7 +140,7 @@ export default function CardiovascularRiskPage() {
         Dr Tosin reviews every result personally and produces a written clinical report covering: your individual risk score across all twelve markers, the interaction between your metabolic and cardiovascular findings, a prioritised list of what to act on first, and specific next steps including whether statin or non-statin treatment, dietary change, or specialist referral is warranted.
       </p>
       <div style={callout}>
-        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>What Your Cholesterol Test Missed — £349</p>
+        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>What Your Cholesterol Test Missed, £349</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
           ApoB · Lp(a) · Homocysteine · Small dense LDL · hs-CRP · Fasting insulin · HbA1c · Full lipid profile · ApoA-I<br />
           GP-reviewed written cardiovascular risk interpretation · No GP referral needed · Results in 5 working days

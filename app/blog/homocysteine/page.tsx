@@ -81,7 +81,7 @@ const faqSchema = {
       name: "What is a normal homocysteine level in the UK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most UK laboratories use a reference range of 5–15 micromol per litre (μmol/L) for plasma homocysteine. Levels above 15 μmol/L are classified as hyperhomocysteinaemia. In preventive medicine, many clinicians aim for levels below 10 μmol/L, particularly in patients with other cardiovascular risk factors.",
+        text: "Most UK laboratories use a reference range of 5-15 micromol per litre (μmol/L) for plasma homocysteine. Levels above 15 μmol/L are classified as hyperhomocysteinaemia. In preventive medicine, many clinicians aim for levels below 10 μmol/L, particularly in patients with other cardiovascular risk factors.",
       },
     },
     {
@@ -159,7 +159,7 @@ export default function HomocysteinePage() {
           Homocysteine is a sulphur-containing amino acid that forms as a byproduct of methionine breakdown. It does not come directly from the diet; it is produced internally as part of normal cellular metabolism. Under healthy conditions, homocysteine is rapidly converted back into methionine or channelled into other metabolic pathways using enzymes that require folate, B12, and B6 as cofactors. When those cofactors are insufficient, or when the enzymes themselves are genetically less efficient, homocysteine accumulates in the blood.
         </p>
         <p style={paragraph}>
-          The measurement reported on a blood test is plasma total homocysteine, the sum of all forms of the compound circulating in the bloodstream. Most UK laboratories report this in micromol per litre (μmol/L). The standard reference range is typically 5–15 μmol/L, with values above 15 μmol/L classified as hyperhomocysteinaemia. In preventive medicine, many clinicians target levels below 10 μmol/L in patients with elevated cardiovascular risk, as the association between homocysteine and vascular disease appears to track across the normal range, not just above a hard threshold.
+          The measurement reported on a blood test is plasma total homocysteine, the sum of all forms of the compound circulating in the bloodstream. Most UK laboratories report this in micromol per litre (μmol/L). The standard reference range is typically 5-15 μmol/L, with values above 15 μmol/L classified as hyperhomocysteinaemia. In preventive medicine, many clinicians target levels below 10 μmol/L in patients with elevated cardiovascular risk, as the association between homocysteine and vascular disease appears to track across the normal range, not just above a hard threshold.
         </p>
 
         <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", margin: "32px 0", overflow: "hidden" }}>
@@ -177,7 +177,7 @@ export default function HomocysteinePage() {
           The biological mechanism linking elevated homocysteine to cardiovascular disease is not a single pathway; it is several converging ones. Homocysteine is directly toxic to the endothelium at elevated concentrations. It promotes oxidative stress within the arterial wall, triggers inflammation, impairs nitric oxide signalling, and accelerates the stiffening of arteries over time. It also promotes a prothrombotic state by interfering with clotting regulation, which explains the association not just with atherosclerosis but with thrombotic events.
         </p>
         <p style={paragraph}>
-          The epidemiological literature on this is consistent. Multiple large cohort studies and meta-analyses have shown that elevated homocysteine is independently associated with an increased risk of coronary artery disease, peripheral arterial disease, stroke, and venous thromboembolism. The Framingham Heart Study data identified homocysteine as an independent predictor of cardiovascular events even after adjusting for traditional risk factors. For patients in the borderline-elevated range (say 12–20 μmol/L), the incremental risk may look modest on paper, but combined with other risk factors it compounds in ways that are often underappreciated.
+          The epidemiological literature on this is consistent. Multiple large cohort studies and meta-analyses have shown that elevated homocysteine is independently associated with an increased risk of coronary artery disease, peripheral arterial disease, stroke, and venous thromboembolism. The Framingham Heart Study data identified homocysteine as an independent predictor of cardiovascular events even after adjusting for traditional risk factors. For patients in the borderline-elevated range (say 12-20 μmol/L), the incremental risk may look modest on paper, but combined with other risk factors it compounds in ways that are often underappreciated.
         </p>
         <p style={paragraph}>
           There is also a well-established link between elevated homocysteine and cognitive decline and dementia, including Alzheimer's disease. This is biologically plausible: homocysteine promotes neuronal damage through excitotoxicity and oxidative mechanisms, and its effect on small vessel cerebrovascular disease may contribute to the accumulation of white matter lesions that precede cognitive impairment. For patients interested in brain longevity alongside cardiovascular longevity, this makes homocysteine a doubly relevant marker.
@@ -254,7 +254,7 @@ export default function HomocysteinePage() {
           {[
             {
               q: "What is a normal homocysteine level in the UK?",
-              a: "Most UK laboratories use a reference range of 5–15 μmol/L. In preventive medicine, many clinicians aim for levels below 10 μmol/L in patients with other cardiovascular risk factors, as the association with vascular disease tracks across the normal range rather than only above a fixed cutoff.",
+              a: "Most UK laboratories use a reference range of 5-15 μmol/L. In preventive medicine, many clinicians aim for levels below 10 μmol/L in patients with other cardiovascular risk factors, as the association with vascular disease tracks across the normal range rather than only above a fixed cutoff.",
             },
             {
               q: "Why doesn't the NHS routinely test homocysteine?",

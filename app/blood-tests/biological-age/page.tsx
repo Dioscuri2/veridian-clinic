@@ -139,7 +139,7 @@ export default function BiologicalAgeTestPage() {
 
         <h2 className="cg" style={sectionHeading}>Who benefits most from a biological age blood test?</h2>
         <ul className="chk">
-          <li>Adults aged 35–65 who want a comprehensive baseline picture of their biological trajectory and a clear action map.</li>
+          <li>Adults aged 35-65 who want a comprehensive baseline picture of their biological trajectory and a clear action map.</li>
           <li>High-performing professionals experiencing unexplained energy decline, cognitive fog, sleep disruption, or performance regression.</li>
           <li>Anyone with a family history of early cardiovascular disease, metabolic syndrome, or dementia who wants to identify risk early.</li>
           <li>Anyone who has been told their standard NHS results are &apos;normal&apos; but suspects their health is not where it should be for their age.</li>

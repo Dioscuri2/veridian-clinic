@@ -89,9 +89,9 @@ const faqs = [
   { q:"How is care delivered?", a:"All consultations are delivered virtually, nationwide. Regulated medical care is provided through ThanksDoc's registered clinical structure, while our health optimisation and coaching work is delivered by the Veridian team directly." },
   { q:"What blood tests are included?", a:"The Veridian Baseline includes HbA1c, fasting insulin, fasting glucose, ApoB, homocysteine, full lipid panel, ALT, AST, hs-CRP and broader metabolic markers." },
   { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through ThanksDoc's registered clinical structure never as an isolated shortcut, always as part of a structured programme." },
-  { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5–7 working days." },
+  { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5-7 working days." },
   { q:"Are you an emergency service?", a:"No. Veridian Clinic is not an emergency service and cannot respond to medical emergencies. If you are experiencing a medical emergency including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or a severe allergic reaction call 999 immediately or attend your nearest A&E. If you are unsure whether your situation is urgent, call NHS 111. Our services are for health optimisation and preventive care only." },
-  { q:"Which conditions, services and medications are not covered?", a:"In line with our regulatory framework through ThanksDoc, we do not provide emergency medical care, NHS referrals, or prescriptions for controlled medications including opioids, benzodiazepines, gabapentinoids, Z-drugs (Zopiclone, Zolpidem, Zaleplon), stimulants, or any Schedule 1–5 controlled substances under the Misuse of Drugs Act 1971. We do not cover pregnancy complications, major trauma, dental problems, patients located outside the UK during consultation, or conditions requiring immediate hospital care." },
+  { q:"Which conditions, services and medications are not covered?", a:"In line with our regulatory framework through ThanksDoc, we do not provide emergency medical care, NHS referrals, or prescriptions for controlled medications including opioids, benzodiazepines, gabapentinoids, Z-drugs (Zopiclone, Zolpidem, Zaleplon), stimulants, or any Schedule 1-5 controlled substances under the Misuse of Drugs Act 1971. We do not cover pregnancy complications, major trauma, dental problems, patients located outside the UK during consultation, or conditions requiring immediate hospital care." },
   { q:"How do I make a complaint?", a:"As our regulated clinical services are delivered under the ThanksDoc umbrella, complaints regarding regulated medical care should be directed to ThanksDoc at complaints@thanksdoc.co.uk. For concerns about your experience with Veridian Clinic specifically, contact us at support@veridianclinic.com and we will address your concern promptly." },
 ];
 
@@ -748,7 +748,7 @@ export default function HomePage() {
               <div className="rule rule-c"/>
               <h2 className="cg sh-title">Four domains, one clear picture.</h2>
               <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 580 }}>
-                Each domain is scored 1–10. Together they explain the outcomes you care about most.
+                Each domain is scored 1-10. Together they explain the outcomes you care about most.
               </p>
             </div>
             <div style={{ background: "var(--wh)", border: "1px solid rgba(0,0,0,.09)", padding: "clamp(28px,5vw,48px)", position: "relative", maxWidth: 600, margin: "0 auto" }} data-aos="fade-up">
@@ -879,7 +879,7 @@ export default function HomePage() {
               <p className="lbl">The Clinical Framework</p>
               <div className="rule rule-c"/>
               <h2 className="sh-title">Four domains, one clear picture.</h2>
-              <p className="sh-body" style={{ fontSize: "1rem" }}>Each domain is scored 1–10. Together they explain the outcomes you care about most.</p>
+              <p className="sh-body" style={{ fontSize: "1rem" }}>Each domain is scored 1-10. Together they explain the outcomes you care about most.</p>
             </div>
             <div className="g4">
               {domains.map((d, i) => (

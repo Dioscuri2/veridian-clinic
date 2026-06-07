@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
-
-const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+
+const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 
 export const metadata: Metadata = {
   title: "GP Discovery Call | Veridian Clinic",
@@ -13,22 +13,22 @@ export const metadata: Metadata = {
 
 const agenda = [
   {
-    time: "0–5 min",
+    time: "0-5 min",
     title: "Your quiz result and context",
     body: "We review your metabolic age result, the contributing factors the quiz identified, and any symptoms or history you want to bring to the conversation.",
   },
   {
-    time: "5–15 min",
+    time: "5-15 min",
     title: "Clinical risk mapping",
     body: "Dr Taiwo walks through your likely metabolic blind spots the markers that don't show up in lifestyle questions but are often the first to drift in people who appear healthy.",
   },
   {
-    time: "15–25 min",
+    time: "15-25 min",
     title: "Pathway recommendation",
     body: "Based on your picture, we recommend the most appropriate next step whether that's a targeted blood panel, the Veridian Baseline, or the Metabolic Screen and explain exactly why.",
   },
   {
-    time: "25–30 min",
+    time: "25-30 min",
     title: "Questions and written follow-up",
     body: "You ask anything. Within 24 hours you receive a written summary of the call, the recommended pathway, and what to do next with no obligation to proceed.",
   },

@@ -128,12 +128,12 @@ export default function LpaApoBTriglyceridesPage() {
 
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>What the data shows:</strong> At extreme Lp(a) levels above 300 nmol/L, the hazard ratio for myocardial infarction reaches 3.6–3.7 compared to those with minimal Lp(a). Even in statin-treated patients who have "achieved" their LDL-C goal, an Lp(a) above 50 mg/dL is associated with a 38–90% higher residual ASCVD risk depending on concurrent LDL burden (Circulation, 2024 meta-analysis).
+            <strong style={{ color: "var(--fo)" }}>What the data shows:</strong> At extreme Lp(a) levels above 300 nmol/L, the hazard ratio for myocardial infarction reaches 3.6-3.7 compared to those with minimal Lp(a). Even in statin-treated patients who have "achieved" their LDL-C goal, an Lp(a) above 50 mg/dL is associated with a 38-90% higher residual ASCVD risk depending on concurrent LDL burden (Circulation, 2024 meta-analysis).
           </p>
         </div>
 
         <p style={paragraph}>
-          Lp(a) is 70–90% genetically determined. It is, in practical terms, inherited, and it needs to be measured only once in adult life (in the absence of significant clinical change). Lifestyle changes have minimal impact. A plant-based diet, paradoxically, may modestly raise Lp(a) in some people. Statins do not lower it and may marginally raise it. PCSK9 inhibitors reduce it by around 25%, which is meaningful but insufficient for very high levels.
+          Lp(a) is 70-90% genetically determined. It is, in practical terms, inherited, and it needs to be measured only once in adult life (in the absence of significant clinical change). Lifestyle changes have minimal impact. A plant-based diet, paradoxically, may modestly raise Lp(a) in some people. Statins do not lower it and may marginally raise it. PCSK9 inhibitors reduce it by around 25%, which is meaningful but insufficient for very high levels.
         </p>
         <p style={paragraph}>
           The reference range context matters greatly in the UK. Most standard NHS labs that do measure Lp(a) at all report in mg/L mass units, a different scale entirely from the nmol/L units used in the ESC/EAS guidelines. The ESC/EAS define elevated Lp(a) as above 105 nmol/L (approximately 50 mg/dL). The NHS "normal" range, where reported at all, is often quoted as below 300 mg/L, a completely different assay with no fixed conversion ratio. Patients reading their own results across different labs are frequently misled.
@@ -142,7 +142,7 @@ export default function LpaApoBTriglyceridesPage() {
           Ethnicity matters significantly. UK Biobank data shows median Lp(a) of approximately 19 nmol/L in White British adults, 31 nmol/L in South Asian adults, and 75 nmol/L in Black African or Caribbean adults, with many individuals in the last group reaching levels above 200 nmol/L. Black African and Caribbean patients in the UK carry disproportionately high Lp(a) burden and are simultaneously among the least likely to be tested.
         </p>
         <p style={paragraph}>
-          A transformative pharmacological pipeline is approaching, but it is not yet available for clinical use. Phase 3 trials of RNA-based therapies, including pelacarsen (Novartis), olpasiran (Amgen), zerlasiran (Silence Therapeutics), and the oral agent muvalaplin (AstraZeneca/Ionis), are collectively expected to reduce Lp(a) by 80–90%. Readouts are anticipated between 2025 and 2028. If cardiovascular event reduction tracks the predicted 25–40% reduction, it will reshape preventive cardiology. For patients today, this means knowing your Lp(a) has immediate management implications: it changes risk stratification, informs decisions about PCSK9 inhibitors, drives more aggressive LDL-C targets, and may inform discussions about coronary artery calcium scoring.
+          A transformative pharmacological pipeline is approaching, but it is not yet available for clinical use. Phase 3 trials of RNA-based therapies, including pelacarsen (Novartis), olpasiran (Amgen), zerlasiran (Silence Therapeutics), and the oral agent muvalaplin (AstraZeneca/Ionis), are collectively expected to reduce Lp(a) by 80-90%. Readouts are anticipated between 2025 and 2028. If cardiovascular event reduction tracks the predicted 25-40% reduction, it will reshape preventive cardiology. For patients today, this means knowing your Lp(a) has immediate management implications: it changes risk stratification, informs decisions about PCSK9 inhibitors, drives more aggressive LDL-C targets, and may inform discussions about coronary artery calcium scoring.
         </p>
 
         <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", margin: "32px 0", overflow: "hidden" }}>
@@ -187,7 +187,7 @@ export default function LpaApoBTriglyceridesPage() {
         </div>
 
         <p style={paragraph}>
-          What drives pathological TRL accumulation? Insulin resistance, MASLD (metabolic-associated steatotic liver disease, formerly NAFLD), excess visceral fat, sedentary lifestyle, high refined carbohydrate intake, and alcohol consumption. Critically, fasting triglycerides can appear in the "acceptable" NHS range (1.5–2.0 mmol/L) while postprandial TRL clearance is severely impaired; a patient can look fine on a standard panel while experiencing significant postprandial atherogenic exposure for six to eight hours after each meal.
+          What drives pathological TRL accumulation? Insulin resistance, MASLD (metabolic-associated steatotic liver disease, formerly NAFLD), excess visceral fat, sedentary lifestyle, high refined carbohydrate intake, and alcohol consumption. Critically, fasting triglycerides can appear in the "acceptable" NHS range (1.5-2.0 mmol/L) while postprandial TRL clearance is severely impaired; a patient can look fine on a standard panel while experiencing significant postprandial atherogenic exposure for six to eight hours after each meal.
         </p>
         <p style={paragraph}>
           The optimal fasting triglyceride in a longevity context is below 1.0 mmol/L, not the NHS flag threshold of 1.7 mmol/L. Levels between 1.0 and 1.7 mmol/L represent a borderline state that warrants attention even if no standard alert is triggered.
@@ -201,7 +201,7 @@ export default function LpaApoBTriglyceridesPage() {
           First, these are mechanistically independent pathways. Lp(a) drives atherogenesis through OxPL-mediated inflammation and antifibrinolytic thrombus potentiation. TRL remnants drive direct subendothelial cholesterol deposition through macrophage uptake. Elevated ApoB reflects a high circulating particle burden that creates sustained exposure to both LDL and the remnant particles driving the TRL pathway. When all three are active simultaneously, the arterial wall is receiving atherogenic insult through three concurrent mechanisms, not one.
         </p>
         <p style={paragraph}>
-          Second, the particle populations overlap in risk-amplifying ways. Lp(a) and elevated ApoB are largely independent; having a high Lp(a) does not necessarily mean ApoB is elevated, and vice versa. But when both are present, particle burden includes a disproportionate number of high-risk particles. The 2024 participant-level meta-analysis published in Circulation found that patients with both elevated Lp(a) and elevated LDL-C face up to 90% higher cardiovascular event rates than those with neither (HR 1.90, 95% CI 1.46–2.48). Add an impaired TRL clearance pattern on top of that, and the picture changes further.
+          Second, the particle populations overlap in risk-amplifying ways. Lp(a) and elevated ApoB are largely independent; having a high Lp(a) does not necessarily mean ApoB is elevated, and vice versa. But when both are present, particle burden includes a disproportionate number of high-risk particles. The 2024 participant-level meta-analysis published in Circulation found that patients with both elevated Lp(a) and elevated LDL-C face up to 90% higher cardiovascular event rates than those with neither (HR 1.90, 95% CI 1.46-2.48). Add an impaired TRL clearance pattern on top of that, and the picture changes further.
         </p>
         <p style={paragraph}>
           The practical consequence of this compounding effect is that a patient with a normal-appearing NHS lipid panel can be carrying a risk profile that is substantially higher than their QRISK3 score suggests. QRISK3 does not include ApoB, Lp(a), or remnant cholesterol in its algorithm. It is calibrated to population averages, not to the precise lipid phenotype of an individual patient with metabolic dysfunction.
@@ -215,7 +215,7 @@ export default function LpaApoBTriglyceridesPage() {
           ApoB is indicated in the same populations, with particular priority for anyone with elevated triglycerides, central adiposity, insulin resistance, PCOS, or fatty liver, where LDL-C discordance is most common and most clinically dangerous.
         </p>
         <p style={paragraph}>
-          On the NHS, none of these markers are routinely available. Lp(a) is offered only in limited specialist settings (primarily familial hypercholesterolaemia workup). ApoB is not offered as a standard NHS test. Private advanced lipid testing in the UK ranges from around £30–60 for a single Lp(a) measurement to comprehensive panels at £169–795 depending on the scope of additional markers included.
+          On the NHS, none of these markers are routinely available. Lp(a) is offered only in limited specialist settings (primarily familial hypercholesterolaemia workup). ApoB is not offered as a standard NHS test. Private advanced lipid testing in the UK ranges from around £30-60 for a single Lp(a) measurement to comprehensive panels at £169-795 depending on the scope of additional markers included.
         </p>
         <div style={{ ...callout, borderColor: "var(--go)", background: "rgba(200,168,75,.06)" }}>
           <p style={{ fontSize: ".95rem", color: "var(--sl)", lineHeight: 1.85 }}>
@@ -231,10 +231,10 @@ export default function LpaApoBTriglyceridesPage() {
 
         <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Lp(a): the genetically stubborn one. Change everything around it.</h2>
         <p style={paragraph}>
-          With Lp(a) 70–90% genetically determined, lifestyle has a hard ceiling on what it can achieve. A low-carbohydrate dietary pattern may reduce Lp(a) by approximately 10–15%. A whole-food plant-based diet following the Portfolio Diet model, including nuts, legumes, oats, berries, and twelve or more servings of fruit and vegetables daily, has shown approximately 16% reduction within four weeks in some studies. Amla (Indian gooseberry) has been reported in some trials to reduce Lp(a) by around 20%, though industry funding in this area warrants caution about the evidence quality. Exercise and general lifestyle changes have no reliable direct effect on Lp(a) itself.
+          With Lp(a) 70-90% genetically determined, lifestyle has a hard ceiling on what it can achieve. A low-carbohydrate dietary pattern may reduce Lp(a) by approximately 10-15%. A whole-food plant-based diet following the Portfolio Diet model, including nuts, legumes, oats, berries, and twelve or more servings of fruit and vegetables daily, has shown approximately 16% reduction within four weeks in some studies. Amla (Indian gooseberry) has been reported in some trials to reduce Lp(a) by around 20%, though industry funding in this area warrants caution about the evidence quality. Exercise and general lifestyle changes have no reliable direct effect on Lp(a) itself.
         </p>
         <p style={paragraph}>
-          Lipoprotein apheresis, a process analogous to dialysis applied to blood lipoproteins, can reduce Lp(a) by 60–75% per session and 25–40% with sustained bi-weekly treatment. It is currently the only method that substantially lowers Lp(a), but it is costly, has limited NHS availability (primarily for familial hypercholesterolaemia with LDL above 13 mmol/L), and is approved by the FDA and EMA only for Lp(a) above 60 mg/dL in the context of established cardiovascular disease.
+          Lipoprotein apheresis, a process analogous to dialysis applied to blood lipoproteins, can reduce Lp(a) by 60-75% per session and 25-40% with sustained bi-weekly treatment. It is currently the only method that substantially lowers Lp(a), but it is costly, has limited NHS availability (primarily for familial hypercholesterolaemia with LDL above 13 mmol/L), and is approved by the FDA and EMA only for Lp(a) above 60 mg/dL in the context of established cardiovascular disease.
         </p>
 
         <div style={callout}>
@@ -264,10 +264,10 @@ export default function LpaApoBTriglyceridesPage() {
             <tbody>
               {[
                 ["Replace saturated fat with unsaturated fat", "Upregulates LDL receptors in liver", "Moderate"],
-                ["Mediterranean / Portfolio diet", "Reduces LDL particle production, improves clearance", "Moderate–significant"],
+                ["Mediterranean / Portfolio diet", "Reduces LDL particle production, improves clearance", "Moderate-significant"],
                 ["Aerobic exercise (consistent)", "Lowers VLDL production, improves insulin sensitivity", "Moderate"],
                 ["Resistance training", "Improves muscle glucose disposal, reduces hepatic fat", "Moderate"],
-                ["Weight loss (even modest, 5–10%)", "Reduces hepatic VLDL secretion", "Significant"],
+                ["Weight loss (even modest, 5-10%)", "Reduces hepatic VLDL secretion", "Significant"],
                 ["Soluble fibre (psyllium, oats, legumes)", "Interrupts cholesterol reabsorption in gut", "Modest"],
                 ["Alcohol reduction", "Reduces hepatic fat burden and VLDL production", "Significant if relevant"],
               ].map(([a, b, c], i) => (
@@ -287,10 +287,10 @@ export default function LpaApoBTriglyceridesPage() {
         </p>
         <ul className="chk">
           <li><strong>Reduce refined carbohydrates and added sugars</strong>: the single most powerful dietary lever. Rapidly absorbed carbohydrates drive hepatic VLDL production directly. This is a first-line, non-pharmacological intervention with results visible within weeks.</li>
-          <li><strong>Marine omega-3s (EPA/DHA) at clinical doses</strong>: 2–4g/day produces consistent 20–50% triglyceride reduction by reducing hepatic VLDL synthesis and enhancing TRL clearance. This is among the best-evidenced dietary supplement interventions in all of cardiovascular medicine.</li>
+          <li><strong>Marine omega-3s (EPA/DHA) at clinical doses</strong>: 2-4g/day produces consistent 20-50% triglyceride reduction by reducing hepatic VLDL synthesis and enhancing TRL clearance. This is among the best-evidenced dietary supplement interventions in all of cardiovascular medicine.</li>
           <li><strong>Aerobic exercise</strong>: a single bout can lower triglycerides the following day through upregulation of lipoprotein lipase in skeletal muscle; chronic training compounds this effect significantly.</li>
           <li><strong>Alcohol restriction</strong>: alcohol acutely and chronically raises hepatic triglyceride production. In private practice patients who drink regularly, this is frequently an under-recognised driver of persistently elevated triglycerides.</li>
-          <li><strong>Visceral fat reduction</strong>: particularly the reduction of abdominal fat dramatically improves hepatic lipid output and VLDL production. Even a 5% reduction in body weight can lower triglycerides by 20–30%.</li>
+          <li><strong>Visceral fat reduction</strong>: particularly the reduction of abdominal fat dramatically improves hepatic lipid output and VLDL production. Even a 5% reduction in body weight can lower triglycerides by 20-30%.</li>
           <li><strong>Mediterranean-style eating</strong>: emphasising whole grains, vegetables, legumes, nuts, fish, and olive oil addresses the upstream insulin resistance driver of elevated triglyceride-rich lipoproteins.</li>
         </ul>
 

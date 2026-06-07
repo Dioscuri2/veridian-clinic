@@ -127,7 +127,7 @@ const tests = [
     slug: "optimiser-baseline",
     title: "The Optimiser's Baseline",
     excerpt:
-      "A comprehensive performance and longevity panel for health optimisers. IGF-1, testosterone, cortisol, fasting insulin, Lp(a), full organ function and inflammatory markers — a documented baseline you can measure against year after year.",
+      "A comprehensive performance and longevity panel for health optimisers. IGF-1, testosterone, cortisol, fasting insulin, Lp(a), full organ function and inflammatory markers, a documented baseline you can measure against year after year.",
     tag: "Longevity",
     price: "£395",
     includedIn: "Optimiser's Baseline Panel",

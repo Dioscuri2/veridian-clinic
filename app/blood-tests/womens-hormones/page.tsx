@@ -79,7 +79,7 @@ export default function WomensHormonesPage() {
 
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> the perimenopause transition typically begins 4–10 years before the final menstrual period. FSH rising above 10 IU/L, even with a &apos;normal&apos; oestradiol, is often the earliest measurable hormonal signal and standard GP panels frequently don&apos;t request it unless a woman is over 45 and already asking about menopause.
+            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> the perimenopause transition typically begins 4-10 years before the final menstrual period. FSH rising above 10 IU/L, even with a &apos;normal&apos; oestradiol, is often the earliest measurable hormonal signal and standard GP panels frequently don&apos;t request it unless a woman is over 45 and already asking about menopause.
           </p>
         </div>
 
@@ -100,13 +100,13 @@ export default function WomensHormonesPage() {
         </p>
         <ul className="chk">
           <li><strong>Oestradiol (E2):</strong> the primary oestrogen. Fluctuates widely in perimenopause a single reading is informative but must be interpreted in the context of FSH and cycle stage where relevant.</li>
-          <li><strong>FSH (Follicle Stimulating Hormone):</strong> rises as ovarian reserve declines. A sustained FSH above 25–30 IU/L, particularly with low oestradiol, is consistent with menopause transition. Even early rises above 10 IU/L in a premenopausal context are clinically significant.</li>
+          <li><strong>FSH (Follicle Stimulating Hormone):</strong> rises as ovarian reserve declines. A sustained FSH above 25-30 IU/L, particularly with low oestradiol, is consistent with menopause transition. Even early rises above 10 IU/L in a premenopausal context are clinically significant.</li>
           <li><strong>LH (Luteinising Hormone):</strong> the pituitary signal to ovulate. LH:FSH ratio is informative in PCOS; LH elevation alongside FSH confirms primary ovarian insufficiency is driving the hormonal shift rather than a hypothalamic or pituitary cause.</li>
           <li><strong>Progesterone:</strong> meaningful in the luteal phase; a low luteal progesterone confirms anovulation one of the earliest perimenopausal changes and a common driver of heavy periods, mood disruption and poor sleep.</li>
           <li><strong>Prolactin:</strong> elevated prolactin suppresses FSH and LH, disrupts ovarian function, and causes symptoms that precisely mimic perimenopause including irregular cycles, low libido and mood changes. It must be ruled out before attributing symptoms to ovarian decline.</li>
           <li><strong>SHBG (Sex Hormone Binding Globulin):</strong> binds testosterone and oestradiol, determining how much is biologically available. High SHBG (often driven by elevated thyroid hormone, oestrogen therapy or liver disease) can leave a woman with adequate total testosterone but low free testosterone with functional consequences for energy, libido and mood.</li>
           <li><strong>Testosterone (total + free):</strong> frequently low in women over 40 and almost never tested in standard GP panels. Low testosterone in women is associated with fatigue, low drive, cognitive changes and difficulty maintaining muscle. It is also the hormone most directly relevant to libido.</li>
-          <li><strong>Thyroid (TSH, FT3, FT4 + TPO antibodies):</strong> thyroid dysfunction is 5–8x more common in women than men and peaks in incidence during the perimenopausal decade. Subclinical hypothyroidism TSH between 4 and 10 mIU/L produces symptoms virtually identical to perimenopause. TPO antibodies identify autoimmune thyroid disease (Hashimoto&apos;s) before TSH becomes abnormal.</li>
+          <li><strong>Thyroid (TSH, FT3, FT4 + TPO antibodies):</strong> thyroid dysfunction is 5-8x more common in women than men and peaks in incidence during the perimenopausal decade. Subclinical hypothyroidism TSH between 4 and 10 mIU/L produces symptoms virtually identical to perimenopause. TPO antibodies identify autoimmune thyroid disease (Hashimoto&apos;s) before TSH becomes abnormal.</li>
           <li><strong>Cortisol:</strong> chronic physiological stress elevates cortisol, suppresses sex hormone production and disrupts sleep architecture amplifying perimenopausal symptoms. Cortisol also affects SHBG, thyroid conversion and insulin sensitivity.</li>
           <li><strong>Lipoprotein (a):</strong> Lp(a) rises in approximately 60% of women during the perimenopause and does not fall after menopause. It is genetically determined but hormonally modulated. A high Lp(a) in a woman in her 40s carries significant lifetime cardiovascular risk that standard cholesterol testing will never reveal.</li>
           <li><strong>Fasting insulin + HbA1c:</strong> insulin resistance worsens with oestrogen decline. This is the primary metabolic mechanism behind perimenopausal weight gain, particularly abdominal. High fasting insulin also elevates SHBG-independent testosterone (driving PCOS-pattern symptoms) and perpetuates the cycle of hormonal disruption.</li>
@@ -125,7 +125,7 @@ export default function WomensHormonesPage() {
         <ul className="chk">
           <li><strong>Women in their late 30s to 50s</strong> with cycle changes, irregular periods, heavier bleeding or spotting.</li>
           <li><strong>Women experiencing fatigue, poor sleep, night sweats or hot flushes</strong> who have been told their blood tests are normal.</li>
-          <li><strong>Women with unexplained low mood, anxiety or cognitive changes</strong> particularly when these are new or have worsened over the past 12–24 months.</li>
+          <li><strong>Women with unexplained low mood, anxiety or cognitive changes</strong> particularly when these are new or have worsened over the past 12-24 months.</li>
           <li><strong>Women with low libido, vaginal dryness or difficulty maintaining muscle</strong> testosterone deficiency is consistently under-investigated.</li>
           <li><strong>Women with a family history of early cardiovascular disease</strong> Lp(a) status is particularly important to establish before hormonal transition accelerates cardiovascular risk.</li>
           <li><strong>Women with PCOS</strong> to establish the current hormonal and metabolic baseline, as the pattern shifts significantly across the reproductive lifespan.</li>
@@ -143,7 +143,7 @@ export default function WomensHormonesPage() {
           <li>Thyroid panel including TPO antibodies catches subclinical and autoimmune thyroid disease.</li>
           <li>Lp(a), fasting insulin, HbA1c and vitamin D the markers that connect hormonal and metabolic health.</li>
           <li>GP-reviewed written report with personalised clinical interpretation and next-step recommendation.</li>
-          <li>Nationally accredited UK laboratory. Results typically within 48–72 hours of sample receipt.</li>
+          <li>Nationally accredited UK laboratory. Results typically within 48-72 hours of sample receipt.</li>
           <li>Home collection kit, walk-in centre, or nurse home visit your choice.</li>
         </ul>
 

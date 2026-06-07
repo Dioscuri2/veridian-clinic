@@ -83,7 +83,7 @@ export default function LipoproteinATestPage() {
 
         <h2 className="cg" style={sectionHeading}>What is Lp(a) and why is it genetically determined?</h2>
         <p style={paragraph}>
-          Lp(a) levels are approximately 70–90% genetically determined, primarily by variations in the <em>LPA</em> gene that codes for apolipoprotein(a). Unlike LDL cholesterol which responds meaningfully to diet, exercise, and medication Lp(a) is largely fixed at birth and remains relatively stable throughout adult life. Statins, which effectively lower LDL-C, do not reduce Lp(a) and in some cases slightly raise it.
+          Lp(a) levels are approximately 70-90% genetically determined, primarily by variations in the <em>LPA</em> gene that codes for apolipoprotein(a). Unlike LDL cholesterol which responds meaningfully to diet, exercise, and medication Lp(a) is largely fixed at birth and remains relatively stable throughout adult life. Statins, which effectively lower LDL-C, do not reduce Lp(a) and in some cases slightly raise it.
         </p>
         <p style={paragraph}>
           This genetic independence is what makes Lp(a) both distinctive and important. It means that a person with elevated Lp(a) cannot &apos;lifestyle their way&apos; to a normal result in the way they might address elevated triglycerides or fasting insulin. The appropriate clinical response is not denial or passive monitoring it is knowing the level, understanding what it means for lifetime risk, managing all modifiable cardiovascular risk factors with greater precision, and, in cases of significant elevation, exploring pharmacological options as they become available.
@@ -95,7 +95,7 @@ export default function LipoproteinATestPage() {
         </p>
         <ul className="chk">
           <li><strong>Optimal:</strong> below 75 nmol/L (approximately below 30 mg/dL) associated with average or below-average Lp(a)-related cardiovascular risk.</li>
-          <li><strong>Borderline elevated:</strong> 75–125 nmol/L (approximately 30–50 mg/dL) modest additional risk; increased vigilance regarding other cardiovascular risk factors recommended.</li>
+          <li><strong>Borderline elevated:</strong> 75-125 nmol/L (approximately 30-50 mg/dL) modest additional risk; increased vigilance regarding other cardiovascular risk factors recommended.</li>
           <li><strong>Elevated:</strong> above 125 nmol/L (approximately 50 mg/dL) significant additional cardiovascular risk; active management of all modifiable risk factors is strongly indicated.</li>
           <li><strong>Severely elevated:</strong> above 200 nmol/L places the individual in a high-risk category equivalent to heterozygous familial hypercholesterolaemia; specialist cardiovascular review is appropriate.</li>
         </ul>
@@ -142,7 +142,7 @@ export default function LipoproteinATestPage() {
         <ul className="chk">
           <li><strong>Aggressive LDL-C and ApoB reduction:</strong> lowering the overall atherogenic particle burden reduces the amplified risk that elevated Lp(a) creates. ApoB targets should be lower in the context of high Lp(a).</li>
           <li><strong>Aspirin consideration:</strong> Lp(a) promotes thrombosis; in high Lp(a) with additional risk factors, low-dose aspirin may be considered as part of an individualised cardiovascular risk discussion.</li>
-          <li><strong>PCSK9 inhibitor therapy:</strong> in eligible patients, PCSK9 inhibitors modestly reduce Lp(a) (by approximately 20–30%) in addition to their substantial LDL-C lowering effect.</li>
+          <li><strong>PCSK9 inhibitor therapy:</strong> in eligible patients, PCSK9 inhibitors modestly reduce Lp(a) (by approximately 20-30%) in addition to their substantial LDL-C lowering effect.</li>
           <li><strong>Emerging therapies:</strong> RNA-targeted therapies (including siRNA and antisense oligonucleotides targeting <em>LPA</em>) are in late-stage clinical trials and represent a near-future Lp(a)-specific option. Phase III trial data is compelling.</li>
           <li><strong>Lifestyle optimisation for all other modifiable factors:</strong> blood pressure, insulin resistance, smoking cessation, ApoB, and inflammatory markers all need to be at their best to offset the fixed risk Lp(a) adds.</li>
         </ul>

@@ -4,17 +4,17 @@ const PAYPAL_API = process.env.PAYPAL_API_BASE || "https://api-m.sandbox.paypal.
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://veridianclinic.com";
 
 const CATALOG: Record<string, { name: string; amount: string }> = {
-  "womens-hormones":    { name: "Is It My Hormones? — Women's Hormone Panel", amount: "325.00" },
-  "mens-testosterone":  { name: "Running on Empty — Men's Hormone Panel", amount: "325.00" },
-  "cardiovascular-risk":{ name: "What Your Cholesterol Test Missed — Cardiovascular Panel", amount: "349.00" },
-  "fatigue-energy":     { name: "Tired of Being Told You're Fine — Fatigue & Energy Panel", amount: "249.00" },
-  "metabolic-weight":   { name: "Why Won't The Weight Budge? — Metabolic Panel", amount: "199.00" },
-  "optimiser-baseline": { name: "The Optimiser's Baseline — Performance Panel", amount: "395.00" },
+  "womens-hormones":    { name: "Is It My Hormones?, Women's Hormone Panel", amount: "325.00" },
+  "mens-testosterone":  { name: "Running on Empty, Men's Hormone Panel", amount: "325.00" },
+  "cardiovascular-risk":{ name: "What Your Cholesterol Test Missed, Cardiovascular Panel", amount: "349.00" },
+  "fatigue-energy":     { name: "Tired of Being Told You're Fine, Fatigue & Energy Panel", amount: "249.00" },
+  "metabolic-weight":   { name: "Why Won't The Weight Budge?, Metabolic Panel", amount: "199.00" },
+  "optimiser-baseline": { name: "The Optimiser's Baseline, Performance Panel", amount: "395.00" },
   "metabolic-screen":   { name: "Veridian Energy Screen", amount: "195.00" },
   baseline:             { name: "Veridian Baseline", amount: "595.00" },
   "longevity-panel":    { name: "Veridian Longevity Panel", amount: "795.00" },
   discovery:            { name: "GP Discovery Call", amount: "195.00" },
-  "discovery-quiz":     { name: "GP Discovery Call — Quiz Rate", amount: "97.00" },
+  "discovery-quiz":     { name: "GP Discovery Call, Quiz Rate", amount: "97.00" },
   programme:            { name: "12-Week Metabolic Reset", amount: "1895.00" },
 };
 
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
 
     const order = await orderRes.json() as { links?: Array<{ rel: string; href: string }> };
     const approvalUrl = order.links?.find(l => l.rel === "approve")?.href;
-    if (!approvalUrl) throw new Error("PayPal order creation failed — no approval URL returned.");
+    if (!approvalUrl) throw new Error("PayPal order creation failed, no approval URL returned.");
 
     return NextResponse.json({ url: approvalUrl });
   } catch (err: unknown) {

@@ -18,7 +18,7 @@ const SYMPTOMS = [
 const CLINICAL_FACTS = [
   {
     heading: "Perimenopause starts earlier than anyone tells you",
-    body: "Average onset is 40–44. It can begin in the mid-30s. The hormonal shift that drives every symptom you're experiencing starts years sometimes a decade before your period stops. Most women aren't told this.",
+    body: "Average onset is 40-44. It can begin in the mid-30s. The hormonal shift that drives every symptom you're experiencing starts years sometimes a decade before your period stops. Most women aren't told this.",
   },
   {
     heading: "'Normal' bloods don't mean 'optimal for you'",
@@ -32,7 +32,7 @@ const CLINICAL_FACTS = [
 
 const WHAT_IS_INSIDE = [
   { title: "The Perimenopause Window", body: "A plain-language explanation of what's happening hormonally oestrogen fluctuation, progesterone decline, and the cascade effect on every system that depends on them." },
-  { title: "Your Metabolic Shift", body: "Why weight now accumulates differently, particularly abdominally. The oestrogen–insulin connection explained. Why the approach that worked at 35 won't work the same way now." },
+  { title: "Your Metabolic Shift", body: "Why weight now accumulates differently, particularly abdominally. The oestrogen-insulin connection explained. Why the approach that worked at 35 won't work the same way now." },
   { title: "Eating for Hormonal Balance", body: "A protein-first plate framework, phytoestrogen-rich foods, and what to reduce. UK supermarket-friendly. No elimination diets, no unsustainable restriction." },
   { title: "Sleep & the Hormonal Loop", body: "How falling oestrogen disrupts sleep architecture and worsens night sweats. Evidence-based evening protocols designed for this specific hormonal environment." },
   { title: "Movement That Works Now", body: "Resistance training for bone density and insulin sensitivity. Three tiers from low to high activity. Why cardio alone is not enough and what to do instead." },
@@ -162,7 +162,7 @@ export default function PerimenopauseGuidePage() {
 
               {/* Left text + email form */}
               <div style={{ flex: "1 1 340px", minWidth: 300 }}>
-                <p className="lbl a1" style={{ color: "var(--go)", letterSpacing: ".18em" }}>GP-Authored · Women 35–52 · Free Instant Download</p>
+                <p className="lbl a1" style={{ color: "var(--go)", letterSpacing: ".18em" }}>GP-Authored · Women 35-52 · Free Instant Download</p>
                 <div className="rule a1" style={{ background: "var(--go)", width: 48, height: 2, margin: "14px 0 22px" }} />
                 <h1 className="cg a2" style={{ fontSize: "clamp(2.2rem,5.5vw,3.8rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.1, marginBottom: 20 }}>
                   The Perimenopause Reset
@@ -171,7 +171,7 @@ export default function PerimenopauseGuidePage() {
                   A Six-Week Guide to Reclaim Your Sleep, Brain and Body
                 </p>
                 <p className="a3" style={{ fontSize: ".97rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9, marginBottom: 32 }}>
-                  A structured blueprint for women 35–52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight written by a practising UK GP. <strong style={{ color: "var(--go2)" }}>Free.</strong>
+                  A structured blueprint for women 35-52 dealing with brain fog, broken sleep, anxiety and stubborn mid-section weight written by a practising UK GP. <strong style={{ color: "var(--go2)" }}>Free.</strong>
                 </p>
 
                 <div className="a4">

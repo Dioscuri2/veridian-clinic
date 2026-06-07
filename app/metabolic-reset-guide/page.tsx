@@ -12,7 +12,7 @@ const WHAT_IS_INSIDE = [
   { title: "Movement Ladder", body: "Three tiers from sedentary to active. Structured activity tiers matched to your current fitness starting point." },
   { title: "Supplement Stack", body: "Sleep and gut support stack the supplements most relevant to metabolic function, with clinical context." },
   { title: "Shopping List & Tracker", body: "One-page printable shopping list by category and a 21-day daily tick-box habit tracker." },
-  { title: "Busy Day Plan + Rapid Reset", body: "A stripped-back fallback for chaotic days and a Rapid Reset Protocol to recover from a slip in 24–48 hours." },
+  { title: "Busy Day Plan + Rapid Reset", body: "A stripped-back fallback for chaotic days and a Rapid Reset Protocol to recover from a slip in 24-48 hours." },
 ];
 
 export default function MetabolicResetGuidePage() {

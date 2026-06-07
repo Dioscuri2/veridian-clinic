@@ -113,15 +113,15 @@ export default function FastInsulinPage() {
           Fasting insulin measures the concentration of insulin in the blood after a minimum of eight hours without eating or drinking anything caloric. It reflects the insulin required to maintain baseline glucose stability in the resting, non-stimulated state.
         </p>
         <p style={paragraph}>
-          The laboratory "normal" range in the UK is typically quoted as 2–25 mIU/L or 3–17 mIU/L depending on the assay. These are population-derived reference ranges, not optimal ranges. A fasting insulin of 22 mIU/L may be "within normal" by laboratory standards while representing significant hyperinsulinaemia that is clinically meaningful for cardiovascular and metabolic risk.
+          The laboratory "normal" range in the UK is typically quoted as 2-25 mIU/L or 3-17 mIU/L depending on the assay. These are population-derived reference ranges, not optimal ranges. A fasting insulin of 22 mIU/L may be "within normal" by laboratory standards while representing significant hyperinsulinaemia that is clinically meaningful for cardiovascular and metabolic risk.
         </p>
         <p style={paragraph}>
           In preventive and longevity medicine, the target is substantially lower. Most clinicians working in metabolic health, including those following the Medicine 3.0 frameworks advocated by researchers such as Peter Attia, use the following as a working guide:
         </p>
         <ul className="chk">
-          <li><strong>Optimal:</strong> fasting insulin below 5–8 mIU/L in a lean, metabolically healthy individual.</li>
-          <li><strong>Borderline:</strong> fasting insulin 8–12 mIU/L, warrants dietary and lifestyle attention.</li>
-          <li><strong>Elevated (hyperinsulinaemia):</strong> fasting insulin above 12–15 mIU/L, high priority for intervention.</li>
+          <li><strong>Optimal:</strong> fasting insulin below 5-8 mIU/L in a lean, metabolically healthy individual.</li>
+          <li><strong>Borderline:</strong> fasting insulin 8-12 mIU/L, warrants dietary and lifestyle attention.</li>
+          <li><strong>Elevated (hyperinsulinaemia):</strong> fasting insulin above 12-15 mIU/L, high priority for intervention.</li>
           <li><strong>Significantly elevated:</strong> above 20 mIU/L, usually reflects established insulin resistance; associated with markedly elevated cardiometabolic risk.</li>
         </ul>
         <p style={paragraph}>
@@ -173,7 +173,7 @@ export default function FastInsulinPage() {
         <ul className="chk">
           <li>Anyone with a waist circumference above 94 cm (men) or 80 cm (women), regardless of BMI.</li>
           <li>Anyone with triglycerides above 1.5 mmol/L on a standard lipid panel, where elevated TG is often the earliest lipid signal of insulin resistance.</li>
-          <li>Women with PCOS, where insulin resistance is present in 65–80% of cases and drives the hormonal dysregulation, yet fasting insulin is not routinely tested in most NHS PCOS workups.</li>
+          <li>Women with PCOS, where insulin resistance is present in 65-80% of cases and drives the hormonal dysregulation, yet fasting insulin is not routinely tested in most NHS PCOS workups.</li>
           <li>Anyone with unexplained fatigue, energy instability, cravings, or poor sleep quality alongside any metabolic risk factors.</li>
           <li>Anyone with a family history of type 2 diabetes, cardiovascular disease, or metabolic syndrome.</li>
           <li>Anyone who wants a complete metabolic health picture rather than a screen designed to detect disease after it has declared itself.</li>
@@ -184,9 +184,9 @@ export default function FastInsulinPage() {
           <li><strong>Resistance training</strong>: increases GLUT4 transporter density in muscle cells, improving glucose disposal per unit of insulin. Three sessions per week is the minimum effective dose.</li>
           <li><strong>Carbohydrate quality</strong>: replacing refined carbohydrates and sugary drinks with fibre-rich whole foods and adequate protein reduces the insulin demand per meal significantly.</li>
           <li><strong>Waist reduction</strong>: each kilogram of visceral fat reduction has disproportionate benefit for insulin sensitivity compared to equivalent subcutaneous fat loss.</li>
-          <li><strong>Sleep consistency</strong>: four nights of sleep below six hours reduces insulin sensitivity by 25% in experimental models; consistently achieving 7–9 hours produces rapid improvements in fasting insulin in sleep-deprived individuals.</li>
+          <li><strong>Sleep consistency</strong>: four nights of sleep below six hours reduces insulin sensitivity by 25% in experimental models; consistently achieving 7-9 hours produces rapid improvements in fasting insulin in sleep-deprived individuals.</li>
           <li><strong>Reduced meal frequency where appropriate</strong>: for some individuals, reducing grazing and allowing longer inter-meal intervals lowers overall insulin exposure and improves sensitivity.</li>
-          <li><strong>Objective measurement</strong> so progress is driven by data rather than guesswork; retesting fasting insulin and HOMA-IR at 8–12 weeks confirms whether the intervention is working at a metabolic level.</li>
+          <li><strong>Objective measurement</strong> so progress is driven by data rather than guesswork; retesting fasting insulin and HOMA-IR at 8-12 weeks confirms whether the intervention is working at a metabolic level.</li>
         </ul>
         <p style={paragraph}>
           The strongest interventions are usually unglamorous but robustly effective: better training stimulus, improved sleep, better food quality, and reduced waist circumference. When indicated, in cases of more advanced insulin resistance or concurrent conditions, medication or more intensive clinical support can also play a role. But the key is spotting the problem early enough that the system is still highly reversible, rather than waiting for glucose to cross a diagnostic threshold.

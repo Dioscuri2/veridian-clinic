@@ -59,10 +59,10 @@ export async function POST(request: NextRequest) {
         await sendDiscoveryIntakeEmail({ email, name });
       }
       await pingDiscord(
-        `📞 **Discovery call PAID — Veridian Clinic**\n` +
+        `📞 **Discovery call PAID, Veridian Clinic**\n` +
         `**Amount:** ${amountGBP}\n` +
-        `**Patient:** ${name || "—"}\n` +
-        `**Email:** ${email || "—"}\n` +
+        `**Patient:** ${name || "-"}\n` +
+        `**Email:** ${email || "-"}\n` +
         `\nIntake email sent to patient. Schedule call in ThanksDoc.`
       );
     }
@@ -75,11 +75,11 @@ export async function POST(request: NextRequest) {
         await sendBloodTestConfirmation({ email, name, tier, stripeSessionId: session.id });
       }
       await pingDiscord(
-        `💳 **Blood test PAID — Veridian Clinic**\n` +
+        `💳 **Blood test PAID, Veridian Clinic**\n` +
         `**Panel:** ${tier}\n` +
         `**Amount:** ${amountGBP}\n` +
-        `**Patient:** ${name || "—"}\n` +
-        `**Email:** ${email || "—"}\n` +
+        `**Patient:** ${name || "-"}\n` +
+        `**Email:** ${email || "-"}\n` +
         `**Stripe session:** ${session.id}\n` +
         `\n⚠️ Action: contact patient within 24h to arrange collection. Randox order details in notification email.`
       );
@@ -94,11 +94,11 @@ export async function POST(request: NextRequest) {
         await sendDiscoveryIntakeEmail({ email, name });
       }
       await pingDiscord(
-        `💉 **Weight Loss Consultation PAID — Veridian Clinic**\n` +
+        `💉 **Weight Loss Consultation PAID, Veridian Clinic**\n` +
         `**Rate:** ${rateLabel}\n` +
         `**Amount:** ${amountGBP}\n` +
-        `**Patient:** ${name || "—"}\n` +
-        `**Email:** ${email || "—"}\n` +
+        `**Patient:** ${name || "-"}\n` +
+        `**Email:** ${email || "-"}\n` +
         `\nAction: contact patient to schedule 50-min virtual consultation. Intake email sent.`
       );
     }

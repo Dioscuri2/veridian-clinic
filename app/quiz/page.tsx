@@ -10,7 +10,7 @@ const questions = [
     q: "How often do you experience an afternoon energy crash?",
     options: [
       { label: "Rarely or never", score: 0 },
-      { label: "1–2 times per week", score: 1 },
+      { label: "1-2 times per week", score: 1 },
       { label: "Most weekdays", score: 2 },
       { label: "Almost every day", score: 3 },
     ],

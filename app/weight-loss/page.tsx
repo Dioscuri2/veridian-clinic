@@ -124,8 +124,8 @@ const QUESTIONS: Question[] = [
     type: "choice",
     options: [
       { label: "No", value: "no" },
-      { label: "Yes — personal history", value: "personal", stop: "thyroid" },
-      { label: "Yes — family history (parent, sibling, or child)", value: "family", stop: "thyroid" },
+      { label: "Yes, personal history", value: "personal", stop: "thyroid" },
+      { label: "Yes, family history (parent, sibling, or child)", value: "family", stop: "thyroid" },
       { label: "I am not sure", value: "unsure" },
     ],
   },
@@ -190,12 +190,12 @@ const QUESTIONS: Question[] = [
       { label: "I snack frequently between meals even when not physically hungry", value: "frequent-snacking" },
       { label: "I have strong cravings for carbohydrates, sugar, or processed foods", value: "cravings" },
       { label: "Stress, boredom, or emotions drive most of my eating", value: "emotional" },
-      { label: "My appetite feels relatively normal — I eat mostly when genuinely hungry", value: "normal" },
+      { label: "My appetite feels relatively normal, I eat mostly when genuinely hungry", value: "normal" },
     ],
   },
   {
     id: "contact",
-    label: "Last step — where should we send your results?",
+    label: "Last step, where should we send your results?",
     helper: "We will send a copy of your eligibility summary and a link to book your consultation.",
     type: "text-pair",
     fields: [
@@ -255,7 +255,7 @@ function getStop(step: number, a: Answers): StopReason | null {
 const FAQS = [
   {
     q: "What injections do you prescribe?",
-    a: "Dr Tosin assesses patients for tirzepatide (Mounjaro) and semaglutide (Wegovy) — the two licensed injectable weight management medicines in the UK. The choice depends on your medical history, diabetes status, and individual factors assessed during your consultation.",
+    a: "Dr Tosin assesses patients for tirzepatide (Mounjaro) and semaglutide (Wegovy), the two licensed injectable weight management medicines in the UK. The choice depends on your medical history, diabetes status, and individual factors assessed during your consultation.",
   },
   {
     q: "Do I need a high BMI to be considered?",
@@ -320,7 +320,7 @@ function WlQuiz() {
     if (next < QUESTIONS.length) {
       setState({ screen: "question", step: next });
     } else {
-      // Final step — submit lead + show result
+      // Final step, submit lead + show result
       setSubmitting(true);
       const bmi = calcBmi(answers);
       const qualified = bmi >= 25;
@@ -330,7 +330,7 @@ function WlQuiz() {
         document.cookie = "wl_quiz=1; path=/; max-age=86400";
       }
 
-      // Honeypot check — bots fill hidden fields, humans don't
+      // Honeypot check, bots fill hidden fields, humans don't
       if (answers["_hp"] && String(answers["_hp"]).trim().length > 0) {
         setSubmitting(false);
         return; // silent drop
@@ -458,7 +458,7 @@ function WlQuiz() {
                 {/* Live BMI preview */}
                 {f.id === "weight" && calcBmi(answers) > 0 && (
                   <p style={{ marginTop: 8, fontSize: ".78rem", color: "var(--go)", fontWeight: 700 }}>
-                    BMI: {calcBmi(answers).toFixed(1)} — {bmiLabel(calcBmi(answers))}
+                    BMI: {calcBmi(answers).toFixed(1)}, {bmiLabel(calcBmi(answers))}
                   </p>
                 )}
               </div>
@@ -469,7 +469,7 @@ function WlQuiz() {
         {/* Text pair */}
         {q.type === "text-pair" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {/* Honeypot — hidden from humans, bots fill it */}
+            {/* Honeypot, hidden from humans, bots fill it */}
             <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
               <input tabIndex={-1} type="text" name="_hp" autoComplete="off" value={String(answers["_hp"] ?? "")} onChange={e => setAnswer("_hp", e.target.value)} />
             </div>
@@ -576,14 +576,14 @@ function WlQuiz() {
           <p className="lbl">Your result</p>
           <div className="rule rule-c" />
           <div style={{ fontSize: "2.8rem", fontWeight: 800, color: "var(--fo)", lineHeight: 1 }}>{bmi.toFixed(1)}</div>
-          <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginBottom: 24 }}>Your BMI — {bmiLabel(bmi)}</p>
+          <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginBottom: 24 }}>Your BMI, {bmiLabel(bmi)}</p>
           <h3 className="cg" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--fo)", lineHeight: 1.3, marginBottom: 14 }}>
             Weight loss injections may not be the right starting point for you.
           </h3>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 24 }}>
-            Based on your BMI, a more targeted approach may serve you better. A metabolic blood panel can identify the specific drivers of weight resistance — insulin, thyroid, hormones, and inflammation — and give Dr Tosin a far more precise starting point.
+            Based on your BMI, a more targeted approach may serve you better. A metabolic blood panel can identify the specific drivers of weight resistance, insulin, thyroid, hormones, and inflammation, and give Dr Tosin a far more precise starting point.
           </p>
-          <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Call — £195</Link>
+          <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Call, £195</Link>
           <br />
           <Link href="/assessments" style={{ fontSize: ".82rem", color: "var(--sl2)", textDecoration: "underline" }}>View metabolic blood panels instead</Link>
         </div>
@@ -595,10 +595,10 @@ function WlQuiz() {
         <div style={{ width: 60, height: 60, background: "rgba(200,168,75,.12)", border: "1.5px solid var(--go)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 13.5l4.5 4.5L20 9" stroke="var(--go)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </div>
-        <p className="lbl" style={{ color: "var(--go)" }}>Eligible — based on your answers</p>
+        <p className="lbl" style={{ color: "var(--go)" }}>Eligible, based on your answers</p>
         <div className="rule rule-c" style={{ background: "var(--go)" }} />
         <div style={{ fontSize: "2.8rem", fontWeight: 800, color: "var(--fo)", lineHeight: 1 }}>{bmi.toFixed(1)}</div>
-        <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginBottom: 20 }}>Your BMI — {bmiLabel(bmi)}</p>
+        <p style={{ fontSize: ".76rem", color: "var(--sl3)", marginBottom: 20 }}>Your BMI, {bmiLabel(bmi)}</p>
         <h3 className="cg" style={{ fontSize: "clamp(1.1rem,2.2vw,1.4rem)", fontWeight: 600, color: "var(--fo)", lineHeight: 1.3, marginBottom: 14 }}>
           Your answers suggest you may be a suitable candidate for a GLP-1 weight loss medicine.
         </h3>
@@ -624,7 +624,7 @@ function WlQuiz() {
           </div>
         </div>
         <Link href="/weight-loss/consultation?quiz=1" className="btn btn-go" style={{ display: "block", textAlign: "center", width: "100%", boxSizing: "border-box" }}>
-          Book my Weight Loss Consultation — £55
+          Book my Weight Loss Consultation, £55
         </Link>
         <p style={{ fontSize: ".74rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
           Secure payment via Stripe. A confirmation email is sent immediately after booking.
@@ -677,7 +677,7 @@ export default function WeightLossPage() {
                 <em style={{ fontStyle: "italic", color: "var(--go)" }}>prescribed by a GP.</em>
               </h1>
               <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 560, marginBottom: 32 }}>
-                Tirzepatide (Mounjaro) and semaglutide (Wegovy) are licensed weight management medicines in the UK. Dr Tosin Taiwo — a practising UK GP — assesses suitability, selects the right medicine, and supports you through treatment. Complete the free eligibility check to get started.
+                Tirzepatide (Mounjaro) and semaglutide (Wegovy) are licensed weight management medicines in the UK. Dr Tosin Taiwo, a practising UK GP, assesses suitability, selects the right medicine, and supports you through treatment. Complete the free eligibility check to get started.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
                 <button
@@ -685,10 +685,10 @@ export default function WeightLossPage() {
                   onClick={() => quizSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   className="btn btn-go"
                 >
-                  Check my eligibility — free
+                  Check my eligibility, free
                 </button>
                 <Link href="/weight-loss/consultation" className="btn btn-ol">
-                  Book consultation — £60
+                  Book consultation, £60
                 </Link>
               </div>
             </div>
@@ -709,7 +709,7 @@ export default function WeightLossPage() {
                 {
                   name: "Mounjaro (tirzepatide)",
                   badge: "Dual mechanism",
-                  body: "Tirzepatide activates both GLP-1 and GIP receptors — a dual action that produces greater average weight loss than semaglutide in clinical trials. Licensed in the UK for weight management in adults with a BMI of 30 or over, or 27 with a qualifying condition.",
+                  body: "Tirzepatide activates both GLP-1 and GIP receptors, a dual action that produces greater average weight loss than semaglutide in clinical trials. Licensed in the UK for weight management in adults with a BMI of 30 or over, or 27 with a qualifying condition.",
                   points: ["Up to 22.5% average body weight loss in trials", "Weekly self-injection", "Dose escalation over 20 weeks", "Also licensed for type 2 diabetes management"],
                 },
                 {
@@ -809,7 +809,7 @@ export default function WeightLossPage() {
               >
                 Take the eligibility quiz
               </button>
-              <Link href="/weight-loss/consultation" className="btn btn-ol">Book at standard rate — £60</Link>
+              <Link href="/weight-loss/consultation" className="btn btn-ol">Book at standard rate, £60</Link>
             </div>
           </div>
         </section>
