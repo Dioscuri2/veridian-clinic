@@ -5,9 +5,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
-// Set NEXT_PUBLIC_CALENDLY_URL in Vercel env vars once Calendly account is ready.
-// Different event types per tier are optional use one URL initially.
 const CALENDLY_BASE = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
+const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+
+// Consultation tiers now booked and paid via ThanksDoc — not Stripe
+const THANKSDOC_TIERS = new Set(["discovery", "discovery-quiz", "wl-consultation", "wl-consultation-quiz"]);
 
 const tierDetails: Record<string, {
   title: string; price: string; duration: string;
@@ -119,6 +121,13 @@ function BookingInner() {
   })();
 
   const details = tierDetails[resolvedTier];
+
+  // Redirect consultation tiers to ThanksDoc booking
+  useEffect(() => {
+    if (THANKSDOC_TIERS.has(resolvedTier)) {
+      window.location.href = THANKSDOC_URL;
+    }
+  }, [resolvedTier]);
 
   const [step, setStep] = useState<Step>(
     BLOOD_TEST_TIERS.has(resolvedTier)

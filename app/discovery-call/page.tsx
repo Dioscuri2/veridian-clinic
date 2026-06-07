@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
+
+const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
@@ -102,9 +104,9 @@ export default function DiscoveryCallPage() {
                   <p style={{ fontSize: ".84rem", color: "rgba(246,241,232,.7)", lineHeight: 1.8, marginTop: 8, marginBottom: 16 }}>
                     GP-led 30-minute consultation, written summary within 24 hours, pathway recommendation.
                   </p>
-                  <Link href="/book?tier=discovery" className="btn btn-go btn-full">
+                  <a href={THANKSDOC_URL} className="btn btn-go btn-full" target="_blank" rel="noopener noreferrer">
                     Book Your Appointment →
-                  </Link>
+                  </a>
                 </div>
 
                 <div style={{ padding: "16px 18px", background: "var(--iv2)", border: "1px solid rgba(200,168,75,.3)", marginBottom: 20 }}>
@@ -138,8 +140,7 @@ export default function DiscoveryCallPage() {
                 </div>
 
                 <p style={{ fontSize: ".74rem", color: "var(--sl3)", textAlign: "center", lineHeight: 1.6 }}>
-                  Virtual. UK patients only. Payment processed securely via Stripe.
-                  <br />May appear as "Olympus Premium Health" on bank statements.
+                  Virtual. UK patients only. Secure payment via ThanksDoc.
                 </p>
               </div>
             </div>
@@ -248,9 +249,9 @@ export default function DiscoveryCallPage() {
                 </div>
               ))}
             </div>
-            <Link href="/book?tier=discovery" className="btn btn-go">
+            <a href={THANKSDOC_URL} className="btn btn-go" target="_blank" rel="noopener noreferrer">
               Book Your Appointment →
-            </Link>
+            </a>
           </div>
         </section>
 

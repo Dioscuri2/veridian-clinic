@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+
+const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 
 function Shield() {
   return (
@@ -160,19 +161,19 @@ function ConsultationContent() {
 
                 {error && <p style={{ fontSize: ".8rem", color: "#b91c1c", marginBottom: 14, lineHeight: 1.5 }}>{error}</p>}
 
-                <button
-                  type="button"
-                  onClick={handleBook}
-                  disabled={submitting}
+                <a
+                  href={THANKSDOC_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-fo btn-full"
-                  style={{ marginBottom: 12, opacity: submitting ? .6 : 1 }}
+                  style={{ display: "block", textAlign: "center", marginBottom: 12 }}
                 >
-                  {submitting ? "Redirecting to payment…" : `Book consultation — ${price}`}
-                </button>
+                  Book consultation — {price}
+                </a>
 
                 <div style={{ display: "flex", alignItems: "center", gap: 6, justifyContent: "center", marginBottom: 16 }}>
                   <Shield />
-                  <span style={{ fontSize: ".72rem", color: "var(--sl3)" }}>Secure checkout via Stripe · Pay by card</span>
+                  <span style={{ fontSize: ".72rem", color: "var(--sl3)" }}>Secure payment via ThanksDoc</span>
                 </div>
 
                 <div style={{ borderTop: "1px solid rgba(0,0,0,.06)", paddingTop: 16, display: "flex", flexDirection: "column", gap: 6 }}>
