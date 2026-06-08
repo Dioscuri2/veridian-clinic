@@ -365,6 +365,96 @@ function WhatsAppInbox() {
   );
 }
 
+// ── Refund panel ─────────────────────────────────────────────────────────────
+
+function RefundPanel() {
+  const [sessionId, setSessionId] = useState("");
+  const [reason, setReason] = useState("requested_by_customer");
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [result, setResult] = useState<{ refundId: string; status: string; amountPence: number; currency: string } | null>(null);
+  const [errMsg, setErrMsg] = useState("");
+
+  async function handleRefund() {
+    if (!sessionId.trim()) return;
+    setStatus("loading");
+    setErrMsg("");
+    setResult(null);
+    try {
+      const res = await fetch("/api/admin/refund", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: sessionId.trim(), reason }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setErrMsg(data?.error || "Refund failed."); setStatus("error"); return; }
+      setResult(data);
+      setStatus("done");
+      setSessionId("");
+    } catch {
+      setErrMsg("Network error. Please try again.");
+      setStatus("error");
+    }
+  }
+
+  return (
+    <div style={{ maxWidth: 600 }}>
+      <p style={{ color: "#8a8278", fontSize: "12px", marginBottom: "24px", lineHeight: 1.7 }}>
+        Enter a Stripe checkout session ID to issue a full refund. You can find session IDs in the recent payments list (hover over a payment row and check the Stripe dashboard, or locate the session ID from the checkout URL or webhook log).
+      </p>
+
+      <div style={{ display: "grid", gap: "16px" }}>
+        <div>
+          <label style={{ color: "#5a534a", fontSize: "11px", display: "block", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.05em" }}>Stripe checkout session ID</label>
+          <input
+            type="text"
+            value={sessionId}
+            onChange={e => setSessionId(e.target.value)}
+            placeholder="cs_live_..."
+            style={{ width: "100%", background: "#111009", border: "1px solid #3a3830", borderRadius: "6px", color: "#f6f1e8", fontSize: "13px", fontFamily: "Georgia, serif", padding: "10px 12px", outline: "none", boxSizing: "border-box" }}
+          />
+        </div>
+
+        <div>
+          <label style={{ color: "#5a534a", fontSize: "11px", display: "block", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.05em" }}>Reason</label>
+          <select
+            value={reason}
+            onChange={e => setReason(e.target.value)}
+            style={{ width: "100%", background: "#111009", border: "1px solid #3a3830", borderRadius: "6px", color: "#f6f1e8", fontSize: "13px", fontFamily: "Georgia, serif", padding: "10px 12px", outline: "none", boxSizing: "border-box" }}
+          >
+            <option value="requested_by_customer">Requested by customer</option>
+            <option value="duplicate">Duplicate payment</option>
+            <option value="fraudulent">Fraudulent</option>
+          </select>
+        </div>
+
+        {errMsg && <p style={{ color: "#c97b7b", fontSize: "13px", margin: 0 }}>{errMsg}</p>}
+
+        {status === "done" && result && (
+          <div style={{ background: "#145226" + "30", border: "1px solid #14522660", borderRadius: "8px", padding: "14px 16px" }}>
+            <p style={{ margin: "0 0 4px", color: "#4caf82", fontSize: "13px", fontWeight: "600" }}>Refund issued successfully</p>
+            <p style={{ margin: 0, color: "#8a8278", fontSize: "12px" }}>
+              ID: {result.refundId} &middot; Status: {result.status} &middot; Amount: &pound;{(result.amountPence / 100).toFixed(2)} {result.currency?.toUpperCase()}
+            </p>
+          </div>
+        )}
+
+        <button
+          onClick={handleRefund}
+          disabled={!sessionId.trim() || status === "loading"}
+          style={{
+            background: (!sessionId.trim() || status === "loading") ? "#2a2820" : "#7a1616",
+            color: (!sessionId.trim() || status === "loading") ? "#5a534a" : "#f6f1e8",
+            border: "none", padding: "11px 24px", borderRadius: "7px", fontSize: "13px", fontWeight: "600",
+            cursor: (!sessionId.trim() || status === "loading") ? "not-allowed" : "pointer", alignSelf: "start",
+          }}
+        >
+          {status === "loading" ? "Processing..." : "Issue Full Refund"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Main dashboard ────────────────────────────────────────────────────────────
 
 export default function AdminDashboardClient({
@@ -373,7 +463,7 @@ export default function AdminDashboardClient({
   stats: Stats | null; error: string; initialTab?: "overview" | "whatsapp";
 }) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp">(initialTab);
+  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp" | "refund">(initialTab as "overview" | "whatsapp" | "refund");
 
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
@@ -417,6 +507,7 @@ export default function AdminDashboardClient({
       <div style={{ background: "#1a1916", borderBottom: "1px solid #2a2820", padding: "0 24px", display: "flex", gap: "24px", alignItems: "center", height: "44px" }}>
         <button style={tabStyle(activeTab === "overview")} onClick={() => setActiveTab("overview")}>Overview</button>
         <button style={tabStyle(activeTab === "whatsapp")} onClick={() => setActiveTab("whatsapp")}>📱 WhatsApp</button>
+        <button style={tabStyle(activeTab === "refund")} onClick={() => setActiveTab("refund")}>Refunds</button>
       </div>
 
       <div style={{ padding: "28px 24px", maxWidth: "1400px", margin: "0 auto" }}>
@@ -545,6 +636,15 @@ export default function AdminDashboardClient({
 
         {/* ── WhatsApp tab ── */}
         {activeTab === "whatsapp" && <WhatsAppInbox />}
+
+        {/* ── Refund tab ── */}
+        {activeTab === "refund" && (
+          <div>
+            <h2 style={{ color: "#f6f1e8", fontSize: "16px", fontWeight: "600", margin: "0 0 8px" }}>Issue Refund</h2>
+            <p style={{ color: "#5a534a", fontSize: "12px", margin: "0 0 24px" }}>Full refund only. Partial refunds must be done directly in the Stripe dashboard.</p>
+            <RefundPanel />
+          </div>
+        )}
       </div>
     </div>
   );

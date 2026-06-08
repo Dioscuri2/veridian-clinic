@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
@@ -279,6 +280,12 @@ export async function POST(request: NextRequest) {
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
+
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+    const turnstileOk = await verifyTurnstileToken(payload.turnstileToken || "", ip);
+    if (!turnstileOk) {
+      return NextResponse.json({ error: "Security check failed. Please refresh and try again." }, { status: 400 });
     }
 
     const listId = await ensureBrevoList(LIST_NAME);

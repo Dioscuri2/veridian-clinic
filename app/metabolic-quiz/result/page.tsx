@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 const BANDS = {
   strong: {
@@ -77,6 +78,8 @@ function ResultContent() {
   const [gName, setGName] = useState("");
   const [gLoading, setGLoading] = useState(false);
   const [gError, setGError] = useState("");
+  const [gTurnstileToken, setGTurnstileToken] = useState("");
+  const siteKeySet = !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   useEffect(() => {
     if (sessionStorage.getItem("vc_quiz_gate") === "1") setSubmitted(true);
@@ -97,7 +100,7 @@ function ResultContent() {
       const res = await fetch("/api/quiz-lead", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: gEmail.trim(), firstName: gName.trim(), mAge, band: bandKey, delta, weakest, fw: Number(fw), fe: Number(fe), fs: Number(fs), fst: Number(fst), fa: Number(fa), fd: Number(fd), fg: Number(fg) }),
+        body: JSON.stringify({ email: gEmail.trim(), firstName: gName.trim(), mAge, band: bandKey, delta, weakest, fw: Number(fw), fe: Number(fe), fs: Number(fs), fst: Number(fst), fa: Number(fa), fd: Number(fd), fg: Number(fg), turnstileToken: gTurnstileToken }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -161,11 +164,17 @@ function ResultContent() {
                 {gError && (
                   <p style={{ fontSize: ".85rem", color: "var(--red)", margin: 0 }}>{gError}</p>
                 )}
+                <TurnstileWidget
+                  onVerify={setGTurnstileToken}
+                  onExpire={() => setGTurnstileToken("")}
+                  onError={() => setGTurnstileToken("")}
+                  theme="light"
+                />
                 <button
                   type="submit"
                   className="btn btn-fo"
-                  disabled={gLoading}
-                  style={{ width: "100%", padding: "15px 32px" }}
+                  disabled={gLoading || (siteKeySet && !gTurnstileToken)}
+                  style={{ width: "100%", padding: "15px 32px", opacity: (siteKeySet && !gTurnstileToken) ? 0.55 : 1 }}
                 >
                   {gLoading ? "Loading…" : "See My Metabolic Age →"}
                 </button>

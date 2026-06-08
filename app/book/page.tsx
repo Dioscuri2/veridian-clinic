@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 const CALENDLY_BASE = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
@@ -170,6 +171,8 @@ function BookingInner() {
   const [btEmail, setBtEmail] = useState("");
   const [btError, setBtError] = useState("");
   const [btSubmitting, setBtSubmitting] = useState<"stripe" | "paypal" | false>(false);
+  const [btTurnstileToken, setBtTurnstileToken] = useState("");
+  const btSiteKeySet = !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   const onStripePayBloodTest = async () => {
     if (!btName.trim() || !btEmail.trim()) { setBtError("Please enter your name and email before paying."); return; }
@@ -178,7 +181,7 @@ function BookingInner() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: btName, email: btEmail, tier: resolvedTier, turnstileToken: "" }),
+        body: JSON.stringify({ name: btName, email: btEmail, tier: resolvedTier, turnstileToken: btTurnstileToken }),
       });
       const data = await res.json();
       if (!res.ok || !data?.url) throw new Error(data?.error || "Checkout session failed");
@@ -341,14 +344,21 @@ function BookingInner() {
                 </div>
               </div>
 
+              <TurnstileWidget
+                onVerify={setBtTurnstileToken}
+                onExpire={() => setBtTurnstileToken("")}
+                onError={() => setBtTurnstileToken("")}
+                theme="light"
+              />
+
               {btError && <p style={{ color: "var(--red)", fontSize: ".82rem", marginBottom: 14 }}>{btError}</p>}
 
               <div style={{ marginBottom: 20 }}>
                 <button
                   className="btn btn-go"
                   onClick={onStripePayBloodTest}
-                  disabled={!!btSubmitting}
-                  style={{ opacity: btSubmitting ? 0.65 : 1, cursor: btSubmitting ? "wait" : "pointer", width: "100%" }}
+                  disabled={!!btSubmitting || (btSiteKeySet && !btTurnstileToken)}
+                  style={{ opacity: (btSubmitting || (btSiteKeySet && !btTurnstileToken)) ? 0.65 : 1, cursor: (btSubmitting || (btSiteKeySet && !btTurnstileToken)) ? "not-allowed" : "pointer", width: "100%" }}
                 >
                   {btSubmitting === "stripe" ? "Redirecting to payment…" : `Pay ${details.price} by Card →`}
                 </button>
