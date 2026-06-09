@@ -91,6 +91,8 @@ const RATE_LIMIT_RULES: Array<{ prefix: string; limit: number }> = [
   { prefix: "/api/newsletter",     limit: 8  },  // Anti-spam
   { prefix: "/api/quiz-lead",      limit: 10 },
   { prefix: "/api/admin",          limit: 15 },
+  { prefix: "/api/social",        limit: 20 },
+  { prefix: "/api/auth",          limit: 5  },
   { prefix: "/api/",              limit: 30 },
   { prefix: "/admin",             limit: 20 },
 ];

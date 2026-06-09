@@ -365,6 +365,343 @@ function WhatsAppInbox() {
   );
 }
 
+// ── Social panel ─────────────────────────────────────────────────────────────
+
+type SocialPlatform = "linkedin" | "twitter" | "both";
+type PostStatus = "pending" | "posted" | "failed";
+
+interface SocialPost {
+  id: string; platform: SocialPlatform; linkedinContent: string; xContent: string;
+  scheduledAt: number; status: PostStatus; createdAt: number; postedAt?: number; errorMsg?: string;
+}
+
+function fmtDate(ms: number) {
+  return new Date(ms).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+}
+
+function SocialPanel() {
+  const [linkedin, setLinkedin] = useState<{ connected: boolean; name?: string }>({ connected: false });
+  const [twitter, setTwitter] = useState<{ connected: boolean }>({ connected: false });
+  const [posts, setPosts] = useState<SocialPost[]>([]);
+  const [queueFilter, setQueueFilter] = useState<PostStatus>("pending");
+  const [queueLoading, setQueueLoading] = useState(true);
+
+  const [topic, setTopic] = useState("");
+  const [linkedinDraft, setLinkedinDraft] = useState("");
+  const [xDraft, setXDraft] = useState("");
+  const [draftLoading, setDraftLoading] = useState(false);
+  const [draftErr, setDraftErr] = useState("");
+
+  const [platform, setPlatform] = useState<SocialPlatform>("both");
+  const [scheduleTime, setScheduleTime] = useState("");
+  const [postNow, setPostNow] = useState(false);
+  const [scheduling, setScheduling] = useState(false);
+  const [scheduleMsg, setScheduleMsg] = useState("");
+
+  const [actingId, setActingId] = useState<string | null>(null);
+
+  const loadQueue = useCallback(async () => {
+    setQueueLoading(true);
+    try {
+      const res = await fetch("/api/social/queue");
+      if (res.ok) {
+        const data = await res.json();
+        setPosts(data.posts || []);
+        setLinkedin(data.linkedin || { connected: false });
+        setTwitter(data.twitter || { connected: false });
+      }
+    } finally { setQueueLoading(false); }
+  }, []);
+
+  useEffect(() => { loadQueue(); }, [loadQueue]);
+
+  // Check for ?connected=linkedin or ?error= after OAuth callback
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("connected") === "linkedin") loadQueue();
+  }, [loadQueue]);
+
+  async function generateDraft() {
+    if (!topic.trim()) return;
+    setDraftLoading(true); setDraftErr("");
+    try {
+      const res = await fetch("/api/social/draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topic }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setDraftErr(data.error || "Draft failed"); return; }
+      setLinkedinDraft(data.linkedin || "");
+      setXDraft(data.x || "");
+    } catch { setDraftErr("Network error"); }
+    finally { setDraftLoading(false); }
+  }
+
+  async function schedulePost() {
+    const scheduledAt = postNow ? Date.now() : new Date(scheduleTime).getTime();
+    if (!postNow && (!scheduleTime || isNaN(scheduledAt))) {
+      setScheduleMsg("Pick a date/time first."); return;
+    }
+    if ((platform === "linkedin" || platform === "both") && !linkedinDraft.trim()) {
+      setScheduleMsg("LinkedIn draft is empty."); return;
+    }
+    if ((platform === "twitter" || platform === "both") && !xDraft.trim()) {
+      setScheduleMsg("X draft is empty."); return;
+    }
+    if ((platform === "twitter" || platform === "both") && xDraft.trim().length > 280) {
+      setScheduleMsg("X post exceeds 280 characters."); return;
+    }
+
+    setScheduling(true); setScheduleMsg("");
+    try {
+      const res = await fetch("/api/social/schedule", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ platform, linkedinContent: linkedinDraft, xContent: xDraft, scheduledAt }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setScheduleMsg(data.error || "Failed"); return; }
+
+      if (postNow) {
+        // Publish immediately
+        const pubRes = await fetch("/api/social/publish", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: data.post.id }),
+        });
+        const pubData = await pubRes.json();
+        setScheduleMsg(pubData.ok ? "Published!" : `Error: ${pubData.errors?.join(", ")}`);
+      } else {
+        setScheduleMsg(`Scheduled for ${fmtDate(scheduledAt)}`);
+      }
+
+      setLinkedinDraft(""); setXDraft(""); setTopic(""); setScheduleTime("");
+      await loadQueue();
+    } finally { setScheduling(false); }
+  }
+
+  async function publishNow(post: SocialPost) {
+    setActingId(post.id);
+    try {
+      const res = await fetch("/api/social/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: post.id }),
+      });
+      await loadQueue();
+    } finally { setActingId(null); }
+  }
+
+  async function deletePost(post: SocialPost) {
+    setActingId(post.id);
+    try {
+      await fetch("/api/social/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: post.id }),
+      });
+      await loadQueue();
+    } finally { setActingId(null); }
+  }
+
+  const card = (extra?: React.CSSProperties): React.CSSProperties => ({ background: "#1a1916", border: "1px solid #2a2820", borderRadius: "10px", padding: "22px", ...extra });
+  const inp = (extra?: React.CSSProperties): React.CSSProperties => ({ width: "100%", background: "#111009", border: "1px solid #3a3830", borderRadius: "6px", color: "#f6f1e8", fontSize: "13px", fontFamily: "Georgia, serif", padding: "10px 12px", outline: "none", boxSizing: "border-box" as const, ...extra });
+  const lbl: React.CSSProperties = { color: "#5a534a", fontSize: "11px", display: "block", marginBottom: "6px", textTransform: "uppercase" as const, letterSpacing: "0.05em" };
+
+  const filteredPosts = posts.filter(p => p.status === queueFilter);
+  const PLATFORM_LABELS: Record<SocialPlatform, string> = { linkedin: "LinkedIn", twitter: "X/Twitter", both: "LinkedIn + X" };
+  const STATUS_COLOUR: Record<PostStatus, string> = { pending: "#c8a84b", posted: "#4caf82", failed: "#c97b7b" };
+
+  return (
+    <div style={{ display: "grid", gap: "20px" }}>
+
+      {/* Platform connections */}
+      <div style={card()}>
+        <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>Platform connections</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+          {/* LinkedIn */}
+          <div style={{ background: "#111009", border: "1px solid #2a2820", borderRadius: "8px", padding: "16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div>
+                <p style={{ margin: "0 0 4px", color: "#f6f1e8", fontSize: "13px", fontWeight: "600" }}>LinkedIn</p>
+                {linkedin.connected
+                  ? <p style={{ margin: 0, color: "#4caf82", fontSize: "12px" }}>Connected{linkedin.name ? ` as ${linkedin.name}` : ""}</p>
+                  : <p style={{ margin: 0, color: "#8a8278", fontSize: "12px" }}>Not connected</p>}
+              </div>
+              {!linkedin.connected && (
+                <a href="/api/auth/linkedin"
+                  style={{ background: "#0a66c2", color: "#fff", border: "none", padding: "6px 14px", borderRadius: "6px", fontSize: "12px", textDecoration: "none", fontWeight: "600", fontFamily: "Georgia, serif" }}>
+                  Connect
+                </a>
+              )}
+            </div>
+            {!linkedin.connected && (
+              <p style={{ margin: "10px 0 0", color: "#5a534a", fontSize: "11px", lineHeight: 1.6 }}>
+                Requires a LinkedIn Developer App — set <code style={{ color: "#c8a84b" }}>LINKEDIN_CLIENT_ID</code> + <code style={{ color: "#c8a84b" }}>LINKEDIN_CLIENT_SECRET</code> on Railway first.
+              </p>
+            )}
+          </div>
+
+          {/* X/Twitter */}
+          <div style={{ background: "#111009", border: "1px solid #2a2820", borderRadius: "8px", padding: "16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div>
+                <p style={{ margin: "0 0 4px", color: "#f6f1e8", fontSize: "13px", fontWeight: "600" }}>X / Twitter</p>
+                {twitter.connected
+                  ? <p style={{ margin: 0, color: "#4caf82", fontSize: "12px" }}>Connected</p>
+                  : <p style={{ margin: 0, color: "#8a8278", fontSize: "12px" }}>Not connected</p>}
+              </div>
+            </div>
+            {!twitter.connected && (
+              <p style={{ margin: "10px 0 0", color: "#5a534a", fontSize: "11px", lineHeight: 1.6 }}>
+                Set <code style={{ color: "#c8a84b" }}>TWITTER_CONSUMER_KEY</code>, <code style={{ color: "#c8a84b" }}>TWITTER_CONSUMER_SECRET</code>, <code style={{ color: "#c8a84b" }}>TWITTER_ACCESS_TOKEN</code>, <code style={{ color: "#c8a84b" }}>TWITTER_ACCESS_SECRET</code> on Railway using your developer.twitter.com app.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Draft & schedule */}
+      <div style={card()}>
+        <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: "0 0 18px", letterSpacing: "0.04em" }}>Draft & schedule</h2>
+        <div style={{ display: "grid", gap: "14px" }}>
+          <div>
+            <label style={lbl}>Topic or angle</label>
+            <textarea value={topic} onChange={e => setTopic(e.target.value)} rows={2}
+              placeholder="e.g. Why fasting insulin matters more than HbA1c for early metabolic dysfunction"
+              style={{ ...inp(), resize: "vertical" }} />
+          </div>
+
+          <button onClick={generateDraft} disabled={!topic.trim() || draftLoading}
+            style={{ background: !topic.trim() || draftLoading ? "#2a2820" : "#2d4a1e", color: !topic.trim() || draftLoading ? "#5a534a" : "#f6f1e8", border: "none", padding: "9px 20px", borderRadius: "7px", fontSize: "13px", fontWeight: "600", cursor: "pointer", alignSelf: "start" }}>
+            {draftLoading ? "Generating…" : "Generate drafts with AI"}
+          </button>
+
+          {draftErr && <p style={{ margin: 0, color: "#c97b7b", fontSize: "12px" }}>{draftErr}</p>}
+
+          {(linkedinDraft || xDraft) && (
+            <>
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "6px" }}>
+                  <label style={{ ...lbl, marginBottom: 0 }}>LinkedIn post</label>
+                  <span style={{ fontSize: "11px", color: "#5a534a" }}>{linkedinDraft.length} chars</span>
+                </div>
+                <textarea value={linkedinDraft} onChange={e => setLinkedinDraft(e.target.value)} rows={8}
+                  style={{ ...inp(), resize: "vertical", lineHeight: "1.6" }} />
+              </div>
+
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "6px" }}>
+                  <label style={{ ...lbl, marginBottom: 0 }}>X / Twitter post</label>
+                  <span style={{ fontSize: "11px", color: xDraft.length > 280 ? "#c97b7b" : "#5a534a" }}>{xDraft.length}/280</span>
+                </div>
+                <textarea value={xDraft} onChange={e => setXDraft(e.target.value)} rows={3}
+                  style={{ ...inp(), resize: "vertical", lineHeight: "1.6", borderColor: xDraft.length > 280 ? "#7a1616" : "#3a3830" }} />
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                <div>
+                  <label style={lbl}>Platform</label>
+                  <select value={platform} onChange={e => setPlatform(e.target.value as SocialPlatform)} style={inp()}>
+                    <option value="both">LinkedIn + X/Twitter</option>
+                    <option value="linkedin">LinkedIn only</option>
+                    <option value="twitter">X/Twitter only</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={lbl}>Schedule time</label>
+                  <input type="datetime-local" value={scheduleTime} onChange={e => { setScheduleTime(e.target.value); setPostNow(false); }}
+                    disabled={postNow} style={{ ...inp(), opacity: postNow ? 0.4 : 1 }} />
+                </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <input type="checkbox" id="postNow" checked={postNow} onChange={e => setPostNow(e.target.checked)}
+                  style={{ accentColor: "#c8a84b" }} />
+                <label htmlFor="postNow" style={{ color: "#8a8278", fontSize: "13px", cursor: "pointer" }}>Post immediately</label>
+              </div>
+
+              {scheduleMsg && (
+                <p style={{ margin: 0, fontSize: "13px", color: scheduleMsg.startsWith("Error") ? "#c97b7b" : "#4caf82" }}>{scheduleMsg}</p>
+              )}
+
+              <button onClick={schedulePost} disabled={scheduling}
+                style={{ background: scheduling ? "#2a2820" : "#c8a84b", color: scheduling ? "#5a534a" : "#111009", border: "none", padding: "10px 24px", borderRadius: "7px", fontSize: "13px", fontWeight: "600", cursor: scheduling ? "not-allowed" : "pointer", alignSelf: "start" }}>
+                {scheduling ? "Working…" : postNow ? "Publish now" : "Schedule post"}
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Post queue */}
+      <div style={card()}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "18px" }}>
+          <h2 style={{ color: "#f6f1e8", fontSize: "14px", fontWeight: "600", margin: 0, letterSpacing: "0.04em" }}>Post queue</h2>
+          <div style={{ display: "flex", gap: "6px" }}>
+            {(["pending", "posted", "failed"] as PostStatus[]).map(s => (
+              <button key={s} onClick={() => setQueueFilter(s)}
+                style={{ background: queueFilter === s ? "#25251f" : "transparent", border: `1px solid ${queueFilter === s ? "#3a3830" : "transparent"}`, color: queueFilter === s ? STATUS_COLOUR[s] : "#5a534a", padding: "4px 12px", borderRadius: "5px", fontSize: "11px", cursor: "pointer", fontFamily: "Georgia, serif", textTransform: "capitalize" }}>
+                {s} ({posts.filter(p => p.status === s).length})
+              </button>
+            ))}
+            <button onClick={loadQueue} style={{ background: "#2c2a26", border: "1px solid #3a3830", color: "#c8a84b", padding: "4px 10px", borderRadius: "5px", fontSize: "11px", cursor: "pointer" }}>Refresh</button>
+          </div>
+        </div>
+
+        {queueLoading && <p style={{ color: "#5a534a", fontSize: "13px", textAlign: "center", margin: "40px 0" }}>Loading…</p>}
+        {!queueLoading && filteredPosts.length === 0 && (
+          <p style={{ color: "#3a3830", fontSize: "13px", textAlign: "center", margin: "40px 0" }}>No {queueFilter} posts.</p>
+        )}
+
+        {filteredPosts.map(post => (
+          <div key={post.id} style={{ padding: "14px 0", borderBottom: "1px solid #2a2820" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px" }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "6px", flexWrap: "wrap" }}>
+                  <span style={{ background: "#2a2820", color: "#c8a84b", fontSize: "10px", padding: "2px 7px", borderRadius: "4px", letterSpacing: "0.05em" }}>
+                    {PLATFORM_LABELS[post.platform]}
+                  </span>
+                  <span style={{ color: STATUS_COLOUR[post.status], fontSize: "11px", textTransform: "capitalize" }}>{post.status}</span>
+                  <span style={{ color: "#5a534a", fontSize: "11px" }}>
+                    {post.status === "posted" ? `Posted ${fmtDate(post.postedAt!)}` : `Due ${fmtDate(post.scheduledAt)}`}
+                  </span>
+                </div>
+                {(post.platform === "linkedin" || post.platform === "both") && post.linkedinContent && (
+                  <p style={{ margin: "0 0 4px", color: "#ede8df", fontSize: "12px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    LI: {post.linkedinContent.slice(0, 120)}…
+                  </p>
+                )}
+                {(post.platform === "twitter" || post.platform === "both") && post.xContent && (
+                  <p style={{ margin: 0, color: "#8a8278", fontSize: "12px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    X: {post.xContent}
+                  </p>
+                )}
+                {post.errorMsg && (
+                  <p style={{ margin: "4px 0 0", color: "#c97b7b", fontSize: "11px" }}>{post.errorMsg}</p>
+                )}
+              </div>
+              {post.status !== "posted" && (
+                <div style={{ display: "flex", gap: "6px", flexShrink: 0 }}>
+                  <button onClick={() => publishNow(post)} disabled={actingId === post.id}
+                    style={{ background: "#2d4a1e", color: "#f6f1e8", border: "none", padding: "5px 12px", borderRadius: "5px", fontSize: "11px", cursor: "pointer" }}>
+                    {actingId === post.id ? "…" : "Publish now"}
+                  </button>
+                  <button onClick={() => deletePost(post)} disabled={actingId === post.id}
+                    style={{ background: "#2a2820", color: "#8a8278", border: "1px solid #3a3830", padding: "5px 10px", borderRadius: "5px", fontSize: "11px", cursor: "pointer" }}>
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Refund panel ─────────────────────────────────────────────────────────────
 
 function RefundPanel() {
@@ -460,10 +797,16 @@ function RefundPanel() {
 export default function AdminDashboardClient({
   stats, error, initialTab = "overview",
 }: {
-  stats: Stats | null; error: string; initialTab?: "overview" | "whatsapp";
+  stats: Stats | null; error: string; initialTab?: "overview" | "whatsapp" | "social";
 }) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp" | "refund">(initialTab as "overview" | "whatsapp" | "refund");
+  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp" | "refund" | "social">(() => {
+    if (typeof window !== "undefined") {
+      const p = new URLSearchParams(window.location.search);
+      if (p.get("tab") === "social") return "social";
+    }
+    return (initialTab as "overview" | "whatsapp" | "refund" | "social") || "overview";
+  });
 
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
@@ -508,6 +851,7 @@ export default function AdminDashboardClient({
         <button style={tabStyle(activeTab === "overview")} onClick={() => setActiveTab("overview")}>Overview</button>
         <button style={tabStyle(activeTab === "whatsapp")} onClick={() => setActiveTab("whatsapp")}>📱 WhatsApp</button>
         <button style={tabStyle(activeTab === "refund")} onClick={() => setActiveTab("refund")}>Refunds</button>
+        <button style={tabStyle(activeTab === "social")} onClick={() => setActiveTab("social")}>Social</button>
       </div>
 
       <div style={{ padding: "28px 24px", maxWidth: "1400px", margin: "0 auto" }}>
@@ -636,6 +980,15 @@ export default function AdminDashboardClient({
 
         {/* ── WhatsApp tab ── */}
         {activeTab === "whatsapp" && <WhatsAppInbox />}
+
+        {/* ── Social tab ── */}
+        {activeTab === "social" && (
+          <div>
+            <h2 style={{ color: "#f6f1e8", fontSize: "16px", fontWeight: "600", margin: "0 0 8px" }}>Social scheduling</h2>
+            <p style={{ color: "#5a534a", fontSize: "12px", margin: "0 0 24px" }}>Draft posts with AI, schedule to LinkedIn and X/Twitter.</p>
+            <SocialPanel />
+          </div>
+        )}
 
         {/* ── Refund tab ── */}
         {activeTab === "refund" && (
