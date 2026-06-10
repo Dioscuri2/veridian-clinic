@@ -86,6 +86,7 @@ const tests = [
     tag: "Women's Health",
     price: "£375",
     includedIn: "Is It My Hormones? Panel",
+    guideBonus: "Perimenopause Reset Guide included free",
   },
   {
     slug: "mens-testosterone",
@@ -104,6 +105,7 @@ const tests = [
     tag: "Energy & Fatigue",
     price: "£249",
     includedIn: "Tired of Being Told You're Fine Panel",
+    guideBonus: "Metabolic Reset Guide included free",
   },
   {
     slug: "cardiovascular-risk",
@@ -122,6 +124,7 @@ const tests = [
     tag: "Metabolic Health",
     price: "£199",
     includedIn: "Why Won't The Weight Budge? Panel",
+    guideBonus: "Metabolic Reset Guide included free",
   },
   {
     slug: "optimiser-baseline",
@@ -198,6 +201,11 @@ export default function BloodTestsIndexPage() {
                         <span style={{ fontSize: ".72rem", color: "var(--sl3)", letterSpacing: ".04em" }}>
                           Included in: {test.includedIn}
                         </span>
+                        {(test as { guideBonus?: string }).guideBonus && (
+                          <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#145226", background: "rgba(20,82,38,.1)", padding: "3px 8px" }}>
+                            {(test as { guideBonus?: string }).guideBonus}
+                          </span>
+                        )}
                       </div>
                       <h2
                         className="cg"

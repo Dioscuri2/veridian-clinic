@@ -800,7 +800,7 @@ export default function AdminDashboardClient({
   stats: Stats | null; error: string; initialTab?: "overview" | "whatsapp" | "social";
 }) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp" | "refund" | "social">(() => {
+  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp" | "refund" | "social" | "interpret">(() => {
     if (typeof window !== "undefined") {
       const p = new URLSearchParams(window.location.search);
       if (p.get("tab") === "social") return "social";
@@ -852,6 +852,7 @@ export default function AdminDashboardClient({
         <button style={tabStyle(activeTab === "whatsapp")} onClick={() => setActiveTab("whatsapp")}>📱 WhatsApp</button>
         <button style={tabStyle(activeTab === "refund")} onClick={() => setActiveTab("refund")}>Refunds</button>
         <button style={tabStyle(activeTab === "social")} onClick={() => setActiveTab("social")}>Social</button>
+        <button style={tabStyle(activeTab === "interpret")} onClick={() => setActiveTab("interpret")}>Interpret</button>
       </div>
 
       <div style={{ padding: "28px 24px", maxWidth: "1400px", margin: "0 auto" }}>
@@ -998,7 +999,141 @@ export default function AdminDashboardClient({
             <RefundPanel />
           </div>
         )}
+
+        {/* ── Interpret tab ── */}
+        {activeTab === "interpret" && <InterpretPanel />}
+
       </div>
+    </div>
+  );
+}
+
+// ── Blood test interpretation panel ──────────────────────────────────────────
+
+function InterpretPanel() {
+  const [email, setEmail] = useState("");
+  const [panelName, setPanelName] = useState("");
+  const [resultsText, setResultsText] = useState("");
+  const [draft, setDraft] = useState("");
+  const [editedDraft, setEditedDraft] = useState("");
+  const [generating, setGenerating] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<"idle" | "drafted" | "sent">("idle");
+  const [error, setError] = useState("");
+
+  const inp: React.CSSProperties = { width: "100%", padding: "10px 13px", background: "#1a1916", border: "1px solid #3a3830", color: "#f6f1e8", fontSize: "13px", boxSizing: "border-box", outline: "none" };
+  const lbl: React.CSSProperties = { fontSize: "11px", fontWeight: "700", letterSpacing: "0.1em", textTransform: "uppercase", color: "#8a8278", marginBottom: "6px", display: "block" };
+
+  async function generate() {
+    if (!email || !resultsText) { setError("Email and results text are required."); return; }
+    setGenerating(true); setError("");
+    try {
+      const res = await fetch("/api/admin/interpret", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email, resultsText }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "generation failed");
+      setDraft(data.draft);
+      setEditedDraft(data.draft);
+      setStatus("drafted");
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "failed");
+    } finally {
+      setGenerating(false);
+    }
+  }
+
+  async function sendReport() {
+    if (!editedDraft || !email) return;
+    setSending(true); setError("");
+    try {
+      const res = await fetch("/api/admin/send-interpretation", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ patientEmail: email, patientName: "", panelName, reportText: editedDraft }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "send failed");
+      setStatus("sent");
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "send failed");
+    } finally {
+      setSending(false);
+    }
+  }
+
+  return (
+    <div style={{ maxWidth: "820px" }}>
+      <h2 style={{ color: "#f6f1e8", fontSize: "16px", fontWeight: "600", margin: "0 0 6px" }}>Blood Test Interpretation</h2>
+      <p style={{ color: "#5a534a", fontSize: "12px", margin: "0 0 24px", lineHeight: "1.6" }}>Paste the patient&apos;s results, generate a draft interpretation using UK optimal ranges, review and edit, then send.</p>
+
+      {error && <div style={{ background: "rgba(122,22,22,.2)", border: "1px solid #7a1616", color: "#c97b7b", padding: "12px 16px", fontSize: "13px", marginBottom: "20px" }}>{error}</div>}
+
+      {status === "sent" ? (
+        <div style={{ background: "rgba(20,82,38,.2)", border: "1px solid #145226", color: "#6bbf7a", padding: "20px 24px", fontSize: "14px" }}>
+          Report sent to {email}. Check Brevo for delivery confirmation.
+        </div>
+      ) : (
+        <>
+          <div style={{ display: "grid", gap: "16px", marginBottom: "20px" }}>
+            <div>
+              <span style={lbl}>Patient email</span>
+              <input style={inp} type="email" placeholder="patient@email.com" value={email} onChange={e => setEmail(e.target.value)} />
+              <p style={{ fontSize: "11px", color: "#5a534a", margin: "4px 0 0", lineHeight: "1.5" }}>Used to look up their questionnaire answers from Redis for context.</p>
+            </div>
+            <div>
+              <span style={lbl}>Panel name (for email subject)</span>
+              <input style={inp} type="text" placeholder="e.g. Is It My Hormones? Panel" value={panelName} onChange={e => setPanelName(e.target.value)} />
+            </div>
+            <div>
+              <span style={lbl}>Blood test results — paste raw values</span>
+              <p style={{ fontSize: "11px", color: "#5a534a", margin: "0 0 6px", lineHeight: "1.5" }}>Copy from Randox portal or PDF. Include marker names and values with units. One per line is fine.</p>
+              <textarea
+                style={{ ...inp, height: "220px", resize: "vertical", lineHeight: "1.6" }}
+                placeholder={"TSH: 2.8 mIU/L\nFT4: 14.2 pmol/L\nFT3: 4.1 pmol/L\nTPO antibodies: 42 IU/mL\nFasting Insulin: 18.4 mIU/L\n..."}
+                value={resultsText}
+                onChange={e => setResultsText(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <button
+            onClick={generate}
+            disabled={generating || !email || !resultsText}
+            style={{ background: generating ? "#2a2820" : "#c8a84b", color: generating ? "#5a534a" : "#2c2a26", border: "none", padding: "11px 24px", fontSize: "13px", fontWeight: "700", cursor: generating ? "default" : "pointer", marginBottom: "24px" }}
+          >
+            {generating ? "Generating draft..." : status === "drafted" ? "Regenerate draft" : "Generate draft interpretation"}
+          </button>
+
+          {status === "drafted" && (
+            <div style={{ marginTop: "8px" }}>
+              <span style={{ ...lbl, marginBottom: "8px" }}>Draft report — review and edit before sending</span>
+              <div style={{ background: "#0f0e0c", border: "1px solid #2a2820", padding: "6px 10px", marginBottom: "8px" }}>
+                <p style={{ color: "#5a534a", fontSize: "11px", margin: "0", lineHeight: "1.5" }}>
+                  IMPORTANT: This is an AI-generated draft. Read it carefully. Check every clinical claim against the actual results. Edit freely before sending. You are responsible for the final report.
+                </p>
+              </div>
+              <textarea
+                style={{ ...inp, height: "480px", resize: "vertical", lineHeight: "1.7", fontSize: "13px" }}
+                value={editedDraft}
+                onChange={e => setEditedDraft(e.target.value)}
+              />
+              <div style={{ display: "flex", gap: "12px", marginTop: "16px", alignItems: "center" }}>
+                <button
+                  onClick={sendReport}
+                  disabled={sending || !editedDraft}
+                  style={{ background: sending ? "#2a2820" : "#145226", color: sending ? "#5a534a" : "#6bbf7a", border: "none", padding: "11px 28px", fontSize: "13px", fontWeight: "700", cursor: sending ? "default" : "pointer" }}
+                >
+                  {sending ? "Sending..." : `Send report to ${email}`}
+                </button>
+                <p style={{ color: "#5a534a", fontSize: "11px", margin: 0 }}>Sends via Brevo from support@veridianclinic.com</p>
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }

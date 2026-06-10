@@ -166,6 +166,7 @@ const targetedPanels = [
     price: "£375",
     tag: "Women's Health",
     tagColor: "#9d5c8a",
+    guideBonus: "Perimenopause Reset Guide — worth £19.99, included free",
     description: "You're exhausted, your mood has shifted, you're not sleeping, and you've been told your blood tests are normal. This panel measures what standard GP panels don't: the full hormonal picture behind perimenopause, thyroid dysfunction, and the metabolic changes that make these symptoms worse.",
     markers: [
       "Full female hormones: Oestradiol, FSH, LH, Progesterone, Prolactin, SHBG",
@@ -222,6 +223,7 @@ const targetedPanels = [
     price: "£249",
     tag: "Energy & Fatigue",
     tagColor: "#8a6a25",
+    guideBonus: "Metabolic Reset Guide — worth £19.99, included free",
     description: "Persistent fatigue, brain fog and low energy with a normal GP blood test result every time. This panel goes beyond standard screening to find what those tests miss.",
     markers: [
       "Full Blood Count anaemia, immune load",
@@ -241,6 +243,7 @@ const targetedPanels = [
     price: "£199",
     tag: "Weight & Metabolism",
     tagColor: "#4a7a40",
+    guideBonus: "Metabolic Reset Guide — worth £19.99, included free",
     description: "You're eating well. You're moving. But the weight won't shift. This panel identifies the metabolic blockers insulin resistance, hormonal imbalance and hidden inflammation that make fat loss physiologically difficult.",
     markers: [
       "Fasting insulin + HbA1c + HOMA-IR (insulin resistance index)",
@@ -454,6 +457,11 @@ function TargetedPanelAccordion() {
                     textTransform: "uppercase", color: panel.tagColor,
                     background: "rgba(0,0,0,.06)", padding: "2px 8px",
                   }}>{panel.tag}</span>
+                  {(panel as { guideBonus?: string }).guideBonus && (
+                    <span style={{ fontSize: ".62rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#145226", background: "rgba(20,82,38,.1)", padding: "2px 8px" }}>
+                      Free guide included
+                    </span>
+                  )}
                 </div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
                   <span className="cg" style={{ fontSize: "1.2rem", fontWeight: 500, color: "var(--sl)" }}>{panel.name}</span>
@@ -518,6 +526,12 @@ function TargetedPanelAccordion() {
                     </div>
                   </div>
                 </div>
+                {(panel as { guideBonus?: string }).guideBonus && (
+                  <div style={{ padding: "12px 16px", background: "rgba(20,82,38,.06)", borderLeft: "3px solid #145226", marginBottom: 16 }}>
+                    <p style={{ fontSize: ".68rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "#145226", margin: "0 0 4px" }}>Also included free</p>
+                    <p style={{ fontSize: ".84rem", color: "var(--sl2)", margin: 0, lineHeight: 1.7 }}>{(panel as { guideBonus?: string }).guideBonus}</p>
+                  </div>
+                )}
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <Link href={panel.href} className="btn btn-fo" style={{ flex: "1 1 200px" }}>
                     Book {panel.name} {panel.price} →

@@ -203,6 +203,21 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
             </td></tr>
           </table>
 
+          <!-- Results consultation upsell -->
+          <table cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:28px;">
+            <tr><td style="padding:20px 24px;background:#f6f1e8;border:1px solid rgba(200,168,75,.25);">
+              <p style="margin:0 0 6px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a5500;">Optional add-on</p>
+              <p style="margin:0 0 10px;font-size:1rem;font-weight:600;color:#2c2a26;line-height:1.3;">Walk through your results with Dr Tosin by video</p>
+              <p style="margin:0 0 14px;font-size:.86rem;color:#5a534a;line-height:1.75;">
+                Your written GP report covers everything in detail. But if you'd like to go through your results live — ask questions, understand what to prioritise, and get a clear action plan tailored to your goals — you can add a 30-minute results consultation.
+              </p>
+              <p style="margin:0 0 14px;font-size:.86rem;color:#5a534a;"><strong style="color:#2c2a26;">Blood test patient rate: £149</strong> <span style="color:#8a8278;">(standard rate £195, saving £46)</span></p>
+              <a href="https://veridianclinic.com/book?tier=discovery" style="display:inline-block;background:#2c2a26;color:#f6f1e8;padding:11px 24px;text-decoration:none;font-size:.88rem;font-weight:600;letter-spacing:.04em;">
+                Book results consultation £149 →
+              </a>
+            </td></tr>
+          </table>
+
           <p style="margin:0 0 6px;font-size:.86rem;color:#5a534a;line-height:1.75;">
             Questions in the meantime? Reply to this email directly — it goes straight to the Veridian clinical inbox.
           </p>

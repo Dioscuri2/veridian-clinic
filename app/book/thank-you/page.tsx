@@ -140,8 +140,20 @@ function ThankYouContent() {
                   ))}
                 </div>
               </div>
+              {isBloodTestTier && (
+                <div className="card" style={{ textAlign: "left", maxWidth: 680, margin: "0 auto 24px", background: "var(--iv2)", border: "1px solid rgba(200,168,75,.3)" }}>
+                  <p style={{ fontSize: ".76rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 10 }}>Important — takes 3 minutes</p>
+                  <h3 className="cg" style={{ fontSize: "1.15rem", fontWeight: 500, color: "var(--sl)", marginBottom: 10, lineHeight: 1.3 }}>Complete your clinical context form</h3>
+                  <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 16 }}>
+                    8 short questions about your symptoms and health goals. Dr Tosin uses your answers when interpreting your results so your report is personalised to you, not just a list of reference ranges.
+                  </p>
+                  <Link href={`/blood-tests/questionnaire?tier=${tier}`} className="btn btn-go" style={{ display: "inline-block" }}>
+                    Complete 8-question form →
+                  </Link>
+                </div>
+              )}
               <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>
+                {!isBloodTestTier && <Link href="/intake" className="btn btn-fo">Complete Clinical Intake →</Link>}
                 <Link href="/" className="btn btn-ol">Return to Home</Link>
               </div>
             </div>
