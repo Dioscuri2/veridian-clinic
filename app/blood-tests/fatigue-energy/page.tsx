@@ -166,7 +166,7 @@ export default function FatigueEnergyPage() {
             {[
               { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Blood Test", note: "From £195" },
               { href: "/blood-tests/metabolic-screen", label: "Energy Screen entry level fatigue panel", note: "£195" },
-              { href: "/blood-tests/womens-hormones", label: "Women's Hormone & Perimenopause Panel", note: "£325" },
+              { href: "/blood-tests/womens-hormones", label: "Women's Hormone & Perimenopause Panel", note: "£375" },
               { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£325" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
             ].map((t) => (

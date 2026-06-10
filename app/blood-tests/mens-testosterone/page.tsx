@@ -149,7 +149,7 @@ export default function MensTestosteronePage() {
           <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
           <div style={{ display: "grid", gap: 10 }}>
             {[
-              { href: "/blood-tests/womens-hormones", label: "Women's Hormone & Perimenopause Panel", note: "£325" },
+              { href: "/blood-tests/womens-hormones", label: "Women's Hormone & Perimenopause Panel", note: "£375" },
               { href: "/blood-tests/fatigue-energy", label: "Fatigue & Energy Deep Screen", note: "£249" },
               { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Blood Test", note: "From £795" },
               { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195" },

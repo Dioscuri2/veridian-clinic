@@ -152,9 +152,9 @@ A: PERC stands for: Body Strength & Fitness, Energy & Metabolism, Rest & Repair,
 
 TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 working days
 
-1. Is It My Hormones? — Women's Hormone & Perimenopause Panel — £325
+1. Is It My Hormones? — Women's Hormone & Perimenopause Panel — £375
    Markers: Oestradiol, FSH, LH, progesterone, testosterone (total + free), SHBG, prolactin, cortisol, TSH, FT3, FT4, TPO antibodies, Lp(a), fasting insulin, HbA1c, vitamin D
-   Best for: Brain fog, poor sleep, weight gain, mood changes, irregular periods, perimenopause symptoms
+   Best for: Brain fog, poor sleep, weight gain, mood changes, irregular periods, perimenopause symptoms, "told blood tests are normal but don't feel right"
    Book: veridianclinic.com/book?tier=womens-hormones
 
 2. Running on Empty — Men's Testosterone & Hormone Panel — £325
@@ -177,9 +177,9 @@ TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 
    Best for: Weight not shifting despite diet and exercise; suspected insulin resistance
    Book: veridianclinic.com/book?tier=metabolic-weight
 
-6. The Optimiser's Baseline — Performance & Longevity Panel — £395
-   Markers: IGF-1, fasting insulin, HbA1c, cortisol (AM), total testosterone, free testosterone, SHBG, LH, FSH, DHEA-S, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, Lp(a), full lipid profile, hs-CRP
-   Best for: Health optimisers wanting a comprehensive documented baseline; biohackers; anyone proactively managing longevity
+6. The Optimiser's Baseline — Performance & Longevity Panel — £449
+   Markers: IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Leptin, Adiponectin, Resistin, Cystatin C, Magnesium, Uric Acid, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP
+   Best for: Health optimisers, biohackers, anyone on peptides or HRT wanting a safety baseline; people tracking wearable data who want blood context; pre-protocol baseline before any longevity intervention
    Book: veridianclinic.com/book?tier=optimiser-baseline
 
 WEIGHT LOSS INJECTIONS — Private GP-led prescription service

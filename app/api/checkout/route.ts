@@ -96,7 +96,7 @@ const tierCatalog: Record<
   },
   "womens-hormones": {
     name: "Is It My Hormones?, Women's Hormone & Perimenopause Panel",
-    amount: 32500,
+    amount: 37500,
     description:
       "Full female hormonal profile: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, cortisol. Thyroid: TSH, FT3, FT4, TPO antibodies. Plus Lp(a), fasting insulin, HbA1c, vitamin D. GP-reviewed written report with personalised clinical interpretation included.",
     successPath: "/book/thank-you",
@@ -135,10 +135,10 @@ const tierCatalog: Record<
     cancelPath: "/assessments",
   },
   "optimiser-baseline": {
-    name: "The Optimiser's Baseline, Performance & Safety Panel",
-    amount: 39500,
+    name: "The Optimiser's Baseline, Performance & Longevity Panel",
+    amount: 44900,
     description:
-      "IGF-1, fasting insulin, HbA1c, cortisol (AM), total + free testosterone, SHBG, LH, FSH, DHEA-S, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, Lp(a), full lipid profile, hs-CRP. GP-reviewed baseline report included.",
+      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total + free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Leptin, Adiponectin, Resistin, Cystatin C, Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP. GP-reviewed baseline report included.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },

@@ -13,7 +13,7 @@ interface PanelInfo {
 const PANELS: Record<string, PanelInfo> = {
   "womens-hormones": {
     name: "Is It My Hormones? — Women's Hormone & Perimenopause Panel",
-    price: "£325",
+    price: "£375",
     markerSummary: [
       "Full female hormones: Oestradiol, FSH, LH, Progesterone, Prolactin, SHBG, Testosterone",
       "Thyroid: TSH, FT3, FT4, TPO antibodies",
@@ -72,16 +72,17 @@ const PANELS: Record<string, PanelInfo> = {
     randoxNotes: "Two Randox panels combined. Include Leptin + Adiponectin as add-ons.",
   },
   "optimiser-baseline": {
-    name: "The Optimiser's Baseline — Performance & Safety Panel",
-    price: "£395",
+    name: "The Optimiser's Baseline — Performance & Longevity Panel",
+    price: "£449",
     markerSummary: [
-      "IGF-1, Fasting Insulin, HbA1c, Cortisol (AM)",
-      "Total + Free Testosterone, SHBG, LH, FSH, DHEA-S",
-      "Full Blood Count, Liver & Kidney function, Lp(a), Full Lipid Profile, hs-CRP",
+      "IGF-1, Fasting Insulin, HbA1c, Cortisol (AM), DHEA-S",
+      "Total + Free Testosterone, SHBG, LH, FSH",
+      "ApoB, Lp(a), sdLDL, ApoA-I, Full Lipid Profile, Leptin, Adiponectin, Resistin",
+      "Cystatin C, Magnesium, Uric Acid, Full Blood Count, Liver (ALT/AST/GGT), Kidney + eGFR, hs-CRP",
     ],
     fastingRequired: true,
-    randoxCode: "HSC8M or HSC8F + IGF-1 + Fasting Insulin + Cortisol (AM) + Testosterone",
-    randoxNotes: "HSC8M for male, HSC8F for female. Add Lp(a) + full lipids if not in base panel.",
+    randoxCode: "HSC8M or HSC8F + HSC12 + IGF-1 (Medichecks kit)",
+    randoxNotes: "HSC8 covers ApoB/Lp(a)/sdLDL/Leptin/Adiponectin/Resistin/Insulin/Cystatin C. HSC12 adds Cortisol/DHEA-S/performance. IGF-1 via Medichecks practitioner kit ordered separately.",
   },
   "metabolic-screen": {
     name: "Veridian Energy Screen",

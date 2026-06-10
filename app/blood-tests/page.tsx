@@ -82,9 +82,9 @@ const tests = [
     slug: "womens-hormones",
     title: "Perimenopause & Women's Hormone Blood Test",
     excerpt:
-      "Fatigue, weight gain, poor sleep, low mood, irregular cycles and a normal blood test result. This panel measures the full hormonal picture: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, thyroid, Lp(a) and fasting insulin. Interpreted by a GP.",
+      "Fatigue, weight gain, poor sleep, low mood, irregular cycles and a normal blood test result every time. This panel measures what standard tests miss: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, thyroid, Lp(a) and fasting insulin. Interpreted by a GP.",
     tag: "Women's Health",
-    price: "£325",
+    price: "£375",
     includedIn: "Is It My Hormones? Panel",
   },
   {
@@ -127,9 +127,9 @@ const tests = [
     slug: "optimiser-baseline",
     title: "The Optimiser's Baseline",
     excerpt:
-      "A comprehensive performance and longevity panel for health optimisers. IGF-1, testosterone, cortisol, fasting insulin, Lp(a), full organ function and inflammatory markers, a documented baseline you can measure against year after year.",
+      "For people who track their biology seriously and want a documented starting point. IGF-1, ApoB, Lp(a), sdLDL, Leptin, Adiponectin, cortisol, DHEA-S, testosterone, fasting insulin, Cystatin C and full organ safety. A benchmark to return to every year.",
     tag: "Longevity",
-    price: "£395",
+    price: "£449",
     includedIn: "Optimiser's Baseline Panel",
   },
 ];

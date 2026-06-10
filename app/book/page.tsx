@@ -56,7 +56,7 @@ const tierDetails: Record<string, {
   },
   "womens-hormones": {
     title: "Is It My Hormones? Women's Panel",
-    price: "£325",
+    price: "£375",
     duration: "Blood test",
     description: "Full female hormonal profile including oestradiol, progesterone, testosterone, thyroid, Lp(a), fasting insulin and vitamin D GP-reviewed written interpretation included.",
   },
@@ -86,9 +86,9 @@ const tierDetails: Record<string, {
   },
   "optimiser-baseline": {
     title: "The Optimiser's Baseline",
-    price: "£395",
+    price: "£449",
     duration: "Blood test",
-    description: "Performance and safety baseline covering IGF-1, testosterone, cortisol, insulin, liver and kidney function, Lp(a) and full lipid profile. GP-reviewed report included.",
+    description: "Comprehensive performance and longevity baseline: IGF-1, ApoB, Lp(a), sdLDL, Leptin, Adiponectin, cortisol, DHEA-S, testosterone, fasting insulin, Cystatin C, full organ safety. GP-reviewed report included.",
   },
 };
 

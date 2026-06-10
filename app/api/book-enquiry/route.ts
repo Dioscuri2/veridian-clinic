@@ -20,7 +20,7 @@ const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
   "cardiovascular-risk":{ code: "RP10 + Lp(a) + ApoB + Homocysteine + hsCRP + Small Dense LDL + Fasting Insulin", notes: "RP10 as base; cardiovascular add-ons listed. Include HbA1c." },
   "fatigue-energy":     { code: "HSC10 + Fasting Insulin + Uric Acid + Vit D", notes: "HSC10 base includes FBC, thyroid (FT3/FT4/TSH/TPO), iron, B12, folate, CRP, kidney." },
   "metabolic-weight":   { code: "RP3 + RP4 + Fasting Insulin + Uric Acid + Lp(a)", notes: "Two Randox panels combined. Include Leptin + Adiponectin as add-ons." },
-  "optimiser-baseline": { code: "HSC8M or HSC8F + IGF-1 + Fasting Insulin + Cortisol (AM) + Testosterone", notes: "HSC8M for male patients, HSC8F for female. Add Lp(a) + full lipids if not in base." },
+  "optimiser-baseline": { code: "HSC8M or HSC8F + HSC12 + IGF-1 (Medichecks kit)", notes: "HSC8 covers ApoB/Lp(a)/sdLDL/Leptin/Adiponectin/Resistin/Insulin/Cystatin C. HSC12 adds Cortisol/DHEA-S. IGF-1 via Medichecks practitioner kit." },
   "metabolic-screen":   { code: "HSC7 (Energy Screen)", notes: "Standard Veridian Energy Screen, single panel code." },
   baseline:             { code: "Veridian Baseline, custom metabolic panel", notes: "Full ThanksDoc clinical programme. Also includes 14-day Lingo CGM, order separately." },
   "longevity-panel":    { code: "Longevity Panel, 150+ markers", notes: "Full ThanksDoc clinical programme. Confirm panel code with Randox account manager." },
@@ -36,12 +36,12 @@ const TIER_LABELS: Record<string, string> = {
   baseline: "Veridian Baseline (£595)",
   "longevity-panel": "Longevity Panel (£795)",
   programme: "12-Week Metabolic Reset (£1,895)",
-  "womens-hormones": "Is It My Hormones?, Women's Panel (£325)",
+  "womens-hormones": "Is It My Hormones?, Women's Panel (£375)",
   "mens-testosterone": "Running on Empty, Men's Panel (£325)",
   "cardiovascular-risk": "What Your Cholesterol Test Missed (£349)",
   "fatigue-energy": "Tired of Being Told You're Fine (£249)",
   "metabolic-weight": "Why Won't The Weight Budge? (£199)",
-  "optimiser-baseline": "The Optimiser's Baseline (£395)",
+  "optimiser-baseline": "The Optimiser's Baseline (£449)",
 };
 
 function isValidEmail(e: string) {
