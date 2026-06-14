@@ -8,12 +8,13 @@ export async function GET(request: NextRequest) {
   const state = searchParams.get("state");
   const error = searchParams.get("error");
 
+  const site = process.env.NEXT_PUBLIC_SITE_URL || "https://veridianclinic.com";
   const adminToken = computeAdminToken(process.env.ADMIN_PASSWORD || "");
   if (!state || state !== adminToken) {
-    return NextResponse.redirect(new URL("/admin?tab=social&error=csrf", request.url));
+    return NextResponse.redirect(`${site}/admin?tab=social&error=csrf`);
   }
   if (error || !code) {
-    return NextResponse.redirect(new URL(`/admin?tab=social&error=${error || "no_code"}`, request.url));
+    return NextResponse.redirect(`${site}/admin?tab=social&error=${error || "no_code"}`);
   }
 
   const clientId = process.env.LINKEDIN_CLIENT_ID!;
@@ -36,7 +37,7 @@ export async function GET(request: NextRequest) {
   if (!tokenRes.ok) {
     const err = await tokenRes.text();
     console.error("LinkedIn token exchange failed:", err);
-    return NextResponse.redirect(new URL("/admin?tab=social&error=token_exchange", request.url));
+    return NextResponse.redirect(`${site}/admin?tab=social&error=token_exchange`);
   }
 
   const tokenData = await tokenRes.json();
@@ -47,7 +48,7 @@ export async function GET(request: NextRequest) {
   });
 
   if (!userRes.ok) {
-    return NextResponse.redirect(new URL("/admin?tab=social&error=userinfo", request.url));
+    return NextResponse.redirect(`${site}/admin?tab=social&error=userinfo`);
   }
 
   const userInfo = await userRes.json();
@@ -62,5 +63,5 @@ export async function GET(request: NextRequest) {
     name: userInfo.name || userInfo.given_name || "Dr Tosin",
   });
 
-  return NextResponse.redirect(new URL("/admin?tab=social&connected=linkedin", request.url));
+  return NextResponse.redirect(`${site}/admin?tab=social&connected=linkedin`);
 }
