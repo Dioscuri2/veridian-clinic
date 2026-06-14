@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminRequest, computeAdminToken } from "@/lib/adminAuth";
 
 export async function GET(request: NextRequest) {
+  const site = process.env.NEXT_PUBLIC_SITE_URL || "https://veridianclinic.com";
+
   if (!verifyAdminRequest(request)) {
-    return NextResponse.redirect(new URL("/admin/login", request.url));
+    return NextResponse.redirect(`${site}/admin/login`);
   }
 
   const clientId = process.env.LINKEDIN_CLIENT_ID;
@@ -12,8 +14,8 @@ export async function GET(request: NextRequest) {
   }
 
   const state = computeAdminToken(process.env.ADMIN_PASSWORD || "");
-  const redirectUri = `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/linkedin/callback`;
-  const scopes = "openid profile w_member_social offline_access";
+  const redirectUri = `${site}/api/auth/linkedin/callback`;
+  const scopes = "openid profile w_member_social";
 
   const url = new URL("https://www.linkedin.com/oauth/v2/authorization");
   url.searchParams.set("response_type", "code");
