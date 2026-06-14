@@ -11,6 +11,13 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: "should-i-take-a-statin",
+    title: "Should I take a statin? What to check before you decide",
+    excerpt: "Been told your cholesterol is borderline or that you might need to start a statin? Here is what the standard NHS test does not measure, which lifestyle changes genuinely move the needle, which supplements have real evidence behind them, and when a statin is clearly the right call.",
+    tag: "Cardiovascular Risk",
+    readTime: "12 min read",
+  },
+  {
     slug: "homocysteine",
     title: "Homocysteine the cardiovascular risk marker most GPs don't check",
     excerpt: "Homocysteine is an independent cardiovascular and cognitive risk marker not included in standard NHS panels. Elevated levels are most commonly caused by low folate or B12 yet they silently drive endothelial damage, inflammation, and vascular risk that conventional screening completely misses.",
