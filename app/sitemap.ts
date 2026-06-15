@@ -31,6 +31,7 @@ const staticRoutes = [
   "/executive-waitlist",
   "/markers-guide",
   "/metabolic-age",
+  "/metabolic-scorecard",
   "/metabolic-quiz",
   "/metabolic-quiz/scorecard",
   "/metabolic-reset-guide",

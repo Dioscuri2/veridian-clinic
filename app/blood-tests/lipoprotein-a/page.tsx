@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Lipoprotein(a) Blood Test UK Private Lp(a) Testing | Veridian Clinic",
+  title: { absolute: "Lipoprotein(a) Blood Test UK Private Lp(a) Testing | Veridian Clinic" },
   description:
     "A private Lp(a) blood test in the UK measures your lipoprotein(a) level a genetically determined cardiovascular risk marker that the NHS doesn't routinely test. Affects 1 in 5 people. Included in the Longevity Panel (£795), interpreted by a GP with a personalised action plan.",
   alternates: {

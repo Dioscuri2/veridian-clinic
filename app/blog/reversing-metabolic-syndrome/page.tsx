@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Reversing Metabolic Syndrome What the Evidence Actually Supports | Veridian Clinic",
+  title: { absolute: "Reversing Metabolic Syndrome What the Evidence Actually Supports | Veridian Clinic" },
   description:
     "Metabolic syndrome is not a fixed diagnosis. Clinical evidence shows meaningful reversal is achievable in 12 weeks through targeted changes to diet, activity, sleep, and body composition, with objective biomarker tracking to confirm what is actually improving.",
   alternates: {

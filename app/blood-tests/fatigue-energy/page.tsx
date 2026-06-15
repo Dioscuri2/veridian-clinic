@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Private Fatigue Blood Test UK Thyroid, Insulin & Iron Panel | Veridian Clinic",
+  title: { absolute: "Private Fatigue Blood Test UK Thyroid, Insulin & Iron Panel | Veridian Clinic" },
   description:
     "A private fatigue blood test in the UK that goes beyond standard GP screening. Thyroid (including TPO antibodies), fasting insulin, ferritin, uric acid, B12, vitamin D and hs-CRP GP-reviewed written interpretation. £249.",
   alternates: {

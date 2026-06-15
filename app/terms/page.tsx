@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Veridian Clinic",
+  title: { absolute: "Terms of Service | Veridian Clinic" },
   robots: { index: true, follow: true },
   alternates: { canonical: "https://veridianclinic.com/terms" },
 };

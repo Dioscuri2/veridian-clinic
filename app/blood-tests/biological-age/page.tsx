@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Biological Age Blood Test UK Longevity Panel | Veridian Clinic",
+  title: { absolute: "Biological Age Blood Test UK Longevity Panel | Veridian Clinic" },
   description:
     "A private biological age blood test in the UK. The Longevity Panel analyses 150+ markers inflammation, metabolic function, organ health, hormones, and cardiovascular risk to estimate how your body is ageing relative to your chronological age. £795, GP-interpreted.",
   alternates: {

@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Fatigue & Energy Blood Test UK Metabolic Screen | Veridian Clinic",
+  title: { absolute: "Fatigue & Energy Blood Test UK Metabolic Screen | Veridian Clinic" },
   description:
     "A private fatigue and energy blood test in the UK that tests thyroid function, fasting insulin, iron, B12, cortisol, and testosterone simultaneously. The Energy Screen (£195) identifies the metabolic causes of unexplained fatigue that standard GP panels routinely miss.",
   alternates: {

@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Testosterone Blood Test UK Private Men's Hormone Panel | Veridian Clinic",
+  title: { absolute: "Testosterone Blood Test UK Private Men's Hormone Panel | Veridian Clinic" },
   description:
     "A private testosterone and men's hormone blood test in the UK. Total and free testosterone, SHBG, LH, FSH, DHEA-S, cortisol and Lp(a) GP-reviewed written interpretation. Running on Empty Panel £325.",
   alternates: {

@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Private Cardiovascular Risk Blood Test UK Beyond Cholesterol | Veridian Clinic",
+  title: { absolute: "Private Cardiovascular Risk Blood Test UK Beyond Cholesterol | Veridian Clinic" },
   description:
     "Your cholesterol result misses the most important cardiovascular risk markers. ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin, private GP-interpreted cardiovascular panel. £349.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/cardiovascular-risk" },

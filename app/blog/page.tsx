@@ -5,8 +5,9 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
-  title: "Clinical Insights | Veridian Clinic",
+  title: "Clinical Insights",
   description: "GP-authored articles on metabolic health, longevity medicine, cardiovascular risk markers, and the science behind early intervention.",
+  alternates: { canonical: "https://veridianclinic.com/blog" },
 };
 
 const articles = [

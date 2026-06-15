@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Lipoprotein(a), ApoB and Triglycerides The Cardiovascular Triple Threat | Veridian Clinic",
+  title: { absolute: "Lipoprotein(a), ApoB and Triglycerides The Cardiovascular Triple Threat | Veridian Clinic" },
   description:
     "Lipoprotein(a), ApoB, and triglyceride-rich remnant particles are three independent cardiovascular risk pathways your NHS cholesterol test does not measure. Here is what they are, why they matter together, and what to do about them in the UK.",
   alternates: {

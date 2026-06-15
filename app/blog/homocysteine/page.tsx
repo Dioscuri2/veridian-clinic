@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Homocysteine Test UK What It Is, When to Test, and What High Levels Mean | Veridian Clinic",
+  title: { absolute: "Homocysteine Test UK What It Is, When to Test, and What High Levels Mean | Veridian Clinic" },
   description:
     "Homocysteine is an independent cardiovascular risk marker that NHS panels routinely omit. This GP-authored guide explains what homocysteine is, what a high result means, and how private testing in the UK can reveal risk that standard cholesterol panels miss.",
   alternates: {

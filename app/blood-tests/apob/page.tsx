@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "ApoB Blood Test UK Private Apolipoprotein B Testing | Veridian Clinic",
+  title: { absolute: "ApoB Blood Test UK Private Apolipoprotein B Testing | Veridian Clinic" },
   description:
     "A private ApoB blood test in the UK measures the number of atherogenic lipoprotein particles in your blood a more accurate cardiovascular risk marker than LDL cholesterol, especially in metabolic syndrome and insulin resistance. Included in the Metabolic Baseline (£595) and Longevity Panel (£795).",
   alternates: {

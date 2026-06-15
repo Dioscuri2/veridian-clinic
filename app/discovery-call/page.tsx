@@ -7,8 +7,9 @@ import { FONTS, CSS } from "@/components/globalStyles";
 const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 
 export const metadata: Metadata = {
-  title: "GP Discovery Call | Veridian Clinic",
-  description: "A focused 30-minute GP-led review of your metabolic result, your key risk factors, and a personalised clinical pathway recommendation.",
+  title: "GP Discovery Call",
+  description: "A focused 30-minute GP-led consultation to review your key metabolic risk factors and recommend the right diagnostic next step.",
+  alternates: { canonical: "https://veridianclinic.com/discovery-call" },
 };
 
 const agenda = [

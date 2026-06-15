@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
-  title: "Private Blood Tests UK Advanced Metabolic & Longevity Testing | Veridian Clinic",
+  title: { absolute: "Private Blood Tests UK Advanced Metabolic & Longevity Testing | Veridian Clinic" },
   description:
     "GP-ordered private blood tests for high-intent health screening in the UK. ApoB, fasting insulin, Lp(a), biological age, and metabolic fatigue panels results interpreted by a GP with a personalised action plan.",
   alternates: {

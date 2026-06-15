@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Should I Take a Statin? What to Check Before You Decide | Veridian Clinic",
+  title: { absolute: "Should I Take a Statin? What to Check Before You Decide | Veridian Clinic" },
   description:
     "Been told your cholesterol is borderline or that you need a statin? Here is what the NHS test does not measure, which lifestyle changes actually move the needle, and when a statin genuinely is the right call.",
   alternates: {

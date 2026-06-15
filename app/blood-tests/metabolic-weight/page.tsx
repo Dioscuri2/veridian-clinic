@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Private Metabolic Weight Resistance Blood Test UK | Veridian Clinic",
+  title: { absolute: "Private Metabolic Weight Resistance Blood Test UK | Veridian Clinic" },
   description:
     "Eating well and exercising but weight won't shift? Fasting insulin, HOMA-IR, leptin, adiponectin, uric acid and thyroid, the metabolic panel that explains weight resistance. £199.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/metabolic-weight" },

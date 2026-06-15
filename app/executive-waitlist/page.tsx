@@ -26,9 +26,10 @@ const pillars = [
 ];
 
 export const metadata = {
-  title: "Executive Healthspan Waitlist | Veridian Clinic",
+  title: { absolute: "Executive Healthspan Waitlist | Veridian Clinic" },
   description:
     "Apply for priority access to Veridian Clinic’s Executive Healthspan pathway an exclusive, high-touch clinical experience.",
+  alternates: { canonical: "https://veridianclinic.com/executive-waitlist" },
 };
 
 export default function ExecutiveWaitlistPage() {

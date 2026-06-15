@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "ApoB vs LDL: What They Actually Measure and Why It Matters | Veridian Clinic",
+  title: { absolute: "ApoB vs LDL: What They Actually Measure and Why It Matters | Veridian Clinic" },
   description:
     "ApoB counts the number of harmful particles in your blood. LDL measures the cholesterol they carry. The difference can reveal heart disease risk that standard tests miss. A plain-English explanation of both markers, including what Lp(a) is and why it is treated separately.",
   alternates: {

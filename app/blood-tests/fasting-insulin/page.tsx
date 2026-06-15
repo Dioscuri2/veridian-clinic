@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Fasting Insulin Blood Test UK Private Testing for Insulin Resistance | Veridian Clinic",
+  title: { absolute: "Fasting Insulin Blood Test UK Private Testing for Insulin Resistance | Veridian Clinic" },
   description:
     "A private fasting insulin blood test in the UK reveals early insulin resistance years before HbA1c rises. Not offered on NHS routine screening. Included in the Energy Screen (£195) and Metabolic Baseline (£595) results interpreted by a GP with a personalised action plan.",
   alternates: {

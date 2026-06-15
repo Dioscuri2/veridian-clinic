@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Fasting Insulin Test UK What It Measures and Why It Matters | Veridian Clinic",
+  title: { absolute: "Fasting Insulin Test UK What It Measures and Why It Matters | Veridian Clinic" },
   description:
     "Fasting insulin is one of the most clinically useful but under-requested markers in UK preventive medicine. It reveals early insulin resistance years before HbA1c or fasting glucose become abnormal, identifying who is at risk while intervention is still most effective.",
   alternates: {

@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic",
+  title: { absolute: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic" },
   description:
     "A comprehensive performance and longevity blood panel for health optimisers. IGF-1, ApoB, Lp(a), sdLDL, Leptin, Adiponectin, testosterone, cortisol, fasting insulin, full organ safety. GP-reviewed written report. £449.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/optimiser-baseline" },

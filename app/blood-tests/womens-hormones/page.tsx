@@ -3,7 +3,7 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Perimenopause Blood Test UK Private Women's Hormone Panel | Veridian Clinic",
+  title: { absolute: "Perimenopause Blood Test UK Private Women's Hormone Panel | Veridian Clinic" },
   description:
     "A private perimenopause and women's hormone blood test in the UK. Oestradiol, FSH, LH, progesterone, testosterone, thyroid, Lp(a) and fasting insulin GP-reviewed written interpretation. Is It My Hormones? Panel £375.",
   alternates: {
