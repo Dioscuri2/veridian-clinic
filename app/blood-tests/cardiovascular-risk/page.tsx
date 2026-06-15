@@ -119,11 +119,11 @@ export default function CardiovascularRiskPage() {
           </thead>
           <tbody>
             {[
-              ["ApoB", "Under 1.4 g/L", "Under 0.85 g/L (primary prevention)"],
+              ["ApoB", "Under 1.3 g/L", "Under 0.85 g/L (primary prevention)"],
               ["Lp(a)", "Under 75 nmol/L", "Under 50 nmol/L preferred"],
               ["Homocysteine", "Under 15 µmol/L", "Under 10 µmol/L"],
               ["hs-CRP", "Under 3 mg/L", "Under 1 mg/L"],
-              ["Fasting insulin", "Under 25 mU/L", "Under 8 mU/L"],
+              ["Fasting insulin", "Under 17 mU/L", "Under 8 mU/L"],
               ["Triglycerides", "Under 1.7 mmol/L", "Under 1.1 mmol/L"],
             ].map(([m, lab, opt], i) => (
               <tr key={m} style={{ background: i % 2 === 0 ? "var(--iv)" : "var(--iv2)" }}>
