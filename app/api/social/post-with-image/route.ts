@@ -5,7 +5,7 @@ import { getLinkedInTokens } from "@/lib/socialPost";
 async function uploadImageToLinkedIn(
   token: string,
   personUrn: string,
-  imageBuffer: Buffer,
+  imageBuffer: ArrayBuffer,
   mimeType: string
 ): Promise<string> {
   // Step 1: Register the upload
@@ -73,16 +73,16 @@ export async function POST(request: NextRequest) {
   let assetUrn: string | null = null;
 
   if (imageFile || imageUrl) {
-    let imageBuffer: Buffer;
+    let imageBuffer: ArrayBuffer;
     let mimeType: string;
 
     if (imageFile) {
-      imageBuffer = Buffer.from(await imageFile.arrayBuffer());
+      imageBuffer = await imageFile.arrayBuffer();
       mimeType = imageFile.type || "image/jpeg";
     } else {
       const imgRes = await fetch(imageUrl!);
       if (!imgRes.ok) throw new Error("Failed to fetch image from URL");
-      imageBuffer = Buffer.from(await imgRes.arrayBuffer());
+      imageBuffer = await imgRes.arrayBuffer();
       mimeType = imgRes.headers.get("content-type") || "image/jpeg";
     }
 
