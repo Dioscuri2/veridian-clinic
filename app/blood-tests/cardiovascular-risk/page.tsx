@@ -57,7 +57,7 @@ export default function CardiovascularRiskPage() {
       title="Your cholesterol test didn't tell you the whole story."
       intro="Total cholesterol is one number. Cardiovascular risk is built from twelve. The markers that actually predict a heart attack, ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin, are almost never included in a standard NHS or GP cholesterol test."
       ctas={[
-        { label: "Book What Your Cholesterol Test Missed, £349", href: "/book?tier=cardiovascular-risk", variant: "primary" },
+        { label: "Book the Cardiovascular Risk Panel, £349", href: "/book?tier=cardiovascular-risk", variant: "primary" },
         { label: "Book a GP Discovery Call first", href: "/book?tier=discovery" },
       ]}
     >
@@ -71,7 +71,7 @@ export default function CardiovascularRiskPage() {
 
       <h2 className="cg" style={sectionHeading}>The markers your test almost certainly missed</h2>
       <p style={paragraph}>
-        The What Your Cholesterol Test Missed panel checks twelve markers across cardiovascular risk, metabolic function, and inflammation:
+        The cardiovascular risk panel checks nine key markers across cardiovascular risk, metabolic function, and inflammation:
       </p>
       <div style={{ display: "grid", gap: 12, margin: "20px 0" }}>
         {[
@@ -82,6 +82,7 @@ export default function CardiovascularRiskPage() {
           { marker: "hs-CRP", why: "High-sensitivity C-reactive protein measures systemic inflammation, the process that drives plaque rupture. Independently predictive of cardiovascular events even with normal cholesterol." },
           { marker: "Fasting insulin and HbA1c", why: "Insulin resistance accelerates atherosclerosis years before glucose rises. The link between metabolic dysfunction and cardiovascular risk is causal, not just correlational." },
           { marker: "Full lipid profile", why: "Total cholesterol, LDL, HDL, triglycerides, and TC:HDL ratio, the context for interpreting ApoB and particle data." },
+          { marker: "ApoA-I", why: "The main protein on HDL particles. A low ApoA-I relative to ApoB signals poor reverse cholesterol transport, meaning the body is less effective at clearing cholesterol from artery walls. The ApoB:ApoA-I ratio is one of the strongest independent predictors of cardiovascular risk in large epidemiological studies." },
         ].map(item => (
           <div key={item.marker} style={callout}>
             <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>{item.marker}</p>
@@ -118,7 +119,7 @@ export default function CardiovascularRiskPage() {
           </thead>
           <tbody>
             {[
-              ["ApoB", "Under 1.4 g/L", "Under 0.9 g/L (primary prevention)"],
+              ["ApoB", "Under 1.4 g/L", "Under 0.85 g/L (primary prevention)"],
               ["Lp(a)", "Under 75 nmol/L", "Under 50 nmol/L preferred"],
               ["Homocysteine", "Under 15 µmol/L", "Under 10 µmol/L"],
               ["hs-CRP", "Under 3 mg/L", "Under 1 mg/L"],
