@@ -12,6 +12,41 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: "vigorous-exercise",
+    title: "Four minutes a day: the most powerful longevity intervention is also the cheapest",
+    excerpt: "Around four cumulative minutes of vigorous exercise per day is linked to roughly 36% lower all-cause and cancer mortality. One vigorous minute carries the cancer-risk benefit of approximately 2.5 hours of gentle walking. It does not require a gym. Here is what the evidence shows and why cardiorespiratory fitness is one of the strongest longevity predictors available.",
+    tag: "Longevity Medicine",
+    readTime: "14 min read",
+  },
+  {
+    slug: "sulforaphane",
+    title: "The compound in broccoli sprouts that helps your body clean up after city living",
+    excerpt: "Sulforaphane activates NRF2, a master genetic switch that upregulates glutathione and phase-2 detoxification enzymes. Human trials show up to 40% reduction in oxidative DNA damage and 61% faster carcinogen excretion. The catch: cooking destroys the enzyme that makes it. Here is the evidence and what actually works as a source.",
+    tag: "Longevity Medicine",
+    readTime: "12 min read",
+  },
+  {
+    slug: "multivitamins",
+    title: "\"Multivitamins are useless\" is officially outdated",
+    excerpt: "Three large randomised controlled trials in adults 65+ found that a standard multivitamin slowed global cognitive ageing by roughly two years and episodic memory ageing by roughly five years compared to placebo. Here is what the COSMOS trials actually showed and why widespread micronutrient shortfalls are more common than assumed.",
+    tag: "Longevity Medicine",
+    readTime: "11 min read",
+  },
+  {
+    slug: "omega-3",
+    title: "The blood marker that predicts your heart risk better than cholesterol gets all the attention",
+    excerpt: "The omega-3 index measures EPA and DHA in red blood cell membranes over 120 days. A high index is linked to roughly 90% lower sudden cardiac death risk vs a low index. A low index carries a mortality signal comparable to smoking in some analyses. It is not on any standard NHS panel.",
+    tag: "Cardiovascular Risk",
+    readTime: "13 min read",
+  },
+  {
+    slug: "vitamin-d",
+    title: "Vitamin D isn't really a vitamin — and that changes everything",
+    excerpt: "Vitamin D3 converts to a steroid hormone that regulates around 1,000 genes, roughly 5% of the human genome. Around 70% of UK adults are below optimal due to latitude, indoor work, and age, not diet. Low status is linked to higher all-cause mortality, roughly 50% higher dementia risk, and faster biological ageing.",
+    tag: "Longevity Medicine",
+    readTime: "12 min read",
+  },
+  {
     slug: "should-i-take-a-statin",
     title: "Should I take a statin? What to check before you decide",
     excerpt: "Been told your cholesterol is borderline or that you might need to start a statin? Here is what the standard NHS test does not measure, which lifestyle changes genuinely move the needle, which supplements have real evidence behind them, and when a statin is clearly the right call.",
