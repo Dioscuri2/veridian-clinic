@@ -19,7 +19,7 @@ export default function Navigation() {
   const anchor = (hash) => isHome ? hash : `/${hash}`;
 
   const navLinks = [
-    { label: "How It Works", href: anchor("#process") },
+    { label: "About", href: "/about" },
     { label: "Metabolic Quiz", href: "/metabolic-quiz" },
     { label: "Assessments", href: "/assessments" },
     { label: "Weight Loss", href: "/weight-loss" },
