@@ -109,7 +109,7 @@ export default function VigorousExercisePage() {
         title="Four minutes a day: the most powerful longevity intervention is also the cheapest"
         intro="Around four cumulative minutes of vigorous exercise per day is linked to roughly 36% lower all-cause and cancer mortality in large population studies. One vigorous minute carries approximately the cancer-risk benefit of two and a half hours of gentle walking. It does not require a gym, a class, or an hour of dedicated time. This guide explains what the evidence shows, what vigorous actually means, and why the body responds to the physiological effort regardless of context."
         ctas={[
-          { href: "/book?tier=metabolic-screen", label: "Book Energy Screen £195 — includes fitness and metabolic markers →" },
+          { href: "/book?tier=metabolic-screen", label: "Book Energy Screen £195, includes fitness and metabolic markers →" },
           { href: "/assessments", label: "View all assessment pathways", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}

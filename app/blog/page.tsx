@@ -41,7 +41,7 @@ const articles = [
   },
   {
     slug: "vitamin-d",
-    title: "Vitamin D isn't really a vitamin — and that changes everything",
+    title: "Vitamin D isn't really a vitamin, and that changes everything",
     excerpt: "Vitamin D3 converts to a steroid hormone that regulates around 1,000 genes, roughly 5% of the human genome. Around 70% of UK adults are below optimal due to latitude, indoor work, and age, not diet. Low status is linked to higher all-cause mortality, roughly 50% higher dementia risk, and faster biological ageing.",
     tag: "Longevity Medicine",
     readTime: "12 min read",

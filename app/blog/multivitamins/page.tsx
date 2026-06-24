@@ -101,7 +101,7 @@ export default function MultivitaminsPage() {
         title='"Multivitamins are useless" is officially outdated'
         intro="Three large randomised controlled trials in adults 65 and over found that a standard off-the-shelf multivitamin slowed global cognitive ageing by roughly two years and episodic memory ageing by roughly five years compared to placebo. This is not the finding medicine expected. Here is what the COSMOS trials actually showed, why widespread micronutrient shortfalls are more common than most people assume, and why testing beats guessing."
         ctas={[
-          { href: "/book?tier=fatigue-energy", label: "Book Fatigue and Energy Panel £249 — includes key micronutrients →" },
+          { href: "/book?tier=fatigue-energy", label: "Book Fatigue and Energy Panel £249, includes key micronutrients →" },
           { href: "/book?tier=longevity-panel", label: "Book Longevity Panel 150+ markers £795", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}

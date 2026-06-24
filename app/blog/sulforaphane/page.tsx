@@ -109,7 +109,7 @@ export default function SulforaphanePage() {
         title="The compound in broccoli sprouts that helps your body clean up after city living"
         intro="Sulforaphane does not act as a conventional antioxidant. It activates NRF2, a master genetic switch that prompts your own cells to upregulate glutathione production and phase-2 detoxification enzymes. Human trials show it can reduce oxidative DNA damage by up to 40% and clear environmental carcinogens faster. The catch: cooking destroys the enzyme that makes it. Here is the evidence, the mechanism, and what actually works as a source."
         ctas={[
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel £795 — oxidative stress markers included →" },
+          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel £795, oxidative stress markers included →" },
           { href: "/assessments", label: "View all assessment pathways", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
@@ -160,7 +160,7 @@ export default function SulforaphanePage() {
 
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>Practical sources ranked by sulforaphane yield:</strong> (1) Broccoli sprouts, eaten raw — highest concentration of glucoraphanin, myrosinase intact. (2) Raw broccoli florets, finely chopped — intact myrosinase, lower glucoraphanin than sprouts. (3) Cooked broccoli plus mustard seed powder — glucoraphanin survives heat; external myrosinase from mustard restores ~4x bioavailability vs cooked broccoli alone. (4) Standardised sulforaphane supplement with myrosinase included. (5) Broccoli sprout powder without myrosinase — mainly glucoraphanin, limited conversion.
+            <strong style={{ color: "var(--fo)" }}>Practical sources ranked by sulforaphane yield:</strong> (1) Broccoli sprouts, eaten raw: highest concentration of glucoraphanin, myrosinase intact. (2) Raw broccoli florets, finely chopped: intact myrosinase, lower glucoraphanin than sprouts. (3) Cooked broccoli plus mustard seed powder: glucoraphanin survives heat; external myrosinase from mustard restores ~4x bioavailability vs cooked broccoli alone. (4) Standardised sulforaphane supplement with myrosinase included. (5) Broccoli sprout powder without myrosinase: mainly glucoraphanin, limited conversion.
           </p>
         </div>
 
