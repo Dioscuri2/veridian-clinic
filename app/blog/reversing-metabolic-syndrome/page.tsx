@@ -75,7 +75,7 @@ export default function ReversingMetabolicSyndromePage() {
         heroImage="/blog/reversing-metabolic-syndrome.jpg"
         heroAlt="Mitochondrial cellular regeneration visualization metabolic health transformation"
         ctas={[
-          { href: "/book?tier=programme", label: "Explore the 12-week Metabolic Reset →" },
+          { href: "/metabolic-turnaround", label: "Explore the 90-Day Metabolic Turnaround programme →" },
           { href: "/book?tier=baseline", label: "Start with the Core Metabolic Assessment £595", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}

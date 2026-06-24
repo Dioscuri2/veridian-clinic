@@ -137,7 +137,7 @@ export default function HomocysteinePage() {
         heroAlt="Homocysteine molecular structure and cardiovascular risk visualization"
         ctas={[
           { href: "/book?tier=baseline", label: "Book Metabolic Baseline homocysteine included →" },
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel 150+ markers →", variant: "secondary" },
+          { href: "/metabolic-turnaround", label: "Explore the 90-Day Metabolic Turnaround programme →", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >
