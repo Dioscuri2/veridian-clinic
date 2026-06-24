@@ -12,7 +12,9 @@ type LeadPayload = {
   list?: string;
   quizScore?: number;
   metabolicAge?: number;
+  chronoAge?: number;
   resultBand?: string;
+  weakest?: string;
   metadata?: Record<string, unknown>;
   turnstileToken?: string;
 };
@@ -98,10 +100,27 @@ async function ensureBrevoList(listName: string): Promise<number | null> {
   return created?.id ?? null;
 }
 
+async function sendBrevoTransactional(email: string, firstName: string, templateId: number, params: Record<string, unknown>) {
+  if (!BREVO_API_KEY) return;
+  await fetchBrevo("/smtp/email", {
+    method: "POST",
+    body: JSON.stringify({
+      to: [{ email }],
+      templateId,
+      params: { FIRSTNAME: firstName || "there", ...params },
+    }),
+  });
+}
+
 async function submitToBrevo(payload: LeadPayload, listKey: ListKey) {
   const config = LIST_CONFIG[listKey];
   const listId = await ensureBrevoList(config.name);
   if (!listId) return { ok: false as const, reason: "brevo_unavailable" };
+
+  const meta = payload.metadata || {};
+  const chronoAge = payload.chronoAge ?? (meta.chronologicalAge as number | undefined) ?? "";
+  const weakest = payload.weakest ?? (meta.weakest as string | undefined) ?? "";
+  const joinDate = new Date().toISOString().split("T")[0];
 
   const response = await fetchBrevo("/contacts", {
     method: "POST",
@@ -117,7 +136,10 @@ async function submitToBrevo(payload: LeadPayload, listKey: ListKey) {
         LIST: config.key,
         QUIZSCORE: payload.quizScore ?? "",
         METABOLICAGE: payload.metabolicAge ?? "",
+        CHRONOAGE: chronoAge,
         RESULTBAND: payload.resultBand || "",
+        WEAKEST: weakest,
+        JOINDATE: joinDate,
         METADATA: payload.metadata ? JSON.stringify(payload.metadata) : "",
         CONSENT: payload.consent ? "true" : "false",
       },
@@ -127,6 +149,15 @@ async function submitToBrevo(payload: LeadPayload, listKey: ListKey) {
   if (!response.ok) {
     const errorText = await response.text();
     return { ok: false as const, reason: errorText || "brevo_error" };
+  }
+
+  // Send Email 1 immediately for quiz leads if template ID is configured
+  const nurture1Id = process.env.BREVO_NURTURE_1_ID ? parseInt(process.env.BREVO_NURTURE_1_ID) : null;
+  if (nurture1Id && listKey === "newsletter" && payload.source?.includes("quiz")) {
+    await sendBrevoTransactional(payload.email!, payload.firstName || "", nurture1Id, {
+      METABOLICAGE: payload.metabolicAge ?? "",
+      RESULTBAND: payload.resultBand ?? "",
+    });
   }
 
   return { ok: true as const };
