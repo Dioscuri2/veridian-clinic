@@ -219,7 +219,9 @@ export async function proxy(request: NextRequest) {
   }
 
   // 3. Bad User-Agent on API/admin routes — automated scanner fingerprinting
-  if ((isApi || isAdmin) && isBadUserAgent(ua)) {
+  // Cron and health endpoints are exempt: cron uses x-cron-secret, health is pinged by uptime monitors
+  const isInternalEndpoint = pathname === "/api/nurture-drip" || pathname === "/api/health";
+  if ((isApi || isAdmin) && !isInternalEndpoint && isBadUserAgent(ua)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
