@@ -48,6 +48,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+ {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
+   <script
+     defer
+     src="https://static.cloudflareinsights.com/beacon.min.js"
+     data-cf-beacon={JSON.stringify({ token: process.env.NEXT_PUBLIC_CF_BEACON_TOKEN })}
+   />
+ )}
  </head>
  <body style={{ margin: 0 }}><AOSInit />{children}<AvaChat /><CookieConsent /><Analytics /></body>
  </html>
