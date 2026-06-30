@@ -167,6 +167,10 @@ type CheckoutPayload = {
   phone?: string;
   notes?: string;
   turnstileToken?: string;
+  quizBand?: string;
+  quizMetabolicAge?: number;
+  quizWeakest?: string;
+  quizScore?: number;
 };
 
 function resolveTier(rawTier?: string) {
@@ -262,6 +266,10 @@ export async function POST(request: NextRequest) {
         phone: payload.phone?.trim() || "",
         notes: payload.notes?.trim() || "",
         payment_descriptor: PAYMENT_DESCRIPTOR,
+        quiz_band: payload.quizBand?.trim() || "",
+        quiz_metabolic_age: payload.quizMetabolicAge ? String(payload.quizMetabolicAge) : "",
+        quiz_weakest: payload.quizWeakest?.trim() || "",
+        quiz_score: payload.quizScore ? String(payload.quizScore) : "",
       },
       payment_intent_data: {
         description: `Veridian Clinic ${product.name} payment. Payments may appear as ${PAYMENT_DESCRIPTOR} on bank statements.`,

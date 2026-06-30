@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { mkdir, appendFile } from "node:fs/promises";
 import path from "node:path";
 import { verifyTurnstileToken } from "@/lib/turnstile";
+import { scheduleQuizSequence } from "@/lib/quizEmailSequence";
 
 type LeadPayload = {
   firstName?: string;
@@ -100,18 +101,6 @@ async function ensureBrevoList(listName: string): Promise<number | null> {
   return created?.id ?? null;
 }
 
-async function sendBrevoTransactional(email: string, firstName: string, templateId: number, params: Record<string, unknown>) {
-  if (!BREVO_API_KEY) return;
-  await fetchBrevo("/smtp/email", {
-    method: "POST",
-    body: JSON.stringify({
-      to: [{ email }],
-      templateId,
-      params: { FIRSTNAME: firstName || "there", ...params },
-    }),
-  });
-}
-
 async function submitToBrevo(payload: LeadPayload, listKey: ListKey) {
   const config = LIST_CONFIG[listKey];
   const listId = await ensureBrevoList(config.name);
@@ -149,15 +138,6 @@ async function submitToBrevo(payload: LeadPayload, listKey: ListKey) {
   if (!response.ok) {
     const errorText = await response.text();
     return { ok: false as const, reason: errorText || "brevo_error" };
-  }
-
-  // Send Email 1 immediately for quiz leads if template ID is configured
-  const nurture1Id = process.env.BREVO_NURTURE_1_ID ? parseInt(process.env.BREVO_NURTURE_1_ID) : null;
-  if (nurture1Id && listKey === "newsletter" && payload.source?.includes("quiz")) {
-    await sendBrevoTransactional(payload.email!, payload.firstName || "", nurture1Id, {
-      METABOLICAGE: payload.metabolicAge ?? "",
-      RESULTBAND: payload.resultBand ?? "",
-    });
   }
 
   return { ok: true as const };
@@ -215,6 +195,14 @@ export async function POST(request: NextRequest) {
     const brevoResult = await submitToBrevo({ ...payload, email, phone, source }, listKey);
     if (brevoResult.ok) {
       destination = "brevo";
+    }
+
+    // For quiz-source leads on the newsletter list, fire the full 5-email quiz nurture sequence
+    if (brevoResult.ok && listKey === "newsletter" && source.includes("quiz")) {
+      const mAge = payload.metabolicAge ?? 0;
+      const band = payload.resultBand ?? "drifting";
+      const delta = typeof payload.quizScore === "number" ? payload.quizScore : 0;
+      scheduleQuizSequence(email, payload.firstName?.trim() || "", mAge, band, delta).catch(() => {});
     }
 
     try {
