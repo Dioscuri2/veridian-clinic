@@ -54,6 +54,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  try {
+    return await handlePost(request);
+  } catch (err) {
+    return NextResponse.json(
+      { ok: false, error: err instanceof Error ? err.message : "Unexpected error" },
+      { status: 500 }
+    );
+  }
+}
+
+async function handlePost(request: NextRequest): Promise<NextResponse> {
   const formData = await request.formData();
   const content = formData.get("content") as string;
   const imageFile = formData.get("image") as File | null;
@@ -71,22 +82,29 @@ export async function POST(request: NextRequest) {
   const { access_token: token, person_urn: personUrn } = tokens;
 
   let assetUrn: string | null = null;
+  let imageError: string | null = null;
 
   if (imageFile || imageUrl) {
-    let imageBuffer: ArrayBuffer;
-    let mimeType: string;
+    try {
+      let imageBuffer: ArrayBuffer;
+      let mimeType: string;
 
-    if (imageFile) {
-      imageBuffer = await imageFile.arrayBuffer();
-      mimeType = imageFile.type || "image/jpeg";
-    } else {
-      const imgRes = await fetch(imageUrl!);
-      if (!imgRes.ok) throw new Error("Failed to fetch image from URL");
-      imageBuffer = await imgRes.arrayBuffer();
-      mimeType = imgRes.headers.get("content-type") || "image/jpeg";
+      if (imageFile) {
+        imageBuffer = await imageFile.arrayBuffer();
+        mimeType = imageFile.type || "image/jpeg";
+      } else {
+        const imgRes = await fetch(imageUrl!);
+        if (!imgRes.ok) throw new Error(`Failed to fetch image from URL (${imgRes.status})`);
+        imageBuffer = await imgRes.arrayBuffer();
+        mimeType = imgRes.headers.get("content-type") || "image/jpeg";
+      }
+
+      assetUrn = await uploadImageToLinkedIn(token, personUrn, imageBuffer, mimeType);
+    } catch (err) {
+      // Don't let a dead/expired image URL block the post entirely — fall back to text-only,
+      // but surface the failure clearly in the response rather than swallowing it.
+      imageError = err instanceof Error ? err.message : "Image attach failed";
     }
-
-    assetUrn = await uploadImageToLinkedIn(token, personUrn, imageBuffer, mimeType);
   }
 
   // Build post body
@@ -118,5 +136,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: await postRes.text() }, { status: 502 });
   }
 
-  return NextResponse.json({ ok: true, postId: postRes.headers.get("x-restli-id") });
+  return NextResponse.json({
+    ok: true,
+    postId: postRes.headers.get("x-restli-id"),
+    ...(imageError ? { warning: `Posted as text-only — image attach failed: ${imageError}` } : {}),
+  });
 }
