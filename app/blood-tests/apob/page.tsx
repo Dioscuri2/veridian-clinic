@@ -172,6 +172,8 @@ export default function ApoBTestPage() {
               { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Test", note: "From £795 Longevity Panel" },
               { href: "/blood-tests/biological-age", label: "Biological Age Test", note: "£795 Longevity Panel" },
               { href: "/blood-tests/metabolic-screen", label: "Fatigue & Energy Screen", note: "£195" },
+              { href: "/blood-tests/cardiovascular-risk", label: "Cardiovascular Risk Panel", note: "£349" },
+              { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
             ].map((t) => (
               <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>
                 <span style={{ fontSize: ".88rem", color: "var(--sl)", fontWeight: 500 }}>{t.label}</span>

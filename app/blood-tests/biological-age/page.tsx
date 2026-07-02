@@ -183,6 +183,8 @@ export default function BiologicalAgeTestPage() {
               { href: "/blood-tests/apob", label: "ApoB Blood Test", note: "From £595 Metabolic Baseline" },
               { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 Energy Screen" },
               { href: "/blood-tests/metabolic-screen", label: "Fatigue & Energy Screen", note: "£195" },
+              { href: "/blood-tests/optimiser-baseline", label: "Optimiser's Baseline", note: "£449" },
+              { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
             ].map((t) => (
               <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>
                 <span style={{ fontSize: ".88rem", color: "var(--sl)", fontWeight: 500 }}>{t.label}</span>

@@ -121,6 +121,24 @@ export default function MetabolicWeightPage() {
           GP-reviewed metabolic interpretation · Prioritised action plan · No GP referral needed · Results in 5 working days
         </p>
       </div>
+
+      {/* Related tests */}
+      <div style={{ borderTop: "1px solid rgba(0,0,0,.08)", paddingTop: 24, marginTop: 8 }}>
+        <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
+        <div style={{ display: "grid", gap: 10 }}>
+          {[
+            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 Energy Screen" },
+            { href: "/blood-tests/cardiovascular-risk", label: "Cardiovascular Risk Panel", note: "£349" },
+            { href: "/blood-tests/fatigue-energy", label: "Fatigue & Energy Deep Screen", note: "£249" },
+            { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
+          ].map((t) => (
+            <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>
+              <span style={{ fontSize: ".88rem", color: "var(--sl)", fontWeight: 500 }}>{t.label}</span>
+              <span style={{ fontSize: ".78rem", color: "var(--sl3)" }}>{t.note} →</span>
+            </Link>
+          ))}
+        </div>
+      </div>
     </ClinicalArticleLayout>
     </>
   );
