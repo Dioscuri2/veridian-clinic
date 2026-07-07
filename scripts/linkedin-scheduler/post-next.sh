@@ -44,6 +44,7 @@ TOPIC=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin.re
 DATE=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d['date'])")
 DAY=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d['day'])")
 IMAGE_URL=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); v=d.get('image_url'); print(v if v and v != 'None' else '')")
+IMAGE_URLS=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); v=d.get('image_urls'); print(json.dumps(v) if v else '')")
 CONTENT=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d['content'])")
 ATTEMPTS=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d.get('attempts', 0))")
 
@@ -56,8 +57,14 @@ fi
 
 log "Posting Day $DAY: $TOPIC (scheduled $DATE, attempt $((ATTEMPTS + 1)))"
 
-# Post to LinkedIn via Veridian API (include imageUrl only if we have one)
-if [ -n "$IMAGE_URL" ]; then
+# Post to LinkedIn via Veridian API (prefer image_urls array for split-test posts, else single image_url)
+if [ -n "$IMAGE_URLS" ]; then
+  RESPONSE=$(curl -s --max-time 60 -X POST "$VERIDIAN_API" \
+    -H "Cookie: $ADMIN_COOKIE" \
+    -A "$UA" \
+    -F "content=$CONTENT" \
+    -F "imageUrls=$IMAGE_URLS")
+elif [ -n "$IMAGE_URL" ]; then
   RESPONSE=$(curl -s --max-time 60 -X POST "$VERIDIAN_API" \
     -H "Cookie: $ADMIN_COOKIE" \
     -A "$UA" \

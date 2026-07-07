@@ -69,6 +69,7 @@ async function handlePost(request: NextRequest): Promise<NextResponse> {
   const content = formData.get("content") as string;
   const imageFile = formData.get("image") as File | null;
   const imageUrl = formData.get("imageUrl") as string | null;
+  const imageUrlsRaw = formData.get("imageUrls") as string | null;
 
   if (!content?.trim()) {
     return NextResponse.json({ error: "content required" }, { status: 400 });
@@ -81,40 +82,43 @@ async function handlePost(request: NextRequest): Promise<NextResponse> {
 
   const { access_token: token, person_urn: personUrn } = tokens;
 
-  let assetUrn: string | null = null;
-  let imageError: string | null = null;
+  const urls: string[] = imageUrlsRaw ? JSON.parse(imageUrlsRaw) : imageUrl ? [imageUrl] : [];
 
-  if (imageFile || imageUrl) {
+  const assetUrns: string[] = [];
+  const imageErrors: string[] = [];
+
+  if (imageFile) {
     try {
-      let imageBuffer: ArrayBuffer;
-      let mimeType: string;
-
-      if (imageFile) {
-        imageBuffer = await imageFile.arrayBuffer();
-        mimeType = imageFile.type || "image/jpeg";
-      } else {
-        const imgRes = await fetch(imageUrl!);
-        if (!imgRes.ok) throw new Error(`Failed to fetch image from URL (${imgRes.status})`);
-        imageBuffer = await imgRes.arrayBuffer();
-        mimeType = imgRes.headers.get("content-type") || "image/jpeg";
-      }
-
-      assetUrn = await uploadImageToLinkedIn(token, personUrn, imageBuffer, mimeType);
+      const imageBuffer = await imageFile.arrayBuffer();
+      const mimeType = imageFile.type || "image/jpeg";
+      assetUrns.push(await uploadImageToLinkedIn(token, personUrn, imageBuffer, mimeType));
     } catch (err) {
-      // Don't let a dead/expired image URL block the post entirely — fall back to text-only,
-      // but surface the failure clearly in the response rather than swallowing it.
-      imageError = err instanceof Error ? err.message : "Image attach failed";
+      imageErrors.push(err instanceof Error ? err.message : "Image attach failed");
+    }
+  }
+
+  for (const url of urls) {
+    try {
+      const imgRes = await fetch(url);
+      if (!imgRes.ok) throw new Error(`Failed to fetch image from URL (${imgRes.status})`);
+      const imageBuffer = await imgRes.arrayBuffer();
+      const mimeType = imgRes.headers.get("content-type") || "image/jpeg";
+      assetUrns.push(await uploadImageToLinkedIn(token, personUrn, imageBuffer, mimeType));
+    } catch (err) {
+      // Don't let a dead/expired image URL block the post entirely — fall back to text-only
+      // (or fewer images), but surface the failure clearly in the response rather than swallowing it.
+      imageErrors.push(err instanceof Error ? err.message : "Image attach failed");
     }
   }
 
   // Build post body
   const shareContent: Record<string, unknown> = {
     shareCommentary: { text: content },
-    shareMediaCategory: assetUrn ? "IMAGE" : "NONE",
+    shareMediaCategory: assetUrns.length ? "IMAGE" : "NONE",
   };
 
-  if (assetUrn) {
-    shareContent.media = [{ status: "READY", media: assetUrn }];
+  if (assetUrns.length) {
+    shareContent.media = assetUrns.map((urn) => ({ status: "READY", media: urn }));
   }
 
   const postRes = await fetch("https://api.linkedin.com/v2/ugcPosts", {
@@ -139,6 +143,8 @@ async function handlePost(request: NextRequest): Promise<NextResponse> {
   return NextResponse.json({
     ok: true,
     postId: postRes.headers.get("x-restli-id"),
-    ...(imageError ? { warning: `Posted as text-only — image attach failed: ${imageError}` } : {}),
+    ...(imageErrors.length
+      ? { warning: `${assetUrns.length} of ${assetUrns.length + imageErrors.length} images attached — failures: ${imageErrors.join("; ")}` }
+      : {}),
   });
 }
