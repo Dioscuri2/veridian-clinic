@@ -207,12 +207,14 @@ export async function proxy(request: NextRequest) {
   const isApi = pathname.startsWith("/api/");
   const isAdmin = pathname.startsWith("/admin");
 
-  // 0. Canonical host — 301 www to apex
+  // 0. Canonical host — 301 www to apex (build URL explicitly: nextUrl carries
+  // the internal Railway port, which must not leak into the Location header)
   const host = request.headers.get("host") || "";
   if (host === "www.veridianclinic.com") {
-    const url = request.nextUrl.clone();
-    url.host = "veridianclinic.com";
-    return NextResponse.redirect(url, 301);
+    return NextResponse.redirect(
+      `https://veridianclinic.com${pathname}${request.nextUrl.search}`,
+      301,
+    );
   }
 
   // 1. Banned IPs — hard block
