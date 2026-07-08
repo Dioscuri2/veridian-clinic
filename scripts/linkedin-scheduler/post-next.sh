@@ -8,10 +8,11 @@
 SCHEDULE="/Users/tosin/.openclaw/workspace-main/veridian-clinic/scripts/linkedin-scheduler/schedule.json"
 LOG="/Users/tosin/.openclaw/workspace-main/veridian-clinic/scripts/linkedin-scheduler/post.log"
 VERIDIAN_API="https://veridianclinic.com/api/social/post-with-image"
-ADMIN_COOKIE="__va=d22570feac7c5531cbc032da70b0d35c04b038fe31f51c125b3d06fb02254e32"
 UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
-DISCORD_WEBHOOK="https://discord.com/api/webhooks/1502920167410372741/UV23IXpraOv8PBaEq5av6h09txKmp2O51oFe_b2OEMVkNeYxi29KpAe0_lAFicgwZLxs"
 MAX_ATTEMPTS=3
+
+# ADMIN_COOKIE and DISCORD_WEBHOOK live in the git-ignored .env beside this script
+source "$(dirname "$0")/.env" || { echo "FATAL: missing $(dirname "$0")/.env"; exit 1; }
 
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG"

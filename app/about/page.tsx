@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
-  title: "About Dr Tosin Taiwo | GP, Veridian Clinic",
+  title: { absolute: "About Dr Tosin Taiwo | GP, Veridian Clinic" },
   description: "Dr Tosin Taiwo is a UK-qualified GP and founder of Veridian Clinic. Specialising in preventive medicine, metabolic health, and longevity medicine. CQC regulated.",
   alternates: { canonical: "https://veridianclinic.com/about" },
 };

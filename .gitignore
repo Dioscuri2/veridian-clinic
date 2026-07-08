@@ -48,3 +48,4 @@ data/
 .env*.local
 scripts/screenshots/
 scripts/linkedin-scheduler/post.log
+scripts/linkedin-scheduler/.env

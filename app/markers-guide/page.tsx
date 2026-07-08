@@ -6,12 +6,12 @@ import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
-  title: { absolute: "The 8 Metabolic Markers That Actually Matter | Veridian Clinic" },
-  description: "A plain-language guide to fasting insulin, ApoB, homocysteine, hs-CRP, ferritin, HbA1c, ALT and Lp(a) -- the blood markers most GPs don't check but that define your real metabolic risk.",
+  title: { absolute: "The 7 Metabolic Markers That Actually Matter | Veridian Clinic" },
+  description: "A plain-language guide to fasting insulin, ApoB, homocysteine, hs-CRP, ALT, ferritin and vitamin D/B12, the blood markers most GPs don't check but that define your real metabolic risk.",
   alternates: { canonical: "https://veridianclinic.com/markers-guide" },
   openGraph: {
-    title: "The 8 Metabolic Markers That Actually Matter | Veridian Clinic",
-    description: "Fasting insulin, ApoB, homocysteine and 5 more. What they measure, why they matter, and why your NHS test probably missed them.",
+    title: "The 7 Metabolic Markers That Actually Matter | Veridian Clinic",
+    description: "Fasting insulin, ApoB, homocysteine and 4 more. What they measure, why they matter, and why your NHS test probably missed them.",
     url: "https://veridianclinic.com/markers-guide",
     type: "article",
   },

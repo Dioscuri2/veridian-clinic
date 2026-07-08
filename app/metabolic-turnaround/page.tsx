@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
-  title: "The Metabolic Turnaround | 90-Day GP-Led Programme | Veridian Clinic",
+  title: { absolute: "The Metabolic Turnaround | 90-Day GP-Led Programme | Veridian Clinic" },
   description: "In 90 days, go from guessing to knowing exactly what is happening inside your body. A doctor-built, data-led plan with a GP guiding you every fortnight. From £1,895.",
   alternates: { canonical: "https://veridianclinic.com/metabolic-turnaround" },
   openGraph: {

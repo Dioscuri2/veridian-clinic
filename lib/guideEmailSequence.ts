@@ -1,13 +1,13 @@
 /**
  * Email sequences for guide lead capture.
  * Called from /api/guide-lead and /api/peri-guide-lead.
- * All four emails are scheduled via Brevo's scheduledAt parameter — no dashboard automation needed.
+ * All four emails are scheduled via Brevo's scheduledAt parameter, no dashboard automation needed.
  *
  * Sequence timing:
- *   Email 1 — immediate   (guide delivery)
- *   Email 2 — Day 2       (education: metabolic age or perimenopause + metabolism)
- *   Email 3 — Day 4       (the 3 markers: Lp(a), fasting insulin, uric acid)
- *   Email 4 — Day 7       (discovery call CTA)
+ *   Email 1, immediate   (guide delivery)
+ *   Email 2, Day 2       (education: metabolic age or perimenopause + metabolism)
+ *   Email 3, Day 4       (the 3 markers: Lp(a), fasting insulin, uric acid)
+ *   Email 4, Day 7       (discovery call CTA)
  */
 
 const BREVO_BASE = "https://api.brevo.com/v3";
@@ -108,7 +108,7 @@ function marker(label: string, content: string): string {
   </table>`;
 }
 
-// ─── Email 1M — Metabolic guide delivery (immediate) ──────────────────────────
+// ─── Email 1M, Metabolic guide delivery (immediate) ──────────────────────────
 
 function metabolicEmail1(name: string): { subject: string; html: string } {
   const subject = `Your Metabolic Reset Guide is here${name ? ", " + name : ""}`;
@@ -116,20 +116,20 @@ function metabolicEmail1(name: string): { subject: string; html: string } {
     ${lbl("Your download is ready")}
     ${h2("The Metabolic Reset Guide")}
     ${rule()}
-    ${p(`Most people who download this guide have already noticed something has shifted — energy that isn't what it used to be, weight that feels harder to manage despite nothing changing, sleep that doesn't quite restore the way it once did.`)}
-    ${p(`You're not imagining it. And it's not simply "getting older". There are specific, measurable biological processes driving this — and most of them have names, markers, and clear pathways to address.`)}
+    ${p(`Most people who download this guide have already noticed something has shifted, energy that isn't what it used to be, weight that feels harder to manage despite nothing changing, sleep that doesn't quite restore the way it once did.`)}
+    ${p(`You're not imagining it. And it's not simply "getting older". There are specific, measurable biological processes driving this, and most of them have names, markers, and clear pathways to address.`)}
     ${p(`The guide walks you through the framework I use in clinic every day.`)}
     ${btn("Download Your Free Guide →", `${SITE}/metabolic-reset-guide/thank-you`)}
     ${p(`<em style="color:#8a8278;font-size:13px;">GP-authored · 21-day reset plan · Instant PDF download</em>`)}
     ${rule()}
-    ${p(`Over the next week, I'll share some of the clinical thinking behind what the guide covers — including the specific blood markers that most standard health checks quietly miss.`)}
+    ${p(`Over the next week, I'll share some of the clinical thinking behind what the guide covers, including the specific blood markers that most standard health checks quietly miss.`)}
     ${p(`Speak soon,`)}
     ${p(`<strong>Dr Tosin Taiwo</strong><br><span style="font-size:13px;color:#8a8278;">MBBS · MRCGP · MRCS<br>Founder, Veridian Clinic</span>`)}
   `;
   return { subject, html: wrap("Download your guide + a note from Dr Tosin before you start.", body) };
 }
 
-// ─── Email 2M — Metabolic age education (Day 2) ────────────────────────────────
+// ─── Email 2M, Metabolic age education (Day 2) ────────────────────────────────
 
 function metabolicEmail2(name: string): { subject: string; html: string } {
   const subject = "The gap between your real age and your metabolic age";
@@ -138,22 +138,22 @@ function metabolicEmail2(name: string): { subject: string; html: string } {
     ${h2("One number tells you how old you are. The other tells you how well you're ageing.")}
     ${rule()}
     ${p(`${name ? name + ", I" : "I"} want to tell you something I observe in clinic regularly.`)}
-    ${p(`I see patients in their early 40s whose biology is running 8 to 12 years ahead of schedule. Not because of anything dramatic. Not because they've been reckless or unhealthy. But because of a slow, quiet accumulation of signals that were never picked up — and therefore never addressed.`)}
+    ${p(`I see patients in their early 40s whose biology is running 8 to 12 years ahead of schedule. Not because of anything dramatic. Not because they've been reckless or unhealthy. But because of a slow, quiet accumulation of signals that were never picked up, and therefore never addressed.`)}
     ${p(`And I see patients in their late 50s whose metabolic markers look like someone a decade younger. Not because of luck. Because something in their biology, lifestyle, or clinical care caught the drift early.`)}
-    ${p(`The gap between chronological age and metabolic age isn't fixed. But it widens faster than most people expect — particularly through the 40s — and it tends to widen silently.`)}
+    ${p(`The gap between chronological age and metabolic age isn't fixed. But it widens faster than most people expect, particularly through the 40s, and it tends to widen silently.`)}
     ${p(`<strong style="color:#2c2a26;">What actually drives metabolic age drift:</strong>`)}
-    ${p(`Fasting insulin creeping upward — years before blood sugar becomes abnormal. Inflammatory markers rising quietly. Sleep architecture changing in ways that impair cellular repair. Visceral fat accumulating even in people at a healthy weight. Hormonal shifts, in both men and women, that cascade into energy regulation, fat storage, and cardiovascular risk.`)}
+    ${p(`Fasting insulin creeping upward, years before blood sugar becomes abnormal. Inflammatory markers rising quietly. Sleep architecture changing in ways that impair cellular repair. Visceral fat accumulating even in people at a healthy weight. Hormonal shifts, in both men and women, that cascade into energy regulation, fat storage, and cardiovascular risk.`)}
     ${p(`None of these show up in a standard NHS health check. Most people have no idea their metabolic age is diverging until the gap becomes large enough to notice as symptoms.`)}
-    ${p(`The guide covers the practical framework. Tomorrow I want to share the specific markers — the ones I consider essential for anyone serious about understanding what their body is actually doing.`)}
+    ${p(`The guide covers the practical framework. Tomorrow I want to share the specific markers, the ones I consider essential for anyone serious about understanding what their body is actually doing.`)}
     ${p(`Until then,`)}
     ${p(`<strong>Dr Tosin</strong>`)}
     ${rule()}
-    ${p(`<em style="font-size:13px;color:#8a8278;">P.S. If you haven't taken the metabolic quiz yet, it gives you an indicative picture of where you are right now. The actual numbers come from blood — but the quiz is a useful first step. <a href="${SITE}/metabolic-quiz" style="color:#c8a84b;">Take it here →</a></em>`)}
+    ${p(`<em style="font-size:13px;color:#8a8278;">P.S. If you haven't taken the metabolic quiz yet, it gives you an indicative picture of where you are right now. The actual numbers come from blood, but the quiz is a useful first step. <a href="${SITE}/metabolic-quiz" style="color:#c8a84b;">Take it here →</a></em>`)}
   `;
   return { subject, html: wrap("One number tells you how old you are. The other tells you how well you're ageing.", body) };
 }
 
-// ─── Email 1P — Perimenopause guide delivery (immediate) ──────────────────────
+// ─── Email 1P, Perimenopause guide delivery (immediate) ──────────────────────
 
 function periEmail1(name: string): { subject: string; html: string } {
   const subject = `Your Perimenopause Reset Guide is ready${name ? ", " + name : ""}`;
@@ -161,20 +161,20 @@ function periEmail1(name: string): { subject: string; html: string } {
     ${lbl("Your download is ready")}
     ${h2("The Perimenopause Reset Guide")}
     ${rule()}
-    ${p(`Perimenopause is one of the most significant but least discussed metabolic events in a woman's life. The hormone changes that begin in the mid-to-late 30s and continue through the 40s and beyond don't just affect your cycle — they change how your body handles energy, fat, sleep, and cardiovascular risk.`)}
-    ${p(`Most women are told this is normal. It is. But "normal" doesn't mean inevitable, unmanageable, or untreatable. There's a great deal that clinical work — the right tests, the right interventions — can actually do.`)}
-    ${p(`The guide gives you the framework. I'd encourage you to read the chapters on metabolic drift and sleep in particular — they're often the missing piece.`)}
+    ${p(`Perimenopause is one of the most significant but least discussed metabolic events in a woman's life. The hormone changes that begin in the mid-to-late 30s and continue through the 40s and beyond don't just affect your cycle, they change how your body handles energy, fat, sleep, and cardiovascular risk.`)}
+    ${p(`Most women are told this is normal. It is. But "normal" doesn't mean inevitable, unmanageable, or untreatable. There's a great deal that clinical work, the right tests, the right interventions, can actually do.`)}
+    ${p(`The guide gives you the framework. I'd encourage you to read the chapters on metabolic drift and sleep in particular, they're often the missing piece.`)}
     ${btn("Download Your Free Guide →", `${SITE}/perimenopause-guide/thank-you`)}
     ${p(`<em style="color:#8a8278;font-size:13px;">GP-authored · Doctor-led protocols · Instant PDF download</em>`)}
     ${rule()}
-    ${p(`Over the next few days, I'll share the clinical thinking behind the guide — including the specific blood markers that give a much fuller picture than a standard NHS check.`)}
+    ${p(`Over the next few days, I'll share the clinical thinking behind the guide, including the specific blood markers that give a much fuller picture than a standard NHS check.`)}
     ${p(`Speak soon,`)}
     ${p(`<strong>Dr Tosin Taiwo</strong><br><span style="font-size:13px;color:#8a8278;">MBBS · MRCGP · MRCS<br>Founder, Veridian Clinic</span>`)}
   `;
   return { subject, html: wrap("Download your guide + a note from Dr Tosin on what it covers.", body) };
 }
 
-// ─── Email 2P — Perimenopause + metabolism (Day 2) ────────────────────────────
+// ─── Email 2P, Perimenopause + metabolism (Day 2) ────────────────────────────
 
 function periEmail2(name: string): { subject: string; html: string } {
   const subject = "Why perimenopause changes your metabolic picture";
@@ -184,20 +184,20 @@ function periEmail2(name: string): { subject: string; html: string } {
     ${rule()}
     ${p(`${name ? name + ", one" : "One"} of the most common things I hear in clinic from women in perimenopause is some version of: <em>"I haven't changed anything, but everything has changed."</em>`)}
     ${p(`Weight is harder to manage. Energy dips in ways that don't respond to sleep or rest the way they used to. Brain fog appears. Mood shifts for no clear reason. Sleep is lighter, less restorative.`)}
-    ${p(`These aren't character flaws or signs of decline. They're measurable biological events — and understanding them changes how you approach them.`)}
+    ${p(`These aren't character flaws or signs of decline. They're measurable biological events, and understanding them changes how you approach them.`)}
     ${p(`<strong style="color:#2c2a26;">Here's what's actually happening:</strong>`)}
-    ${p(`Oestrogen plays a significant role in regulating insulin sensitivity. As oestrogen levels fluctuate and decline through perimenopause, cells become less responsive to insulin — meaning your body needs to produce more to do the same job. This often drives weight gain, particularly around the abdomen, even in women who eat well and exercise.`)}
-    ${p(`Sleep architecture changes — less deep sleep, more disrupted nights — impair cellular repair, cortisol regulation, and the hormonal signals that control appetite and fat storage.`)}
+    ${p(`Oestrogen plays a significant role in regulating insulin sensitivity. As oestrogen levels fluctuate and decline through perimenopause, cells become less responsive to insulin, meaning your body needs to produce more to do the same job. This often drives weight gain, particularly around the abdomen, even in women who eat well and exercise.`)}
+    ${p(`Sleep architecture changes, less deep sleep, more disrupted nights, impair cellular repair, cortisol regulation, and the hormonal signals that control appetite and fat storage.`)}
     ${p(`Cardiovascular risk, which was largely modulated by oestrogen, begins to rise. The lipid profile shifts. Inflammation markers that were previously quiet can increase.`)}
     ${p(`None of this is visible from the outside, and most of it isn't measured in a routine check. But it's all testable. And when you know your specific picture, you can do something targeted about it.`)}
-    ${p(`Tomorrow I'll share the three blood markers I consider essential for women in perimenopause — markers that rarely appear on a standard NHS blood form.`)}
+    ${p(`Tomorrow I'll share the three blood markers I consider essential for women in perimenopause, markers that rarely appear on a standard NHS blood form.`)}
     ${p(`Until then,`)}
     ${p(`<strong>Dr Tosin</strong>`)}
   `;
-  return { subject, html: wrap("The hormone shift doesn't just affect your cycle — it changes your metabolism.", body) };
+  return { subject, html: wrap("The hormone shift doesn't just affect your cycle, it changes your metabolism.", body) };
 }
 
-// ─── Email 3 — The markers (Day 4, shared both sequences) ─────────────────────
+// ─── Email 3, The markers (Day 4, shared both sequences) ─────────────────────
 
 function markersEmail(name: string, guide: "metabolic" | "peri"): { subject: string; html: string } {
   const subject = guide === "peri"
@@ -205,8 +205,8 @@ function markersEmail(name: string, guide: "metabolic" | "peri"): { subject: str
     : "Most GPs check cholesterol. Here's what they're missing.";
 
   const intro = guide === "peri"
-    ? `${name ? name + ", beyond" : "Beyond"} FSH and oestradiol — which most GPs focus on — there are three metabolic markers that give a far clearer picture of what's happening in a perimenopausal body. They rarely appear on a standard NHS blood form. Most women have never had them checked.`
-    : `${name ? name + ", a" : "A"} standard NHS cholesterol check measures four things: total cholesterol, LDL, HDL, triglycerides. It's a starting point. But for anyone serious about understanding their cardiovascular and metabolic health, there are three markers that matter just as much — and almost never get tested.`;
+    ? `${name ? name + ", beyond" : "Beyond"} FSH and oestradiol, which most GPs focus on, there are three metabolic markers that give a far clearer picture of what's happening in a perimenopausal body. They rarely appear on a standard NHS blood form. Most women have never had them checked.`
+    : `${name ? name + ", a" : "A"} standard NHS cholesterol check measures four things: total cholesterol, LDL, HDL, triglycerides. It's a starting point. But for anyone serious about understanding their cardiovascular and metabolic health, there are three markers that matter just as much, and almost never get tested.`;
 
   const body = `
     ${lbl("Clinical education")}
@@ -215,45 +215,45 @@ function markersEmail(name: string, guide: "metabolic" | "peri"): { subject: str
       : "Three markers your standard blood form doesn't include.")}
     ${rule()}
     ${p(intro)}
-    ${marker("Lipoprotein(a) — Lp(a)", `Lp(a) is a particle of LDL cholesterol with an extra protein attached that makes it significantly more damaging to artery walls. High levels independently increase the risk of heart attack and stroke — regardless of what your standard LDL shows.<br><br>The critical point: Lp(a) is largely genetic. Diet and exercise have almost no effect on it. If your Lp(a) is elevated, you need to know — because it changes how aggressively you should manage every other risk factor. Yet it's absent from the standard NHS cholesterol panel.${guide === "peri" ? " And oestrogen's natural suppressive effect on Lp(a) means levels can rise as oestrogen declines." : ""}`)}
-    ${marker("Fasting Insulin", `Fasting insulin is measured after an overnight fast and shows how much insulin your body is producing at rest. It's the earliest signal of insulin resistance — often rising years, sometimes decades, before blood glucose becomes abnormal.<br><br>By the time a fasting glucose or HbA1c is flagged, insulin resistance has typically been present for a long time. But fasting insulin catches the drift early, when the picture is still very much reversible. Optimal is 2–6 μIU/mL. Many labs consider anything under 25 "normal" — which is a range I find clinically too broad to be useful.${guide === "peri" ? " In perimenopause, insulin sensitivity often declines — making this test particularly relevant." : ""}`)}
-    ${marker("Uric Acid", `Uric acid is best known as the marker for gout. But elevated uric acid is also strongly associated with metabolic syndrome, hypertension, fatty liver disease, and insulin resistance — often preceding these conditions by years.<br><br>The mechanism matters: high uric acid impairs the production of nitric oxide in blood vessels, which affects vasodilation and blood pressure regulation. It's a metabolic canary — frequently elevated quietly in people who look otherwise healthy — and it's rarely measured unless someone has gout symptoms.${guide === "peri" ? " Blood pressure shifts in perimenopause make this particularly worth knowing." : ""}`)}
+    ${marker("Lipoprotein(a), Lp(a)", `Lp(a) is a particle of LDL cholesterol with an extra protein attached that makes it significantly more damaging to artery walls. High levels independently increase the risk of heart attack and stroke, regardless of what your standard LDL shows.<br><br>The critical point: Lp(a) is largely genetic. Diet and exercise have almost no effect on it. If your Lp(a) is elevated, you need to know, because it changes how aggressively you should manage every other risk factor. Yet it's absent from the standard NHS cholesterol panel.${guide === "peri" ? " And oestrogen's natural suppressive effect on Lp(a) means levels can rise as oestrogen declines." : ""}`)}
+    ${marker("Fasting Insulin", `Fasting insulin is measured after an overnight fast and shows how much insulin your body is producing at rest. It's the earliest signal of insulin resistance, often rising years, sometimes decades, before blood glucose becomes abnormal.<br><br>By the time a fasting glucose or HbA1c is flagged, insulin resistance has typically been present for a long time. But fasting insulin catches the drift early, when the picture is still very much reversible. Optimal is 2–6 μIU/mL. Many labs consider anything under 25 "normal", which is a range I find clinically too broad to be useful.${guide === "peri" ? " In perimenopause, insulin sensitivity often declines, making this test particularly relevant." : ""}`)}
+    ${marker("Uric Acid", `Uric acid is best known as the marker for gout. But elevated uric acid is also strongly associated with metabolic syndrome, hypertension, fatty liver disease, and insulin resistance, often preceding these conditions by years.<br><br>The mechanism matters: high uric acid impairs the production of nitric oxide in blood vessels, which affects vasodilation and blood pressure regulation. It's a metabolic canary, frequently elevated quietly in people who look otherwise healthy, and it's rarely measured unless someone has gout symptoms.${guide === "peri" ? " Blood pressure shifts in perimenopause make this particularly worth knowing." : ""}`)}
     ${rule()}
-    ${p(`These three markers — together with the standard panel — are what our <strong>Metabolic Blood Panel</strong> includes. Each result comes with GP clinical interpretation: not just "normal" or "abnormal", but what your specific numbers actually mean for you.`)}
+    ${p(`These three markers, together with the standard panel, are what our <strong>Metabolic Blood Panel</strong> includes. Each result comes with GP clinical interpretation: not just "normal" or "abnormal", but what your specific numbers actually mean for you.`)}
     ${btn("See the Metabolic Blood Panel →", `${SITE}/assessments`, "#2c2a26", "#f6f1e8")}
-    ${p(`<em style="font-size:13px;color:#8a8278;">Or reply to this email if you have questions — I read every reply.</em>`)}
+    ${p(`<em style="font-size:13px;color:#8a8278;">Or reply to this email if you have questions, I read every reply.</em>`)}
     ${p(`<strong>Dr Tosin</strong>`)}
   `;
 
-  return { subject, html: wrap("Three markers that don't appear on a standard NHS blood form — and why they should.", body) };
+  return { subject, html: wrap("Three markers that don't appear on a standard NHS blood form, and why they should.", body) };
 }
 
-// ─── Email 4 — Discovery call CTA (Day 7, both sequences) ─────────────────────
+// ─── Email 4, Discovery call CTA (Day 7, both sequences) ─────────────────────
 
 function discoveryCallEmail(name: string, guide: "metabolic" | "peri"): { subject: string; html: string } {
   const subject = "30 minutes. Your actual numbers. A clear plan.";
 
   const angle = guide === "peri"
     ? "understanding what's driving your symptoms right now, and what a targeted clinical approach could do for you specifically"
-    : "understanding what's actually happening in your biology — and what a structured plan to address it would look like for you specifically";
+    : "understanding what's actually happening in your biology, and what a structured plan to address it would look like for you specifically";
 
   const body = `
     ${lbl("Your next step")}
     ${h2("What a 30-minute Discovery Call with Dr Tosin actually looks like.")}
     ${rule()}
-    ${p(`${name ? name + ", I" : "I"} want to be straightforward with you about what this call is — and what it isn't.`)}
+    ${p(`${name ? name + ", I" : "I"} want to be straightforward with you about what this call is, and what it isn't.`)}
     ${p(`It's not a sales pitch. It's a clinical conversation.`)}
     ${p(`In 30 minutes, we cover your current symptoms, your relevant history, your goals, and what you've already tried. I give you a clear view of what I'd want to investigate, what the likely drivers are, and what a sensible clinical plan looks like for you.`)}
-    ${p(`You leave with clarity — on what's worth testing, what's worth addressing first, and why. Whether or not you decide to work with me further, the call itself is useful.`)}
-    ${p(`The call costs <strong style="color:#2c2a26;">£97</strong> — a guide-reader rate. The standard rate is £195.`)}
-    ${btn("Book Your Discovery Call — £97 →", `${SITE}/book?tier=discovery`)}
+    ${p(`You leave with clarity, on what's worth testing, what's worth addressing first, and why. Whether or not you decide to work with me further, the call itself is useful.`)}
+    ${p(`The call costs <strong style="color:#2c2a26;">£97</strong>, a guide-reader rate. The standard rate is £195.`)}
+    ${btn("Book Your Discovery Call, £97 →", `${SITE}/book?tier=discovery`)}
     ${rule()}
     ${p(`If you're not ready for a call yet, the Metabolic Blood Panel is also available directly. It's the practical starting point for ${angle}.`)}
     ${p(`<a href="${SITE}/assessments" style="color:#c8a84b;font-weight:600;">Explore the blood panel options →</a>`)}
-    ${p(`Either way — I'm glad you downloaded the guide. The information in it is genuinely useful, whatever you decide to do next.`)}
+    ${p(`Either way, I'm glad you downloaded the guide. The information in it is genuinely useful, whatever you decide to do next.`)}
     ${p(`<strong>Dr Tosin Taiwo</strong><br><span style="font-size:13px;color:#8a8278;">MBBS · MRCGP · MRCS</span>`)}
     ${rule()}
-    ${p(`<em style="font-size:12px;color:#8a8278;">Questions before booking? Reply to this email directly — I read every message.</em>`)}
+    ${p(`<em style="font-size:12px;color:#8a8278;">Questions before booking? Reply to this email directly, I read every message.</em>`)}
   `;
 
   return { subject, html: wrap("A clinical conversation, not a sales pitch. Here's what a 30-minute call covers.", body) };
@@ -300,7 +300,7 @@ function daysFromNow(days: number): string {
 
 /**
  * Schedule the full 4-email sequence for a guide lead.
- * Fire-and-forget — errors are logged but not thrown.
+ * Fire-and-forget, errors are logged but not thrown.
  */
 export async function scheduleGuideSequence(
   email: string,

@@ -21,11 +21,6 @@ function ConsultationContent() {
   const params = useSearchParams();
   const isQuizRate = params.get("quiz") === "1";
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-
   // Also check for quiz cookie
   const [hasQuizCookie, setHasQuizCookie] = useState(false);
   useEffect(() => {
@@ -34,35 +29,8 @@ function ConsultationContent() {
   }, []);
 
   const quizRate = isQuizRate || hasQuizCookie;
-  const tier = quizRate ? "wl-consultation-quiz" : "wl-consultation";
   const price = quizRate ? "£55" : "£60";
   const priceLabel = quizRate ? "Quiz rate" : "Standard rate";
-
-  async function handleBook() {
-    if (!name.trim() || !email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError("Please enter your full name and a valid email address.");
-      return;
-    }
-    setError("");
-    setSubmitting(true);
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tier, name: name.trim(), email: email.trim() }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        setError(data.error || "Unable to start checkout. Please try again.");
-        setSubmitting(false);
-      }
-    } catch {
-      setError("Something went wrong. Please try again.");
-      setSubmitting(false);
-    }
-  }
 
   return (
     <>
@@ -136,30 +104,6 @@ function ConsultationContent() {
                   </div>
                   <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.55)", marginTop: 4 }}>15-minute virtual consultation · Video call</p>
                 </div>
-
-                {/* Form */}
-                <div style={{ marginBottom: 16 }}>
-                  <label style={{ display: "block", fontSize: ".74rem", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--sl2)", marginBottom: 6 }}>Full name</label>
-                  <input
-                    type="text"
-                    placeholder="Your full name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    style={{ width: "100%", padding: "11px 14px", border: "1.5px solid rgba(0,0,0,.12)", outline: "none", fontSize: ".9rem", color: "var(--fo)", boxSizing: "border-box" }}
-                  />
-                </div>
-                <div style={{ marginBottom: 20 }}>
-                  <label style={{ display: "block", fontSize: ".74rem", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--sl2)", marginBottom: 6 }}>Email address</label>
-                  <input
-                    type="email"
-                    placeholder="you@email.com"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    style={{ width: "100%", padding: "11px 14px", border: "1.5px solid rgba(0,0,0,.12)", outline: "none", fontSize: ".9rem", color: "var(--fo)", boxSizing: "border-box" }}
-                  />
-                </div>
-
-                {error && <p style={{ fontSize: ".8rem", color: "#b91c1c", marginBottom: 14, lineHeight: 1.5 }}>{error}</p>}
 
                 <a
                   href={THANKSDOC_URL}

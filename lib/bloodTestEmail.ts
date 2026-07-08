@@ -12,7 +12,7 @@ interface PanelInfo {
 
 const PANELS: Record<string, PanelInfo> = {
   "womens-hormones": {
-    name: "Is It My Hormones? — Women's Hormone & Perimenopause Panel",
+    name: "Is It My Hormones?, Women's Hormone & Perimenopause Panel",
     price: "£375",
     markerSummary: [
       "Full female hormones: Oestradiol, FSH, LH, Progesterone, Prolactin, SHBG, Testosterone",
@@ -24,7 +24,7 @@ const PANELS: Record<string, PanelInfo> = {
     randoxNotes: "Use HSC7F as base panel. Include TPO antibodies as add-on.",
   },
   "mens-testosterone": {
-    name: "Running on Empty — Men's Testosterone & Hormone Panel",
+    name: "Running on Empty, Men's Testosterone & Hormone Panel",
     price: "£325",
     markerSummary: [
       "Total + Free Testosterone, SHBG, LH, FSH, Prolactin, DHEA-S",
@@ -36,7 +36,7 @@ const PANELS: Record<string, PanelInfo> = {
     randoxNotes: "Free T calculated from Total T + SHBG. Include DHEA-S + Cortisol.",
   },
   "cardiovascular-risk": {
-    name: "What Your Cholesterol Test Missed — Cardiovascular Risk Panel",
+    name: "What Your Cholesterol Test Missed, Cardiovascular Risk Panel",
     price: "£349",
     markerSummary: [
       "ApoB, Lipoprotein(a), Small Dense LDL, full lipid profile",
@@ -48,7 +48,7 @@ const PANELS: Record<string, PanelInfo> = {
     randoxNotes: "RP10 as base. Cardiovascular add-ons listed separately. Include HbA1c.",
   },
   "fatigue-energy": {
-    name: "Tired of Being Told You're Fine — Fatigue & Energy Deep Screen",
+    name: "Tired of Being Told You're Fine, Fatigue & Energy Deep Screen",
     price: "£249",
     markerSummary: [
       "Full Blood Count, Thyroid: TSH, FT3, FT4, TPO antibodies",
@@ -60,7 +60,7 @@ const PANELS: Record<string, PanelInfo> = {
     randoxNotes: "HSC10 base includes FBC, thyroid (FT3/FT4/TSH/TPO), iron, B12, folate, CRP, kidney.",
   },
   "metabolic-weight": {
-    name: "Why Won't The Weight Budge? — Metabolic Weight Resistance Panel",
+    name: "Why Won't The Weight Budge?, Metabolic Weight Resistance Panel",
     price: "£199",
     markerSummary: [
       "Fasting Insulin, HbA1c, HOMA-IR (insulin resistance index)",
@@ -72,7 +72,7 @@ const PANELS: Record<string, PanelInfo> = {
     randoxNotes: "Two Randox panels combined. Include Leptin + Adiponectin as add-ons.",
   },
   "optimiser-baseline": {
-    name: "The Optimiser's Baseline — Performance & Longevity Panel",
+    name: "The Optimiser's Baseline, Performance & Longevity Panel",
     price: "£449",
     markerSummary: [
       "IGF-1, Fasting Insulin, HbA1c, Cortisol (AM), DHEA-S",
@@ -94,7 +94,7 @@ const PANELS: Record<string, PanelInfo> = {
     ],
     fastingRequired: true,
     randoxCode: "HSC7 (Energy Screen)",
-    randoxNotes: "Standard Veridian Energy Screen — single panel code.",
+    randoxNotes: "Standard Veridian Energy Screen, single panel code.",
   },
 };
 
@@ -154,7 +154,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
                 <tr>
                   <td style="padding:8px 0;border-bottom:1px solid rgba(0,0,0,.08);font-size:.86rem;color:#5a534a;line-height:1.6;">
                     <strong style="color:#2c2a26;">📍 Walk-in near you</strong><br>
-                    Book a venous draw at a collection centre near you — including Holland &amp; Barrett and Superdrug locations nationwide.
+                    Book a venous draw at a collection centre near you, including Holland &amp; Barrett and Superdrug locations nationwide.
                   </td>
                 </tr>
                 <tr>
@@ -174,9 +174,9 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
           <!-- Fasting instructions -->
           <table cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:28px;">
             <tr><td style="padding:16px 20px;border-left:3px solid #c8a84b;background:#fffbf2;">
-              <p style="margin:0 0 6px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a5500;">Preparation — fasting required</p>
+              <p style="margin:0 0 6px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a5500;">Preparation, fasting required</p>
               <p style="margin:0;font-size:.86rem;color:#5a534a;line-height:1.75;">
-                This panel includes fasting markers (insulin and glucose). Please fast for <strong>8–10 hours</strong> before your sample is taken — water is fine. No alcohol for 24 hours before. Take any regular medications as normal unless advised otherwise.
+                This panel includes fasting markers (insulin and glucose). Please fast for <strong>8–10 hours</strong> before your sample is taken, water is fine. No alcohol for 24 hours before. Take any regular medications as normal unless advised otherwise.
               </p>
             </td></tr>
           </table>
@@ -191,7 +191,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
                   ["Within 24 hours", "Dr Tosin will email you to confirm your collection method and send your kit or booking details."],
                   ["Sample collection", "Take your sample using your chosen method. Return or drop off as instructed."],
                   ["Lab processing", "Your sample is processed by our nationally accredited UK pathology laboratory. Results typically available within 48–72 hours of receipt."],
-                  ["Your GP report", "Dr Tosin prepares a written clinical interpretation of every marker — not just reference ranges — and sends it directly to you with a personalised next-step recommendation."],
+                  ["Your GP report", "Dr Tosin prepares a written clinical interpretation of every marker, not just reference ranges, and sends it directly to you with a personalised next-step recommendation."],
                 ].map(([step, detail]) => `
                 <tr>
                   <td style="padding:8px 0;border-bottom:1px solid rgba(246,241,232,.08);vertical-align:top;">
@@ -209,7 +209,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
               <p style="margin:0 0 6px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a5500;">Optional add-on</p>
               <p style="margin:0 0 10px;font-size:1rem;font-weight:600;color:#2c2a26;line-height:1.3;">Walk through your results with Dr Tosin by video</p>
               <p style="margin:0 0 14px;font-size:.86rem;color:#5a534a;line-height:1.75;">
-                Your written GP report covers everything in detail. But if you'd like to go through your results live — ask questions, understand what to prioritise, and get a clear action plan tailored to your goals — you can add a 30-minute results consultation.
+                Your written GP report covers everything in detail. But if you'd like to go through your results live, ask questions, understand what to prioritise, and get a clear action plan tailored to your goals, you can add a 30-minute results consultation.
               </p>
               <p style="margin:0 0 14px;font-size:.86rem;color:#5a534a;"><strong style="color:#2c2a26;">Blood test patient rate: £149</strong> <span style="color:#8a8278;">(standard rate £195, saving £46)</span></p>
               <a href="https://veridianclinic.com/book?tier=discovery" style="display:inline-block;background:#2c2a26;color:#f6f1e8;padding:11px 24px;text-decoration:none;font-size:.88rem;font-weight:600;letter-spacing:.04em;">
@@ -219,7 +219,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
           </table>
 
           <p style="margin:0 0 6px;font-size:.86rem;color:#5a534a;line-height:1.75;">
-            Questions in the meantime? Reply to this email directly — it goes straight to the Veridian clinical inbox.
+            Questions in the meantime? Reply to this email directly, it goes straight to the Veridian clinical inbox.
           </p>
           <p style="margin:0;font-size:.86rem;color:#5a534a;">
             Or email: <a href="mailto:support@veridianclinic.com" style="color:#2c2a26;font-weight:600;">support@veridianclinic.com</a>
@@ -245,12 +245,12 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
 function buildDrTosinNotification(patientName: string, patientEmail: string, panel: PanelInfo, stripeSessionId: string): string {
   return `
     <div style="font-family:Arial,sans-serif;max-width:600px;padding:32px;">
-      <h2 style="color:#2c2a26;font-size:20px;margin-bottom:8px;">Blood Test — Paid Order</h2>
+      <h2 style="color:#2c2a26;font-size:20px;margin-bottom:8px;">Blood Test, Paid Order</h2>
       <p style="margin:0 0 24px;font-size:13px;color:#8a8278;">Stripe payment confirmed. Randox order details below.</p>
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;width:140px;"><strong>Panel</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;color:#2c2a26;font-size:14px;">${panel.name}</td></tr>
         <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Price</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;color:#2c2a26;font-size:14px;">${panel.price}</td></tr>
-        <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Patient</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;color:#2c2a26;font-size:14px;">${patientName || "—"}</td></tr>
+        <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Patient</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;color:#2c2a26;font-size:14px;">${patientName || "-"}</td></tr>
         <tr><td style="padding:10px 0;border-bottom:1px solid #eee;color:#5a534a;font-size:14px;"><strong>Email</strong></td><td style="padding:10px 0;border-bottom:1px solid #eee;font-size:14px;"><a href="mailto:${patientEmail}" style="color:#c8a84b;">${patientEmail}</a></td></tr>
         <tr><td style="padding:10px 0;color:#5a534a;font-size:13px;"><strong>Session ID</strong></td><td style="padding:10px 0;color:#8a8278;font-size:12px;font-family:monospace;">${stripeSessionId}</td></tr>
       </table>
@@ -291,7 +291,7 @@ export async function sendBloodTestConfirmation(params: {
         sender: { name: "Dr Tosin Taiwo | Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
         replyTo: { email: "support@veridianclinic.com", name: "Veridian Clinic" },
-        subject: `Your blood test is confirmed — ${panel.name}`,
+        subject: `Your blood test is confirmed, ${panel.name}`,
         htmlContent: buildPatientEmail(firstName, panel),
         tags: ["blood-test-confirmation"],
       }),
@@ -305,7 +305,7 @@ export async function sendBloodTestConfirmation(params: {
         sender: { name: "Veridian Bookings", email: "support@veridianclinic.com" },
         to: [{ email: "support@veridianclinic.com", name: "Dr Tosin Taiwo" }],
         replyTo: { email, name },
-        subject: `New paid blood test — ${panel.name} · ${panel.price}`,
+        subject: `New paid blood test, ${panel.name} · ${panel.price}`,
         htmlContent: buildDrTosinNotification(name, email, panel, stripeSessionId),
         tags: ["blood-test-order"],
       }),

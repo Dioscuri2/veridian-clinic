@@ -4,7 +4,9 @@ const siteUrl = "https://veridianclinic.com";
 
 const staticRoutes = [
   "",
+  "/about",
   "/assessments",
+  "/metabolic-turnaround",
   "/blog",
   "/blog/apob-vs-ldl",
   "/blog/fast-insulin",

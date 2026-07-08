@@ -5,6 +5,16 @@ import { scheduleQuizSequence } from "@/lib/quizEmailSequence";
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
 const LIST_NAME = process.env.BREVO_NEWSLETTER_LIST_NAME || "Veridian Leads";
+const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
+
+async function pingDiscord(message: string) {
+  if (!DISCORD_WEBHOOK) return;
+  await fetch(DISCORD_WEBHOOK, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content: message }),
+  }).catch(() => {});
+}
 
 async function fetchBrevo(pathname: string, init: RequestInit = {}) {
   return fetch(`${BREVO_BASE_URL}${pathname}`, {
@@ -56,8 +66,9 @@ export async function POST(request: NextRequest) {
     }
 
     const listId = await ensureBrevoList(LIST_NAME);
+    let stored = false;
     if (listId) {
-      await fetchBrevo("/contacts", {
+      const contactRes = await fetchBrevo("/contacts", {
         method: "POST",
         body: JSON.stringify({
           email,
@@ -74,9 +85,17 @@ export async function POST(request: NextRequest) {
           },
         }),
       });
+      // Brevo returns 201 on create and 204 on update — both count as stored
+      stored = contactRes.ok;
+    }
+    if (!stored) {
+      // Don't lose the lead silently — alert so it can be added by hand
+      await pingDiscord(`⚠️ QUIZ LEAD NOT SAVED TO BREVO — add manually: ${email} (${firstName || "no name"}), band ${band}, mAge ${mAge}`);
     }
 
-    scheduleQuizSequence(email, firstName, mAge, band, delta).catch(() => {});
+    scheduleQuizSequence(email, firstName, mAge, band, delta).catch(() =>
+      pingDiscord(`⚠️ Quiz drip failed to schedule for ${email} (band ${band})`),
+    );
 
     return NextResponse.json({ ok: true });
   } catch (error) {

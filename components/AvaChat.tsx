@@ -20,7 +20,7 @@ export default function AvaChat() {
     {
       role: "assistant",
       content:
-        "Hi, I'm Ava — your Veridian health assistant. I can help with blood test panels, consultation packages, pricing, and booking. How can I help you today?",
+        "Hi, I'm Ava, your Veridian health assistant. I can help with blood test panels, consultation packages, pricing, and booking. How can I help you today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -37,8 +37,19 @@ export default function AvaChat() {
 
   useEffect(() => {
     if (sessionStorage.getItem("ava_nudge_seen")) return;
-    const t = setTimeout(() => setNudge(true), 4000);
-    return () => clearTimeout(t);
+    // Hold the nudge back until the cookie banner has been answered — on
+    // mobile the tooltip renders on top of the banner text otherwise
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const arm = () => { t = setTimeout(() => setNudge(true), 4000); };
+    if (localStorage.getItem("vc_cookie_consent")) {
+      arm();
+    } else {
+      window.addEventListener("consentUpdated", arm, { once: true });
+    }
+    return () => {
+      if (t) clearTimeout(t);
+      window.removeEventListener("consentUpdated", arm);
+    };
   }, []);
 
   const handleToggle = () => {

@@ -207,6 +207,14 @@ export async function proxy(request: NextRequest) {
   const isApi = pathname.startsWith("/api/");
   const isAdmin = pathname.startsWith("/admin");
 
+  // 0. Canonical host — 301 www to apex
+  const host = request.headers.get("host") || "";
+  if (host === "www.veridianclinic.com") {
+    const url = request.nextUrl.clone();
+    url.host = "veridianclinic.com";
+    return NextResponse.redirect(url, 301);
+  }
+
   // 1. Banned IPs — hard block
   if ((bannedIPs.get(ip) ?? 0) > Date.now()) {
     return new NextResponse("Forbidden", { status: 403 });
@@ -244,6 +252,7 @@ export async function proxy(request: NextRequest) {
     if (
       origin &&
       !origin.startsWith("https://veridianclinic.com") &&
+      !origin.startsWith("https://www.veridianclinic.com") &&
       !origin.startsWith("https://veridianclinic-") && // Vercel preview deployments
       !origin.startsWith("http://localhost")             // Local dev
     ) {
