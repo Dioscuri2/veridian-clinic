@@ -1,0 +1,116 @@
+{
+  "_notes": "X (Twitter) adaptations of the 22-day LinkedIn campaign. Account: @tosin_taiwo. Day 1 skipped (original text not stored; topic was ApoB vs LDL and Day 21 covers ApoB). 'thread' = array of posts published as replies. 'images' are live URLs on veridianclinic.com. Status: draft until Dr Tosin approves.",
+  "posts": [
+    {
+      "day": 2,
+      "topic": "Fatigue / Ferritin",
+      "text": "Your ferritin is \"normal\". Your thyroid is \"normal\". You're still exhausted.\n\nNormal means above the disease threshold, not optimal. Ferritin clears the lab range at 13 ug/L. Sustained energy needs 70+.\n\nAnd the NHS doesn't test fasting insulin at all.\n\nhttps://veridianclinic.com/blood-tests/fatigue-energy"
+    },
+    {
+      "day": 3,
+      "topic": "Testosterone",
+      "text": "Most labs flag testosterone as normal from 8.7 nmol/L. Optimal is above 15.\n\nThat gap is where men live with fatigue, low libido, poor sleep and brain fog for years, being told they're fine.\n\nIn women it's barely tested at all.\n\nhttps://veridianclinic.com/assessments"
+    },
+    {
+      "day": 4,
+      "topic": "Perimenopause",
+      "text": "Perimenopause doesn't start at 50. For many women it starts mid-30s, years before periods change.\n\nBy the time FSH rises enough for an NHS diagnosis, most have spent years being told they're fine.\n\nFSH, LH ratio, oestradiol and AMH map exactly where you are.\n\nhttps://veridianclinic.com/blood-tests/womens-hormones"
+    },
+    {
+      "day": 5,
+      "topic": "Metabolic Weight",
+      "text": "Eating less. Exercising more. Weight not moving.\n\nThat's not willpower. Four testable reasons:\n\n- high fasting insulin (fat-storage mode)\n- cortisol dysregulation (visceral fat)\n- sub-optimal thyroid (slowed metabolism)\n- insulin resistance\n\nNone appear on a standard NHS review.\n\nhttps://veridianclinic.com/blood-tests/metabolic-weight"
+    },
+    {
+      "day": 6,
+      "topic": "Lp(a)",
+      "text": "1 in 5 people carry elevated Lp(a). It doubles cardiovascular risk independently of LDL.\n\nAlmost none of them know, because it's never on a standard cholesterol panel. Statins, diet and exercise don't lower it.\n\nFamily history of early heart disease? Test this first.\n\nhttps://veridianclinic.com/blood-tests/cardiovascular-risk"
+    },
+    {
+      "day": 7,
+      "topic": "Insulin Resistance",
+      "text": "Insulin resistance develops silently for a decade before fasting glucose rises.\n\nYou can be on the road to type 2 while every NHS test says normal.\n\nThe early marker: fasting insulin. Optimal is under 8 mIU/L. Labs don't flag it until 24.\n\nhttps://veridianclinic.com/blood-tests/fasting-insulin"
+    },
+    {
+      "day": 8,
+      "topic": "Homocysteine",
+      "text": "Homocysteine above 10 umol/L damages artery walls, accelerates cognitive decline and drives nerve injury.\n\nIt's on zero standard NHS panels. And the fix is usually just targeted B12, folate and B6, within weeks.\n\nIncluded in our Cardiovascular Risk Panel (£349):\nhttps://veridianclinic.com/blood-tests/cardiovascular-risk"
+    },
+    {
+      "day": 9,
+      "topic": "Vitamin D",
+      "text": "The NHS calls vitamin D \"sufficient\" above 50 nmol/L.\n\nThat's the level that prevents rickets. It's a disease threshold, not a health target. Research on immunity, bone density, mood and testosterone points to 100-150.\n\nMost UK adults spend winter below 50.\n\nhttps://veridianclinic.com/blood-tests/fatigue-energy"
+    },
+    {
+      "day": 10,
+      "topic": "Cortisol and belly fat",
+      "text": "Cutting calories. Training 3x a week. Weight still creeping up around your middle.\n\nNot a discipline problem. When your morning cortisol pattern flattens, your body stores abdominal fat regardless of what you eat.\n\nNo NHS panel tests it.\n\nhttps://veridianclinic.com/blood-tests/metabolic-screen"
+    },
+    {
+      "day": 11,
+      "topic": "HbA1c vs Fasting Insulin",
+      "text": "\"Your HbA1c is fine\" might be the most misleading sentence in metabolic medicine.\n\nHbA1c only rises once glucose is already high. Insulin resistance can run for a DECADE before that, while your body drowns the problem in extra insulin.\n\nThe earlier marker: fasting insulin.\n\nhttps://veridianclinic.com/blood-tests/fasting-insulin"
+    },
+    {
+      "day": 12,
+      "topic": "Omega-3 Index",
+      "text": "A number you've never had tested predicts cardiovascular death better than your cholesterol panel.\n\nOmega-3 index above 8% = roughly 90% lower risk of sudden cardiac death vs below 4%. Linked to ~5 extra years of life. The UK average sits near the bottom.\n\nAnd it's fixable in months: ~2g EPA/DHA daily.\n\nhttps://veridianclinic.com/blog/omega-3"
+    },
+    {
+      "day": 13,
+      "topic": "Biological Age",
+      "text": "Chronological age: how long you've been alive.\nBiological age: how fast you're actually ageing.\n\nThe gap between them is measurable, and closable. A 52-year-old with the biology of 62 has a specific problem to solve, and a decade to solve it.\n\n150+ markers: https://veridianclinic.com/blood-tests/biological-age"
+    },
+    {
+      "day": 14,
+      "topic": "Brain Fog",
+      "text": "Brain fog at 45 is not \"just getting older\". Four markers explain most cases:\n\n- Free T3 below 5 pmol/L\n- Ferritin below 70 ug/L\n- B12 below 500 pmol/L\n- Fasting insulin above 8 mIU/L\n\nAll treatable. None on a standard NHS panel.\n\nhttps://veridianclinic.com/blood-tests/fatigue-energy"
+    },
+    {
+      "day": 15,
+      "topic": "GLP-1 readiness",
+      "text": "Mounjaro and Wegovy work. They work better aimed at the right problem.\n\nBefore starting any GLP-1 I'd want: fasting insulin, full thyroid panel, morning cortisol, HbA1c + HOMA-IR.\n\nIs it insulin resistance, thyroid, or stress-driven fat? Different answers, different plans.\n\nhttps://veridianclinic.com/blood-tests/metabolic-weight"
+    },
+    {
+      "day": 16,
+      "topic": "The frustrated professional",
+      "text": "For the professional in their 40s-50s: gained weight despite eating well, exhausted by 2pm, told your bloods are \"normal\".\n\nYou're not lazy. You're not imagining it.\n\nFasting insulin, morning cortisol, Free T3, testosterone. Four markers that tell a different story.\n\nFree 3-min check: https://veridianclinic.com/metabolic-quiz"
+    },
+    {
+      "day": 17,
+      "topic": "Belly fat in your 40s",
+      "text": "Belly fat in your 40s is not the weight you carried at 25.\n\nIt's visceral fat: metabolically active, inflammatory, and a cardiovascular risk independent of BMI.\n\nDrivers: rising fasting insulin, cortisol dysregulation, declining testosterone. All three testable.\n\nhttps://veridianclinic.com/blood-tests/metabolic-weight"
+    },
+    {
+      "day": 18,
+      "topic": "Fasting insulin poll",
+      "text": "Question for UK professionals: has your GP ever run a fasting insulin test on you?\n\nA) Yes, recently\nB) Years ago\nC) Never offered\nD) What's that?\n\nIt catches insulin resistance a decade before glucose rises. If you answered C or D, you're the majority, and that's the problem.\n\nhttps://veridianclinic.com/blood-tests/fasting-insulin"
+    },
+    {
+      "day": 19,
+      "topic": "The most common GP conversation",
+      "text": "The conversation I have most as a GP:\n\n\"All my bloods came back fine. But I feel terrible.\"\n\nNHS tests rule out disease. Normal = above the disease threshold, not optimal.\n\nFerritin 13 passes; energy needs 70+. Fasting insulin isn't tested at all.\n\nThat gap is measurable. https://veridianclinic.com"
+    },
+    {
+      "day": 20,
+      "topic": "Pre-diabetes action plan",
+      "images": ["https://veridianclinic.com/linkedin-cards/day20-data.png", "https://veridianclinic.com/linkedin-cards/day20-quote.png"],
+      "text": "Told you're pre-diabetic? The standard pathway is: lose weight, cut carbs, come back in a year.\n\nWhat it misses:\n- the insulin resistance actually driving it\n- thyroid suppression that blocks weight loss\n- overnight liver glucose output\n\nAll three treatable. https://veridianclinic.com"
+    },
+    {
+      "day": 21,
+      "topic": "Family history - act early",
+      "images": ["https://veridianclinic.com/linkedin-cards/day21-data.png", "https://veridianclinic.com/linkedin-cards/day21-quote.png"],
+      "text": "Your father: heart attack at 54. Your mother: type 2 at 52.\n\nYou can't change your genetics. You can know exactly which risks you inherited: ApoB, Lp(a), fasting insulin, HbA1c + HOMA-IR.\n\nAnd start acting 20 years earlier than your parents could.\n\nhttps://veridianclinic.com/blood-tests/cardiovascular-risk"
+    },
+    {
+      "day": 22,
+      "topic": "Metabolic Turnaround launch",
+      "images": ["https://veridianclinic.com/linkedin-cards/day22-data.png", "https://veridianclinic.com/linkedin-cards/day22-quote.png"],
+      "thread": [
+        "The 90-Day Metabolic Turnaround is live.\n\nBuilt because I kept having the same conversation as a GP: professionals in their 40s-50s, HbA1c climbing, weight stuck, tired by 2pm, told their results were \"normal for their age\".\n\nNo one explained why. No one said what to do.",
+        "What's inside:\n\n- full blood panel (fasting insulin, ApoB, Lp(a), homocysteine, inflammation, liver)\n- two GP consultations\n- 14-day continuous glucose monitor\n- written action plan built on YOUR data\n- fortnightly GP check-ins for 90 days\n\nhttps://veridianclinic.com/metabolic-turnaround"
+      ]
+    }
+  ]
+}

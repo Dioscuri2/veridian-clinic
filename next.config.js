@@ -13,6 +13,14 @@ const nextConfig = {
   outputFileTracingIncludes: {
     "/api/guide-download": ["./private/**/*"],
   },
+  async headers() {
+    return [
+      {
+        source: "/linkedin-cards/:path*",
+        headers: [{ key: "Access-Control-Allow-Origin", value: "*" }],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

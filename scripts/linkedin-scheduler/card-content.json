@@ -3,9 +3,18 @@
     "eyebrow": "PRE-DIABETES",
     "headline": "What The Standard Pathway Misses",
     "items": [
-      { "title": "Insulin Resistance", "desc": "Measurable with fasting insulin and HOMA-IR — the actual driver of glucose elevation" },
-      { "title": "Thyroid Suppression", "desc": "Makes weight loss extremely difficult without intervention" },
-      { "title": "Hepatic Glucose Output", "desc": "Overnight liver glucose production keeps fasting glucose elevated regardless of diet" }
+      {
+        "title": "Insulin Resistance",
+        "desc": "Measurable with fasting insulin and HOMA-IR — the actual driver of glucose elevation"
+      },
+      {
+        "title": "Thyroid Suppression",
+        "desc": "Makes weight loss extremely difficult without intervention"
+      },
+      {
+        "title": "Hepatic Glucose Output",
+        "desc": "Overnight liver glucose production keeps fasting glucose elevated regardless of diet"
+      }
     ],
     "footer": "veridianclinic.com",
     "quote": "If the weight is not shifting, there is a reason. It is not willpower.",
@@ -15,10 +24,22 @@
     "eyebrow": "FAMILY HISTORY RISK",
     "headline": "Start 20 Years Earlier Than Your Parents Did",
     "items": [
-      { "title": "ApoB", "desc": "The particle count that actually predicts arterial damage, not just LDL" },
-      { "title": "Lp(a)", "desc": "The inherited cardiovascular marker that statins cannot lower" },
-      { "title": "Fasting Insulin", "desc": "A decade of early warning for type 2 diabetes" },
-      { "title": "HbA1c & HOMA-IR", "desc": "Where you actually sit on the metabolic spectrum right now" }
+      {
+        "title": "ApoB",
+        "desc": "The particle count that actually predicts arterial damage, not just LDL"
+      },
+      {
+        "title": "Lp(a)",
+        "desc": "The inherited cardiovascular marker that statins cannot lower"
+      },
+      {
+        "title": "Fasting Insulin",
+        "desc": "A decade of early warning for type 2 diabetes"
+      },
+      {
+        "title": "HbA1c & HOMA-IR",
+        "desc": "Where you actually sit on the metabolic spectrum right now"
+      }
     ],
     "footer": "Cardiovascular Risk Panel — £349 · veridianclinic.com",
     "quote": "You cannot change your genetics. You can know exactly which risks you have inherited.",
@@ -28,13 +49,46 @@
     "eyebrow": "NOW LIVE",
     "headline": "The 90-Day Metabolic Turnaround",
     "items": [
-      { "title": "Full Panel", "desc": "Fasting insulin, ApoB, Lp(a), homocysteine, inflammatory and liver markers" },
-      { "title": "Two GP Consultations", "desc": "Full history and risk mapping, then results explained in plain language" },
-      { "title": "14-Day CGM", "desc": "See exactly how your body responds to food, stress and sleep in real time" },
-      { "title": "Fortnightly Check-Ins", "desc": "90 days of GP-led accountability to your progress" }
+      {
+        "title": "Full Panel",
+        "desc": "Fasting insulin, ApoB, Lp(a), homocysteine, inflammatory and liver markers"
+      },
+      {
+        "title": "Two GP Consultations",
+        "desc": "Full history and risk mapping, then results explained in plain language"
+      },
+      {
+        "title": "14-Day CGM",
+        "desc": "See exactly how your body responds to food, stress and sleep in real time"
+      },
+      {
+        "title": "Fortnightly Check-Ins",
+        "desc": "90 days of GP-led accountability to your progress"
+      }
     ],
     "footer": "Link in comments · veridianclinic.com",
     "quote": "Done with vague advice. Ready for a doctor to look at your numbers and tell you what to fix.",
     "attribution": "DR TOSIN TAIWO — VERIDIAN CLINIC"
+  },
+  "2": {
+    "eyebrow": "FATIGUE & ENERGY",
+    "headline": "Normal Results. Still Exhausted.",
+    "items": [
+      {
+        "title": "Ferritin",
+        "desc": "Clears the lab range at 13 ug/L. Sustained energy needs above 70."
+      },
+      {
+        "title": "Free T4",
+        "desc": "Normal anywhere in 12-22 pmol/L. Most people feel best in the upper third."
+      },
+      {
+        "title": "Fasting Insulin",
+        "desc": "Not tested on standard NHS panels at all. Optimal is below 8 mIU/L."
+      }
+    ],
+    "footer": "FATIGUE & ENERGY DEEP SCREEN · £249 · VERIDIANCLINIC.COM",
+    "quote": "Normal means above the disease threshold. It does not mean optimal.",
+    "attribution": "DR TOSIN TAIWO · VERIDIAN CLINIC"
   }
 }
