@@ -77,10 +77,8 @@ const offers = [
 ];
 
 const testimonials = [
-  { name:"James H.", age:"52", role:"Business Owner", text:"I had annual blood tests for years and was always told everything was fine. Veridian showed my ApoB had been quietly elevated for years. Six months on it is down 30% and I feel better than I did at 40.", stars:5 },
-  { name:"Sarah M.", age:"44", role:"Senior Partner", text:"The domain scorecard made everything click. I could finally see why my energy crashed every afternoon and why my weight kept creeping up despite doing everything 'right'. The CGM data alone was worth it.", stars:5 },
-  { name:"David K.", age:"48", role:"Consultant Surgeon", text:"As a clinician myself I was sceptical. But the evidence base and Dr Taiwo's reasoning are excellent. The way Veridian connects biomarkers to outcomes is genuinely useful.", stars:5 },
-  { name:"Rachel T.", age:"39", role:"Director", text:"The reset was transformative. Not just the results, but finally understanding the mechanisms. Complex physiology explained in a way that actually changed my behaviour.", stars:5 },
+  { src:"/testimonials/story-1.mp4", poster:"/testimonials/story-1-poster.jpg", name:"Chris O.", age:"65", role:"Retired business owner" },
+  { src:"/testimonials/story-2.mp4", poster:"/testimonials/story-2-poster.jpg", name:"K.O.", age:"54", role:"Business owner" },
 ];
 
 const faqs = [
@@ -263,13 +261,6 @@ function OfferCard({ o, delay }: { o: typeof offers[0]; delay: number }) {
 }
 
 export default function HomePage() {
-  const [tIdx, setTIdx] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => setTIdx(i => (i + 1) % testimonials.length), 6500);
-    return () => clearInterval(t);
-  }, []);
-
   return (
     <>
       <style>{FONTS + CSS + `
@@ -491,6 +482,55 @@ export default function HomePage() {
           </div>
           <div className="hero-img-col" data-aos="fade-left" data-aos-delay="120">
             <img src="/dr-tosin.jpg" alt="Dr Tosin Taiwo GP Veridian Clinic" />
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════
+            2. PATIENT VIDEO TESTIMONIALS (surfaced high for trust)
+        ══════════════════════════════════════════════════ */}
+        <section id="testimonials" className="sec bg-fo">
+          <style>{`
+            .vt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:start; }
+            .vt-card { background:rgba(255,255,255,.04); border:1px solid rgba(200,168,75,.18); overflow:hidden; }
+            .vt-card video { width:100%; height:auto; max-height:620px; display:block; background:#000; }
+            .vt-soon { display:flex; align-items:center; justify-content:center; text-align:center; padding:40px 24px; min-height:300px; }
+            @media (max-width:820px){ .vt-grid{ grid-template-columns:1fr 1fr; } .vt-soon{ grid-column:1/-1; min-height:auto; padding:28px; } }
+            @media (max-width:520px){ .vt-grid{ grid-template-columns:1fr; } }
+          `}</style>
+          <div className="wrap" style={{ maxWidth: 1000 }}>
+            <div className="sh text-center" style={{ marginBottom: 36 }}>
+              <p className="lbl" style={{ color:"var(--go)" }}>Patient Stories</p>
+              <div className="rule rule-c"/>
+              <h2 className="cg sh-title" style={{ color:"var(--iv)" }}>Hear it from our patients</h2>
+              <p className="sh-body" style={{ color:"rgba(246,241,232,.7)", maxWidth:600, margin:"0 auto" }}>
+                Real people who came to Veridian for the answers their GP could not give them.
+              </p>
+            </div>
+            <div className="vt-grid">
+              {testimonials.map((t,i) => (
+                <div key={i} className="vt-card" data-aos="fade-up" data-aos-delay={i*90}>
+                  <video controls preload="metadata" playsInline poster={t.poster}>
+                    <source src={t.src} type="video/mp4" />
+                  </video>
+                  <div style={{ padding:"16px 18px" }}>
+                    <Stars n={5}/>
+                    <p style={{ fontSize:".9rem", fontWeight:600, color:"var(--iv)", marginTop:8 }}>{t.name}, {t.age}</p>
+                    <p style={{ fontSize:".76rem", color:"var(--go2)" }}>{t.role}</p>
+                  </div>
+                </div>
+              ))}
+              <div className="vt-card vt-soon">
+                <div>
+                  <p className="cg" style={{ fontSize:"1.6rem", lineHeight:1.2, color:"var(--go)", marginBottom:10 }}>More stories<br/>coming soon</p>
+                  <p style={{ fontSize:".78rem", color:"rgba(246,241,232,.55)", lineHeight:1.7 }}>
+                    New patient testimonials are added as our members share their journeys.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p style={{ fontSize:".72rem", color:"rgba(246,241,232,.4)", textAlign:"center", marginTop:24, lineHeight:1.7 }}>
+              Shared with written patient consent. Individual outcomes vary.
+            </p>
           </div>
         </section>
 
@@ -814,58 +854,6 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════════════
-            11. TESTIMONIALS
-        ══════════════════════════════════════════════════ */}
-        <section id="testimonials" className="sec bg-wh">
-          <div className="wrap">
-            <div className="sh text-center">
-              <p className="lbl">Patient Experiences</p>
-              <div className="rule rule-c"/>
-              <h2 className="sh-title">What our patients say</h2>
-            </div>
-            <div style={{ marginBottom: 36 }}>
-              {testimonials.map((t,i) => (
-                <div key={i} style={{ display: i === tIdx ? "block" : "none" }}>
-                  <div style={{ background:"var(--fo)", padding:"clamp(28px,5vw,48px)", position:"relative", overflow:"hidden" }} data-aos="fade-up">
-                    <div className="cg" style={{ position:"absolute", top:-20, left:28, fontSize:"10rem", lineHeight:1, color:"rgba(200,168,75,.07)", userSelect:"none" }}>"</div>
-                    <Stars n={t.stars}/>
-                    <p className="cg" style={{ fontSize:"clamp(1.1rem,2.8vw,1.6rem)", fontWeight:400, fontStyle:"italic", color:"var(--iv)", lineHeight:1.75, marginBottom:24, position:"relative" }}>"{t.text}"</p>
-                    <div style={{ display:"flex", alignItems:"center", gap:14 }}>
-                      <div style={{ width:42, height:42, background:"var(--go)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontFamily:"'Cormorant Garamond',serif", fontSize:"1rem", color:"var(--fo)", fontWeight:600 }}>{t.name[0]}</div>
-                      <div>
-                        <p style={{ fontSize:".86rem", fontWeight:600, color:"var(--iv)", letterSpacing:".04em" }}>{t.name}, {t.age}</p>
-                        <p style={{ fontSize:".74rem", color:"var(--go2)" }}>{t.role}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              <div style={{ display:"flex", gap:9, justifyContent:"center", marginTop:14 }}>
-                {testimonials.map((_,i) => (
-                  <button key={i} onClick={() => setTIdx(i)} style={{ width:i===tIdx?24:7, height:7, background:i===tIdx?"var(--fo)":"var(--iv3)", border:"none", cursor:"pointer", transition:"all .3s" }}/>
-                ))}
-              </div>
-            </div>
-            <div className="g2">
-              {testimonials.map((t,i) => (
-                <div key={i} style={{ background:"var(--wh)", border:"1px solid rgba(0,0,0,.07)", padding:"clamp(20px,4vw,32px)", position:"relative" }}>
-                  <div className="cg" style={{ position:"absolute", top:16, left:22, fontSize:"3.5rem", lineHeight:1, color:"var(--go)", opacity:.14 }}>"</div>
-                  <Stars n={t.stars}/>
-                  <p style={{ fontSize:".87rem", color:"var(--sl2)", lineHeight:1.9, marginBottom:16, paddingTop:4 }}>{t.text.length > 155 ? t.text.slice(0,155)+"…" : t.text}</p>
-                  <div style={{ display:"flex", alignItems:"center", gap:12, borderTop:"1px solid rgba(0,0,0,.06)", paddingTop:12 }}>
-                    <div style={{ width:32, height:32, background:"var(--fo)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, fontFamily:"'Cormorant Garamond',serif", fontSize:".88rem", color:"var(--go2)", fontWeight:500 }}>{t.name[0]}</div>
-                    <div>
-                      <p style={{ fontSize:".82rem", fontWeight:600, color:"var(--sl)" }}>{t.name}, {t.age}</p>
-                      <p style={{ fontSize:".72rem", color:"var(--sl3)" }}>{t.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
