@@ -29,12 +29,17 @@ function ConsultationContent() {
   }, []);
 
   const quizRate = isQuizRate || hasQuizCookie;
-  const price = quizRate ? "£55" : "£60";
+  const price = quizRate ? "£48" : "£60";
   const priceLabel = quizRate ? "Quiz rate" : "Standard rate";
+  const bookingUrl = quizRate ? "https://notes.thanksdoc.co.uk/book/service/138/36" : THANKSDOC_URL;
 
   return (
     <>
       <style>{FONTS + CSS}</style>
+      <style>{`
+        .wl-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
+        @media (min-width: 900px) { .wl-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+      `}</style>
       <Navigation />
       <main style={{ paddingTop: "var(--nav-h)" }}>
 
@@ -62,7 +67,7 @@ function ConsultationContent() {
 
         {/* ── Main grid ── */}
         <section className="sec bg-iv">
-          <div className="wrap" style={{ maxWidth: 900, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+          <div className="wrap wl-grid" style={{ maxWidth: 900 }}>
 
             {/* Left, what's included */}
             <div>
@@ -105,8 +110,16 @@ function ConsultationContent() {
                   <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.55)", marginTop: 4 }}>15-minute virtual consultation · Video call</p>
                 </div>
 
+                {quizRate && (
+                  <div style={{ padding: "12px 14px", background: "rgba(200,168,75,.1)", border: "1px solid var(--go)", marginBottom: 16, textAlign: "center" }}>
+                    <p style={{ fontSize: ".8rem", color: "var(--sl2)", lineHeight: 1.6 }}>
+                      At the review step, enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>WLQUIZRATE</strong> for your £48 rate.
+                    </p>
+                  </div>
+                )}
+
                 <a
-                  href={THANKSDOC_URL}
+                  href={bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-fo btn-full"
@@ -136,7 +149,7 @@ function ConsultationContent() {
                 {!quizRate && (
                   <div style={{ marginTop: 18, padding: "12px 14px", background: "var(--iv2)", borderLeft: "2px solid var(--go)" }}>
                     <p style={{ fontSize: ".76rem", color: "var(--sl2)", lineHeight: 1.6 }}>
-                      Complete the <Link href="/weight-loss#quiz" style={{ color: "var(--fo)", fontWeight: 700, textDecoration: "underline" }}>free eligibility quiz</Link> to unlock the £55 quiz rate.
+                      Complete the <Link href="/weight-loss#quiz" style={{ color: "var(--fo)", fontWeight: 700, textDecoration: "underline" }}>free eligibility quiz</Link> to unlock the £48 quiz rate.
                     </p>
                   </div>
                 )}

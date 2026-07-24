@@ -8,7 +8,7 @@ import Link from "next/link";
 const plans = [
  {
  name: "Metabolic Discovery",
- price: "£195",
+ price: "£97",
  cadence: "Focused starting point",
  tier: "discovery",
  blurb: "A focused clinical discovery consultation to understand your symptoms, goals, family history and likely metabolic blind spots then recommend the right next diagnostic step.",

@@ -31,16 +31,16 @@ const tierCatalog: Record<
   },
   discovery: {
     name: "GP-Led Discovery Call",
-    amount: 19500,
+    amount: 9700,
     description:
       "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation.",
     successPath: "/book/thank-you",
   },
   "discovery-quiz": {
     name: "GP-Led Discovery Call, Quiz Rate",
-    amount: 9700,
+    amount: 7700,
     description:
-      "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £97 (normally £195).",
+      "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £77 (normally £97).",
     successPath: "/book/thank-you",
   },
   "metabolic-screen": {
@@ -152,7 +152,7 @@ const tierCatalog: Record<
   },
   "wl-consultation-quiz": {
     name: "Weight Loss Consultation, Quiz Rate",
-    amount: 5500,
+    amount: 4800,
     description:
       "Private 15-minute GP consultation for weight loss medicine assessment (quiz rate). Covers medical history, medicine selection, dose titration plan, safety review, and private prescription if clinically appropriate.",
     successPath: "/book/thank-you",

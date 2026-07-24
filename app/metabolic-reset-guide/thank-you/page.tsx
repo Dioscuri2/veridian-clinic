@@ -72,7 +72,7 @@ export default function GuideThankyouPage() {
                 </p>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 20 }}>
                   <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--go)", lineHeight: 1 }}>£97</span>
-                  <span style={{ fontSize: ".8rem", color: "rgba(246,241,232,.45)" }}>quiz-taker rate · save £98</span>
+                  <span style={{ fontSize: ".8rem", color: "rgba(246,241,232,.45)" }}>30-minute GP-led call</span>
                 </div>
                 <Link href="/book?tier=discovery" className="btn btn-go" style={{ display: "block", textAlign: "center" }}>
                   Book My Discovery Call →

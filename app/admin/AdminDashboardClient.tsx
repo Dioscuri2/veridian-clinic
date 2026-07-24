@@ -54,7 +54,7 @@ Is there something specific you'd like to know more about?`,
     keywords: ["cost", "price", "how much", "fee", "afford", "expensive", "charge", "pay", "money", "pound", "£"],
     body: `Great question here's a quick overview of our fees:
 
-• Initial Discovery Consultation £195 (45 min with Dr Taiwo)
+• Initial Discovery Consultation £97 (30 min with Dr Taiwo)
 • Energy Screen £195 (key hormones & metabolic markers)
 • Core Metabolic Assessment £595 (full metabolic + hormonal review)
 • Advanced Longevity Assessment £795 (comprehensive biomarker panel)
@@ -68,7 +68,7 @@ Most patients start with the Discovery Consultation it's the best way to find ou
     label: "Assessment details",
     emoji: "🩺",
     keywords: ["assessment", "consultation", "what's included", "what does it involve", "what happen", "appointment", "session", "what do i get", "process"],
-    body: `Our Initial Discovery Consultation (£195, 45 minutes with Dr Taiwo) is the best starting point. We'll review your health history, current symptoms, and goals then design a personalised plan.
+    body: `Our Initial Discovery Consultation (£97, 30 minutes with Dr Taiwo) is the best starting point. We'll review your health history, current symptoms, and goals then design a personalised plan.
 
 The Core Metabolic Assessment (£595) is our most popular package and includes:
 ✓ Comprehensive blood panel (see below)

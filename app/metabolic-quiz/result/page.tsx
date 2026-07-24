@@ -434,19 +434,19 @@ function ResultContent() {
                       A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway whether that&apos;s a targeted blood panel, a structured reset, or a full baseline assessment.
                     </p>
                     <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
-                      <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£97</span>
-                      <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£195</span>
-                      <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Save £98</span>
+                      <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£77</span>
+                      <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£97</span>
+                      <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Save £20</span>
                     </div>
                     <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.55)", lineHeight: 1.6, marginBottom: 16 }}>
-                      Enter your email for your free scorecard your £97 rate is unlocked immediately after.
+                      Enter your email for your free scorecard your £77 rate is unlocked immediately after.
                     </p>
                     <Link
                       href={scorecardUrl}
                       className="btn btn-go btn-full"
-                      onClick={() => fbq("InitiateCheckout", { value: 97, currency: "GBP", content_name: "Discovery Call" })}
+                      onClick={() => fbq("InitiateCheckout", { value: 77, currency: "GBP", content_name: "Discovery Call" })}
                     >
-                      Get My Scorecard &amp; Unlock £97 →
+                      Get My Scorecard &amp; Unlock £77 →
                     </Link>
                   </div>
                 )}
@@ -464,24 +464,26 @@ function ResultContent() {
                   </Link>
                 </div>
 
-                {/* VERIDIAN50 discovery call upsell */}
+                {/* QUIZRATE discovery call upsell */}
                 <div style={{ padding: "20px 22px", border: "1.5px solid var(--go)", background: "rgba(200,168,75,.06)" }}>
                   <p style={{ fontSize: ".66rem", color: "var(--go)", letterSpacing: ".16em", textTransform: "uppercase", fontWeight: 700, marginBottom: 8 }}>
                     Quiz-taker offer
                   </p>
                   <p style={{ fontSize: ".93rem", color: "var(--sl)", fontWeight: 500, lineHeight: 1.4, marginBottom: 6 }}>
-                    Book a GP Discovery Call at half price.
+                    Book a GP Discovery Call at the quiz rate.
                   </p>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14 }}>
-                    A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>VERIDIAN50</strong> at checkout to reduce the price from £195 to £97.
+                    A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>QUIZRATE</strong> at checkout to reduce the price from £97 to £77.
                   </p>
-                  <Link
-                    href="/book?tier=discovery"
+                  <a
+                    href="https://notes.thanksdoc.co.uk/book/service/136/36"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{ fontSize: ".86rem", fontWeight: 600, color: "var(--fo)", textDecoration: "underline" }}
-                    onClick={() => fbq("InitiateCheckout", { value: 97, currency: "GBP", content_name: "Discovery Call VERIDIAN50" })}
+                    onClick={() => fbq("InitiateCheckout", { value: 77, currency: "GBP", content_name: "Discovery Call QUIZRATE" })}
                   >
-                    Book now use VERIDIAN50 at checkout →
-                  </Link>
+                    Book now use QUIZRATE at checkout →
+                  </a>
                 </div>
               </div>
             </div>

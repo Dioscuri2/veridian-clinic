@@ -131,9 +131,9 @@ export default function PeriGuideUpsells() {
           Book a Clinical Review with Dr Tosin
         </h3>
         <p style={{ fontSize: ".9rem", color: "var(--sl3)", marginBottom: 18 }}>
-          <strong style={{ color: "var(--sl)", fontSize: "1.1rem" }}>£97</strong>
-          <span style={{ marginLeft: 10, textDecoration: "line-through" }}>£195</span>
-          <span style={{ marginLeft: 10, fontSize: ".8rem" }}>  guide reader rate</span>
+          <strong style={{ color: "var(--sl)", fontSize: "1.1rem" }}>£77</strong>
+          <span style={{ marginLeft: 10, textDecoration: "line-through" }}>£97</span>
+          <span style={{ marginLeft: 10, fontSize: ".8rem" }}>  guide reader rate with code QUIZRATE</span>
         </p>
 
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 20 }}>
@@ -157,9 +157,9 @@ export default function PeriGuideUpsells() {
 
         {/* CTAs Stripe payment + Calendly option */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <Link href="/book?tier=discovery-quiz" className="btn btn-fo" style={{ padding: "14px 32px", fontSize: ".92rem", display: "inline-block", textAlign: "center" }}>
-            Book & Pay £97 →
-          </Link>
+          <a href="https://notes.thanksdoc.co.uk/book/service/136/36" target="_blank" rel="noopener noreferrer" className="btn btn-fo" style={{ padding: "14px 32px", fontSize: ".92rem", display: "inline-block", textAlign: "center" }}>
+            Book, use QUIZRATE for £77 →
+          </a>
 
           {CALENDLY_URL && (
             <>

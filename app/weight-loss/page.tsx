@@ -583,7 +583,7 @@ function WlQuiz() {
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 24 }}>
             Based on your BMI, a more targeted approach may serve you better. A metabolic blood panel can identify the specific drivers of weight resistance, insulin, thyroid, hormones, and inflammation, and give Dr Tosin a far more precise starting point.
           </p>
-          <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Call, £195</Link>
+          <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Call, £97</Link>
           <br />
           <Link href="/assessments" style={{ fontSize: ".82rem", color: "var(--sl2)", textDecoration: "underline" }}>View metabolic blood panels instead</Link>
         </div>
@@ -618,13 +618,13 @@ function WlQuiz() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
             <div>
               <p style={{ fontSize: ".7rem", color: "rgba(246,241,232,.55)", fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 2 }}>Quiz rate</p>
-              <p style={{ fontSize: "2rem", fontWeight: 800, color: "var(--iv)", lineHeight: 1 }}>£55 <span style={{ fontSize: ".9rem", fontWeight: 400, color: "rgba(246,241,232,.5)" }}>was £60</span></p>
+              <p style={{ fontSize: "2rem", fontWeight: 800, color: "var(--iv)", lineHeight: 1 }}>£48 <span style={{ fontSize: ".9rem", fontWeight: 400, color: "rgba(246,241,232,.5)" }}>was £60</span></p>
             </div>
             <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.6)", lineHeight: 1.6, maxWidth: 200 }}>15-minute virtual consultation. Private prescription pathway if appropriate.</p>
           </div>
         </div>
         <Link href="/weight-loss/consultation?quiz=1" className="btn btn-go" style={{ display: "block", textAlign: "center", width: "100%", boxSizing: "border-box" }}>
-          Book my Weight Loss Consultation, £55
+          Book my Weight Loss Consultation, £48
         </Link>
         <p style={{ fontSize: ".74rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
           Secure payment via Stripe. A confirmation email is sent immediately after booking.
@@ -755,7 +755,7 @@ export default function WeightLossPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 2 }}>
               {[
                 { n: "01", t: "Eligibility check", d: "Complete the free 10-question quiz above. It screens for the main contraindications and calculates your BMI. No commitment required." },
-                { n: "02", t: "Book consultation", d: "Book your 15-minute virtual consultation with Dr Tosin. £55 at the quiz rate. He reviews your case and selects the right medicine." },
+                { n: "02", t: "Book consultation", d: "Book your 15-minute virtual consultation with Dr Tosin. £48 at the quiz rate. He reviews your case and selects the right medicine." },
                 { n: "03", t: "Prescription", d: "If appropriate, Dr Tosin issues a private prescription. You collect from any UK pharmacy or use a registered online pharmacy." },
                 { n: "04", t: "Ongoing support", d: "Monitoring appointments available as you titrate your dose. Dr Tosin is available for review as your treatment progresses." },
               ].map((step, i) => (

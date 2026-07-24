@@ -6,9 +6,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
+const DISCOVERY_QUIZ_BOOKING = "https://notes.thanksdoc.co.uk/book/service/136/36";
+
 function ThankYouContent() {
   const params = useSearchParams();
   const name = params.get("name") || "";
+  const quizRate = params.get("rate") === "quiz";
 
   return (
     <>
@@ -78,6 +81,35 @@ function ThankYouContent() {
             </div>
           </div>
         </section>
+
+        {/* Quiz-rate booking handoff */}
+        {quizRate && (
+          <section className="sec bg-fo" style={{ paddingTop: 8, paddingBottom: 48 }}>
+            <div className="wrap" style={{ maxWidth: 620 }}>
+              <div style={{ padding: "clamp(24px,5vw,40px)", background: "rgba(200,168,75,.08)", border: "1.5px solid var(--go)", textAlign: "center" }}>
+                <p style={{ fontSize: ".66rem", color: "var(--go)", letterSpacing: ".16em", textTransform: "uppercase", fontWeight: 700, marginBottom: 12 }}>
+                  Quiz rate unlocked
+                </p>
+                <h2 className="cg" style={{ fontSize: "clamp(1.6rem,3.5vw,2.3rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 12 }}>
+                  Book your GP Discovery Call for £77
+                </h2>
+                <p style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", lineHeight: 1.85, marginBottom: 20 }}>
+                  A 30-minute GP-led review of your result and a personalised pathway. At the review step of booking, enter the code below to get your quiz-taker rate.
+                </p>
+                <div style={{ display: "inline-block", padding: "12px 26px", background: "var(--go)", marginBottom: 22 }}>
+                  <span style={{ fontSize: ".72rem", color: "rgba(44,42,38,.7)", letterSpacing: ".08em", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: 2 }}>Your code</span>
+                  <span className="cg" style={{ fontSize: "1.6rem", fontWeight: 600, color: "var(--fo)", letterSpacing: ".12em" }}>QUIZRATE</span>
+                </div>
+                <a href={DISCOVERY_QUIZ_BOOKING} target="_blank" rel="noopener noreferrer" className="btn btn-go btn-full">
+                  Book my £77 Discovery Call →
+                </a>
+                <p style={{ fontSize: ".74rem", color: "rgba(246,241,232,.5)", lineHeight: 1.7, marginTop: 14 }}>
+                  £97 standard · £77 with code QUIZRATE · applied at checkout. Secure payment via ThanksDoc.
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Free guide offer */}
         <section className="sec bg-wh">

@@ -22,7 +22,7 @@ const bandClass = { red:"spill-r", amr:"spill-a", grn:"spill-g" };
 const offers = [
   {
     name: "Discovery Call",
-    price: "£195",
+    price: "£97",
     tier: "discovery",
     tag: "First conversation",
     blurb: "A 30-minute GP-led consultation to review your concerns, history and goals. Useful even if you don't progress immediately you leave with clarity and a clear written next-step plan.",
