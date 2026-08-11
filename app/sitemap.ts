@@ -44,6 +44,8 @@ const staticRoutes = [
   "/metabolic-reset-guide",
   "/perimenopause-guide",
   "/perimenopause-quiz",
+  "/private-gp-cambridge",
+  "/private-gp-north-west-london",
   "/privacy",
   "/quiz",
   "/terms",
