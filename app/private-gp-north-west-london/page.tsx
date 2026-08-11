@@ -66,8 +66,8 @@ const faqs = [
     a: "No. You can book directly with Veridian Clinic no GP referral is required. We handle all clinical ordering, including blood tests and private prescriptions where appropriate.",
   },
   {
-    q: "Which areas of North West London do you cover?",
-    a: "We serve patients across North West London including Hampstead, Highgate, Finchley, Golders Green, St John's Wood, Kilburn, Harrow and Wembley with in-person metabolic and longevity consultations by appointment, and secure video across the wider area.",
+    q: "Where are you based in North West London?",
+    a: "A face-to-face consulting location on Golders Green Road, NW11 is opening soon for in-person metabolic and longevity consultations convenient for Golders Green, Hampstead, Highgate, Finchley, Hendon and Temple Fortune. Until it opens, consultations are held by secure video, available now.",
   },
   {
     q: "Where are the blood tests actually done?",
@@ -94,7 +94,23 @@ const schema = {
   description:
     "Private GP serving North West London for advanced blood tests, weight loss (GLP-1) medicine, and metabolic and longevity care. GMC-registered doctor, in-person and video consultations.",
   url: PAGE_URL,
-  areaServed: { "@type": "City", name: "North West London" },
+  areaServed: [
+    { "@type": "City", name: "North West London" },
+    { "@type": "Place", name: "Golders Green" },
+    { "@type": "Place", name: "Hampstead" },
+    { "@type": "Place", name: "Highgate" },
+    { "@type": "Place", name: "Finchley" },
+    { "@type": "Place", name: "Hendon" },
+    { "@type": "Place", name: "Temple Fortune" },
+    { "@type": "Place", name: "Mill Hill" },
+    { "@type": "Place", name: "Cricklewood" },
+    { "@type": "Place", name: "St John's Wood" },
+    { "@type": "Place", name: "Muswell Hill" },
+    { "@type": "Place", name: "Barnet" },
+    { "@type": "Place", name: "Edgware" },
+    { "@type": "Place", name: "Harrow" },
+    { "@type": "Place", name: "Borehamwood" },
+  ],
   medicalSpecialty: ["Metabolic Health", "Longevity Medicine", "Preventive Medicine"],
   availableService: [
     { "@type": "MedicalProcedure", name: "Private GP Consultation" },
@@ -142,6 +158,25 @@ export default function PrivateGpNorthWestLondonPage() {
           <div className="wrap" style={{ maxWidth: 860 }}>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 720 }}>
               From Hampstead and Highgate to Finchley, St John&apos;s Wood, Harrow and Wembley, North West London is home to people who take their health seriously and are used to expecting more from it. But the standard NHS panel still omits the markers that matter most for long-term health, and a ten-minute appointment rarely leaves room for the whole picture. Veridian Clinic exists to fill that gap: doctor-led, evidence-based, and built around prevention rather than crisis.
+            </p>
+          </div>
+        </section>
+
+        {/* Coming soon + areas served */}
+        <section className="sec bg-iv" style={{ paddingTop: 0 }}>
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <div style={{ padding: "20px 24px", background: "rgba(200,168,75,.08)", borderLeft: "2px solid var(--go)", marginBottom: 32 }}>
+              <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>
+                Coming soon &middot; Golders Green Road, NW11
+              </p>
+              <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85 }}>
+                A face-to-face consulting location on Golders Green Road is opening soon for in-person metabolic and longevity consultations. Secure video consultations with Dr Tosin are available across North West London now, and blood testing is arranged either at a Randox clinic or through a home kit posted to you.
+              </p>
+            </div>
+            <p className="lbl">Areas we serve across North West London</p>
+            <div className="rule" />
+            <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 2, maxWidth: 720, marginTop: 8 }}>
+              Golders Green &middot; Temple Fortune &middot; Hampstead &middot; Hampstead Garden Suburb &middot; Highgate &middot; Finchley &middot; Hendon &middot; Mill Hill &middot; Cricklewood &middot; Willesden &middot; Kilburn &middot; St John&apos;s Wood &middot; Swiss Cottage &middot; Muswell Hill &middot; Totteridge &middot; Whetstone &middot; Barnet &middot; Edgware &middot; Stanmore &middot; Harrow &middot; Wembley &middot; Borehamwood &middot; Elstree &middot; Bushey &middot; Watford &middot; St Albans
             </p>
           </div>
         </section>

@@ -67,7 +67,7 @@ const faqs = [
   },
   {
     q: "Where are you based in Cambridge?",
-    a: "We offer in-person metabolic and longevity consultations in Cambridge by appointment, alongside secure video consultations across the UK. Confirm your preferred format when you book and we will arrange the nearest available option.",
+    a: "A face-to-face consulting location in Cherry Hinton, Cambridge is opening soon for in-person metabolic and longevity consultations. Until it opens, consultations are held by secure video, available now across Cambridge and the surrounding region.",
   },
   {
     q: "Where are the blood tests actually done?",
@@ -94,7 +94,22 @@ const schema = {
   description:
     "Private GP serving Cambridge for advanced blood tests, weight loss (GLP-1) medicine, and metabolic and longevity care. GMC-registered doctor, in-person and video consultations.",
   url: PAGE_URL,
-  areaServed: { "@type": "City", name: "Cambridge" },
+  areaServed: [
+    { "@type": "City", name: "Cambridge" },
+    { "@type": "City", name: "Ely" },
+    { "@type": "City", name: "Newmarket" },
+    { "@type": "City", name: "Huntingdon" },
+    { "@type": "City", name: "St Neots" },
+    { "@type": "City", name: "St Ives" },
+    { "@type": "City", name: "Royston" },
+    { "@type": "City", name: "Saffron Walden" },
+    { "@type": "City", name: "Haverhill" },
+    { "@type": "City", name: "Bury St Edmunds" },
+    { "@type": "City", name: "Peterborough" },
+    { "@type": "City", name: "Bedford" },
+    { "@type": "City", name: "Stevenage" },
+    { "@type": "City", name: "Bishop's Stortford" },
+  ],
   medicalSpecialty: ["Metabolic Health", "Longevity Medicine", "Preventive Medicine"],
   availableService: [
     { "@type": "MedicalProcedure", name: "Private GP Consultation" },
@@ -142,6 +157,25 @@ export default function PrivateGpCambridgePage() {
           <div className="wrap" style={{ maxWidth: 860 }}>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 720 }}>
               Cambridge is a city of people who ask good questions researchers, clinicians, founders, students and professionals who want evidence, not reassurance. Yet the standard NHS panel still misses the markers that matter most for long-term health, and a ten-minute appointment rarely leaves room for the whole picture. Veridian Clinic exists to fill that gap: doctor-led, evidence-based, and built around prevention rather than crisis.
+            </p>
+          </div>
+        </section>
+
+        {/* Coming soon + areas served */}
+        <section className="sec bg-iv" style={{ paddingTop: 0 }}>
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <div style={{ padding: "20px 24px", background: "rgba(200,168,75,.08)", borderLeft: "2px solid var(--go)", marginBottom: 32 }}>
+              <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>
+                Coming soon &middot; Cherry Hinton, Cambridge
+              </p>
+              <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85 }}>
+                A face-to-face consulting location in Cherry Hinton is opening soon for in-person metabolic and longevity consultations. Secure video consultations with Dr Tosin are available across Cambridgeshire now, and blood testing is arranged either at a Randox clinic or through a home kit posted to you.
+              </p>
+            </div>
+            <p className="lbl">Areas we serve from Cambridge</p>
+            <div className="rule" />
+            <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 2, maxWidth: 720, marginTop: 8 }}>
+              Cambridge &middot; Cherry Hinton &middot; Great Shelford &middot; Sawston &middot; Histon &middot; Waterbeach &middot; Ely &middot; Newmarket &middot; Soham &middot; Huntingdon &middot; St Ives &middot; St Neots &middot; Cambourne &middot; Royston &middot; Saffron Walden &middot; Haverhill &middot; Bury St Edmunds &middot; Bishop&apos;s Stortford &middot; Peterborough &middot; Bedford &middot; Stevenage &middot; Hitchin
             </p>
           </div>
         </section>
