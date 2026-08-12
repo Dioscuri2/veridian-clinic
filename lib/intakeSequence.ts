@@ -105,7 +105,11 @@ async function send(
     body: JSON.stringify(payload),
   });
   if (!res.ok) {
-    console.error(`[intakeSequence] Brevo send failed (${res.status}):`, await res.text().catch(() => ""));
+    const detail = await res.text().catch(() => "");
+    console.error(`[intakeSequence] Brevo send failed (${res.status}):`, detail);
+    // Must throw, not just log. Otherwise a rejected send still reports
+    // "invite sent" in the admin panel and the patient is never chased.
+    throw new Error(`Brevo rejected the send (${res.status}): ${detail.slice(0, 200)}`);
   }
 }
 
@@ -124,16 +128,24 @@ export async function sendIntakeInvite(email: string, firstName: string): Promis
   const batchId = batchIdFor(email);
 
   await send(apiKey, to, buildInvite(firstName).subject, buildInvite(firstName).html);
-  await Promise.all([
-    send(apiKey, to, buildReminder1(firstName).subject, buildReminder1(firstName).html, {
-      scheduledAt: daysFromNow(2),
-      batchId,
-    }),
-    send(apiKey, to, buildReminder2(firstName).subject, buildReminder2(firstName).html, {
-      scheduledAt: daysFromNow(5),
-      batchId,
-    }),
-  ]);
+
+  // Invite is already out at this point, so say so if only the reminders fail.
+  try {
+    await Promise.all([
+      send(apiKey, to, buildReminder1(firstName).subject, buildReminder1(firstName).html, {
+        scheduledAt: daysFromNow(2),
+        batchId,
+      }),
+      send(apiKey, to, buildReminder2(firstName).subject, buildReminder2(firstName).html, {
+        scheduledAt: daysFromNow(5),
+        batchId,
+      }),
+    ]);
+  } catch (err) {
+    throw new Error(
+      `Invite was sent, but scheduling the reminders failed: ${err instanceof Error ? err.message : String(err)}`
+    );
+  }
 }
 
 /**
