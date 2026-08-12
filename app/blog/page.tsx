@@ -12,6 +12,27 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: "nhs-waiting-list-record",
+    title: "The NHS waiting list hit a record 7.75 million. Here is what you can actually do while you wait",
+    excerpt: "The waiting list for planned NHS treatment in England has reached a record 7.75 million, with just under 397,000 people waiting over a year. A GP's practical answer to the question that actually matters: what is worth doing in the meantime, which checks genuinely change the outcome, and when going private does not help at all.",
+    tag: "Health Policy",
+    readTime: "9 min read",
+  },
+  {
+    slug: "nhs-weight-loss-drug-rollout",
+    title: "250,000 patients, 3.4 million eligible: the real maths of the NHS weight loss drug rollout",
+    excerpt: "The NHS weight management rollout reached GP surgeries in 2026 and GPs are now incentivised to prescribe. But it covers 250,000 patients over three years against roughly 3.4 million eligible, and NHS England has acknowledged full rollout could take 12 years. Here is what the arithmetic means, and the question almost nobody is asking.",
+    tag: "Health Policy",
+    readTime: "8 min read",
+  },
+  {
+    slug: "what-private-gp-checks-nhs-doesnt",
+    title: "What a private GP checks that your NHS panel does not",
+    excerpt: "\"Your bloods are normal\" is usually true and unhelpful at the same time. Normal means above the disease threshold, not optimal. A precise breakdown of what a standard NHS panel covers, what it omits, why the gap exists, and when you genuinely do not need any of it.",
+    tag: "Private Testing",
+    readTime: "10 min read",
+  },
+  {
     slug: "vigorous-exercise",
     title: "Four minutes a day: the most powerful longevity intervention is also the cheapest",
     excerpt: "Around four cumulative minutes of vigorous exercise per day is linked to roughly 36% lower all-cause and cancer mortality. One vigorous minute carries the cancer-risk benefit of approximately 2.5 hours of gentle walking. It does not require a gym. Here is what the evidence shows and why cardiorespiratory fitness is one of the strongest longevity predictors available.",
