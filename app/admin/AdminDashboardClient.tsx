@@ -702,6 +702,88 @@ function SocialPanel() {
   );
 }
 
+// ── Intake invite panel ──────────────────────────────────────────────────────
+
+function IntakePanel() {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [msg, setMsg] = useState("");
+
+  async function handleSend() {
+    if (!email.trim()) return;
+    setStatus("loading");
+    setMsg("");
+    try {
+      const res = await fetch("/api/admin/intake-invite", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), firstName: firstName.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setMsg(data?.error || "Send failed."); setStatus("error"); return; }
+      setMsg(data?.message || "Sent.");
+      setStatus("done");
+      setEmail("");
+      setFirstName("");
+    } catch {
+      setMsg("Network error. Please try again.");
+      setStatus("error");
+    }
+  }
+
+  const disabled = !email.trim() || status === "loading";
+
+  return (
+    <div style={{ maxWidth: 600 }}>
+      <p style={{ color: "#8a8278", fontSize: "12px", marginBottom: "24px", lineHeight: 1.7 }}>
+        After confirming a booking in ThanksDoc, send the patient their clinical intake form. They receive the link immediately, then reminders at +2 and +5 days if they have not completed it. Reminders cancel automatically the moment the form is submitted.
+      </p>
+
+      <div style={{ display: "grid", gap: "16px" }}>
+        <div>
+          <label style={{ color: "#5a534a", fontSize: "11px", display: "block", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.05em" }}>Patient email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="patient@example.com"
+            style={{ width: "100%", background: "#111009", border: "1px solid #3a3830", borderRadius: "6px", color: "#f6f1e8", fontSize: "13px", fontFamily: "Georgia, serif", padding: "10px 12px", outline: "none", boxSizing: "border-box" }}
+          />
+        </div>
+
+        <div>
+          <label style={{ color: "#5a534a", fontSize: "11px", display: "block", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.05em" }}>First name (optional)</label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+            placeholder="Used to personalise the email"
+            style={{ width: "100%", background: "#111009", border: "1px solid #3a3830", borderRadius: "6px", color: "#f6f1e8", fontSize: "13px", fontFamily: "Georgia, serif", padding: "10px 12px", outline: "none", boxSizing: "border-box" }}
+          />
+        </div>
+
+        {msg && (
+          <p style={{ fontSize: "12px", lineHeight: 1.7, color: status === "error" ? "#c97b7b" : "#4caf82", margin: 0 }}>{msg}</p>
+        )}
+
+        <button
+          onClick={handleSend}
+          disabled={disabled}
+          style={{
+            background: disabled ? "#2a2820" : "#145226",
+            color: disabled ? "#5a534a" : "#f6f1e8",
+            border: "none", borderRadius: "6px", padding: "12px 24px", fontSize: "13px",
+            fontFamily: "Georgia, serif", cursor: disabled ? "not-allowed" : "pointer", alignSelf: "start",
+          }}
+        >
+          {status === "loading" ? "Sending..." : "Send Intake Form"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Refund panel ─────────────────────────────────────────────────────────────
 
 function RefundPanel() {
@@ -800,7 +882,7 @@ export default function AdminDashboardClient({
   stats: Stats | null; error: string; initialTab?: "overview" | "whatsapp" | "social";
 }) {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp" | "refund" | "social" | "interpret">(() => {
+  const [activeTab, setActiveTab] = useState<"overview" | "whatsapp" | "refund" | "social" | "interpret" | "intake">(() => {
     if (typeof window !== "undefined") {
       const p = new URLSearchParams(window.location.search);
       if (p.get("tab") === "social") return "social";
@@ -849,6 +931,7 @@ export default function AdminDashboardClient({
       {/* Tab bar */}
       <div style={{ background: "#1a1916", borderBottom: "1px solid #2a2820", padding: "0 24px", display: "flex", gap: "24px", alignItems: "center", height: "44px" }}>
         <button style={tabStyle(activeTab === "overview")} onClick={() => setActiveTab("overview")}>Overview</button>
+          <button style={tabStyle(activeTab === "intake")} onClick={() => setActiveTab("intake")}>Intake</button>
         <button style={tabStyle(activeTab === "whatsapp")} onClick={() => setActiveTab("whatsapp")}>📱 WhatsApp</button>
         <button style={tabStyle(activeTab === "refund")} onClick={() => setActiveTab("refund")}>Refunds</button>
         <button style={tabStyle(activeTab === "social")} onClick={() => setActiveTab("social")}>Social</button>
@@ -988,6 +1071,15 @@ export default function AdminDashboardClient({
             <h2 style={{ color: "#f6f1e8", fontSize: "16px", fontWeight: "600", margin: "0 0 8px" }}>Social scheduling</h2>
             <p style={{ color: "#5a534a", fontSize: "12px", margin: "0 0 24px" }}>Draft posts with AI, schedule to LinkedIn and X/Twitter.</p>
             <SocialPanel />
+          </div>
+        )}
+
+        {/* ── Intake tab ── */}
+        {activeTab === "intake" && (
+          <div>
+            <h2 style={{ color: "#f6f1e8", fontSize: "16px", fontWeight: "600", margin: "0 0 8px" }}>Send Intake Form</h2>
+            <p style={{ color: "#5a534a", fontSize: "12px", margin: "0 0 24px" }}>Send a booked patient their pre-consultation clinical intake form, with automatic reminders.</p>
+            <IntakePanel />
           </div>
         )}
 

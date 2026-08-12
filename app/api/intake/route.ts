@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyTurnstileToken } from "@/lib/turnstile";
+import { cancelIntakeReminders } from "@/lib/intakeSequence";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
@@ -132,6 +133,9 @@ export async function POST(request: NextRequest) {
     };
 
     await Promise.all([sendEmail(fields), pingDiscord(fields)]);
+
+    // Form is in, so stop chasing them.
+    await cancelIntakeReminders(fields.email);
 
     return NextResponse.json({ ok: true });
   } catch {
