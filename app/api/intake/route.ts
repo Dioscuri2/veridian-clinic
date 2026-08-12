@@ -14,6 +14,7 @@ interface IntakeFields {
   recentTests: string;
   smoking: string;
   notes: string;
+  recordingUrl: string;
 }
 
 function buildEmailHtml(f: IntakeFields): string {
@@ -27,6 +28,7 @@ function buildEmailHtml(f: IntakeFields): string {
     ["Recent NHS blood tests (12 mo)", f.recentTests],
     ["Smoking status", f.smoking],
     ["Additional notes for Dr Tosin", f.notes || "None"],
+    ["Voice/video recording link", f.recordingUrl || "Not provided"],
   ];
 
   const tableRows = rows
@@ -101,7 +103,7 @@ async function pingDiscord(f: IntakeFields) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, dob, medications, conditions, symptoms, recentTests, smoking, notes, turnstileToken } = body;
+    const { name, email, dob, medications, conditions, symptoms, recentTests, smoking, notes, recordingUrl, turnstileToken } = body;
 
     if (!name?.trim() || !email?.trim() || !symptoms?.trim()) {
       return NextResponse.json({ error: "Name, email and reason for booking are required." }, { status: 400 });
@@ -126,6 +128,7 @@ export async function POST(request: NextRequest) {
       recentTests: ((recentTests as string) || "Not stated").trim(),
       smoking: ((smoking as string) || "Not stated").trim(),
       notes: ((notes as string) || "").trim(),
+      recordingUrl: ((recordingUrl as string) || "").trim(),
     };
 
     await Promise.all([sendEmail(fields), pingDiscord(fields)]);

@@ -66,6 +66,7 @@ export default function IntakePage() {
   const [recentTests, setRecentTests] = useState("");
   const [smoking, setSmoking] = useState("");
   const [notes, setNotes] = useState("");
+  const [recordingUrl, setRecordingUrl] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -95,6 +96,7 @@ export default function IntakePage() {
           recentTests,
           smoking,
           notes,
+          recordingUrl: recordingUrl.trim(),
           turnstileToken,
         }),
       });
@@ -259,6 +261,28 @@ export default function IntakePage() {
                         placeholder="Any additional context, concerns, or questions you would like Dr Taiwo to be aware of before your appointment."
                         style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)", resize: "vertical", lineHeight: 1.7 }}
                       />
+                    </div>
+
+                    <div style={{ padding: "18px 20px", background: "rgba(200,168,75,.08)", border: "1px solid rgba(200,168,75,.3)" }}>
+                      <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>
+                        Optional &middot; Prefer to talk instead of type?
+                      </p>
+                      <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.7)", lineHeight: 1.8, marginBottom: 14 }}>
+                        Some people find it easier to explain their history out loud. If you would rather record a short message than write it, record a video or voice note using a tool such as{" "}
+                        <a href="https://www.loom.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)", textDecoration: "underline" }}>Loom</a>{" "}
+                        (free, up to 5 minutes, and it produces a transcript automatically), then paste the share link below. Cover the same ground as the questions above: what brought you here, how long it has been going on, what you have already tried, and what you are hoping for.
+                      </p>
+                      <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Link to your recording</label>
+                      <input
+                        type="url"
+                        value={recordingUrl}
+                        onChange={e => setRecordingUrl(e.target.value)}
+                        placeholder="https://www.loom.com/share/..."
+                        style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)" }}
+                      />
+                      <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.45)", lineHeight: 1.7, marginTop: 10 }}>
+                        Please still complete the medication and medical condition fields above, as these need to be accurate in writing for your clinical record. Set your recording so that only people with the link can view it, and do not include payment details or passwords.
+                      </p>
                     </div>
 
                     <TurnstileWidget
