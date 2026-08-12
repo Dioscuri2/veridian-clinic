@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminRequest } from "@/lib/adminAuth";
-import { sendIntakeInvite } from "@/lib/intakeSequence";
+import { sendIntakeInvite, REMINDER_1_DAYS, REMINDER_2_DAYS } from "@/lib/intakeSequence";
 
 export async function POST(request: NextRequest) {
   if (!verifyAdminRequest(request)) {
@@ -27,6 +27,6 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    message: `Intake invite sent to ${email}. Reminders scheduled for +2 and +5 days, and will cancel automatically if the form is submitted.`,
+    message: `Intake invite sent to ${email}. Reminders scheduled for +${REMINDER_1_DAYS} and +${REMINDER_2_DAYS} days, and will cancel automatically if the form is submitted.`,
   });
 }

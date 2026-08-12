@@ -115,8 +115,14 @@ async function send(
 
 const daysFromNow = (d: number) => new Date(Date.now() + d * 86_400_000).toISOString();
 
+// Brevo refuses any scheduledAt more than 3 days out ("You are not allowed to
+// schedule a transactional mail for more than 3 days"), so the reminders sit at
+// +1 and +3 rather than the +2 and +5 originally intended.
+export const REMINDER_1_DAYS = 1;
+export const REMINDER_2_DAYS = 3;
+
 /**
- * Send the intake invite now and schedule reminders at +2 and +5 days.
+ * Send the intake invite now and schedule reminders at +1 and +3 days.
  * Throws on missing config so the admin UI can report it, unlike the
  * fire-and-forget nurture sequences.
  */
@@ -133,11 +139,11 @@ export async function sendIntakeInvite(email: string, firstName: string): Promis
   try {
     await Promise.all([
       send(apiKey, to, buildReminder1(firstName).subject, buildReminder1(firstName).html, {
-        scheduledAt: daysFromNow(2),
+        scheduledAt: daysFromNow(REMINDER_1_DAYS),
         batchId,
       }),
       send(apiKey, to, buildReminder2(firstName).subject, buildReminder2(firstName).html, {
-        scheduledAt: daysFromNow(5),
+        scheduledAt: daysFromNow(REMINDER_2_DAYS),
         batchId,
       }),
     ]);
