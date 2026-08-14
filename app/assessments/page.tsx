@@ -271,7 +271,7 @@ const targetedPanels = [
       "Fasting insulin + HbA1c metabolic foundation of performance and recovery",
       "Cortisol (AM) + DHEA-S adrenal function and recovery capacity",
       "Total + Free Testosterone, SHBG, LH, FSH the complete hormonal axis",
-      "Cystatin C + Magnesium + Uric Acid precision organ and metabolic markers",
+      "Cystatin C + Red Cell Magnesium + Uric Acid precision organ and metabolic markers",
       "Full Blood Count + Liver (ALT/AST/GGT) + Kidney + eGFR complete organ safety baseline",
       "hs-CRP systemic inflammation load",
     ],

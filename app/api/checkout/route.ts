@@ -43,6 +43,30 @@ const tierCatalog: Record<
       "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £77 (normally £97).",
     successPath: "/book/thank-you",
   },
+  "micronutrient-core": {
+    name: "Veridian Core Micronutrient Screen",
+    amount: 19900,
+    description:
+      "Fasted micronutrient panel: Vitamin D, Active B12 (holotranscobalamin), Folate, Ferritin + full iron studies + transferrin saturation, Red Cell Magnesium, hs-CRP, Full Blood Count. hs-CRP is included so trace element and iron results can be interpreted against inflammation rather than read in isolation. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
+    successPath: "/book/thank-you",
+    cancelPath: "/micronutrient-test",
+  },
+  "micronutrient-complete": {
+    name: "Veridian Complete Micronutrient Panel",
+    amount: 39900,
+    description:
+      "Everything in the Core Micronutrient Screen, plus the Thyroid & Trace Element module (Selenium, Zinc with Albumin, Urinary Iodine with creatinine, TSH, Free T4, Free T3, TPO antibodies) and the Extended module (Copper + Caeruloplasmin with zinc:copper ratio, Vitamin A, Vitamin E, Homocysteine). Covers the trace elements absent from every mainstream UK consumer panel. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
+    successPath: "/book/thank-you",
+    cancelPath: "/micronutrient-test",
+  },
+  "omega-3-index": {
+    name: "Veridian Omega-3 Index",
+    amount: 8900,
+    description:
+      "Red blood cell membrane EPA + DHA measured as a percentage of total fatty acids, the validated Omega-3 Index. Finger-prick collection posted to you, no fasting and no clinic visit required. GP-reviewed digital report included.",
+    successPath: "/book/thank-you",
+    cancelPath: "/micronutrient-test",
+  },
   "metabolic-screen": {
     name: "Veridian Energy Screen, Fatigue & Thyroid Audit",
     amount: 19500,
@@ -138,7 +162,7 @@ const tierCatalog: Record<
     name: "The Optimiser's Baseline, Performance & Longevity Panel",
     amount: 44900,
     description:
-      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total + free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Leptin, Adiponectin, Resistin, Cystatin C, Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP. GP-reviewed baseline report included.",
+      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total + free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Leptin, Adiponectin, Resistin, Cystatin C, Red Cell Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP. GP-reviewed baseline report included.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },
