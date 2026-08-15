@@ -4,7 +4,9 @@ import { cancelIntakeReminders } from "@/lib/intakeSequence";
 import { verifyAdminRequest } from "@/lib/adminAuth";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
-const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
+// Some env values are stored with literal quotes around them, which makes
+// fetch() throw "Failed to parse URL". Strip them rather than trusting config.
+const DISCORD_WEBHOOK = (process.env.DISCORD_WEBHOOK_VERIDIAN || "").trim().replace(/^["']|["']$/g, "");
 
 interface IntakeFields {
   name: string;
@@ -61,7 +63,7 @@ function buildEmailHtml(f: IntakeFields): string {
 
 async function sendEmail(f: IntakeFields) {
   if (!BREVO_API_KEY) return;
-  await fetch("https://api.brevo.com/v3/smtp/email", {
+  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
       accept: "application/json",
@@ -76,10 +78,26 @@ async function sendEmail(f: IntakeFields) {
       tags: ["clinical-intake"],
     }),
   });
+  // This email IS the delivery mechanism for the patient's intake. If it fails
+  // we must tell them to try again, not silently drop their medical history.
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    throw new Error(`Brevo rejected the intake email (${res.status}): ${detail.slice(0, 200)}`);
+  }
 }
 
+// Best effort only. A staff alert must never be able to fail a patient's
+// submission, which is exactly what a malformed webhook URL did.
 async function pingDiscord(f: IntakeFields) {
   if (!DISCORD_WEBHOOK) return;
+  try {
+    await postDiscord(f);
+  } catch (err) {
+    console.error("[api/intake] Discord alert failed (submission unaffected):", err);
+  }
+}
+
+async function postDiscord(f: IntakeFields) {
   await fetch(DISCORD_WEBHOOK, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
