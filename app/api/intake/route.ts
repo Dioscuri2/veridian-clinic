@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyTurnstileToken } from "@/lib/turnstile";
 import { cancelIntakeReminders } from "@/lib/intakeSequence";
+import { verifyAdminRequest } from "@/lib/adminAuth";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
@@ -138,7 +139,17 @@ export async function POST(request: NextRequest) {
     await cancelIntakeReminders(fields.email);
 
     return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ error: "Unable to submit. Please try again." }, { status: 500 });
+  } catch (err) {
+    // Was a bare catch, which is how a hard failure here stayed invisible.
+    console.error("[api/intake] submit failed:", err);
+    // Patients only ever see the generic line. The cause is appended for an
+    // authenticated admin so this never has to be debugged blind again.
+    const detail = verifyAdminRequest(request)
+      ? ` [${err instanceof Error ? `${err.name}: ${err.message}` : String(err)}]`
+      : "";
+    return NextResponse.json(
+      { error: `Unable to submit. Please try again.${detail}` },
+      { status: 500 }
+    );
   }
 }
