@@ -43,27 +43,19 @@ const tierCatalog: Record<
       "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £77 (normally £97).",
     successPath: "/book/thank-you",
   },
-  "micronutrient-core": {
-    name: "Veridian Core Micronutrient Screen",
-    amount: 19900,
+  "micronutrient-panel": {
+    name: "Veridian Micronutrient Panel",
+    amount: 29500,
     description:
-      "Fasted micronutrient panel: Vitamin D, Active B12 (holotranscobalamin), Folate, Ferritin + full iron studies + transferrin saturation, Red Cell Magnesium, hs-CRP, Full Blood Count. hs-CRP is included so trace element and iron results can be interpreted against inflammation rather than read in isolation. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
+      "17 marker fasted micronutrient panel: Vitamin D, Active B12 (holotranscobalamin), Vitamin B12, Folate, Red Cell Folate, Red Cell Magnesium, Magnesium, Zinc, Copper, Adjusted Calcium, Ferritin, Iron, Transferrin, Transferrin Saturation, Total Iron Binding Capacity, Albumin and hs-CRP. Albumin and hs-CRP are included so zinc and iron are interpreted against inflammation and protein binding rather than read in isolation. GP-reviewed digital report included. Blood draw at a Randox clinic: £30 phlebotomy fee payable to Randox on the day.",
     successPath: "/book/thank-you",
     cancelPath: "/micronutrient-test",
   },
-  "micronutrient-complete": {
-    name: "Veridian Complete Micronutrient Panel",
-    amount: 39900,
+  "micronutrient-panel-selenium": {
+    name: "Veridian Micronutrient Panel plus Red Cell Selenium",
+    amount: 33500,
     description:
-      "Everything in the Core Micronutrient Screen, plus the Thyroid & Trace Element module (Selenium, Zinc with Albumin, Urinary Iodine with creatinine, TSH, Free T4, Free T3, TPO antibodies) and the Extended module (Copper + Caeruloplasmin with zinc:copper ratio, Vitamin A, Vitamin E, Homocysteine). Covers the trace elements absent from every mainstream UK consumer panel. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
-    successPath: "/book/thank-you",
-    cancelPath: "/micronutrient-test",
-  },
-  "omega-3-index": {
-    name: "Veridian Omega-3 Index",
-    amount: 8900,
-    description:
-      "Red blood cell membrane EPA + DHA measured as a percentage of total fatty acids, the validated Omega-3 Index. Finger-prick collection posted to you, no fasting and no clinic visit required. GP-reviewed digital report included.",
+      "The full 17 marker Veridian Micronutrient Panel plus Red Cell Selenium, taken from the same draw. Selenium is a cofactor for the deiodinase enzymes that convert thyroid hormone into its active form, so it is worth adding where thyroid function is the question. GP-reviewed digital report included. Blood draw at a Randox clinic: £30 phlebotomy fee payable to Randox on the day.",
     successPath: "/book/thank-you",
     cancelPath: "/micronutrient-test",
   },

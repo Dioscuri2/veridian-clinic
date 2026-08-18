@@ -7,14 +7,14 @@ import { FONTS, CSS } from "@/components/globalStyles";
 const PAGE_URL = "https://veridianclinic.com/micronutrient-test";
 
 export const metadata: Metadata = {
-  title: { absolute: "Micronutrient & Vitamin Deficiency Test UK | Selenium, Iodine, Zinc | Veridian Clinic" },
+  title: { absolute: "Micronutrient & Vitamin Deficiency Test UK | Red Cell Magnesium, Active B12, Zinc | Veridian Clinic" },
   description:
-    "GP-led micronutrient blood test measuring the markers mainstream UK panels leave out: selenium, iodine, zinc, copper, red cell magnesium and active B12. Interpreted against inflammation, not read in isolation.",
+    "GP-led micronutrient blood panel measuring red cell magnesium, red cell folate, active B12, zinc, copper and full iron studies, all interpreted against inflammation. 17 markers, GP-reviewed report, from £295.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Micronutrient & Vitamin Deficiency Test | Veridian Clinic",
     description:
-      "Selenium, iodine, zinc, copper, red cell magnesium and active B12, interpreted by a GMC-registered GP. The markers standard UK panels miss.",
+      "Red cell magnesium, active B12, zinc and copper, interpreted by a GMC-registered GP against hs-CRP. The markers standard UK panels measure badly or not at all.",
     url: PAGE_URL,
     type: "website",
     locale: "en_GB",
@@ -22,100 +22,61 @@ export const metadata: Metadata = {
   keywords: [
     "micronutrient test UK",
     "vitamin deficiency test UK",
-    "selenium blood test UK",
-    "iodine test UK",
-    "zinc blood test UK",
-    "red cell magnesium test",
+    "red cell magnesium test UK",
     "active B12 test UK",
-    "omega 3 index test UK",
+    "zinc blood test UK",
+    "copper blood test UK",
+    "red cell folate test",
+    "selenium blood test UK",
     "vitamin deficiency test Cambridge",
     "vitamin deficiency test North West London",
     "private micronutrient panel London",
   ],
 };
 
-const tiers = [
-  {
-    tier: "micronutrient-core",
-    name: "Core Micronutrient Screen",
-    price: "£199",
-    tag: "Start here",
-    featured: false,
-    summary:
-      "The markers that account for the overwhelming majority of genuine deficiency in UK adults, measured properly and read against inflammation.",
-    markers: [
-      "Vitamin D (25-OH)",
-      "Active B12 (holotranscobalamin)",
-      "Folate",
-      "Ferritin, full iron studies, transferrin saturation",
-      "Red cell magnesium",
-      "hs-CRP (inflammation control)",
-      "Full Blood Count",
-    ],
-  },
-  {
-    tier: "micronutrient-complete",
-    name: "Complete Micronutrient Panel",
-    price: "£399",
-    tag: "Most complete",
-    featured: true,
-    summary:
-      "Everything in the Core Screen plus the trace elements and thyroid cofactors that no mainstream UK consumer panel includes.",
-    markers: [
-      "Everything in the Core Micronutrient Screen",
-      "Selenium and zinc (with albumin)",
-      "Urinary iodine, with creatinine correction",
-      "Thyroid: TSH, Free T4, Free T3, TPO antibodies",
-      "Copper and caeruloplasmin, with zinc to copper ratio",
-      "Vitamin A and Vitamin E",
-      "Homocysteine (functional B vitamin status)",
-    ],
-  },
-  {
-    tier: "omega-3-index",
-    name: "Omega-3 Index",
-    price: "£89",
-    tag: "Add on, or standalone",
-    featured: false,
-    summary:
-      "Measured in red blood cell membranes rather than plasma, so it reflects your intake over months instead of what you ate yesterday.",
-    markers: [
-      "Red cell EPA and DHA as a percentage of total fatty acids",
-      "Finger-prick kit posted to your door",
-      "No fasting and no clinic visit needed",
-      "Target range interpretation, not just a number",
-    ],
-  },
+const markers = [
+  { group: "Vitamins", items: ["Vitamin D (25-OH)", "Active B12 (holotranscobalamin)", "Vitamin B12 (total)", "Folate", "Red cell folate"] },
+  { group: "Minerals & trace elements", items: ["Red cell magnesium", "Magnesium (serum)", "Zinc", "Copper", "Adjusted calcium"] },
+  { group: "Iron status", items: ["Ferritin", "Iron", "Transferrin", "Transferrin saturation", "Total iron binding capacity"] },
+  { group: "Interpretation controls", items: ["hs-CRP (inflammation)", "Albumin (protein binding)"] },
 ];
 
 const faqs = [
   {
     q: "How is this different from a supermarket or online vitamin test?",
-    a: "Two ways. First, the markers: mainstream UK consumer panels cluster around the same four results, vitamin D, B12, folate and ferritin. Selenium, iodine, zinc, copper and the fat soluble vitamins are almost never included. Second, the interpretation: every result is reviewed by a GMC-registered GP against your history, medication and inflammatory markers rather than being returned as a colour coded chart.",
+    a: "Mainstream UK consumer panels cluster around the same four results: vitamin D, B12, folate and ferritin. This panel measures those, then adds the ones that actually change decisions: red cell magnesium rather than serum, active B12 rather than total alone, red cell folate, zinc, copper, and full iron studies. Every result is reviewed by a GMC-registered GP against your history and medication rather than returned as a colour coded chart.",
   },
   {
     q: "Why do you measure hs-CRP in a nutrition panel?",
-    a: "Because zinc and selenium are negative acute phase reactants. Their blood levels fall during any inflammation, infection or injury, independently of your actual nutritional status. Measuring them without a simultaneous inflammatory marker produces false lows and leads to supplementing something you were never short of. If your hs-CRP is raised, we say so and re-test rather than reporting a deficiency that may not exist.",
+    a: "Because zinc is a negative acute phase reactant. Its blood level falls during any inflammation, infection or injury, independently of your actual nutritional status. Measuring zinc without a simultaneous inflammatory marker produces false lows and leads to supplementing something you were never short of. If your hs-CRP is raised we say so and re-test, rather than reporting a deficiency that may not be real. Albumin is included for the same reason, since it carries a large share of circulating zinc and calcium.",
   },
   {
     q: "Why red cell magnesium instead of the usual magnesium test?",
-    a: "Serum magnesium is tightly regulated by the body and stays within range until depletion is well advanced, so a normal result is genuinely reassuring only at the extremes. Red cell magnesium reflects intracellular stores and is the more informative measurement. It is not perfect, and no magnesium test is, but it is a better question to ask.",
+    a: "Serum magnesium is tightly regulated and stays within range until depletion is well advanced, so a normal result is genuinely reassuring only at the extremes. Red cell magnesium reflects intracellular stores and is the more informative measurement. This panel includes both, so the two can be read against each other. No magnesium test is perfect, but this is a better question to ask than the one most panels ask.",
   },
   {
-    q: "Why is iodine a urine sample?",
-    a: "Iodine status is assessed from urinary iodine concentration, corrected for creatinine, because the great majority of dietary iodine is excreted in urine. There is no useful routine blood test for it. Your kit includes a urine collection pot alongside the blood draw.",
+    q: "What is active B12 and why does it matter?",
+    a: "Most B12 in your blood is bound to a protein that cannot deliver it to your cells. Active B12, or holotranscobalamin, is the fraction that can. Total B12 can look comfortably normal while the usable portion is low, which is one reason people are told their B12 is fine while still having symptoms. This panel measures both.",
   },
   {
-    q: "Where is the blood actually taken?",
-    a: "At a Randox clinic. The trace element markers require a fasted sample taken at least eight hours after your last supplement, and the sample must reach the laboratory quickly, so this part cannot be done as a posted home kit. The Omega-3 Index is the exception: it is a finger-prick test that posts perfectly well and can be done entirely at home.",
+    q: "Where is the blood taken?",
+    a: "At a Randox clinic near you. You will need to attend in person for the draw. There are Randox Health clinics in London, Manchester, Birmingham and other locations nationwide. This is a clinic visit rather than a home or postal kit, because the panel includes red cell markers that need proper handling to give a reliable result.",
   },
   {
-    q: "Do you offer toxic burden, mycotoxin or hair mineral testing?",
-    a: "No. We are a GP-led clinic and we only offer tests we can defend clinically. Hair mineral analysis is not a valid measure of nutritional status, and total toxic burden style panels are not accredited for diagnostic use in the UK and carry a weak evidence base. We would rather lose the sale than sell a test we could not stand behind in front of a colleague.",
+    q: "Is the phlebotomy fee included?",
+    a: "No. A £30 phlebotomy fee is paid directly to Randox on the day of your appointment. That is their charge for taking the sample, not ours, and it applies whichever panel you book.",
+  },
+  {
+    q: "Can I add selenium?",
+    a: "Yes. Red cell selenium can be added for £40 at checkout. It is worth considering if your interest is thyroid function, since selenium is a cofactor for the enzymes that convert thyroid hormone into its active form. It is not in the standard panel because it is a specialist assay and most people do not need it.",
+  },
+  {
+    q: "Do you offer iodine, toxic burden or hair mineral testing?",
+    a: "No. Hair mineral analysis is not a valid measure of nutritional status, and total toxic burden style panels are not accredited for diagnostic use in the UK. Iodine is a reasonable thyroid question but our laboratory does not currently offer it, and we would rather say so than substitute a marker that does not answer the same question.",
   },
   {
     q: "Who should not bother with this?",
-    a: "If you are well, eating a varied diet, have no symptoms and are not in a higher risk group, a broad micronutrient panel will most likely tell you that you are fine, and there is a real chance of finding a borderline result that causes worry without changing anything. This test earns its place when there are symptoms to explain, a restrictive or plant based diet, malabsorption, bariatric or gastrointestinal surgery, heavy menstrual loss, long term acid suppression or metformin, or a thyroid problem you want to understand properly.",
+    a: "If you are well, eating a varied diet, have no symptoms and are not in a higher risk group, a broad micronutrient panel will most likely tell you that you are fine, and there is a real chance of finding a borderline result that causes worry without changing anything. This panel earns its place when there are symptoms to explain, a restrictive or plant based diet, malabsorption, bariatric or gastrointestinal surgery, heavy menstrual loss, long term acid suppression or metformin, or a thyroid problem you want to understand properly.",
   },
 ];
 
@@ -124,10 +85,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "MedicalTest",
-      name: "Micronutrient and Vitamin Deficiency Blood Test",
+      name: "Micronutrient and Vitamin Deficiency Blood Panel",
       description:
-        "GP-led micronutrient panel measuring vitamin D, active B12, folate, iron studies, red cell magnesium, selenium, zinc, copper, urinary iodine, vitamins A and E, homocysteine and thyroid function, interpreted against hs-CRP.",
-      usedToDiagnose: ["Vitamin deficiency", "Iron deficiency", "Trace element deficiency", "Thyroid dysfunction"],
+        "GP-led 17 marker micronutrient panel measuring vitamin D, active B12, total B12, folate, red cell folate, red cell magnesium, serum magnesium, zinc, copper, adjusted calcium, full iron studies, albumin and hs-CRP.",
+      usedToDiagnose: ["Vitamin deficiency", "Iron deficiency", "Trace element deficiency"],
       url: PAGE_URL,
     },
     {
@@ -155,15 +116,15 @@ export default function MicronutrientTestPage() {
             <p className="lbl" style={{ color: "var(--go2)" }}>Micronutrient &amp; Vitamin Testing</p>
             <div className="rule rule-c" style={{ background: "var(--go)" }} />
             <h1 className="cg" style={{ fontSize: "clamp(2rem,4.6vw,3.1rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.22, marginBottom: 18 }}>
-              The nutrient markers your last blood test almost certainly skipped
+              The nutrient markers your last blood test measured badly, or not at all
             </h1>
             <p style={{ fontSize: "1.02rem", color: "rgba(246,241,232,.72)", lineHeight: 1.95, marginBottom: 30 }}>
-              Most UK vitamin panels measure the same four things. Selenium, iodine, zinc, copper and the fat soluble
-              vitamins are left out, which is a problem if what you actually want to understand is your thyroid, your
-              energy, or why a supplement shelf has not changed how you feel.
+              Most UK vitamin panels report serum magnesium and total B12, both of which can look entirely normal while
+              the thing they are meant to measure is not. This panel uses the better markers, and reads them against
+              inflammation rather than in isolation.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="#panels" className="btn btn-go">See the panels</Link>
+              <Link href="#panel" className="btn btn-go">See what is measured</Link>
               <Link href="/discovery-call" className="btn btn-ol-lt">Speak to the GP first</Link>
             </div>
           </div>
@@ -175,66 +136,79 @@ export default function MicronutrientTestPage() {
             <div className="sh text-center">
               <p className="lbl">The gap</p>
               <div className="rule rule-c" />
-              <h2 className="sh-title">Normal is not the same as optimal, and neither is the same as measured</h2>
+              <h2 className="sh-title">Normal is not the same as optimal, and neither is the same as measured properly</h2>
             </div>
             <div className="g2">
               <div className="card">
-                <p className="lbl" style={{ marginBottom: 14 }}>What standard panels test</p>
+                <p className="lbl" style={{ marginBottom: 14 }}>What standard panels measure</p>
                 <ul className="chk">
                   <li>Vitamin D</li>
-                  <li>Vitamin B12 (total, not active)</li>
+                  <li>Total B12, which can mask a low usable fraction</li>
                   <li>Folate</li>
-                  <li>Ferritin</li>
-                  <li>Sometimes serum magnesium</li>
+                  <li>Ferritin, often without full iron studies</li>
+                  <li>Serum magnesium, which stays normal until depletion is advanced</li>
                 </ul>
               </div>
               <div className="card">
-                <p className="lbl" style={{ marginBottom: 14 }}>What almost nobody tests</p>
+                <p className="lbl" style={{ marginBottom: 14 }}>What this panel adds</p>
                 <ul className="chk">
-                  <li>Selenium, a thyroid hormone cofactor</li>
-                  <li>Iodine, the substrate thyroid hormone is built from</li>
-                  <li>Zinc, with albumin and inflammation to read it against</li>
-                  <li>Copper and caeruloplasmin, and the zinc to copper balance</li>
-                  <li>Red cell magnesium rather than serum</li>
-                  <li>Active B12, which total B12 can mask</li>
+                  <li>Red cell magnesium, reflecting intracellular stores</li>
+                  <li>Active B12, the fraction your cells can actually use</li>
+                  <li>Red cell folate, a longer term measure than serum folate</li>
+                  <li>Zinc and copper, with the balance between them</li>
+                  <li>Albumin and hs-CRP, so the above can be interpreted honestly</li>
+                  <li>Transferrin saturation and TIBC, not just ferritin</li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Panels */}
-        <section className="sec bg-wh" id="panels">
-          <div className="wrap">
+        {/* The panel */}
+        <section className="sec bg-wh" id="panel">
+          <div className="wrap" style={{ maxWidth: 1000 }}>
             <div className="sh text-center">
-              <p className="lbl">The panels</p>
+              <p className="lbl">The panel</p>
               <div className="rule rule-c" />
-              <h2 className="sh-title">Three ways in</h2>
+              <h2 className="sh-title">Micronutrient Panel, 17 markers</h2>
               <p className="sh-body" style={{ fontSize: "1rem", maxWidth: 720 }}>
-                Every panel includes a GP-reviewed written report explaining what the numbers mean for you and what,
-                if anything, to do about them. Clinic blood draw is £30, payable at the Randox clinic.
+                One fasted blood draw at a Randox clinic near you, and a GP-reviewed written report explaining what the
+                numbers mean and what, if anything, to do about them.
               </p>
             </div>
-            <div className="g3">
-              {tiers.map((t) => (
-                <div key={t.tier} className="card" style={t.featured ? { border: "1px solid var(--go)" } : undefined}>
-                  <p className="lbl" style={{ marginBottom: 10, color: t.featured ? "var(--go)" : "var(--sl3)" }}>{t.tag}</p>
-                  <h3 className="cg" style={{ fontSize: "1.35rem", fontWeight: 500, marginBottom: 6 }}>{t.name}</h3>
-                  <p className="cg" style={{ fontSize: "1.8rem", fontWeight: 500, color: "var(--fo)", marginBottom: 14 }}>{t.price}</p>
-                  <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 16 }}>{t.summary}</p>
-                  <ul className="chk" style={{ marginBottom: 22 }}>
-                    {t.markers.map((m) => <li key={m}>{m}</li>)}
+
+            <div className="g2" style={{ marginBottom: 30 }}>
+              {markers.map((m) => (
+                <div key={m.group} className="card">
+                  <p className="lbl" style={{ marginBottom: 14 }}>{m.group}</p>
+                  <ul className="chk">
+                    {m.items.map((i) => <li key={i}>{i}</li>)}
                   </ul>
-                  <Link href={`/book?tier=${t.tier}`} className={t.featured ? "btn btn-go" : "btn btn-ol"}>
-                    Book {t.name} →
-                  </Link>
                 </div>
               ))}
             </div>
-            <p style={{ textAlign: "center", fontSize: ".88rem", color: "var(--sl3)", marginTop: 26, maxWidth: 700, margin: "26px auto 0", lineHeight: 1.9 }}>
-              Bought separately the Core Screen, the trace element module and the extended module come to £447.
-              The Complete Panel brings them together at £399.
-            </p>
+
+            <div className="g2">
+              <div className="card" style={{ border: "1px solid var(--go)" }}>
+                <p className="lbl" style={{ marginBottom: 10, color: "var(--go)" }}>Complete panel</p>
+                <p className="cg" style={{ fontSize: "2.1rem", fontWeight: 500, color: "var(--fo)", marginBottom: 10 }}>£295</p>
+                <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 18 }}>
+                  All 17 markers, GP-reviewed written report, and a clear recommendation on what to repeat and when.
+                  Clinic phlebotomy fee of £30 is paid to Randox on the day.
+                </p>
+                <Link href="/book?tier=micronutrient-panel" className="btn btn-go">Book the Micronutrient Panel →</Link>
+              </div>
+              <div className="card">
+                <p className="lbl" style={{ marginBottom: 10 }}>Optional upgrade</p>
+                <p className="cg" style={{ fontSize: "2.1rem", fontWeight: 500, color: "var(--fo)", marginBottom: 10 }}>+ £40</p>
+                <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 18 }}>
+                  <strong>Red cell selenium.</strong> Worth adding if your interest is thyroid function, since selenium
+                  is a cofactor for the enzymes that activate thyroid hormone. Taken from the same draw, so there is no
+                  second appointment.
+                </p>
+                <Link href="/book?tier=micronutrient-panel-selenium" className="btn btn-ol">Book with selenium, £335 →</Link>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -252,22 +226,22 @@ export default function MicronutrientTestPage() {
               <div className="card-fo">
                 <p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Inflammation first</p>
                 <p style={{ fontSize: ".93rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9 }}>
-                  Zinc and selenium fall whenever the body is inflamed, regardless of intake. We measure hs-CRP in the
+                  Zinc falls whenever the body is inflamed, regardless of intake. We measure hs-CRP and albumin in the
                   same draw so a low result is either believed or challenged, rather than assumed.
                 </p>
               </div>
               <div className="card-fo">
                 <p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>The right sample</p>
                 <p style={{ fontSize: ".93rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9 }}>
-                  Red cell magnesium instead of serum. Active B12 instead of total. Urinary iodine rather than a blood
-                  test that does not exist. The sample type decides whether the answer means anything.
+                  Red cell magnesium alongside serum. Active B12 alongside total. Red cell folate alongside serum
+                  folate. Measuring both halves of each pair is what makes the answer interpretable.
                 </p>
               </div>
               <div className="card-fo">
                 <p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>A plan, not a chart</p>
                 <p style={{ fontSize: ".93rem", color: "rgba(246,241,232,.72)", lineHeight: 1.9 }}>
-                  You get a GP-authored explanation of what matters, what does not, what to repeat and when, and where
-                  a result should go back to your NHS GP instead of into a supplement order.
+                  You get a GP-authored explanation of what matters, what does not, what to repeat and when, and where a
+                  result should go back to your NHS GP instead of into a supplement order.
                 </p>
               </div>
             </div>
@@ -318,7 +292,7 @@ export default function MicronutrientTestPage() {
         <section className="bg-fo" style={{ padding: "60px 24px", textAlign: "center" }}>
           <div className="wrap" style={{ maxWidth: 720 }}>
             <h2 className="cg" style={{ fontSize: "clamp(1.7rem,3.4vw,2.4rem)", fontWeight: 500, color: "var(--iv)", marginBottom: 16 }}>
-              Not sure which panel you need?
+              Not sure this is the panel you need?
             </h2>
             <p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, marginBottom: 26 }}>
               A short GP-led call is usually the cheapest way to find out, and often the answer is that you need fewer

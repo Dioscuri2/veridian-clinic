@@ -37,10 +37,10 @@ const tests = [
     slug: "micronutrient",
     title: "Micronutrient & Vitamin Deficiency Test",
     excerpt:
-      "Selenium, iodine, zinc, copper, red cell magnesium and active B12, the markers mainstream UK vitamin panels leave out. Every result is read against hs-CRP, because zinc and selenium fall with inflammation regardless of intake.",
+      "Red cell magnesium, active B12, red cell folate, zinc and copper, the markers mainstream UK vitamin panels either skip or measure in the least informative form. Read against hs-CRP and albumin, because zinc falls with inflammation regardless of intake.",
     tag: "Nutrition & Thyroid",
-    price: "From £199",
-    includedIn: "Core Micronutrient Screen & Complete Micronutrient Panel",
+    price: "£295",
+    includedIn: "Micronutrient Panel (red cell selenium +£40)",
   },
   {
     slug: "apob",
