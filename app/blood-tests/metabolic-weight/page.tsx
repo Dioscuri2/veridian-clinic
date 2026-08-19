@@ -98,7 +98,6 @@ export default function MetabolicWeightPage() {
         <li><strong>HOMA-IR</strong>, calculated insulin resistance score combining fasting insulin and fasting glucose</li>
         <li><strong>Uric acid</strong>, metabolic stress and fructose metabolism marker</li>
         <li><strong>Lp(a)</strong>, cardiovascular risk marker that rises with metabolic dysfunction</li>
-        <li><strong>Leptin</strong>, satiety hormone; elevated in leptin resistance</li>
         <li><strong>Adiponectin</strong>, anti-inflammatory fat hormone; low in metabolic syndrome</li>
         <li><strong>TSH</strong>, thyroid function screen</li>
         <li><strong>Liver markers (ALT, AST)</strong>, metabolic liver health, closely linked to insulin resistance</li>
@@ -117,7 +116,7 @@ export default function MetabolicWeightPage() {
       <div style={callout}>
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Why Won't The Weight Budge? Panel, £199</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
-          Fasting insulin · HbA1c · HOMA-IR · Uric acid · Lp(a) · Leptin · Adiponectin · TSH · ALT · AST · Full fasting lipid profile<br />
+          Fasting insulin · HbA1c · HOMA-IR · Uric acid · Lp(a) · Adiponectin · TSH · ALT · AST · Full fasting lipid profile<br />
           GP-reviewed metabolic interpretation · Prioritised action plan · No GP referral needed · Results in 5 working days
         </p>
       </div>

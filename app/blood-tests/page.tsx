@@ -139,7 +139,7 @@ const tests = [
     slug: "optimiser-baseline",
     title: "The Optimiser's Baseline",
     excerpt:
-      "For people who track their biology seriously and want a documented starting point. IGF-1, ApoB, Lp(a), sdLDL, Leptin, Adiponectin, cortisol, DHEA-S, testosterone, fasting insulin, Cystatin C and full organ safety. A benchmark to return to every year.",
+      "For people who track their biology seriously and want a documented starting point. IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, cortisol, DHEA-S, testosterone, fasting insulin, Cystatin C and full organ safety. A benchmark to return to every year.",
     tag: "Longevity",
     price: "£449",
     includedIn: "Optimiser's Baseline Panel",

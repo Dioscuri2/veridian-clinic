@@ -25,7 +25,7 @@ const tierCatalog: Record<
     name: "Veridian Women's Advanced Health Panel",
     amount: 29500,
     description:
-      "150+ marker comprehensive panel (Advanced GP3 Female + DHEA-S + Free Testosterone). Hormones: Oestradiol, Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Prolactin, SHBG. Thyroid: TSH, fT3, fT4, Anti-TG, Anti-TPO. Metabolic: Glucose, HbA1c, Insulin, C-Peptide, Leptin, Adiponectin, Resistin. Cardiovascular: Full lipid panel + Apolipoproteins + Lipoprotein(a) + Cardiovascular Risk Score. Blood: Full Blood Count. Nutrition: Vitamin D, B12, Folate, Iron status, Ferritin, Total Antioxidant Status. Organ health: Liver, Kidney (inc. Cystatin C), Pancreatic. Bone: Calcium, PTH, Vitamin D. Inflammation: hsCRP, Complement C3/C4, Immunoglobulins. Digestive: H. Pylori, Anti-TTG. Tumour marker: CA-125. Allergy: IgE. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
+      "150+ marker comprehensive panel (Advanced GP3 Female + DHEA-S + Free Testosterone). Hormones: Oestradiol, Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Prolactin, SHBG. Thyroid: TSH, fT3, fT4, Anti-TG, Anti-TPO. Metabolic: Glucose, HbA1c, Insulin, C-Peptide, Adiponectin. Cardiovascular: Full lipid panel + Apolipoproteins + Lipoprotein(a) + Cardiovascular Risk Score. Blood: Full Blood Count. Nutrition: Vitamin D, B12, Folate, Iron status, Ferritin, Total Antioxidant Status. Organ health: Liver, Kidney (inc. Cystatin C), Pancreatic. Bone: Calcium, PTH, Vitamin D. Inflammation: hsCRP, Complement C3/C4, Immunoglobulins. Digestive: H. Pylori, Anti-TTG. Tumour marker: CA-125. Allergy: IgE. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
     successPath: "/book/thank-you",
     cancelPath: "/perimenopause-guide",
   },
@@ -154,7 +154,7 @@ const tierCatalog: Record<
     name: "The Optimiser's Baseline, Performance & Longevity Panel",
     amount: 44900,
     description:
-      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total + free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Leptin, Adiponectin, Resistin, Cystatin C, Red Cell Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP. GP-reviewed baseline report included.",
+      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total + free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Red Cell Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP. GP-reviewed baseline report included.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },

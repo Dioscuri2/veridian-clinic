@@ -178,7 +178,7 @@ TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 
    Book: veridianclinic.com/book?tier=metabolic-weight
 
 6. The Optimiser's Baseline — Performance & Longevity Panel — £449
-   Markers: IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Leptin, Adiponectin, Resistin, Cystatin C, Magnesium, Uric Acid, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP
+   Markers: IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP
    Best for: Health optimisers, biohackers, anyone on peptides or HRT wanting a safety baseline; people tracking wearable data who want blood context; pre-protocol baseline before any longevity intervention
    Book: veridianclinic.com/book?tier=optimiser-baseline
 

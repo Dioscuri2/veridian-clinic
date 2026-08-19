@@ -5,11 +5,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic" },
   description:
-    "A comprehensive performance and longevity blood panel for health optimisers. IGF-1, ApoB, Lp(a), sdLDL, Leptin, Adiponectin, testosterone, cortisol, fasting insulin, full organ safety. GP-reviewed written report. £449.",
+    "A comprehensive performance and longevity blood panel for health optimisers. IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, testosterone, cortisol, fasting insulin, full organ safety. GP-reviewed written report. £449.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/optimiser-baseline" },
   openGraph: {
     title: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic",
-    description: "The health optimiser's baseline panel. IGF-1, ApoB, Lp(a), testosterone, cortisol, Leptin, Adiponectin and full organ safety. GP-reviewed written report. £449.",
+    description: "The health optimiser's baseline panel. IGF-1, ApoB, Lp(a), testosterone, cortisol, Adiponectin and full organ safety. GP-reviewed written report. £449.",
     url: "https://veridianclinic.com/blood-tests/optimiser-baseline",
     type: "article",
   },
@@ -39,7 +39,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Private Optimiser Baseline Blood Test UK: Performance and Longevity Panel",
-  description: "A private health optimiser baseline panel including IGF-1, ApoB, Lp(a), sdLDL, Leptin, Adiponectin, testosterone, cortisol, fasting insulin, Cystatin C and full organ safety markers. GP-reviewed written report with prioritised optimisation plan.",
+  description: "A private health optimiser baseline panel including IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, testosterone, cortisol, fasting insulin, Cystatin C and full organ safety markers. GP-reviewed written report with prioritised optimisation plan.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: { "@type": "Organization", name: "Veridian Clinic", url: "https://veridianclinic.com" },
   url: "https://veridianclinic.com/blood-tests/optimiser-baseline",
@@ -84,8 +84,8 @@ export default function OptimiserBaselinePage() {
           },
           {
             category: "Body composition hormones",
-            markers: "Leptin, Adiponectin, Resistin",
-            detail: "Leptin signals satiety to the brain. Leptin resistance, where the signal is blocked despite high levels, drives persistent hunger and fat accumulation regardless of diet. Adiponectin, produced by fat cells, protects against insulin resistance and cardiovascular disease. Resistin promotes inflammation and insulin resistance. This trio reveals the hormonal reason why body composition is not responding to training and diet the way it should.",
+            markers: "Adiponectin",
+            detail: "Adiponectin is produced by fat cells and protects against insulin resistance and cardiovascular disease. Low adiponectin is one of the earliest signals that body composition is working against metabolic health, and it commonly falls before fasting insulin or HbA1c move out of range. It helps explain why body composition is not responding to training and diet the way it should.",
           },
           {
             category: "Metabolic function",
@@ -146,7 +146,7 @@ export default function OptimiserBaselinePage() {
       <div style={callout}>
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>The Optimiser's Baseline, £449</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
-          IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Leptin · Adiponectin · Resistin · Fasting insulin · HbA1c · Cortisol (AM) · DHEA-S · Total testosterone · Free testosterone · SHBG · LH · FSH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · hs-CRP<br />
+          IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Adiponectin · Fasting insulin · HbA1c · Cortisol (AM) · DHEA-S · Total testosterone · Free testosterone · SHBG · LH · FSH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · hs-CRP<br />
           GP-reviewed written baseline report · Prioritised optimisation plan · No GP referral needed · Results in 5 working days
         </p>
       </div>

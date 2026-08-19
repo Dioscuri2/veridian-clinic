@@ -63,7 +63,7 @@ export default function PeriGuideUpsells() {
                 "Hormones: Oestradiol, Progesterone, FSH, LH",
                 "Testosterone (Total & Free) + DHEA-S",
                 "Full Thyroid: TSH, fT3, fT4 + Antibodies",
-                "Metabolic: HbA1c, Insulin, C-Peptide, Leptin",
+                "Metabolic: HbA1c, Insulin, C-Peptide, Adiponectin",
                 "Cardiovascular: Full lipid + Apolipoproteins",
                 "Nutrition: Vitamin D, B12, Folate, Ferritin",
                 "Inflammation: hsCRP + Immunoglobulins",

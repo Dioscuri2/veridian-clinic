@@ -64,12 +64,12 @@ const PANELS: Record<string, PanelInfo> = {
     price: "£199",
     markerSummary: [
       "Fasting Insulin, HbA1c, HOMA-IR (insulin resistance index)",
-      "Uric Acid, Lipoprotein(a), Leptin, Adiponectin",
+      "Uric Acid, Lipoprotein(a), Adiponectin",
       "TSH, Liver markers (ALT, AST), Fasting Lipid Profile",
     ],
     fastingRequired: true,
     randoxCode: "RP3 + RP4 + Fasting Insulin + Uric Acid + Lp(a)",
-    randoxNotes: "Two Randox panels combined. Include Leptin + Adiponectin as add-ons.",
+    randoxNotes: "Two Randox panels combined. Include Adiponectin as an add-on. Leptin and Resistin are NOT offered by Randox in any form.",
   },
   "optimiser-baseline": {
     name: "The Optimiser's Baseline, Performance & Longevity Panel",
@@ -77,12 +77,12 @@ const PANELS: Record<string, PanelInfo> = {
     markerSummary: [
       "IGF-1, Fasting Insulin, HbA1c, Cortisol (AM), DHEA-S",
       "Total + Free Testosterone, SHBG, LH, FSH",
-      "ApoB, Lp(a), sdLDL, ApoA-I, Full Lipid Profile, Leptin, Adiponectin, Resistin",
+      "ApoB, Lp(a), sdLDL, ApoA-I, Full Lipid Profile, Adiponectin",
       "Cystatin C, Magnesium, Uric Acid, Full Blood Count, Liver (ALT/AST/GGT), Kidney + eGFR, hs-CRP",
     ],
     fastingRequired: true,
     randoxCode: "HSC8M or HSC8F + HSC12 + IGF-1 (Medichecks kit)",
-    randoxNotes: "HSC8 covers ApoB/Lp(a)/sdLDL/Leptin/Adiponectin/Resistin/Insulin/Cystatin C. HSC12 adds Cortisol/DHEA-S/performance. IGF-1 via Medichecks practitioner kit ordered separately.",
+    randoxNotes: "HSC8 (Advanced GP2, £106.30) covers ApoB/Lp(a)/sdLDL/Adiponectin/Insulin/Cystatin C. Leptin and Resistin are NOT offered by Randox. HSC12 adds Cortisol/DHEA-S/performance. IGF-1 via Medichecks practitioner kit ordered separately.",
   },
   "metabolic-screen": {
     name: "Veridian Energy Screen",
