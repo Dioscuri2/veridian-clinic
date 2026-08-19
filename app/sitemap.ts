@@ -11,6 +11,7 @@ const staticRoutes = [
   "/blog/apob-vs-ldl",
   "/blog/fast-insulin",
   "/blog/homocysteine",
+  "/blog/leptin-resistance",
   "/blog/lipoprotein-a-apob-triglycerides",
   "/blog/multivitamins",
   "/blog/nhs-waiting-list-record",

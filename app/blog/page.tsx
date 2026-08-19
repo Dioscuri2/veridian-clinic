@@ -103,6 +103,13 @@ const articles = [
     readTime: "10 min read",
   },
   {
+    slug: "leptin-resistance",
+    title: "Leptin resistance a real mechanism and an unhelpful blood test",
+    excerpt: "Persistent hunger despite adequate fat stores is a genuine physiological problem, not a failure of willpower. But measuring leptin will not tell you what to do about it. Here is the biology, why we do not sell the test, and the markers we use instead.",
+    tag: "Metabolic Health",
+    readTime: "7 min read",
+  },
+  {
     slug: "reversing-metabolic-syndrome",
     title: "Reversing metabolic syndrome what the evidence actually supports",
     excerpt: "Metabolic syndrome affects 1 in 4 UK adults and is among the most reversible of all cardiometabolic conditions. The clinical evidence on reversal is more optimistic than most patients are told. Here is what the data shows and where to start.",

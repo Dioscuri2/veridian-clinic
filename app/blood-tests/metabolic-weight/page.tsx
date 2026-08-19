@@ -60,9 +60,9 @@ export default function MetabolicWeightPage() {
         { label: "Book a GP Discovery Call first", href: "/book?tier=discovery" },
       ]}
     >
-      <h2 className="cg" style={sectionHeading}>The four most common metabolic blocks to weight loss</h2>
+      <h2 className="cg" style={sectionHeading}>The three most common metabolic blocks to weight loss</h2>
       <p style={paragraph}>
-        When a patient comes to clinic frustrated by weight that won't shift despite genuine effort, the answer is almost always one of four things, and none of them are detected by a standard GP blood test.
+        When a patient comes to clinic frustrated by weight that won't shift despite genuine effort, the answer is almost always one of three things, and none of them are detected by a standard GP blood test.
       </p>
 
       <div style={{ display: "grid", gap: 14, margin: "20px 0" }}>
@@ -76,11 +76,7 @@ export default function MetabolicWeightPage() {
             body: "TSH within the lab normal range does not mean your thyroid is functioning optimally. Many patients with TSH in the upper-normal range (2.5-4.5 mU/L) experience genuine thyroid-related weight gain, fatigue and cold intolerance. The panel also includes liver markers that reflect the downstream metabolic impact of thyroid function.",
           },
           {
-            title: "3. Leptin resistance, the satiety signal that stops working",
-            body: "Leptin is the hormone that tells the brain fat stores are sufficient and suppresses appetite. In leptin resistance, common in people with obesity or long-term calorie restriction, leptin is present but the brain stops responding to it. You feel constantly hungry despite having adequate energy stores. Leptin and its counterpart adiponectin are almost never tested in standard care.",
-          },
-          {
-            title: "4. Elevated uric acid, a metabolic distress signal",
+            title: "3. Elevated uric acid, a metabolic distress signal",
             body: "High uric acid is strongly associated with insulin resistance, fructose metabolism dysfunction, and impaired fat oxidation. It is a sensitive early marker of metabolic stress that correlates with weight gain independent of caloric intake. Often completely absent from routine testing.",
           },
         ].map(item => (
