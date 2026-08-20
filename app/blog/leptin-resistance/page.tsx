@@ -60,6 +60,8 @@ export default function LeptinResistancePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ClinicalArticleLayout
+        datePublished="2026-08-19"
+        dateModified="2026-08-19"
         title="Leptin resistance: a real mechanism and an unhelpful blood test"
         intro="Persistent hunger despite adequate fat stores is a genuine physiological problem, not a failure of willpower. But the honest position is that measuring leptin will not tell you what to do about it, and we would rather explain the biology than sell you a number you cannot act on."
         ctas={[

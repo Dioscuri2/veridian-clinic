@@ -52,6 +52,8 @@ export default function WhatPrivateGpChecksPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ClinicalArticleLayout
+        datePublished="2026-08-12"
+        dateModified="2026-08-12"
         title="What a private GP checks that your NHS panel does not"
         intro="&ldquo;Your bloods are normal&rdquo; is one of the most frustrating sentences in medicine, because it is usually true and unhelpful at the same time. Normal means above the threshold at which disease is diagnosed. It does not mean optimal, and it does not mean nothing is changing. Here is precisely what a standard NHS panel covers, what it leaves out, and why the gap exists."
         ctas={[

@@ -79,6 +79,8 @@ export default function LpaApoBTriglyceridesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ClinicalArticleLayout
+        datePublished="2026-05-10"
+        dateModified="2026-05-10"
         title="The cardiovascular triple threat: Lipoprotein(a), ApoB, and triglycerides"
         intro="Your standard NHS cholesterol panel measures LDL-C, HDL-C, and total triglycerides. What it does not measure are three independent atherogenic pathways that between them explain a large proportion of heart attacks in people who were told their cholesterol was fine."
         heroImage="/blog/lipoprotein-a-apob-triglycerides.jpg"

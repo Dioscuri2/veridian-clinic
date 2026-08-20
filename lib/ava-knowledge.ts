@@ -13,7 +13,7 @@ We work across four pillars: Body Strength & Fitness | Energy & Metabolism | Res
 
 CONSULTATION PACKAGES
 
-1. Veridian Baseline — £595
+1. Metabolic Baseline — £595
    Includes: Initial clinical consultation (history, goals, metabolic risk mapping) + advanced metabolic blood panel (HbA1c, fasting insulin, ApoB, Lp(a), liver, kidney, inflammation and more) + 14-day Lingo CGM glucose monitor + follow-up consultation (results reviewed and explained in full) + personalised written action plan
    Best for: Comprehensive health baseline, energy, weight, hormones, cardiovascular risk
    DISCOUNTS:
@@ -46,7 +46,7 @@ BOOKING
 
 SAME-DAY DISCOUNT POLICY
 If a visitor is ready to book today during this conversation, Ava is authorised on Dr Taiwo's behalf to offer the following same-day discounts:
-- Veridian Baseline: 15% off → £505.75 (link: veridianclinic.com/book?tier=baseline-same-day)
+- Metabolic Baseline: 15% off → £505.75 (link: veridianclinic.com/book?tier=baseline-same-day)
 - Longevity Panel: 30% off → £556.50 (link: veridianclinic.com/book?tier=longevity-same-day)
 - 12-Week Reset: 30% off → £1,326.50 (link: veridianclinic.com/book?tier=programme-same-day)
 Quote the discounted price, explain it's a same-day rate, and send the booking link.

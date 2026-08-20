@@ -54,6 +54,8 @@ export default function NhsWaitingListRecordPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ClinicalArticleLayout
+        datePublished="2026-08-12"
+        dateModified="2026-08-12"
         title="The NHS waiting list hit a record 7.75 million. Here is what you can actually do while you wait"
         intro="The waiting list for planned NHS treatment in England has risen to a record 7.75 million, up more than 100,000 in a single month. Just under 397,000 people have now been waiting over a year. As a GP, the question I am asked most often is not political. It is practical: what do I do in the meantime? Here is an honest answer, including the parts where waiting is genuinely the right call."
         ctas={[

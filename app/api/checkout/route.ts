@@ -74,14 +74,14 @@ const tierCatalog: Record<
     successPath: "/book/thank-you",
   },
   baseline: {
-    name: "Veridian Baseline",
+    name: "Veridian Metabolic Baseline",
     amount: 59500,
     description:
       "Two GP consultations (initial clinical session + blood results review), advanced metabolic blood panel (HbA1c, fasting insulin, ApoB, Lp(a), liver, kidney, inflammation and more), 14-day Lingo CGM glucose monitor, and personalised written clinical action plan.",
     successPath: "/book/thank-you",
   },
   "baseline-same-day": {
-    name: "Veridian Baseline, Same-Day Rate",
+    name: "Veridian Metabolic Baseline, Same-Day Rate",
     amount: 50575,
     description:
       "Same-day booking rate (15% discount). Two GP consultations (initial clinical session + blood results review), advanced metabolic blood panel (HbA1c, fasting insulin, ApoB, Lp(a), liver, kidney, inflammation and more), 14-day Lingo CGM glucose monitor, and personalised written clinical action plan.",
@@ -100,7 +100,7 @@ const tierCatalog: Record<
     name: "12-Week Metabolic Reset, Same-Day Rate",
     amount: 132650,
     description:
-      "Same-day booking rate (30% discount). 12-week structured reset including everything in the Veridian Baseline, second CGM cycle, fortnightly coaching, clinical review via partner providers where indicated, and personalised nutrition, movement and recovery protocol.",
+      "Same-day booking rate (30% discount). 12-week structured reset including everything in the Metabolic Baseline, second CGM cycle, fortnightly coaching, clinical review via partner providers where indicated, and personalised nutrition, movement and recovery protocol.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },

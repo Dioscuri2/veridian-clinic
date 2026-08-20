@@ -97,6 +97,8 @@ export default function MultivitaminsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <ClinicalArticleLayout
+        datePublished="2026-06-23"
+        dateModified="2026-06-23"
         eyebrow="Longevity Medicine · Nutrition"
         title='"Multivitamins are useless" is officially outdated'
         intro="Three large randomised controlled trials in adults 65 and over found that a standard off-the-shelf multivitamin slowed global cognitive ageing by roughly two years and episodic memory ageing by roughly five years compared to placebo. This is not the finding medicine expected. Here is what the COSMOS trials actually showed, why widespread micronutrient shortfalls are more common than most people assume, and why testing beats guessing."

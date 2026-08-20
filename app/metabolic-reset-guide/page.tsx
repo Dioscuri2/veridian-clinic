@@ -200,7 +200,7 @@ export default function MetabolicResetGuidePage() {
               className="cg"
               style={{ fontSize: "clamp(1.7rem,3.8vw,2.5rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 16 }}
             >
-              The Veridian Baseline gives you the full clinical picture.
+              The Metabolic Baseline gives you the full clinical picture.
             </h2>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 28, maxWidth: 560, margin: "0 auto 28px" }}>
               The Baseline Assessment includes a 9-marker blood panel, GP clinical interpretation, and a written action plan going beyond the guide into real diagnostic clarity.

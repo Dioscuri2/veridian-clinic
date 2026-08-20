@@ -105,6 +105,8 @@ export default function Omega3Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <ClinicalArticleLayout
+        datePublished="2026-06-23"
+        dateModified="2026-06-23"
         eyebrow="Longevity Medicine · Cardiovascular Risk"
         title="The blood marker that predicts your heart risk better than cholesterol gets all the attention"
         intro="Most people have had a cholesterol test. Almost no one has had their omega-3 index measured. A high index of around 8% is linked to roughly 90% lower sudden cardiac death risk compared to a low index of 4%. A low index has been associated with a mortality signal comparable to smoking. It is not on any standard NHS panel. Here is what the evidence says and why it belongs in any serious cardiovascular workup."

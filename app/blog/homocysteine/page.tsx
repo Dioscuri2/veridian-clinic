@@ -131,6 +131,8 @@ export default function HomocysteinePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <ClinicalArticleLayout
+        datePublished="2026-05-13"
+        dateModified="2026-05-13"
         title="Homocysteine: the cardiovascular risk marker most GPs don't check"
         intro="Standard NHS blood panels catch the obvious risks. Homocysteine tends to slip through. It is an amino acid metabolite that accumulates when B-vitamin metabolism is disrupted, and elevated levels are independently associated with cardiovascular disease, stroke, and cognitive decline. Here is what a homocysteine test measures, who should have one, and how to interpret the result."
         heroImage="/blog/homocysteine.jpg"

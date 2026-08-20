@@ -90,6 +90,8 @@ export default function ApoBVsLDLPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ClinicalArticleLayout
+        datePublished="2026-05-10"
+        dateModified="2026-06-14"
         title="ApoB vs LDL: what they actually measure and why the difference changes how we read heart disease risk"
         intro="Your GP orders a cholesterol test. The result comes back with LDL at what looks like an acceptable level, and you are told everything looks fine. But LDL tells only part of the story. A marker called ApoB often gives a clearer answer to the question that actually matters: how many potentially harmful particles are circulating through your blood vessels right now?"
         heroImage="/blog/apob-vs-ldl.jpg"

@@ -223,7 +223,7 @@ function buildEmail4(firstName: string, band: string): { subject: string; html: 
     band === "strong"
       ? { name: "Optimiser's Baseline", price: "£449", path: "/blood-tests/optimiser-baseline", reason: "Your quiz result suggests strong metabolic function. The Optimiser's Baseline gives you a performance baseline, IGF-1, cortisol, testosterone, ApoB, fasting insulin, so you know exactly what to maintain and where marginal gains are available." }
       : band === "high-risk"
-        ? { name: "Veridian Baseline", price: "£595", path: "/assessments", reason: "With multiple metabolic signals flagged, the full Baseline gives the most complete picture, 9-marker advanced panel including ApoB, Lp(a), fasting insulin, HbA1c, liver, kidney, and inflammation, plus GP consultation to walk through your results and build a clinical plan." }
+        ? { name: "Metabolic Baseline", price: "£595", path: "/assessments", reason: "With multiple metabolic signals flagged, the full Baseline gives the most complete picture, 9-marker advanced panel including ApoB, Lp(a), fasting insulin, HbA1c, liver, kidney, and inflammation, plus GP consultation to walk through your results and build a clinical plan." }
         : { name: "Metabolic Weight Resistance Panel", price: "£199", path: "/blood-tests/metabolic-weight", reason: "For 'drifting' results, the Metabolic Weight Panel targets the most common hidden drivers: fasting insulin, HOMA-IR, leptin, adiponectin, Lp(a), and thyroid. It's the panel that explains why weight isn't shifting despite genuine effort." };
 
   const body = `
@@ -247,7 +247,7 @@ function buildEmail4(firstName: string, band: string): { subject: string; html: 
         <td style="padding:12px 0 12px 12px;border-bottom:1px solid rgba(0,0,0,.05);font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#c8a84b;font-weight:700;white-space:nowrap;"><a href="${SITE}/blood-tests/fatigue-energy" style="color:#c8a84b;text-decoration:none;">£249 →</a></td>
       </tr>
       <tr>
-        <td style="padding:12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#2c2a26;font-weight:600;">Veridian Baseline</td>
+        <td style="padding:12px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#2c2a26;font-weight:600;">Metabolic Baseline</td>
         <td style="padding:12px 0 12px 12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#5a534a;">Full metabolic panel + 2 GP consultations</td>
         <td style="padding:12px 0 12px 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#c8a84b;font-weight:700;white-space:nowrap;"><a href="${SITE}/assessments" style="color:#c8a84b;text-decoration:none;">£595 →</a></td>
       </tr>

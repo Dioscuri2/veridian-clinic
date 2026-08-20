@@ -70,6 +70,8 @@ export default function ReversingMetabolicSyndromePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ClinicalArticleLayout
+        datePublished="2026-05-10"
+        dateModified="2026-05-10"
         title="Reversing metabolic syndrome: what the evidence actually supports"
         intro="The goal is not perfection. It is reducing the drivers that keep insulin elevated, waist circumference expanding, and cardiovascular risk quietly climbing. Then measuring whether the system is genuinely improving. Metabolic syndrome is a cluster of abnormalities, not a fixed diagnosis with a fixed trajectory."
         heroImage="/blog/reversing-metabolic-syndrome.jpg"

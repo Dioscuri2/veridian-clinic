@@ -105,6 +105,8 @@ export default function SulforaphanePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <ClinicalArticleLayout
+        datePublished="2026-06-23"
+        dateModified="2026-06-23"
         eyebrow="Longevity Medicine · Environmental Health"
         title="The compound in broccoli sprouts that helps your body clean up after city living"
         intro="Sulforaphane does not act as a conventional antioxidant. It activates NRF2, a master genetic switch that prompts your own cells to upregulate glutathione production and phase-2 detoxification enzymes. Human trials show it can reduce oxidative DNA damage by up to 40% and clear environmental carcinogens faster. The catch: cooking destroys the enzyme that makes it. Here is the evidence, the mechanism, and what actually works as a source."

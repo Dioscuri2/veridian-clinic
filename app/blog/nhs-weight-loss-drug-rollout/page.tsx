@@ -52,6 +52,8 @@ export default function NhsWeightLossRolloutPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ClinicalArticleLayout
+        datePublished="2026-08-12"
+        dateModified="2026-08-12"
         title="250,000 patients, 3.4 million eligible: the real maths of the NHS weight loss drug rollout"
         intro="The NHS weight management rollout began reaching GP surgeries from April 2026, and from February 2026 GPs have been financially incentivised to prescribe obesity medication as part of the 2026/27 contract. The headlines read like access has arrived. The arithmetic underneath tells a more sober story: 250,000 patients over three years, against roughly 3.4 million who could theoretically qualify. NHS England has acknowledged full rollout could take up to 12 years."
         ctas={[

@@ -70,6 +70,8 @@ export default function FastInsulinPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ClinicalArticleLayout
+        datePublished="2026-05-10"
+        dateModified="2026-05-10"
         title="Fasting insulin: the missing early signal in metabolic disease"
         intro="Long before HbA1c rises or fasting glucose crosses a diagnostic threshold, insulin can already be elevated in the background. That compensatory phase is often where metabolic dysfunction begins, and it is exactly where early intervention has the greatest leverage."
         heroImage="/blog/fasting-insulin.jpg"

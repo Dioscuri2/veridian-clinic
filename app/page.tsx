@@ -30,7 +30,7 @@ const offers = [
     leave_with: [
       "Expert GP assessment of your symptoms and likely metabolic drivers",
       "Clear written action summary and next-step recommendations",
-      "Guidance on whether the Veridian Baseline is right for you",
+      "Guidance on whether the Metabolic Baseline is right for you",
       "Answers to your specific concerns from a qualified doctor",
     ],
     bring: "Recent blood tests (if available), medication list, and your key symptoms or concerns.",
@@ -38,7 +38,7 @@ const offers = [
     featured: false,
   },
   {
-    name: "Veridian Baseline",
+    name: "Metabolic Baseline",
     price: "£595",
     tier: "baseline",
     tag: "Diagnostic assessment",
@@ -65,7 +65,7 @@ const offers = [
     tag: "Structured programme",
     blurb: "12 weeks of supervised implementation. CGM monitoring, fortnightly coaching, and GP oversight combined into a programme designed to create measurable, lasting change.",
     leave_with: [
-      "Everything in the Veridian Baseline",
+      "Everything in the Metabolic Baseline",
       "One 14-day CGM cycle with full interpretation",
       "Fortnightly coaching and accountability check-ins",
       "GP-led clinical review at programme midpoint",
@@ -86,7 +86,7 @@ const faqs = [
   { q:"Is Veridian a replacement for my NHS GP?", a:"No. We are a private preventive and optimisation service that complements your NHS care. We communicate with your GP where clinically appropriate." },
   { q:"Are your clinical services regulated?", a:"Yes. Registered clinical activities are delivered via ThanksDoc (thanksdoc.co.uk). Veridian Clinic delivers the longevity-focused health optimisation layer, and regulated medical care including prescribing where indicated is provided through that registered structure." },
   { q:"How is care delivered?", a:"All consultations are delivered virtually, nationwide. Regulated medical care is provided through ThanksDoc's registered clinical structure, while our health optimisation and coaching work is delivered by the Veridian team directly." },
-  { q:"What blood tests are included?", a:"The Veridian Baseline includes HbA1c, fasting insulin, fasting glucose, ApoB, homocysteine, full lipid panel, ALT, AST, hs-CRP and broader metabolic markers." },
+  { q:"What blood tests are included?", a:"The Metabolic Baseline includes HbA1c, fasting insulin, fasting glucose, ApoB, homocysteine, full lipid panel, ALT, AST, hs-CRP and broader metabolic markers." },
   { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through ThanksDoc's registered clinical structure never as an isolated shortcut, always as part of a structured programme." },
   { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5-7 working days." },
   { q:"Are you an emergency service?", a:"No. Veridian Clinic is not an emergency service and cannot respond to medical emergencies. If you are experiencing a medical emergency including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or a severe allergic reaction call 999 immediately or attend your nearest A&E. If you are unsure whether your situation is urgent, call NHS 111. Our services are for health optimisation and preventive care only." },
@@ -765,7 +765,7 @@ export default function HomePage() {
             <div className="gproc">
               {[
                 { n:"01", t:"Discovery Call", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a written next-step recommendation useful even if you do not progress immediately." },
-                { n:"02", t:"Veridian Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms with clinical interpretation and a clear written action plan." },
+                { n:"02", t:"Metabolic Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms with clinical interpretation and a clear written action plan." },
                 { n:"03", t:"Personalised Plan", d:"A written, prioritised plan built around your data. CGM, nutrition, movement and behaviour protocols. Where clinically indicated, prescribing pathways including GLP-1 options are available." },
                 { n:"04", t:"Structured Follow-Up", d:"Fortnightly coaching, GP-led clinical review at midpoint, and an end-of-programme review with a 12-month forward plan. Progress is measured, not assumed." },
               ].map((s, i) => (

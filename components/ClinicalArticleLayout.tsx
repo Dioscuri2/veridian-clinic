@@ -20,7 +20,16 @@ type Props = {
   ctas?: Cta[];
   heroImage?: string;
   heroAlt?: string;
+  /** ISO date, e.g. "2026-06-23". Rendered visibly under the intro. */
+  datePublished?: string;
+  /** ISO date. Shown as "Last reviewed" in the author block. */
+  dateModified?: string;
 };
+
+const formatDate = (iso: string) =>
+  new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", {
+    day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+  });
 
 export default function ClinicalArticleLayout({
   eyebrow = "Clinical Insights",
@@ -30,6 +39,8 @@ export default function ClinicalArticleLayout({
   ctas = [],
   heroImage,
   heroAlt = "",
+  datePublished,
+  dateModified,
 }: Props) {
   return (
     <>
@@ -45,6 +56,12 @@ export default function ClinicalArticleLayout({
             <p className="sh-body" style={{ margin: "16px 0 28px", maxWidth: 760 }}>
               {intro}
             </p>
+            {datePublished && (
+              <p style={{ fontSize: ".76rem", color: "var(--sl3)", margin: "-16px 0 24px", letterSpacing: ".03em" }}>
+                Published {formatDate(datePublished)}
+                {dateModified && dateModified !== datePublished && ` · Updated ${formatDate(dateModified)}`}
+              </p>
+            )}
             {heroImage && (
               <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", marginBottom: 28, overflow: "hidden" }}>
                 <Image
@@ -59,6 +76,24 @@ export default function ClinicalArticleLayout({
             )}
             <article className="card" style={{ display: "grid", gap: 20 }}>
               {children}
+              <div style={{ display: "flex", alignItems: "center", gap: 16, borderTop: "1px solid rgba(44,42,38,.08)", paddingTop: 18 }}>
+                <Image
+                  src="/dr-tosin.jpg"
+                  alt="Dr Tosin Taiwo, GP"
+                  width={56}
+                  height={56}
+                  style={{ borderRadius: "50%", objectFit: "cover", objectPosition: "top", flexShrink: 0 }}
+                />
+                <div style={{ lineHeight: 1.6 }}>
+                  <p style={{ fontSize: ".88rem", fontWeight: 600, color: "var(--sl)", margin: 0 }}>
+                    Dr Tosin Taiwo <span style={{ fontWeight: 400, color: "var(--sl2)" }}>MBBS MRCGP MRCS</span>
+                  </p>
+                  <p style={{ fontSize: ".76rem", color: "var(--sl3)", margin: 0 }}>
+                    NHS GP Partner · Founder, Veridian Clinic
+                    {dateModified && ` · Last reviewed ${formatDate(dateModified)}`}
+                  </p>
+                </div>
+              </div>
               <div style={{ fontSize: ".78rem", color: "var(--sl3)", borderTop: "1px solid rgba(44,42,38,.08)", paddingTop: 14, lineHeight: 1.75 }}>
                 <strong style={{ color: "var(--sl2)" }}>Medical disclaimer:</strong> This article is for informational purposes only and does not constitute medical advice or a clinical diagnosis. Always consult a qualified healthcare professional before making any changes to your health management. Registered clinical activities at Veridian Clinic are delivered via ThanksDoc (thanksdoc.co.uk).
               </div>

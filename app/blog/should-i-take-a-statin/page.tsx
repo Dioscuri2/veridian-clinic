@@ -84,6 +84,8 @@ export default function ShouldITakeAStatinPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ClinicalArticleLayout
+        datePublished="2026-06-15"
+        dateModified="2026-06-15"
         title="Should I take a statin? What to check before you decide"
         intro="Being told your cholesterol is borderline, or that you might need to start a statin, is one of the most common moments people realise they want to understand their health more deeply. The conversation that follows at a standard GP appointment is often short. Here is the longer version."
         heroImage="/blog/apob-vs-ldl.jpg"

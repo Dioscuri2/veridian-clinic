@@ -26,7 +26,7 @@ const agenda = [
   {
     time: "15-25 min",
     title: "Pathway recommendation",
-    body: "Based on your picture, we recommend the most appropriate next step whether that's a targeted blood panel, the Veridian Baseline, or the Metabolic Screen and explain exactly why.",
+    body: "Based on your picture, we recommend the most appropriate next step whether that's a targeted blood panel, the Metabolic Baseline, or the Metabolic Screen and explain exactly why.",
   },
   {
     time: "25-30 min",

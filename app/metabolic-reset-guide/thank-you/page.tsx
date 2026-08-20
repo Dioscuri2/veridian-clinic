@@ -90,7 +90,7 @@ export default function GuideThankyouPage() {
                 </p>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 20 }}>
                   <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--fo)", lineHeight: 1 }}>£595</span>
-                  <span style={{ fontSize: ".8rem", color: "var(--sl3)" }}>Veridian Baseline</span>
+                  <span style={{ fontSize: ".8rem", color: "var(--sl3)" }}>Metabolic Baseline</span>
                 </div>
                 <Link href="/book?tier=baseline" className="btn btn-fo" style={{ display: "block", textAlign: "center" }}>
                   Book the Baseline →
