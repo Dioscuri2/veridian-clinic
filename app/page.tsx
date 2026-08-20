@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const domains = [
@@ -478,6 +479,9 @@ export default function HomePage() {
               <Link href="/metabolic-quiz" className="btn btn-fo" style={{ textAlign: "center", padding: "14px 24px" }}>
                 Check your metabolic age Free
               </Link>
+              <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.6, textAlign: "center", margin: 0 }}>
+                Led by Dr Tosin Taiwo, NHS GP · Delivered with a CQC-regulated partner · Video testimonials below
+              </p>
             </div>
           </div>
           <div className="hero-img-col" data-aos="fade-left" data-aos-delay="120">
@@ -486,7 +490,7 @@ export default function HomePage() {
         </section>
 
         {/* ══════════════════════════════════════════════════
-            2. PATIENT VIDEO TESTIMONIALS (surfaced high for trust)
+            2. VIDEO TESTIMONIALS (surfaced high for trust)
         ══════════════════════════════════════════════════ */}
         <section id="testimonials" className="sec bg-fo">
           <style>{`
@@ -499,9 +503,9 @@ export default function HomePage() {
           `}</style>
           <div className="wrap" style={{ maxWidth: 1000 }}>
             <div className="sh text-center" style={{ marginBottom: 36 }}>
-              <p className="lbl" style={{ color:"var(--go)" }}>Patient Stories</p>
+              <p className="lbl" style={{ color:"var(--go)" }}>Real Stories</p>
               <div className="rule rule-c"/>
-              <h2 className="cg sh-title" style={{ color:"var(--iv)" }}>Hear it from our patients</h2>
+              <h2 className="cg sh-title" style={{ color:"var(--iv)" }}>Hear from people we&rsquo;ve helped</h2>
               <p className="sh-body" style={{ color:"rgba(246,241,232,.7)", maxWidth:600, margin:"0 auto" }}>
                 Real people who came to Veridian for the answers their GP could not give them.
               </p>
@@ -523,7 +527,7 @@ export default function HomePage() {
                 <div>
                   <p className="cg" style={{ fontSize:"1.6rem", lineHeight:1.2, color:"var(--go)", marginBottom:10 }}>More stories<br/>coming soon</p>
                   <p style={{ fontSize:".78rem", color:"rgba(246,241,232,.55)", lineHeight:1.7 }}>
-                    New patient testimonials are added as our members share their journeys.
+                    New stories are added as the people we work with share their journeys.
                   </p>
                 </div>
               </div>
@@ -952,6 +956,7 @@ export default function HomePage() {
 
       </main>
       <Footer />
+      <MobileStickyCTA />
     </>
   );
 }
