@@ -11,6 +11,12 @@
  * - A panel with `supplier.verified: false` must NOT have its marker list
  *   rendered to patient-facing pages from this file until the Nexus audit
  *   confirms its composition. Prices are still authoritative.
+ * - PAYMENTS RULE (Dr Tosin, 2026-08-20): ALL blood-test and service payments
+ *   run through ThanksDoc — never build a new Stripe checkout flow for them.
+ *   `thanksDocServiceId` is the canonical purchase route; /book redirects to
+ *   the ThanksDoc clinic page (NEXT_PUBLIC_THANKSDOC_BOOKING_URL). The
+ *   `checkoutTier` field references the LEGACY Stripe tierCatalog only so the
+ *   build-time price-drift check keeps old copy honest while it still exists.
  * - Prices are retail GBP. Stripe amounts in app/api/checkout/route.ts must
  *   match `price` here (checked by scripts/check-panels.mjs at build time).
  * - The £30 Randox phlebotomy fee is paid by the patient on the day and is
@@ -42,9 +48,9 @@ export type Panel = {
   pricePence: number;
   /** Route on veridianclinic.com; null if sold via checkout deep-link only */
   landingPage: string | null;
-  /** Stripe tier id in app/api/checkout/route.ts, if purchasable there */
+  /** LEGACY Stripe tier id (price-drift check only — do NOT build new Stripe flows) */
   checkoutTier: string | null;
-  /** ThanksDoc service id, if bookable there */
+  /** ThanksDoc service id — the CANONICAL payment route. null = service not yet created in ThanksDoc */
   thanksDocServiceId: number | null;
   targetKeyword: string;
   adGroup: string;
