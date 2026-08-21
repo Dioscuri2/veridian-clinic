@@ -31,8 +31,8 @@ const schema = {
  url: "https://veridianclinic.com",
  medicalSpecialty: ["Metabolic Health","Longevity Medicine","Preventive Medicine"],
  availableService: [
-  { "@type": "MedicalProcedure", name: "Initial Clinical Discovery Consultation", offers: { "@type": "Offer", price: "97", priceCurrency: "GBP" } },
- { "@type": "MedicalProcedure", name: "Energy Screen", offers: { "@type": "Offer", price: "195", priceCurrency: "GBP" } },
+  { "@type": "MedicalProcedure", name: "Discovery Core Consultation", offers: { "@type": "Offer", price: "97", priceCurrency: "GBP" } },
+ { "@type": "MedicalProcedure", name: "Energy & Fatigue", offers: { "@type": "Offer", price: "249", priceCurrency: "GBP" } },
  { "@type": "MedicalProcedure", name: "Core Metabolic Assessment", offers: { "@type": "Offer", price: "595", priceCurrency: "GBP" } },
  { "@type": "MedicalProcedure", name: "Advanced Longevity Assessment", offers: { "@type": "Offer", price: "795", priceCurrency: "GBP" } },
  { "@type": "MedicalProcedure", name: "12-Week Metabolic Reset", offers: { "@type": "Offer", price: "1895", priceCurrency: "GBP" } },

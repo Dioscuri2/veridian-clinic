@@ -85,10 +85,10 @@ export default function PeriGuideUpsells() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
               <div>
                 <Link href="/book?tier=perimenopause-panel" className="btn btn-go" style={{ display: "inline-block" }}>
-                  Book the Advanced Health Panel £295 →
+                  Book the Advanced Health Panel £375 →
                 </Link>
                 <p style={{ fontSize: ".72rem", color: "rgba(246,241,232,.35)", marginTop: 6, lineHeight: 1.5 }}>
-                  Panel: £295 · Blood draw: £30 at Randox (paid on the day)
+                  Panel: £375 · Blood draw: £30 at Randox (paid on the day)
                 </p>
               </div>
             </div>

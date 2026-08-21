@@ -18,9 +18,9 @@ const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
   "womens-hormones":    { code: "HSC7F + RP7 + Lp(a) + Fasting Insulin + Vit D", notes: "Use HSC7F as base panel; add-ons ordered separately. Include TPO antibodies." },
   "mens-testosterone":  { code: "HSC7M + RP7 + Free Testosterone + Lp(a) + Fasting Insulin", notes: "Free T calculated from Total T + SHBG. Include DHEA-S + Cortisol." },
   "cardiovascular-risk":{ code: "RP10 + Lp(a) + ApoB + Homocysteine + hsCRP + Small Dense LDL + Fasting Insulin", notes: "RP10 as base; cardiovascular add-ons listed. Include HbA1c." },
-  "fatigue-energy":     { code: "HSC10 + Fasting Insulin + Uric Acid + Vit D", notes: "HSC10 base includes FBC, thyroid (FT3/FT4/TSH/TPO), iron, B12, folate, CRP, kidney." },
+  "fatigue-energy":     { code: "HSC10 + Uric Acid", notes: "HSC10 already includes insulin, vitamin D, FBC, full thyroid (TSH/FT3/FT4 with TPO and TGA antibodies), ferritin/iron/TIBC/transferrin saturation, B12, folate, HbA1c, glucose, C-peptide, CRP, magnesium, calcium, phosphate, albumin, ALP and kidney function including cystatin C and eGFR. Do NOT order Insulin (INS) or Vitamin D (25OH_VITD) on top — that wastes £59.60. Trade total £94.90." },
   "metabolic-weight":   { code: "RP3 + RP4 + Fasting Insulin + Uric Acid + Lp(a)", notes: "Two Randox panels combined. Include Adiponectin as an add-on. Leptin and Resistin are NOT offered by Randox in any form." },
-  "optimiser-baseline": { code: "HSC8M or HSC8F + HSC12 + IGF-1 (Medichecks kit)", notes: "HSC8 (Advanced GP2, £106.30) covers ApoB/Lp(a)/sdLDL/Adiponectin/Insulin/Cystatin C. Leptin and Resistin are NOT offered by Randox. HSC12 adds Cortisol/DHEA-S. IGF-1 via Medichecks practitioner kit." },
+  "optimiser-baseline": { code: "HSC8M or HSC8F + HSC12 + IGF1", notes: "HSC8 (Advanced GP2, £106.30) covers ApoB/Lp(a)/sdLDL/Adiponectin/Insulin/Cystatin C. Leptin and Resistin are NOT offered by Randox. HSC12 adds Cortisol/DHEA-S. IGF-1 is ordered from Randox as IGF1 (£48.90) — no second supplier needed." },
   "metabolic-screen":   { code: "HSC7 (Energy Screen)", notes: "Standard Veridian Energy Screen, single panel code." },
   baseline:             { code: "Metabolic Baseline, custom metabolic panel", notes: "Full ThanksDoc clinical programme. Also includes 14-day Lingo CGM, order separately." },
   "longevity-panel":    { code: "Longevity Panel, 150+ markers", notes: "Full ThanksDoc clinical programme. Confirm panel code with Randox account manager." },
@@ -30,8 +30,8 @@ const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
 };
 
 const TIER_LABELS: Record<string, string> = {
-  discovery: "GP Discovery Call (£195)",
-  "discovery-quiz": "GP Discovery Call, guide rate (£97)",
+  discovery: "Discovery Core (£97)",
+  "discovery-quiz": "Discovery Core, guide rate (£77)",
   "metabolic-screen": "Energy Screen (£195)",
   baseline: "Metabolic Baseline (£595)",
   "longevity-panel": "Longevity Panel (£795)",

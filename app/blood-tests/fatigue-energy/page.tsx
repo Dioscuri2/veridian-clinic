@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Private Fatigue Blood Test UK Thyroid, Insulin & Iron Panel | Veridian Clinic" },
   description:
-    "A private fatigue blood test in the UK that goes beyond standard GP screening. Thyroid (including TPO antibodies), fasting insulin, ferritin, uric acid, B12, vitamin D and hs-CRP GP-reviewed written interpretation. £249.",
+    "A private fatigue blood test in the UK that goes beyond standard GP screening. Thyroid (including TPO antibodies), fasting insulin, ferritin with full iron studies, uric acid, B12, folate, vitamin D and CRP GP-reviewed written interpretation. £249.",
   alternates: {
     canonical: "https://veridianclinic.com/blood-tests/fatigue-energy",
   },
@@ -43,7 +43,7 @@ const schema = {
   "@type": "Article",
   headline: "Private Fatigue Blood Test UK Thyroid, Insulin & Iron Panel",
   description:
-    "A private fatigue blood test covering thyroid including TPO antibodies, fasting insulin, ferritin, uric acid, B12, vitamin D and hs-CRP GP-reviewed with written clinical interpretation and next-step recommendations.",
+    "A private fatigue blood test covering thyroid including TPO antibodies, fasting insulin, ferritin with full iron studies, uric acid, B12, folate, vitamin D and CRP GP-reviewed with written clinical interpretation and next-step recommendations.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: {
     "@type": "Organization",
@@ -70,11 +70,14 @@ export default function FatigueEnergyPage() {
         intro="The most frustrating clinical experience is persistent fatigue paired with a normal blood test. It is also, in our experience, one of the most common. Standard GP panels test for anaemia and gross thyroid failure. They do not test for the markers that explain the majority of cases: subclinical thyroid dysfunction, functional iron deficiency, early insulin resistance, and the mitochondrial contributors that most primary care panels omit entirely."
         ctas={[
           { href: "/book?tier=fatigue-energy", label: "Book Fatigue & Energy Panel £249 →" },
-          { href: "/book?tier=metabolic-screen", label: "Book Energy Screen £195 (entry level)", variant: "secondary" },
         ]}
       >
         <p style={paragraph}>
           Most people who arrive at this page have already had blood tests. The GP ordered a full blood count, thyroid function and perhaps a vitamin B12. Everything came back normal. They were told there was nothing wrong or that it was stress, or low mood, or to try sleeping better. The fatigue remained. This page explains why those tests frequently miss the actual drivers, and what a more complete panel looks at instead.
+        </p>
+
+        <p style={paragraph}>
+          There is one fatigue panel at Veridian, not a ladder of them. We previously offered a smaller entry-level screen alongside this one. It has been withdrawn, because the laboratory cost difference between the two was under £7 and the cheaper panel left out markers that change what we would advise fasting insulin, C-peptide, vitamin D, both thyroid antibody types, full iron studies and cystatin C among them. Selling a thinner investigation for a fatigue that has already been investigated once and missed is not a saving. Everything below is in the single £249 panel.
         </p>
 
         <div style={callout}>
@@ -120,18 +123,34 @@ export default function FatigueEnergyPage() {
           Uric acid also rises with dietary fructose intake, with insulin resistance, with dehydration, and with impaired kidney clearance. Its inclusion in this panel allows a specific metabolic contributor to fatigue to be identified and addressed one that is entirely absent from standard NHS investigations.
         </p>
 
-        <h2 className="cg" style={sectionHeading}>What the panel measures in full</h2>
+        <h2 className="cg" style={sectionHeading}>What is tested, and why each marker is on the list</h2>
+        <p style={paragraph}>
+          This is the complete list. Nothing on this page is aspirational: every marker below is on the laboratory requisition we send, and nothing we do not measure is described as if we did.
+        </p>
         <ul className="chk">
-          <li><strong>Full Blood Count:</strong> haemoglobin and red cell indices for anaemia; white cell count for immune burden; MCV for B12/folate deficiency pattern.</li>
-          <li><strong>Thyroid: TSH, FT3, FT4 + TPO antibodies:</strong> full thyroid assessment including the autoimmune marker that standard screening omits.</li>
-          <li><strong>Ferritin + full iron studies:</strong> serum iron, transferrin, transferrin saturation, and ferritin the complete iron picture, not just a single marker.</li>
-          <li><strong>Vitamin B12 + Folate:</strong> both contribute to red cell production, neurological function and energy metabolism. Deficiency of either even in the low-normal range can produce fatigue, cognitive changes and peripheral symptoms.</li>
-          <li><strong>Vitamin D:</strong> deficiency is extremely common in the UK and directly impairs mitochondrial function, immune regulation and mood all of which affect subjective energy levels.</li>
-          <li><strong>Fasting insulin:</strong> the primary screener for insulin resistance in the pre-diabetic phase before HbA1c or glucose become abnormal.</li>
-          <li><strong>Uric acid:</strong> mitochondrial and metabolic fatigue marker; elevated in fructose-driven insulin resistance and associated with impaired cellular energy production.</li>
-          <li><strong>hs-CRP:</strong> systemic inflammation is one of the most potent drivers of fatigue through cytokine-mediated suppression of energy, motivation and cognitive function. Elevated hs-CRP with otherwise normal markers points to an inflammatory aetiology.</li>
-          <li><strong>Kidney function (eGFR, creatinine):</strong> mild chronic kidney disease produces fatigue through anaemia, toxin accumulation and metabolic acidosis before it reaches the threshold for clinical detection.</li>
+          <li><strong>Full Blood Count:</strong> haemoglobin, haematocrit, red cell count and indices (MCV, MCH, MCHC), platelets, white cell count with the full differential neutrophils, lymphocytes, monocytes, eosinophils, basophils. This is the anaemia and immune-burden layer, and MCV is the first clue to a B12 or folate pattern.</li>
+          <li><strong>Complete thyroid function TSH, free T4, free T3, and both antibody types:</strong> TSH alone is a pituitary signal. FT4 and FT3 show what is actually circulating, and FT3 is the metabolically active hormone. Both autoimmune markers are measured thyroid peroxidase antibodies and thyroglobulin antibodies because either can be raised in autoimmune thyroid disease, and TSH may sit inside the reference range for years while that process runs.</li>
+          <li><strong>Ferritin with full iron studies:</strong> ferritin, serum iron, transferrin, total iron-binding capacity and transferrin saturation. Ferritin alone is misleading it rises with inflammation and can look reassuring in someone who is genuinely iron-depleted. Transferrin saturation and TIBC are what separate the two.</li>
+          <li><strong>Vitamin B12 and folate:</strong> both are required for red cell production and neurological function, and low-normal levels of either can produce fatigue and cognitive change before any anaemia appears.</li>
+          <li><strong>Vitamin D (25-OH):</strong> deficiency is common in the UK, is a genuinely correctable contributor to low energy and low mood, and is not routinely measured in a standard fatigue workup.</li>
+          <li><strong>Fasting insulin and C-peptide:</strong> the two markers that show how hard the pancreas is working to hold glucose normal. C-peptide is co-secreted with insulin and gives a more stable picture of endogenous output. This is the layer that reveals the compensatory phase of insulin resistance the phase where HbA1c and glucose are still normal.</li>
+          <li><strong>HbA1c and fasting glucose:</strong> the conventional glycaemic picture, read alongside insulin rather than instead of it.</li>
+          <li><strong>Uric acid:</strong> elevated uric acid is associated with impaired mitochondrial function and reduced nitric oxide availability, and rises with fructose intake, insulin resistance and reduced renal clearance. It is a specific, modifiable metabolic contributor to fatigue.</li>
+          <li><strong>CRP:</strong> systemic inflammation suppresses energy, motivation and concentration through cytokine signalling. A raised CRP with otherwise unremarkable markers redirects the whole investigation.</li>
+          <li><strong>Kidney function including cystatin C:</strong> creatinine, urea, eGFR, cystatin C, sodium and chloride. Cystatin C is included because it is less affected by muscle mass than creatinine, so it detects reduced filtration in people whose creatinine-based eGFR reads normally.</li>
+          <li><strong>Magnesium, adjusted calcium and phosphate:</strong> the mineral markers relevant to muscle function, cramp, palpitations and sleep quality, and the ones most often assumed rather than measured.</li>
+          <li><strong>Albumin and alkaline phosphatase:</strong> protein status and the liver/bone enzyme layer. Low albumin also changes how calcium and thyroid results should be read, which is why adjusted calcium is reported.</li>
         </ul>
+        <p style={paragraph}>
+          What this panel does not measure is as important as what it does. It does not include cortisol, and it does not include testosterone or the sex hormones. If your symptom picture points that way morning-heavy exhaustion with weight redistribution, or fatigue alongside low libido, low mood and loss of muscle then the panel you want is{" "}
+          <Link href="/blood-tests/optimiser-baseline" style={{ color: "var(--go)", textDecoration: "underline" }}>the Optimiser&apos;s Baseline</Link>, which measures cortisol and total and free testosterone directly. We would rather send you to the right panel than sell you this one and imply it answers a question it cannot.
+        </p>
+
+        <div style={callout}>
+          <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
+            <strong style={{ color: "var(--fo)" }}>When fatigue needs urgent assessment, not a private panel:</strong> unintentional weight loss, drenching night sweats, coughing blood, a new lump, blood in the stool or urine, fatigue with breathlessness at rest or chest pain, or fatigue that has come on abruptly and is worsening by the day these need same-day NHS assessment through your GP or 111, not a blood panel booked for next week. Please seek that first. This panel is for persistent, stable fatigue that has already been assessed and not explained.
+          </p>
+        </div>
 
         <h2 className="cg" style={sectionHeading}>Who should consider this panel?</h2>
         <ul className="chk">
@@ -150,22 +169,38 @@ export default function FatigueEnergyPage() {
         </div>
 
         <ul className="chk">
-          <li>Thyroid panel including FT3, FT4, TSH and TPO antibodies.</li>
+          <li>Thyroid panel including FT3, FT4, TSH and both thyroid antibody types.</li>
           <li>Ferritin + full iron studies, B12, folate, vitamin D.</li>
-          <li>Fasting insulin + uric acid the markers standard panels miss.</li>
-          <li>hs-CRP + Full Blood Count + kidney function.</li>
+          <li>Fasting insulin, C-peptide and uric acid the markers standard panels miss.</li>
+          <li>CRP + Full Blood Count + kidney function including cystatin C.</li>
+          <li>Magnesium, adjusted calcium, phosphate, albumin and alkaline phosphatase.</li>
           <li>GP-reviewed written report with personalised interpretation and next-step action plan.</li>
           <li>Nationally accredited UK laboratory. Results typically within 48-72 hours.</li>
           <li>Home collection kit, walk-in centre, or nurse home visit.</li>
         </ul>
+
+        <h2 className="cg" style={sectionHeading}>Optional: talk the results through with a GP</h2>
+        <p style={paragraph}>
+          The £249 panel already includes a GP-written report you do not need to buy anything else to understand your results. The report names which markers are contributing, in what order, and what to do about each.
+        </p>
+        <p style={paragraph}>
+          Some people still want the conversation. If you would rather sit with a GP and work through the report out loud ask what the borderline numbers mean for you specifically, decide what to change first, or plan when to retest{" "}
+          <Link href="/discovery-call" style={{ color: "var(--go)", textDecoration: "underline" }}>Discovery Core</Link>{" "}
+          is a 30-minute live consultation with Dr Taiwo for £97. It is entirely optional, it can be booked before or after your results arrive, and nothing in your report depends on it.
+        </p>
+        <div style={{ display: "grid", gap: 10, marginBottom: 8 }}>
+          <Link href="/discovery-call" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>
+            <span style={{ fontSize: ".88rem", color: "var(--sl)", fontWeight: 500 }}>Discovery Core 30-minute GP consultation (optional)</span>
+            <span style={{ fontSize: ".78rem", color: "var(--sl3)" }}>£97 →</span>
+          </Link>
+        </div>
 
         {/* Related tests */}
         <div style={{ borderTop: "1px solid rgba(0,0,0,.08)", paddingTop: 24, marginTop: 8 }}>
           <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
           <div style={{ display: "grid", gap: 10 }}>
             {[
-              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Blood Test", note: "From £195" },
-              { href: "/blood-tests/metabolic-screen", label: "Energy Screen entry level fatigue panel", note: "£195" },
+              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Blood Test", note: "From £249" },
               { href: "/blood-tests/womens-hormones", label: "Women's Hormone & Perimenopause Panel", note: "£375" },
               { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£325" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },

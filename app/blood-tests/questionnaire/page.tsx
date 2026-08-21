@@ -9,7 +9,6 @@ const TIER_LABELS: Record<string, string> = {
   "womens-hormones": "Is It My Hormones? Panel",
   "mens-testosterone": "Running on Empty Panel",
   "fatigue-energy": "Fatigue & Energy Deep Screen",
-  "metabolic-screen": "Energy Screen",
   "cardiovascular-risk": "Cardiovascular Risk Panel",
   "metabolic-weight": "Metabolic Weight Resistance Panel",
   "optimiser-baseline": "Optimiser's Baseline Panel",

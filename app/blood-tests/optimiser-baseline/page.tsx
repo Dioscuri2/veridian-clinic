@@ -58,7 +58,7 @@ export default function OptimiserBaselinePage() {
       intro="Most people who optimise their health are doing it without a documented clinical baseline. They're training, tracking sleep, wearing a CGM, taking supplements. But they don't know their IGF-1. They don't know their ApoB. They don't know whether their insulin is quietly undermining every protocol they run. This panel changes that."
       ctas={[
         { label: "Book The Optimiser's Baseline £449", href: "/book?tier=optimiser-baseline", variant: "primary" },
-        { label: "Book a GP Discovery Call first", href: "/book?tier=discovery" },
+        { label: "Book a Discovery Core consultation first", href: "/book?tier=discovery" },
       ]}
     >
       <h2 className="cg" style={sectionHeading}>Why a baseline matters more than a single test</h2>
@@ -159,7 +159,7 @@ export default function OptimiserBaselinePage() {
             { href: "/blood-tests/cardiovascular-risk", label: "Advanced Cardiovascular Risk Panel", note: "£349" },
             { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£325" },
             { href: "/blood-tests/biological-age", label: "Biological Age Blood Test", note: "From £795" },
-            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195" },
+            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249" },
             { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments" },
           ].map((t) => (
             <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>

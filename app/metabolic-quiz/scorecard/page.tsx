@@ -286,7 +286,7 @@ function ScorecardContent() {
                   <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 6 }}>
                     <span className="cg" style={{ fontSize: "1.6rem", fontWeight: 600, color: "var(--go)" }}>£77</span>
                     <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£97</span>
-                    <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>GP Discovery Call · Save £20</span>
+                    <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Discovery Core · Save £20</span>
                   </div>
                   <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.72)", lineHeight: 1.75 }}>
                     Enter your email below. Your scorecard is sent instantly then you&apos;ll be taken to book your call, using code <strong style={{ color: "var(--go)" }}>QUIZRATE</strong> at checkout for the £77 rate.
@@ -302,7 +302,7 @@ function ScorecardContent() {
               </h2>
               <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 28 }}>
                 {redirect === "discovery-quiz"
-                  ? "Your free scorecard is sent to your inbox immediately. You'll then be taken to book your 30-minute GP Discovery Call, using code QUIZRATE at checkout for the quiz-taker rate of £77."
+                  ? "Your free scorecard is sent to your inbox immediately. You'll then be taken to book your 30-minute GP Discovery Core consultation, using code QUIZRATE at checkout for the quiz-taker rate of £77."
                   : "Get your full factor breakdown, the clinical explanation behind each score, and a personalised next-step recommendation delivered to your inbox."}
               </p>
 

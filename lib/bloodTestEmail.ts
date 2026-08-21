@@ -56,8 +56,8 @@ const PANELS: Record<string, PanelInfo> = {
       "Fasting Insulin, Uric Acid, hs-CRP, Kidney function",
     ],
     fastingRequired: true,
-    randoxCode: "HSC10 + Fasting Insulin + Uric Acid + Vit D",
-    randoxNotes: "HSC10 base includes FBC, thyroid (FT3/FT4/TSH/TPO), iron, B12, folate, CRP, kidney.",
+    randoxCode: "HSC10 + Uric Acid",
+    randoxNotes: "HSC10 already includes insulin, vitamin D, FBC, full thyroid (TSH/FT3/FT4 with TPO and TGA antibodies), ferritin/iron/TIBC/transferrin saturation, B12, folate, HbA1c, glucose, C-peptide, CRP, magnesium, calcium, phosphate, albumin, ALP and kidney function including cystatin C and eGFR. Do NOT order Insulin (INS) or Vitamin D (25OH_VITD) on top — that wastes £59.60. Trade total £94.90.",
   },
   "metabolic-weight": {
     name: "Why Won't The Weight Budge?, Metabolic Weight Resistance Panel",
@@ -81,8 +81,8 @@ const PANELS: Record<string, PanelInfo> = {
       "Cystatin C, Magnesium, Uric Acid, Full Blood Count, Liver (ALT/AST/GGT), Kidney + eGFR, hs-CRP",
     ],
     fastingRequired: true,
-    randoxCode: "HSC8M or HSC8F + HSC12 + IGF-1 (Medichecks kit)",
-    randoxNotes: "HSC8 (Advanced GP2, £106.30) covers ApoB/Lp(a)/sdLDL/Adiponectin/Insulin/Cystatin C. Leptin and Resistin are NOT offered by Randox. HSC12 adds Cortisol/DHEA-S/performance. IGF-1 via Medichecks practitioner kit ordered separately.",
+    randoxCode: "HSC8M or HSC8F + HSC12 + IGF1",
+    randoxNotes: "HSC8 (Advanced GP2, £106.30) covers ApoB/Lp(a)/sdLDL/Adiponectin/Insulin/Cystatin C. Leptin and Resistin are NOT offered by Randox. HSC12 adds Cortisol/DHEA-S/performance. IGF-1 is ordered from Randox as IGF1 (£48.90) — no second supplier needed.",
   },
   "metabolic-screen": {
     name: "Veridian Energy Screen",

@@ -66,10 +66,10 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
             <tr><td style="padding:20px 22px;">
               <p style="margin:0 0 8px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2c2a26;">Ready for the clinical layer?</p>
               <p style="margin:0 0 14px;font-size:.88rem;color:#5a534a;line-height:1.85;">
-                The guide gives you the framework. The Discovery Call is where Dr Taiwo reviews your specific picture — your symptoms, history, and numbers — and identifies your most important clinical levers.
+                The guide gives you the framework. Discovery Core is where Dr Taiwo reviews your specific picture — your symptoms, history, and numbers — and identifies your most important clinical levers.
               </p>
               <a href="https://veridianclinic.com/book?tier=discovery" style="font-size:.85rem;font-weight:600;color:#2c2a26;text-decoration:underline;">
-                Book My Discovery Call →
+                Book My Discovery Core →
               </a>
             </td></tr>
           </table>

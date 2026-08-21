@@ -232,7 +232,7 @@ export default function PrivateGpCambridgePage() {
               Book a discovery call with Dr Tosin, or check your metabolic age free in 60 seconds to find the right starting point.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/discovery-call" className="btn btn-fo">Book a Discovery Call →</Link>
+              <Link href="/discovery-call" className="btn btn-fo">Book a Discovery Core →</Link>
               <Link href="/metabolic-quiz" className="btn btn-ol">Check My Metabolic Age Free</Link>
             </div>
           </div>

@@ -30,7 +30,7 @@ export async function sendDiscoveryIntakeEmail({ email, name }: DiscoveryEmailPa
         <tr><td style="padding:40px 36px;">
           <p style="margin:0 0 8px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c8a84b;">Booking confirmed</p>
           <h1 style="margin:0 0 20px;font-size:1.9rem;font-weight:500;color:#2c2a26;line-height:1.2;">
-            Your discovery call is booked, ${firstName}.
+            Your Discovery Core is booked, ${firstName}.
           </h1>
           <p style="margin:0 0 20px;font-size:.95rem;color:#5a534a;line-height:1.9;">
             Dr Taiwo will be in touch shortly to confirm your appointment time. To make the most of your 30 minutes, please reply to this email with brief answers to the questions below — it helps Dr Taiwo prepare and means the call can go straight into what matters for you.
@@ -142,7 +142,7 @@ export async function sendDiscoveryIntakeEmail({ email, name }: DiscoveryEmailPa
         sender: { name: "Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
         replyTo: { email: "support@veridianclinic.com", name: "Dr Taiwo — Veridian Clinic" },
-        subject: "Your discovery call is confirmed — please reply with your intake answers",
+        subject: "Your Discovery Core consultation is confirmed — please reply with your intake answers",
         htmlContent: html,
         tags: ["discovery-intake"],
       }),

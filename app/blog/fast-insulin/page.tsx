@@ -77,7 +77,7 @@ export default function FastInsulinPage() {
         heroImage="/blog/fasting-insulin.jpg"
         heroAlt="Clinical blood test vials for fasting insulin and metabolic assessment"
         ctas={[
-          { href: "/book?tier=metabolic-screen", label: "Book the Energy Screen fasting insulin included →" },
+          { href: "/book?tier=fatigue-energy", label: "Book the Energy & Fatigue Panel fasting insulin included →" },
           { href: "/metabolic-turnaround", label: "Explore the 90-Day Metabolic Turnaround programme →", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
@@ -86,7 +86,7 @@ export default function FastInsulinPage() {
           Fasting insulin is one of the most underused markers in preventive metabolic medicine. Many patients are told they are fine because their fasting glucose or HbA1c sits inside the laboratory reference range. But glucose is often the last thing to move. The body works hard to keep blood sugar stable, and it does that by producing more insulin. By the time glucose becomes obviously abnormal, the compensatory process may have been running for years, quietly driving visceral fat accumulation, cardiovascular risk, fatigue, and metabolic decline.
         </p>
         <p style={paragraph}>
-          Fasting insulin is not offered on the NHS as part of routine metabolic screening. It is available through private blood testing, and it is a standard component of Veridian's Energy Screen and Core Metabolic Assessment. The reason it matters so much is simple: if glucose looks normal but insulin is already elevated, the system is under strain, and the best time to act is now, while the pattern is still highly reversible.
+          Fasting insulin is not offered on the NHS as part of routine metabolic screening. It is available through private blood testing, and it is a standard component of Veridian's Energy & Fatigue panel and Core Metabolic Assessment. The reason it matters so much is simple: if glucose looks normal but insulin is already elevated, the system is under strain, and the best time to act is now, while the pattern is still highly reversible.
         </p>
 
         <div style={callout}>

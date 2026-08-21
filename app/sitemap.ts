@@ -31,7 +31,6 @@ const staticRoutes = [
   "/blood-tests/fatigue-energy",
   "/blood-tests/lipoprotein-a",
   "/blood-tests/mens-testosterone",
-  "/blood-tests/metabolic-screen",
   "/blood-tests/metabolic-weight",
   "/blood-tests/optimiser-baseline",
   "/blood-tests/womens-hormones",

@@ -583,7 +583,7 @@ function WlQuiz() {
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 24 }}>
             Based on your BMI, a more targeted approach may serve you better. A metabolic blood panel can identify the specific drivers of weight resistance, insulin, thyroid, hormones, and inflammation, and give Dr Tosin a far more precise starting point.
           </p>
-          <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Call, £97</Link>
+          <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Core, £97</Link>
           <br />
           <Link href="/assessments" style={{ fontSize: ".82rem", color: "var(--sl2)", textDecoration: "underline" }}>View metabolic blood panels instead</Link>
         </div>

@@ -22,7 +22,7 @@ const bandClass = { red:"spill-r", amr:"spill-a", grn:"spill-g" };
 
 const offers = [
   {
-    name: "Discovery Call",
+    name: "Discovery Core",
     price: "£97",
     tier: "discovery",
     tag: "First conversation",
@@ -764,7 +764,7 @@ export default function HomePage() {
             </div>
             <div className="gproc">
               {[
-                { n:"01", t:"Discovery Call", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a written next-step recommendation useful even if you do not progress immediately." },
+                { n:"01", t:"Discovery Core", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a written next-step recommendation useful even if you do not progress immediately." },
                 { n:"02", t:"Metabolic Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms with clinical interpretation and a clear written action plan." },
                 { n:"03", t:"Personalised Plan", d:"A written, prioritised plan built around your data. CGM, nutrition, movement and behaviour protocols. Where clinically indicated, prescribing pathways including GLP-1 options are available." },
                 { n:"04", t:"Structured Follow-Up", d:"Fortnightly coaching, GP-led clinical review at midpoint, and an end-of-programme review with a 12-month forward plan. Progress is measured, not assumed." },

@@ -23,21 +23,21 @@ const tierCatalog: Record<
   },
 "perimenopause-panel": {
     name: "Veridian Women's Advanced Health Panel",
-    amount: 29500,
+    amount: 37500,
     description:
       "150+ marker comprehensive panel (Advanced GP3 Female + DHEA-S + Free Testosterone). Hormones: Oestradiol, Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Prolactin, SHBG. Thyroid: TSH, fT3, fT4, Anti-TG, Anti-TPO. Metabolic: Glucose, HbA1c, Insulin, C-Peptide, Adiponectin. Cardiovascular: Full lipid panel + Apolipoproteins + Lipoprotein(a) + Cardiovascular Risk Score. Blood: Full Blood Count. Nutrition: Vitamin D, B12, Folate, Iron status, Ferritin, Total Antioxidant Status. Organ health: Liver, Kidney (inc. Cystatin C), Pancreatic. Bone: Calcium, PTH, Vitamin D. Inflammation: hsCRP, Complement C3/C4, Immunoglobulins. Digestive: H. Pylori, Anti-TTG. Tumour marker: CA-125. Allergy: IgE. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
     successPath: "/book/thank-you",
     cancelPath: "/perimenopause-guide",
   },
   discovery: {
-    name: "GP-Led Discovery Call",
+    name: "GP-Led Discovery Core",
     amount: 9700,
     description:
       "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation.",
     successPath: "/book/thank-you",
   },
   "discovery-quiz": {
-    name: "GP-Led Discovery Call, Quiz Rate",
+    name: "GP-Led Discovery Core, Quiz Rate",
     amount: 7700,
     description:
       "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £77 (normally £97).",

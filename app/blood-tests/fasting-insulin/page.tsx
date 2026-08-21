@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Fasting Insulin Blood Test UK Private Testing for Insulin Resistance | Veridian Clinic" },
   description:
-    "A private fasting insulin blood test in the UK reveals early insulin resistance years before HbA1c rises. Not offered on NHS routine screening. Included in the Energy Screen (£195) and Metabolic Baseline (£595) results interpreted by a GP with a personalised action plan.",
+    "A private fasting insulin blood test in the UK reveals early insulin resistance years before HbA1c rises. Not offered on NHS routine screening. Included in the Energy & Fatigue panel (£249) and Metabolic Baseline (£595) results interpreted by a GP with a personalised action plan.",
   alternates: {
     canonical: "https://veridianclinic.com/blood-tests/fasting-insulin",
   },
@@ -67,7 +67,7 @@ export default function FastingInsulinTestPage() {
         title="Fasting insulin blood test UK the early metabolic marker the NHS doesn&apos;t routinely test"
         intro="Fasting insulin is one of the most clinically useful markers in preventive metabolic medicine and one of the most under-requested. A normal fasting glucose does not rule out early insulin resistance. Fasting insulin measures directly whether the system is already under compensatory strain, often years before standard NHS tests catch the problem."
         ctas={[
-          { href: "/book?tier=metabolic-screen", label: "Book Energy Screen fasting insulin included £195 →" },
+          { href: "/book?tier=fatigue-energy", label: "Book Energy & Fatigue Panel fasting insulin included £249 →" },
           { href: "/book?tier=baseline", label: "Book Metabolic Baseline £595", variant: "secondary" },
         ]}
       >
@@ -143,17 +143,17 @@ export default function FastingInsulinTestPage() {
 
         <h2 className="cg" style={sectionHeading}>How fasting insulin fits into Veridian&apos;s assessment panels</h2>
         <p style={paragraph}>
-          Fasting insulin is included in Veridian&apos;s Energy Screen (£195) a panel designed for people experiencing unexplained fatigue or energy dysfunction and in the Metabolic Baseline (£595), the most comprehensive assessment for overall metabolic health.
+          Fasting insulin is included in Veridian&apos;s Energy &amp; Fatigue panel (£249) a panel designed for people experiencing unexplained fatigue or energy dysfunction and in the Metabolic Baseline (£595), the most comprehensive assessment for overall metabolic health.
         </p>
         <p style={paragraph}>
-          In both panels, fasting insulin is interpreted alongside fasting glucose, HbA1c, lipid profile, ApoB, liver function, thyroid function, and in the Energy Screen ferritin and B12. This allows HOMA-IR to be calculated, ApoB discordance to be identified, and the full metabolic picture to be assembled before recommendations are made.
+          In the Metabolic Baseline, fasting insulin is interpreted alongside fasting glucose, HbA1c, lipid profile, ApoB, liver function and thyroid function, which allows HOMA-IR to be calculated and ApoB discordance to be identified. In the Energy &amp; Fatigue panel it is interpreted alongside thyroid function, ferritin, B12, vitamin D, uric acid and hs-CRP, so the metabolic contribution to fatigue is weighed against the other drivers before recommendations are made.
         </p>
         <p style={paragraph}>
           Every result is accompanied by a GP-written report covering what each marker means for you, whether HOMA-IR is in the optimal or intervention range, and a prioritised action plan that identifies which interventions are most likely to move fasting insulin in the right direction based on your specific results.
         </p>
 
         <ul className="chk">
-          <li>Fasting insulin included in Energy Screen (£195) and Metabolic Baseline (£595).</li>
+          <li>Fasting insulin included in the Energy &amp; Fatigue panel (£249) and Metabolic Baseline (£595).</li>
           <li>HOMA-IR calculated from fasting insulin and fasting glucose.</li>
           <li>Nationally accredited UK laboratory processing.</li>
           <li>GP-written results report with personalised action plan.</li>
@@ -180,7 +180,7 @@ export default function FastingInsulinTestPage() {
           <div style={{ display: "grid", gap: 10 }}>
             {[
               { href: "/blood-tests/apob", label: "ApoB Blood Test", note: "From £595 Metabolic Baseline" },
-              { href: "/blood-tests/metabolic-screen", label: "Fatigue & Energy Screen", note: "£195" },
+              { href: "/blood-tests/fatigue-energy", label: "Energy & Fatigue Panel", note: "£249" },
               { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Test", note: "From £795 Longevity Panel" },
               { href: "/blood-tests/biological-age", label: "Biological Age Test", note: "£795 Longevity Panel" },
               { href: "/blood-tests/metabolic-weight", label: "Metabolic Weight Resistance Panel", note: "£199" },

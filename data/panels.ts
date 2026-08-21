@@ -69,20 +69,6 @@ const GBP = (pounds: number) => Math.round(pounds * 100);
 export const PANELS: Panel[] = [
   // ── Tier 1 panels ────────────────────────────────────────────────
   {
-    slug: "energy-screen",
-    productName: "Energy Screen",
-    positioningLine: "The Fatigue & Thyroid Audit",
-    pricePence: GBP(195),
-    landingPage: "/blood-tests/metabolic-screen",
-    checkoutTier: "metabolic-screen",
-    thanksDocServiceId: null,
-    targetKeyword: "fatigue blood test uk",
-    adGroup: "Metabolic Blood Test",
-    status: "live",
-    kind: "panel",
-    supplier: {}, // NOT yet audited against Nexus — do not render markers from here
-  },
-  {
     slug: "metabolic-baseline",
     productName: "Metabolic Baseline",
     positioningLine: "The Cardiovascular & Metabolic Deep Dive",
@@ -145,7 +131,18 @@ export const PANELS: Panel[] = [
     adGroup: "Tired Bloods Normal",
     status: "live",
     kind: "panel",
-    supplier: {}, // NOT yet audited
+    supplier: {
+      unisex: {
+        verified: true,
+        verifiedOn: "2026-08-21",
+        lines: [
+          { code: "HSC10", name: "Tired All The Time", tradePence: GBP(86.2) },
+          { code: "URIC_ACID", name: "Uric Acid", tradePence: GBP(8.7) },
+        ],
+        notes:
+          "Total trade £94.90 — 61.9% margin at £249. Do NOT add INS (Insulin) or 25OH_VITD (Vitamin D): HSC10 already contains both, and ordering them on top wastes £59.60 per patient.",
+      },
+    },
   },
   {
     slug: "metabolic-weight",
@@ -272,7 +269,7 @@ export const PANELS: Panel[] = [
     slug: "perimenopause-panel",
     productName: "Perimenopause Panel",
     positioningLine: "The Perimenopause Blood Audit",
-    pricePence: GBP(295),
+    pricePence: GBP(375),
     landingPage: null, // no dedicated page yet; sold via checkout deep-link
     checkoutTier: "perimenopause-panel",
     thanksDocServiceId: null,
@@ -288,7 +285,7 @@ export const PANELS: Panel[] = [
           { code: "HSC9F", name: "Advanced GP3 Female", tradePence: GBP(185.9) },
         ],
         notes:
-          "Only ~37% margin at £295 vs Longevity's 69.5% — repricing decision pending with Dr Tosin. Checkout copy listing H. pylori and Anti-TTG is ACCURATE (both are in GP3F).",
+          "Repriced £295 → £375 on 2026-08-21 to match the Women's Health headline price. Ordered as HSC9F £185.90 + DHEA-S (DHEAS) £16.00 + Free Testosterone (FREE_TEST) £30.30 = £232.20 trade = 38.1% at £375 (was 21.3% at £295). NOTE: this does NOT match Women's Health's 49.8% — same price, higher trade cost, because Women's Health runs on the cheaper HSC7F_RP7 £100.50 bundle. DHEA-S and Free Testosterone are assumed add-ons: HSC9F's analyte list has NOT been read from Nexus, so if GP3F already contains them the real trade is £185.90 (50.4%). Verify before treating 38.1% as final. Checkout copy listing H. pylori and Anti-TTG is ACCURATE (both are in GP3F).",
       },
     },
   },
@@ -296,7 +293,7 @@ export const PANELS: Panel[] = [
   // ── Programmes & consultations ───────────────────────────────────
   {
     slug: "metabolic-discovery",
-    productName: "Metabolic Discovery",
+    productName: "Discovery Core",
     positioningLine: "30-minute GP consultation",
     pricePence: GBP(97),
     landingPage: "/discovery-call",

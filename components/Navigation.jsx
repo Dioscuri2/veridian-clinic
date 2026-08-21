@@ -23,7 +23,7 @@ export default function Navigation() {
     { label: "Metabolic Quiz", href: "/metabolic-quiz" },
     { label: "Assessments", href: "/assessments" },
     { label: "Weight Loss", href: "/weight-loss" },
-    { label: "Discovery Call", href: "/discovery-call" },
+    { label: "Discovery Core", href: "/discovery-call" },
     { label: "Insights", href: "/blog" },
   ];
 

@@ -299,7 +299,7 @@ export default function MicronutrientTestPage() {
               tests than you thought. Available across Cambridge, North West London and the rest of the UK by secure video.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/discovery-call" className="btn btn-go">Book a Discovery Call</Link>
+              <Link href="/discovery-call" className="btn btn-go">Book a Discovery Core</Link>
               <Link href="/blood-tests" className="btn btn-ol-lt">See all blood tests</Link>
             </div>
           </div>

@@ -7,7 +7,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 
 export const metadata: Metadata = {
-  title: "GP Discovery Call",
+  title: "GP Discovery Core Consultation",
   description: "A focused 30-minute GP-led consultation to review your key metabolic risk factors and recommend the right diagnostic next step.",
   alternates: { canonical: "https://veridianclinic.com/discovery-call" },
 };
@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     q: "Will I be pushed towards the most expensive option?",
-    a: "No. The recommendation is based on your clinical picture. For some people, the Metabolic Screen (£195) is the right first move. For others, the full Baseline is more appropriate. We will tell you which and why.",
+    a: "No. The recommendation is based on your clinical picture. For some people, the Energy & Fatigue panel (£249) is the right first move. For others, the full Baseline is more appropriate. We will tell you which and why.",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function DiscoveryCallPage() {
                   30 minutes. A real clinical opinion. A clear next step.
                 </h1>
                 <p className="a3" style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 24 }}>
-                  The discovery call is not a sales conversation. It is a focused GP-led review of your metabolic picture, your quiz result, and the markers most likely to explain what you're experiencing with a written pathway recommendation within 24 hours.
+                  Discovery Core is not a sales conversation. It is a focused GP-led review of your metabolic picture, your quiz result, and the markers most likely to explain what you're experiencing with a written pathway recommendation within 24 hours.
                 </p>
                 <div style={{ padding: "18px 20px", background: "var(--iv2)", borderLeft: "3px solid var(--go)", marginBottom: 28 }}>
                   <p style={{ fontSize: ".85rem", color: "var(--sl2)", lineHeight: 1.85 }}>
@@ -188,7 +188,7 @@ export default function DiscoveryCallPage() {
                 { title: "Written clinical summary", body: "A clear summary of the key risk areas identified during the call and what they mean for your health trajectory." },
                 { title: "Specific panel recommendation", body: "The exact blood panel we recommend whether that's the Metabolic Screen, the Baseline, or the Longevity Panel and why." },
                 { title: "Pathway options and pricing", body: "Transparent pricing for the recommended next step, with no pressure to proceed. You choose if and when." },
-                { title: "Priority booking access", body: "If you decide to proceed with a full assessment, you receive priority booking as a discovery call patient." },
+                { title: "Priority booking access", body: "If you decide to proceed with a full assessment, you receive priority booking as a Discovery Core patient." },
               ].map((item, i) => (
                 <div key={i} className="card" style={{ padding: "24px 20px" }}>
                   <div style={{ width: 32, height: 32, background: "var(--fo)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
@@ -226,17 +226,17 @@ export default function DiscoveryCallPage() {
         {/* What comes next pathway ladder */}
         <section className="sec bg-fo">
           <div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}>
-            <p className="lbl" style={{ color: "var(--go2)" }}>After your discovery call</p>
+            <p className="lbl" style={{ color: "var(--go2)" }}>After your Discovery Core</p>
             <div className="rule rule-c" style={{ background: "var(--go)" }} />
             <h2 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, marginBottom: 14 }}>
               Three pathways. One will fit.
             </h2>
             <p style={{ fontSize: ".95rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 620, margin: "0 auto 32px" }}>
-              Based on the call, we recommend the right entry point. Most patients start with the Metabolic Screen or Baseline. The Longevity Panel is for those who want the complete picture.
+              Based on the call, we recommend the right entry point. Most patients start with the Energy & Fatigue panel or Baseline. The Longevity Panel is for those who want the complete picture.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,220px),1fr))", gap: 12, marginBottom: 28 }}>
               {[
-                { name: "Metabolic Screen", price: "£195", desc: "Targeted TATT panel thyroid, iron, insulin, CRP, B12, Vitamin D. GP-reviewed report." },
+                { name: "Energy & Fatigue", price: "£249", desc: "Targeted TATT panel thyroid, iron, insulin, CRP, B12, Vitamin D. GP-reviewed report." },
                 { name: "Metabolic Baseline", price: "£595", desc: "60+ markers including ApoB, metabolic syndrome hormones. Full GP consultation + protocol.", highlight: true },
                 { name: "Longevity Panel", price: "£795", desc: "150+ markers. Hormones, Omega-3 index, gut, pancreatic. Full GP consultation + report." },
               ].map((p, i) => (

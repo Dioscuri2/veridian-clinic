@@ -239,14 +239,14 @@ function discoveryCallEmail(name: string, guide: "metabolic" | "peri"): { subjec
 
   const body = `
     ${lbl("Your next step")}
-    ${h2("What a 30-minute Discovery Call with Dr Tosin actually looks like.")}
+    ${h2("What a 30-minute Discovery Core consultation with Dr Tosin actually looks like.")}
     ${rule()}
     ${p(`${name ? name + ", I" : "I"} want to be straightforward with you about what this call is, and what it isn't.`)}
     ${p(`It's not a sales pitch. It's a clinical conversation.`)}
     ${p(`In 30 minutes, we cover your current symptoms, your relevant history, your goals, and what you've already tried. I give you a clear view of what I'd want to investigate, what the likely drivers are, and what a sensible clinical plan looks like for you.`)}
     ${p(`You leave with clarity, on what's worth testing, what's worth addressing first, and why. Whether or not you decide to work with me further, the call itself is useful.`)}
     ${p(`The call costs <strong style="color:#2c2a26;">£97</strong>, a guide-reader rate. The standard rate is £195.`)}
-    ${btn("Book Your Discovery Call, £97 →", `${SITE}/book?tier=discovery`)}
+    ${btn("Book Your Discovery Core, £97 →", `${SITE}/book?tier=discovery`)}
     ${rule()}
     ${p(`If you're not ready for a call yet, the Metabolic Blood Panel is also available directly. It's the practical starting point for ${angle}.`)}
     ${p(`<a href="${SITE}/assessments" style="color:#c8a84b;font-weight:600;">Explore the blood panel options →</a>`)}

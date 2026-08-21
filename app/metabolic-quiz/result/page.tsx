@@ -421,7 +421,7 @@ function ResultContent() {
                   <div style={{ padding: "24px 28px", background: "var(--fo)" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
                       <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600 }}>
-                        GP-Led Discovery Call
+                        GP-Led Discovery Core
                       </p>
                       <span style={{ fontSize: ".72rem", background: "#c8a84b", color: "#2c2a26", fontWeight: 700, padding: "2px 8px", letterSpacing: ".06em" }}>
                         QUIZ RATE
@@ -470,7 +470,7 @@ function ResultContent() {
                     Quiz-taker offer
                   </p>
                   <p style={{ fontSize: ".93rem", color: "var(--sl)", fontWeight: 500, lineHeight: 1.4, marginBottom: 6 }}>
-                    Book a GP Discovery Call at the quiz rate.
+                    Book a GP Discovery Core at the quiz rate.
                   </p>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14 }}>
                     A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>QUIZRATE</strong> at checkout to reduce the price from £97 to £77.

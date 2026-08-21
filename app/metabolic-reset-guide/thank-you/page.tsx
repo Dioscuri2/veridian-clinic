@@ -65,7 +65,7 @@ export default function GuideThankyouPage() {
               <div className="card" style={{ background: "var(--fo)" }}>
                 <p style={{ fontSize: ".68rem", color: "var(--go2)", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>Most popular</p>
                 <h3 className="cg" style={{ fontSize: "1.3rem", fontWeight: 500, color: "rgba(246,241,232,.95)", lineHeight: 1.3, marginBottom: 10 }}>
-                  Discovery Call
+                  Discovery Core
                 </h3>
                 <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.72)", lineHeight: 1.85, marginBottom: 20 }}>
                   30-minute call with Dr Taiwo. Review your symptoms, history, and goals then get a personalised plan for what to investigate next.
@@ -75,7 +75,7 @@ export default function GuideThankyouPage() {
                   <span style={{ fontSize: ".8rem", color: "rgba(246,241,232,.45)" }}>30-minute GP-led call</span>
                 </div>
                 <Link href="/book?tier=discovery" className="btn btn-go" style={{ display: "block", textAlign: "center" }}>
-                  Book My Discovery Call →
+                  Book My Discovery Core →
                 </Link>
               </div>
 

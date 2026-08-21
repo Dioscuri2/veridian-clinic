@@ -280,7 +280,7 @@ You will be told: "Everything looks fine."
 
 **Closing slide:**
 Fasting insulin is tested in every Veridian blood panel.
-From the Energy Screen at 195 to the Metabolic Baseline at 595.
+From the Energy & Fatigue panel at 249 to the Metabolic Baseline at 595.
 
 veridianclinic.com/assessments
 

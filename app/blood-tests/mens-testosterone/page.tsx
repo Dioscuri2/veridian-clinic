@@ -70,7 +70,7 @@ export default function MensTestosteronePage() {
         intro="Persistent fatigue, poor recovery, low drive, difficulty maintaining muscle, brain fog that won't clear these are the symptoms men are most likely to dismiss as normal ageing, and most likely to have dismissed by a GP as well. In most cases, an NHS testosterone test if ordered at all measures total testosterone only. That misses the picture in the majority of men where the real problem lies."
         ctas={[
           { href: "/book?tier=mens-testosterone", label: "Book Running on Empty Panel £325 →" },
-          { href: "/book?tier=discovery", label: "Speak to a GP First £195", variant: "secondary" },
+          { href: "/book?tier=discovery", label: "Speak to a GP First £97", variant: "secondary" },
         ]}
       >
         <p style={paragraph}>

@@ -58,7 +58,7 @@ export default function CardiovascularRiskPage() {
       intro="Total cholesterol is one number. Cardiovascular risk is built from twelve. The markers that actually predict a heart attack, ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin, are almost never included in a standard NHS or GP cholesterol test."
       ctas={[
         { label: "Book the Cardiovascular Risk Panel, £349", href: "/book?tier=cardiovascular-risk", variant: "primary" },
-        { label: "Book a GP Discovery Call first", href: "/book?tier=discovery" },
+        { label: "Book a Discovery Core consultation first", href: "/book?tier=discovery" },
       ]}
     >
       <h2 className="cg" style={sectionHeading}>Why cholesterol alone is not enough</h2>
@@ -153,7 +153,7 @@ export default function CardiovascularRiskPage() {
         <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
         <div style={{ display: "grid", gap: 10 }}>
           {[
-            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 Energy Screen" },
+            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249 Energy & Fatigue" },
             { href: "/blood-tests/optimiser-baseline", label: "Optimiser's Baseline", note: "£449" },
             { href: "/blood-tests/metabolic-weight", label: "Metabolic Weight Resistance Panel", note: "£199" },
             { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },

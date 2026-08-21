@@ -168,10 +168,10 @@ export default function ApoBTestPage() {
           <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
           <div style={{ display: "grid", gap: 10 }}>
             {[
-              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 Energy Screen" },
+              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249 Energy & Fatigue" },
               { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Test", note: "From £795 Longevity Panel" },
               { href: "/blood-tests/biological-age", label: "Biological Age Test", note: "£795 Longevity Panel" },
-              { href: "/blood-tests/metabolic-screen", label: "Fatigue & Energy Screen", note: "£195" },
+              { href: "/blood-tests/fatigue-energy", label: "Energy & Fatigue Panel", note: "£249" },
               { href: "/blood-tests/cardiovascular-risk", label: "Cardiovascular Risk Panel", note: "£349" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
             ].map((t) => (

@@ -184,8 +184,8 @@ export default function LipoproteinATestPage() {
             {[
               { href: "/blood-tests/apob", label: "ApoB Blood Test", note: "From £595 Metabolic Baseline" },
               { href: "/blood-tests/biological-age", label: "Biological Age Test", note: "£795 Longevity Panel" },
-              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 Energy Screen" },
-              { href: "/blood-tests/metabolic-screen", label: "Fatigue & Energy Screen", note: "£195" },
+              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249 Energy & Fatigue" },
+              { href: "/blood-tests/fatigue-energy", label: "Energy & Fatigue Panel", note: "£249" },
               { href: "/blood-tests/cardiovascular-risk", label: "Cardiovascular Risk Panel", note: "£349" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
             ].map((t) => (

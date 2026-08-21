@@ -57,7 +57,7 @@ export default function MetabolicWeightPage() {
       intro="You are eating well, exercising regularly, and doing everything right. The weight still isn't moving. This is not a willpower problem. It is a metabolic problem, and the answer is almost always visible in the right blood tests."
       ctas={[
         { label: "Book Why Won't The Weight Budge? Panel, £199", href: "/book?tier=metabolic-weight", variant: "primary" },
-        { label: "Book a GP Discovery Call first", href: "/book?tier=discovery" },
+        { label: "Book a Discovery Core consultation first", href: "/book?tier=discovery" },
       ]}
     >
       <h2 className="cg" style={sectionHeading}>The three most common metabolic blocks to weight loss</h2>
@@ -122,7 +122,7 @@ export default function MetabolicWeightPage() {
         <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
         <div style={{ display: "grid", gap: 10 }}>
           {[
-            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195 Energy Screen" },
+            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249 Energy & Fatigue" },
             { href: "/blood-tests/cardiovascular-risk", label: "Cardiovascular Risk Panel", note: "£349" },
             { href: "/blood-tests/fatigue-energy", label: "Fatigue & Energy Deep Screen", note: "£249" },
             { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },

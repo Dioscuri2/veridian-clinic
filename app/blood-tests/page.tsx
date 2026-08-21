@@ -57,8 +57,8 @@ const tests = [
     excerpt:
       "Fasting insulin reveals early insulin resistance years before HbA1c or fasting glucose become abnormal. The NHS does not routinely test it yet it is one of the most clinically actionable markers in preventive metabolic medicine.",
     tag: "Metabolic Health",
-    price: "From £195",
-    includedIn: "Energy Screen & Metabolic Baseline",
+    price: "From £249",
+    includedIn: "Energy & Fatigue & Metabolic Baseline",
   },
   {
     slug: "lipoprotein-a",
@@ -77,15 +77,6 @@ const tests = [
     tag: "Longevity",
     price: "£795",
     includedIn: "Longevity Panel",
-  },
-  {
-    slug: "metabolic-screen",
-    title: "Fatigue & Energy Blood Test",
-    excerpt:
-      "Unexplained fatigue can originate from thyroid dysfunction, insulin resistance, iron deficiency, B12 depletion, cortisol pattern, or low testosterone. Standard GP panels rarely test all these simultaneously. The Energy Screen does.",
-    tag: "Energy & Fatigue",
-    price: "£195",
-    includedIn: "Energy Screen",
   },
   {
     slug: "womens-hormones",

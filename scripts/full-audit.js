@@ -40,6 +40,7 @@ const PAGES = [
   ["/book?tier=baseline", 200, "book-baseline"],
   ["/book?tier=longevity-panel", 200, "book-longevity"],
   ["/book?tier=metabolic-screen", 200, "book-screen"],
+  ["/book?tier=fatigue-energy", 200, "book-fatigue"],
   // Services
   ["/assessments", 200, "assessments"],
   // Blood test landing pages
@@ -48,7 +49,8 @@ const PAGES = [
   ["/blood-tests/fasting-insulin", 200, "bt-insulin"],
   ["/blood-tests/lipoprotein-a", 200, "bt-lpa"],
   ["/blood-tests/biological-age", 200, "bt-bio-age"],
-  ["/blood-tests/metabolic-screen", 200, "bt-screen"],
+  ["/blood-tests/metabolic-screen", 308, "bt-screen-redirect"],
+  ["/blood-tests/fatigue-energy", 200, "bt-fatigue"],
   // Blog
   ["/blog", 200, "blog"],
   ["/blog/apob-vs-ldl", 200, "blog-apob"],
@@ -412,7 +414,7 @@ function httpPost(url, body) {
   const priceChecks = [
     { route: "/metabolic-reset-guide", expected: ["19.99", "£19"], label: "Metabolic Guide £19.99" },
     { route: "/assessments", expected: ["195", "595", "795"], label: "Assessments £195/£595/£795" },
-    { route: "/discovery-call", expected: ["195", "97"], label: "Discovery Call £195/£97" },
+    { route: "/discovery-call", expected: ["249", "97"], label: "Discovery Call £249/£97" },
     { route: "/book?tier=guide", expected: ["19.99", "19"], label: "Book guide £19.99" },
   ];
 

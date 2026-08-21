@@ -142,7 +142,7 @@ export default function WomensHormonesPage() {
               { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£325" },
               { href: "/blood-tests/fatigue-energy", label: "Fatigue & Energy Deep Screen", note: "£249" },
               { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Blood Test", note: "From £795" },
-              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £195" },
+              { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments" },
             ].map((t) => (
               <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>

@@ -25,11 +25,11 @@ CONSULTATION PACKAGES
    Best for: Peak performance, metabolic optimisation, biohacking
    DISCOUNT: Same-day booking: 30% off → £556.50
 
-3. Energy Screen — £195
+3. Energy & Fatigue — £249
    Includes: Targeted blood tests + clinical report
    Best for: Fatigue, thyroid, iron, vitamin deficiencies
 
-4. Metabolic Discovery Consultation — £195
+4. Discovery Core — £97
    Includes: Initial clinical consultation with Dr Taiwo to map your metabolic health
    Best for: First-time visitors, unsure where to start
 

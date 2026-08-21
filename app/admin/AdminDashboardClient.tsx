@@ -54,21 +54,21 @@ Is there something specific you'd like to know more about?`,
     keywords: ["cost", "price", "how much", "fee", "afford", "expensive", "charge", "pay", "money", "pound", "£"],
     body: `Great question here's a quick overview of our fees:
 
-• Initial Discovery Consultation £97 (30 min with Dr Taiwo)
-• Energy Screen £195 (key hormones & metabolic markers)
+• Discovery Core £97 (30 min with Dr Taiwo)
+• Energy & Fatigue £249 (thyroid, iron, B12, fasting insulin)
 • Core Metabolic Assessment £595 (full metabolic + hormonal review)
 • Advanced Longevity Assessment £795 (comprehensive biomarker panel)
 • 12-Week Metabolic Reset Programme £1,895 (includes consultations + monitoring)
 
 Full details are at veridianclinic.com/assessments
 
-Most patients start with the Discovery Consultation it's the best way to find out which package fits your goals. Would you like to know more about any specific service?`,
+Most patients start with Discovery Core it's the best way to find out which package fits your goals. Would you like to know more about any specific service?`,
   },
   {
     label: "Assessment details",
     emoji: "🩺",
     keywords: ["assessment", "consultation", "what's included", "what does it involve", "what happen", "appointment", "session", "what do i get", "process"],
-    body: `Our Initial Discovery Consultation (£97, 30 minutes with Dr Taiwo) is the best starting point. We'll review your health history, current symptoms, and goals then design a personalised plan.
+    body: `Our Discovery Core consultation (£97, 30 minutes with Dr Taiwo) is the best starting point. We'll review your health history, current symptoms, and goals then design a personalised plan.
 
 The Core Metabolic Assessment (£595) is our most popular package and includes:
 ✓ Comprehensive blood panel (see below)
@@ -117,7 +117,7 @@ Any specific markers you're interested in?`,
 
 Dr Taiwo is typically available Mon-Fri, 9am-6pm. We also offer early morning slots just mention this when booking and we'll do our best.
 
-If you're not sure which service to start with, the Discovery Consultation (£195) is the right first step Dr Taiwo will assess your situation and recommend the best path forward.
+If you're not sure which service to start with, Discovery Core (£97) is the right first step Dr Taiwo will assess your situation and recommend the best path forward.
 
 Any questions before you book?`,
   },
@@ -970,8 +970,8 @@ export default function AdminDashboardClient({
                     {[
                       { stage: "Quiz completions", count: stats.funnel.quizCompletions, colour: "#3a82f7" },
                       { stage: "Guide downloads (free)", count: stats.funnel.guidePurchases, colour: "#c8a84b" },
-                      { stage: "Discovery calls (£97-£195)", count: stats.funnel.discoveryCalls, colour: "#145226" },
-                      { stage: "Blood tests (£195-£795)", count: stats.funnel.bloodTests, colour: "#8b5cf6" },
+                      { stage: "Discovery Core (£77-£97)", count: stats.funnel.discoveryCalls, colour: "#145226" },
+                      { stage: "Blood tests (£199-£795)", count: stats.funnel.bloodTests, colour: "#8b5cf6" },
                       { stage: "12-week programme (£1,895)", count: stats.funnel.programmes, colour: "#ef4444" },
                     ].map(({ stage, count, colour }) => (
                       <div key={stage} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: "1px solid #2a2820" }}>
