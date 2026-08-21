@@ -33,7 +33,7 @@ export async function saveLinkedInTokens(tokens: LinkedInTokens): Promise<void> 
 
 // ── LinkedIn posting ──────────────────────────────────────────────────────────
 
-async function getValidLinkedInToken(): Promise<{ token: string; personUrn: string } | null> {
+export async function getValidLinkedInToken(): Promise<{ token: string; personUrn: string } | null> {
   let tokens = await getLinkedInTokens();
   if (!tokens) return null;
 
