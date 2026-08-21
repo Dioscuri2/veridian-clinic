@@ -50,3 +50,20 @@ data/*
 scripts/screenshots/
 scripts/linkedin-scheduler/post.log
 scripts/linkedin-scheduler/.env
+.nexus-session/
+
+# Randox Nexus reference data (trade costs + verified analyte lists) - safe to track
+!data/randox/
+
+# Supplier-portal keep-alive logs
+*-keepalive.log
+
+# Local scraping / scratch working files (scripts/randox holds PLAINTEXT credentials)
+scripts/randox/
+scrape.js
+scrape_mic.js
+search.js
+screenshots/
+collection-images-backup.csv
+bupa1.html
+.randox-session/

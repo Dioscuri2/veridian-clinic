@@ -1,0 +1,12 @@
+{
+  "_note": "Analyte lists read live from Randox Nexus info dialogs. Only codes listed here are Nexus-VERIFIED; everything else in panels.ts must stay supplier.verified=false.",
+  "_capturedOn": "2026-08-21",
+  "HSC10": {
+    "name": "Tired All The Time",
+    "tradePrice": 86.20,
+    "collection": ["In Clinic", "Remote Venous Phlebotomy Collection Kit"],
+    "specialInstructions": "Potassium is stable for 7 hours 2-8degC.",
+    "analytes": ["ALB","ALP_AMP","TGA","ATA","BASO","CA_ADJ","CL","CPEP","CRP","CREA","CYSC","EOS","EGFR","FERRITIN","FOL","FT4","FT3","HSC1","GLUCOSE","HCT","HGB","HBA1_NEW","INS","FE","LYMPH","MG","MCH","MCHC","MCV","MONO","NEUT","PHOS","PLT","RBC","NA","TSH","TIBC","TF","TFSAT","UREA","VITB12","25OH_VITD","WBC"],
+    "warning": "CONTAINS INS (Insulin) and 25OH_VITD (Vitamin D). Do NOT order those as add-ons -- doing so wastes GBP 59.60. Energy & Fatigue trade = HSC10 86.20 + URIC_ACID 8.70 = GBP 94.90."
+  }
+}
