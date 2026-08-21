@@ -5,26 +5,33 @@
 Private metabolic and longevity clinic. GP-led (Dr Tosin Taiwo). CQC regulated services delivered via Thanksdoc/Thanks.co.uk. Trading name of Olympus Premium Health Ltd.
 
 **Live site:** https://veridianclinic.com  
-**Vercel alias:** https://veridianclinic.vercel.app
 
-## Deploy Flow
+## Deploy Flow (Railway — migrated off Vercel 2026-05-15)
 
 ```bash
-git add [files]
+git status                    # untracked imports break Railway builds — check first
+git add [specific files]
 git commit -m "message"
-git push origin master
-npx vercel --prod --yes --token "$VERCEL_TOKEN"
+git push origin master        # Railway auto-deploys. This is the ONLY deploy command.
 ```
 
-Token location: `/Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md`
+Never run `npx vercel` for this project. Railway API pattern + personal token: see memory `feedback_railway_deploy.md`. Vault: `/Users/tosin/.openclaw/workspace-main/oph-vault/CREDENTIALS.md`
+
+## PAYMENTS RULE (standing, 2026-08-20)
+
+**ALL blood-test and service payments run through ThanksDoc** (https://notes.thanksdoc.co.uk/book/clinic/veridian, via NEXT_PUBLIC_THANKSDOC_BOOKING_URL). Never build a new Stripe checkout flow for a panel/programme/consultation. The Stripe tierCatalog in app/api/checkout/route.ts is LEGACY (kept for the £19.99 guide PDF + the prebuild price-drift check). `data/panels.ts` is the single source of truth for all panels — read it before touching prices, markers or panel copy. Supplier is Randox (Nexus); only `supplier.verified: true` compositions may drive patient-facing marker claims.
+
+## Session pickup
+
+Before Veridian work, read memory `handoff_veridian_randox_pricing.md` (trigger: "veridian pricing") — it holds the Randox audit state and the 2026-08 growth-handover backlog.
 
 ## Stack
 
 - **Framework:** Next.js 16.2 App Router, TypeScript
 - **Styling:** CSS custom properties + inline styles (NO Tailwind). Global styles in `components/globalStyles.js`
-- **Payments:** Stripe (GBP, card only)
+- **Payments:** ThanksDoc (all clinical services) · Stripe legacy (guide PDF only)
 - **Email:** Brevo (transactional + newsletter lists)
-- **Hosting:** Vercel (project: dioscuri2-gmailcoms-projects/veridian-clinic)
+- **Hosting:** Railway (Hobby), Cloudflare in front — env vars live on Railway, not Vercel
 - **GitHub:** https://github.com/Dioscuri2/veridian-clinic.git (branch: master)
 
 ## Funnel Architecture
@@ -78,7 +85,7 @@ Homepage
 --nav-h: 68px  /* nav height (72px mobile) */
 ```
 
-## Env Vars (on Vercel)
+## Env Vars (on Railway)
 
 - `STRIPE_SECRET_KEY` — Stripe live key
 - `STRIPE_WEBHOOK_SECRET` — needed for /api/webhooks/stripe (add in Stripe dashboard)
@@ -91,7 +98,7 @@ Homepage
 Go to Stripe Dashboard → Webhooks → Add endpoint:
 - URL: `https://veridianclinic.com/api/webhooks/stripe`
 - Event: `checkout.session.completed`
-- Copy the signing secret → add as `STRIPE_WEBHOOK_SECRET` in Vercel env vars
+- Copy the signing secret → add as `STRIPE_WEBHOOK_SECRET` in Railway env vars (already done — webhook is LIVE)
 
 ## Next Planned Features
 
