@@ -191,9 +191,10 @@ export const PANELS: Panel[] = [
           { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
           { code: "hsCRP", name: "hs-CRP", tradePence: GBP(14) },
           { code: "INS", name: "Fasting Insulin", tradePence: GBP(32.8) },
+          { code: "HBA1_NEW", name: "HbA1c", tradePence: GBP(20.5) },
         ],
         notes:
-          "Trade £124.90 — 64.2% margin at £349. REMOVED Lp(a) (LPA £28.10), ApoB (APO_B) and Small Dense LDL (SLDL): RP10 already contains all three, plus ApoA-I, ApoE, the ApoB/ApoA-I ratio, CRP and the full lipid profile. Old order was £199.00. hsCRP is kept deliberately — RP10 carries standard CRP, not the high-sensitivity assay. RP10 contains NO HbA1c — do not claim HbA1c on this panel (HBA1_NEW is £20.50 if Dr Tosin wants the claim back).",
+          "Trade £145.40 — 58.3% margin at £349. REMOVED Lp(a) (LPA £28.10), ApoB (APO_B) and Small Dense LDL (SLDL): RP10 already contains all three, plus ApoA-I, ApoE, the ApoB/ApoA-I ratio, CRP and the full lipid profile. Old order was £199.00, then £124.90 without HbA1c. hsCRP is kept deliberately — RP10 carries standard CRP, not the high-sensitivity assay. RP10 contains NO HbA1c, so HBA1_NEW £20.50 was ADDED BACK on 2026-08-22 (Dr Tosin's call) to restore the HbA1c claim: 64.2% → 58.3% at an unchanged £349.",
       },
     },
   },
@@ -243,9 +244,11 @@ export const PANELS: Panel[] = [
           { code: "HSC7M_RP7", name: "Standard Screen Plus Male, with Hormonal Health", tradePence: GBP(100.5) },
           { code: "LPA", name: "Lipoprotein (a)", tradePence: GBP(28.1) },
           { code: "INS", name: "Fasting Insulin", tradePence: GBP(32.8) },
+          { code: "DHEAS", name: "DHEA-S", tradePence: GBP(16) },
+          { code: "CORTISOL", name: "Cortisol (single morning serum sample)", tradePence: GBP(32.4) },
         ],
         notes:
-          "Trade £161.40 — 50.3% margin at £325. REMOVED Free Testosterone (FREE_TEST £30.30): HSC7M_RP7 contains total Testosterone, SHBG and FAI (Free Androgen Index), so free testosterone is CALCULATED from total T and SHBG — never a directly measured assay. Copy must say 'free testosterone (calculated)'. Old order was £191.70. Also included: FSH, LH, Prolactin, Oestradiol, TSH/FT3/FT4 with Anti-Tg and Anti-TPO, full blood count, HbA1c, TPSA, Vitamin D, liver, kidney and eGFR. Contains NO DHEA-S and NO cortisol — do not claim either (DHEAS £16.00 + CORTISOL £32.40 would restore both at £209.80 trade = 35.4% margin; Dr Tosin's call).",
+          "Trade £209.80 — 35.4% margin at £325, the THINNEST margin in the range. Dr Tosin accepted that trade-off knowingly on 2026-08-22 to keep the adrenal/androgen story: DHEAS £16.00 and CORTISOL £32.40 were ADDED BACK (50.3% → 35.4%, price unchanged). HSC7M_RP7 contains neither, so both are genuine additions. CORTISOL is a SINGLE MORNING SERUM cortisol — copy must say so and must NEVER imply a cortisol awakening response, a diurnal/circadian pattern, a curve, a rhythm, or any multi-sample or salivary protocol. REMOVED Free Testosterone (FREE_TEST £30.30): HSC7M_RP7 contains total Testosterone, SHBG and FAI (Free Androgen Index), so free testosterone is CALCULATED from total T and SHBG — never a directly measured assay. Copy must say 'free testosterone (calculated)'. Old order was £191.70. Also included: FSH, LH, Prolactin, Oestradiol, TSH/FT3/FT4 with Anti-Tg and Anti-TPO, full blood count, HbA1c, TPSA, Vitamin D, liver, kidney and eGFR. HSC7M_RP7 itself carries NO DHEA-S and NO cortisol — both are bought as the separate DHEAS and CORTISOL lines above, and the claims stand only for as long as those lines stay on the order.",
       },
     },
   },
@@ -253,7 +256,7 @@ export const PANELS: Panel[] = [
     slug: "optimiser-baseline",
     productName: "Performance",
     positioningLine: "The Optimiser's Baseline",
-    pricePence: GBP(449),
+    pricePence: GBP(549),
     landingPage: "/blood-tests/optimiser-baseline",
     checkoutTier: "optimiser-baseline",
     thanksDocServiceId: null,
@@ -261,9 +264,11 @@ export const PANELS: Panel[] = [
     adGroup: "Health MOT",
     status: "live",
     kind: "panel",
-    // MARGIN FLAG (2026-08-22): at 35.6% this is the THINNEST product in the
-    // line — every other panel is 46%+. Not repriced in this pass. A reprice to
-    // ~£499 would take it to 42.0% (trade £289.20). Dr Tosin's decision.
+    // REPRICED 2026-08-22: £449 → £549, and a targeted GP consultation to go
+    // through the results is now INCLUDED in the price alongside the written
+    // report. Lab trade is unchanged at £289.20, so the headline figure is
+    // 47.3% against lab cost only — it does NOT account for the clinician time
+    // now bundled in, so it is NOT comparable with the blood-only panels.
     supplier: {
       female: {
         verified: true,
@@ -274,7 +279,7 @@ export const PANELS: Panel[] = [
           { code: "IGF1", name: "Insulin-like Growth Factor-1", tradePence: GBP(48.9) },
         ],
         notes:
-          "Trade £289.20 — 35.6% margin at £449. NOTHING removed: verified as no waste, do NOT 'optimise' this order later. HSC8F and HSC12 share 39 analytes, but HSC8F's 10 unique lines are exactly what this page sells — Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL, Anti-Tg and Anti-TPO, plus CA-125. NOTE: ApoB is in BOTH panels, so the old 'ApoB is unique to HSC8' assumption was wrong. HSC12 'Sports Performance' is CONFIRMED to contain CORTISOL and DHEAS, so the page's morning-cortisol and DHEA-S claims are verified; HSC12 also brings total Testosterone, SHBG, FAI, LH, CK, CK-MB, myoglobin, Total Antioxidant Status, B12 and folate. IGF-1 is in neither, so IGF1 £48.90 is required. Neither panel contains FSH — do not claim FSH on this panel.",
+          "Trade £289.20 — 47.3% margin at £549 (repriced from £449 on 2026-08-22). That 47.3% is against LAB COST ONLY and does NOT account for the targeted GP consultation now bundled into the price, so it is not comparable with the blood-only panels. NOTHING removed: verified as no waste, do NOT 'optimise' this order later. HSC8F and HSC12 share 39 analytes, but HSC8F's 10 unique lines are exactly what this page sells — Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL, Anti-Tg and Anti-TPO, plus CA-125. NOTE: ApoB is in BOTH panels, so the old 'ApoB is unique to HSC8' assumption was wrong. HSC12 'Sports Performance' is CONFIRMED to contain CORTISOL and DHEAS, so the page's morning-cortisol and DHEA-S claims are verified; HSC12 also brings total Testosterone, SHBG, FAI, LH, CK, CK-MB, myoglobin, Total Antioxidant Status, B12 and folate. IGF-1 is in neither, so IGF1 £48.90 is required. Neither panel contains FSH — do not claim FSH on this panel.",
       },
       male: {
         verified: true,
@@ -285,7 +290,7 @@ export const PANELS: Panel[] = [
           { code: "IGF1", name: "Insulin-like Growth Factor-1", tradePence: GBP(48.9) },
         ],
         notes:
-          "Trade £289.20 — 35.6% margin at £449. NOTHING removed: verified as no waste, do NOT 'optimise' this order later. HSC8M and HSC12 share 39 analytes, but HSC8M's 10 unique lines are exactly what this page sells — Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL, Anti-Tg and Anti-TPO, plus TPSA. NOTE: ApoB is in BOTH panels, so the old 'ApoB is unique to HSC8' assumption was wrong. HSC12 'Sports Performance' is CONFIRMED to contain CORTISOL and DHEAS, so the page's morning-cortisol and DHEA-S claims are verified; HSC12 also brings total Testosterone, SHBG, FAI, LH, CK, CK-MB, myoglobin, Total Antioxidant Status, B12 and folate. IGF-1 is in neither, so IGF1 £48.90 is required. Neither panel contains FSH — do not claim FSH on this panel.",
+          "Trade £289.20 — 47.3% margin at £549 (repriced from £449 on 2026-08-22). That 47.3% is against LAB COST ONLY and does NOT account for the targeted GP consultation now bundled into the price, so it is not comparable with the blood-only panels. NOTHING removed: verified as no waste, do NOT 'optimise' this order later. HSC8M and HSC12 share 39 analytes, but HSC8M's 10 unique lines are exactly what this page sells — Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL, Anti-Tg and Anti-TPO, plus TPSA. NOTE: ApoB is in BOTH panels, so the old 'ApoB is unique to HSC8' assumption was wrong. HSC12 'Sports Performance' is CONFIRMED to contain CORTISOL and DHEAS, so the page's morning-cortisol and DHEA-S claims are verified; HSC12 also brings total Testosterone, SHBG, FAI, LH, CK, CK-MB, myoglobin, Total Antioxidant Status, B12 and folate. IGF-1 is in neither, so IGF1 £48.90 is required. Neither panel contains FSH — do not claim FSH on this panel.",
       },
     },
   },

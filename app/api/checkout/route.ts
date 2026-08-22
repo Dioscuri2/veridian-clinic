@@ -122,7 +122,7 @@ const tierCatalog: Record<
     name: "Running on Empty, Men's Testosterone & Hormone Panel",
     amount: 32500,
     description:
-      "Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin. Lp(a), fasting insulin, HbA1c, Full Blood Count, CRP. GP-reviewed written report with personalised clinical interpretation included.",
+      "Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol (single serum sample). Lp(a), fasting insulin, HbA1c, Full Blood Count, CRP. GP-reviewed written report with personalised clinical interpretation included.",
     successPath: "/book/thank-you",
     cancelPath: "/blood-tests/mens-testosterone",
   },
@@ -130,7 +130,7 @@ const tierCatalog: Record<
     name: "What Your Cholesterol Test Missed, Cardiovascular Risk Panel",
     amount: 34900,
     description:
-      "ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, full lipid profile, ApoA-I, fasting insulin. GP-reviewed cardiovascular risk summary with written interpretation and next-step recommendations.",
+      "ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, full lipid profile, ApoA-I, fasting insulin, HbA1c. GP-reviewed cardiovascular risk summary with written interpretation and next-step recommendations.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },
@@ -152,9 +152,9 @@ const tierCatalog: Record<
   },
   "optimiser-baseline": {
     name: "The Optimiser's Baseline, Performance & Longevity Panel",
-    amount: 44900,
+    amount: 54900,
     description:
-      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone (calculated), SHBG, LH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, CRP. GP-reviewed baseline report included.",
+      "IGF-1, fasting insulin, HbA1c, morning cortisol (single serum sample), DHEA-S, total testosterone, free testosterone (calculated), SHBG, LH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, CRP. GP-reviewed baseline report and a GP-led 30-minute consultation to go through the results, both included.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },

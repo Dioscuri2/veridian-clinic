@@ -221,7 +221,7 @@ function buildEmail4(firstName: string, band: string): { subject: string; html: 
 
   const recommendedPanel =
     band === "strong"
-      ? { name: "Optimiser's Baseline", price: "£449", path: "/blood-tests/optimiser-baseline", reason: "Your quiz result suggests strong metabolic function. The Optimiser's Baseline gives you a performance baseline, IGF-1, cortisol, testosterone, ApoB, fasting insulin, so you know exactly what to maintain and where marginal gains are available." }
+      ? { name: "Optimiser's Baseline", price: "£549", path: "/blood-tests/optimiser-baseline", reason: "Your quiz result suggests strong metabolic function. The Optimiser's Baseline gives you a performance baseline, IGF-1, morning cortisol, testosterone, ApoB, fasting insulin, so you know exactly what to maintain and where marginal gains are available. A GP-led 30-minute consultation to go through the results is included." }
       : band === "high-risk"
         ? { name: "Metabolic Baseline", price: "£595", path: "/assessments", reason: "With multiple metabolic signals flagged, the full Baseline gives the most complete picture, 9-marker advanced panel including ApoB, Lp(a), fasting insulin, HbA1c, liver, kidney, and inflammation, plus GP consultation to walk through your results and build a clinical plan." }
         : { name: "Metabolic Weight Resistance Panel", price: "£199", path: "/blood-tests/metabolic-weight", reason: "For 'drifting' results, the Metabolic Weight Panel targets the most common hidden drivers: fasting insulin, HOMA-IR, leptin, adiponectin, Lp(a), and thyroid. It's the panel that explains why weight isn't shifting despite genuine effort." };

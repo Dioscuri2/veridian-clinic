@@ -44,7 +44,7 @@
     {
       "day": 10,
       "topic": "Cortisol and belly fat",
-      "text": "Cutting calories. Training 3x a week. Weight still creeping up around your middle.\n\nNot a discipline problem. When your morning cortisol pattern flattens, your body stores abdominal fat regardless of what you eat.\n\nNo NHS panel tests it.\n\nhttps://veridianclinic.com/blood-tests/optimiser-baseline"
+      "text": "Cutting calories. Training 3x a week. Weight still creeping up around your middle.\n\nNot a discipline problem. The usual driver is insulin resistance, where fasting glucose and HbA1c still read as normal.\n\nStandard NHS panels rarely measure fasting insulin.\n\nhttps://veridianclinic.com/blood-tests/fatigue-energy"
     },
     {
       "day": 11,
@@ -94,19 +94,28 @@
     {
       "day": 20,
       "topic": "Pre-diabetes action plan",
-      "images": ["https://veridianclinic.com/linkedin-cards/day20-data.png", "https://veridianclinic.com/linkedin-cards/day20-quote.png"],
+      "images": [
+        "https://veridianclinic.com/linkedin-cards/day20-data.png",
+        "https://veridianclinic.com/linkedin-cards/day20-quote.png"
+      ],
       "text": "Told you're pre-diabetic? The standard pathway is: lose weight, cut carbs, come back in a year.\n\nWhat it misses:\n- the insulin resistance actually driving it\n- thyroid suppression that blocks weight loss\n- overnight liver glucose output\n\nAll three treatable. https://veridianclinic.com"
     },
     {
       "day": 21,
       "topic": "Family history - act early",
-      "images": ["https://veridianclinic.com/linkedin-cards/day21-data.png", "https://veridianclinic.com/linkedin-cards/day21-quote.png"],
+      "images": [
+        "https://veridianclinic.com/linkedin-cards/day21-data.png",
+        "https://veridianclinic.com/linkedin-cards/day21-quote.png"
+      ],
       "text": "Your father: heart attack at 54. Your mother: type 2 at 52.\n\nYou can't change your genetics. You can know exactly which risks you inherited: ApoB, Lp(a), fasting insulin, HbA1c + HOMA-IR.\n\nAnd start acting 20 years earlier than your parents could.\n\nhttps://veridianclinic.com/blood-tests/cardiovascular-risk"
     },
     {
       "day": 22,
       "topic": "Metabolic Turnaround launch",
-      "images": ["https://veridianclinic.com/linkedin-cards/day22-data.png", "https://veridianclinic.com/linkedin-cards/day22-quote.png"],
+      "images": [
+        "https://veridianclinic.com/linkedin-cards/day22-data.png",
+        "https://veridianclinic.com/linkedin-cards/day22-quote.png"
+      ],
       "thread": [
         "The 90-Day Metabolic Turnaround is live.\n\nBuilt because I kept having the same conversation as a GP: professionals in their 40s-50s, HbA1c climbing, weight stuck, tired by 2pm, told their results were \"normal for their age\".\n\nNo one explained why. No one said what to do.",
         "What's inside:\n\n- full blood panel (fasting insulin, ApoB, Lp(a), homocysteine, inflammation, liver)\n- two GP consultations\n- 14-day continuous glucose monitor\n- written action plan built on YOUR data\n- fortnightly GP check-ins for 90 days\n\nhttps://veridianclinic.com/metabolic-turnaround"

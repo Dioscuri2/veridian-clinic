@@ -75,10 +75,10 @@ export default function NhsWeightLossRolloutPage() {
           Almost all the public debate is about access to the medicine. Very little of it is about the far more useful question: <em>why</em> is this person&apos;s weight not shifting?
         </p>
         <p style={paragraph}>
-          If diet and exercise are genuinely not working, the explanation is usually visible in the blood. Fasting insulin and HOMA-IR reveal insulin resistance that standard glucose and HbA1c testing miss for years. Thyroid function, leptin, adiponectin, uric acid and cortisol pattern each produce a recognisable and different metabolic block. These are testable, and the answers change what treatment is appropriate.
+          If diet and exercise are genuinely not working, the explanation is usually visible in the blood. Fasting insulin and HOMA-IR reveal insulin resistance that standard glucose and HbA1c testing miss for years. Thyroid function, adiponectin, uric acid and morning cortisol each produce a recognisable and different metabolic block. These are testable, and the answers change what treatment is appropriate.
         </p>
         <p style={paragraph}>
-          That matters because GLP-1 receptor agonists are not equally suited to everyone who technically qualifies for them, and a person whose weight is driven by an untreated thyroid problem or a cortisol pattern needs that identified rather than overwritten. Starting any weight medication without knowing the underlying metabolic picture means you learn less, and you have no baseline to measure against.
+          That matters because GLP-1 receptor agonists are not equally suited to everyone who technically qualifies for them, and a person whose weight is driven by an untreated thyroid problem or raised cortisol needs that identified rather than overwritten. Starting any weight medication without knowing the underlying metabolic picture means you learn less, and you have no baseline to measure against.
         </p>
 
         <h2 className="cg" style={sectionHeading}>What we would do first</h2>

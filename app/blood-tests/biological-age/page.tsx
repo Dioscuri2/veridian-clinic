@@ -116,7 +116,7 @@ export default function BiologicalAgeTestPage() {
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Hormonal status</p>
         <p style={paragraph}>
-          Testosterone (free and total), SHBG, oestradiol, DHEA-S, IGF-1, and cortisol. Hormonal ageing is one of the most variable and intervention-responsive domains. Age-related declines in testosterone, IGF-1, and DHEA-S are closely linked to muscle loss, fatigue, cognitive function, and mood stability. Identifying sub-optimal hormonal function early provides a longer window for lifestyle and, where appropriate, clinical intervention.
+          Testosterone (total, with free testosterone calculated from SHBG), SHBG, oestradiol, FSH, LH and prolactin. Hormonal ageing is one of the most variable and intervention-responsive domains. Age-related decline in testosterone is closely linked to muscle loss, fatigue, cognitive function, and mood stability. Identifying sub-optimal hormonal function early provides a longer window for lifestyle and, where appropriate, clinical intervention.
         </p>
 
         <p style={{ fontSize: ".88rem", fontWeight: 700, color: "var(--sl)", marginBottom: 4 }}>Nutritional and micronutrient status</p>
@@ -183,7 +183,7 @@ export default function BiologicalAgeTestPage() {
               { href: "/blood-tests/apob", label: "ApoB Blood Test", note: "From £595 Metabolic Baseline" },
               { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249 Energy & Fatigue" },
               { href: "/blood-tests/fatigue-energy", label: "Energy & Fatigue Panel", note: "£249" },
-              { href: "/blood-tests/optimiser-baseline", label: "Optimiser's Baseline", note: "£449" },
+              { href: "/blood-tests/optimiser-baseline", label: "Optimiser's Baseline", note: "£549" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
             ].map((t) => (
               <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>

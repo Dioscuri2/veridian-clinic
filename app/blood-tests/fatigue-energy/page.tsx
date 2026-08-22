@@ -143,7 +143,7 @@ export default function FatigueEnergyPage() {
         </ul>
         <p style={paragraph}>
           What this panel does not measure is as important as what it does. It does not include cortisol, and it does not include testosterone or the sex hormones. If your symptom picture points that way morning-heavy exhaustion with weight redistribution, or fatigue alongside low libido, low mood and loss of muscle then the panel you want is{" "}
-          <Link href="/blood-tests/optimiser-baseline" style={{ color: "var(--go)", textDecoration: "underline" }}>the Optimiser&apos;s Baseline</Link>, which measures cortisol and total and free testosterone directly. We would rather send you to the right panel than sell you this one and imply it answers a question it cannot.
+          <Link href="/blood-tests/optimiser-baseline" style={{ color: "var(--go)", textDecoration: "underline" }}>the Optimiser&apos;s Baseline</Link>, which measures morning cortisol and total testosterone, with free testosterone calculated from SHBG. We would rather send you to the right panel than sell you this one and imply it answers a question it cannot.
         </p>
 
         <div style={callout}>

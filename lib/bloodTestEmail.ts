@@ -8,6 +8,8 @@ interface PanelInfo {
   fastingRequired: boolean;
   randoxCode: string;
   randoxNotes: string;
+  /** True when a GP consultation is bundled into the price — suppresses the paid results-consultation add-on */
+  consultationIncluded?: boolean;
 }
 
 const PANELS: Record<string, PanelInfo> = {
@@ -27,13 +29,13 @@ const PANELS: Record<string, PanelInfo> = {
     name: "Running on Empty, Men's Testosterone & Hormone Panel",
     price: "£325",
     markerSummary: [
-      "Total testosterone, free testosterone (calculated), SHBG, LH, FSH, Prolactin",
-      "Lipoprotein(a), Fasting Insulin, HbA1c",
+      "Total testosterone, free testosterone (calculated), SHBG, LH, FSH, Prolactin, DHEA-S",
+      "Morning cortisol (single serum sample), Lipoprotein(a), Fasting Insulin, HbA1c",
       "Full Blood Count, CRP",
     ],
     fastingRequired: true,
-    randoxCode: "HSC7M_RP7 + LPA + INS",
-    randoxNotes: "Trade £161.40 (HSC7M_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80). Do NOT add Free Testosterone (FREE_TEST) — HSC7M_RP7 contains total Testosterone, SHBG and FAI, so free T is CALCULATED (wastes £30.30). No DHEA-S and no cortisol in this order.",
+    randoxCode: "HSC7M_RP7 + LPA + INS + DHEAS + CORTISOL",
+    randoxNotes: "Trade £209.80 (HSC7M_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80 + DHEA-S £16.00 + Cortisol £32.40). Do NOT add Free Testosterone (FREE_TEST) — HSC7M_RP7 contains total Testosterone, SHBG and FAI, so free T is CALCULATED (wastes £30.30). HSC7M_RP7 has no DHEA-S and no cortisol, so both are ordered separately. CORTISOL is a SINGLE MORNING SERUM sample — collect before 10am; it is not a cortisol awakening response or a diurnal profile.",
   },
   "cardiovascular-risk": {
     name: "What Your Cholesterol Test Missed, Cardiovascular Risk Panel",
@@ -41,11 +43,11 @@ const PANELS: Record<string, PanelInfo> = {
     markerSummary: [
       "ApoB, Lipoprotein(a), Small Dense LDL, full lipid profile",
       "Homocysteine, hs-CRP, ApoA-I",
-      "Fasting Insulin",
+      "Fasting Insulin, HbA1c",
     ],
     fastingRequired: true,
-    randoxCode: "RP10 + HOMO + hsCRP + INS",
-    randoxNotes: "Trade £124.90 (RP10 £37.60 + Homocysteine £40.50 + hs-CRP £14.00 + Insulin £32.80). Do NOT add Lp(a), ApoB or Small Dense LDL — RP10 already contains all three (wastes £74.10). RP10 carries standard CRP only, so hsCRP stays. No HbA1c in this order.",
+    randoxCode: "RP10 + HOMO + hsCRP + INS + HBA1_NEW",
+    randoxNotes: "Trade £145.40 (RP10 £37.60 + Homocysteine £40.50 + hs-CRP £14.00 + Insulin £32.80 + HbA1c £20.50). Do NOT add Lp(a), ApoB or Small Dense LDL — RP10 already contains all three (wastes £74.10). RP10 carries standard CRP only, so hsCRP stays. RP10 has no HbA1c, so HBA1_NEW is ordered separately — it must stay on the order for the HbA1c claim to hold.",
   },
   "fatigue-energy": {
     name: "Tired of Being Told You're Fine, Fatigue & Energy Deep Screen",
@@ -73,16 +75,17 @@ const PANELS: Record<string, PanelInfo> = {
   },
   "optimiser-baseline": {
     name: "The Optimiser's Baseline, Performance & Longevity Panel",
-    price: "£449",
+    price: "£549",
     markerSummary: [
-      "IGF-1, Fasting Insulin, HbA1c, Cortisol (AM), DHEA-S",
+      "IGF-1, Fasting Insulin, HbA1c, morning cortisol (single serum sample), DHEA-S",
       "Total testosterone, free testosterone (calculated), SHBG, LH",
       "ApoB, Lp(a), sdLDL, ApoA-I, Full Lipid Profile, Adiponectin",
       "Cystatin C, Magnesium, Uric Acid, Full Blood Count, Liver (ALT/AST/GGT), Kidney + eGFR, CRP",
     ],
     fastingRequired: true,
+    consultationIncluded: true,
     randoxCode: "HSC8M or HSC8F + HSC12 + IGF1",
-    randoxNotes: "Trade £289.20 (HSC8 £106.30 + HSC12 £134.00 + IGF-1 £48.90). Verified no waste — both base panels are needed: HSC8 uniquely adds Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL and thyroid antibodies; HSC12 uniquely adds Cortisol, DHEA-S, Testosterone, SHBG, FAI, CK/CK-MB, myoglobin and Total Antioxidant Status. ApoB is in both. IGF-1 is in neither. No FSH in this order. Leptin and Resistin are NOT offered by Randox.",
+    randoxNotes: "Trade £289.20 (HSC8 £106.30 + HSC12 £134.00 + IGF-1 £48.90). Verified no waste — both base panels are needed: HSC8 uniquely adds Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL and thyroid antibodies; HSC12 uniquely adds Cortisol, DHEA-S, Testosterone, SHBG, FAI, CK/CK-MB, myoglobin and Total Antioxidant Status. ApoB is in both. IGF-1 is in neither. No FSH in this order. HSC12's cortisol is a SINGLE MORNING SERUM sample — book the draw for the morning and never describe it as a cortisol awakening response or a diurnal profile. Leptin and Resistin are NOT offered by Randox. Price includes a GP-led 30-minute consultation as well as the written report.",
   },
   "metabolic-screen": {
     name: "Veridian Energy Screen",
@@ -203,7 +206,18 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
             </td></tr>
           </table>
 
-          <!-- Results consultation upsell -->
+          <!-- Results consultation: included for panels that bundle it, otherwise offered as an add-on -->
+          ${panel.consultationIncluded ? `
+          <table cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:28px;">
+            <tr><td style="padding:20px 24px;background:#f6f1e8;border:1px solid rgba(200,168,75,.25);">
+              <p style="margin:0 0 6px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a5500;">Included in your price</p>
+              <p style="margin:0 0 10px;font-size:1rem;font-weight:600;color:#2c2a26;line-height:1.3;">A GP-led 30-minute consultation to go through your results</p>
+              <p style="margin:0 0 4px;font-size:.86rem;color:#5a534a;line-height:1.75;">
+                As well as your written report, your ${panel.price} includes a 30-minute consultation with Dr Tosin once your results are back. You will go through what the pattern across your markers means and agree which two or three things to act on first. We will send you a booking link with your report, there is nothing more to pay.
+              </p>
+            </td></tr>
+          </table>
+          ` : `
           <table cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:28px;">
             <tr><td style="padding:20px 24px;background:#f6f1e8;border:1px solid rgba(200,168,75,.25);">
               <p style="margin:0 0 6px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a5500;">Optional add-on</p>
@@ -217,6 +231,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
               </a>
             </td></tr>
           </table>
+          `}
 
           <p style="margin:0 0 6px;font-size:.86rem;color:#5a534a;line-height:1.75;">
             Questions in the meantime? Reply to this email directly, it goes straight to the Veridian clinical inbox.

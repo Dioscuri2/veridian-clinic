@@ -26,7 +26,7 @@ function PixelPurchase() {
       "cardiovascular-risk": 349,
       "fatigue-energy": 249,
       "metabolic-weight": 199,
-      "optimiser-baseline": 449,
+      "optimiser-baseline": 549,
       "wl-consultation": 60,
       "wl-consultation-quiz": 48,
     };

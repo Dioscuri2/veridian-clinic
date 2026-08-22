@@ -92,7 +92,7 @@ const tests = [
     slug: "mens-testosterone",
     title: "Testosterone & Men's Hormone Blood Test",
     excerpt:
-      "Total testosterone alone misses the picture in most men where free testosterone determined by SHBG is the clinically relevant value. This panel measures total testosterone with free testosterone calculated from SHBG, plus LH, FSH, prolactin, Lp(a) and fasting insulin. GP-reviewed.",
+      "Total testosterone alone misses the picture in most men where free testosterone determined by SHBG is the clinically relevant value. This panel measures total testosterone with free testosterone calculated from SHBG, plus LH, FSH, prolactin, DHEA-S, morning cortisol, Lp(a) and fasting insulin. GP-reviewed.",
     tag: "Men's Health",
     price: "£325",
     includedIn: "Running on Empty Panel",
@@ -130,9 +130,9 @@ const tests = [
     slug: "optimiser-baseline",
     title: "The Optimiser's Baseline",
     excerpt:
-      "For people who track their biology seriously and want a documented starting point. IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, cortisol, DHEA-S, testosterone, fasting insulin, Cystatin C and full organ safety. A benchmark to return to every year.",
+      "For people who track their biology seriously and want a documented starting point. IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, morning cortisol, DHEA-S, testosterone, fasting insulin, Cystatin C and full organ safety. Includes a GP-led 30-minute consultation to go through the results. A benchmark to return to every year.",
     tag: "Longevity",
-    price: "£449",
+    price: "£549",
     includedIn: "Optimiser's Baseline Panel",
   },
 ];

@@ -5,14 +5,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Testosterone Blood Test UK Private Men's Hormone Panel | Veridian Clinic" },
   description:
-    "A private testosterone and men's hormone blood test in the UK. Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin and Lp(a) GP-reviewed written interpretation. Running on Empty Panel £325.",
+    "A private testosterone and men's hormone blood test in the UK. Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol and Lp(a) GP-reviewed written interpretation. Running on Empty Panel £325.",
   alternates: {
     canonical: "https://veridianclinic.com/blood-tests/mens-testosterone",
   },
   openGraph: {
     title: "Testosterone Blood Test UK Private Men's Hormone Panel | Veridian Clinic",
     description:
-      "Private testosterone and male hormone testing in the UK. Free testosterone (calculated), SHBG, LH, FSH, prolactin, Lp(a) and fasting insulin GP-reviewed written report. £325.",
+      "Private testosterone and male hormone testing in the UK. Free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol, Lp(a) and fasting insulin GP-reviewed written report. £325.",
     url: "https://veridianclinic.com/blood-tests/mens-testosterone",
     type: "article",
   },
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     "men's hormone panel UK",
     "low testosterone symptoms test",
     "private men's health blood test UK",
+    "DHEA-S blood test UK",
+    "cortisol test men UK",
     "running on empty low testosterone",
     "testosterone GP test UK",
   ],
@@ -41,7 +43,7 @@ const schema = {
   "@type": "Article",
   headline: "Testosterone Blood Test UK Private Men's Hormone Panel",
   description:
-    "A private men's hormone blood test covering total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin and Lp(a) GP-reviewed written interpretation with personalised clinical recommendations.",
+    "A private men's hormone blood test covering total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol and Lp(a) GP-reviewed written interpretation with personalised clinical recommendations.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: {
     "@type": "Organization",
@@ -97,6 +99,8 @@ export default function MensTestosteronePage() {
           <li><strong>LH (Luteinising Hormone):</strong> the pituitary signal that drives testosterone production. Low LH alongside low testosterone indicates a hypothalamic or pituitary cause (secondary hypogonadism). Normal or elevated LH with low testosterone indicates primary testicular failure. This distinction changes the clinical approach entirely.</li>
           <li><strong>FSH (Follicle Stimulating Hormone):</strong> elevations suggest primary gonadal dysfunction; suppression is consistent with exogenous testosterone or anabolic steroid use.</li>
           <li><strong>Prolactin:</strong> hyperprolactinaemia suppresses the hypothalamic-pituitary axis, reducing LH and FSH, and consequently testosterone. It is a reversible cause of low testosterone that is missed whenever prolactin is not tested which is almost always in standard primary care.</li>
+          <li><strong>DHEA-S:</strong> the adrenal androgen precursor that contributes to energy, mood and libido. DHEA-S declines with age and with chronic physiological stress, and low levels are associated with fatigue and poor recovery independent of testosterone status.</li>
+          <li><strong>Morning cortisol (single serum sample):</strong> chronically elevated cortisol from psychological stress, poor sleep or HPA axis dysregulation directly suppresses testosterone production and amplifies the hormonal deficit. It also worsens insulin sensitivity and drives abdominal adiposity, which in turn promotes aromatisation of testosterone to oestradiol, further lowering free testosterone. This is one morning blood sample read against the morning reference range, not a series of samples across the day.</li>
           <li><strong>Lipoprotein (a):</strong> cardiovascular risk in men is frequently underestimated, and Lp(a) is the most commonly missed risk marker in standard cholesterol panels. It is genetically determined and does not respond to statins making early identification important for longer-term risk management.</li>
           <li><strong>Fasting insulin + HbA1c:</strong> insulin resistance and testosterone deficiency form a bidirectional cycle. Low testosterone impairs insulin sensitivity; high insulin suppresses SHBG, which paradoxically can increase total testosterone while worsening free testosterone availability and metabolic health. Understanding both sides of this relationship is essential for meaningful clinical management.</li>
           <li><strong>Full Blood Count + CRP:</strong> anaemia affects energy and recovery; systemic inflammation (elevated CRP) suppresses gonadal function and amplifies the clinical picture.</li>
@@ -128,12 +132,13 @@ export default function MensTestosteronePage() {
 
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>What you get back:</strong> a GP-reviewed written report covering every marker with a clinical interpretation of what the pattern means for your symptoms including the free testosterone calculation and your cardiovascular risk picture. Clear next-step recommendation included.
+            <strong style={{ color: "var(--fo)" }}>What you get back:</strong> a GP-reviewed written report covering every marker with a clinical interpretation of what the pattern means for your symptoms including the free testosterone calculation, your adrenal and androgen picture (DHEA-S and morning cortisol) and your cardiovascular risk picture. Clear next-step recommendation included.
           </p>
         </div>
 
         <ul className="chk">
-          <li>Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin.</li>
+          <li>Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S.</li>
+          <li>Morning cortisol, taken as a single serum sample.</li>
           <li>Lp(a), fasting insulin, HbA1c metabolic and cardiovascular crossover.</li>
           <li>Full Blood Count + CRP.</li>
           <li>GP-reviewed written report with personalised clinical interpretation and next-step plan.</li>
@@ -148,7 +153,7 @@ export default function MensTestosteronePage() {
               { href: "/blood-tests/womens-hormones", label: "Women's Hormone & Perimenopause Panel", note: "£375" },
               { href: "/blood-tests/fatigue-energy", label: "Fatigue & Energy Deep Screen", note: "£249" },
               { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Blood Test", note: "From £795" },
-              { href: "/blood-tests/optimiser-baseline", label: "Optimiser's Baseline", note: "£449" },
+              { href: "/blood-tests/optimiser-baseline", label: "Optimiser's Baseline", note: "£549" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
             ].map((t) => (
               <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>

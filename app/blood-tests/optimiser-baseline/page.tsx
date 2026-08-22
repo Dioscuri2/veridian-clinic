@@ -5,11 +5,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic" },
   description:
-    "A comprehensive performance and longevity blood panel for health optimisers. IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, testosterone, cortisol, fasting insulin, full organ safety. GP-reviewed written report. £449.",
+    "A comprehensive performance and longevity blood panel for health optimisers. IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, testosterone, morning cortisol, fasting insulin, full organ safety. GP-reviewed written report and a GP-led 30-minute consultation included. £549.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/optimiser-baseline" },
   openGraph: {
     title: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic",
-    description: "The health optimiser's baseline panel. IGF-1, ApoB, Lp(a), testosterone, cortisol, Adiponectin and full organ safety. GP-reviewed written report. £449.",
+    description: "The health optimiser's baseline panel. IGF-1, ApoB, Lp(a), testosterone, morning cortisol, Adiponectin and full organ safety. GP-reviewed written report and a GP-led 30-minute consultation included. £549.",
     url: "https://veridianclinic.com/blood-tests/optimiser-baseline",
     type: "article",
   },
@@ -39,7 +39,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Private Optimiser Baseline Blood Test UK: Performance and Longevity Panel",
-  description: "A private health optimiser baseline panel including IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, testosterone, cortisol, fasting insulin, Cystatin C and full organ safety markers. GP-reviewed written report with prioritised optimisation plan.",
+  description: "A private health optimiser baseline panel including IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, testosterone, morning cortisol, fasting insulin, Cystatin C and full organ safety markers. Includes a GP-reviewed written report with a prioritised optimisation plan and a GP-led 30-minute consultation to go through the results.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: { "@type": "Organization", name: "Veridian Clinic", url: "https://veridianclinic.com" },
   url: "https://veridianclinic.com/blood-tests/optimiser-baseline",
@@ -53,12 +53,12 @@ export default function OptimiserBaselinePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <ClinicalArticleLayout
-      eyebrow="Optimiser baseline panel · £449"
+      eyebrow="Optimiser baseline panel · £549"
       title="You track everything. This tells you what's actually happening."
       intro="Most people who optimise their health are doing it without a documented clinical baseline. They're training, tracking sleep, wearing a CGM, taking supplements. But they don't know their IGF-1. They don't know their ApoB. They don't know whether their insulin is quietly undermining every protocol they run. This panel changes that."
       ctas={[
-        { label: "Book The Optimiser's Baseline £449", href: "/book?tier=optimiser-baseline", variant: "primary" },
-        { label: "Book a Discovery Core consultation first", href: "/book?tier=discovery" },
+        { label: "Book The Optimiser's Baseline £549", href: "/book?tier=optimiser-baseline", variant: "primary" },
+        { label: "See all panels and pricing", href: "/assessments" },
       ]}
     >
       <h2 className="cg" style={sectionHeading}>Why a baseline matters more than a single test</h2>
@@ -66,7 +66,7 @@ export default function OptimiserBaselinePage() {
         A single result tells you where you are today. A documented baseline tells you where you are trending. Inflammation rising from 0.4 to 1.8 mg/L over three years means something very different from a single reading of 1.8 with no prior context. The same applies to IGF-1, ApoB, fasting insulin, testosterone, and every other marker in this panel.
       </p>
       <p style={paragraph}>
-        The Optimiser's Baseline is built to create that reference point. It covers longevity, metabolic function, body composition hormones, cardiovascular risk, adrenal health, and organ safety in a single blood draw, with a GP-reviewed written interpretation.
+        The Optimiser's Baseline is built to create that reference point. It covers longevity, metabolic function, body composition hormones, cardiovascular risk, adrenal health, and organ safety in a single blood draw, with a GP-reviewed written interpretation and a GP-led 30-minute consultation to go through what it means. Both are included in the £549.
       </p>
 
       <h2 className="cg" style={sectionHeading}>What the panel measures and why</h2>
@@ -94,8 +94,8 @@ export default function OptimiserBaselinePage() {
           },
           {
             category: "Adrenal and recovery capacity",
-            markers: "Cortisol (morning sample), DHEA-S",
-            detail: "Morning cortisol should peak between 7am and 9am. A blunted or elevated cortisol awakening response indicates HPA axis dysregulation, the physiological signature of chronic stress, overtraining or burnout. DHEA-S is the counter-regulatory adrenal hormone that declines predictably with age and under sustained cortisol load. The cortisol to DHEA-S ratio is a direct measure of physiological recovery capacity.",
+            markers: "Morning cortisol (single serum sample), DHEA-S",
+            detail: "Cortisol is highest in the morning, so this is drawn as a single morning serum sample and read against the morning reference range. A morning cortisol sitting outside that range is a signal of HPA axis disturbance, the physiological picture behind chronic stress, overtraining and burnout. DHEA-S is the counter-regulatory adrenal hormone that declines predictably with age and under sustained cortisol load, and the cortisol to DHEA-S ratio gives useful context on recovery capacity. This is one timed blood sample, not a series of samples across the day.",
           },
           {
             category: "Hormonal axis",
@@ -143,11 +143,14 @@ export default function OptimiserBaselinePage() {
       <p style={paragraph}>
         Dr Tosin reviews every result against both population norms and optimal longevity ranges, which are not the same thing. The written report covers: where each marker sits on the optimal-to-risk spectrum, the pattern across your metabolic, hormonal, cardiovascular and body-composition results, a prioritised list of what to address first, and specific next steps including whether any follow-up testing or clinical intervention is indicated.
       </p>
+      <p style={paragraph}>
+        A GP-led 30-minute consultation is included in the price. It is booked once your results are back, and it is a working session rather than a summary read aloud: Dr Tosin takes you through the report, explains what the pattern across your markers means for your training, recovery and long-term risk, answers your questions, and agrees with you which two or three things are worth acting on first. You are not buying the consultation separately and you are not being sold it afterwards. It is part of the £549, along with the panel and the written report.
+      </p>
       <div style={callout}>
-        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>The Optimiser's Baseline, £449</p>
+        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>The Optimiser's Baseline, £549</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
-          IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Adiponectin · Fasting insulin · HbA1c · Cortisol (AM) · DHEA-S · Total testosterone · Free testosterone (calculated) · SHBG · LH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · CRP<br />
-          GP-reviewed written baseline report · Prioritised optimisation plan · No GP referral needed · Results in 5 working days
+          IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Adiponectin · Fasting insulin · HbA1c · Morning cortisol (single serum sample) · DHEA-S · Total testosterone · Free testosterone (calculated) · SHBG · LH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · CRP<br />
+          GP-reviewed written baseline report · GP-led 30-minute consultation included · Prioritised optimisation plan · No GP referral needed · Results in 5 working days
         </p>
       </div>
 

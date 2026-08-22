@@ -158,12 +158,12 @@ TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 
    Book: veridianclinic.com/book?tier=womens-hormones
 
 2. Running on Empty — Men's Testosterone & Hormone Panel — £325
-   Markers: Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, Lp(a), fasting insulin, HbA1c, full blood count, CRP
+   Markers: Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol (single serum sample), Lp(a), fasting insulin, HbA1c, full blood count, CRP
    Best for: Low energy, brain fog, belly fat, low libido, poor gym recovery
    Book: veridianclinic.com/book?tier=mens-testosterone
 
 3. What Your Cholesterol Test Missed — Cardiovascular Risk Panel — £349
-   Markers: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, fasting insulin, full lipid profile, ApoA-I
+   Markers: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, fasting insulin, HbA1c, full lipid profile, ApoA-I
    Best for: Family history of heart disease, normal cholesterol but worried about cardiovascular risk
    Book: veridianclinic.com/book?tier=cardiovascular-risk
 
@@ -177,8 +177,9 @@ TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 
    Best for: Weight not shifting despite diet and exercise; suspected insulin resistance
    Book: veridianclinic.com/book?tier=metabolic-weight
 
-6. The Optimiser's Baseline — Performance & Longevity Panel — £449
-   Markers: IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone (calculated), SHBG, LH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, CRP
+6. The Optimiser's Baseline — Performance & Longevity Panel — £549
+   Markers: IGF-1, fasting insulin, HbA1c, morning cortisol (single serum sample), DHEA-S, total testosterone, free testosterone (calculated), SHBG, LH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, CRP
+   Includes: GP-reviewed written baseline report AND a GP-led 30-minute consultation to go through the results and agree priorities — the consultation is part of the £549, not a paid extra
    Best for: Health optimisers, biohackers, anyone on peptides or HRT wanting a safety baseline; people tracking wearable data who want blood context; pre-protocol baseline before any longevity intervention
    Book: veridianclinic.com/book?tier=optimiser-baseline
 

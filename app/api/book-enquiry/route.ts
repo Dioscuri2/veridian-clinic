@@ -16,8 +16,8 @@ async function pingDiscord(message: string) {
 
 const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
   "womens-hormones":    { code: "HSC7F_RP7 + LPA + INS", notes: "Trade £161.40 (HSC7F_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80). Do NOT add Vitamin D (25OH_VITD) — HSC7F_RP7 already contains it. HSC7F_RP7 gives total Testosterone, SHBG and FAI; free testosterone is CALCULATED from total T and SHBG, not assayed. No cortisol in this order." },
-  "mens-testosterone":  { code: "HSC7M_RP7 + LPA + INS", notes: "Trade £161.40 (HSC7M_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80). Do NOT add Free Testosterone (FREE_TEST) — HSC7M_RP7 contains total Testosterone, SHBG and FAI, so free T is CALCULATED (wastes £30.30). No DHEA-S and no cortisol in this order." },
-  "cardiovascular-risk":{ code: "RP10 + HOMO + hsCRP + INS", notes: "Trade £124.90 (RP10 £37.60 + Homocysteine £40.50 + hs-CRP £14.00 + Insulin £32.80). Do NOT add Lp(a), ApoB or Small Dense LDL — RP10 already contains all three (wastes £74.10). RP10 carries standard CRP only, so hsCRP stays. No HbA1c in this order." },
+  "mens-testosterone":  { code: "HSC7M_RP7 + LPA + INS + DHEAS + CORTISOL", notes: "Trade £209.80 (HSC7M_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80 + DHEA-S £16.00 + Cortisol £32.40). Do NOT add Free Testosterone (FREE_TEST) — HSC7M_RP7 contains total Testosterone, SHBG and FAI, so free T is CALCULATED (wastes £30.30). HSC7M_RP7 has no DHEA-S and no cortisol, so both are ordered separately. CORTISOL is a SINGLE MORNING SERUM sample — collect before 10am; it is not a cortisol awakening response or a diurnal profile." },
+  "cardiovascular-risk":{ code: "RP10 + HOMO + hsCRP + INS + HBA1_NEW", notes: "Trade £145.40 (RP10 £37.60 + Homocysteine £40.50 + hs-CRP £14.00 + Insulin £32.80 + HbA1c £20.50). Do NOT add Lp(a), ApoB or Small Dense LDL — RP10 already contains all three (wastes £74.10). RP10 carries standard CRP only, so hsCRP stays. RP10 has no HbA1c, so HBA1_NEW is ordered separately — it must stay on the order for the HbA1c claim to hold." },
   "fatigue-energy":     { code: "HSC10 + Uric Acid", notes: "HSC10 already includes insulin, vitamin D, FBC, full thyroid (TSH/FT3/FT4 with TPO and TGA antibodies), ferritin/iron/TIBC/transferrin saturation, B12, folate, HbA1c, glucose, C-peptide, CRP, magnesium, calcium, phosphate, albumin, ALP and kidney function including cystatin C and eGFR. Do NOT order Insulin (INS) or Vitamin D (25OH_VITD) on top — that wastes £59.60. Trade total £94.90." },
   "metabolic-weight":   { code: "RP3 + RP4 + URIC_ACID", notes: "Trade £72.90 (RP3 £46.00 + RP4 £18.20 + Uric Acid £8.70). Do NOT add Insulin (INS) or Lp(a) (LPA) — RP3 already contains both, plus Adiponectin, C-peptide, ApoB/ApoA-I/ApoE, sdLDL, CRP, glucose and HbA1c (wastes £60.90). HOMA-IR is calculated from RP3 insulin and glucose. No ALT/AST in this order. Leptin and Resistin are NOT offered by Randox in any form." },
   "optimiser-baseline": { code: "HSC8M or HSC8F + HSC12 + IGF1", notes: "Trade £289.20 (HSC8 £106.30 + HSC12 £134.00 + IGF-1 £48.90). Verified no waste — both base panels are needed: HSC8 uniquely adds Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL and thyroid antibodies; HSC12 uniquely adds Cortisol, DHEA-S, Testosterone, SHBG, FAI, CK/CK-MB, myoglobin and Total Antioxidant Status. ApoB is in both. IGF-1 is in neither. No FSH in this order. Leptin and Resistin are NOT offered by Randox." },
@@ -41,7 +41,7 @@ const TIER_LABELS: Record<string, string> = {
   "cardiovascular-risk": "What Your Cholesterol Test Missed (£349)",
   "fatigue-energy": "Tired of Being Told You're Fine (£249)",
   "metabolic-weight": "Why Won't The Weight Budge? (£199)",
-  "optimiser-baseline": "The Optimiser's Baseline (£449)",
+  "optimiser-baseline": "The Optimiser's Baseline (£549)",
 };
 
 function isValidEmail(e: string) {
