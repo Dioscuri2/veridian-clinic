@@ -99,8 +99,8 @@ export default function OptimiserBaselinePage() {
           },
           {
             category: "Hormonal axis",
-            markers: "Total testosterone, Free testosterone (calculated), SHBG, LH, FSH",
-            detail: "Total testosterone can appear normal while free testosterone is functionally low. SHBG, which binds testosterone, is the variable that determines biological availability. LH and FSH establish whether the issue originates at pituitary or testicular level. Relevant for both men and women experiencing low energy, poor recovery, reduced drive or body composition resistance.",
+            markers: "Total testosterone, Free testosterone (calculated), SHBG, LH",
+            detail: "Total testosterone can appear normal while free testosterone is functionally low. SHBG, which binds testosterone, is the variable that determines biological availability. LH establishes whether the issue originates at pituitary or gonadal level. Relevant for both men and women experiencing low energy, poor recovery, reduced drive or body composition resistance.",
           },
           {
             category: "Precision organ markers",
@@ -114,8 +114,8 @@ export default function OptimiserBaselinePage() {
           },
           {
             category: "Inflammation",
-            markers: "hs-CRP",
-            detail: "High-sensitivity CRP measures systemic low-grade inflammation, the underlying driver of cardiovascular disease, metabolic dysfunction, accelerated ageing and cognitive decline. A critical longevity marker. In an optimiser, a chronically elevated hs-CRP is often the first signal that recovery is not matching training load.",
+            markers: "CRP",
+            detail: "CRP measures systemic low-grade inflammation, the underlying driver of cardiovascular disease, metabolic dysfunction, accelerated ageing and cognitive decline. A critical longevity marker. In an optimiser, a chronically elevated CRP is often the first signal that recovery is not matching training load.",
           },
         ].map(item => (
           <div key={item.category} style={callout}>
@@ -146,7 +146,7 @@ export default function OptimiserBaselinePage() {
       <div style={callout}>
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>The Optimiser's Baseline, £449</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
-          IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Adiponectin · Fasting insulin · HbA1c · Cortisol (AM) · DHEA-S · Total testosterone · Free testosterone · SHBG · LH · FSH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · hs-CRP<br />
+          IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Adiponectin · Fasting insulin · HbA1c · Cortisol (AM) · DHEA-S · Total testosterone · Free testosterone (calculated) · SHBG · LH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · CRP<br />
           GP-reviewed written baseline report · Prioritised optimisation plan · No GP referral needed · Results in 5 working days
         </p>
       </div>

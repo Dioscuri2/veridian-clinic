@@ -61,7 +61,7 @@ export default function PeriGuideUpsells() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 24px", marginBottom: 22 }}>
               {[
                 "Hormones: Oestradiol, Progesterone, FSH, LH",
-                "Testosterone (Total & Free) + DHEA-S",
+                "Testosterone (total, free calculated) + DHEA-S",
                 "Full Thyroid: TSH, fT3, fT4 + Antibodies",
                 "Metabolic: HbA1c, Insulin, C-Peptide, Adiponectin",
                 "Cardiovascular: Full lipid + Apolipoproteins",

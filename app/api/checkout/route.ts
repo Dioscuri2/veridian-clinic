@@ -25,7 +25,7 @@ const tierCatalog: Record<
     name: "Veridian Women's Advanced Health Panel",
     amount: 37500,
     description:
-      "150+ marker comprehensive panel (Advanced GP3 Female + DHEA-S + Free Testosterone). Hormones: Oestradiol, Progesterone, FSH, LH, Testosterone (Total & Free), DHEA-S, Prolactin, SHBG. Thyroid: TSH, fT3, fT4, Anti-TG, Anti-TPO. Metabolic: Glucose, HbA1c, Insulin, C-Peptide, Adiponectin. Cardiovascular: Full lipid panel + Apolipoproteins + Lipoprotein(a) + Cardiovascular Risk Score. Blood: Full Blood Count. Nutrition: Vitamin D, B12, Folate, Iron status, Ferritin, Total Antioxidant Status. Organ health: Liver, Kidney (inc. Cystatin C), Pancreatic. Bone: Calcium, PTH, Vitamin D. Inflammation: hsCRP, Complement C3/C4, Immunoglobulins. Digestive: H. Pylori, Anti-TTG. Tumour marker: CA-125. Allergy: IgE. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
+      "150+ marker comprehensive panel (Advanced GP3 Female + DHEA-S). Hormones: Oestradiol, Progesterone, FSH, LH, Testosterone (total, with free testosterone calculated from SHBG), DHEA-S, Prolactin, SHBG. Thyroid: TSH, fT3, fT4, Anti-TG, Anti-TPO. Metabolic: Glucose, HbA1c, Insulin, C-Peptide, Adiponectin. Cardiovascular: Full lipid panel + Apolipoproteins + Lipoprotein(a) + Cardiovascular Risk Score. Blood: Full Blood Count. Nutrition: Vitamin D, B12, Folate, Iron status, Ferritin, Total Antioxidant Status. Organ health: Liver, Kidney (inc. Cystatin C), Pancreatic. Bone: Calcium, PTH, Vitamin D. Inflammation: hsCRP, Complement C3/C4, Immunoglobulins. Digestive: H. Pylori, Anti-TTG. Tumour marker: CA-125. Allergy: IgE. GP-reviewed digital report included. Clinic blood draw: £30 payable at Randox clinic.",
     successPath: "/book/thank-you",
     cancelPath: "/perimenopause-guide",
   },
@@ -114,7 +114,7 @@ const tierCatalog: Record<
     name: "Is It My Hormones?, Women's Hormone & Perimenopause Panel",
     amount: 37500,
     description:
-      "Full female hormonal profile: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, cortisol. Thyroid: TSH, FT3, FT4, TPO antibodies. Plus Lp(a), fasting insulin, HbA1c, vitamin D. GP-reviewed written report with personalised clinical interpretation included.",
+      "Full female hormonal profile: oestradiol, FSH, LH, progesterone, testosterone (total, with free testosterone calculated from SHBG), SHBG, prolactin. Thyroid: TSH, FT3, FT4, TPO antibodies. Plus Lp(a), fasting insulin, HbA1c, vitamin D. GP-reviewed written report with personalised clinical interpretation included.",
     successPath: "/book/thank-you",
     cancelPath: "/blood-tests/womens-hormones",
   },
@@ -122,7 +122,7 @@ const tierCatalog: Record<
     name: "Running on Empty, Men's Testosterone & Hormone Panel",
     amount: 32500,
     description:
-      "Total + free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, cortisol. Lp(a), fasting insulin, HbA1c, Full Blood Count, hs-CRP. GP-reviewed written report with personalised clinical interpretation included.",
+      "Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin. Lp(a), fasting insulin, HbA1c, Full Blood Count, CRP. GP-reviewed written report with personalised clinical interpretation included.",
     successPath: "/book/thank-you",
     cancelPath: "/blood-tests/mens-testosterone",
   },
@@ -130,7 +130,7 @@ const tierCatalog: Record<
     name: "What Your Cholesterol Test Missed, Cardiovascular Risk Panel",
     amount: 34900,
     description:
-      "ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, full lipid profile, ApoA-I, fasting insulin, HbA1c. GP-reviewed cardiovascular risk summary with written interpretation and next-step recommendations.",
+      "ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, full lipid profile, ApoA-I, fasting insulin. GP-reviewed cardiovascular risk summary with written interpretation and next-step recommendations.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },
@@ -146,7 +146,7 @@ const tierCatalog: Record<
     name: "Why Won't The Weight Budge?, Metabolic Weight Resistance Panel",
     amount: 19900,
     description:
-      "Fasting insulin + HbA1c + HOMA-IR, uric acid, Lp(a), leptin, adiponectin, TSH, liver markers (ALT, AST), fasting lipid profile. GP-reviewed metabolic interpretation with prioritised recommendations.",
+      "Fasting insulin + HbA1c + HOMA-IR, uric acid, Lp(a), adiponectin, TSH, fasting lipid profile. GP-reviewed metabolic interpretation with prioritised recommendations.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },
@@ -154,7 +154,7 @@ const tierCatalog: Record<
     name: "The Optimiser's Baseline, Performance & Longevity Panel",
     amount: 44900,
     description:
-      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total + free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Red Cell Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP. GP-reviewed baseline report included.",
+      "IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone (calculated), SHBG, LH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, Full Blood Count, liver function (ALT/AST/GGT), kidney function + eGFR, CRP. GP-reviewed baseline report included.",
     successPath: "/book/thank-you",
     cancelPath: "/assessments",
   },

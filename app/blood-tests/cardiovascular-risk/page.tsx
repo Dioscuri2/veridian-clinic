@@ -80,7 +80,7 @@ export default function CardiovascularRiskPage() {
           { marker: "Homocysteine", why: "An amino acid that damages artery walls at elevated levels. Strongly associated with cardiovascular disease, stroke, and cognitive decline. Correctable with B vitamins, but only if measured." },
           { marker: "Small dense LDL", why: "Standard cholesterol tests measure LDL quantity, not particle size. Small dense LDL particles are far more atherogenic than large LDL. High small dense LDL with normal total LDL is a common hidden risk pattern." },
           { marker: "hs-CRP", why: "High-sensitivity C-reactive protein measures systemic inflammation, the process that drives plaque rupture. Independently predictive of cardiovascular events even with normal cholesterol." },
-          { marker: "Fasting insulin and HbA1c", why: "Insulin resistance accelerates atherosclerosis years before glucose rises. The link between metabolic dysfunction and cardiovascular risk is causal, not just correlational." },
+          { marker: "Fasting insulin", why: "Insulin resistance accelerates atherosclerosis years before glucose rises. The link between metabolic dysfunction and cardiovascular risk is causal, not just correlational." },
           { marker: "Full lipid profile", why: "Total cholesterol, LDL, HDL, triglycerides, and TC:HDL ratio, the context for interpreting ApoB and particle data." },
           { marker: "ApoA-I", why: "The main protein on HDL particles. A low ApoA-I relative to ApoB signals poor reverse cholesterol transport, meaning the body is less effective at clearing cholesterol from artery walls. The ApoB:ApoA-I ratio is one of the strongest independent predictors of cardiovascular risk in large epidemiological studies." },
         ].map(item => (
@@ -143,7 +143,7 @@ export default function CardiovascularRiskPage() {
       <div style={callout}>
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>What Your Cholesterol Test Missed, £349</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
-          ApoB · Lp(a) · Homocysteine · Small dense LDL · hs-CRP · Fasting insulin · HbA1c · Full lipid profile · ApoA-I<br />
+          ApoB · Lp(a) · Homocysteine · Small dense LDL · hs-CRP · Fasting insulin · Full lipid profile · ApoA-I<br />
           GP-reviewed written cardiovascular risk interpretation · No GP referral needed · Results in 5 working days
         </p>
       </div>

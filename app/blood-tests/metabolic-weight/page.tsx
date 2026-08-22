@@ -5,11 +5,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Private Metabolic Weight Resistance Blood Test UK | Veridian Clinic" },
   description:
-    "Eating well and exercising but weight won't shift? Fasting insulin, HOMA-IR, leptin, adiponectin, uric acid and thyroid, the metabolic panel that explains weight resistance. £199.",
+    "Eating well and exercising but weight won't shift? Fasting insulin, HOMA-IR, adiponectin, uric acid and thyroid, the metabolic panel that explains weight resistance. £199.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/metabolic-weight" },
   openGraph: {
     title: "Private Metabolic Weight Resistance Blood Test UK | Veridian Clinic",
-    description: "Why won't the weight budge? Insulin resistance, leptin, thyroid and metabolic markers tested privately. GP-reviewed written report. £199.",
+    description: "Why won't the weight budge? Insulin resistance, adiponectin, thyroid and metabolic markers tested privately. GP-reviewed written report. £199.",
     url: "https://veridianclinic.com/blood-tests/metabolic-weight",
     type: "article",
   },
@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     "metabolic weight resistance blood test UK",
     "insulin resistance blood test UK private",
     "why won't weight shift blood test UK",
-    "leptin blood test UK",
     "HOMA-IR test UK private",
     "fasting insulin weight loss test UK",
     "thyroid weight gain blood test UK",
@@ -38,7 +37,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Private Metabolic Weight Resistance Blood Test UK",
-  description: "A private metabolic weight panel including fasting insulin, HOMA-IR, leptin, adiponectin, uric acid, Lp(a) and thyroid, the markers that explain why weight won't shift despite diet and exercise.",
+  description: "A private metabolic weight panel including fasting insulin, HOMA-IR, adiponectin, uric acid, Lp(a) and thyroid, the markers that explain why weight won't shift despite diet and exercise.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: { "@type": "Organization", name: "Veridian Clinic", url: "https://veridianclinic.com" },
   url: "https://veridianclinic.com/blood-tests/metabolic-weight",
@@ -96,7 +95,6 @@ export default function MetabolicWeightPage() {
         <li><strong>Lp(a)</strong>, cardiovascular risk marker that rises with metabolic dysfunction</li>
         <li><strong>Adiponectin</strong>, anti-inflammatory fat hormone; low in metabolic syndrome</li>
         <li><strong>TSH</strong>, thyroid function screen</li>
-        <li><strong>Liver markers (ALT, AST)</strong>, metabolic liver health, closely linked to insulin resistance</li>
         <li><strong>Fasting lipid profile</strong>, triglycerides and HDL pattern characteristic of metabolic syndrome</li>
       </ul>
 
@@ -112,7 +110,7 @@ export default function MetabolicWeightPage() {
       <div style={callout}>
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Why Won't The Weight Budge? Panel, £199</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
-          Fasting insulin · HbA1c · HOMA-IR · Uric acid · Lp(a) · Adiponectin · TSH · ALT · AST · Full fasting lipid profile<br />
+          Fasting insulin · HbA1c · HOMA-IR · Uric acid · Lp(a) · Adiponectin · TSH · Full fasting lipid profile<br />
           GP-reviewed metabolic interpretation · Prioritised action plan · No GP referral needed · Results in 5 working days
         </p>
       </div>

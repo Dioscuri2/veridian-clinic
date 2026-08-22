@@ -92,7 +92,7 @@ const tests = [
     slug: "mens-testosterone",
     title: "Testosterone & Men's Hormone Blood Test",
     excerpt:
-      "Total testosterone alone misses the picture in most men where free testosterone determined by SHBG is the clinically relevant value. This panel measures free testosterone, SHBG, LH, FSH, DHEA-S, cortisol, Lp(a) and fasting insulin. GP-reviewed.",
+      "Total testosterone alone misses the picture in most men where free testosterone determined by SHBG is the clinically relevant value. This panel measures total testosterone with free testosterone calculated from SHBG, plus LH, FSH, prolactin, Lp(a) and fasting insulin. GP-reviewed.",
     tag: "Men's Health",
     price: "£325",
     includedIn: "Running on Empty Panel",
@@ -120,7 +120,7 @@ const tests = [
     slug: "metabolic-weight",
     title: "Metabolic Weight Resistance Panel",
     excerpt:
-      "If diet and exercise are not shifting the weight, the answer is almost always in the blood. Fasting insulin, HOMA-IR, leptin, adiponectin, uric acid and thyroid markers reveal the specific metabolic block that standard tests never look for.",
+      "If diet and exercise are not shifting the weight, the answer is almost always in the blood. Fasting insulin, HOMA-IR, adiponectin, uric acid and thyroid markers reveal the specific metabolic block that standard tests never look for.",
     tag: "Metabolic Health",
     price: "£199",
     includedIn: "Why Won't The Weight Budge? Panel",

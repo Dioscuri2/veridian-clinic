@@ -153,17 +153,17 @@ A: PERC stands for: Body Strength & Fitness, Energy & Metabolism, Rest & Repair,
 TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 working days
 
 1. Is It My Hormones? — Women's Hormone & Perimenopause Panel — £375
-   Markers: Oestradiol, FSH, LH, progesterone, testosterone (total + free), SHBG, prolactin, cortisol, TSH, FT3, FT4, TPO antibodies, Lp(a), fasting insulin, HbA1c, vitamin D
+   Markers: Oestradiol, FSH, LH, progesterone, testosterone (total, with free testosterone calculated from SHBG), SHBG, prolactin, TSH, FT3, FT4, TPO antibodies, Lp(a), fasting insulin, HbA1c, vitamin D
    Best for: Brain fog, poor sleep, weight gain, mood changes, irregular periods, perimenopause symptoms, "told blood tests are normal but don't feel right"
    Book: veridianclinic.com/book?tier=womens-hormones
 
 2. Running on Empty — Men's Testosterone & Hormone Panel — £325
-   Markers: Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, cortisol, Lp(a), fasting insulin, HbA1c, full blood count, hs-CRP
+   Markers: Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, Lp(a), fasting insulin, HbA1c, full blood count, CRP
    Best for: Low energy, brain fog, belly fat, low libido, poor gym recovery
    Book: veridianclinic.com/book?tier=mens-testosterone
 
 3. What Your Cholesterol Test Missed — Cardiovascular Risk Panel — £349
-   Markers: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, fasting insulin, HbA1c, full lipid profile, ApoA-I
+   Markers: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, fasting insulin, full lipid profile, ApoA-I
    Best for: Family history of heart disease, normal cholesterol but worried about cardiovascular risk
    Book: veridianclinic.com/book?tier=cardiovascular-risk
 
@@ -173,12 +173,12 @@ TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 
    Book: veridianclinic.com/book?tier=fatigue-energy
 
 5. Why Won't The Weight Budge? — Metabolic Weight Resistance Panel — £199
-   Markers: Fasting insulin, HbA1c, HOMA-IR, uric acid, Lp(a), leptin, adiponectin, TSH, ALT, AST, fasting lipid profile
+   Markers: Fasting insulin, HbA1c, HOMA-IR, uric acid, Lp(a), adiponectin, TSH, fasting lipid profile
    Best for: Weight not shifting despite diet and exercise; suspected insulin resistance
    Book: veridianclinic.com/book?tier=metabolic-weight
 
 6. The Optimiser's Baseline — Performance & Longevity Panel — £449
-   Markers: IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone, SHBG, LH, FSH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, hs-CRP
+   Markers: IGF-1, fasting insulin, HbA1c, cortisol (AM), DHEA-S, total testosterone, free testosterone (calculated), SHBG, LH, ApoB, Lp(a), sdLDL, ApoA-I, full lipid profile, Adiponectin, Cystatin C, Magnesium, Uric Acid, full blood count, liver function (ALT/AST/GGT), kidney function + eGFR, CRP
    Best for: Health optimisers, biohackers, anyone on peptides or HRT wanting a safety baseline; people tracking wearable data who want blood context; pre-protocol baseline before any longevity intervention
    Book: veridianclinic.com/book?tier=optimiser-baseline
 

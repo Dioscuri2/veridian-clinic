@@ -156,7 +156,19 @@ export const PANELS: Panel[] = [
     adGroup: "Insulin Resistance",
     status: "live",
     kind: "panel",
-    supplier: {}, // NOT yet audited — likely the tightest margin, audit first
+    supplier: {
+      unisex: {
+        verified: true,
+        verifiedOn: "2026-08-22",
+        lines: [
+          { code: "RP3", name: "Metabolic Syndrome Extended", tradePence: GBP(46) },
+          { code: "RP4", name: "Thyroid", tradePence: GBP(18.2) },
+          { code: "URIC_ACID", name: "Uric Acid", tradePence: GBP(8.7) },
+        ],
+        notes:
+          "Trade £72.90 — 63.4% margin at £199. REMOVED Fasting Insulin (INS £32.80) and Lp(a) (LPA £28.10): RP3 already contains both, plus Adiponectin, C-peptide, ApoB/ApoA-I/ApoE, sdLDL, CRP, glucose and HbA1c. Old order was £133.80. HOMA-IR is CALCULATED from RP3's fasting insulin and glucose, not a separate Randox line. RP3+RP4+URIC_ACID contain NO ALT and NO AST — do not claim liver markers on this panel. Leptin and Resistin are NOT offered by Randox in any form.",
+      },
+    },
   },
   {
     slug: "cardiovascular-risk",
@@ -170,7 +182,20 @@ export const PANELS: Panel[] = [
     adGroup: "Metabolic Blood Test",
     status: "live",
     kind: "panel",
-    supplier: {}, // NOT yet audited
+    supplier: {
+      unisex: {
+        verified: true,
+        verifiedOn: "2026-08-22",
+        lines: [
+          { code: "RP10", name: "Heart Health", tradePence: GBP(37.6) },
+          { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
+          { code: "hsCRP", name: "hs-CRP", tradePence: GBP(14) },
+          { code: "INS", name: "Fasting Insulin", tradePence: GBP(32.8) },
+        ],
+        notes:
+          "Trade £124.90 — 64.2% margin at £349. REMOVED Lp(a) (LPA £28.10), ApoB (APO_B) and Small Dense LDL (SLDL): RP10 already contains all three, plus ApoA-I, ApoE, the ApoB/ApoA-I ratio, CRP and the full lipid profile. Old order was £199.00. hsCRP is kept deliberately — RP10 carries standard CRP, not the high-sensitivity assay. RP10 contains NO HbA1c — do not claim HbA1c on this panel (HBA1_NEW is £20.50 if Dr Tosin wants the claim back).",
+      },
+    },
   },
   {
     slug: "womens-hormones",
@@ -184,7 +209,19 @@ export const PANELS: Panel[] = [
     adGroup: "Hormones",
     status: "live",
     kind: "panel",
-    supplier: {}, // NOT yet audited
+    supplier: {
+      female: {
+        verified: true,
+        verifiedOn: "2026-08-22",
+        lines: [
+          { code: "HSC7F_RP7", name: "Standard Screen Plus Female, with Hormonal Health", tradePence: GBP(100.5) },
+          { code: "LPA", name: "Lipoprotein (a)", tradePence: GBP(28.1) },
+          { code: "INS", name: "Fasting Insulin", tradePence: GBP(32.8) },
+        ],
+        notes:
+          "Trade £161.40 — 57.0% margin at £375. REMOVED Vitamin D (25OH_VITD): HSC7F_RP7 already contains it. Old order was £188.20. HSC7F_RP7 gives total Testosterone, SHBG and FAI (Free Androgen Index) — free testosterone is CALCULATED from total T and SHBG, never directly assayed, so copy must say 'free testosterone (calculated)'. Also included: Oestradiol, FSH, LH, Progesterone, Prolactin, TSH/FT3/FT4 with Anti-Tg and Anti-TPO, full blood count, HbA1c, CA-125, liver, kidney and eGFR. Contains NO cortisol — do not claim cortisol on this panel (CORTISOL is £32.40 if Dr Tosin wants the claim back).",
+      },
+    },
   },
   {
     slug: "mens-testosterone",
@@ -198,7 +235,19 @@ export const PANELS: Panel[] = [
     adGroup: "Hormones",
     status: "live",
     kind: "panel",
-    supplier: {}, // NOT yet audited
+    supplier: {
+      male: {
+        verified: true,
+        verifiedOn: "2026-08-22",
+        lines: [
+          { code: "HSC7M_RP7", name: "Standard Screen Plus Male, with Hormonal Health", tradePence: GBP(100.5) },
+          { code: "LPA", name: "Lipoprotein (a)", tradePence: GBP(28.1) },
+          { code: "INS", name: "Fasting Insulin", tradePence: GBP(32.8) },
+        ],
+        notes:
+          "Trade £161.40 — 50.3% margin at £325. REMOVED Free Testosterone (FREE_TEST £30.30): HSC7M_RP7 contains total Testosterone, SHBG and FAI (Free Androgen Index), so free testosterone is CALCULATED from total T and SHBG — never a directly measured assay. Copy must say 'free testosterone (calculated)'. Old order was £191.70. Also included: FSH, LH, Prolactin, Oestradiol, TSH/FT3/FT4 with Anti-Tg and Anti-TPO, full blood count, HbA1c, TPSA, Vitamin D, liver, kidney and eGFR. Contains NO DHEA-S and NO cortisol — do not claim either (DHEAS £16.00 + CORTISOL £32.40 would restore both at £209.80 trade = 35.4% margin; Dr Tosin's call).",
+      },
+    },
   },
   {
     slug: "optimiser-baseline",
@@ -212,7 +261,33 @@ export const PANELS: Panel[] = [
     adGroup: "Health MOT",
     status: "live",
     kind: "panel",
-    supplier: {}, // NOT yet audited — HSC8M/F Advanced GP2 (£106.30 trade) is the likely base
+    // MARGIN FLAG (2026-08-22): at 35.6% this is the THINNEST product in the
+    // line — every other panel is 46%+. Not repriced in this pass. A reprice to
+    // ~£499 would take it to 42.0% (trade £289.20). Dr Tosin's decision.
+    supplier: {
+      female: {
+        verified: true,
+        verifiedOn: "2026-08-22",
+        lines: [
+          { code: "HSC8F", name: "Advanced GP2 Female", tradePence: GBP(106.3) },
+          { code: "HSC12", name: "Sports Performance", tradePence: GBP(134) },
+          { code: "IGF1", name: "Insulin-like Growth Factor-1", tradePence: GBP(48.9) },
+        ],
+        notes:
+          "Trade £289.20 — 35.6% margin at £449. NOTHING removed: verified as no waste, do NOT 'optimise' this order later. HSC8F and HSC12 share 39 analytes, but HSC8F's 10 unique lines are exactly what this page sells — Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL, Anti-Tg and Anti-TPO, plus CA-125. NOTE: ApoB is in BOTH panels, so the old 'ApoB is unique to HSC8' assumption was wrong. HSC12 'Sports Performance' is CONFIRMED to contain CORTISOL and DHEAS, so the page's morning-cortisol and DHEA-S claims are verified; HSC12 also brings total Testosterone, SHBG, FAI, LH, CK, CK-MB, myoglobin, Total Antioxidant Status, B12 and folate. IGF-1 is in neither, so IGF1 £48.90 is required. Neither panel contains FSH — do not claim FSH on this panel.",
+      },
+      male: {
+        verified: true,
+        verifiedOn: "2026-08-22",
+        lines: [
+          { code: "HSC8M", name: "Advanced GP2 Male", tradePence: GBP(106.3) },
+          { code: "HSC12", name: "Sports Performance", tradePence: GBP(134) },
+          { code: "IGF1", name: "Insulin-like Growth Factor-1", tradePence: GBP(48.9) },
+        ],
+        notes:
+          "Trade £289.20 — 35.6% margin at £449. NOTHING removed: verified as no waste, do NOT 'optimise' this order later. HSC8M and HSC12 share 39 analytes, but HSC8M's 10 unique lines are exactly what this page sells — Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL, Anti-Tg and Anti-TPO, plus TPSA. NOTE: ApoB is in BOTH panels, so the old 'ApoB is unique to HSC8' assumption was wrong. HSC12 'Sports Performance' is CONFIRMED to contain CORTISOL and DHEAS, so the page's morning-cortisol and DHEA-S claims are verified; HSC12 also brings total Testosterone, SHBG, FAI, LH, CK, CK-MB, myoglobin, Total Antioxidant Status, B12 and folate. IGF-1 is in neither, so IGF1 £48.90 is required. Neither panel contains FSH — do not claim FSH on this panel.",
+      },
+    },
   },
   {
     slug: "micronutrient-panel",
@@ -280,12 +355,13 @@ export const PANELS: Panel[] = [
     supplier: {
       female: {
         verified: true,
-        verifiedOn: "2026-08-19",
+        verifiedOn: "2026-08-22",
         lines: [
           { code: "HSC9F", name: "Advanced GP3 Female", tradePence: GBP(185.9) },
+          { code: "DHEAS", name: "DHEA-S", tradePence: GBP(16) },
         ],
         notes:
-          "Repriced £295 → £375 on 2026-08-21 to match the Women's Health headline price. Ordered as HSC9F £185.90 + DHEA-S (DHEAS) £16.00 + Free Testosterone (FREE_TEST) £30.30 = £232.20 trade = 38.1% at £375 (was 21.3% at £295). NOTE: this does NOT match Women's Health's 49.8% — same price, higher trade cost, because Women's Health runs on the cheaper HSC7F_RP7 £100.50 bundle. DHEA-S and Free Testosterone are assumed add-ons: HSC9F's analyte list has NOT been read from Nexus, so if GP3F already contains them the real trade is £185.90 (50.4%). Verify before treating 38.1% as final. Checkout copy listing H. pylori and Anti-TTG is ACCURATE (both are in GP3F).",
+          "Repriced £295 → £375 on 2026-08-21 to match the Women's Health headline price. Trade £201.90 — 46.2% margin at £375. REMOVED Free Testosterone (FREE_TEST £30.30): HSC9F contains total Testosterone, SHBG and FAI (Free Androgen Index), so free testosterone is CALCULATED from total T and SHBG, not a directly measured assay — copy must say 'free testosterone (calculated)'. Old order was £232.20. DHEA-S is genuinely absent from HSC9F, so DHEAS £16.00 stays. This still does not match Women's Health's margin at the same price because Women's Health runs on the cheaper HSC7F_RP7 £100.50 bundle. Checkout copy listing H. pylori and Anti-TTG is ACCURATE (both are in HSC9F). HSC9F contains NO cortisol.",
       },
     },
   },

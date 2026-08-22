@@ -85,7 +85,7 @@ export default function WomensHormonesPage() {
 
         <h2 className="cg" style={sectionHeading}>Why your GP blood test came back normal</h2>
         <p style={paragraph}>
-          A standard NHS blood test typically checks full blood count and, if thyroid disease is suspected, TSH. That is what "normal bloods" usually means. It does not include oestradiol, progesterone, FSH, LH, testosterone, SHBG, cortisol, prolactin, or Lp(a). It does not measure fasting insulin, which is the primary metabolic driver of perimenopausal weight gain and hormonal disruption in PCOS.
+          A standard NHS blood test typically checks full blood count and, if thyroid disease is suspected, TSH. That is what "normal bloods" usually means. It does not include oestradiol, progesterone, FSH, LH, testosterone, SHBG, prolactin, or Lp(a). It does not measure fasting insulin, which is the primary metabolic driver of perimenopausal weight gain and hormonal disruption in PCOS.
         </p>
         <p style={paragraph}>
           Many women also carry elevated Lp(a), a genetically determined cardiovascular risk factor that rises in approximately 60% of women during hormonal transition and does not fall after menopause. A raised Lp(a) does not show on a standard cholesterol test. It requires a targeted cardiovascular lipid panel to find.
@@ -101,7 +101,6 @@ export default function WomensHormonesPage() {
           <li><strong>SHBG (Sex Hormone Binding Globulin):</strong> determines how much testosterone and oestradiol is biologically active. High SHBG leaves total testosterone normal while free testosterone is functionally low, affecting energy, drive and mood.</li>
           <li><strong>Testosterone (total + free):</strong> frequently low in women over 40 and almost never requested in standard GP panels. Low testosterone in women causes fatigue, low drive, cognitive changes and difficulty maintaining muscle. The hormone most directly relevant to libido.</li>
           <li><strong>Thyroid (TSH, FT3, FT4 + TPO antibodies):</strong> thyroid dysfunction is 5 to 8 times more common in women than men and peaks during the perimenopausal decade. Subclinical hypothyroidism produces symptoms indistinguishable from perimenopause. TPO antibodies identify autoimmune thyroid disease before TSH becomes abnormal.</li>
-          <li><strong>Cortisol:</strong> chronic stress elevates cortisol, suppresses sex hormone production and disrupts sleep architecture, amplifying perimenopausal symptoms. Cortisol also affects SHBG, thyroid conversion and insulin sensitivity.</li>
           <li><strong>Lipoprotein (a):</strong> rises in approximately 60% of women during perimenopause. Genetically determined and hormonally modulated. A high Lp(a) carries significant lifetime cardiovascular risk that standard cholesterol tests will not detect.</li>
           <li><strong>Fasting insulin + HbA1c:</strong> insulin resistance worsens with oestrogen decline. This is the primary metabolic mechanism behind perimenopausal weight gain, particularly abdominal. High fasting insulin drives hormonal disruption and is the most commonly missed metabolic driver in this age group.</li>
           <li><strong>Vitamin D:</strong> deficiency is extremely common and worsens fatigue, mood and bone turnover, all of which worsen in perimenopause.</li>
@@ -129,7 +128,7 @@ export default function WomensHormonesPage() {
         <div style={callout}>
           <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Is It My Hormones? Panel, £375</p>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
-            Oestradiol, FSH, LH, Progesterone, Prolactin, Testosterone (total + free), SHBG, Cortisol, Thyroid (TSH, FT3, FT4 + TPO antibodies), Lp(a), Fasting Insulin, HbA1c, Vitamin D<br />
+            Oestradiol, FSH, LH, Progesterone, Prolactin, Testosterone (total, with free testosterone calculated from SHBG), SHBG, Thyroid (TSH, FT3, FT4 + TPO antibodies), Lp(a), Fasting Insulin, HbA1c, Vitamin D<br />
             GP-reviewed written report with personalised clinical interpretation. No GP referral needed. Results in 5 working days.
           </p>
         </div>
