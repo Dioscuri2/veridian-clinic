@@ -38,13 +38,13 @@ const pillars = [
     href: "/discovery-call",
     tag: "Private GP",
     title: "Private GP consultations",
-    body: "Unhurried appointments with a GMC-registered GP who has time to actually listen. No 10-minute cap, no waiting weeks for an appointment. Bring the concern the NHS never had time for.",
+    body: "Unhurried appointments with a GMC-registered GP who has time to listen properly. No ten-minute cap, no waiting weeks for an appointment. Bring the concern the NHS never had time for.",
   },
   {
     href: "/blood-tests",
     tag: "Screening",
     title: "Advanced blood tests & screening",
-    body: "GP-ordered testing for the markers standard NHS panels leave out ApoB, fasting insulin, Lp(a), biological age and full metabolic screening, interpreted by a doctor with a written action plan.",
+    body: "GP-ordered testing for the markers standard NHS panels leave out: ApoB, fasting insulin, Lp(a), biological age and full metabolic screening, interpreted by a doctor with a written action plan.",
   },
   {
     href: "/weight-loss",
@@ -63,7 +63,7 @@ const pillars = [
 const faqs = [
   {
     q: "Do I need an NHS referral to see a private GP in Cambridge?",
-    a: "No. You can book directly with Veridian Clinic no GP referral is required. We handle all clinical ordering, including blood tests and private prescriptions where appropriate.",
+    a: "No. You can book directly with Veridian Clinic; no GP referral is required. We handle all clinical ordering, including blood tests and private prescriptions where appropriate.",
   },
   {
     q: "Where are you based in Cambridge?",
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     q: "Where are the blood tests actually done?",
-    a: "Blood tests are carried out at a Randox clinic, or through a home phlebotomy kit posted to you they are not taken at the consultation location. Your GP orders the right panel, and the results come back with a written interpretation and action plan.",
+    a: "Blood tests are carried out at a Randox clinic, or through a home phlebotomy kit posted to you; they are not taken at the consultation location. Your GP orders the right panel, and the results come back with a written interpretation and action plan.",
   },
   {
     q: "Can I be seen by video instead of in person?",
@@ -147,7 +147,7 @@ export default function PrivateGpCambridgePage() {
               Private GP care in Cambridge, beyond the ten-minute appointment.
             </h1>
             <p className="a3" style={{ fontSize: "clamp(.92rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 660, marginBottom: 0 }}>
-              For people in and around Cambridge who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP in person by appointment, or by secure video across the UK.
+              For people in and around Cambridge who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP, in person by appointment or by secure video across the UK.
             </p>
           </div>
         </section>
@@ -156,7 +156,7 @@ export default function PrivateGpCambridgePage() {
         <section className="sec bg-iv">
           <div className="wrap" style={{ maxWidth: 860 }}>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 720 }}>
-              Cambridge is a city of people who ask good questions researchers, clinicians, founders, students and professionals who want evidence, not reassurance. Yet the standard NHS panel still misses the markers that matter most for long-term health, and a ten-minute appointment rarely leaves room for the whole picture. Veridian Clinic exists to fill that gap: doctor-led, evidence-based, and built around prevention rather than crisis.
+              Cambridge is a city of people who ask good questions: researchers, clinicians, founders, students and professionals who want evidence, not reassurance. Yet the standard NHS panel still misses the markers that matter most for long-term health, and a ten-minute appointment rarely leaves room for the whole picture. Veridian Clinic exists to fill that gap: doctor-led, evidence-based, and built around prevention rather than crisis.
             </p>
           </div>
         </section>

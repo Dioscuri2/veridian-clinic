@@ -44,11 +44,11 @@ const markers = [
 const faqs = [
   {
     q: "How is this different from a supermarket or online vitamin test?",
-    a: "Mainstream UK consumer panels cluster around the same four results: vitamin D, B12, folate and ferritin. This panel measures those, then adds the ones that actually change decisions: red cell magnesium rather than serum, active B12 rather than total alone, red cell folate, zinc, copper, and full iron studies. Every result is reviewed by a GMC-registered GP against your history and medication rather than returned as a colour coded chart.",
+    a: "Mainstream UK consumer panels cluster around the same four results: vitamin D, B12, folate and ferritin. This panel measures those, then adds the ones that actually change decisions: red cell magnesium rather than serum, active B12 rather than total alone, red cell folate, zinc, copper, and full iron studies. Every result is reviewed by a GMC-registered GP against your history and medication rather than returned as a colour-coded chart.",
   },
   {
     q: "Why do you measure hs-CRP in a nutrition panel?",
-    a: "Because zinc is a negative acute phase reactant. Its blood level falls during any inflammation, infection or injury, independently of your actual nutritional status. Measuring zinc without a simultaneous inflammatory marker produces false lows and leads to supplementing something you were never short of. If your hs-CRP is raised we say so and re-test, rather than reporting a deficiency that may not be real. Albumin is included for the same reason, since it carries a large share of circulating zinc and calcium.",
+    a: "Because zinc is a negative acute phase reactant. Its blood level falls during any inflammation, infection or injury, independently of your actual nutritional status. Measuring zinc without a simultaneous inflammatory marker produces false lows and leads to supplementing something you were never short of. If your hs-CRP is raised, we say so and re-test, rather than reporting a deficiency that may not be real. Albumin is included for the same reason, since it carries a large share of circulating zinc and calcium.",
   },
   {
     q: "Why red cell magnesium instead of the usual magnesium test?",
@@ -72,11 +72,11 @@ const faqs = [
   },
   {
     q: "Do you offer iodine, toxic burden or hair mineral testing?",
-    a: "No. Hair mineral analysis is not a valid measure of nutritional status, and total toxic burden style panels are not accredited for diagnostic use in the UK. Iodine is a reasonable thyroid question but our laboratory does not currently offer it, and we would rather say so than substitute a marker that does not answer the same question.",
+    a: "No. Hair mineral analysis is not a valid measure of nutritional status, and panels claiming to measure total toxic burden are not accredited for diagnostic use in the UK. Iodine is a reasonable thyroid question but our laboratory does not currently offer it, and we would rather say so than substitute a marker that does not answer the same question.",
   },
   {
     q: "Who should not bother with this?",
-    a: "If you are well, eating a varied diet, have no symptoms and are not in a higher risk group, a broad micronutrient panel will most likely tell you that you are fine, and there is a real chance of finding a borderline result that causes worry without changing anything. This panel earns its place when there are symptoms to explain, a restrictive or plant based diet, malabsorption, bariatric or gastrointestinal surgery, heavy menstrual loss, long term acid suppression or metformin, or a thyroid problem you want to understand properly.",
+    a: "If you are well, eating a varied diet, have no symptoms and are not in a higher-risk group, a broad micronutrient panel will most likely tell you that you are fine, and there is a real chance of finding a borderline result that causes worry without changing anything. This panel earns its place when there are symptoms to explain, a restrictive or plant-based diet, malabsorption, bariatric or gastrointestinal surgery, heavy menstrual loss, long-term acid suppression or metformin, or a thyroid problem you want to understand properly.",
   },
 ];
 
@@ -87,7 +87,7 @@ const jsonLd = {
       "@type": "MedicalTest",
       name: "Micronutrient and Vitamin Deficiency Blood Panel",
       description:
-        "GP-led 17 marker micronutrient panel measuring vitamin D, active B12, total B12, folate, red cell folate, red cell magnesium, serum magnesium, zinc, copper, adjusted calcium, full iron studies, albumin and hs-CRP.",
+        "GP-led 17-marker micronutrient panel measuring vitamin D, active B12, total B12, folate, red cell folate, red cell magnesium, serum magnesium, zinc, copper, adjusted calcium, full iron studies, albumin and hs-CRP.",
       usedToDiagnose: ["Vitamin deficiency", "Iron deficiency", "Trace element deficiency"],
       url: PAGE_URL,
     },
@@ -154,7 +154,7 @@ export default function MicronutrientTestPage() {
                 <ul className="chk">
                   <li>Red cell magnesium, reflecting intracellular stores</li>
                   <li>Active B12, the fraction your cells can actually use</li>
-                  <li>Red cell folate, a longer term measure than serum folate</li>
+                  <li>Red cell folate, a longer-term measure than serum folate</li>
                   <li>Zinc and copper, with the balance between them</li>
                   <li>Albumin and hs-CRP, so the above can be interpreted honestly</li>
                   <li>Transferrin saturation and TIBC, not just ferritin</li>

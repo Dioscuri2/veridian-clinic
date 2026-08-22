@@ -131,7 +131,7 @@ function buildEmail1(firstName: string, mAge: number, band: string, delta: numbe
     band === "strong"
       ? "See Your Recommended Blood Panels →"
       : band === "high-risk"
-        ? "Book Your GP Discovery Core (£97 Quiz Rate) →"
+        ? "Book Your GP Discovery Core (£77 Quiz Rate) →"
         : "Get Your Free Metabolic Reset Guide →";
 
   const subject = `Your metabolic age is ${mAge}${firstName ? ", " + firstName : ""}, here's what that means`;
@@ -206,7 +206,7 @@ function buildEmail3(firstName: string, band: string): { subject: string; html: 
     ${callout("What the cardiovascular risk panel adds", "The Veridian Cardiovascular Risk Panel includes: ApoB, Lp(a), small dense LDL, homocysteine, hs-CRP, full lipid profile, ApoA-I, fasting insulin, and HbA1c.<br><br>Every result comes with a GP-authored written interpretation, not just numbers, but a clear clinical narrative explaining what your specific values mean for you personally, and what to do about them.")}
     ${p("The panel is <strong style=\"color:#2c2a26;\">£349</strong>. Collection at a Randox clinic near you, or by home kit. Results within 3–5 working days. GP-reviewed written report included.")}
     ${btn("Book Cardiovascular Risk Panel, £349 →", `${SITE}/blood-tests/cardiovascular-risk`, "#2c2a26", "#f6f1e8")}
-    ${p(`<em style="font-size:13px;color:#8a8278;">Or if you'd prefer to start with a 30-minute clinical conversation first: <a href="${SITE}/book?tier=discovery" style="color:#c8a84b;">Discovery Core £97 →</a></em>`)}
+    ${p(`<em style="font-size:13px;color:#8a8278;">Or if you'd prefer to start with a 30-minute clinical conversation first: <a href="${SITE}/book?tier=discovery-quiz" style="color:#c8a84b;">Discovery Core £77 →</a></em>`)}
     ${rule()}
     ${p("<strong>Dr Tosin</strong>")}
   `;
@@ -253,7 +253,7 @@ function buildEmail4(firstName: string, band: string): { subject: string; html: 
       </tr>
     </table>
     ${p("Not sure which one is right? Discovery Core is the quickest way to get clarity, 30 minutes with me to review your quiz result and map the right next step.")}
-    ${btn("Book Discovery Core, £97 Quiz Rate →", `${SITE}/book?tier=discovery`, "#c8a84b", "#2c2a26")}
+    ${btn("Book Discovery Core, £77 Quiz Rate →", `${SITE}/book?tier=discovery-quiz`, "#c8a84b", "#2c2a26")}
     ${rule()}
     ${p("<strong>Dr Tosin</strong>")}
   `;
@@ -278,8 +278,8 @@ function buildEmail5(firstName: string, band: string): { subject: string; html: 
       : "Your quiz result suggests your metabolism has started to drift. Not dramatically, but the gap between metabolic age and chronological age tends to widen, not narrow, without deliberate intervention. The biological signals behind that drift are measurable. And knowing them changes what you do about it."
     }`)}
     ${p("I see people in clinic regularly who felt broadly fine, then discovered their Lp(a) was significantly elevated, or their fasting insulin had been quietly climbing for years. The difference between those who caught it and those who didn't wasn't luck. It was the decision to look.")}
-    ${p("The quiz rate for a 30-minute Discovery Core consultation is <strong style=\"color:#2c2a26;\">£97</strong>, half the standard rate. That rate was unlocked when you completed the quiz.")}
-    ${btn("Claim Your £97 Discovery Core →", `${SITE}/book?tier=discovery`, "#2c2a26", "#f6f1e8")}
+    ${p("The quiz rate for a 30-minute Discovery Core consultation is <strong style=\"color:#2c2a26;\">£77</strong>, a £20 saving on the standard £97 rate. That rate was unlocked when you completed the quiz.")}
+    ${btn("Claim Your £77 Discovery Core →", `${SITE}/book?tier=discovery-quiz`, "#2c2a26", "#f6f1e8")}
     ${callout("Or go straight to blood", `If you'd rather start with the test than the conversation: the <a href="${SITE}/blood-tests/cardiovascular-risk" style="color:#c8a84b;">Cardiovascular Risk Panel (£349)</a> or the <a href="${SITE}/blood-tests/metabolic-weight" style="color:#c8a84b;">Metabolic Weight Panel (£199)</a> are both available directly, results with GP-reviewed interpretation, no referral needed.`)}
     ${rule()}
     ${p("Either way, I'm glad you took the quiz. The awareness itself is worth something. Whatever you decide to do next.")}

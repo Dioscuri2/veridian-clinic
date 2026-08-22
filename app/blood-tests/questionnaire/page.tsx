@@ -21,7 +21,7 @@ const SYMPTOM_OPTIONS = [
   "Low mood or anxiety",
   "Low libido or drive",
   "Difficulty maintaining muscle",
-  "Weight gain especially abdominal",
+  "Weight gain, especially abdominal",
   "Hot flushes or night sweats",
   "Irregular periods or cycle changes",
   "Poor exercise recovery",
@@ -111,7 +111,7 @@ function QuestionnaireForm() {
                 Thank you. Dr Tosin has your context.
               </h1>
               <p style={{ fontSize: ".93rem", color: "rgba(246,241,232,.68)", lineHeight: 1.9 }}>
-                Your answers are attached to your test record. When your results are ready, Dr Tosin will interpret them in the context of the symptoms and goals you have described here not just against reference ranges.
+                Your answers are attached to your test record. When your results are ready, Dr Tosin will interpret them in the context of the symptoms and goals you have described here, not just against reference ranges.
               </p>
             </div>
           </section>
@@ -212,7 +212,7 @@ function QuestionnaireForm() {
                 {/* Q6 — Medications */}
                 <div>
                   <label style={label}>Current medications or supplements (if any)</label>
-                  <span style={hint}>Include HRT, thyroid medication, statins, metformin, or anything relevant. Write "none" if not applicable.</span>
+                  <span style={hint}>Include HRT, thyroid medication, statins, metformin, or anything relevant. Write &quot;none&quot; if not applicable.</span>
                   <input style={inp} type="text" placeholder="e.g. Levothyroxine 50mcg, Vitamin D, none" value={answers.medications} onChange={e => setField("medications", e.target.value)} />
                 </div>
 

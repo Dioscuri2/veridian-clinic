@@ -104,7 +104,7 @@ export default function MetabolicTurnaroundPage() {
             </p>
             <div className="a3" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Link href={BOOKING_URL} className="btn btn-fo" target="_blank" rel="noopener noreferrer">
-                Book a Free Discovery Call
+                Book Discovery Core, £97
               </Link>
               <a href="#what-is-included" className="btn btn-ol">See What is Included</a>
             </div>
@@ -154,7 +154,7 @@ export default function MetabolicTurnaroundPage() {
                 {
                   num: "01",
                   title: "Comprehensive Blood Panel",
-                  body: "A 70+ marker private panel covering metabolic function, cardiovascular risk, hormonal balance, thyroid, inflammation, and nutritional status. Collected at your chosen RANDOX clinic nationally. Results within 48-72 hours.",
+                  body: "A 70+ marker private panel covering metabolic function, cardiovascular risk, hormonal balance, thyroid, inflammation, and nutritional status. Collected at your chosen Randox clinic nationally. Results within 48-72 hours.",
                 },
                 {
                   num: "02",
@@ -300,10 +300,10 @@ export default function MetabolicTurnaroundPage() {
             </div>
 
             <Link href={BOOKING_URL} className="btn btn-fo" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginBottom: 18 }}>
-              Book Your Free Discovery Call
+              Book Your Discovery Core Consultation
             </Link>
             <p style={{ fontSize: ".82rem", color: "var(--sl3)", lineHeight: 1.8, maxWidth: 500, margin: "0 auto" }}>
-              The discovery call is 30 minutes with Dr Tosin. It is not a sales call. It is a clinical conversation to confirm the programme is the right fit and to answer your questions. There is no obligation.
+              The Discovery Core consultation is 30 minutes with Dr Tosin. It is not a sales call. It is a clinical conversation to confirm the programme is the right fit and to answer your questions. There is no obligation.
             </p>
           </div>
         </section>
@@ -337,7 +337,7 @@ export default function MetabolicTurnaroundPage() {
               {[
                 {
                   q: "Is this available outside London?",
-                  a: "Yes. RANDOX blood collection centres are available nationally. GP sessions are delivered by video. You do not need to travel.",
+                  a: "Yes. Randox blood collection centres are available nationally. GP sessions are delivered by video. You do not need to travel.",
                 },
                 {
                   q: "What happens if results flag something serious?",
@@ -378,18 +378,18 @@ export default function MetabolicTurnaroundPage() {
               Ten places are available per month.
             </h2>
             <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, marginBottom: 36, maxWidth: 500, margin: "0 auto 36px" }}>
-              The discovery call is free and takes 30 minutes.
+              The Discovery Core consultation is £97 and takes 30 minutes.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href={BOOKING_URL} className="btn btn-go" target="_blank" rel="noopener noreferrer">
-                Book Your Free Discovery Call
+                Book Your Discovery Core Consultation
               </Link>
               <Link href="/metabolic-quiz" className="btn" style={{ background: "transparent", border: "1.5px solid rgba(246,241,232,.3)", color: "var(--iv)" }}>
                 Check Your Metabolic Age Free
               </Link>
             </div>
             <p style={{ fontSize: ".8rem", color: "rgba(246,241,232,.4)", marginTop: 20, lineHeight: 1.6 }}>
-              Or call 020 3633 9518 Monday to Friday
+              Or call 020 3633 9518, Monday to Friday
             </p>
           </div>
         </section>

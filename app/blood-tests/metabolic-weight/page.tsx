@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Private Metabolic Weight Resistance Blood Test UK | Veridian Clinic" },
   description:
-    "Eating well and exercising but weight won't shift? Fasting insulin, HOMA-IR, adiponectin, uric acid and thyroid, the metabolic panel that explains weight resistance. £199.",
+    "Eating well and exercising but weight won't shift? Fasting insulin, HOMA-IR, adiponectin, uric acid and thyroid: the metabolic panel that explains weight resistance. £199.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/metabolic-weight" },
   openGraph: {
     title: "Private Metabolic Weight Resistance Blood Test UK | Veridian Clinic",
@@ -37,7 +37,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Private Metabolic Weight Resistance Blood Test UK",
-  description: "A private metabolic weight panel including fasting insulin, HOMA-IR, adiponectin, uric acid, Lp(a) and thyroid, the markers that explain why weight won't shift despite diet and exercise.",
+  description: "A private metabolic weight panel including fasting insulin, HOMA-IR, adiponectin, uric acid, Lp(a) and thyroid: the markers that explain why weight won't shift despite diet and exercise.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: { "@type": "Organization", name: "Veridian Clinic", url: "https://veridianclinic.com" },
   url: "https://veridianclinic.com/blood-tests/metabolic-weight",
@@ -55,7 +55,7 @@ export default function MetabolicWeightPage() {
       title="Why won't the weight budge?"
       intro="You are eating well, exercising regularly, and doing everything right. The weight still isn't moving. This is not a willpower problem. It is a metabolic problem, and the answer is almost always visible in the right blood tests."
       ctas={[
-        { label: "Book Why Won't The Weight Budge? Panel, £199", href: "/book?tier=metabolic-weight", variant: "primary" },
+        { label: "Book Why Won't The Weight Budge? Panel £199", href: "/book?tier=metabolic-weight", variant: "primary" },
         { label: "Book a Discovery Core consultation first", href: "/book?tier=discovery" },
       ]}
     >
@@ -67,15 +67,15 @@ export default function MetabolicWeightPage() {
       <div style={{ display: "grid", gap: 14, margin: "20px 0" }}>
         {[
           {
-            title: "1. Insulin resistance, the most common and most overlooked",
+            title: "1. Insulin resistance: the most common and most overlooked",
             body: "Elevated fasting insulin is the earliest measurable sign of metabolic dysfunction, appearing years, sometimes decades, before fasting glucose rises into the diabetic range. When insulin is chronically elevated, fat cells are locked in storage mode. The body becomes unable to access stored fat as fuel. Calorie restriction makes this worse, not better, because it further stresses the system without addressing the underlying hormonal block. A standard fasting glucose or HbA1c will not catch this. Fasting insulin will.",
           },
           {
-            title: "2. Thyroid dysfunction, often missed at the wrong threshold",
+            title: "2. Thyroid dysfunction: often missed at the wrong threshold",
             body: "TSH within the lab normal range does not mean your thyroid is functioning optimally. Many patients with TSH in the upper-normal range (2.5-4.5 mU/L) experience genuine thyroid-related weight gain, fatigue and cold intolerance. The panel also includes liver markers that reflect the downstream metabolic impact of thyroid function.",
           },
           {
-            title: "3. Elevated uric acid, a metabolic distress signal",
+            title: "3. Elevated uric acid: a metabolic distress signal",
             body: "High uric acid is strongly associated with insulin resistance, fructose metabolism dysfunction, and impaired fat oxidation. It is a sensitive early marker of metabolic stress that correlates with weight gain independent of caloric intake. Often completely absent from routine testing.",
           },
         ].map(item => (
@@ -108,7 +108,7 @@ export default function MetabolicWeightPage() {
 
       <h2 className="cg" style={sectionHeading}>What you get back</h2>
       <div style={callout}>
-        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Why Won't The Weight Budge? Panel, £199</p>
+        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Why Won't The Weight Budge? Panel · £199</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
           Fasting insulin · HbA1c · HOMA-IR · Uric acid · Lp(a) · Adiponectin · TSH · Full fasting lipid profile<br />
           GP-reviewed metabolic interpretation · Prioritised action plan · No GP referral needed · Results in 5 working days
@@ -120,10 +120,10 @@ export default function MetabolicWeightPage() {
         <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
         <div style={{ display: "grid", gap: 10 }}>
           {[
-            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249 Energy & Fatigue" },
+            { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249 (Energy & Fatigue)" },
             { href: "/blood-tests/cardiovascular-risk", label: "Cardiovascular Risk Panel", note: "£349" },
             { href: "/blood-tests/fatigue-energy", label: "Fatigue & Energy Deep Screen", note: "£249" },
-            { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments →" },
+            { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments" },
           ].map((t) => (
             <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>
               <span style={{ fontSize: ".88rem", color: "var(--sl)", fontWeight: 500 }}>{t.label}</span>

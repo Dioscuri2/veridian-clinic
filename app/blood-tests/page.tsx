@@ -5,14 +5,14 @@ import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
-  title: { absolute: "Private Blood Tests UK Advanced Metabolic & Longevity Testing | Veridian Clinic" },
+  title: { absolute: "Private Blood Tests UK: Advanced Metabolic & Longevity Testing | Veridian Clinic" },
   description:
-    "GP-ordered private blood tests for high-intent health screening in the UK. ApoB, fasting insulin, Lp(a), biological age, and metabolic fatigue panels results interpreted by a GP with a personalised action plan.",
+    "GP-ordered private blood tests for high-intent health screening in the UK. ApoB, fasting insulin, Lp(a), biological age, and metabolic fatigue panels. Results interpreted by a GP, with a personalised action plan.",
   alternates: {
     canonical: "https://veridianclinic.com/blood-tests",
   },
   openGraph: {
-    title: "Private Blood Tests UK Veridian Clinic",
+    title: "Private Blood Tests UK | Veridian Clinic",
     description:
       "Advanced metabolic and longevity blood tests ordered by a UK GP. Includes ApoB, fasting insulin, Lp(a), and biological age estimation.",
     url: "https://veridianclinic.com/blood-tests",
@@ -32,12 +32,22 @@ export const metadata: Metadata = {
   ],
 };
 
-const tests = [
+const tests: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  tag: string;
+  price: string;
+  includedIn: string;
+  guideBonus?: string;
+  href?: string;
+}[] = [
   {
     slug: "micronutrient",
+    href: "/micronutrient-test",
     title: "Micronutrient & Vitamin Deficiency Test",
     excerpt:
-      "Red cell magnesium, active B12, red cell folate, zinc and copper, the markers mainstream UK vitamin panels either skip or measure in the least informative form. Read against hs-CRP and albumin, because zinc falls with inflammation regardless of intake.",
+      "Red cell magnesium, active B12, red cell folate, zinc and copper: the markers mainstream UK vitamin panels either skip or measure in the least informative form. Read against hs-CRP and albumin, because zinc falls with inflammation regardless of intake.",
     tag: "Nutrition & Thyroid",
     price: "£295",
     includedIn: "Micronutrient Panel (red cell selenium +£40)",
@@ -46,7 +56,7 @@ const tests = [
     slug: "apob",
     title: "ApoB Blood Test",
     excerpt:
-      "Apolipoprotein B measures the number of atherogenic lipoprotein particles in your bloodstream a more direct indicator of cardiovascular risk than LDL cholesterol, especially in insulin resistance and metabolic syndrome.",
+      "Apolipoprotein B measures the number of atherogenic lipoprotein particles in your bloodstream, a more direct indicator of cardiovascular risk than LDL cholesterol, especially in insulin resistance and metabolic syndrome.",
     tag: "Cardiovascular Risk",
     price: "From £595",
     includedIn: "Metabolic Baseline & Longevity Panel",
@@ -55,10 +65,10 @@ const tests = [
     slug: "fasting-insulin",
     title: "Fasting Insulin Test",
     excerpt:
-      "Fasting insulin reveals early insulin resistance years before HbA1c or fasting glucose become abnormal. The NHS does not routinely test it yet it is one of the most clinically actionable markers in preventive metabolic medicine.",
+      "Fasting insulin reveals early insulin resistance years before HbA1c or fasting glucose become abnormal. The NHS does not routinely test it, yet it is one of the most clinically actionable markers in preventive metabolic medicine.",
     tag: "Metabolic Health",
     price: "From £249",
-    includedIn: "Energy & Fatigue & Metabolic Baseline",
+    includedIn: "Energy & Fatigue and Metabolic Baseline",
   },
   {
     slug: "lipoprotein-a",
@@ -73,7 +83,7 @@ const tests = [
     slug: "biological-age",
     title: "Biological Age Blood Test",
     excerpt:
-      "A 150+ marker Longevity Panel that estimates your biological age alongside organ function, inflammation, hormones, and metabolic health giving a far richer picture than any single number can provide.",
+      "A 150+ marker Longevity Panel that estimates your biological age alongside organ function, inflammation, hormones and metabolic health, giving a far richer picture than any single number can provide.",
     tag: "Longevity",
     price: "£795",
     includedIn: "Longevity Panel",
@@ -82,7 +92,7 @@ const tests = [
     slug: "womens-hormones",
     title: "Perimenopause & Women's Hormone Blood Test",
     excerpt:
-      "Fatigue, weight gain, poor sleep, low mood, irregular cycles and a normal blood test result every time. This panel measures what standard tests miss: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, thyroid, Lp(a) and fasting insulin. Interpreted by a GP.",
+      "Fatigue, weight gain, poor sleep, low mood, irregular cycles, and a normal blood test result every time. This panel measures what standard tests miss: oestradiol, FSH, LH, progesterone, testosterone, SHBG, prolactin, thyroid, Lp(a) and fasting insulin. Interpreted by a GP.",
     tag: "Women's Health",
     price: "£375",
     includedIn: "Is It My Hormones? Panel",
@@ -92,7 +102,7 @@ const tests = [
     slug: "mens-testosterone",
     title: "Testosterone & Men's Hormone Blood Test",
     excerpt:
-      "Total testosterone alone misses the picture in most men where free testosterone determined by SHBG is the clinically relevant value. This panel measures total testosterone with free testosterone calculated from SHBG, plus LH, FSH, prolactin, DHEA-S, morning cortisol, Lp(a) and fasting insulin. GP-reviewed.",
+      "Total testosterone alone misses the picture in most men, where free testosterone, determined by SHBG, is the clinically relevant value. This panel measures total testosterone with free testosterone calculated from SHBG, plus LH, FSH, prolactin, DHEA-S, morning cortisol, Lp(a) and fasting insulin. GP-reviewed.",
     tag: "Men's Health",
     price: "£325",
     includedIn: "Running on Empty Panel",
@@ -101,7 +111,7 @@ const tests = [
     slug: "fatigue-energy",
     title: "Fatigue & Energy Deep Screen",
     excerpt:
-      "For people who have already had a standard thyroid and blood count and been told everything is normal. This panel adds TPO antibodies, fasting insulin, uric acid, full iron studies and ferritin at the optimal threshold the markers that explain the majority of cases where standard tests return nothing.",
+      "For people who have already had a standard thyroid and blood count and been told everything is normal. This panel adds TPO antibodies, fasting insulin, uric acid, full iron studies and ferritin at the optimal threshold: the markers that explain the majority of cases where standard tests return nothing.",
     tag: "Energy & Fatigue",
     price: "£249",
     includedIn: "Tired of Being Told You're Fine Panel",
@@ -159,7 +169,7 @@ export default function BloodTestsIndexPage() {
               className="a3"
               style={{ fontSize: "clamp(.92rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 640, marginBottom: 0 }}
             >
-              GP-ordered testing for the markers that reveal metabolic dysfunction, cardiovascular risk, and biological ageing interpreted by a doctor with a personalised action plan, not just a PDF of numbers.
+              GP-ordered testing for the markers that reveal metabolic dysfunction, cardiovascular risk and biological ageing, interpreted by a doctor with a personalised action plan, not just a PDF of numbers.
             </p>
           </div>
         </section>
@@ -171,7 +181,7 @@ export default function BloodTestsIndexPage() {
               {tests.map((test, i) => (
                 <Link
                   key={test.slug}
-                  href={`/blood-tests/${test.slug}`}
+                  href={test.href ?? `/blood-tests/${test.slug}`}
                   style={{ textDecoration: "none" }}
                 >
                   <article
@@ -240,7 +250,7 @@ export default function BloodTestsIndexPage() {
             </h2>
             <div className="g3" style={{ gap: 24 }}>
               {[
-                { n: "1", heading: "Book online", body: "Select your panel and book. No GP referral needed we handle the clinical ordering." },
+                { n: "1", heading: "Book online", body: "Select your panel and book. No GP referral needed: we handle the clinical ordering." },
                 { n: "2", heading: "Sample collected", body: "Home phlebotomy kit, walk-in draw, or nurse home visit. Your choice, across the UK." },
                 { n: "3", heading: "Results + GP report", body: "Processed by an accredited UK lab. Results with a written GP interpretation and next-step action plan." },
               ].map((step) => (

@@ -3,12 +3,12 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: { absolute: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic" },
+  title: { absolute: "Private Optimiser Baseline Blood Test UK: Performance & Longevity Panel | Veridian Clinic" },
   description:
     "A comprehensive performance and longevity blood panel for health optimisers. IGF-1, ApoB, Lp(a), sdLDL, Adiponectin, testosterone, morning cortisol, fasting insulin, full organ safety. GP-reviewed written report and a GP-led 30-minute consultation included. £549.",
   alternates: { canonical: "https://veridianclinic.com/blood-tests/optimiser-baseline" },
   openGraph: {
-    title: "Private Optimiser Baseline Blood Test UK Performance & Longevity Panel | Veridian Clinic",
+    title: "Private Optimiser Baseline Blood Test UK: Performance & Longevity Panel | Veridian Clinic",
     description: "The health optimiser's baseline panel. IGF-1, ApoB, Lp(a), testosterone, morning cortisol, Adiponectin and full organ safety. GP-reviewed written report and a GP-led 30-minute consultation included. £549.",
     url: "https://veridianclinic.com/blood-tests/optimiser-baseline",
     type: "article",
@@ -75,7 +75,7 @@ export default function OptimiserBaselinePage() {
           {
             category: "Longevity and growth axis",
             markers: "IGF-1 (Insulin-like Growth Factor 1)",
-            detail: "One of the most sensitive biomarkers of biological ageing. Low IGF-1 is associated with reduced muscle mass, cognitive decline and accelerated ageing. Elevated IGF-1 carries cancer risk. Optimal IGF-1, not just normal, is a core longevity target. Almost never tested in standard NHS or private GP care.",
+            detail: "One of the most sensitive biomarkers of biological ageing. Low IGF-1 is associated with reduced muscle mass, cognitive decline and accelerated ageing. Elevated IGF-1 is associated with increased cancer risk. Optimal IGF-1, not just normal, is a core longevity target. Almost never tested in standard NHS or private GP care.",
           },
           {
             category: "Cardiovascular risk: the real picture",
@@ -147,7 +147,7 @@ export default function OptimiserBaselinePage() {
         A GP-led 30-minute consultation is included in the price. It is booked once your results are back, and it is a working session rather than a summary read aloud: Dr Tosin takes you through the report, explains what the pattern across your markers means for your training, recovery and long-term risk, answers your questions, and agrees with you which two or three things are worth acting on first. You are not buying the consultation separately and you are not being sold it afterwards. It is part of the £549, along with the panel and the written report.
       </p>
       <div style={callout}>
-        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>The Optimiser's Baseline, £549</p>
+        <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>The Optimiser's Baseline · £549</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
           IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Adiponectin · Fasting insulin · HbA1c · Morning cortisol (single serum sample) · DHEA-S · Total testosterone · Free testosterone (calculated) · SHBG · LH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · CRP<br />
           GP-reviewed written baseline report · GP-led 30-minute consultation included · Prioritised optimisation plan · No GP referral needed · Results in 5 working days

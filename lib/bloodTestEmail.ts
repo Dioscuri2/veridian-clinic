@@ -55,7 +55,7 @@ const PANELS: Record<string, PanelInfo> = {
     markerSummary: [
       "Full Blood Count, Thyroid: TSH, FT3, FT4, TPO antibodies",
       "Ferritin, full Iron Studies, Vitamin B12, Folate, Vitamin D",
-      "Fasting Insulin, Uric Acid, hs-CRP, Kidney function",
+      "Fasting Insulin, Uric Acid, CRP, Kidney function",
     ],
     fastingRequired: true,
     randoxCode: "HSC10 + Uric Acid",

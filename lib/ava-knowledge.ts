@@ -168,7 +168,7 @@ TARGETED BLOOD PANELS — pain-point named, no GP referral needed, results in 5 
    Book: veridianclinic.com/book?tier=cardiovascular-risk
 
 4. Tired of Being Told You're Fine — Fatigue & Energy Deep Screen — £249
-   Markers: Full blood count, TSH, FT3, FT4, TPO antibodies, ferritin, full iron studies, B12, folate, vitamin D, fasting insulin, uric acid, hs-CRP, kidney function
+   Markers: Full blood count, TSH, FT3, FT4, TPO antibodies, ferritin, full iron studies, B12, folate, vitamin D, fasting insulin, uric acid, CRP, kidney function
    Best for: Told normal blood tests but still exhausted; suspected subclinical thyroid issues
    Book: veridianclinic.com/book?tier=fatigue-energy
 

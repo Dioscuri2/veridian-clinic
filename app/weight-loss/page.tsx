@@ -581,7 +581,7 @@ function WlQuiz() {
             Weight loss injections may not be the right starting point for you.
           </h3>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 24 }}>
-            Based on your BMI, a more targeted approach may serve you better. A metabolic blood panel can identify the specific drivers of weight resistance, insulin, thyroid, hormones, and inflammation, and give Dr Tosin a far more precise starting point.
+            Based on your BMI, a more targeted approach may serve you better. A metabolic blood panel can identify the specific drivers of weight resistance (insulin, thyroid, hormones and inflammation) and give Dr Tosin a far more precise starting point.
           </p>
           <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Core, £97</Link>
           <br />
@@ -624,10 +624,10 @@ function WlQuiz() {
           </div>
         </div>
         <Link href="/weight-loss/consultation?quiz=1" className="btn btn-go" style={{ display: "block", textAlign: "center", width: "100%", boxSizing: "border-box" }}>
-          Book my Weight Loss Consultation, £48
+          Book my Weight Loss Consultation £48
         </Link>
         <p style={{ fontSize: ".74rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
-          Secure payment via Stripe. A confirmation email is sent immediately after booking.
+          Secure payment via ThanksDoc. A confirmation email is sent immediately after booking.
         </p>
       </div>
     );
@@ -685,10 +685,10 @@ export default function WeightLossPage() {
                   onClick={() => quizSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   className="btn btn-go"
                 >
-                  Check my eligibility, free
+                  Check my eligibility free
                 </button>
                 <Link href="/weight-loss/consultation" className="btn btn-ol">
-                  Book consultation, £60
+                  Book consultation £60
                 </Link>
               </div>
             </div>
@@ -809,7 +809,7 @@ export default function WeightLossPage() {
               >
                 Take the eligibility quiz
               </button>
-              <Link href="/weight-loss/consultation" className="btn btn-ol">Book at standard rate, £60</Link>
+              <Link href="/weight-loss/consultation" className="btn btn-ol">Book at standard rate £60</Link>
             </div>
           </div>
         </section>

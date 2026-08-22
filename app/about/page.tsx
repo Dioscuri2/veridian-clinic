@@ -60,7 +60,7 @@ export default function AboutPage() {
                   className="a3"
                   style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.85, maxWidth: 560 }}
                 >
-                  UK-qualified GP with a special interest in preventive medicine, metabolic health, and longevity. Founder of Veridian Clinic, a CQC regulated private practice focused on finding what standard testing misses.
+                  UK-qualified GP with a special interest in preventive medicine, metabolic health, and longevity. Founder of Veridian Clinic, a CQC-regulated private practice focused on finding what standard testing misses.
                 </p>
               </div>
 
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 Veridian Clinic was founded on a single observation: the gap between what standard NHS testing measures and what genuine health optimisation requires is large, and for many patients, it is the gap where years of decline quietly happen.
               </p>
               <p style={para}>
-                A normal fasting glucose does not mean insulin resistance is absent. It can be developing silently for a decade before glucose rises. A normal cholesterol does not tell you your ApoB, your Lp(a), or your homocysteine, three independent atherogenic pathways that standard screening completely misses. A normal TSH does not tell you your free T3, the active thyroid hormone that matters most for energy and cognitive function.
+                A normal fasting glucose does not mean insulin resistance is absent. It can be developing silently for a decade before glucose rises. A normal cholesterol does not tell you your ApoB, your Lp(a), or your homocysteine. Those are three independent atherogenic pathways that standard screening misses entirely. A normal TSH does not tell you your free T3, the active thyroid hormone that matters most for energy and cognitive function.
               </p>
               <p style={para}>
                 Most patients who come to Veridian have had their GP tests come back normal. They have been told everything is fine. They do not feel fine. The Veridian approach is to test what has not been tested, interpret the full pattern, and build a specific plan from what the data shows.
@@ -173,7 +173,7 @@ export default function AboutPage() {
             <div style={section}>
               <h2 className="cg" style={h2}>Regulation and credentials</h2>
               <p style={para}>
-                Veridian Clinic is regulated by the Care Quality Commission (CQC). Dr Taiwo is registered with the General Medical Council (GMC) and practices in accordance with UK medical regulation and GMC Good Medical Practice standards.
+                Veridian Clinic is regulated by the Care Quality Commission (CQC). Dr Taiwo is registered with the General Medical Council (GMC) and practises in accordance with UK medical regulation and GMC Good Medical Practice standards.
               </p>
               <p style={para}>
                 All clinical interpretations are provided by a qualified GP. Veridian does not operate as a wellness platform or supplement company. We are a regulated medical service.
@@ -189,13 +189,13 @@ export default function AboutPage() {
             <p className="lbl">Work with Dr Tosin</p>
             <div className="rule rule-c" />
             <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.6rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 14 }}>
-              Start with a free 30-minute discovery call.
+              Start with a 30-minute Discovery Core consultation.
             </h2>
             <p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 32, maxWidth: 520, margin: "0 auto 32px" }}>
               A clinical conversation to understand your situation, answer your questions, and confirm whether the programme is the right fit for you.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/book?tier=discovery" className="btn btn-fo">Book a Free Discovery Call</Link>
+              <Link href="/book?tier=discovery" className="btn btn-fo">Book Discovery Core, £97</Link>
               <Link href="/metabolic-quiz" className="btn btn-ol">Check Your Metabolic Age Free</Link>
             </div>
           </div>

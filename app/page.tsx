@@ -9,9 +9,9 @@ import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { FONTS, CSS } from "@/components/globalStyles";
 
 const domains = [
-  { n:"01", title:"Body Strength & Fitness", sub:"Your physical base", desc:"Your cardiovascular fitness, strength, body composition and movement capacity the physical reserve that protects independence, performance and long-term resilience.", metrics:["Resting heart rate","Fitness and endurance","Body composition","Strength and movement"], band:"amr", pct:"56%" },
-  { n:"02", title:"Energy & Metabolism", sub:"How your body uses fuel", desc:"This is where we look for the hidden drivers of low energy and weight gain blood sugar balance, insulin levels, cholesterol quality and other markers that often shift long before symptoms become obvious.", metrics:["Blood sugar & HbA1c","Insulin and cholesterol markers","Continuous glucose patterns","Energy and fatigue signals"], band:"red", pct:"40%" },
-  { n:"03", title:"Rest & Repair", sub:"How you recover and restore", desc:"Sleep quality and recovery capacity determine whether your body can restore itself after stress, training, work and life load or slowly slide into fatigue and dysfunction.", metrics:["Sleep duration & consistency","Recovery signals","Sleep efficiency","Nervous system balance"], band:"amr", pct:"52%" },
+  { n:"01", title:"Body Strength & Fitness", sub:"Your physical base", desc:"Your cardiovascular fitness, strength, body composition and movement capacity: the physical reserve that protects independence, performance and long-term resilience.", metrics:["Resting heart rate","Fitness and endurance","Body composition","Strength and movement"], band:"amr", pct:"56%" },
+  { n:"02", title:"Energy & Metabolism", sub:"How your body uses fuel", desc:"This is where we look for the hidden drivers of low energy and weight gain: blood sugar balance, insulin levels, cholesterol quality and other markers that often shift long before symptoms become obvious.", metrics:["Blood sugar & HbA1c","Insulin and cholesterol markers","Continuous glucose patterns","Energy and fatigue signals"], band:"red", pct:"40%" },
+  { n:"03", title:"Rest & Repair", sub:"How you recover and restore", desc:"Sleep quality and recovery capacity determine whether your body can restore itself after stress, training, work and life load, or slowly slide into fatigue and dysfunction.", metrics:["Sleep duration & consistency","Recovery signals","Sleep efficiency","Nervous system balance"], band:"amr", pct:"52%" },
   { n:"04", title:"Stress Management", sub:"How you hold pressure", desc:"How often and how long your body stays in a stress state directly affects appetite, blood pressure, blood sugar control, sleep quality and long-term cardiovascular risk.", metrics:["Validated stress screening","Subjective load review","Physical stress markers","Behavioural patterns"], band:"grn", pct:"72%" },
 ];
 
@@ -26,7 +26,7 @@ const offers = [
     price: "£97",
     tier: "discovery",
     tag: "First conversation",
-    blurb: "A 30-minute GP-led consultation to review your concerns, history and goals. Useful even if you don't progress immediately you leave with clarity and a clear written next-step plan.",
+    blurb: "A 30-minute GP-led consultation to review your concerns, history and goals. Useful even if you don't progress immediately: you leave with clarity and a clear written next-step plan.",
     leave_with: [
       "Expert GP assessment of your symptoms and likely metabolic drivers",
       "Clear written action summary and next-step recommendations",
@@ -84,23 +84,23 @@ const testimonials = [
 
 const faqs = [
   { q:"Is Veridian a replacement for my NHS GP?", a:"No. We are a private preventive and optimisation service that complements your NHS care. We communicate with your GP where clinically appropriate." },
-  { q:"Are your clinical services regulated?", a:"Yes. Registered clinical activities are delivered via ThanksDoc (thanksdoc.co.uk). Veridian Clinic delivers the longevity-focused health optimisation layer, and regulated medical care including prescribing where indicated is provided through that registered structure." },
+  { q:"Are your clinical services regulated?", a:"Yes. Registered clinical activities are delivered via ThanksDoc (thanksdoc.co.uk). Veridian Clinic delivers the longevity-focused health optimisation layer, and regulated medical care, including prescribing where indicated, is provided through that registered structure." },
   { q:"How is care delivered?", a:"All consultations are delivered virtually, nationwide. Regulated medical care is provided through ThanksDoc's registered clinical structure, while our health optimisation and coaching work is delivered by the Veridian team directly." },
   { q:"What blood tests are included?", a:"The Metabolic Baseline includes HbA1c, fasting insulin, fasting glucose, ApoB, homocysteine, full lipid panel, ALT, AST, hs-CRP and broader metabolic markers." },
-  { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways including GLP-1 options may be available through ThanksDoc's registered clinical structure never as an isolated shortcut, always as part of a structured programme." },
+  { q:"Do you offer medications for weight management or blood sugar control (like GLP-1s)?", a:"Where clinically indicated, prescribing pathways, including GLP-1 options, may be available through ThanksDoc's registered clinical structure, never as an isolated shortcut and always as part of a structured programme." },
   { q:"How soon can I be seen?", a:"Initial consultations are typically available within 5-7 working days." },
-  { q:"Are you an emergency service?", a:"No. Veridian Clinic is not an emergency service and cannot respond to medical emergencies. If you are experiencing a medical emergency including chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or a severe allergic reaction call 999 immediately or attend your nearest A&E. If you are unsure whether your situation is urgent, call NHS 111. Our services are for health optimisation and preventive care only." },
+  { q:"Are you an emergency service?", a:"No. Veridian Clinic is not an emergency service and cannot respond to medical emergencies. If you are experiencing a medical emergency (chest pain, difficulty breathing, severe bleeding, loss of consciousness, stroke symptoms, or a severe allergic reaction), call 999 immediately or attend your nearest A&E. If you are unsure whether your situation is urgent, call NHS 111. Our services are for health optimisation and preventive care only." },
   { q:"Which conditions, services and medications are not covered?", a:"In line with our regulatory framework through ThanksDoc, we do not provide emergency medical care, NHS referrals, or prescriptions for controlled medications including opioids, benzodiazepines, gabapentinoids, Z-drugs (Zopiclone, Zolpidem, Zaleplon), stimulants, or any Schedule 1-5 controlled substances under the Misuse of Drugs Act 1971. We do not cover pregnancy complications, major trauma, dental problems, patients located outside the UK during consultation, or conditions requiring immediate hospital care." },
   { q:"How do I make a complaint?", a:"As our regulated clinical services are delivered under the ThanksDoc umbrella, complaints regarding regulated medical care should be directed to ThanksDoc at complaints@thanksdoc.co.uk. For concerns about your experience with Veridian Clinic specifically, contact us at support@veridianclinic.com and we will address your concern promptly." },
 ];
 
 const whoItems = [
   { title: "Weight gaining around the middle", detail: "Often driven by insulin resistance or metabolic adaptation that standard diet advice does not address. We identify the exact driver so the plan can target it directly." },
-  { title: "Low energy and persistent fatigue", detail: "Consistent fatigue and afternoon energy crashes are often linked to glucose dysregulation, poor sleep architecture, or early adrenal strain not just 'being busy'." },
+  { title: "Low energy and persistent fatigue", detail: "Consistent fatigue and afternoon energy crashes are often linked to glucose dysregulation, poor sleep architecture, or early adrenal strain, not just 'being busy'." },
   { title: "Poor sleep and slow recovery", detail: "You sleep enough hours but wake unrefreshed. HRV and sleep architecture often reveal what a mattress upgrade cannot. Recovery is a measurable metabolic signal." },
   { title: "Stress, burnout or difficulty switching off", detail: "How often and how long your body stays in a stress state directly affects appetite, blood pressure, glucose control, sleep quality and long-term cardiovascular risk." },
-  { title: "Blood pressure or blood sugar drifting", detail: "Your GP says everything is 'normal' but fasting insulin, ApoB and homocysteine tell a different story if anyone bothers to check them. We check them." },
-  { title: "Feeling older than you should", detail: "Reduced performance, heavier, slower recovery these are often early metabolic signals, not inevitable ageing. The right biomarker picture tells us what is actually happening." },
+  { title: "Blood pressure or blood sugar drifting", detail: "Your GP says everything is 'normal' but fasting insulin, ApoB and homocysteine tell a different story, if anyone bothers to check them. We check them." },
+  { title: "Feeling older than you should", detail: "Reduced performance, heavier, slower recovery: these are often early metabolic signals, not inevitable ageing. The right biomarker picture tells us what is actually happening." },
 ];
 
 function Stars({ n }: { n: number }) {
@@ -477,7 +477,7 @@ export default function HomePage() {
                 Book Your Appointment →
               </Link>
               <Link href="/metabolic-quiz" className="btn btn-fo" style={{ textAlign: "center", padding: "14px 24px" }}>
-                Check your metabolic age Free
+                Check your metabolic age free
               </Link>
               <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.6, textAlign: "center", margin: 0 }}>
                 Led by Dr Tosin Taiwo, NHS GP · Delivered with a CQC-regulated partner · Video testimonials below
@@ -527,7 +527,7 @@ export default function HomePage() {
                 <div>
                   <p className="cg" style={{ fontSize:"1.6rem", lineHeight:1.2, color:"var(--go)", marginBottom:10 }}>More stories<br/>coming soon</p>
                   <p style={{ fontSize:".78rem", color:"rgba(246,241,232,.55)", lineHeight:1.7 }}>
-                    New stories are added as the people we work with share their journeys.
+                    New stories are added as the people we work with choose to share them.
                   </p>
                 </div>
               </div>
@@ -597,7 +597,7 @@ export default function HomePage() {
                   Dr Taiwo is a qualified GP with a background spanning general practice, surgery and metabolic health. He leads all Veridian consultations personally, offering patient-centred care tailored to your specific picture.
                 </p>
                 <p style={{ fontSize: ".91rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 26 }}>
-                  His focus is identifying the real causes behind energy loss, weight gain, and poor sleep blood sugar patterns, cholesterol quality, recovery capacity, and stress load and building a structured plan to address them before they become harder to reverse.
+                  His focus is identifying the real causes behind energy loss, weight gain and poor sleep (blood sugar patterns, cholesterol quality, recovery capacity and stress load), and building a structured plan to address them before they become harder to shift.
                 </p>
                 <div className="doc-cred-grid">
                   {[
@@ -701,7 +701,7 @@ export default function HomePage() {
                 Many of my patients were being told their blood tests were 'normal' while feeling tired, heavier, struggling with energy and sleep, and sensing something was off. Routine care had no clear answer.
               </p>
               <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.95 }} data-aos="fade-left" data-aos-delay="120">
-                Veridian bridges that gap using the biomarkers that routine care rarely checks, structured assessment, and personalised doctor-led plans to help patients act earlier and track real progress.
+                Veridian bridges that gap using the biomarkers that routine care rarely checks, structured assessment and personalised doctor-led plans, to help patients act earlier and track real progress.
               </p>
             </div>
           </div>
@@ -764,9 +764,9 @@ export default function HomePage() {
             </div>
             <div className="gproc">
               {[
-                { n:"01", t:"Discovery Core", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a written next-step recommendation useful even if you do not progress immediately." },
-                { n:"02", t:"Metabolic Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms with clinical interpretation and a clear written action plan." },
-                { n:"03", t:"Personalised Plan", d:"A written, prioritised plan built around your data. CGM, nutrition, movement and behaviour protocols. Where clinically indicated, prescribing pathways including GLP-1 options are available." },
+                { n:"01", t:"Discovery Core", d:"A 30-minute GP-led consultation to understand your symptoms, history and goals. You leave with clarity and a written next-step recommendation, useful even if you do not progress immediately." },
+                { n:"02", t:"Metabolic Baseline", d:"A full diagnostic assessment covering the biomarkers most likely to reveal what is driving your symptoms, with clinical interpretation and a clear written action plan." },
+                { n:"03", t:"Personalised Plan", d:"A written, prioritised plan built around your data. CGM, nutrition, movement and behaviour protocols. Where clinically indicated, prescribing pathways, including GLP-1 options, are available." },
                 { n:"04", t:"Structured Follow-Up", d:"Fortnightly coaching, GP-led clinical review at midpoint, and an end-of-programme review with a 12-month forward plan. Progress is measured, not assumed." },
               ].map((s, i) => (
                 <ScrollReveal key={s.n} delay={i * 80}>
@@ -816,7 +816,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div style={{ marginTop: 18, textAlign: "center" }}>
-                <Link href="/metabolic-quiz" className="btn btn-fo">Check your metabolic age Free →</Link>
+                <Link href="/metabolic-quiz" className="btn btn-fo">Check your metabolic age free →</Link>
               </div>
             </div>
           </div>

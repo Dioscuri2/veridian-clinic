@@ -138,7 +138,7 @@ const tierCatalog: Record<
     name: "Tired of Being Told You're Fine, Fatigue & Energy Deep Screen",
     amount: 24900,
     description:
-      "Full Blood Count, thyroid (TSH/FT3/FT4/TPO antibodies), ferritin + full iron studies, vitamin B12, folate, vitamin D, fasting insulin, uric acid, hs-CRP, kidney function. GP-reviewed written report included.",
+      "Full Blood Count, thyroid (TSH/FT3/FT4/TPO antibodies), ferritin + full iron studies, vitamin B12, folate, vitamin D, fasting insulin, uric acid, CRP, kidney function. GP-reviewed written report included.",
     successPath: "/book/thank-you",
     cancelPath: "/blood-tests/fatigue-energy",
   },

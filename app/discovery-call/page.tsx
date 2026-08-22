@@ -21,17 +21,17 @@ const agenda = [
   {
     time: "5-15 min",
     title: "Clinical risk mapping",
-    body: "Dr Taiwo walks through your likely metabolic blind spots the markers that don't show up in lifestyle questions but are often the first to drift in people who appear healthy.",
+    body: "Dr Taiwo walks through your likely metabolic blind spots: the markers that don't show up in lifestyle questions but are often the first to drift in people who appear healthy.",
   },
   {
     time: "15-25 min",
     title: "Pathway recommendation",
-    body: "Based on your picture, we recommend the most appropriate next step whether that's a targeted blood panel, the Metabolic Baseline, or the Metabolic Screen and explain exactly why.",
+    body: "Based on your picture, we recommend the most appropriate next step, whether that's a targeted blood panel, the Metabolic Baseline or the Metabolic Screen, and explain exactly why.",
   },
   {
     time: "25-30 min",
     title: "Questions and written follow-up",
-    body: "You ask anything. Within 24 hours you receive a written summary of the call, the recommended pathway, and what to do next with no obligation to proceed.",
+    body: "You ask anything. Within 24 hours you receive a written summary of the call, the recommended pathway, and what to do next, with no obligation to proceed.",
   },
 ];
 
@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: "Who runs the call?",
-    a: "Dr Tosin Taiwo a UK-registered GP with a specific focus on metabolic health, longevity medicine, and early clinical intervention.",
+    a: "Dr Tosin Taiwo, a UK-registered GP with a specific focus on metabolic health, longevity medicine, and early clinical intervention.",
   },
   {
     q: "What happens after?",
@@ -76,7 +76,7 @@ export default function DiscoveryCallPage() {
                   30 minutes. A real clinical opinion. A clear next step.
                 </h1>
                 <p className="a3" style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 24 }}>
-                  Discovery Core is not a sales conversation. It is a focused GP-led review of your metabolic picture, your quiz result, and the markers most likely to explain what you're experiencing with a written pathway recommendation within 24 hours.
+                  Discovery Core is not a sales conversation. It is a focused GP-led review of your metabolic picture, your quiz result, and the markers most likely to explain what you&apos;re experiencing, with a written pathway recommendation within 24 hours.
                 </p>
                 <div style={{ padding: "18px 20px", background: "var(--iv2)", borderLeft: "3px solid var(--go)", marginBottom: 28 }}>
                   <p style={{ fontSize: ".85rem", color: "var(--sl2)", lineHeight: 1.85 }}>
@@ -155,7 +155,7 @@ export default function DiscoveryCallPage() {
               <p className="lbl">The Agenda</p>
               <div className="rule rule-c" />
               <h2 className="sh-title">What happens in the 30 minutes</h2>
-              <p className="sh-body">Structured, efficient, and clinically focused. Every minute is purposeful.</p>
+              <p className="sh-body">Structured, efficient and clinically focused.</p>
             </div>
             <div style={{ display: "grid", gap: 2 }}>
               {agenda.map((item, i) => (
@@ -186,7 +186,7 @@ export default function DiscoveryCallPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,260px),1fr))", gap: 16 }}>
               {[
                 { title: "Written clinical summary", body: "A clear summary of the key risk areas identified during the call and what they mean for your health trajectory." },
-                { title: "Specific panel recommendation", body: "The exact blood panel we recommend whether that's the Metabolic Screen, the Baseline, or the Longevity Panel and why." },
+                { title: "Specific panel recommendation", body: "The exact blood panel we recommend, whether that's the Metabolic Screen, the Baseline or the Longevity Panel, and why." },
                 { title: "Pathway options and pricing", body: "Transparent pricing for the recommended next step, with no pressure to proceed. You choose if and when." },
                 { title: "Priority booking access", body: "If you decide to proceed with a full assessment, you receive priority booking as a Discovery Core patient." },
               ].map((item, i) => (
@@ -236,8 +236,8 @@ export default function DiscoveryCallPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,220px),1fr))", gap: 12, marginBottom: 28 }}>
               {[
-                { name: "Energy & Fatigue", price: "£249", desc: "Targeted TATT panel thyroid, iron, insulin, CRP, B12, Vitamin D. GP-reviewed report." },
-                { name: "Metabolic Baseline", price: "£595", desc: "60+ markers including ApoB, metabolic syndrome hormones. Full GP consultation + protocol.", highlight: true },
+                { name: "Energy & Fatigue", price: "£249", desc: "Targeted TATT panel: thyroid, iron, insulin, CRP, B12, vitamin D. GP-reviewed report." },
+                { name: "Metabolic Baseline", price: "£595", desc: "60+ markers including ApoB, metabolic syndrome and hormones. Full GP consultation + protocol.", highlight: true },
                 { name: "Longevity Panel", price: "£795", desc: "150+ markers. Hormones, Omega-3 index, gut, pancreatic. Full GP consultation + report." },
               ].map((p, i) => (
                 <div key={i} style={{ padding: "20px 18px", background: p.highlight ? "rgba(200,168,75,.15)" : "rgba(246,241,232,.07)", border: p.highlight ? "1px solid rgba(200,168,75,.4)" : "1px solid rgba(246,241,232,.1)", textAlign: "left" }}>

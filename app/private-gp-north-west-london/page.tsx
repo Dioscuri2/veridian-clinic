@@ -38,13 +38,13 @@ const pillars = [
     href: "/discovery-call",
     tag: "Private GP",
     title: "Private GP consultations",
-    body: "Unhurried appointments with a GMC-registered GP who has time to listen properly no ten-minute cap, no weeks on a waiting list. The place to bring the concern the NHS never had room for.",
+    body: "Unhurried appointments with a GMC-registered GP who has time to listen properly: no ten-minute cap, no weeks on a waiting list. The place to bring the concern the NHS never had room for.",
   },
   {
     href: "/blood-tests",
     tag: "Screening",
     title: "Advanced blood tests & screening",
-    body: "GP-ordered testing for the markers standard NHS panels leave out ApoB, fasting insulin, Lp(a), biological age and full metabolic screening, interpreted by a doctor with a written action plan.",
+    body: "GP-ordered testing for the markers standard NHS panels leave out: ApoB, fasting insulin, Lp(a), biological age and full metabolic screening, interpreted by a doctor with a written action plan.",
   },
   {
     href: "/weight-loss",
@@ -63,15 +63,15 @@ const pillars = [
 const faqs = [
   {
     q: "Do I need an NHS referral to see a private GP in North West London?",
-    a: "No. You can book directly with Veridian Clinic no GP referral is required. We handle all clinical ordering, including blood tests and private prescriptions where appropriate.",
+    a: "No. You can book directly with Veridian Clinic; no GP referral is required. We handle all clinical ordering, including blood tests and private prescriptions where appropriate.",
   },
   {
     q: "Where are you based in North West London?",
-    a: "A face-to-face consulting location on Golders Green Road, NW11 is opening soon for in-person metabolic and longevity consultations convenient for Golders Green, Hampstead, Highgate, Finchley, Hendon and Temple Fortune. Until it opens, consultations are held by secure video, available now.",
+    a: "A face-to-face consulting location on Golders Green Road, NW11 is opening soon for in-person metabolic and longevity consultations, convenient for Golders Green, Hampstead, Highgate, Finchley, Hendon and Temple Fortune. Until it opens, consultations are held by secure video, available now.",
   },
   {
     q: "Where are the blood tests actually done?",
-    a: "Blood tests are carried out at a Randox clinic, or through a home phlebotomy kit posted to you they are not taken at the consultation location. Your GP orders the right panel, and the results come back with a written interpretation and action plan.",
+    a: "Blood tests are carried out at a Randox clinic, or through a home phlebotomy kit posted to you; they are not taken at the consultation location. Your GP orders the right panel, and the results come back with a written interpretation and action plan.",
   },
   {
     q: "Can I be seen by video instead of in person?",
@@ -148,7 +148,7 @@ export default function PrivateGpNorthWestLondonPage() {
               Private GP care across North West London, beyond the ten-minute appointment.
             </h1>
             <p className="a3" style={{ fontSize: "clamp(.92rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 660, marginBottom: 0 }}>
-              For people across North West London who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP in person by appointment, or by secure video.
+              For people across North West London who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP, in person by appointment or by secure video.
             </p>
           </div>
         </section>

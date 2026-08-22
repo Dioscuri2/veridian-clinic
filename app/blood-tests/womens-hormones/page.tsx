@@ -3,16 +3,16 @@ import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: { absolute: "Perimenopause Blood Test UK Private Women's Hormone Panel | Veridian Clinic" },
+  title: { absolute: "Perimenopause Blood Test UK: Private Women's Hormone Panel | Veridian Clinic" },
   description:
-    "A private perimenopause and women's hormone blood test in the UK. Oestradiol, FSH, LH, progesterone, testosterone, thyroid, Lp(a) and fasting insulin GP-reviewed written interpretation. Is It My Hormones? Panel £375.",
+    "A private perimenopause and women's hormone blood test in the UK. Oestradiol, FSH, LH, progesterone, testosterone, thyroid, Lp(a) and fasting insulin. GP-reviewed written interpretation. Is It My Hormones? Panel, £375.",
   alternates: {
     canonical: "https://veridianclinic.com/blood-tests/womens-hormones",
   },
   openGraph: {
-    title: "Perimenopause Blood Test UK Private Women's Hormone Panel | Veridian Clinic",
+    title: "Perimenopause Blood Test UK: Private Women's Hormone Panel | Veridian Clinic",
     description:
-      "Private perimenopause and female hormone testing in the UK. Oestradiol, FSH, progesterone, testosterone, thyroid, Lp(a) and fasting insulin interpreted by a GP. £375.",
+      "Private perimenopause and female hormone testing in the UK. Oestradiol, FSH, progesterone, testosterone, thyroid, Lp(a) and fasting insulin, interpreted by a GP. £375.",
     url: "https://veridianclinic.com/blood-tests/womens-hormones",
     type: "article",
   },
@@ -41,9 +41,9 @@ const callout = { padding: "18px 20px", background: "var(--iv)", borderLeft: "3p
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Perimenopause Blood Test UK Private Women's Hormone Panel",
+  headline: "Perimenopause Blood Test UK: Private Women's Hormone Panel",
   description:
-    "A private perimenopause and female hormone blood test revealing oestradiol, FSH, LH, progesterone, testosterone, thyroid function, Lp(a) and fasting insulin interpreted by a GP with a written clinical report.",
+    "A private perimenopause and female hormone blood test revealing oestradiol, FSH, LH, progesterone, testosterone, thyroid function, Lp(a) and fasting insulin, interpreted by a GP with a written clinical report.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
   publisher: {
     "@type": "Organization",
@@ -85,7 +85,7 @@ export default function WomensHormonesPage() {
 
         <h2 className="cg" style={sectionHeading}>Why your GP blood test came back normal</h2>
         <p style={paragraph}>
-          A standard NHS blood test typically checks full blood count and, if thyroid disease is suspected, TSH. That is what "normal bloods" usually means. It does not include oestradiol, progesterone, FSH, LH, testosterone, SHBG, prolactin, or Lp(a). It does not measure fasting insulin, which is the primary metabolic driver of perimenopausal weight gain and hormonal disruption in PCOS.
+          A standard NHS blood test typically checks full blood count and, if thyroid disease is suspected, TSH. That is what &quot;normal bloods&quot; usually means. It does not include oestradiol, progesterone, FSH, LH, testosterone, SHBG, prolactin, or Lp(a). It does not measure fasting insulin, which is the primary metabolic driver of perimenopausal weight gain and hormonal disruption in PCOS.
         </p>
         <p style={paragraph}>
           Many women also carry elevated Lp(a), a genetically determined cardiovascular risk factor that rises in approximately 60% of women during hormonal transition and does not fall after menopause. A raised Lp(a) does not show on a standard cholesterol test. It requires a targeted cardiovascular lipid panel to find.
@@ -97,11 +97,11 @@ export default function WomensHormonesPage() {
           <li><strong>FSH (Follicle Stimulating Hormone):</strong> rises as ovarian reserve declines. A sustained FSH above 25 IU/L with declining oestradiol is consistent with menopause transition. Early rises above 10 IU/L in a premenopausal context are clinically significant.</li>
           <li><strong>LH (Luteinising Hormone):</strong> the pituitary ovulation signal. LH:FSH ratio is informative for PCOS; LH elevation confirms the hormonal shift is originating at ovarian level.</li>
           <li><strong>Progesterone:</strong> meaningful in the luteal phase. Low luteal progesterone confirms anovulation, one of the earliest perimenopausal changes and a common driver of heavy periods, poor sleep and mood instability.</li>
-          <li><strong>Prolactin:</strong> elevated prolactin suppresses FSH and LH, disrupts ovarian function and produces symptoms that precisely mimic perimenopause including irregular cycles, low libido and mood changes. Must be ruled out.</li>
+          <li><strong>Prolactin:</strong> elevated prolactin suppresses FSH and LH, disrupts ovarian function and produces symptoms that precisely mimic perimenopause, including irregular cycles, low libido and mood changes. Must be ruled out.</li>
           <li><strong>SHBG (Sex Hormone Binding Globulin):</strong> determines how much testosterone and oestradiol is biologically active. High SHBG leaves total testosterone normal while free testosterone is functionally low, affecting energy, drive and mood.</li>
           <li><strong>Testosterone (total + free):</strong> frequently low in women over 40 and almost never requested in standard GP panels. Low testosterone in women causes fatigue, low drive, cognitive changes and difficulty maintaining muscle. The hormone most directly relevant to libido.</li>
           <li><strong>Thyroid (TSH, FT3, FT4 + TPO antibodies):</strong> thyroid dysfunction is 5 to 8 times more common in women than men and peaks during the perimenopausal decade. Subclinical hypothyroidism produces symptoms indistinguishable from perimenopause. TPO antibodies identify autoimmune thyroid disease before TSH becomes abnormal.</li>
-          <li><strong>Lipoprotein (a):</strong> rises in approximately 60% of women during perimenopause. Genetically determined and hormonally modulated. A high Lp(a) carries significant lifetime cardiovascular risk that standard cholesterol tests will not detect.</li>
+          <li><strong>Lipoprotein(a):</strong> rises in approximately 60% of women during perimenopause. Genetically determined and hormonally modulated. A high Lp(a) carries significant lifetime cardiovascular risk that standard cholesterol tests will not detect.</li>
           <li><strong>Fasting insulin + HbA1c:</strong> insulin resistance worsens with oestrogen decline. This is the primary metabolic mechanism behind perimenopausal weight gain, particularly abdominal. High fasting insulin drives hormonal disruption and is the most commonly missed metabolic driver in this age group.</li>
           <li><strong>Vitamin D:</strong> deficiency is extremely common and worsens fatigue, mood and bone turnover, all of which worsen in perimenopause.</li>
         </ul>
@@ -126,7 +126,7 @@ export default function WomensHormonesPage() {
         </ul>
 
         <div style={callout}>
-          <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Is It My Hormones? Panel, £375</p>
+          <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Is It My Hormones? Panel · £375</p>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
             Oestradiol, FSH, LH, Progesterone, Prolactin, Testosterone (total, with free testosterone calculated from SHBG), SHBG, Thyroid (TSH, FT3, FT4 + TPO antibodies), Lp(a), Fasting Insulin, HbA1c, Vitamin D<br />
             GP-reviewed written report with personalised clinical interpretation. No GP referral needed. Results in 5 working days.
