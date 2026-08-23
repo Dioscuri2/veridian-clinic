@@ -322,44 +322,55 @@ export default function GpConsultationsPage() {
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,300px),1fr))", gap: 20 }}>
-              {consultations.map((c) => (
-                <div key={c.duration} className={c.featured ? "card card-featured" : "card"} style={{ padding: "clamp(24px,4vw,34px)", display: "flex", flexDirection: "column" }}>
-                  <p style={{ fontSize: ".66rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 10 }}>
+              {consultations.map((c) => {
+                // The featured card sits on --fo (#0d2818 forest green), so every
+                // colour inside it has to flip. Painting --fo text on a --fo card
+                // is what made the 20 minute option unreadable.
+                const onDark = !!c.featured;
+                const eyebrow = onDark ? "var(--go3)" : "var(--go)";
+                const priceCol = onDark ? "var(--iv)" : "var(--fo)";
+                const bodyCol = onDark ? "rgba(246,241,232,.9)" : "var(--sl2)";
+                const quietCol = onDark ? "rgba(246,241,232,.68)" : "var(--sl3)";
+                const hairline = onDark ? "1px solid rgba(246,241,232,.22)" : "1px solid rgba(0,0,0,.07)";
+                return (
+                <div key={c.duration} className={c.featured ? "card card-featured" : "card"} style={{ padding: "clamp(26px,5vw,36px)", display: "flex", flexDirection: "column" }}>
+                  <p style={{ fontSize: "clamp(.79rem,2.1vw,.83rem)", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: eyebrow, marginBottom: 12 }}>
                     Video consultation
                   </p>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 6 }}>
-                    <span className="cg" style={{ fontSize: "2.5rem", fontWeight: 500, color: "var(--fo)" }}>{c.price}</span>
-                    <span style={{ fontSize: ".92rem", color: "var(--sl2)", fontWeight: 600 }}>{c.duration}</span>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 8, flexWrap: "wrap" }}>
+                    <span className="cg" style={{ fontSize: "clamp(2.7rem,9vw,3.3rem)", fontWeight: 600, color: priceCol, lineHeight: 1 }}>{c.price}</span>
+                    <span style={{ fontSize: "clamp(1rem,3vw,1.1rem)", color: bodyCol, fontWeight: 600 }}>{c.duration}</span>
                   </div>
-                  <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 18 }}>{c.lead}</p>
+                  <p style={{ fontSize: "clamp(.97rem,2.7vw,1.04rem)", color: bodyCol, lineHeight: 1.8, marginBottom: 20 }}>{c.lead}</p>
 
-                  <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sl3)", marginBottom: 10 }}>
+                  <p style={{ fontSize: "clamp(.85rem,2.3vw,.9rem)", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: quietCol, marginBottom: 12 }}>
                     Suitable for
                   </p>
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 22px", display: "grid", gap: 9 }}>
+                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "grid", gap: 12 }}>
                     {c.suitableFor.map((s) => (
-                      <li key={s} style={{ display: "grid", gridTemplateColumns: "16px 1fr", gap: 10, alignItems: "start" }}>
-                        <svg width="14" height="14" viewBox="0 0 34 34" fill="none" style={{ marginTop: 5 }}>
-                          <path d="M8 17l5 5 13-13" stroke="var(--go)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                      <li key={s} style={{ display: "grid", gridTemplateColumns: "20px 1fr", gap: 11, alignItems: "start" }}>
+                        <svg width="17" height="17" viewBox="0 0 34 34" fill="none" style={{ marginTop: 5 }}>
+                          <path d="M8 17l5 5 13-13" stroke={eyebrow} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <span style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.75 }}>{s}</span>
+                        <span style={{ fontSize: "clamp(.95rem,2.6vw,1.01rem)", color: bodyCol, lineHeight: 1.75 }}>{s}</span>
                       </li>
                     ))}
                   </ul>
 
                   <div style={{ marginTop: "auto" }}>
-                    <p style={{ fontSize: ".82rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14, paddingTop: 16, borderTop: "1px solid rgba(0,0,0,.07)" }}>
+                    <p style={{ fontSize: "clamp(.9rem,2.4vw,.95rem)", color: bodyCol, lineHeight: 1.8, marginBottom: 16, paddingTop: 18, borderTop: hairline }}>
                       Includes one electronic prescription item where clinically appropriate, plus a fit note or referral letter where indicated, at no extra charge.
                     </p>
-                    <a href={c.bookUrl || THANKSDOC_URL} className="btn btn-fo btn-full" target="_blank" rel="noopener noreferrer">
+                    <a href={c.bookUrl || THANKSDOC_URL} className={onDark ? "btn btn-go btn-full" : "btn btn-fo btn-full"} target="_blank" rel="noopener noreferrer">
                       Book {c.duration}, {c.price} →
                     </a>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
 
-            <p style={{ fontSize: ".78rem", color: "var(--sl3)", lineHeight: 1.8, textAlign: "center", marginTop: 20 }}>
+            <p style={{ fontSize: "clamp(.85rem,2.3vw,.9rem)", color: "var(--sl3)", lineHeight: 1.85, textAlign: "center", marginTop: 22 }}>
               Bookings and payments are handled securely through ThanksDoc. Services run through ThanksDoc&apos;s CQC-registered framework. UK patients, adults aged 18 and over only.
             </p>
           </div>
@@ -369,16 +380,16 @@ export default function GpConsultationsPage() {
         <section className="sec bg-iv" style={{ paddingBottom: 0 }}>
           <div className="wrap" style={{ maxWidth: 860 }}>
             <div style={{ padding: "24px 26px", background: "rgba(122,22,22,.06)", borderLeft: "3px solid var(--red)" }}>
-              <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--red)", marginBottom: 10 }}>
+              <p style={{ fontSize: "clamp(.78rem,2.1vw,.82rem)", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--red)", marginBottom: 10 }}>
                 Do not book a video call for these
               </p>
-              <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 12 }}>
+              <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 12 }}>
                 <strong style={{ color: "var(--fo)" }}>Call 999 now, or go to your nearest emergency department,</strong> if you have chest pain or chest tightness, breathlessness at rest, sudden face or arm weakness or slurred speech, heavy or uncontrolled bleeding, a severe allergic reaction with swelling of the face, lips or throat, a first or prolonged seizure, or a sudden severe headache unlike any you have had before.
               </p>
-              <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 12 }}>
+              <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 12 }}>
                 These need urgent hands-on assessment within minutes. A booked video consultation cannot deliver that, and waiting for one costs time you may not have. If you are unsure how urgent something is and it is not an emergency, NHS 111 is available 24 hours a day.
               </p>
-              <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.9 }}>
+              <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.9 }}>
                 We do not see anyone under the age of 18. If you are worried about a child, please contact your NHS GP or call NHS 111, and call 999 if the child is floppy, unrousable, struggling to breathe or has a rash that does not fade under pressure.
               </p>
             </div>
@@ -397,11 +408,11 @@ export default function GpConsultationsPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,270px),1fr))", gap: 16 }}>
               {canHelp.map((item) => (
                 <div key={item.title} className="card" style={{ padding: "24px 22px" }}>
-                  <span style={{ fontSize: ".6rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", padding: "3px 8px", border: "1px solid rgba(200,168,75,.3)", background: "rgba(200,168,75,.06)" }}>
+                  <span style={{ fontSize: "clamp(.72rem,2vw,.76rem)", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", padding: "3px 8px", border: "1px solid rgba(200,168,75,.3)", background: "rgba(200,168,75,.06)" }}>
                     {item.tag}
                   </span>
                   <h3 className="cg" style={{ fontSize: "1.08rem", fontWeight: 500, color: "var(--sl)", margin: "12px 0 8px" }}>{item.title}</h3>
-                  <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85 }}>{item.body}</p>
+                  <p style={{ fontSize: "clamp(.93rem,2.5vw,.98rem)", color: "var(--sl2)", lineHeight: 1.85 }}>{item.body}</p>
                 </div>
               ))}
             </div>
@@ -422,12 +433,12 @@ export default function GpConsultationsPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,280px),1fr))", gap: 16 }}>
               {exclusions.map((item) => (
                 <div key={item.title} style={{ padding: "22px 20px", background: "rgba(122,22,22,.04)", borderLeft: "3px solid var(--red)" }}>
-                  <h3 style={{ fontSize: ".97rem", fontWeight: 600, color: "var(--sl)", marginBottom: 8 }}>{item.title}</h3>
-                  <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85 }}>{item.body}</p>
+                  <h3 style={{ fontSize: "clamp(1rem,2.7vw,1.06rem)", fontWeight: 600, color: "var(--sl)", marginBottom: 8 }}>{item.title}</h3>
+                  <p style={{ fontSize: "clamp(.93rem,2.5vw,.98rem)", color: "var(--sl2)", lineHeight: 1.85 }}>{item.body}</p>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.9, marginTop: 24 }}>
+            <p style={{ fontSize: "clamp(.95rem,2.5vw,1rem)", color: "var(--sl2)", lineHeight: 1.9, marginTop: 24 }}>
               If it becomes clear in the first few minutes that nothing useful can be done for you remotely, Dr Taiwo will refund the consultation personally. That promise is Veridian&apos;s own, made directly to you.
             </p>
           </div>
@@ -450,8 +461,8 @@ export default function GpConsultationsPage() {
                       <path d="M8 17l5 5 13-13" stroke="var(--go2)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
-                  <h3 style={{ fontSize: ".97rem", fontWeight: 600, color: "var(--sl)", marginBottom: 8 }}>{item.title}</h3>
-                  <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85 }}>{item.body}</p>
+                  <h3 style={{ fontSize: "clamp(1rem,2.7vw,1.06rem)", fontWeight: 600, color: "var(--sl)", marginBottom: 8 }}>{item.title}</h3>
+                  <p style={{ fontSize: "clamp(.93rem,2.5vw,.98rem)", color: "var(--sl2)", lineHeight: 1.85 }}>{item.body}</p>
                 </div>
               ))}
             </div>
@@ -462,10 +473,10 @@ export default function GpConsultationsPage() {
               {chargedSeparately.map((row, i) => (
                 <div key={row.item} style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 20, alignItems: "start", padding: "20px 0", borderBottom: i < chargedSeparately.length - 1 ? "1px solid rgba(0,0,0,.07)" : "none" }}>
                   <div>
-                    <p style={{ fontSize: ".94rem", fontWeight: 600, color: "var(--sl)", marginBottom: 6 }}>{row.item}</p>
-                    <p style={{ fontSize: ".85rem", color: "var(--sl2)", lineHeight: 1.8 }}>{row.note}</p>
+                    <p style={{ fontSize: "clamp(.98rem,2.6vw,1.04rem)", fontWeight: 600, color: "var(--sl)", marginBottom: 6 }}>{row.item}</p>
+                    <p style={{ fontSize: "clamp(.91rem,2.4vw,.95rem)", color: "var(--sl2)", lineHeight: 1.8 }}>{row.note}</p>
                     {row.href && (
-                      <a href={row.href} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 10, fontSize: ".82rem", fontWeight: 600, color: "var(--fo)", textDecoration: "underline" }}>
+                      <a href={row.href} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 10, fontSize: "clamp(.89rem,2.4vw,.94rem)", fontWeight: 600, color: "var(--fo)", textDecoration: "underline" }}>
                         Request a repeat prescription &rarr;
                       </a>
                     )}
@@ -485,14 +496,14 @@ export default function GpConsultationsPage() {
             <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.6rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, margin: "8px 0 14px" }}>
               Four things we publish that most of the market does not.
             </h2>
-            <p style={{ fontSize: ".94rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 660, marginBottom: 32 }}>
+            <p style={{ fontSize: "clamp(.98rem,2.6vw,1.04rem)", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 660, marginBottom: 32 }}>
               None of this is a criticism of the NHS. Your NHS GP is doing careful work inside a system under enormous pressure, and we would encourage you to stay registered. This is about what you are entitled to know before you hand your card over to a private provider.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,280px),1fr))", gap: 14 }}>
               {differences.map((d) => (
                 <div key={d.title} style={{ padding: "22px 20px", background: "rgba(246,241,232,.07)", border: "1px solid rgba(246,241,232,.1)" }}>
                   <h3 className="cg" style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--iv)", marginBottom: 10 }}>{d.title}</h3>
-                  <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.7)", lineHeight: 1.85 }}>{d.body}</p>
+                  <p style={{ fontSize: "clamp(.91rem,2.4vw,.95rem)", color: "rgba(246,241,232,.7)", lineHeight: 1.85 }}>{d.body}</p>
                 </div>
               ))}
             </div>
@@ -507,13 +518,13 @@ export default function GpConsultationsPage() {
                 <p className="lbl">Opening soon</p>
                 <div className="rule" />
                 <h2 className="sh-title" style={{ marginTop: 8 }}>Face-to-face rooms in Golders Green and Cambridge</h2>
-                <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16 }}>
+                <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16 }}>
                   In-person consulting rooms are opening in Golders Green (NW11) and in Cambridge, for the appointments that genuinely need a doctor in the room. We are not taking in-person bookings yet and we are not publishing a date or a price for them, because we would rather tell you nothing than tell you something we cannot hold to.
                 </p>
-                <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16 }}>
+                <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16 }}>
                   Join the waiting list and we will email you once, when in-person appointments open, with the location and the fees. This is a waiting list, not a booking, and it does not reserve an appointment or take any payment.
                 </p>
-                <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.9 }}>
+                <p style={{ fontSize: "clamp(.95rem,2.5vw,1rem)", color: "var(--sl2)", lineHeight: 1.9 }}>
                   If you are looking specifically for local care, we have separate pages for{" "}
                   <Link href="/private-gp-north-west-london" style={{ color: "var(--fo)", fontWeight: 600 }}>private GP care in North West London</Link>{" "}
                   and{" "}
@@ -534,7 +545,7 @@ export default function GpConsultationsPage() {
                   metadata={{ interest: "in-person-consultations", locations: "Golders Green NW11, Cambridge" }}
                   compact
                 />
-                <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.7, marginTop: 16 }}>
+                <p style={{ fontSize: "clamp(.79rem,2.1vw,.83rem)", color: "var(--sl3)", lineHeight: 1.7, marginTop: 16 }}>
                   Video consultations are available now, UK-wide, with daytime and evening slots, and you do not need to wait for a room to open to be seen.
                 </p>
               </div>
@@ -548,31 +559,31 @@ export default function GpConsultationsPage() {
             <p className="lbl">A different kind of problem</p>
             <div className="rule" />
             <h2 className="sh-title" style={{ marginTop: 8 }}>If the real question is &quot;why do I feel like this?&quot;</h2>
-            <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16, maxWidth: 700 }}>
+            <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16, maxWidth: 700 }}>
               A 15 or 20 minute appointment is the right tool for a defined problem: an infection, a prescription, a letter. It is the wrong tool for &quot;I am tired all the time and my bloods keep coming back normal&quot;, or &quot;my weight will not shift no matter what I do&quot;, or &quot;I just want to know where I actually stand&quot;. Those need testing and time, not a longer chat.
             </p>
-            <p style={{ fontSize: ".93rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 26, maxWidth: 700 }}>
+            <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 26, maxWidth: 700 }}>
               If that is closer to your situation, say so when you book and we will point you to the right starting point rather than selling you a second short appointment. There is no obligation to go anywhere near it, and the consultations above stand on their own.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,250px),1fr))", gap: 16 }}>
               <Link href="/discovery-call" style={{ textDecoration: "none" }}>
                 <div className="card" style={{ padding: "24px 22px", height: "100%" }}>
-                  <p style={{ fontSize: ".66rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>Discovery Core</p>
+                  <p style={{ fontSize: "clamp(.74rem,2vw,.78rem)", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>Discovery Core</p>
                   <p className="cg" style={{ fontSize: "1.5rem", fontWeight: 500, color: "var(--fo)", marginBottom: 8 }}>£127</p>
-                  <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 12 }}>
+                  <p style={{ fontSize: "clamp(.93rem,2.5vw,.98rem)", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 12 }}>
                     A 30 minute GP-led review of the whole picture, with a written pathway recommendation within 24 hours. For working out what to investigate, and why.
                   </p>
-                  <span style={{ fontSize: ".8rem", color: "var(--fo)", fontWeight: 600 }}>See Discovery Core →</span>
+                  <span style={{ fontSize: "clamp(.87rem,2.3vw,.92rem)", color: "var(--fo)", fontWeight: 600 }}>See Discovery Core →</span>
                 </div>
               </Link>
               <Link href="/blood-tests" style={{ textDecoration: "none" }}>
                 <div className="card" style={{ padding: "24px 22px", height: "100%" }}>
-                  <p style={{ fontSize: ".66rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>Blood panels</p>
+                  <p style={{ fontSize: "clamp(.74rem,2vw,.78rem)", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>Blood panels</p>
                   <p className="cg" style={{ fontSize: "1.5rem", fontWeight: 500, color: "var(--fo)", marginBottom: 8 }}>GP-reviewed</p>
-                  <p style={{ fontSize: ".86rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 12 }}>
+                  <p style={{ fontSize: "clamp(.93rem,2.5vw,.98rem)", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 12 }}>
                     Targeted panels for fatigue, metabolic health, hormones and long-term risk, each returned with a written GP interpretation rather than a PDF of numbers.
                   </p>
-                  <span style={{ fontSize: ".8rem", color: "var(--fo)", fontWeight: 600 }}>See the panels →</span>
+                  <span style={{ fontSize: "clamp(.87rem,2.3vw,.92rem)", color: "var(--fo)", fontWeight: 600 }}>See the panels →</span>
                 </div>
               </Link>
             </div>
@@ -591,7 +602,7 @@ export default function GpConsultationsPage() {
               {faqs.map((f, i) => (
                 <div key={f.q} style={{ padding: "24px 0", borderBottom: i < faqs.length - 1 ? "1px solid rgba(0,0,0,.07)" : "none" }}>
                   <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "var(--sl)", marginBottom: 10 }}>{f.q}</h3>
-                  <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.9 }}>{f.a}</p>
+                  <p style={{ fontSize: "clamp(.96rem,2.6vw,1.01rem)", color: "var(--sl2)", lineHeight: 1.9 }}>{f.a}</p>
                 </div>
               ))}
             </div>
@@ -606,7 +617,7 @@ export default function GpConsultationsPage() {
             <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.6rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.2, marginBottom: 14 }}>
               15 minutes at £59, or 20 minutes at £89.
             </h2>
-            <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.9, maxWidth: 560, margin: "0 auto 28px" }}>
+            <p style={{ fontSize: "clamp(.99rem,2.7vw,1.05rem)", color: "var(--sl2)", lineHeight: 1.9, maxWidth: 560, margin: "0 auto 28px" }}>
               Daytime and evening appointments with the same named GP, at a published price. Adults aged 18 and over.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -617,7 +628,7 @@ export default function GpConsultationsPage() {
                 Book 20 Minutes, £89 →
               </a>
             </div>
-            <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.85, marginTop: 32, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
+            <p style={{ fontSize: "clamp(.79rem,2.1vw,.83rem)", color: "var(--sl3)", lineHeight: 1.85, marginTop: 32, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
               Consultations are delivered by Dr Oluwatosin Taiwo, MBBS MRCGP MRCS, and run through ThanksDoc&apos;s CQC-registered framework. ThanksDoc is a trading name of Endura Health Limited (company number 15418491), CQC registration number 1-18826835219. Bookings, payments and cancellations are subject to ThanksDoc&apos;s terms, including a 48 hour cancellation policy. Veridian Clinic is a private service for adults aged 18 and over, and is not a substitute for NHS GP registration or for emergency care.
             </p>
           </div>
