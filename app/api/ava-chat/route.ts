@@ -73,7 +73,21 @@ export async function POST(req: NextRequest) {
       temperature: 0.5,
     });
 
-    const reply = completion.choices[0]?.message?.content?.trim();
+    // The model keeps emitting typographic dashes and non-breaking hyphens
+    // however firmly the prompt forbids them, and they are stripped site-wide.
+    // Normalise deterministically rather than relying on instruction-following.
+    const sanitise = (t: string) =>
+      t
+        .replace(/[\u2014\u2013\u2012\u2015]/g, ", ")
+        .replace(/[\u2010\u2011\u2212]/g, "-")
+        .replace(/\u00a0/g, " ")
+        .replace(/ {2,}/g, " ")
+        .replace(/ ,/g, ",")
+        .replace(/,\s*,/g, ",");
+
+    const reply = sanitise(
+      completion.choices[0]?.message?.content?.trim() ?? ""
+    ).trim();
     if (!reply) {
       return NextResponse.json(
         { error: "No response from model" },
