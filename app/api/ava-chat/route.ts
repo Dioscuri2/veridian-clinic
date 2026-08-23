@@ -59,13 +59,17 @@ export async function POST(req: NextRequest) {
 
   try {
     const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      // llama-3.3-70b-versatile was decommissioned by Groq and every request
+      // 404d, so Ava answered "busy right now" to every visitor. gpt-oss-120b
+      // spends tokens on a separate reasoning field, so max_tokens has to cover
+      // both that and the visible reply.
+      model: "openai/gpt-oss-120b",
       messages: [
         { role: "system", content: AVA_SYSTEM_PROMPT },
         ...history,
         { role: "user", content: message },
       ],
-      max_tokens: 300,
+      max_tokens: 800,
       temperature: 0.5,
     });
 
