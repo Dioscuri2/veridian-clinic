@@ -59,7 +59,7 @@ export default function WhatPrivateGpChecksPage() {
         ctas={[
           { href: "/metabolic-quiz", label: "Check your metabolic age free →" },
           { href: "/blood-tests", label: "See all advanced blood test panels →", variant: "secondary" },
-          { href: "/discovery-call", label: "Book a GP discovery call, £97 →", variant: "tertiary" },
+          { href: "/discovery-call", label: "Book a GP discovery call, £127 →", variant: "tertiary" },
         ]}
       >
         <h2 className="cg" style={sectionHeading}>Why the NHS panel is built the way it is</h2>

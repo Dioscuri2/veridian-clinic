@@ -368,10 +368,10 @@ function httpPost(url, body) {
   try {
     await page.goto(BASE + "/book?tier=discovery", { waitUntil: "domcontentloaded", timeout: 15000 });
     const bodyText = await page.evaluate(() => document.body.innerText);
-    const has97 = bodyText.includes("97") || bodyText.includes("£97");
+    const has127 = bodyText.includes("127") || bodyText.includes("£127");
     const has195 = bodyText.includes("195") || bodyText.includes("£195");
-    if (has97 || has195) {
-      pass("Book/Discovery — pricing visible", `£97 or £195 found`);
+    if (has127 || has195) {
+      pass("Book/Discovery — pricing visible", `£127 or £195 found`);
     } else {
       warn("Book/Discovery — pricing", "no price visible on page — check /book?tier=discovery");
     }
@@ -414,7 +414,7 @@ function httpPost(url, body) {
   const priceChecks = [
     { route: "/metabolic-reset-guide", expected: ["19.99", "£19"], label: "Metabolic Guide £19.99" },
     { route: "/assessments", expected: ["195", "595", "795"], label: "Assessments £195/£595/£795" },
-    { route: "/discovery-call", expected: ["249", "97"], label: "Discovery Call £249/£97" },
+    { route: "/discovery-call", expected: ["127", "97"], label: "Discovery Call £127/£97" },
     { route: "/book?tier=guide", expected: ["19.99", "19"], label: "Book guide £19.99" },
   ];
 

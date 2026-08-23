@@ -186,12 +186,12 @@ export default function FatigueEnergyPage() {
         <p style={paragraph}>
           Some people still want the conversation. If you would rather sit with a GP and work through the report out loud, ask what the borderline numbers mean for you specifically, decide what to change first, or plan when to retest, then{" "}
           <Link href="/discovery-call" style={{ color: "var(--go)", textDecoration: "underline" }}>Discovery Core</Link>{" "}
-          is a 30-minute live consultation with Dr Taiwo for £97. It is entirely optional, it can be booked before or after your results arrive, and nothing in your report depends on it.
+          is a 30-minute live consultation with Dr Taiwo for £127. It is entirely optional, it can be booked before or after your results arrive, and nothing in your report depends on it.
         </p>
         <div style={{ display: "grid", gap: 10, marginBottom: 8 }}>
           <Link href="/discovery-call" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>
             <span style={{ fontSize: ".88rem", color: "var(--sl)", fontWeight: 500 }}>Discovery Core: 30-minute GP consultation (optional)</span>
-            <span style={{ fontSize: ".78rem", color: "var(--sl3)" }}>£97 →</span>
+            <span style={{ fontSize: ".78rem", color: "var(--sl3)" }}>£127 →</span>
           </Link>
         </div>
 

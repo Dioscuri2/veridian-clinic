@@ -71,7 +71,7 @@ export default function GuideThankyouPage() {
                   30-minute call with Dr Taiwo. Review your symptoms, history, and goals then get a personalised plan for what to investigate next.
                 </p>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 20 }}>
-                  <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--go)", lineHeight: 1 }}>£97</span>
+                  <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--go)", lineHeight: 1 }}>£127</span>
                   <span style={{ fontSize: ".8rem", color: "rgba(246,241,232,.45)" }}>30-minute GP-led call</span>
                 </div>
                 <Link href="/book?tier=discovery" className="btn btn-go" style={{ display: "block", textAlign: "center" }}>

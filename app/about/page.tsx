@@ -6,7 +6,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 
 export const metadata: Metadata = {
   title: { absolute: "About Dr Tosin Taiwo | GP, Veridian Clinic" },
-  description: "Dr Tosin Taiwo is a UK-qualified GP and founder of Veridian Clinic. Specialising in preventive medicine, metabolic health, and longevity medicine. CQC regulated.",
+  description: "Dr Tosin Taiwo is a UK-qualified GP and founder of Veridian Clinic. Specialising in preventive medicine, metabolic health, and longevity medicine. Services run through ThanksDoc's CQC-registered framework.",
   alternates: { canonical: "https://veridianclinic.com/about" },
 };
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
                   className="a3"
                   style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.85, maxWidth: 560 }}
                 >
-                  UK-qualified GP with a special interest in preventive medicine, metabolic health, and longevity. Founder of Veridian Clinic, a CQC-regulated private practice focused on finding what standard testing misses.
+                  UK-qualified GP with a special interest in preventive medicine, metabolic health, and longevity. Founder of Veridian Clinic, a private practice focused on finding what standard testing misses. Services run through ThanksDoc's CQC-registered framework.
                 </p>
               </div>
 
@@ -98,7 +98,7 @@ export default function AboutPage() {
             <div style={{ display: "flex", gap: 32, flexWrap: "wrap", alignItems: "center" }}>
               {[
                 "GMC Registered",
-                "CQC Regulated Clinic",
+                "CQC-registered framework",
                 "UK-Qualified GP",
                 "Preventive Medicine",
                 "Metabolic Health Focus",
@@ -173,7 +173,7 @@ export default function AboutPage() {
             <div style={section}>
               <h2 className="cg" style={h2}>Regulation and credentials</h2>
               <p style={para}>
-                Veridian Clinic is regulated by the Care Quality Commission (CQC). Dr Taiwo is registered with the General Medical Council (GMC) and practises in accordance with UK medical regulation and GMC Good Medical Practice standards.
+                Services run through ThanksDoc's CQC-registered framework. Dr Taiwo is registered with the General Medical Council (GMC) and practises in accordance with UK medical regulation and GMC Good Medical Practice standards.
               </p>
               <p style={para}>
                 All clinical interpretations are provided by a qualified GP. Veridian does not operate as a wellness platform or supplement company. We are a regulated medical service.
@@ -195,7 +195,7 @@ export default function AboutPage() {
               A clinical conversation to understand your situation, answer your questions, and confirm whether the programme is the right fit for you.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/book?tier=discovery" className="btn btn-fo">Book Discovery Core, £97</Link>
+              <Link href="/book?tier=discovery" className="btn btn-fo">Book Discovery Core, £127</Link>
               <Link href="/metabolic-quiz" className="btn btn-ol">Check Your Metabolic Age Free</Link>
             </div>
           </div>

@@ -30,8 +30,8 @@ const RANDOX_CODES: Record<string, { code: string; notes: string }> = {
 };
 
 const TIER_LABELS: Record<string, string> = {
-  discovery: "Discovery Core (£97)",
-  "discovery-quiz": "Discovery Core, guide rate (£77)",
+  discovery: "Discovery Core (£127)",
+  "discovery-quiz": "Discovery Core, quiz rate (£97)",
   "metabolic-screen": "Energy Screen (£195)",
   baseline: "Metabolic Baseline (£595)",
   "longevity-panel": "Longevity Panel (£795)",

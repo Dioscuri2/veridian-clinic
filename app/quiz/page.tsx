@@ -84,7 +84,7 @@ const resultMap = {
   initial: {
     tier: "initial",
     title: "Initial GP Consultation",
-    price: "£97",
+    price: "£127",
     summary: "You’d likely benefit most from a focused GP consultation first a clear, efficient starting point to map symptoms, goals, and the right diagnostic next step.",
   },
   core: {

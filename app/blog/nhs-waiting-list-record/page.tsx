@@ -61,7 +61,7 @@ export default function NhsWaitingListRecordPage() {
         ctas={[
           { href: "/metabolic-quiz", label: "Check your metabolic age free →" },
           { href: "/blood-tests", label: "See what advanced blood testing covers →", variant: "secondary" },
-          { href: "/discovery-call", label: "Book a GP discovery call, £97 →", variant: "tertiary" },
+          { href: "/discovery-call", label: "Book a GP discovery call, £127 →", variant: "tertiary" },
         ]}
       >
         <h2 className="cg" style={sectionHeading}>What the numbers actually say</h2>

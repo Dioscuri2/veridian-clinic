@@ -59,7 +59,7 @@ export default function NhsWeightLossRolloutPage() {
         ctas={[
           { href: "/metabolic-quiz", label: "Check your metabolic age free →" },
           { href: "/blood-tests/metabolic-weight", label: "See the Metabolic Weight Resistance panel →", variant: "secondary" },
-          { href: "/discovery-call", label: "Book a GP discovery call, £97 →", variant: "tertiary" },
+          { href: "/discovery-call", label: "Book a GP discovery call, £127 →", variant: "tertiary" },
         ]}
       >
         <h2 className="cg" style={sectionHeading}>Do the division</h2>

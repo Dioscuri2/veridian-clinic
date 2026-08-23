@@ -245,8 +245,8 @@ function discoveryCallEmail(name: string, guide: "metabolic" | "peri"): { subjec
     ${p(`It's not a sales pitch. It's a clinical conversation.`)}
     ${p(`In 30 minutes, we cover your current symptoms, your relevant history, your goals, and what you've already tried. I give you a clear view of what I'd want to investigate, what the likely drivers are, and what a sensible clinical plan looks like for you.`)}
     ${p(`You leave with clarity, on what's worth testing, what's worth addressing first, and why. Whether or not you decide to work with me further, the call itself is useful.`)}
-    ${p(`The call costs <strong style="color:#2c2a26;">£97</strong>, a guide-reader rate. The standard rate is £195.`)}
-    ${btn("Book Your Discovery Core, £97 →", `${SITE}/book?tier=discovery`)}
+    ${p(`The call costs <strong style="color:#2c2a26;">£127</strong>.`)}
+    ${btn("Book Your Discovery Core, £127 →", `${SITE}/book?tier=discovery`)}
     ${rule()}
     ${p(`If you're not ready for a call yet, the Metabolic Blood Panel is also available directly. It's the practical starting point for ${angle}.`)}
     ${p(`<a href="${SITE}/assessments" style="color:#c8a84b;font-weight:600;">Explore the blood panel options →</a>`)}

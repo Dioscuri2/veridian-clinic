@@ -22,7 +22,7 @@ function BookingInner() {
           <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Secure booking</p>
           <h1 style={{ marginBottom: 14 }}>Taking you to our clinic booking page</h1>
           <p style={{ color: "var(--sl2)", lineHeight: 1.7, marginBottom: 28 }}>
-            Bookings and payments are handled on our secure, CQC-regulated clinic platform. You will be redirected automatically.
+            Bookings and payments are handled on ThanksDoc, our secure clinic platform, which runs a CQC-registered framework. You will be redirected automatically.
           </p>
           <a className="btn btn-go" href={THANKSDOC_URL}>Continue to booking →</a>
           <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.85, marginTop: 40, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>

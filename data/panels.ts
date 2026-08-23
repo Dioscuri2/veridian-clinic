@@ -376,7 +376,7 @@ export const PANELS: Panel[] = [
     slug: "metabolic-discovery",
     productName: "Discovery Core",
     positioningLine: "30-minute GP consultation",
-    pricePence: GBP(97),
+    pricePence: GBP(127),
     landingPage: "/discovery-call",
     checkoutTier: "discovery",
     thanksDocServiceId: null,

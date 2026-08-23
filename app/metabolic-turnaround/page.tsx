@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://veridianclinic.com/metabolic-turnaround" },
   openGraph: {
     title: "The Metabolic Turnaround | Veridian Clinic",
-    description: "Comprehensive blood panel, GP interpretation, personalised plan, and 90 days of fortnightly check-ins. CQC regulated.",
+    description: "Comprehensive blood panel, GP interpretation, personalised plan, and 90 days of fortnightly check-ins. Services run through ThanksDoc's CQC-registered framework.",
     url: "https://veridianclinic.com/metabolic-turnaround",
   },
 };
@@ -48,7 +48,7 @@ const faqSchema = {
       name: "Is this regulated?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Veridian Clinic is regulated by the Care Quality Commission (CQC). Dr Taiwo is a licensed GP registered with the GMC.",
+        text: "Yes. Services run through ThanksDoc's CQC-registered framework, and Dr Taiwo is a licensed GP registered with the GMC.",
       },
     },
     {
@@ -104,12 +104,12 @@ export default function MetabolicTurnaroundPage() {
             </p>
             <div className="a3" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Link href={BOOKING_URL} className="btn btn-fo" target="_blank" rel="noopener noreferrer">
-                Book Discovery Core, £97
+                Book Discovery Core, £127
               </Link>
               <a href="#what-is-included" className="btn btn-ol">See What is Included</a>
             </div>
             <div className="a3" style={{ display: "flex", gap: 24, marginTop: 28, flexWrap: "wrap" }}>
-              {["CQC regulated", "GP-authored, evidence-based", "Private and confidential"].map(t => (
+              {["CQC-registered framework", "GP-authored, evidence-based", "Private and confidential"].map(t => (
                 <div key={t} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--go)", flexShrink: 0 }} />
                   <span style={{ fontSize: ".75rem", color: "var(--sl3)", fontFamily: "var(--ff-sans)", letterSpacing: ".04em" }}>{t}</span>
@@ -317,7 +317,7 @@ export default function MetabolicTurnaroundPage() {
               Dr Tosin Taiwo
             </h2>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 18 }}>
-              UK-qualified GP with a special interest in preventive medicine, metabolic health, and longevity medicine. Veridian Clinic is regulated by the CQC. All clinical services are delivered in compliance with UK medical regulation.
+              UK-qualified GP with a special interest in preventive medicine, metabolic health, and longevity medicine. Services run through ThanksDoc's CQC-registered framework. All clinical services are delivered in compliance with UK medical regulation.
             </p>
             <p style={{ fontSize: ".95rem", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 24 }}>
               The Metabolic Turnaround was designed because the gap between what standard testing measures and what meaningful health optimisation requires is too large to ignore. This programme is the bridge.
@@ -345,7 +345,7 @@ export default function MetabolicTurnaroundPage() {
                 },
                 {
                   q: "Is this regulated?",
-                  a: "Yes. Veridian Clinic is regulated by the Care Quality Commission (CQC). Dr Taiwo is a licensed GP registered with the GMC.",
+                  a: "Yes. Services run through ThanksDoc's CQC-registered framework, and Dr Taiwo is a licensed GP registered with the GMC.",
                 },
                 {
                   q: "What is the difference between this and a health MOT?",
@@ -378,7 +378,7 @@ export default function MetabolicTurnaroundPage() {
               Ten places are available per month.
             </h2>
             <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, marginBottom: 36, maxWidth: 500, margin: "0 auto 36px" }}>
-              The Discovery Core consultation is £97 and takes 30 minutes.
+              The Discovery Core consultation is £127 and takes 30 minutes.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href={BOOKING_URL} className="btn btn-go" target="_blank" rel="noopener noreferrer">

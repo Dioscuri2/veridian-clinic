@@ -434,19 +434,19 @@ function ResultContent() {
                       A 30-minute GP-led review of your result, your key risk factors, and a personalised pathway whether that&apos;s a targeted blood panel, a structured reset, or a full baseline assessment.
                     </p>
                     <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
-                      <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£77</span>
-                      <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£97</span>
+                      <span style={{ fontSize: "1.8rem", fontWeight: 600, color: "var(--go)" }}>£97</span>
+                      <span style={{ fontSize: ".88rem", color: "rgba(246,241,232,.5)", textDecoration: "line-through" }}>£127</span>
                       <span style={{ fontSize: ".78rem", color: "var(--go2)", fontWeight: 500 }}>Save £20</span>
                     </div>
                     <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.55)", lineHeight: 1.6, marginBottom: 16 }}>
-                      Enter your email for your free scorecard your £77 rate is unlocked immediately after.
+                      Enter your email for your free scorecard your £97 rate is unlocked immediately after.
                     </p>
                     <Link
                       href={scorecardUrl}
                       className="btn btn-go btn-full"
                       onClick={() => fbq("InitiateCheckout", { value: 77, currency: "GBP", content_name: "Discovery Call" })}
                     >
-                      Get My Scorecard &amp; Unlock £77 →
+                      Get My Scorecard &amp; Unlock £97 →
                     </Link>
                   </div>
                 )}
@@ -473,7 +473,7 @@ function ResultContent() {
                     Book a GP Discovery Core at the quiz rate.
                   </p>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14 }}>
-                    A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>QUIZRATE</strong> at checkout to reduce the price from £97 to £77.
+                    A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>QUIZRATE</strong> at checkout to reduce the price from £127 to £97.
                   </p>
                   <a
                     href="https://notes.thanksdoc.co.uk/book/service/136/36"

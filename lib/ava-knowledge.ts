@@ -29,7 +29,7 @@ CONSULTATION PACKAGES
    Includes: Targeted blood tests + clinical report
    Best for: Fatigue, thyroid, iron, vitamin deficiencies
 
-4. Discovery Core — £97
+4. Discovery Core — £127
    Includes: Initial clinical consultation with Dr Taiwo to map your metabolic health
    Best for: First-time visitors, unsure where to start
 

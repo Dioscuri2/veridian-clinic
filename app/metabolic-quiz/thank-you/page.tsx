@@ -91,7 +91,7 @@ function ThankYouContent() {
                   Quiz rate unlocked
                 </p>
                 <h2 className="cg" style={{ fontSize: "clamp(1.6rem,3.5vw,2.3rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 12 }}>
-                  Book your GP Discovery Core for £77
+                  Book your GP Discovery Core for £97
                 </h2>
                 <p style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", lineHeight: 1.85, marginBottom: 20 }}>
                   A 30-minute GP-led review of your result and a personalised pathway. At the review step of booking, enter the code below to get your quiz-taker rate.
@@ -101,10 +101,10 @@ function ThankYouContent() {
                   <span className="cg" style={{ fontSize: "1.6rem", fontWeight: 600, color: "var(--fo)", letterSpacing: ".12em" }}>QUIZRATE</span>
                 </div>
                 <a href={DISCOVERY_QUIZ_BOOKING} target="_blank" rel="noopener noreferrer" className="btn btn-go btn-full">
-                  Book my £77 Discovery Core →
+                  Book my £97 Discovery Core →
                 </a>
                 <p style={{ fontSize: ".74rem", color: "rgba(246,241,232,.5)", lineHeight: 1.7, marginTop: 14 }}>
-                  £97 standard · £77 with code QUIZRATE · applied at checkout. Secure payment via ThanksDoc.
+                  £127 standard · £97 with code QUIZRATE · applied at checkout. Secure payment via ThanksDoc.
                 </p>
               </div>
             </div>

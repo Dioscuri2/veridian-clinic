@@ -15,8 +15,8 @@ function PixelPurchase() {
   const tier = params.get("tier") || "";
   useEffect(() => {
     const tierMap: Record<string, number> = {
-      discovery: 97,
-      "discovery-quiz": 77,
+      discovery: 127,
+      "discovery-quiz": 97,
       "metabolic-screen": 195,
       baseline: 595,
       "longevity-panel": 795,

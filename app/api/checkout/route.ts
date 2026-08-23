@@ -31,16 +31,16 @@ const tierCatalog: Record<
   },
   discovery: {
     name: "GP-Led Discovery Core",
-    amount: 9700,
+    amount: 12700,
     description:
-      "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation.",
+      "A 30-minute GP-led review of your metabolic result, key risk factors, and a personalised clinical pathway recommendation. Standard rate: £127.",
     successPath: "/book/thank-you",
   },
   "discovery-quiz": {
     name: "GP-Led Discovery Core, Quiz Rate",
-    amount: 7700,
+    amount: 9700,
     description:
-      "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £77 (normally £97).",
+      "A 30-minute GP-led review of your metabolic quiz result and a personalised pathway recommendation. Quiz taker rate: £97 (normally £127).",
     successPath: "/book/thank-you",
   },
   "micronutrient-panel": {

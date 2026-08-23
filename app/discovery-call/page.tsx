@@ -100,7 +100,7 @@ export default function DiscoveryCallPage() {
                     Standard Rate
                   </p>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-                    <span className="cg" style={{ fontSize: "2.4rem", fontWeight: 500, color: "var(--go)" }}>£97</span>
+                    <span className="cg" style={{ fontSize: "2.4rem", fontWeight: 500, color: "var(--go)" }}>£127</span>
                   </div>
                   <p style={{ fontSize: ".84rem", color: "rgba(246,241,232,.7)", lineHeight: 1.8, marginTop: 8, marginBottom: 16 }}>
                     GP-led 30-minute consultation, written summary within 24 hours, pathway recommendation.
@@ -120,9 +120,9 @@ export default function DiscoveryCallPage() {
                     </span>
                   </div>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
-                    <span className="cg" style={{ fontSize: "1.8rem", fontWeight: 500, color: "var(--fo)" }}>£77</span>
-                    <span style={{ fontSize: ".88rem", color: "var(--sl3)", textDecoration: "line-through" }}>£97</span>
-                    <span style={{ fontSize: ".78rem", color: "var(--sl2)", fontWeight: 500 }}>Save £20</span>
+                    <span className="cg" style={{ fontSize: "1.8rem", fontWeight: 500, color: "var(--fo)" }}>£97</span>
+                    <span style={{ fontSize: ".88rem", color: "var(--sl3)", textDecoration: "line-through" }}>£127</span>
+                    <span style={{ fontSize: ".78rem", color: "var(--sl2)", fontWeight: 500 }}>Save £30</span>
                   </div>
                   <p style={{ fontSize: ".82rem", color: "var(--sl2)", lineHeight: 1.75, marginBottom: 6 }}>
                     This rate is only available to quiz completers. To unlock it:
@@ -130,10 +130,10 @@ export default function DiscoveryCallPage() {
                   <ol style={{ margin: "0 0 14px", paddingLeft: 18, fontSize: ".8rem", color: "var(--sl2)", lineHeight: 2 }}>
                     <li>Take the free 10-question metabolic quiz (2 mins)</li>
                     <li>Enter your email to receive your free scorecard</li>
-                    <li>Your £77 rate is unlocked immediately after</li>
+                    <li>Your £97 rate is unlocked immediately after</li>
                   </ol>
                   <Link href="/metabolic-quiz" className="btn btn-fo btn-full">
-                    Take the Quiz to Unlock £77 →
+                    Take the Quiz to Unlock £97 →
                   </Link>
                   <p style={{ fontSize: ".72rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
                     Discount applied after quiz + email submission. Takes 2 minutes.
