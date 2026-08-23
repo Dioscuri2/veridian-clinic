@@ -1,14 +1,9 @@
-/* ═══════════════════════════════════════════════════════════════
-   VERIDIAN CLINIC — Shared Design System
-   Import FONTS and CSS into any page component via:
-   import { FONTS, CSS } from "@/components/globalStyles";
-   Then inject: <style>{FONTS + CSS}</style>
-   ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════ VERIDIAN CLINIC. Shared Design System Import FONTS and CSS into any page component via: import { FONTS, CSS } from "@/components/globalStyles"; Then inject: <style>{FONTS + CSS}</style> ═══════════════════════════════════════════════════════════════ */
 
 export const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Figtree:wght@300;400;500;600&display=swap');`;
 
 export const CSS = `
-/* ── Reset & Variables ── */
+/* Reset & Variables */
 :root {
  --iv: #f6f1e8;
  --iv2: #ede5d4;
@@ -50,7 +45,7 @@ button, input, select, textarea { font: inherit; }
 
 .cg { font-family: 'Cormorant Garamond', serif; }
 
-/* ── Animations ── */
+/* Animations */
 @keyframes rise {
  from { opacity: 0; transform: translateY(28px); }
  to { opacity: 1; transform: translateY(0); }
@@ -68,7 +63,7 @@ button, input, select, textarea { font: inherit; }
 .a4 { animation: rise .75s .40s ease both; }
 .a5 { animation: rise .75s .52s ease both; }
 
-/* ── Scroll reveal ── */
+/* Scroll reveal */
 .sr-hidden { opacity: 0; transform: translateY(26px); transition: opacity .72s ease, transform .72s ease; }
 .sr-visible { opacity: 1; transform: translateY(0); }
 
@@ -81,7 +76,7 @@ button, input, select, textarea { font: inherit; }
  animation: goldpulse 4s ease infinite;
 }
 
-/* ── Nav ── */
+/* Nav */
 .nav {
  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
  height: var(--nav-h);
@@ -113,7 +108,7 @@ button, input, select, textarea { font: inherit; }
 .logo-text-main { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; letter-spacing: .18em; color: var(--sl); line-height: 1; }
 .logo-text-sub { font-size: .7rem; font-weight: 700; letter-spacing: .3em; color: var(--fo); text-transform: uppercase; margin-top: 5px; }
 
-/* ── Buttons ── */
+/* Buttons */
 .btn {
  display: inline-flex; align-items: center; justify-content: center;
  gap: 8px; border: none; cursor: pointer; font-family: 'Figtree', sans-serif;
@@ -132,7 +127,7 @@ button, input, select, textarea { font: inherit; }
 .btn-ol-lt:hover { background: rgba(246,241,232,.1); border-color: var(--go); color: var(--go3); transform: translateY(-2px); }
 .btn-full { width: 100%; }
 
-/* ── Layout utils ── */
+/* Layout utils */
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 .sec { padding: 80px var(--pad); }
 .bg-iv { background: var(--iv); }
@@ -142,7 +137,7 @@ button, input, select, textarea { font: inherit; }
 .bg-iv2 { background: var(--iv2); }
 .text-center { text-align: center; }
 
-/* ── Labels & rules ── */
+/* Labels & rules */
 .lbl {
  font-family: 'Figtree', sans-serif;
  font-size: .68rem; font-weight: 600;
@@ -151,7 +146,7 @@ button, input, select, textarea { font: inherit; }
 .rule { width: 48px; height: 1px; background: var(--go); margin: 16px 0; }
 .rule-c { margin: 16px auto; }
 
-/* ── Trust badges ── */
+/* Trust badges */
 .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .badge {
  display: inline-flex; align-items: center; gap: 8px;
@@ -162,14 +157,14 @@ button, input, select, textarea { font: inherit; }
  letter-spacing: .14em; text-transform: uppercase; color: var(--fo);
 }
 
-/* ── GRID SYSTEM — mobile first, all breakpoints in media queries ── */
+/* GRID SYSTEM. Mobile first, all breakpoints in media queries */
 .g2 { display: grid; grid-template-columns: 1fr; gap: 28px; }
 .g3 { display: grid; grid-template-columns: 1fr; gap: 24px; }
 .g4 { display: grid; grid-template-columns: 1fr; gap: 20px; }
 .g2s { display: grid; grid-template-columns: 1fr; gap: 20px; }
 .gproc { display: grid; grid-template-columns: 1fr; gap: 0; }
 
-/* ── Cards ── */
+/* Cards */
 .card {
  background: var(--wh); border: 1px solid rgba(0,0,0,.07);
  padding: 32px; transition: box-shadow .3s, transform .3s;
@@ -180,32 +175,32 @@ button, input, select, textarea { font: inherit; }
 .card-fo { background: var(--fo); border: 1px solid var(--fo); padding: 32px; }
 .card-featured { background: var(--fo); border-color: var(--fo); }
 
-/* ── Score pills ── */
+/* Score pills */
 .spill { display: inline-flex; align-items: center; padding: 3px 10px; font-size: .7rem; font-weight: 600; letter-spacing: .07em; }
 .spill-r { background: #fdf0f0; color: var(--red); border: 1px solid #f5c0c0; }
 .spill-a { background: #fef9f0; color: var(--amr); border: 1px solid #f5dcb0; }
 .spill-g { background: #f0fdf5; color: var(--grn); border: 1px solid #b0dfbe; }
 
-/* ── Section headers ── */
+/* Section headers */
 .sh { margin-bottom: 60px; }
 .sh-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 4.5vw, 2.9rem); font-weight: 500; color: var(--sl); line-height: 1.2; }
 .sh-body { font-size: .93rem; color: var(--sl2); max-width: 560px; margin: 16px auto 0; line-height: 1.95; }
 
-/* ── Plan pricing ── */
+/* Plan pricing */
 .plan-pill { position: absolute; top: -11px; left: 32px; font-size: .64rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; background: var(--go); color: var(--fo); padding: 4px 13px; }
 .plan-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 400; line-height: 1; color: var(--fo); }
 .card-featured .plan-price { color: var(--go2); }
 .plan-cadence { font-size: .68rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--go); margin-bottom: 10px; }
 .card-featured .plan-cadence { color: var(--go2); }
 
-/* ── Checklist ── */
+/* Checklist */
 .chk { list-style: none; }
 .chk li { display: flex; align-items: flex-start; gap: 11px; padding: 5px 0; font-size: .88rem; color: var(--sl2); }
 .chk li::before { content: '✓'; color: var(--fo); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
 .card-fo .chk li, .card-featured .chk li { color: rgba(246,241,232,.72); }
 .card-fo .chk li::before, .card-featured .chk li::before { color: var(--go2); }
 
-/* ── Form fields ── */
+/* Form fields */
 .form-field {
  padding: 13px 15px; border: 1px solid rgba(0,0,0,.11);
  background: var(--iv); width: 100%; min-height: 44px;
@@ -219,7 +214,7 @@ button, input, select, textarea { font: inherit; }
  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
 }
 
-/* ── Doc card ── */
+/* Doc card */
 .doc-card { background: var(--wh); border: 1px solid rgba(0,0,0,.07); border-top: 3px solid var(--go); padding: 32px; transition: all .3s; }
 .doc-card:hover { box-shadow: 0 18px 56px rgba(13,40,24,.09); transform: translateY(-2px); }
 .doc-avatar { width: 56px; height: 56px; background: linear-gradient(135deg, var(--fo), var(--fo3)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--go2); }
@@ -229,17 +224,17 @@ button, input, select, textarea { font: inherit; }
 .doc-role { font-size: .8rem; color: var(--fo2); margin-bottom: 16px; }
 .doc-bio { font-size: .87rem; color: var(--sl2); line-height: 1.9; }
 
-/* ── CQC strip ── */
+/* CQC strip */
 .cqc-strip { background: var(--fo); padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; margin-top: 40px; }
 .cqc-item { display: flex; align-items: center; gap: 11px; }
 .cqc-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--go2); }
 .cqc-sub { font-size: .68rem; color: rgba(246,241,232,.36); }
 
-/* ── Progress bar (quiz) ── */
+/* Progress bar (quiz) */
 .prog-track { height: 4px; background: var(--iv2); width: 100%; }
 .prog-fill { height: 100%; background: var(--go); transition: width .5s ease; }
 
-/* ── Quiz option buttons ── */
+/* Quiz option buttons */
 .q-opt {
  width: 100%; text-align: left; padding: 16px 20px;
  background: var(--wh); border: 1.5px solid rgba(0,0,0,.1);
@@ -256,7 +251,7 @@ button, input, select, textarea { font: inherit; }
  font-size: .75rem; font-weight: 600; letter-spacing: .08em; flex-shrink: 0;
 }
 
-/* ── Intake steps ── */
+/* Intake steps */
 .intake-step {
  display: flex; align-items: flex-start; gap: 20px;
  padding: 24px; background: var(--wh); border: 1px solid rgba(0,0,0,.07);
@@ -270,35 +265,35 @@ button, input, select, textarea { font: inherit; }
  font-weight: 500; flex-shrink: 0;
 }
 
-/* ── FAQ ── */
+/* FAQ */
 .faq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; text-align: left; border-bottom: 1px solid rgba(0,0,0,.08); }
 .faq-q { font-size: .93rem; font-weight: 500; color: var(--sl); padding-right: 18px; line-height: 1.5; }
 .faq-icon { font-size: 1.35rem; color: var(--go); flex-shrink: 0; transition: transform .3s; display: inline-block; }
 .faq-a { font-size: .87rem; color: var(--sl2); line-height: 1.9; padding: 14px 0 20px; }
 
-/* ── SC bar ── */
+/* SC bar */
 .sc-bar-track { height: 5px; background: var(--iv2); }
 .sc-bar-fill { height: 100%; animation: bar 1.4s .6s ease both; }
 .fill-red { background: var(--red); }
 .fill-amr { background: var(--amr); }
 .fill-grn { background: var(--grn); }
 
-/* ── Ticker ── */
+/* Ticker */
 .ticker-wrap { overflow: hidden; white-space: nowrap; padding: 16px 0; border-top: 1px solid rgba(0,0,0,.07); border-bottom: 1px solid rgba(0,0,0,.07); }
 .ticker-inner { display: inline-flex; will-change: transform; animation: marq 32s linear infinite; }
 .ticker-item { font-size: .76rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--sl3); padding: 0 44px; }
 .ticker-dot { color: var(--go); }
 
-/* ── Mobile nav ── */
+/* Mobile nav */
 .mob-btn { background: none; border: none; cursor: pointer; color: var(--sl); font-size: 1.35rem; padding: 10px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 .mob-menu { background: var(--iv); border-top: 1px solid rgba(0,0,0,.07); padding: 12px 24px 22px; }
 .mob-link { display: block; padding: 14px 0; font-size: .98rem; color: var(--sl); border-bottom: 1px solid rgba(0,0,0,.05); min-height: 44px; }
 
-/* ── Footer ── */
+/* Footer */
 .footer-link { font-size: .72rem; color: rgba(246,241,232,.22); text-decoration: none; transition: color .2s; }
 .footer-link:hover { color: rgba(246,241,232,.5); }
 
-/* ── Lead forms ── */
+/* Lead forms */
 .lead-label {
  display: block;
  font-size: .7rem;
@@ -309,16 +304,14 @@ button, input, select, textarea { font: inherit; }
  margin-bottom: 8px;
 }
 
-/* ── Vline ── */
+/* Vline */
 .vline { width: 1px; height: 64px; background: linear-gradient(to bottom, transparent, var(--go), transparent); margin: 0 auto 24px; }
 
-/* ── Scrollable table container ── */
+/* Scrollable table container */
 .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .tbl-scroll table { min-width: 620px; }
 
-/* ════════════════════════════════════════════════
- TABLET 640px+
- ════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════ TABLET 640px+ ════════════════════════════════════════════════ */
 @media (min-width: 640px) {
  :root { --pad: 28px; }
  .g3 { grid-template-columns: repeat(2, 1fr); }
@@ -327,9 +320,7 @@ button, input, select, textarea { font: inherit; }
  .sec { padding: 88px var(--pad); }
 }
 
-/* ════════════════════════════════════════════════
- DESKTOP 900px+
- ════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════ DESKTOP 900px+ ════════════════════════════════════════════════ */
 @media (min-width: 900px) {
  :root { --pad: 40px; }
  .nav-links { display: flex; }
@@ -343,9 +334,7 @@ button, input, select, textarea { font: inherit; }
  .sec { padding: 100px var(--pad); }
 }
 
-/* ════════════════════════════════════════════════
- MOBILE overrides
- ════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════ MOBILE overrides ════════════════════════════════════════════════ */
 @media (max-width: 639px) {
  :root { --pad: 16px; --nav-h: 60px; }
  .plan-price { font-size: 2.2rem; }
