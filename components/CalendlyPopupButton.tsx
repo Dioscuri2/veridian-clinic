@@ -1,7 +1,7 @@
 "use client";
 import Script from "next/script";
 
-// Calendly global — shared type is declared in CalendlyInline.tsx; augment here only if needed
+// Calendly global: shared type is declared in CalendlyInline.tsx; augment here only if needed
 type CalendlyWindow = Window & {
   Calendly?: {
     initPopupWidget: (opts: { url: string }) => void;
@@ -28,7 +28,7 @@ export default function CalendlyPopupButton({ url, children, className, style }:
 
   return (
     <>
-      {/* Calendly popup styles — Next.js deduplicates */}
+      {/* Calendly popup styles: Next.js deduplicates */}
       {/* eslint-disable-next-line @next/next/no-css-tags */}
       <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
       <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />

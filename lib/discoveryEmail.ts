@@ -33,7 +33,7 @@ export async function sendDiscoveryIntakeEmail({ email, name }: DiscoveryEmailPa
             Your Discovery Core is booked, ${firstName}.
           </h1>
           <p style="margin:0 0 20px;font-size:.95rem;color:#5a534a;line-height:1.9;">
-            Dr Taiwo will be in touch shortly to confirm your appointment time. To make the most of your 30 minutes, please reply to this email with brief answers to the questions below — it helps Dr Taiwo prepare and means the call can go straight into what matters for you.
+            Dr Taiwo will be in touch shortly to confirm your appointment time. To make the most of your 30 minutes, please reply to this email with brief answers to the questions below. It helps Dr Taiwo prepare and means the call can go straight into what matters for you.
           </p>
 
           <!-- Divider -->
@@ -78,7 +78,7 @@ export async function sendDiscoveryIntakeEmail({ email, name }: DiscoveryEmailPa
 
             <tr><td style="padding:14px 18px;background:#f6f1e8;border-left:3px solid #c8a84b;display:block;">
               <p style="margin:0 0 4px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2c2a26;">6. Diet &amp; exercise</p>
-              <p style="margin:0;font-size:.86rem;color:#5a534a;line-height:1.7;">Brief description of your current diet and weekly exercise routine. (No need for detail — just a general picture.)</p>
+              <p style="margin:0;font-size:.86rem;color:#5a534a;line-height:1.7;">Brief description of your current diet and weekly exercise routine. (No need for detail, just a general picture.)</p>
             </td></tr>
             <tr><td style="padding:6px 0;"></td></tr>
 
@@ -141,8 +141,8 @@ export async function sendDiscoveryIntakeEmail({ email, name }: DiscoveryEmailPa
       body: JSON.stringify({
         sender: { name: "Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
-        replyTo: { email: "support@veridianclinic.com", name: "Dr Taiwo — Veridian Clinic" },
-        subject: "Your Discovery Core consultation is confirmed — please reply with your intake answers",
+        replyTo: { email: "support@veridianclinic.com", name: "Dr Taiwo, Veridian Clinic" },
+        subject: "Your Discovery Core consultation is confirmed, please reply with your intake answers",
         htmlContent: html,
         tags: ["discovery-intake"],
       }),

@@ -2,7 +2,7 @@ const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || "";
 
 export async function verifyTurnstileToken(token: string, ip?: string): Promise<boolean> {
   if (!SECRET_KEY) {
-    // Skip verification if env var not set — enables dev/staging without CF setup
+    // Skip verification if env var not set, enables dev/staging without CF setup
     return true;
   }
   if (!token) return false;

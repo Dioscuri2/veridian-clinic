@@ -538,7 +538,7 @@ function SocialPanel() {
             </div>
             {!linkedin.connected && (
               <p style={{ margin: "10px 0 0", color: "#5a534a", fontSize: "11px", lineHeight: 1.6 }}>
-                Requires a LinkedIn Developer App — set <code style={{ color: "#c8a84b" }}>LINKEDIN_CLIENT_ID</code> + <code style={{ color: "#c8a84b" }}>LINKEDIN_CLIENT_SECRET</code> on Railway first.
+                Requires a LinkedIn Developer App: set <code style={{ color: "#c8a84b" }}>LINKEDIN_CLIENT_ID</code> + <code style={{ color: "#c8a84b" }}>LINKEDIN_CLIENT_SECRET</code> on Railway first.
               </p>
             )}
           </div>
@@ -1180,7 +1180,7 @@ function InterpretPanel() {
               <input style={inp} type="text" placeholder="e.g. Is It My Hormones? Panel" value={panelName} onChange={e => setPanelName(e.target.value)} />
             </div>
             <div>
-              <span style={lbl}>Blood test results — paste raw values</span>
+              <span style={lbl}>Blood test results, paste raw values</span>
               <p style={{ fontSize: "11px", color: "#5a534a", margin: "0 0 6px", lineHeight: "1.5" }}>Copy from Randox portal or PDF. Include marker names and values with units. One per line is fine.</p>
               <textarea
                 style={{ ...inp, height: "220px", resize: "vertical", lineHeight: "1.6" }}
@@ -1201,7 +1201,7 @@ function InterpretPanel() {
 
           {status === "drafted" && (
             <div style={{ marginTop: "8px" }}>
-              <span style={{ ...lbl, marginBottom: "8px" }}>Draft report — review and edit before sending</span>
+              <span style={{ ...lbl, marginBottom: "8px" }}>Draft report, review and edit before sending</span>
               <div style={{ background: "#0f0e0c", border: "1px solid #2a2820", padding: "6px 10px", marginBottom: "8px" }}>
                 <p style={{ color: "#5a534a", fontSize: "11px", margin: "0", lineHeight: "1.5" }}>
                   IMPORTANT: This is an AI-generated draft. Read it carefully. Check every clinical claim against the actual results. Edit freely before sending. You are responsible for the final report.

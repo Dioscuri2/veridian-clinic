@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
   }
 
   if (!BREVO_KEY) {
-    await alertDiscord("FAILED — BREVO_API_KEY not configured", true);
+    await alertDiscord("FAILED: BREVO_API_KEY not configured", true);
     return NextResponse.json({ error: "BREVO_API_KEY not configured" }, { status: 500 });
   }
 
@@ -81,7 +81,7 @@ export async function GET(request: NextRequest) {
   try {
     contacts = await getContactsFromList(LIST_ID);
   } catch (err) {
-    await alertDiscord(`FAILED — Could not fetch contacts from Brevo list ${LIST_ID}: ${err}`, true);
+    await alertDiscord(`FAILED: Could not fetch contacts from Brevo list ${LIST_ID}: ${err}`, true);
     return NextResponse.json({ error: "Failed to fetch contacts" }, { status: 500 });
   }
 
@@ -113,7 +113,7 @@ export async function GET(request: NextRequest) {
   const sent = results.filter(r => r.sent).length;
 
   if (sent > 0) {
-    await alertDiscord(`Ran OK — ${contacts.length} contacts checked, ${sent} email(s) sent`);
+    await alertDiscord(`Ran OK: ${contacts.length} contacts checked, ${sent} email(s) sent`);
   }
 
   return NextResponse.json({

@@ -34,10 +34,10 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
             Your Metabolic Reset Guide is ready, ${firstName}.
           </h1>
           <p style="margin:0 0 16px;font-size:.95rem;color:#5a534a;line-height:1.9;">
-            Thank you for your purchase. Your copy of <em>Why Your Weight Isn't Shifting — A Doctor's 21-Day Metabolic Reset Guide</em> is ready to download.
+            Thank you for your purchase. Your copy of <em>Why Your Weight Isn't Shifting, A Doctor's 21-Day Metabolic Reset Guide</em> is ready to download.
           </p>
           <p style="margin:0 0 28px;font-size:.95rem;color:#5a534a;line-height:1.9;">
-            Click the button below to download your PDF. Keep this email — the link works anytime.
+            Click the button below to download your PDF. Keep this email, the link works anytime.
           </p>
 
           <!-- Download button -->
@@ -52,13 +52,13 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
           <!-- What's inside reminder -->
           <p style="margin:0 0 12px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2c2a26;">What's inside your guide</p>
           <ul style="margin:0 0 28px;padding-left:18px;font-size:.88rem;color:#5a534a;line-height:2;">
-            <li>The PERC Framework — 4 pillars for structured metabolic change</li>
-            <li>21-Day Roadmap — day-by-day action plan across 3 phases</li>
+            <li>The PERC Framework: 4 pillars for structured metabolic change</li>
+            <li>21-Day Roadmap: day-by-day action plan across 3 phases</li>
             <li>7-Day Meal Plan with protein-first plate template</li>
-            <li>Fasting Cheat Sheet — beginner and advanced tracks</li>
-            <li>Movement Ladder — 3 tiers matched to your starting point</li>
+            <li>Fasting Cheat Sheet: beginner and advanced tracks</li>
+            <li>Movement Ladder: 3 tiers matched to your starting point</li>
             <li>21-Day Habit Tracker + Busy Day Emergency Plan</li>
-            <li>Rapid Reset Protocol for recovering from a slip in 24–48 hours</li>
+            <li>Rapid Reset Protocol for recovering from a slip in 24 to 48 hours</li>
           </ul>
 
           <!-- Discovery call nudge -->
@@ -66,7 +66,7 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
             <tr><td style="padding:20px 22px;">
               <p style="margin:0 0 8px;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2c2a26;">Ready for the clinical layer?</p>
               <p style="margin:0 0 14px;font-size:.88rem;color:#5a534a;line-height:1.85;">
-                The guide gives you the framework. Discovery Core is where Dr Taiwo reviews your specific picture — your symptoms, history, and numbers — and identifies your most important clinical levers.
+                The guide gives you the framework. Discovery Core is where Dr Taiwo reviews your specific picture (your symptoms, history and numbers) and identifies your most important clinical levers.
               </p>
               <a href="https://veridianclinic.com/book?tier=discovery" style="font-size:.85rem;font-weight:600;color:#2c2a26;text-decoration:underline;">
                 Book My Discovery Core →
@@ -107,7 +107,7 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
       body: JSON.stringify({
         sender: { name: "Veridian Clinic", email: "support@veridianclinic.com" },
         to: [{ email, name }],
-        subject: "Your Metabolic Reset Guide — Download Inside",
+        subject: "Your Metabolic Reset Guide: Download Inside",
         htmlContent: html,
         tags: ["guide-purchase"],
       }),

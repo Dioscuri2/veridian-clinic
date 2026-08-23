@@ -1,5 +1,5 @@
 #!/bin/bash
-# snapshot.sh — create a named stable snapshot before major changes
+# snapshot.sh: create a named stable snapshot before major changes
 # Usage:
 #   ./scripts/snapshot.sh              → auto-name: stable-YYYY-MM-DD
 #   ./scripts/snapshot.sh "pre-quiz-redesign"  → custom name

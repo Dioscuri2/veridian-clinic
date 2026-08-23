@@ -5,7 +5,7 @@
     "items": [
       {
         "title": "Insulin Resistance",
-        "desc": "Measurable with fasting insulin and HOMA-IR — the actual driver of glucose elevation"
+        "desc": "Measurable with fasting insulin and HOMA-IR: the actual driver of glucose elevation"
       },
       {
         "title": "Thyroid Suppression",
@@ -18,7 +18,7 @@
     ],
     "footer": "veridianclinic.com",
     "quote": "If the weight is not shifting, there is a reason. It is not willpower.",
-    "attribution": "DR TOSIN TAIWO — VERIDIAN CLINIC"
+    "attribution": "DR TOSIN TAIWO · VERIDIAN CLINIC"
   },
   "21": {
     "eyebrow": "FAMILY HISTORY RISK",
@@ -41,9 +41,9 @@
         "desc": "Where you actually sit on the metabolic spectrum right now"
       }
     ],
-    "footer": "Cardiovascular Risk Panel — £349 · veridianclinic.com",
+    "footer": "Cardiovascular Risk Panel: £349 · veridianclinic.com",
     "quote": "You cannot change your genetics. You can know exactly which risks you have inherited.",
-    "attribution": "DR TOSIN TAIWO — VERIDIAN CLINIC"
+    "attribution": "DR TOSIN TAIWO · VERIDIAN CLINIC"
   },
   "22": {
     "eyebrow": "NOW LIVE",
@@ -68,7 +68,7 @@
     ],
     "footer": "Link in comments · veridianclinic.com",
     "quote": "Done with vague advice. Ready for a doctor to look at your numbers and tell you what to fix.",
-    "attribution": "DR TOSIN TAIWO — VERIDIAN CLINIC"
+    "attribution": "DR TOSIN TAIWO · VERIDIAN CLINIC"
   },
   "2": {
     "eyebrow": "FATIGUE & ENERGY",

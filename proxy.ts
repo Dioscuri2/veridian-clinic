@@ -27,7 +27,7 @@ const SECURITY_HEADERS: Record<string, string> = {
   ].join("; "),
 };
 
-// ── Honeypot trap paths — touching these = instant session ban ────────────────
+// ── Honeypot trap paths, touching these = instant session ban ────────────────
 // Bots probe for WordPress, PHPMyAdmin, env files, shells, backups.
 // Real users never visit these. Touching one = automatically blocked.
 const HONEYPOT_PREFIXES = [
@@ -102,7 +102,7 @@ const WINDOW_MS = 60_000;
 const rateLimitStore = new Map<string, { hits: number; windowEnd: number }>();
 const bannedIPs = new Map<string, number>(); // IP → ban expiry timestamp
 
-// ── Upstash Redis — distributed rate limiting ─────────────────────────────────
+// ── Upstash Redis: distributed rate limiting ─────────────────────────────────
 // Lazily initialised so the module loads even without env vars (local dev / fallback).
 let _redis: Redis | null = null;
 const _limiters = new Map<number, Ratelimit>();
@@ -152,7 +152,7 @@ async function isRateLimited(ip: string, pathname: string): Promise<boolean> {
       const { success } = await limiter.limit(bucket);
       return !success;
     } catch {
-      // Redis unavailable — fall through to in-memory
+      // Redis unavailable, fall through to in-memory
     }
   }
 
@@ -207,7 +207,7 @@ export async function proxy(request: NextRequest) {
   const isApi = pathname.startsWith("/api/");
   const isAdmin = pathname.startsWith("/admin");
 
-  // 0. Canonical host — 301 www to apex (build URL explicitly: nextUrl carries
+  // 0. Canonical host: 301 www to apex (build URL explicitly: nextUrl carries
   // the internal Railway port, which must not leak into the Location header)
   const host = request.headers.get("host") || "";
   if (host === "www.veridianclinic.com") {
@@ -217,18 +217,18 @@ export async function proxy(request: NextRequest) {
     );
   }
 
-  // 1. Banned IPs — hard block
+  // 1. Banned IPs: hard block
   if ((bannedIPs.get(ip) ?? 0) > Date.now()) {
     return new NextResponse("Forbidden", { status: 403 });
   }
 
-  // 2. Honeypot trap — ban the IP and return a convincing 404
+  // 2. Honeypot trap: ban the IP and return a convincing 404
   if (isHoneypotPath(pathname)) {
     bannedIPs.set(ip, Date.now() + 3_600_000); // 1-hour TTL
     return new NextResponse("Not Found", { status: 404 });
   }
 
-  // 3. Bad User-Agent on API/admin routes — automated scanner fingerprinting
+  // 3. Bad User-Agent on API/admin routes: automated scanner fingerprinting
   // Cron and health endpoints are exempt: cron uses x-cron-secret, health is pinged by uptime monitors
   const isInternalEndpoint = pathname === "/api/nurture-drip" || pathname === "/api/health";
   if ((isApi || isAdmin) && !isInternalEndpoint && isBadUserAgent(ua)) {
@@ -236,7 +236,7 @@ export async function proxy(request: NextRequest) {
   }
 
   // 4. Origin check on sensitive POST endpoints (CSRF + bot protection)
-  //    Stripe webhooks are excluded — they legitimately have no Origin header.
+  //    Stripe webhooks are excluded, they legitimately have no Origin header.
   if (
     method === "POST" &&
     isApi &&

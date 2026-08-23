@@ -52,7 +52,7 @@ ATTEMPTS=$(echo "$PENDING" | python3 -c "import sys,json; d=json.loads(sys.stdin
 # Only post if today >= scheduled date
 TODAY=$(date '+%Y-%m-%d')
 if [[ "$TODAY" < "$DATE" ]]; then
-  log "Day $DAY ($TOPIC) scheduled for $DATE — too early, skipping."
+  log "Day $DAY ($TOPIC) scheduled for $DATE, too early, skipping."
   exit 0
 fi
 
@@ -82,9 +82,9 @@ POST_ID=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.loads(sys.stdin
 WARNING=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.loads(sys.stdin.read()); print(d.get('warning',''))" 2>/dev/null)
 
 if [ -n "$POST_ID" ]; then
-  log "SUCCESS — Post ID: $POST_ID"
+  log "SUCCESS. Post ID: $POST_ID"
   if [ -n "$WARNING" ]; then
-    log "WARNING — $WARNING"
+    log "WARNING: $WARNING"
     alert_discord "Day $DAY ($TOPIC) posted, but with a warning: $WARNING"
   fi
   # Mark as posted in schedule.json
@@ -105,10 +105,10 @@ print('Schedule updated')
 "
 else
   NEW_ATTEMPTS=$((ATTEMPTS + 1))
-  log "FAILED (attempt $NEW_ATTEMPTS/$MAX_ATTEMPTS) — Response: $RESPONSE"
+  log "FAILED (attempt $NEW_ATTEMPTS/$MAX_ATTEMPTS). Response: $RESPONSE"
 
   if [ "$NEW_ATTEMPTS" -ge "$MAX_ATTEMPTS" ]; then
-    log "Day $DAY has failed $NEW_ATTEMPTS times — marking as 'failed' and moving on so it stops blocking the queue."
+    log "Day $DAY has failed $NEW_ATTEMPTS times, marking as 'failed' and moving on so it stops blocking the queue."
     alert_discord "Day $DAY ($TOPIC) failed $NEW_ATTEMPTS times and has been marked 'failed'. It will NOT post automatically. Response: ${RESPONSE:-<empty>}"
     python3 -c "
 import json

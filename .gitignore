@@ -33,7 +33,7 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-# ThanksDoc portal automation — contains live credentials, never commit
+# ThanksDoc portal automation: contains live credentials, never commit
 td-login.js
 td-*.js
 .td-session/

@@ -105,7 +105,7 @@ async function handlePost(request: NextRequest): Promise<NextResponse> {
       const mimeType = imgRes.headers.get("content-type") || "image/jpeg";
       assetUrns.push(await uploadImageToLinkedIn(token, personUrn, imageBuffer, mimeType));
     } catch (err) {
-      // Don't let a dead/expired image URL block the post entirely — fall back to text-only
+      // Don't let a dead/expired image URL block the post entirely, fall back to text-only
       // (or fewer images), but surface the failure clearly in the response rather than swallowing it.
       imageErrors.push(err instanceof Error ? err.message : "Image attach failed");
     }
@@ -144,7 +144,7 @@ async function handlePost(request: NextRequest): Promise<NextResponse> {
     ok: true,
     postId: postRes.headers.get("x-restli-id"),
     ...(imageErrors.length
-      ? { warning: `${assetUrns.length} of ${assetUrns.length + imageErrors.length} images attached — failures: ${imageErrors.join("; ")}` }
+      ? { warning: `${assetUrns.length} of ${assetUrns.length + imageErrors.length} images attached, failures: ${imageErrors.join("; ")}` }
       : {}),
   });
 }

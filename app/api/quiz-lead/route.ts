@@ -85,12 +85,12 @@ export async function POST(request: NextRequest) {
           },
         }),
       });
-      // Brevo returns 201 on create and 204 on update — both count as stored
+      // Brevo returns 201 on create and 204 on update, both count as stored
       stored = contactRes.ok;
     }
     if (!stored) {
-      // Don't lose the lead silently — alert so it can be added by hand
-      await pingDiscord(`⚠️ QUIZ LEAD NOT SAVED TO BREVO — add manually: ${email} (${firstName || "no name"}), band ${band}, mAge ${mAge}`);
+      // Don't lose the lead silently, alert so it can be added by hand
+      await pingDiscord(`⚠️ QUIZ LEAD NOT SAVED TO BREVO, add manually: ${email} (${firstName || "no name"}), band ${band}, mAge ${mAge}`);
     }
 
     scheduleQuizSequence(email, firstName, mAge, band, delta).catch(() =>

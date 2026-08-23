@@ -1,7 +1,7 @@
 {
   "name": "Veridian Inbox",
   "short_name": "VC Inbox",
-  "description": "Veridian Clinic — WhatsApp admin inbox",
+  "description": "Veridian Clinic: WhatsApp admin inbox",
   "start_url": "/admin?tab=whatsapp",
   "display": "standalone",
   "orientation": "portrait",

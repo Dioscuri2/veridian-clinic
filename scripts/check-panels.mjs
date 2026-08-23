@@ -1,5 +1,5 @@
 // Build-time consistency check for data/panels.ts (runs via npm prebuild).
-// Fails the build — does not warn — when:
+// Fails the build, and does not merely warn, when:
 //   1. a panel's landingPage does not resolve to a real app route
 //   2. a panel's checkoutTier is missing from app/api/checkout/route.ts
 //   3. a panel's price disagrees with the Stripe amount for its tier
@@ -44,7 +44,7 @@ for (const p of panelBlocks) {
       errors.push(`${p.slug}: checkoutTier "${p.checkoutTier}" not found in checkout tierCatalog`);
     } else if (p.pricePence !== 0 && tierAmounts[p.checkoutTier] !== p.pricePence) {
       errors.push(
-        `${p.slug}: price mismatch — panels.ts £${p.pricePence / 100} vs Stripe £${tierAmounts[p.checkoutTier] / 100} for tier "${p.checkoutTier}"`
+        `${p.slug}: price mismatch: panels.ts £${p.pricePence / 100} vs Stripe £${tierAmounts[p.checkoutTier] / 100} for tier "${p.checkoutTier}"`
       );
     }
   }

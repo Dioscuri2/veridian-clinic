@@ -7,7 +7,7 @@ export default function WhatsAppButton() {
   const [tooltip, setTooltip] = useState(false);
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-  // Fade in after 3s — not intrusive on page load
+  // Fade in after 3s, not intrusive on page load
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 3000);
     return () => clearTimeout(t);
@@ -51,7 +51,7 @@ export default function WhatsAppButton() {
           }}>
             WhatsApp
           </strong>
-          Message Veridian Clinic — we typically reply within a few hours.
+          Message Veridian Clinic. We typically reply within a few hours.
         </div>
       )}
 

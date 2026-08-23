@@ -1,5 +1,5 @@
 /**
- * Veridian Clinic — Full Site Audit
+ * Veridian Clinic, Full Site Audit
  * Tests every page, API, security headers, chatbot, lead magnets
  */
 
@@ -14,9 +14,9 @@ if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });
 
 const results = { pass: [], fail: [], warn: [] };
 
-function pass(label, detail = "") { results.pass.push({ label, detail }); console.log(`  ✅ ${label}${detail ? " — " + detail : ""}`); }
-function fail(label, detail = "") { results.fail.push({ label, detail }); console.log(`  ❌ ${label}${detail ? " — " + detail : ""}`); }
-function warn(label, detail = "") { results.warn.push({ label, detail }); console.log(`  ⚠️  ${label}${detail ? " — " + detail : ""}`); }
+function pass(label, detail = "") { results.pass.push({ label, detail }); console.log(`  ✅ ${label}${detail ? ": " + detail : ""}`); }
+function fail(label, detail = "") { results.fail.push({ label, detail }); console.log(`  ❌ ${label}${detail ? ": " + detail : ""}`); }
+function warn(label, detail = "") { results.warn.push({ label, detail }); console.log(`  ⚠️  ${label}${detail ? ": " + detail : ""}`); }
 
 // Pages to audit: [route, expectedStatus, screenshotName]
 const PAGES = [
@@ -137,7 +137,7 @@ function httpPost(url, body) {
   });
 
   console.log("\n══════════════════════════════════════════════════════");
-  console.log("  VERIDIAN CLINIC — FULL SITE AUDIT");
+  console.log("  VERIDIAN CLINIC: FULL SITE AUDIT");
   console.log("══════════════════════════════════════════════════════\n");
 
   // ── 1. PAGE STATUS + SCREENSHOTS ──────────────────────────────────────────
@@ -169,7 +169,7 @@ function httpPost(url, body) {
       }
 
       if (expectedStatus === 302) {
-        // Redirect — just check it didn't 404 or 500
+        // Redirect, just check it didn't 404 or 500
         if (status >= 200 && status < 500) {
           pass(`${route}`, `redirects → ${finalUrl}`);
         } else {
@@ -215,17 +215,17 @@ function httpPost(url, body) {
     if (headers["x-permitted-cross-domain-policies"]) {
       pass("Header: x-permitted-cross-domain-policies");
     } else {
-      warn("Header: x-permitted-cross-domain-policies", "MISSING — middleware may not have deployed yet");
+      warn("Header: x-permitted-cross-domain-policies", "MISSING, middleware may not have deployed yet");
     }
     // Check Cross-Origin headers
     if (headers["cross-origin-opener-policy"]) pass("Header: cross-origin-opener-policy");
-    else warn("Header: cross-origin-opener-policy", "MISSING — middleware not yet active");
+    else warn("Header: cross-origin-opener-policy", "MISSING, middleware not yet active");
   } catch (e) {
     fail("Security headers check", e.message);
   }
 
   // ── 3. HONEYPOT CHECK ────────────────────────────────────────────────────
-  // NOTE: Honeypot hits ban the requesting IP in-memory — run AFTER all API tests.
+  // NOTE: Honeypot hits ban the requesting IP in-memory, so run AFTER all API tests.
   console.log("\n▶ 3. HONEYPOT TRAPS\n");
   const honeypots = ["/wp-admin", "/phpmyadmin", "/wp-login.php", "/xmlrpc.php"];
   // NOTE: Deliberately omitting /.env and /admin/config to avoid self-banning during audit.
@@ -235,7 +235,7 @@ function httpPost(url, body) {
       if (status === 404 || status === 403) {
         pass(`Honeypot: ${path_}`, `returns ${status}`);
       } else {
-        warn(`Honeypot: ${path_}`, `returns ${status} — middleware may not be active yet`);
+        warn(`Honeypot: ${path_}`, `returns ${status}, middleware may not be active yet`);
       }
     } catch (e) {
       warn(`Honeypot: ${path_}`, e.message);
@@ -254,9 +254,9 @@ function httpPost(url, body) {
         fail("Ava chatbot API", "response has no reply field: " + r.body.substring(0, 100));
       }
     } else if (r.status === 503) {
-      fail("Ava chatbot API", "503 — GROQ_API_KEY missing or service down");
+      fail("Ava chatbot API", "503: GROQ_API_KEY missing or service down");
     } else {
-      fail("Ava chatbot API", `HTTP ${r.status} — ${r.body.substring(0, 100)}`);
+      fail("Ava chatbot API", `HTTP ${r.status}: ${r.body.substring(0, 100)}`);
     }
   } catch (e) {
     fail("Ava chatbot API", e.message);
@@ -279,9 +279,9 @@ function httpPost(url, body) {
     if ([200, 201, 409].includes(r.status)) {
       pass("Newsletter API", `HTTP ${r.status}`);
     } else if (r.status === 400) {
-      pass("Newsletter API", "400 — validation working (test email likely rejected)");
+      pass("Newsletter API", "400: validation working (test email likely rejected)");
     } else {
-      warn("Newsletter API", `HTTP ${r.status} — ${r.body.substring(0, 100)}`);
+      warn("Newsletter API", `HTTP ${r.status}: ${r.body.substring(0, 100)}`);
     }
   } catch (e) {
     fail("Newsletter API", e.message);
@@ -294,11 +294,11 @@ function httpPost(url, body) {
   try {
     const { status } = await httpGet(BASE + "/api/guide-download");
     if (status === 400 || status === 401 || status === 403) {
-      pass("Guide download — unauthenticated", `correctly returns ${status}`);
+      pass("Guide download, unauthenticated", `correctly returns ${status}`);
     } else if (status === 302 || status === 303) {
-      pass("Guide download — unauthenticated", `redirects (${status})`);
+      pass("Guide download, unauthenticated", `redirects (${status})`);
     } else {
-      warn("Guide download — unauthenticated", `returns ${status} — check route`);
+      warn("Guide download, unauthenticated", `returns ${status}, check route`);
     }
   } catch (e) {
     fail("Guide download API", e.message);
@@ -308,9 +308,9 @@ function httpPost(url, body) {
   try {
     const { status } = await httpGet(BASE + "/api/peri-guide-download");
     if (status === 400 || status === 401 || status === 403) {
-      pass("Peri-guide download — unauthenticated", `correctly returns ${status}`);
+      pass("Peri-guide download, unauthenticated", `correctly returns ${status}`);
     } else {
-      warn("Peri-guide download — unauthenticated", `returns ${status}`);
+      warn("Peri-guide download, unauthenticated", `returns ${status}`);
     }
   } catch (e) {
     fail("Peri-guide download API", e.message);
@@ -322,10 +322,10 @@ function httpPost(url, body) {
     const pageText = await page.evaluate(() => document.body.innerText);
     const hasPrice = pageText.includes("19.99") || pageText.includes("£19");
     const hasCTA = await page.$("a[href*='checkout'], button");
-    if (hasPrice) pass("Metabolic Reset Guide — £19.99 price visible");
-    else warn("Metabolic Reset Guide — price not found on page");
-    if (hasCTA) pass("Metabolic Reset Guide — CTA button present");
-    else warn("Metabolic Reset Guide — no CTA button found");
+    if (hasPrice) pass("Metabolic Reset Guide: £19.99 price visible");
+    else warn("Metabolic Reset Guide: price not found on page");
+    if (hasCTA) pass("Metabolic Reset Guide: CTA button present");
+    else warn("Metabolic Reset Guide: no CTA button found");
   } catch (e) {
     fail("Metabolic Reset Guide page", e.message);
   }
@@ -351,14 +351,14 @@ function httpPost(url, body) {
       els.map((e) => ({ href: e.href, text: e.textContent?.trim().substring(0, 60) }))
     );
     if (waLinks.length > 0) {
-      for (const l of waLinks) pass("WhatsApp link found", `${l.href} — "${l.text}"`);
+      for (const l of waLinks) pass("WhatsApp link found", `${l.href}: "${l.text}"`);
     } else {
       fail("WhatsApp link", "no wa.me or whatsapp links found on homepage");
     }
     // Check footer bar specifically
     const footerWA = await page.$eval("a[href*='wa.me']", (el) => el.href).catch(() => null);
     if (footerWA) pass("Footer WhatsApp bar", footerWA);
-    else warn("Footer WhatsApp bar", "no wa.me link on homepage — may be in footer below fold");
+    else warn("Footer WhatsApp bar", "no wa.me link on homepage, may be in footer below fold");
   } catch (e) {
     fail("WhatsApp check", e.message);
   }
@@ -371,9 +371,9 @@ function httpPost(url, body) {
     const has127 = bodyText.includes("127") || bodyText.includes("£127");
     const has195 = bodyText.includes("195") || bodyText.includes("£195");
     if (has127 || has195) {
-      pass("Book/Discovery — pricing visible", `£127 or £195 found`);
+      pass("Book/Discovery: pricing visible", `£127 or £195 found`);
     } else {
-      warn("Book/Discovery — pricing", "no price visible on page — check /book?tier=discovery");
+      warn("Book/Discovery: pricing", "no price visible on page, check /book?tier=discovery");
     }
   } catch (e) {
     fail("Book discovery page", e.message);
@@ -399,7 +399,7 @@ function httpPost(url, body) {
         if (status >= 200 && status < 400) {
           pass(`Link: ${link}`, `${status}`);
         } else {
-          fail(`Link: ${link}`, `HTTP ${status} — BROKEN`);
+          fail(`Link: ${link}`, `HTTP ${status}: BROKEN`);
         }
       } catch (e) {
         fail(`Link: ${link}`, e.message.split("\n")[0]);
@@ -424,7 +424,7 @@ function httpPost(url, body) {
       const text = await page.evaluate(() => document.body.innerText);
       const found = check.expected.filter((p) => text.includes(p));
       if (found.length > 0) pass(check.label, `found: ${found.join(", ")}`);
-      else warn(check.label, `expected ${check.expected.join(" or ")} — not visible on page`);
+      else warn(check.label, `expected ${check.expected.join(" or ")}, not visible on page`);
     } catch (e) {
       fail(check.label, e.message);
     }
@@ -438,7 +438,7 @@ function httpPost(url, body) {
     if (finalUrl.includes("/admin/login")) {
       pass("Admin redirects to login", finalUrl);
     } else if (res?.status() === 200 && finalUrl.includes("/admin") && !finalUrl.includes("login")) {
-      warn("Admin redirect", "loaded admin without redirect — middleware may not be active yet");
+      warn("Admin redirect", "loaded admin without redirect, middleware may not be active yet");
     } else {
       pass("Admin protection", `→ ${finalUrl}`);
     }
@@ -448,7 +448,7 @@ function httpPost(url, body) {
 
   // ── 12. RATE LIMIT CHECK ─────────────────────────────────────────────────
   console.log("\n▶ 12. RATE LIMITING\n");
-  // Hit ava-chat 15 times rapidly — should 429 after 12
+  // Hit ava-chat 15 times rapidly, should 429 after 12
   let rateLimitTriggered = false;
   for (let i = 0; i < 15; i++) {
     try {
@@ -457,7 +457,7 @@ function httpPost(url, body) {
     } catch {}
   }
   if (rateLimitTriggered) pass("Rate limiting on /api/ava-chat", "429 triggered after burst");
-  else warn("Rate limiting on /api/ava-chat", "no 429 after 15 rapid requests — Redis or middleware may still be propagating");
+  else warn("Rate limiting on /api/ava-chat", "no 429 after 15 rapid requests, Redis or middleware may still be propagating");
 
   // ── FINAL SUMMARY ────────────────────────────────────────────────────────
   await browser.close();

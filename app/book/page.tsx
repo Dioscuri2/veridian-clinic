@@ -7,7 +7,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
 
 // All Veridian services (consultations, blood panels, programmes) are booked
-// and paid via ThanksDoc — payments must settle through the ThanksDoc Stripe
+// and paid via ThanksDoc, payments must settle through the ThanksDoc Stripe
 // account under the clinic agreement. This page only forwards the many
 // /book?tier=... links across the site and in previously sent emails.
 function BookingInner() {

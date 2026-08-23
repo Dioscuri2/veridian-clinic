@@ -172,7 +172,7 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Legal modals — lazy loaded, zero bundle cost until needed */}
+      {/* Legal modals: lazy loaded, zero bundle cost until needed */}
       {modal && (
         <Suspense fallback={null}>
           <LegalModal type={modal} onClose={() => setModal(null)} />

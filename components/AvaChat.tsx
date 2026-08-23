@@ -37,7 +37,7 @@ export default function AvaChat() {
 
   useEffect(() => {
     if (sessionStorage.getItem("ava_nudge_seen")) return;
-    // Hold the nudge back until the cookie banner has been answered — on
+    // Hold the nudge back until the cookie banner has been answered, on
     // mobile the tooltip renders on top of the banner text otherwise
     let t: ReturnType<typeof setTimeout> | undefined;
     const arm = () => { t = setTimeout(() => setNudge(true), 4000); };
@@ -211,7 +211,7 @@ export default function AvaChat() {
         <div
           className="ava-panel"
           role="dialog"
-          aria-label="Ava — Veridian health assistant"
+          aria-label="Ava, Veridian health assistant"
           aria-modal="true"
           style={{
             position: "fixed",

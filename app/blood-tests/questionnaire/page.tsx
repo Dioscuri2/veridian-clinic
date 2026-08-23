@@ -146,20 +146,20 @@ function QuestionnaireForm() {
 
               <div style={{ display: "grid", gap: 24 }}>
 
-                {/* Q1 — Email */}
+                {/* Q1: Email */}
                 <div>
                   <label style={label}>Your email address <span style={{ color: "var(--fo)" }}>*</span></label>
                   <span style={hint}>So we can match this form to your test order.</span>
                   <input style={inp} type="email" placeholder="your@email.com" value={answers.email} onChange={e => setField("email", e.target.value)} />
                 </div>
 
-                {/* Q2 — Age */}
+                {/* Q2: Age */}
                 <div>
                   <label style={label}>Your age</label>
                   <input style={inp} type="number" placeholder="e.g. 42" min="18" max="99" value={answers.age} onChange={e => setField("age", e.target.value)} />
                 </div>
 
-                {/* Q3 — Sex */}
+                {/* Q3: Sex */}
                 <div>
                   <label style={label}>Biological sex</label>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -173,7 +173,7 @@ function QuestionnaireForm() {
                   </div>
                 </div>
 
-                {/* Q4 — Menstrual status (conditional) */}
+                {/* Q4: Menstrual status (conditional) */}
                 {(answers.sex === "Female" || answers.sex === "") && (
                   <div>
                     <label style={label}>Menstrual status (if applicable)</label>
@@ -189,7 +189,7 @@ function QuestionnaireForm() {
                   </div>
                 )}
 
-                {/* Q5 — Top symptoms */}
+                {/* Q5: Top symptoms */}
                 <div>
                   <label style={label}>Top 3 symptoms you want this test to address</label>
                   <span style={hint}>Select up to 3. These become the focus of Dr Tosin's interpretation.</span>
@@ -209,14 +209,14 @@ function QuestionnaireForm() {
                   </div>
                 </div>
 
-                {/* Q6 — Medications */}
+                {/* Q6: Medications */}
                 <div>
                   <label style={label}>Current medications or supplements (if any)</label>
                   <span style={hint}>Include HRT, thyroid medication, statins, metformin, or anything relevant. Write &quot;none&quot; if not applicable.</span>
                   <input style={inp} type="text" placeholder="e.g. Levothyroxine 50mcg, Vitamin D, none" value={answers.medications} onChange={e => setField("medications", e.target.value)} />
                 </div>
 
-                {/* Q7 — What prompted */}
+                {/* Q7: What prompted */}
                 <div>
                   <label style={label}>What prompted you to book this test?</label>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -237,11 +237,11 @@ function QuestionnaireForm() {
                   </div>
                 </div>
 
-                {/* Q8 — Previous results */}
+                {/* Q8: Previous results */}
                 <div>
                   <label style={label}>Have you had relevant blood tests before?</label>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 10 }}>
-                    {["Yes — and I was told everything was normal", "Yes — and abnormal results were found", "No — this is my first test for this", "Not sure"].map(opt => (
+                    {["Yes, and I was told everything was normal", "Yes, and abnormal results were found", "No, this is my first test for this", "Not sure"].map(opt => (
                       <button key={opt} onClick={() => setField("previousResults", opt)} style={{
                         padding: "9px 16px", border: `1.5px solid ${answers.previousResults === opt ? "var(--fo)" : "rgba(0,0,0,.15)"}`,
                         background: answers.previousResults === opt ? "var(--fo)" : "var(--wh)", color: answers.previousResults === opt ? "var(--iv)" : "var(--sl)",
@@ -251,7 +251,7 @@ function QuestionnaireForm() {
                   </div>
                 </div>
 
-                {/* Q8b — Primary goal */}
+                {/* Q8b: Primary goal */}
                 <div>
                   <label style={label}>What would a useful result look like to you?</label>
                   <span style={hint}>What are you hoping to understand or change after getting your results?</span>

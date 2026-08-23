@@ -8,7 +8,7 @@ interface PanelInfo {
   fastingRequired: boolean;
   randoxCode: string;
   randoxNotes: string;
-  /** True when a GP consultation is bundled into the price — suppresses the paid results-consultation add-on */
+  /** True when a GP consultation is bundled into the price, which suppresses the paid results-consultation add-on */
   consultationIncluded?: boolean;
 }
 
@@ -23,7 +23,7 @@ const PANELS: Record<string, PanelInfo> = {
     ],
     fastingRequired: true,
     randoxCode: "HSC7F_RP7 + LPA + INS",
-    randoxNotes: "Trade £161.40 (HSC7F_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80). Do NOT add Vitamin D (25OH_VITD) — HSC7F_RP7 already contains it. HSC7F_RP7 gives total Testosterone, SHBG and FAI; free testosterone is CALCULATED from total T and SHBG, not assayed. No cortisol in this order.",
+    randoxNotes: "Trade £161.40 (HSC7F_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80). Do NOT add Vitamin D (25OH_VITD): HSC7F_RP7 already contains it. HSC7F_RP7 gives total Testosterone, SHBG and FAI; free testosterone is CALCULATED from total T and SHBG, not assayed. No cortisol in this order.",
   },
   "mens-testosterone": {
     name: "Running on Empty, Men's Testosterone & Hormone Panel",
@@ -35,7 +35,7 @@ const PANELS: Record<string, PanelInfo> = {
     ],
     fastingRequired: true,
     randoxCode: "HSC7M_RP7 + LPA + INS + DHEAS + CORTISOL",
-    randoxNotes: "Trade £209.80 (HSC7M_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80 + DHEA-S £16.00 + Cortisol £32.40). Do NOT add Free Testosterone (FREE_TEST) — HSC7M_RP7 contains total Testosterone, SHBG and FAI, so free T is CALCULATED (wastes £30.30). HSC7M_RP7 has no DHEA-S and no cortisol, so both are ordered separately. CORTISOL is a SINGLE MORNING SERUM sample — collect before 10am; it is not a cortisol awakening response or a diurnal profile.",
+    randoxNotes: "Trade £209.80 (HSC7M_RP7 £100.50 + Lp(a) £28.10 + Insulin £32.80 + DHEA-S £16.00 + Cortisol £32.40). Do NOT add Free Testosterone (FREE_TEST): HSC7M_RP7 contains total Testosterone, SHBG and FAI, so free T is CALCULATED (wastes £30.30). HSC7M_RP7 has no DHEA-S and no cortisol, so both are ordered separately. CORTISOL is a SINGLE MORNING SERUM sample, collect before 10am; it is not a cortisol awakening response or a diurnal profile.",
   },
   "cardiovascular-risk": {
     name: "What Your Cholesterol Test Missed, Cardiovascular Risk Panel",
@@ -47,7 +47,7 @@ const PANELS: Record<string, PanelInfo> = {
     ],
     fastingRequired: true,
     randoxCode: "RP10 + HOMO + hsCRP + INS + HBA1_NEW",
-    randoxNotes: "Trade £145.40 (RP10 £37.60 + Homocysteine £40.50 + hs-CRP £14.00 + Insulin £32.80 + HbA1c £20.50). Do NOT add Lp(a), ApoB or Small Dense LDL — RP10 already contains all three (wastes £74.10). RP10 carries standard CRP only, so hsCRP stays. RP10 has no HbA1c, so HBA1_NEW is ordered separately — it must stay on the order for the HbA1c claim to hold.",
+    randoxNotes: "Trade £145.40 (RP10 £37.60 + Homocysteine £40.50 + hs-CRP £14.00 + Insulin £32.80 + HbA1c £20.50). Do NOT add Lp(a), ApoB or Small Dense LDL: RP10 already contains all three (wastes £74.10). RP10 carries standard CRP only, so hsCRP stays. RP10 has no HbA1c, so HBA1_NEW is ordered separately, and it must stay on the order for the HbA1c claim to hold.",
   },
   "fatigue-energy": {
     name: "Tired of Being Told You're Fine, Fatigue & Energy Deep Screen",
@@ -59,7 +59,7 @@ const PANELS: Record<string, PanelInfo> = {
     ],
     fastingRequired: true,
     randoxCode: "HSC10 + Uric Acid",
-    randoxNotes: "HSC10 already includes insulin, vitamin D, FBC, full thyroid (TSH/FT3/FT4 with TPO and TGA antibodies), ferritin/iron/TIBC/transferrin saturation, B12, folate, HbA1c, glucose, C-peptide, CRP, magnesium, calcium, phosphate, albumin, ALP and kidney function including cystatin C and eGFR. Do NOT order Insulin (INS) or Vitamin D (25OH_VITD) on top — that wastes £59.60. Trade total £94.90.",
+    randoxNotes: "HSC10 already includes insulin, vitamin D, FBC, full thyroid (TSH/FT3/FT4 with TPO and TGA antibodies), ferritin/iron/TIBC/transferrin saturation, B12, folate, HbA1c, glucose, C-peptide, CRP, magnesium, calcium, phosphate, albumin, ALP and kidney function including cystatin C and eGFR. Do NOT order Insulin (INS) or Vitamin D (25OH_VITD) on top, because that wastes £59.60. Trade total £94.90.",
   },
   "metabolic-weight": {
     name: "Why Won't The Weight Budge?, Metabolic Weight Resistance Panel",
@@ -71,7 +71,7 @@ const PANELS: Record<string, PanelInfo> = {
     ],
     fastingRequired: true,
     randoxCode: "RP3 + RP4 + URIC_ACID",
-    randoxNotes: "Trade £72.90 (RP3 £46.00 + RP4 £18.20 + Uric Acid £8.70). Do NOT add Insulin (INS) or Lp(a) (LPA) — RP3 already contains both, plus Adiponectin, C-peptide, ApoB/ApoA-I/ApoE, sdLDL, CRP, glucose and HbA1c (wastes £60.90). HOMA-IR is calculated from RP3 insulin and glucose. No ALT/AST in this order. Leptin and Resistin are NOT offered by Randox in any form.",
+    randoxNotes: "Trade £72.90 (RP3 £46.00 + RP4 £18.20 + Uric Acid £8.70). Do NOT add Insulin (INS) or Lp(a) (LPA): RP3 already contains both, plus Adiponectin, C-peptide, ApoB/ApoA-I/ApoE, sdLDL, CRP, glucose and HbA1c (wastes £60.90). HOMA-IR is calculated from RP3 insulin and glucose. No ALT/AST in this order. Leptin and Resistin are NOT offered by Randox in any form.",
   },
   "optimiser-baseline": {
     name: "The Optimiser's Baseline, Performance & Longevity Panel",
@@ -85,7 +85,7 @@ const PANELS: Record<string, PanelInfo> = {
     fastingRequired: true,
     consultationIncluded: true,
     randoxCode: "HSC8M or HSC8F + HSC12 + IGF1",
-    randoxNotes: "Trade £289.20 (HSC8 £106.30 + HSC12 £134.00 + IGF-1 £48.90). Verified no waste — both base panels are needed: HSC8 uniquely adds Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL and thyroid antibodies; HSC12 uniquely adds Cortisol, DHEA-S, Testosterone, SHBG, FAI, CK/CK-MB, myoglobin and Total Antioxidant Status. ApoB is in both. IGF-1 is in neither. No FSH in this order. HSC12's cortisol is a SINGLE MORNING SERUM sample — book the draw for the morning and never describe it as a cortisol awakening response or a diurnal profile. Leptin and Resistin are NOT offered by Randox. Price includes a GP-led 30-minute consultation as well as the written report.",
+    randoxNotes: "Trade £289.20 (HSC8 £106.30 + HSC12 £134.00 + IGF-1 £48.90). Verified no waste, both base panels are needed: HSC8 uniquely adds Adiponectin, Insulin, C-peptide, Cystatin C, ApoE, Lp(a), sdLDL and thyroid antibodies; HSC12 uniquely adds Cortisol, DHEA-S, Testosterone, SHBG, FAI, CK/CK-MB, myoglobin and Total Antioxidant Status. ApoB is in both. IGF-1 is in neither. No FSH in this order. HSC12's cortisol is a SINGLE MORNING SERUM sample, so book the draw for the morning and never describe it as a cortisol awakening response or a diurnal profile. Leptin and Resistin are NOT offered by Randox. Price includes a GP-led 30-minute consultation as well as the written report.",
   },
   "metabolic-screen": {
     name: "Veridian Energy Screen",
@@ -179,7 +179,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
             <tr><td style="padding:16px 20px;border-left:3px solid #c8a84b;background:#fffbf2;">
               <p style="margin:0 0 6px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a5500;">Preparation, fasting required</p>
               <p style="margin:0;font-size:.86rem;color:#5a534a;line-height:1.75;">
-                This panel includes fasting markers (insulin and glucose). Please fast for <strong>8–10 hours</strong> before your sample is taken, water is fine. No alcohol for 24 hours before. Take any regular medications as normal unless advised otherwise.
+                This panel includes fasting markers (insulin and glucose). Please fast for <strong>8 to 10 hours</strong> before your sample is taken, water is fine. No alcohol for 24 hours before. Take any regular medications as normal unless advised otherwise.
               </p>
             </td></tr>
           </table>
@@ -193,7 +193,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
                 ${[
                   ["Within 24 hours", "Dr Tosin will email you to confirm your collection method and send your kit or booking details."],
                   ["Sample collection", "Take your sample using your chosen method. Return or drop off as instructed."],
-                  ["Lab processing", "Your sample is processed by our nationally accredited UK pathology laboratory. Results typically available within 48–72 hours of receipt."],
+                  ["Lab processing", "Your sample is processed by our nationally accredited UK pathology laboratory. Results typically available within 48 to 72 hours of receipt."],
                   ["Your GP report", "Dr Tosin prepares a written clinical interpretation of every marker, not just reference ranges, and sends it directly to you with a personalised next-step recommendation."],
                 ].map(([step, detail]) => `
                 <tr>
