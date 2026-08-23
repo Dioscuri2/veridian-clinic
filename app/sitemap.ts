@@ -39,6 +39,7 @@ const staticRoutes = [
   "/cookies",
   "/discovery-call",
   "/executive-waitlist",
+  "/gp-consultations",
   "/markers-guide",
   "/metabolic-age",
   "/metabolic-scorecard",

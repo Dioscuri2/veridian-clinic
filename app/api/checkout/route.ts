@@ -29,6 +29,25 @@ const tierCatalog: Record<
     successPath: "/book/thank-you",
     cancelPath: "/perimenopause-guide",
   },
+  // Standard private GP consultations (/gp-consultations). Booking and payment
+  // run through ThanksDoc like every other clinical service; these two entries
+  // exist so scripts/check-panels.mjs can price-drift-check data/panels.ts.
+  "gp-consultation-15": {
+    name: "Private GP Consultation, 15 minutes",
+    amount: 5900,
+    description:
+      "A 15-minute private GP video consultation with Dr Oluwatosin Taiwo. Includes a private prescription, fit note or referral letter where clinically appropriate, at no extra charge.",
+    successPath: "/book/thank-you",
+    cancelPath: "/gp-consultations",
+  },
+  "gp-consultation-20": {
+    name: "Private GP Consultation, 20 minutes",
+    amount: 8900,
+    description:
+      "A 20-minute private GP video consultation with Dr Oluwatosin Taiwo, for more than one concern or a problem that needs unpicking. Includes a private prescription, fit note or referral letter where clinically appropriate, at no extra charge.",
+    successPath: "/book/thank-you",
+    cancelPath: "/gp-consultations",
+  },
   discovery: {
     name: "GP-Led Discovery Core",
     amount: 12700,
