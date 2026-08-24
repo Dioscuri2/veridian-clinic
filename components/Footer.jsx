@@ -107,6 +107,9 @@ export default function Footer() {
             <Link href="/metabolic-quiz" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
               Metabolic Quiz
             </Link>
+            <Link href="/gp-consultations" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
+              GP Consultations
+            </Link>
             <Link href="/private-gp-cambridge" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
               Private GP Cambridge
             </Link>

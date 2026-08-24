@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "Can I be seen by video instead of in person?",
-    a: "Yes. Most consultations, results reviews and weight loss follow-ups can be done by secure video from anywhere. In-person appointments in Cambridge are available for metabolic and longevity consultations.",
+    a: "Yes. All consultations, results reviews and weight loss follow-ups are currently held by secure video, available across Cambridge and the surrounding region now. The Cherry Hinton consulting location is opening soon; until then there are no in-person appointments, and our £59 and £89 private GP consultations are video only.",
   },
   {
     q: "Who is the doctor?",
@@ -177,6 +177,30 @@ export default function PrivateGpCambridgePage() {
             <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 2, maxWidth: 720, marginTop: 8 }}>
               Cambridge &middot; Cherry Hinton &middot; Great Shelford &middot; Sawston &middot; Histon &middot; Waterbeach &middot; Ely &middot; Newmarket &middot; Soham &middot; Huntingdon &middot; St Ives &middot; St Neots &middot; Cambourne &middot; Royston &middot; Saffron Walden &middot; Haverhill &middot; Bury St Edmunds &middot; Bishop&apos;s Stortford &middot; Peterborough &middot; Bedford &middot; Stevenage &middot; Hitchin
             </p>
+          </div>
+        </section>
+
+        {/* Private GP video consultations */}
+        <section className="sec bg-iv" style={{ paddingTop: 0 }}>
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <p className="lbl">Need a GP appointment now?</p>
+            <div className="rule" />
+            <article style={{ padding: "28px 24px", background: "var(--wh)", border: "1px solid rgba(0,0,0,.08)", marginTop: 8 }}>
+              <span className="badge">Video only &middot; Adults 18+</span>
+              <h2 className="cg" style={{ fontSize: "clamp(1.25rem,3vw,1.7rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.3, margin: "14px 0 10px" }}>
+                Private GP video consultations, £59 or £89
+              </h2>
+              <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85, maxWidth: 680 }}>
+                If you came here for a straightforward GP appointment, a chest infection that will not clear, a private prescription, a fit note or a referral letter, you do not have to wait for the Cherry Hinton rooms to open. You can speak to Dr Tosin by secure video from anywhere in Cambridgeshire, usually within the same week, including evening appointments after work.
+              </p>
+              <ul style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, margin: "14px 0 0", paddingLeft: 20 }}>
+                <li style={{ marginBottom: 6 }}>15 minutes at £59, or 20 minutes at £89, with the appointment length in writing before you book.</li>
+                <li style={{ marginBottom: 6 }}>Appointments from 10:00 to 14:00 and from 19:00 to 21:00, so you do not have to give up a working day.</li>
+                <li style={{ marginBottom: 6 }}>One electronic prescription item, a fit note or a referral letter included where clinically appropriate.</li>
+                <li>By secure video only for now, for adults aged 18 and over.</li>
+              </ul>
+              <Link href="/gp-consultations" className="btn btn-fo" style={{ marginTop: 22 }}>See GP Consultation Options →</Link>
+            </article>
           </div>
         </section>
 

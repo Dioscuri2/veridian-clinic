@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "Can I be seen by video instead of in person?",
-    a: "Yes. Most consultations, results reviews and weight loss follow-ups can be done by secure video from home. In-person appointments across North West London are available for metabolic and longevity consultations.",
+    a: "Yes. All consultations, results reviews and weight loss follow-ups are currently held by secure video from home, available across North West London now. The Golders Green Road consulting location is opening soon; until then there are no in-person appointments, and our £59 and £89 private GP consultations are video only.",
   },
   {
     q: "Who is the doctor?",
@@ -178,6 +178,30 @@ export default function PrivateGpNorthWestLondonPage() {
             <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 2, maxWidth: 720, marginTop: 8 }}>
               Golders Green &middot; Temple Fortune &middot; Hampstead &middot; Hampstead Garden Suburb &middot; Highgate &middot; Finchley &middot; Hendon &middot; Mill Hill &middot; Cricklewood &middot; Willesden &middot; Kilburn &middot; St John&apos;s Wood &middot; Swiss Cottage &middot; Muswell Hill &middot; Totteridge &middot; Whetstone &middot; Barnet &middot; Edgware &middot; Stanmore &middot; Harrow &middot; Wembley &middot; Borehamwood &middot; Elstree &middot; Bushey &middot; Watford &middot; St Albans
             </p>
+          </div>
+        </section>
+
+        {/* Private GP video consultations */}
+        <section className="sec bg-iv" style={{ paddingTop: 0 }}>
+          <div className="wrap" style={{ maxWidth: 860 }}>
+            <p className="lbl">Need a GP appointment now?</p>
+            <div className="rule" />
+            <article style={{ padding: "28px 24px", background: "var(--wh)", border: "1px solid rgba(0,0,0,.08)", marginTop: 8 }}>
+              <span className="badge">Video only &middot; Adults 18+</span>
+              <h2 className="cg" style={{ fontSize: "clamp(1.25rem,3vw,1.7rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.3, margin: "14px 0 10px" }}>
+                Private GP video consultations, £59 or £89
+              </h2>
+              <p style={{ fontSize: ".9rem", color: "var(--sl2)", lineHeight: 1.85, maxWidth: 680 }}>
+                If you came here for a straightforward GP appointment, a chest infection that will not clear, a private prescription, a fit note or a referral letter, you do not have to wait for the Golders Green Road rooms to open. You can speak to Dr Tosin by secure video from anywhere in North West London, usually within the same week, including evening appointments after work.
+              </p>
+              <ul style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, margin: "14px 0 0", paddingLeft: 20 }}>
+                <li style={{ marginBottom: 6 }}>15 minutes at £59, or 20 minutes at £89, with the appointment length in writing before you book.</li>
+                <li style={{ marginBottom: 6 }}>Appointments from 10:00 to 14:00 and from 19:00 to 21:00, so you do not have to give up a working day.</li>
+                <li style={{ marginBottom: 6 }}>One electronic prescription item, a fit note or a referral letter included where clinically appropriate.</li>
+                <li>By secure video only for now, for adults aged 18 and over.</li>
+              </ul>
+              <Link href="/gp-consultations" className="btn btn-fo" style={{ marginTop: 22 }}>See GP Consultation Options →</Link>
+            </article>
           </div>
         </section>
 
