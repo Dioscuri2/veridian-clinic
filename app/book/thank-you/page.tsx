@@ -41,6 +41,17 @@ function PixelPurchase() {
     if (value > 0 && typeof window !== "undefined") {
       (window as Window & { fbq?: Function }).fbq?.("track", "Purchase", { value, currency: "GBP", content_name: "Veridian " + tier });
     }
+
+    // ThanksDoc only records a booking inside its own portal, so this redirect
+    // is the one moment we can see it from our side. Ping Discord so a booking
+    // cannot sit unnoticed until someone happens to log in. Best effort: a
+    // failed alert must never break the patient's confirmation page.
+    fetch("/api/booking-alert", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tier }),
+      keepalive: true,
+    }).catch(() => {});
   }, [tier]);
   return null;
 }
