@@ -446,6 +446,9 @@ export default function GpConsultationsPage() {
 
             <p style={{ fontSize: "clamp(.85rem,2.3vw,.9rem)", color: "var(--sl3)", lineHeight: 1.85, textAlign: "center", marginTop: 22 }}>
               Bookings and payments are handled securely through ThanksDoc. Services run through ThanksDoc&apos;s CQC-registered framework. UK patients, adults aged 18 and over only.
+              {" "}Would you rather not book online? Message us on WhatsApp on{" "}
+              <a href="https://wa.me/447344290497?text=Hi%2C%20I%20would%20like%20to%20book%20a%20GP%20appointment." target="_blank" rel="noopener noreferrer" style={{ color: "#111111", fontWeight: 600, textDecoration: "underline" }}>07344 290497</a>
+              {" "}and we will book it for you. Telephone appointments cost the same as video, with the same GP.
             </p>
           </div>
         </section>

@@ -19,10 +19,14 @@ The leaflet is a **referral tool the pharmacist is willing to hand over**, not a
 
 Identical artwork except the QR code. Supply as two print files.
 
-| Variant | QR encodes | Supplied file |
-|---|---|---|
-| Golders Green | `https://veridianclinic.com/gp?c=gg` | `qr-Golders-Green.svg` |
-| Cherry Hinton | `https://veridianclinic.com/gp?c=ch` | `qr-Cherry-Hinton.svg` |
+| Variant | QR encodes | WhatsApp link | Supplied file |
+|---|---|---|---|
+| Golders Green | `https://veridianclinic.com/gp?c=gg` | `wa.me/447344290497?text=Hi%2C%20I%20would%20like%20to%20book%20a%20GP%20appointment.%20%28Golders%20Green%29` | `qr-Golders-Green.svg` |
+| Cherry Hinton | `https://veridianclinic.com/gp?c=ch` | `wa.me/447344290497?text=Hi%2C%20I%20would%20like%20to%20book%20a%20GP%20appointment.%20%28Cherry%20Hinton%29` | `qr-Cherry-Hinton.svg` |
+
+ThanksDoc has no booking API, so there are exactly four ways in: **WhatsApp, the QR code, the QR link, and the typed URL.** All four must appear on the leaflet.
+
+The WhatsApp link carries a prefilled message naming the pharmacy. WhatsApp gives no tracking of its own, so that prefilled text is the only way to know which counter a WhatsApp enquiry came from. It arrives as the patient's first message.
 
 Both QR files are vector, error correction H, already generated. **Do not regenerate them** and do not re-encode the URLs; the `?c=` tag is how bookings are attributed to each counter.
 
@@ -71,6 +75,7 @@ Artboard **105 × 216 mm** (99 × 210 mm trim, 3 mm bleed). Safe zone 5 mm insid
 │  └────────┘   Scan to book  │  CTA below QR, outside quiet zone
 │                             │
 │  veridianclinic.com/gp      │  typed fallback, essential
+│  WhatsApp 07344 290497      │  fourth route, above the lip
 │                             │
 ├─────────────────────────────┤  ← 45 mm line
 │   HOLDER LIP ZONE           │  ← NOTHING IMPORTANT BELOW HERE
@@ -104,6 +109,7 @@ Order: what we help with · what is included · when you can be seen · how to b
 >
 > [QR] **Scan to book**
 > or go to **veridianclinic.com/gp**
+> or message us on WhatsApp: **07344 290497**
 >
 > Adults 18 and over
 
@@ -118,8 +124,11 @@ Order: what we help with · what is included · when you can be seen · how to b
 > **When you can be seen**
 > Monday, Wednesday and Friday, 10:00 to 14:00 and 19:00 to 21:00. Most people are seen within the same week. Evening appointments mean you do not have to give up a working day.
 >
-> **No smartphone? You can still book.**
-> Telephone appointments cost the same as video, with the same GP. Ask the pharmacist to help you scan the code, or visit veridianclinic.com/gp on any computer.
+> **Four ways to book**
+> Scan the code on the front. Message us on WhatsApp on 07344 290497. Type veridianclinic.com/gp into any phone or computer. Or ask the pharmacist to help you scan it.
+>
+> **No smartphone, or would rather not use video?**
+> Telephone appointments cost exactly the same as video, with the same GP. Say so when you book.
 >
 > **What we cannot do**
 > We cannot examine you, treat an emergency, prescribe controlled drugs, or register you as an NHS patient. Please keep your NHS GP exactly as you are. If something is urgent call 999, or NHS 111 if you are unsure.
