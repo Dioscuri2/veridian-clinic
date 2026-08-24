@@ -5,8 +5,11 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { thanksDocBookingUrl, WEIGHT_LOSS_CONSULTATION_SERVICE_ID } from "@/data/panels";
 
-const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+// Weight Loss Consultation, ThanksDoc service 138. Same service either way: the
+// quiz rate is applied by the WLQUIZRATE code at the payment step.
+const BOOKING_URL = thanksDocBookingUrl(WEIGHT_LOSS_CONSULTATION_SERVICE_ID);
 
 function Shield() {
   return (
@@ -31,7 +34,7 @@ function ConsultationContent() {
   const quizRate = isQuizRate || hasQuizCookie;
   const price = quizRate ? "£48" : "£60";
   const priceLabel = quizRate ? "Quiz rate" : "Standard rate";
-  const bookingUrl = quizRate ? "https://notes.thanksdoc.co.uk/book/service/138/36" : THANKSDOC_URL;
+  const bookingUrl = BOOKING_URL;
 
   return (
     <>
@@ -113,7 +116,7 @@ function ConsultationContent() {
                 {quizRate && (
                   <div style={{ padding: "12px 14px", background: "rgba(200,168,75,.1)", border: "1px solid var(--go)", marginBottom: 16, textAlign: "center" }}>
                     <p style={{ fontSize: ".8rem", color: "var(--sl2)", lineHeight: 1.6 }}>
-                      At the review step, enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>WLQUIZRATE</strong> for your £48 rate.
+                      At the payment step, enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>WLQUIZRATE</strong> for your £48 rate.
                     </p>
                   </div>
                 )}

@@ -4,6 +4,7 @@ import { FONTS, CSS } from "@/components/globalStyles";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 const plans = [
  {
@@ -113,7 +114,7 @@ const bloodPanels = [
       "60+ data points in total",
     ],
     youGet: "Full metabolic blood panel + 14-day Lingo CGM + two GP consultations (initial clinical session and blood results review) + personalised written action plan with prioritised next steps.",
-    href: "/book?tier=baseline",
+    href: bookUrl("baseline"),
     featured: true,
   },
   {
@@ -133,7 +134,7 @@ const bloodPanels = [
       "150+ data points in total",
     ],
     youGet: "Premium longevity blood panel + two GP consultations (initial assessment + results deep-dive) + comprehensive longevity report with biological age assessment and a personalised optimisation strategy.",
-    href: "/book?tier=longevity-panel",
+    href: bookUrl("longevity-panel"),
     featured: false,
   },
 ];
@@ -156,7 +157,7 @@ const targetedPanels = [
       "Vitamin D",
     ],
     youGet: "GP-reviewed written interpretation of your full hormonal picture, with a clear explanation of what your results mean for your specific symptoms, not just reference ranges.",
-    href: "/book?tier=womens-hormones",
+    href: bookUrl("womens-hormones"),
   },
   {
     name: "Running on Empty",
@@ -174,7 +175,7 @@ const targetedPanels = [
       "Full Blood Count + CRP",
     ],
     youGet: "GP-reviewed interpretation of your hormonal and metabolic markers, with a written clinical summary and a clear next-step recommendation tailored to your results.",
-    href: "/book?tier=mens-testosterone",
+    href: bookUrl("mens-testosterone"),
   },
   {
     name: "What Your Cholesterol Test Missed",
@@ -193,7 +194,7 @@ const targetedPanels = [
       "Fasting insulin + HbA1c: metabolic driver of vascular risk",
     ],
     youGet: "GP-reviewed cardiovascular risk summary with a written interpretation of your ApoB, Lp(a) and inflammatory markers, and a clear recommendation on what to do next.",
-    href: "/book?tier=cardiovascular-risk",
+    href: bookUrl("cardiovascular-risk"),
   },
   {
     name: "Tired of Being Told You're Fine",
@@ -213,7 +214,7 @@ const targetedPanels = [
       "CRP + kidney function",
     ],
     youGet: "GP-reviewed written report identifying which markers are likely driving your fatigue, with clinical interpretation and actionable next steps.",
-    href: "/book?tier=fatigue-energy",
+    href: bookUrl("fatigue-energy"),
   },
   {
     name: "Why Won't The Weight Budge?",
@@ -232,7 +233,7 @@ const targetedPanels = [
       "Fasting lipid profile",
     ],
     youGet: "GP-reviewed metabolic interpretation identifying why your body is resisting fat loss, with a written, prioritised recommendation for what to address first.",
-    href: "/book?tier=metabolic-weight",
+    href: bookUrl("metabolic-weight"),
   },
   {
     name: "The Optimiser's Baseline",
@@ -253,7 +254,7 @@ const targetedPanels = [
       "CRP: systemic inflammation load",
     ],
     youGet: "GP-reviewed baseline report across longevity, cardiovascular risk, hormonal, body composition and organ-safety markers, plus a GP-led 30-minute consultation to go through the results and agree your priorities. Both included in the price. A documented clinical benchmark to return to each year.",
-    href: "/book?tier=optimiser-baseline",
+    href: bookUrl("optimiser-baseline"),
   },
 ];
 
@@ -393,7 +394,7 @@ function BloodPanelAccordion() {
                   <Link href={panel.href} className={`btn ${panel.featured ? "btn-go" : "btn-fo"}`} style={{ flex: "1 1 200px" }}>
                     Book {panel.name} {panel.price} →
                   </Link>
-                  <Link href="/book?tier=discovery" className={`btn ${panel.featured ? "btn-ol-lt" : "btn-ol"}`} style={{ flex: "1 1 200px" }}>
+                  <Link href={bookUrl("discovery")} className={`btn ${panel.featured ? "btn-ol-lt" : "btn-ol"}`} style={{ flex: "1 1 200px" }}>
                     Speak to a GP first →
                   </Link>
                 </div>
@@ -513,7 +514,7 @@ function TargetedPanelAccordion() {
                   <Link href={panel.href} className="btn btn-fo" style={{ flex: "1 1 200px" }}>
                     Book {panel.name} {panel.price} →
                   </Link>
-                  <Link href="/book?tier=discovery" className="btn btn-ol" style={{ flex: "1 1 200px" }}>
+                  <Link href={bookUrl("discovery")} className="btn btn-ol" style={{ flex: "1 1 200px" }}>
                     Speak to a GP first →
                   </Link>
                 </div>
@@ -594,11 +595,11 @@ export default function AssessmentsPage() {
    </div>
  </section>
 
- <section className="sec bg-wh" style={{ paddingTop: 20 }}><div className="wrap"><div className="g4">{plans.map(p => (<div key={p.name} className={`card${p.feat ? " card-featured" : ""}`} style={{ position: "relative", display: "flex", flexDirection: "column" }}>{p.feat && <span className="plan-pill">Recommended</span>}<p className="plan-cadence">{p.cadence}</p><h2 className="cg" style={{ fontSize: "1.45rem", fontWeight: 500, lineHeight: 1.2, color: p.feat ? "var(--iv)" : "var(--sl)", marginBottom: 16 }}>{p.name}</h2><span className="plan-price">{p.price}</span><p style={{ fontSize: ".9rem", lineHeight: 1.9, color: p.feat ? "rgba(246,241,232,.72)" : "var(--sl2)", margin: "16px 0 20px" }}>{p.blurb}</p><div style={{ padding: "14px 16px", background: p.feat ? "rgba(246,241,232,.07)" : "var(--iv)", borderLeft: `3px solid ${p.feat ? "var(--go)" : "var(--fo)"}`, marginBottom: 20 }}><p style={{ fontSize: ".8rem", fontStyle: "italic", color: p.feat ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.75 }}>{p.right_for}</p></div><ul className="chk" style={{ marginBottom: 28, flexGrow: 1 }}>{p.feats.map(f => <li key={f}>{f}</li>)}</ul>{p.comingSoon ? <Link href="/executive-waitlist" className={`btn btn-full ${p.feat ? "btn-go" : "btn-ol"}`}>{p.cta} →</Link> : <Link href={`/book?tier=${p.tier}`} className={`btn btn-full ${p.feat ? "btn-go" : "btn-fo"}`}>{p.cta} →</Link>}</div>))}</div></div></section>
+ <section className="sec bg-wh" style={{ paddingTop: 20 }}><div className="wrap"><div className="g4">{plans.map(p => (<div key={p.name} className={`card${p.feat ? " card-featured" : ""}`} style={{ position: "relative", display: "flex", flexDirection: "column" }}>{p.feat && <span className="plan-pill">Recommended</span>}<p className="plan-cadence">{p.cadence}</p><h2 className="cg" style={{ fontSize: "1.45rem", fontWeight: 500, lineHeight: 1.2, color: p.feat ? "var(--iv)" : "var(--sl)", marginBottom: 16 }}>{p.name}</h2><span className="plan-price">{p.price}</span><p style={{ fontSize: ".9rem", lineHeight: 1.9, color: p.feat ? "rgba(246,241,232,.72)" : "var(--sl2)", margin: "16px 0 20px" }}>{p.blurb}</p><div style={{ padding: "14px 16px", background: p.feat ? "rgba(246,241,232,.07)" : "var(--iv)", borderLeft: `3px solid ${p.feat ? "var(--go)" : "var(--fo)"}`, marginBottom: 20 }}><p style={{ fontSize: ".8rem", fontStyle: "italic", color: p.feat ? "rgba(246,241,232,.75)" : "var(--sl2)", lineHeight: 1.75 }}>{p.right_for}</p></div><ul className="chk" style={{ marginBottom: 28, flexGrow: 1 }}>{p.feats.map(f => <li key={f}>{f}</li>)}</ul>{p.comingSoon ? <Link href="/executive-waitlist" className={`btn btn-full ${p.feat ? "btn-go" : "btn-ol"}`}>{p.cta} →</Link> : <Link href={bookUrl(p.tier)} className={`btn btn-full ${p.feat ? "btn-go" : "btn-fo"}`}>{p.cta} →</Link>}</div>))}</div></div></section>
  <section className="sec bg-iv"><div className="wrap" style={{ maxWidth: 980 }}><div className="sh text-center"><p className="lbl">Baseline Marker List</p><div className="rule rule-c" /><h2 className="sh-title">What the Metabolic Baseline is designed to surface</h2><p className="sh-body" style={{ fontSize: "1rem", maxWidth: 760 }}>This is the core value proposition: we focus on the markers most likely to reveal early metabolic decline and future vascular risk, not just whether a routine panel says you are &quot;normal&quot;.</p></div><div className="g2"><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>Exact markers visible</p><ul className="chk"><li>HbA1c</li><li>Fasting glucose</li><li>Fasting insulin</li><li>ApoB</li><li>Homocysteine</li><li>Full lipid profile</li><li>ALT</li><li>AST</li><li>hs-CRP</li></ul></div><div className="card"><p className="lbl" style={{ marginBottom: 14 }}>What you get back</p><ul className="chk"><li>Clinical interpretation of what matters now</li><li>Explanation of how your markers connect to weight, energy and cardiovascular risk</li><li>Clear written action plan</li><li>Advice on whether you need further testing, CGM or structured follow-up</li><li>A practical next-step pathway rather than isolated lab numbers</li></ul></div></div></div></section>
  <section className="sec bg-wh"><div className="wrap"><div className="sh text-center"><p className="lbl">Side by Side</p><div className="rule rule-c" /><h2 className="sh-title">What&apos;s included in each pathway</h2></div><div style={{ overflowX: "auto" }}><table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}><thead><tr><th style={{ textAlign: "left", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--sl3)", borderBottom: "2px solid var(--iv3)" }}>Feature</th>{["Discovery Core\n£127", "Baseline\n£595", "Reset\n£1,895", "Executive\nComing Soon"].map((h, i) => (<th key={i} style={{ textAlign: "center", padding: "12px 16px", fontSize: ".74rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", color: i === 1 ? "var(--fo)" : "var(--sl3)", borderBottom: `2px solid ${i === 1 ? "var(--go)" : "var(--iv3)"}`, whiteSpace: "pre-line" }}>{h}</th>))}</tr></thead><tbody>{comparisonRows.map((row, idx) => (<tr key={row.feature} style={{ background: idx % 2 === 0 ? "var(--wh)" : "var(--iv)" }}><td style={{ padding: "13px 16px", fontSize: ".88rem", color: "var(--sl2)" }}>{row.feature}</td>{[row.discovery, row.baseline, row.programme, row.executive].map((v, i) => (<td key={i} style={{ padding: "13px 16px", textAlign: "center" }}><Check val={v as boolean | string} /></td>))}</tr>))}</tbody></table></div></div></section>
- <section className="bg-fo" style={{ padding: "60px 24px" }}><div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}><p className="lbl" style={{ color: "var(--go2)" }}>The structured intervention pathway</p><div className="rule rule-c" style={{ background: "var(--go)" }} /><h2 className="cg" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, marginBottom: 16 }}>12-Week Metabolic Reset £1,895</h2><p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, marginBottom: 28, maxWidth: 640, margin: "0 auto 28px" }}>For people who already know something is off and want accountability, structured follow-through and integrated clinical support, not just another information pack.</p><div className="g3" style={{ textAlign: "left" }}><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Includes</p><ul className="chk"><li>Everything in the Metabolic Baseline</li><li>Second CGM cycle: extended glucose monitoring</li><li>Fortnightly coaching touchpoints</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Clinical oversight</p><ul className="chk"><li>Clinical review via partner providers where indicated</li><li>Programme adaptation based on response</li><li>Medication or therapy review where clinically appropriate</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Outcome focus</p><ul className="chk"><li>Better glucose stability and energy control</li><li>More consistent adherence and behaviour change</li><li>Clear next-stage forward plan</li></ul></div></div><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 28 }}><Link href="/metabolic-turnaround" className="btn btn-go">Explore the 90-Day Metabolic Turnaround →</Link><Link href="/book?tier=baseline" className="btn btn-ol-lt">Book Baseline Audit</Link></div></div></section>
- <section className="sec bg-wh"><div className="wrap" style={{ maxWidth: 800, textAlign: "center" }}><p className="lbl">Need help choosing?</p><div className="rule rule-c" /><h2 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 16 }}>If you want the highest-value entry point, start with the Baseline.</h2><p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 32, maxWidth: 620, margin: "0 auto 32px" }}>It gives you the clearest early read on metabolic risk and the markers most often missed in routine care, with a straightforward clinical plan for what to do next.</p><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}><Link href="/book?tier=baseline" className="btn btn-fo">Book Baseline Audit →</Link><Link href="/book?tier=discovery" className="btn btn-ol">Start with Discovery Core</Link></div></div></section>
+ <section className="bg-fo" style={{ padding: "60px 24px" }}><div className="wrap" style={{ maxWidth: 860, textAlign: "center" }}><p className="lbl" style={{ color: "var(--go2)" }}>The structured intervention pathway</p><div className="rule rule-c" style={{ background: "var(--go)" }} /><h2 className="cg" style={{ fontSize: "clamp(1.9rem,4vw,2.9rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, marginBottom: 16 }}>12-Week Metabolic Reset £1,895</h2><p style={{ fontSize: ".97rem", color: "rgba(246,241,232,.68)", lineHeight: 1.95, marginBottom: 28, maxWidth: 640, margin: "0 auto 28px" }}>For people who already know something is off and want accountability, structured follow-through and integrated clinical support, not just another information pack.</p><div className="g3" style={{ textAlign: "left" }}><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Includes</p><ul className="chk"><li>Everything in the Metabolic Baseline</li><li>Second CGM cycle: extended glucose monitoring</li><li>Fortnightly coaching touchpoints</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Clinical oversight</p><ul className="chk"><li>Clinical review via partner providers where indicated</li><li>Programme adaptation based on response</li><li>Medication or therapy review where clinically appropriate</li></ul></div><div className="card-fo"><p className="lbl" style={{ color: "var(--go2)", marginBottom: 12 }}>Outcome focus</p><ul className="chk"><li>Better glucose stability and energy control</li><li>More consistent adherence and behaviour change</li><li>Clear next-stage forward plan</li></ul></div></div><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 28 }}><Link href="/metabolic-turnaround" className="btn btn-go">Explore the 90-Day Metabolic Turnaround →</Link><Link href={bookUrl("baseline")} className="btn btn-ol-lt">Book Baseline Audit</Link></div></div></section>
+ <section className="sec bg-wh"><div className="wrap" style={{ maxWidth: 800, textAlign: "center" }}><p className="lbl">Need help choosing?</p><div className="rule rule-c" /><h2 className="cg" style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 500, color: "var(--sl)", lineHeight: 1.25, marginBottom: 16 }}>If you want the highest-value entry point, start with the Baseline.</h2><p style={{ fontSize: ".97rem", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 32, maxWidth: 620, margin: "0 auto 32px" }}>It gives you the clearest early read on metabolic risk and the markers most often missed in routine care, with a straightforward clinical plan for what to do next.</p><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}><Link href={bookUrl("baseline")} className="btn btn-fo">Book Baseline Audit →</Link><Link href={bookUrl("discovery")} className="btn btn-ol">Start with Discovery Core</Link></div></div></section>
  </main>
  <Footer />
  </>

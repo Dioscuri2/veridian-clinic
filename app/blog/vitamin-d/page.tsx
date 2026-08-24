@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Vitamin D Test UK What Optimal Really Means and Why Most People Are Short | Veridian Clinic" },
@@ -111,8 +112,8 @@ export default function VitaminDPage() {
         title="Vitamin D isn't really a vitamin, and that changes everything"
         intro="Most people think of vitamin D as a supplement you take in winter. It is, in fact, a steroid hormone that enters the nucleus of your cells and regulates around 1,000 genes, roughly 5% of the entire human genome. Around 70% of UK adults are below optimal. The damage is slow, invisible, and cumulative. Here is what that means for long-term health, and what private testing reveals that a standard NHS panel won't."
         ctas={[
-          { href: "/book?tier=fatigue-energy", label: "Book Fatigue and Energy Panel £249, includes vitamin D →" },
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel 150+ markers £795", variant: "secondary" },
+          { href: bookUrl("fatigue-energy"), label: "Book Fatigue and Energy Panel £249, includes vitamin D →" },
+          { href: bookUrl("longevity-panel"), label: "Book Longevity Panel 150+ markers £795", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >

@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
 import TurnstileWidget from "@/components/TurnstileWidget";
+import { bookUrl } from "@/data/panels";
 
 const BANDS = {
   strong: {
@@ -473,16 +474,16 @@ function ResultContent() {
                     Book a GP Discovery Core at the quiz rate.
                   </p>
                   <p style={{ fontSize: ".84rem", color: "var(--sl2)", lineHeight: 1.8, marginBottom: 14 }}>
-                    A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>QUIZRATE</strong> at checkout to reduce the price from £127 to £97.
+                    A 30-minute GP-led review of your result enter code <strong style={{ color: "var(--fo)", letterSpacing: ".06em" }}>QUIZRATE</strong> at the payment step to reduce the price from £127 to £97.
                   </p>
                   <a
-                    href="https://notes.thanksdoc.co.uk/book/service/136/36"
+                    href={bookUrl("discovery")}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ fontSize: ".86rem", fontWeight: 600, color: "var(--fo)", textDecoration: "underline" }}
                     onClick={() => fbq("InitiateCheckout", { value: 77, currency: "GBP", content_name: "Discovery Call QUIZRATE" })}
                   >
-                    Book now use QUIZRATE at checkout →
+                    Book now, use QUIZRATE at the payment step →
                   </a>
                 </div>
               </div>

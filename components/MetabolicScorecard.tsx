@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
+import { bookUrl } from "@/data/panels";
 
 type Answers = {
   age: string;
@@ -366,7 +367,7 @@ export default function MetabolicScorecard() {
                   </div>
                 ))}
               </div>
-              <Link href="/book?tier=baseline" className="btn btn-fo btn-full">See the full clinical pathway →</Link>
+              <Link href={bookUrl("baseline")} className="btn btn-fo btn-full">See the full clinical pathway →</Link>
               <p style={{ fontSize: ".75rem", color: "var(--sl3)", lineHeight: 1.7, marginTop: 12 }}>
                 Soft upsell only. The free guide is available without purchase.
               </p>
@@ -376,7 +377,7 @@ export default function MetabolicScorecard() {
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <button type="button" className="btn btn-ol" onClick={handleBack}>Back</button>
             <button type="button" className="btn btn-ol" onClick={reset}>Retake scorecard</button>
-            {!embed ? <Link href="/book?tier=baseline" className="btn btn-go">Book a baseline audit →</Link> : null}
+            {!embed ? <Link href={bookUrl("baseline")} className="btn btn-go">Book a baseline audit →</Link> : null}
           </div>
         </div>
       )}

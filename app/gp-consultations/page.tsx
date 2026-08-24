@@ -4,12 +4,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl, thanksDocBookingUrl } from "@/data/panels";
 
 const PAGE_URL = "https://veridianclinic.com/gp-consultations";
-const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
-const BOOK_15 = "https://notes.thanksdoc.co.uk/book/service/334/36";
-const BOOK_20 = "https://notes.thanksdoc.co.uk/book/service/335/36";
-const BOOK_REPEAT_RX = "https://notes.thanksdoc.co.uk/book/service/336/36";
+const THANKSDOC_URL = thanksDocBookingUrl();
+const BOOK_15 = bookUrl("gp-consultation-15");
+const BOOK_20 = bookUrl("gp-consultation-20");
+const BOOK_REPEAT_RX = thanksDocBookingUrl(336); // Repeat Prescription Request, no panels.ts entry
 
 export const metadata: Metadata = {
   title: { absolute: "Private GP Video Consultation UK | Evening Appointments, £59 or £89 | Veridian Clinic" },

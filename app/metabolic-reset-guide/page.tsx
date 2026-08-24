@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 const WHAT_IS_INSIDE = [
   { title: "PERC Framework", body: "Four pillars Prepare, Eat & Eliminate, Reset, Condition giving you a structured mental model before you change a single habit." },
@@ -206,7 +207,7 @@ export default function MetabolicResetGuidePage() {
               The Baseline Assessment includes a 9-marker blood panel, GP clinical interpretation, and a written action plan going beyond the guide into real diagnostic clarity.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="/book?tier=discovery" className="btn btn-fo">Book a Discovery Core →</a>
+              <a href={bookUrl("discovery")} className="btn btn-fo">Book a Discovery Core →</a>
               <a href="/assessments" className="btn btn-ol">Compare All Pathways</a>
             </div>
           </div>

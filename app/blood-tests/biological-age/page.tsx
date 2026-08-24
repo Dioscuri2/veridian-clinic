@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Biological Age Blood Test UK: Longevity Panel | Veridian Clinic" },
@@ -67,7 +68,7 @@ export default function BiologicalAgeTestPage() {
         title="Biological age blood test UK: what 150+ markers reveal about how your body is actually ageing"
         intro="Your chronological age is the number of years since you were born. Your biological age is how old your organs, metabolic systems, and inflammatory pathways are actually functioning. These two numbers can diverge significantly, and understanding the gap between them is one of the most actionable things a high-functioning adult can do for their long-term health."
         ctas={[
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel £795 →" },
+          { href: bookUrl("longevity-panel"), label: "Book Longevity Panel £795 →" },
           { href: "/metabolic-quiz", label: "Check Your Metabolic Age Free →", variant: "secondary" },
         ]}
       >

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import CalendlyPopupButton from "@/components/CalendlyPopupButton";
+import { bookUrl } from "@/data/panels";
 
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "";
 
@@ -84,7 +85,7 @@ export default function PeriGuideUpsells() {
 
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
               <div>
-                <Link href="/book?tier=perimenopause-panel" className="btn btn-go" style={{ display: "inline-block" }}>
+                <Link href={bookUrl("perimenopause-panel")} className="btn btn-go" style={{ display: "inline-block" }}>
                   Book the Advanced Health Panel £375 →
                 </Link>
                 <p style={{ fontSize: ".72rem", color: "rgba(246,241,232,.35)", marginTop: 6, lineHeight: 1.5 }}>
@@ -157,7 +158,7 @@ export default function PeriGuideUpsells() {
 
         {/* CTAs Stripe payment + Calendly option */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <a href="https://notes.thanksdoc.co.uk/book/service/136/36" target="_blank" rel="noopener noreferrer" className="btn btn-fo" style={{ padding: "14px 32px", fontSize: ".92rem", display: "inline-block", textAlign: "center" }}>
+          <a href={bookUrl("discovery")} target="_blank" rel="noopener noreferrer" className="btn btn-fo" style={{ padding: "14px 32px", fontSize: ".92rem", display: "inline-block", textAlign: "center" }}>
             Book, use QUIZRATE for £97 →
           </a>
 

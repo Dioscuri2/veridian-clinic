@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "The Metabolic Turnaround | 90-Day GP-Led Programme | Veridian Clinic" },
@@ -62,7 +63,7 @@ const faqSchema = {
   ],
 };
 
-const BOOKING_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+const BOOKING_URL = bookUrl("discovery"); // Discovery Core, ThanksDoc service 136
 
 const callout: React.CSSProperties = {
   padding: "20px 24px",

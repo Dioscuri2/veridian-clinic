@@ -1,3 +1,4 @@
+import { bookUrl } from "@/data/panels";
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE = "https://api.brevo.com/v3";
 
@@ -226,7 +227,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
                 Your written GP report covers everything in detail. But if you'd like to go through your results live, ask questions, understand what to prioritise, and get a clear action plan tailored to your goals, you can add a 30-minute results consultation.
               </p>
               <p style="margin:0 0 14px;font-size:.86rem;color:#5a534a;"><strong style="color:#2c2a26;">Blood test patient rate: £149</strong> <span style="color:#8a8278;">(standard rate £195, saving £46)</span></p>
-              <a href="https://veridianclinic.com/book?tier=discovery" style="display:inline-block;background:#2c2a26;color:#f6f1e8;padding:11px 24px;text-decoration:none;font-size:.88rem;font-weight:600;letter-spacing:.04em;">
+              <a href="${bookUrl("discovery")}" style="display:inline-block;background:#2c2a26;color:#f6f1e8;padding:11px 24px;text-decoration:none;font-size:.88rem;font-weight:600;letter-spacing:.04em;">
                 Book results consultation £149 →
               </a>
             </td></tr>

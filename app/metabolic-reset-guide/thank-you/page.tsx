@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: "Your Free Guide Is Ready | Veridian Clinic",
@@ -74,7 +75,7 @@ export default function GuideThankyouPage() {
                   <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--go)", lineHeight: 1 }}>£127</span>
                   <span style={{ fontSize: ".8rem", color: "rgba(246,241,232,.45)" }}>30-minute GP-led call</span>
                 </div>
-                <Link href="/book?tier=discovery" className="btn btn-go" style={{ display: "block", textAlign: "center" }}>
+                <Link href={bookUrl("discovery")} className="btn btn-go" style={{ display: "block", textAlign: "center" }}>
                   Book My Discovery Core →
                 </Link>
               </div>
@@ -92,7 +93,7 @@ export default function GuideThankyouPage() {
                   <span style={{ fontSize: "1.8rem", fontWeight: 400, color: "var(--fo)", lineHeight: 1 }}>£595</span>
                   <span style={{ fontSize: ".8rem", color: "var(--sl3)" }}>Metabolic Baseline</span>
                 </div>
-                <Link href="/book?tier=baseline" className="btn btn-fo" style={{ display: "block", textAlign: "center" }}>
+                <Link href={bookUrl("baseline")} className="btn btn-fo" style={{ display: "block", textAlign: "center" }}>
                   Book the Baseline →
                 </Link>
               </div>

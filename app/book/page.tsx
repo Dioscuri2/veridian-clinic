@@ -1,19 +1,25 @@
 "use client";
 import { Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
-
-const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+import { bookUrl } from "@/data/panels";
 
 // All Veridian services (consultations, blood panels, programmes) are booked
 // and paid via ThanksDoc, payments must settle through the ThanksDoc Stripe
 // account under the clinic agreement. This page only forwards the many
 // /book?tier=... links across the site and in previously sent emails.
+// A tier that maps to a panel with a ThanksDoc service id goes straight to that
+// per-service link (service and doctor preselected, and the only link where a
+// discount code can be entered). Anything else falls back to the clinic page.
 function BookingInner() {
+  const tier = useSearchParams().get("tier") || "";
+  const destination = bookUrl(tier);
+
   useEffect(() => {
-    window.location.replace(THANKSDOC_URL);
-  }, []);
+    window.location.replace(destination);
+  }, [destination]);
 
   return (
     <main style={{ paddingTop: "var(--nav-h)" }}>
@@ -24,7 +30,7 @@ function BookingInner() {
           <p style={{ color: "var(--sl2)", lineHeight: 1.7, marginBottom: 28 }}>
             Bookings and payments are handled on ThanksDoc, our secure clinic platform, which runs a CQC-registered framework. You will be redirected automatically.
           </p>
-          <a className="btn btn-go" href={THANKSDOC_URL}>Continue to booking →</a>
+          <a className="btn btn-go" href={destination}>Continue to booking →</a>
           <p style={{ fontSize: ".74rem", color: "var(--sl3)", lineHeight: 1.85, marginTop: 40, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
             Registered clinical activities via ThanksDoc (thanksdoc.co.uk). All consultations are virtual, available UK-wide. Refund policy available on request.
           </p>

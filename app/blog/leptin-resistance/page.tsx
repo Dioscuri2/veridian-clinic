@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Leptin Resistance Explained and Why We Do Not Sell a Leptin Test | Veridian Clinic" },
@@ -65,7 +66,7 @@ export default function LeptinResistancePage() {
         title="Leptin resistance: a real mechanism and an unhelpful blood test"
         intro="Persistent hunger despite adequate fat stores is a genuine physiological problem, not a failure of willpower. But the honest position is that measuring leptin will not tell you what to do about it, and we would rather explain the biology than sell you a number you cannot act on."
         ctas={[
-          { href: "/book?tier=metabolic-weight", label: "See what the Why Won't The Weight Budge? panel measures →" },
+          { href: bookUrl("metabolic-weight"), label: "See what the Why Won't The Weight Budge? panel measures →" },
           { href: "/blog/fast-insulin", label: "Read: fasting insulin, the earlier signal →", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
@@ -142,7 +143,7 @@ export default function LeptinResistancePage() {
 
         <p style={paragraph}>
           If weight is not shifting despite genuine effort, the useful next step is measuring insulin, not leptin. The{" "}
-          <Link href="/book?tier=metabolic-weight" style={{ color: "var(--go)", textDecoration: "underline" }}>
+          <Link href={bookUrl("metabolic-weight")} style={{ color: "var(--go)", textDecoration: "underline" }}>
             Why Won&apos;t The Weight Budge? panel
           </Link>{" "}
           covers fasting insulin, HOMA-IR, HbA1c, uric acid, Lp(a), thyroid and liver markers, with a GP-reviewed written interpretation. For the mechanism behind the single most important marker on it, see{" "}

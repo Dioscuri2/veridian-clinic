@@ -42,8 +42,9 @@ METABOLIC AND LONGEVITY PACKAGES
 
 1. Discovery Core, £127
    Includes: a 30-minute GP-led consultation with Dr Taiwo to map your metabolic picture and recommend the right next step
-   Quiz rate: £97 for anyone who has completed a Veridian quiz, a £30 saving
+   Quiz rate: £97 for anyone who has completed a Veridian quiz, a £30 saving, applied by entering code QUIZRATE at the payment step
    Best for: first-time visitors, unsure where to start
+   Book: notes.thanksdoc.co.uk/book/service/136/36
    Page: veridianclinic.com/discovery-call
 
 2. Metabolic Baseline, £595
@@ -117,7 +118,8 @@ WEIGHT LOSS INJECTIONS, private GP-led prescription service
 WEIGHT LOSS CONSULTATION
 - 15-minute virtual consultation with Dr Tosin
 - Standard rate: £60 (veridianclinic.com/weight-loss/consultation)
-- Quiz rate: £48 after completing the free eligibility check (veridianclinic.com/weight-loss)
+- Quiz rate: £48 after completing the free eligibility check (veridianclinic.com/weight-loss), applied by entering code WLQUIZRATE at the payment step
+- Book: notes.thanksdoc.co.uk/book/service/138/36
 - Covered: full medical history, medicine selection, dose titration plan, safety review, private prescription if appropriate, written summary
 
 FREE ELIGIBILITY CHECK: veridianclinic.com/weight-loss, a 10-question quiz with an instant result
@@ -127,9 +129,9 @@ Best for: adults with BMI 27+ with a qualifying condition, or BMI 30+ without
 Medication is not a substitute for lifestyle change; diet and activity support is required alongside
 
 BOOKING AND PAYMENT
-All bookings and payments run through ThanksDoc. Book at veridianclinic.com/book, or use the direct service links given above for the GP consultations. Email support@veridianclinic.com or WhatsApp +447344290497.
+All bookings and payments run through ThanksDoc. Use the direct service links given above wherever one exists, because a discount code can only be entered on a direct service link. Otherwise book at veridianclinic.com/book. Email support@veridianclinic.com or WhatsApp +447344290497.
 
-There are no same-day discounts, quiz-rate deductions against other packages, or promotional codes currently available. If a visitor asks for a discount, the only reduced rates that exist are the Discovery Core quiz rate of £97 and the weight loss consultation quiz rate of £48, both unlocked by completing the relevant free quiz. Never invent, offer or imply any other discount.
+There are no same-day discounts or quiz-rate deductions against other packages. If a visitor asks for a discount, the only reduced rates that exist are the Discovery Core quiz rate of £97 (code QUIZRATE) and the weight loss consultation quiz rate of £48 (code WLQUIZRATE), both unlocked by completing the relevant free quiz and entered at the payment step on the booking page. Never invent, offer or imply any other discount or code.
 
 A £30 Randox phlebotomy fee is payable to Randox on the day for in-clinic blood draws. It is charged by Randox, not by Veridian.
 

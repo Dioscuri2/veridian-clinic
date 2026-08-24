@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 const PAGE_URL = "https://veridianclinic.com/micronutrient-test";
 
@@ -196,7 +197,7 @@ export default function MicronutrientTestPage() {
                   All 17 markers, GP-reviewed written report, and a clear recommendation on what to repeat and when.
                   Clinic phlebotomy fee of £30 is paid to Randox on the day.
                 </p>
-                <Link href="/book?tier=micronutrient-panel" className="btn btn-go">Book the Micronutrient Panel →</Link>
+                <Link href={bookUrl("micronutrient-panel")} className="btn btn-go">Book the Micronutrient Panel →</Link>
               </div>
               <div className="card">
                 <p className="lbl" style={{ marginBottom: 10 }}>Optional upgrade</p>
@@ -206,7 +207,7 @@ export default function MicronutrientTestPage() {
                   is a cofactor for the enzymes that activate thyroid hormone. Taken from the same draw, so there is no
                   second appointment.
                 </p>
-                <Link href="/book?tier=micronutrient-panel-selenium" className="btn btn-ol">Book with selenium, £335 →</Link>
+                <Link href={bookUrl("micronutrient-panel-selenium")} className="btn btn-ol">Book with selenium, £335 →</Link>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Fasting Insulin Blood Test UK: Private Testing for Insulin Resistance | Veridian Clinic" },
@@ -67,8 +68,8 @@ export default function FastingInsulinTestPage() {
         title="Fasting insulin blood test UK: the early metabolic marker the NHS doesn&apos;t routinely test"
         intro="Fasting insulin is one of the most clinically useful markers in preventive metabolic medicine, and one of the most under-requested. A normal fasting glucose does not rule out early insulin resistance. Fasting insulin measures directly whether the system is already under compensatory strain, often years before standard NHS tests catch the problem."
         ctas={[
-          { href: "/book?tier=fatigue-energy", label: "Book Energy & Fatigue Panel (fasting insulin included) £249 →" },
-          { href: "/book?tier=baseline", label: "Book Metabolic Baseline £595", variant: "secondary" },
+          { href: bookUrl("fatigue-energy"), label: "Book Energy & Fatigue Panel (fasting insulin included) £249 →" },
+          { href: bookUrl("baseline"), label: "Book Metabolic Baseline £595", variant: "secondary" },
         ]}
       >
         <p style={paragraph}>

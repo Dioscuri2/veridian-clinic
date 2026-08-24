@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "ApoB Blood Test UK: Private Apolipoprotein B Testing | Veridian Clinic" },
@@ -67,7 +68,7 @@ export default function ApoBTestPage() {
         title="ApoB blood test UK: what apolipoprotein B measures and why it matters more than LDL"
         intro="Most UK NHS cholesterol panels measure LDL-C, the amount of cholesterol carried inside low-density lipoprotein particles. ApoB measures something more fundamental: the number of atherogenic lipoprotein particles circulating in your bloodstream. That distinction changes how cardiovascular risk should be assessed, especially in people with insulin resistance, elevated triglycerides, or metabolic syndrome."
         ctas={[
-          { href: "/book?tier=baseline", label: "Book Metabolic Baseline (ApoB included) £595 →" },
+          { href: bookUrl("baseline"), label: "Book Metabolic Baseline (ApoB included) £595 →" },
           { href: "/metabolic-quiz", label: "Check Your Metabolic Age Free →", variant: "secondary" },
         ]}
       >

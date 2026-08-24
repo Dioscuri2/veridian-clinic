@@ -7,6 +7,7 @@ import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 const domains = [
   { n:"01", title:"Body Strength & Fitness", sub:"Your physical base", desc:"Your cardiovascular fitness, strength, body composition and movement capacity: the physical reserve that protects independence, performance and long-term resilience.", metrics:["Resting heart rate","Fitness and endurance","Body composition","Strength and movement"], band:"amr", pct:"56%" },
@@ -253,7 +254,7 @@ function OfferCard({ o, delay }: { o: typeof offers[0]; delay: number }) {
             <p style={{ fontSize:".76rem", color: o.featured ? "rgba(246,241,232,.6)" : "var(--sl3)", lineHeight:1.7, fontStyle:"italic" }}>{o.bring}</p>
           </div>
         )}
-        <Link href={`/book?tier=${o.tier}`} className={`btn btn-full ${o.featured ? "btn-go" : "btn-fo"}`} style={{ marginTop:"auto" }}>
+        <Link href={bookUrl(o.tier)} className={`btn btn-full ${o.featured ? "btn-go" : "btn-fo"}`} style={{ marginTop:"auto" }}>
           {o.cta} →
         </Link>
       </div>
@@ -473,7 +474,7 @@ export default function HomePage() {
               <span>Blood tests at local centres or at home</span>
             </p>
             <div className="a3" style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 380 }}>
-              <Link href="/book?tier=discovery" className="btn btn-go" style={{ textAlign: "center", padding: "16px 24px" }}>
+              <Link href={bookUrl("discovery")} className="btn btn-go" style={{ textAlign: "center", padding: "16px 24px" }}>
                 Book Your Appointment →
               </Link>
               <Link href="/metabolic-quiz" className="btn btn-fo" style={{ textAlign: "center", padding: "14px 24px" }}>
@@ -561,7 +562,7 @@ export default function HomePage() {
               ))}
             </div>
             <div style={{ textAlign: "center" }}>
-              <Link href="/book?tier=discovery" className="btn btn-fo">Book Your Appointment →</Link>
+              <Link href={bookUrl("discovery")} className="btn btn-fo">Book Your Appointment →</Link>
             </div>
           </div>
         </section>
@@ -611,7 +612,7 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-                <Link href="/book?tier=discovery" className="btn btn-fo">Book Your Appointment →</Link>
+                <Link href={bookUrl("discovery")} className="btn btn-fo">Book Your Appointment →</Link>
               </div>
             </div>
           </div>
@@ -945,7 +946,7 @@ export default function HomePage() {
               Get a clear picture of what is driving decline, and a plan built around your data.
             </p>
             <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap", marginBottom:28 }}>
-              <Link href="/book?tier=discovery" className="btn btn-go">Book Your Appointment →</Link>
+              <Link href={bookUrl("discovery")} className="btn btn-go">Book Your Appointment →</Link>
               <Link href="/metabolic-quiz" className="btn btn-ol-lt">Take the Metabolic Quiz</Link>
             </div>
             <p style={{ fontSize:".7rem", color:"rgba(246,241,232,.24)", lineHeight:1.8 }}>

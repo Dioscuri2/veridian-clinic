@@ -1,3 +1,4 @@
+import { bookUrl } from "@/data/panels";
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE_URL = "https://api.brevo.com/v3";
 
@@ -68,7 +69,7 @@ export async function sendGuideEmail({ email, name, downloadUrl }: GuideEmailPar
               <p style="margin:0 0 14px;font-size:.88rem;color:#5a534a;line-height:1.85;">
                 The guide gives you the framework. Discovery Core is where Dr Taiwo reviews your specific picture (your symptoms, history and numbers) and identifies your most important clinical levers.
               </p>
-              <a href="https://veridianclinic.com/book?tier=discovery" style="font-size:.85rem;font-weight:600;color:#2c2a26;text-decoration:underline;">
+              <a href="${bookUrl("discovery")}" style="font-size:.85rem;font-weight:600;color:#2c2a26;text-decoration:underline;">
                 Book My Discovery Core →
               </a>
             </td></tr>

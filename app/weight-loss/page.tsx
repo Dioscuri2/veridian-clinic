@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TurnstileWidget from "@/components/TurnstileWidget";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -36,7 +37,7 @@ const STOP_CONTENT: Record<StopReason, { title: string; body: string; cta: strin
     title: "Weight loss injections are not safe during pregnancy or breastfeeding.",
     body: "Tirzepatide and semaglutide must not be used if you are pregnant, breastfeeding, or planning to conceive. Please speak to your GP or midwife about safe weight management options.",
     cta: "Book a GP discovery call instead",
-    ctaHref: "/book?tier=discovery",
+    ctaHref: bookUrl("discovery"),
   },
   thyroid: {
     title: "We are unable to prescribe this medicine for you.",
@@ -48,7 +49,7 @@ const STOP_CONTENT: Record<StopReason, { title: string; body: string; cta: strin
     title: "We need to assess your pancreatic history further.",
     body: "A history of acute or chronic pancreatitis is a contraindication for GLP-1 medicines. This does not mean treatment is impossible, but it requires a careful clinical assessment before any prescription.",
     cta: "Book a GP discovery call to discuss",
-    ctaHref: "/book?tier=discovery",
+    ctaHref: bookUrl("discovery"),
   },
   "active-glp1": {
     title: "You are already on a GLP-1 medicine.",
@@ -583,7 +584,7 @@ function WlQuiz() {
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 24 }}>
             Based on your BMI, a more targeted approach may serve you better. A metabolic blood panel can identify the specific drivers of weight resistance (insulin, thyroid, hormones and inflammation) and give Dr Tosin a far more precise starting point.
           </p>
-          <Link href="/book?tier=discovery" className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Core, £127</Link>
+          <Link href={bookUrl("discovery")} className="btn btn-fo" style={{ display: "inline-block", marginBottom: 12 }}>Book a GP Discovery Core, £127</Link>
           <br />
           <Link href="/assessments" style={{ fontSize: ".82rem", color: "var(--sl2)", textDecoration: "underline" }}>View metabolic blood panels instead</Link>
         </div>
@@ -627,7 +628,7 @@ function WlQuiz() {
           Book my Weight Loss Consultation £48
         </Link>
         <p style={{ fontSize: ".74rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
-          Secure payment via ThanksDoc. A confirmation email is sent immediately after booking.
+          Enter code WLQUIZRATE at the payment step for your £48 rate. Secure payment via ThanksDoc. A confirmation email is sent immediately after booking.
         </p>
       </div>
     );

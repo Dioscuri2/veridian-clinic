@@ -75,7 +75,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(595),
     landingPage: "/assessments",
     checkoutTier: "baseline",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 231,
     targetKeyword: "metabolic blood test uk",
     adGroup: "Metabolic Blood Test",
     status: "live",
@@ -89,7 +89,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(795),
     landingPage: "/blood-tests/biological-age",
     checkoutTier: "longevity-panel",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 232,
     targetKeyword: "biological age blood test uk",
     adGroup: "Health MOT",
     status: "live",
@@ -126,7 +126,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(249),
     landingPage: "/blood-tests/fatigue-energy",
     checkoutTier: "fatigue-energy",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 237,
     targetKeyword: "tired all the time blood tests normal",
     adGroup: "Tired Bloods Normal",
     status: "live",
@@ -151,7 +151,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(199),
     landingPage: "/blood-tests/metabolic-weight",
     checkoutTier: "metabolic-weight",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 238,
     targetKeyword: "insulin resistance test uk",
     adGroup: "Insulin Resistance",
     status: "live",
@@ -177,7 +177,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(349),
     landingPage: "/blood-tests/cardiovascular-risk",
     checkoutTier: "cardiovascular-risk",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 236,
     targetKeyword: "apob test uk",
     adGroup: "Metabolic Blood Test",
     status: "live",
@@ -205,7 +205,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(375),
     landingPage: "/blood-tests/womens-hormones",
     checkoutTier: "womens-hormones",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 234,
     targetKeyword: "hormone blood test women uk",
     adGroup: "Hormones",
     status: "live",
@@ -231,7 +231,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(325),
     landingPage: "/blood-tests/mens-testosterone",
     checkoutTier: "mens-testosterone",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 235,
     targetKeyword: "testosterone blood test uk",
     adGroup: "Hormones",
     status: "live",
@@ -259,7 +259,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(549),
     landingPage: "/blood-tests/optimiser-baseline",
     checkoutTier: "optimiser-baseline",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 239,
     targetKeyword: "executive health screening london",
     adGroup: "Health MOT",
     status: "live",
@@ -352,7 +352,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(375),
     landingPage: null, // no dedicated page yet; sold via checkout deep-link
     checkoutTier: "perimenopause-panel",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 229,
     targetKeyword: "perimenopause blood test uk",
     adGroup: "Hormones",
     status: "live",
@@ -379,7 +379,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(127),
     landingPage: "/discovery-call",
     checkoutTier: "discovery",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 136,
     targetKeyword: "private gp consultation uk",
     adGroup: "Brand",
     status: "live",
@@ -421,7 +421,7 @@ export const PANELS: Panel[] = [
     pricePence: GBP(1895),
     landingPage: "/assessments",
     checkoutTier: "programme",
-    thanksDocServiceId: null,
+    thanksDocServiceId: 230,
     targetKeyword: "type 2 diabetes remission programme private",
     adGroup: "Programmes",
     status: "live",
@@ -453,3 +453,41 @@ export const formatPrice = (p: Panel): string =>
 /** Trade cost in pence for one supplier order (sum of lines). */
 export const tradePence = (o: SupplierOrder): number =>
   o.lines.reduce((s, l) => s + l.tradePence, 0);
+
+// ── Booking links ────────────────────────────────────────────────
+// ThanksDoc discount codes (QUIZRATE, WLQUIZRATE) only work on the per-doctor
+// service link, never on the clinic/department link, so every product CTA must
+// use thanksDocBookingUrl with a service id.
+
+/** ThanksDoc practitioner id for Dr Tosin Taiwo. */
+const THANKSDOC_DOCTOR_ID = 36;
+
+const THANKSDOC_CLINIC_URL =
+  process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+
+/**
+ * Canonical ThanksDoc booking URL. With a service id it returns the per-service,
+ * per-doctor link (service and doctor preselected, discount code box present).
+ * Without one it falls back to the generic clinic booking page.
+ */
+export const thanksDocBookingUrl = (serviceId?: number | null): string =>
+  serviceId ? `https://notes.thanksdoc.co.uk/book/service/${serviceId}/${THANKSDOC_DOCTOR_ID}` : THANKSDOC_CLINIC_URL;
+
+/** Legacy /book?tier= values that are not panel slugs. */
+const TIER_ALIASES: Record<string, string> = {
+  discovery: "metabolic-discovery",
+  "discovery-quiz": "metabolic-discovery",
+  baseline: "metabolic-baseline",
+  programme: "twelve-week-reset",
+};
+
+/** Resolve a /book?tier= value (slug or legacy alias) to a panel. */
+export const panelForTier = (tier: string): Panel | undefined =>
+  getPanel(TIER_ALIASES[tier] ?? tier);
+
+/** Booking URL for a panel slug or legacy tier value. Falls back to the clinic page. */
+export const bookUrl = (tier: string): string =>
+  thanksDocBookingUrl(panelForTier(tier)?.thanksDocServiceId);
+
+/** Weight Loss Consultation is a ThanksDoc service with no panels.ts entry. */
+export const WEIGHT_LOSS_CONSULTATION_SERVICE_ID = 138;

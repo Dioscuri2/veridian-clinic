@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Private Fatigue Blood Test UK: Thyroid, Insulin & Iron Panel | Veridian Clinic" },
@@ -69,7 +70,7 @@ export default function FatigueEnergyPage() {
         title="Tired of being told you&apos;re fine? Private fatigue &amp; energy blood test UK"
         intro="The most frustrating clinical experience is persistent fatigue paired with a normal blood test. It is also, in our experience, one of the most common. Standard GP panels test for anaemia and gross thyroid failure. They do not test for the markers that explain the majority of cases: subclinical thyroid dysfunction, functional iron deficiency, early insulin resistance, and the mitochondrial contributors that most primary care panels omit entirely."
         ctas={[
-          { href: "/book?tier=fatigue-energy", label: "Book Fatigue & Energy Panel £249 →" },
+          { href: bookUrl("fatigue-energy"), label: "Book Fatigue & Energy Panel £249 →" },
         ]}
       >
         <p style={paragraph}>

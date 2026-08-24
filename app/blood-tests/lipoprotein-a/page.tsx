@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Lipoprotein(a) Blood Test UK: Private Lp(a) Testing | Veridian Clinic" },
@@ -67,8 +68,8 @@ export default function LipoproteinATestPage() {
         title="Lipoprotein(a) blood test UK: the genetically inherited cardiovascular risk the NHS doesn&apos;t routinely check"
         intro="Lipoprotein(a), written Lp(a) and pronounced &apos;LP little a&apos;, is one of the most significant independent cardiovascular risk factors in the population. It is largely determined by genetics, barely changed by lifestyle, and invisible on any standard NHS lipid panel. Approximately 1 in 5 UK adults carries levels that meaningfully elevate their lifetime risk of heart attack, stroke, and aortic valve disease."
         ctas={[
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel (Lp(a) included) £795 →" },
-          { href: "/book?tier=baseline", label: "Book Metabolic Baseline £595", variant: "secondary" },
+          { href: bookUrl("longevity-panel"), label: "Book Longevity Panel (Lp(a) included) £795 →" },
+          { href: bookUrl("baseline"), label: "Book Metabolic Baseline £595", variant: "secondary" },
         ]}
       >
         <p style={paragraph}>

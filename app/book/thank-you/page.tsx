@@ -5,7 +5,14 @@ import Footer from "@/components/Footer";
 import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { FONTS, CSS } from "@/components/globalStyles";
-const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+import { bookUrl, thanksDocBookingUrl, WEIGHT_LOSS_CONSULTATION_SERVICE_ID } from "@/data/panels";
+
+// Per-service ThanksDoc link, so the slot picker opens on the right service and
+// the discount code box is available.
+const bookingUrlForTier = (tier: string) =>
+  tier.startsWith("wl-consultation")
+    ? thanksDocBookingUrl(WEIGHT_LOSS_CONSULTATION_SERVICE_ID)
+    : bookUrl(tier);
 
 const REVIEW_TIERS = ["discovery", "discovery-quiz", "wl-consultation", "wl-consultation-quiz"];
 const BLOOD_TEST_TIERS = ["metabolic-screen", "womens-hormones", "mens-testosterone", "cardiovascular-risk", "fatigue-energy", "metabolic-weight", "optimiser-baseline"];
@@ -90,7 +97,7 @@ function ThankYouContent() {
                 Virtual consultation · Video call · Dr Tosin Taiwo
               </p>
               <a
-                href={THANKSDOC_URL}
+                href={bookingUrlForTier(tier)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-fo"

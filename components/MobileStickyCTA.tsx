@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 /** Mobile-only sticky bottom CTA bar. Appears after the visitor scrolls past
  *  the hero so the offer and booking action stay one tap away. */
@@ -52,7 +53,7 @@ export default function MobileStickyCTA() {
       <div className={`msc-bar${show ? " msc-show" : ""}`} aria-hidden={!show}>
         <p className="msc-label">GP-led metabolic clinic</p>
         <div className="msc-actions">
-          <Link href="/book?tier=discovery" className="msc-btn msc-book" tabIndex={show ? 0 : -1}>
+          <Link href={bookUrl("discovery")} className="msc-btn msc-book" tabIndex={show ? 0 : -1}>
             Book →
           </Link>
           <Link href="/metabolic-quiz" className="msc-btn msc-quiz" tabIndex={show ? 0 : -1}>

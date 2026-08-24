@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 import Image from "next/image";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Lipoprotein(a), ApoB and Triglycerides The Cardiovascular Triple Threat | Veridian Clinic" },
@@ -86,8 +87,8 @@ export default function LpaApoBTriglyceridesPage() {
         heroImage="/blog/lipoprotein-a-apob-triglycerides.jpg"
         heroAlt="Arterial cross-section showing Lp(a), ApoB, and triglyceride cardiovascular risk"
         ctas={[
-          { href: "/book?tier=baseline", label: "Book the Core Metabolic Assessment includes ApoB and Lp(a) →" },
-          { href: "/book?tier=longevity-panel", label: "Book the Advanced Longevity Assessment £795", variant: "secondary" },
+          { href: bookUrl("baseline"), label: "Book the Core Metabolic Assessment includes ApoB and Lp(a) →" },
+          { href: bookUrl("longevity-panel"), label: "Book the Advanced Longevity Assessment £795", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >
@@ -327,10 +328,10 @@ export default function LpaApoBTriglyceridesPage() {
             You will leave with your Lp(a) level (reported in nmol/L, not the ambiguous mg/L scale used by most NHS labs), your ApoB with an evidence-based target, your triglyceride burden in fasting and clinical context, and a personalised plan that sequences interventions in the right order for your specific pattern.
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/book?tier=baseline" className="btn btn-go" style={{ fontSize: ".88rem" }}>
+            <Link href={bookUrl("baseline")} className="btn btn-go" style={{ fontSize: ".88rem" }}>
               Book the Core Metabolic Assessment £595 →
             </Link>
-            <Link href="/book?tier=longevity-panel" className="btn" style={{ fontSize: ".88rem", background: "transparent", border: "1px solid rgba(246,241,232,.25)", color: "rgba(246,241,232,.8)" }}>
+            <Link href={bookUrl("longevity-panel")} className="btn" style={{ fontSize: ".88rem", background: "transparent", border: "1px solid rgba(246,241,232,.25)", color: "rgba(246,241,232,.8)" }}>
               Advanced Longevity Assessment £795
             </Link>
           </div>

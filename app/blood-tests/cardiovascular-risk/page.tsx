@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Private Cardiovascular Risk Blood Test UK: Beyond Cholesterol | Veridian Clinic" },
@@ -57,8 +58,8 @@ export default function CardiovascularRiskPage() {
       title="Your cholesterol test didn't tell you the whole story."
       intro="Total cholesterol is one number. Cardiovascular risk is built from eight. The markers that actually predict a heart attack (ApoB, Lp(a), homocysteine, small dense LDL, fasting insulin) are almost never included in a standard NHS or GP cholesterol test."
       ctas={[
-        { label: "Book the Cardiovascular Risk Panel £349", href: "/book?tier=cardiovascular-risk", variant: "primary" },
-        { label: "Book a Discovery Core consultation first", href: "/book?tier=discovery" },
+        { label: "Book the Cardiovascular Risk Panel £349", href: bookUrl("cardiovascular-risk"), variant: "primary" },
+        { label: "Book a Discovery Core consultation first", href: bookUrl("discovery") },
       ]}
     >
       <h2 className="cg" style={sectionHeading}>Why cholesterol alone is not enough</h2>

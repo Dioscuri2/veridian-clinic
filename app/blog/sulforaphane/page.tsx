@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Sulforaphane UK Benefits Evidence and How to Get It From Food | Veridian Clinic" },
@@ -111,7 +112,7 @@ export default function SulforaphanePage() {
         title="The compound in broccoli sprouts that helps your body clean up after city living"
         intro="Sulforaphane does not act as a conventional antioxidant. It activates NRF2, a master genetic switch that prompts your own cells to upregulate glutathione production and phase-2 detoxification enzymes. Human trials show it can reduce oxidative DNA damage by up to 40% and clear environmental carcinogens faster. The catch: cooking destroys the enzyme that makes it. Here is the evidence, the mechanism, and what actually works as a source."
         ctas={[
-          { href: "/book?tier=longevity-panel", label: "Book Longevity Panel £795, oxidative stress markers included →" },
+          { href: bookUrl("longevity-panel"), label: "Book Longevity Panel £795, oxidative stress markers included →" },
           { href: "/assessments", label: "View all assessment pathways", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}

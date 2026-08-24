@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 import Image from "next/image";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Fasting Insulin Test UK What It Measures and Why It Matters | Veridian Clinic" },
@@ -77,7 +78,7 @@ export default function FastInsulinPage() {
         heroImage="/blog/fasting-insulin.jpg"
         heroAlt="Clinical blood test vials for fasting insulin and metabolic assessment"
         ctas={[
-          { href: "/book?tier=fatigue-energy", label: "Book the Energy & Fatigue Panel fasting insulin included →" },
+          { href: bookUrl("fatigue-energy"), label: "Book the Energy & Fatigue Panel fasting insulin included →" },
           { href: "/metabolic-turnaround", label: "Explore the 90-Day Metabolic Turnaround programme →", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}

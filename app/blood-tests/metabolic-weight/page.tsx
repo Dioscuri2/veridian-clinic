@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Private Metabolic Weight Resistance Blood Test UK | Veridian Clinic" },
@@ -55,8 +56,8 @@ export default function MetabolicWeightPage() {
       title="Why won't the weight budge?"
       intro="You are eating well, exercising regularly, and doing everything right. The weight still isn't moving. This is not a willpower problem. It is a metabolic problem, and the answer is almost always visible in the right blood tests."
       ctas={[
-        { label: "Book Why Won't The Weight Budge? Panel £199", href: "/book?tier=metabolic-weight", variant: "primary" },
-        { label: "Book a Discovery Core consultation first", href: "/book?tier=discovery" },
+        { label: "Book Why Won't The Weight Budge? Panel £199", href: bookUrl("metabolic-weight"), variant: "primary" },
+        { label: "Book a Discovery Core consultation first", href: bookUrl("discovery") },
       ]}
     >
       <h2 className="cg" style={sectionHeading}>The three most common metabolic blocks to weight loss</h2>

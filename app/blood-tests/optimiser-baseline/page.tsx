@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Private Optimiser Baseline Blood Test UK: Performance & Longevity Panel | Veridian Clinic" },
@@ -57,7 +58,7 @@ export default function OptimiserBaselinePage() {
       title="You track everything. This tells you what's actually happening."
       intro="Most people who optimise their health are doing it without a documented clinical baseline. They're training, tracking sleep, wearing a CGM, taking supplements. But they don't know their IGF-1. They don't know their ApoB. They don't know whether their insulin is quietly undermining every protocol they run. This panel changes that."
       ctas={[
-        { label: "Book The Optimiser's Baseline £549", href: "/book?tier=optimiser-baseline", variant: "primary" },
+        { label: "Book The Optimiser's Baseline £549", href: bookUrl("optimiser-baseline"), variant: "primary" },
         { label: "See all panels and pricing", href: "/assessments" },
       ]}
     >

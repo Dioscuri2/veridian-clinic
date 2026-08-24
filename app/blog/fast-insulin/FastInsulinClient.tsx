@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { bookUrl } from "@/data/panels";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -289,7 +290,7 @@ export default function FastInsulinClient() {
                 vascular health, this is one of the most informative markers to understand.
               </p>
               <div className="fi-hero-actions">
-                <Link href="/book?tier=baseline" className="fi-btn fi-btn-primary">
+                <Link href={bookUrl("baseline")} className="fi-btn fi-btn-primary">
                   Book Baseline Audit
                 </Link>
                 <Link href="/assessments" className="fi-btn fi-btn-secondary">
@@ -412,7 +413,7 @@ export default function FastInsulinClient() {
               </p>
             </div>
             <div className="fi-cta-actions">
-              <Link href="/book?tier=baseline" className="fi-btn fi-btn-primary">
+              <Link href={bookUrl("baseline")} className="fi-btn fi-btn-primary">
                 Book Baseline Audit
               </Link>
               <Link href="/assessments" className="fi-btn fi-btn-secondary">

@@ -1,6 +1,7 @@
 "use client";
 import { useState, lazy, Suspense } from "react";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 const LegalModal = lazy(() => import("./LegalModal"));
 
@@ -100,7 +101,7 @@ export default function Footer() {
             <Link href="/weight-loss" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
               Weight Loss Injections
             </Link>
-            <Link href="/book?tier=discovery" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
+            <Link href={bookUrl("discovery")} style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
               Book Now
             </Link>
             <Link href="/metabolic-quiz" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>

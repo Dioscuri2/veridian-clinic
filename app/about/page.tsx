@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "About Dr Tosin Taiwo | GP, Veridian Clinic" },
@@ -195,7 +196,7 @@ export default function AboutPage() {
               A clinical conversation to understand your situation, answer your questions, and confirm whether the programme is the right fit for you.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/book?tier=discovery" className="btn btn-fo">Book Discovery Core, £127</Link>
+              <Link href={bookUrl("discovery")} className="btn btn-fo">Book Discovery Core, £127</Link>
               <Link href="/metabolic-quiz" className="btn btn-ol">Check Your Metabolic Age Free</Link>
             </div>
           </div>

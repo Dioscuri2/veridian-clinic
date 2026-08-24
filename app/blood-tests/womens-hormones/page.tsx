@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Perimenopause Blood Test UK: Private Women's Hormone Panel | Veridian Clinic" },
@@ -69,7 +70,7 @@ export default function WomensHormonesPage() {
         title="Is it my hormones? Private perimenopause &amp; women&apos;s hormone blood test UK"
         intro="You are exhausted. Your mood has shifted. You wake at 3am and can't get back to sleep. You've gained weight around your middle and nothing is moving it. Your GP has done a blood test and told you everything looks fine. This panel measures what that test didn't."
         ctas={[
-          { href: "/book?tier=womens-hormones", label: "Book Is It My Hormones? Panel £375 →" },
+          { href: bookUrl("womens-hormones"), label: "Book Is It My Hormones? Panel £375 →" },
           { href: "/perimenopause-guide", label: "Download the Free Perimenopause Guide", variant: "secondary" },
         ]}
       >

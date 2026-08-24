@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminRequest } from "@/lib/adminAuth";
+import { bookUrl } from "@/data/panels";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 const BREVO_BASE = "https://api.brevo.com/v3";
@@ -38,7 +39,7 @@ function buildInterpretationEmail(patientName: string, panelName: string, report
             <p style="margin:0 0 14px;font-size:.86rem;color:#5a534a;">
               <strong style="color:#2c2a26;">Blood test patient rate: £149</strong> <span style="color:#8a8278;">(standard £195)</span>
             </p>
-            <a href="https://veridianclinic.com/book?tier=discovery" style="display:inline-block;background:#2c2a26;color:#f6f1e8;padding:11px 24px;text-decoration:none;font-size:.88rem;font-weight:600;letter-spacing:.04em;">
+            <a href="${bookUrl("discovery")}" style="display:inline-block;background:#2c2a26;color:#f6f1e8;padding:11px 24px;text-decoration:none;font-size:.88rem;font-weight:600;letter-spacing:.04em;">
               Book results consultation £149
             </a>
           </div>

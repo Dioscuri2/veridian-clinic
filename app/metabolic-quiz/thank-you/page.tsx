@@ -5,8 +5,9 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
-const DISCOVERY_QUIZ_BOOKING = "https://notes.thanksdoc.co.uk/book/service/136/36";
+const DISCOVERY_QUIZ_BOOKING = bookUrl("discovery"); // Discovery Core, ThanksDoc service 136
 
 function ThankYouContent() {
   const params = useSearchParams();
@@ -104,7 +105,7 @@ function ThankYouContent() {
                   Book my £97 Discovery Core →
                 </a>
                 <p style={{ fontSize: ".74rem", color: "rgba(246,241,232,.5)", lineHeight: 1.7, marginTop: 14 }}>
-                  £127 standard · £97 with code QUIZRATE · applied at checkout. Secure payment via ThanksDoc.
+                  £127 standard · £97 with code QUIZRATE · entered at the payment step. Secure payment via ThanksDoc.
                 </p>
               </div>
             </div>

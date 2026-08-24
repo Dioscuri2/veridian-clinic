@@ -3,8 +3,11 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
-const THANKSDOC_URL = process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+// Discovery Core, ThanksDoc service 136. The per-service link is the only one
+// where the QUIZRATE code can be entered.
+const THANKSDOC_URL = bookUrl("discovery");
 
 export const metadata: Metadata = {
   title: "GP Discovery Core Consultation",
@@ -136,7 +139,7 @@ export default function DiscoveryCallPage() {
                     Take the Quiz to Unlock £97 →
                   </Link>
                   <p style={{ fontSize: ".72rem", color: "var(--sl3)", marginTop: 10, lineHeight: 1.6 }}>
-                    Discount applied after quiz + email submission. Takes 2 minutes.
+                    You are given code QUIZRATE after the quiz. Enter it at the payment step to pay £97. Takes 2 minutes.
                   </p>
                 </div>
 

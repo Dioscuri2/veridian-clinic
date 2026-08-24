@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { FONTS, CSS } from "@/components/globalStyles";
+import { bookUrl } from "@/data/panels";
 
 const questions = [
   {
@@ -195,7 +196,7 @@ export default function QuizPage() {
                   </p>
                 </div>
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                  <Link href={`/book?tier=${recommendation.tier}`} className="btn btn-fo">Book My Assessment →</Link>
+                  <Link href={bookUrl(recommendation.tier)} className="btn btn-fo">Book My Assessment →</Link>
                   <Link href="/assessments" className="btn btn-ol">Compare All Assessments</Link>
                   <button onClick={reset} className="btn btn-ol">Retake Quiz</button>
                 </div>

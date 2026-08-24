@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 import Image from "next/image";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Homocysteine Test UK What It Is, When to Test, and What High Levels Mean | Veridian Clinic" },
@@ -138,7 +139,7 @@ export default function HomocysteinePage() {
         heroImage="/blog/homocysteine.jpg"
         heroAlt="Homocysteine molecular structure and cardiovascular risk visualization"
         ctas={[
-          { href: "/book?tier=baseline", label: "Book Metabolic Baseline homocysteine included →" },
+          { href: bookUrl("baseline"), label: "Book Metabolic Baseline homocysteine included →" },
           { href: "/metabolic-turnaround", label: "Explore the 90-Day Metabolic Turnaround programme →", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}

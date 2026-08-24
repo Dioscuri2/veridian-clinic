@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { bookUrl } from "@/data/panels";
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobOpen, setMobOpen] = useState(false);
@@ -56,7 +57,7 @@ export default function Navigation() {
           </nav>
 
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-            <Link href="/book?tier=discovery" className="btn btn-fo" id="nav-cta"
+            <Link href={bookUrl("discovery")} className="btn btn-fo" id="nav-cta"
               style={{ padding: "10px 18px", fontSize: ".78rem", display: "none" }}>
               Book Your Appointment →
             </Link>
@@ -71,7 +72,7 @@ export default function Navigation() {
             {navLinks.map(({ label, href }) => (
               <Link key={label} href={href} className="mob-link">{label}</Link>
             ))}
-            <Link href="/book?tier=discovery" className="btn btn-fo btn-full" style={{ marginTop: 16 }}>
+            <Link href={bookUrl("discovery")} className="btn btn-fo btn-full" style={{ marginTop: 16 }}>
               Book Your Appointment →
             </Link>
           </div>

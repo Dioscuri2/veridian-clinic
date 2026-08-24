@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
 import Image from "next/image";
+import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Reversing Metabolic Syndrome What the Evidence Actually Supports | Veridian Clinic" },
@@ -78,7 +79,7 @@ export default function ReversingMetabolicSyndromePage() {
         heroAlt="Mitochondrial cellular regeneration visualization metabolic health transformation"
         ctas={[
           { href: "/metabolic-turnaround", label: "Explore the 90-Day Metabolic Turnaround programme →" },
-          { href: "/book?tier=baseline", label: "Start with the Core Metabolic Assessment £595", variant: "secondary" },
+          { href: bookUrl("baseline"), label: "Start with the Core Metabolic Assessment £595", variant: "secondary" },
           { href: "/metabolic-quiz", label: "Check your metabolic age free →", variant: "tertiary" },
         ]}
       >
