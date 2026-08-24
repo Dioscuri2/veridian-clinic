@@ -1,3 +1,22 @@
+/*
+ * VISUAL PILOT, DO NOT "FIX" THE INCONSISTENCY.
+ *
+ * This page deliberately runs the "Ink and Signal" palette: near-total
+ * monochrome with a single signal colour (#C2371F) reserved strictly for
+ * actions and for anything clinically urgent. It is a pilot on ONE route
+ * while we decide whether to roll it out sitewide.
+ *
+ * The palette is scoped: INK_SIGNAL_CSS below only ever matches inside
+ * .ink-signal, which wraps this page's own sections. Nothing here changes
+ * the token values in components/globalStyles.js, so every other route
+ * still renders in the forest and gold tokens exactly as before.
+ * Navigation and Footer sit outside the wrapper and keep the current site
+ * styling; that seam is expected for the duration of the pilot.
+ *
+ * If you are here to make this page match the rest of the site, please
+ * check with Dr Tosin first. The difference is the point.
+ */
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
@@ -11,6 +30,53 @@ const THANKSDOC_URL = thanksDocBookingUrl();
 const BOOK_15 = bookUrl("gp-consultation-15");
 const BOOK_20 = bookUrl("gp-consultation-20");
 const BOOK_REPEAT_RX = thanksDocBookingUrl(336); // Repeat Prescription Request, no panels.ts entry
+
+/*
+ * Ink and Signal, scoped to this page only.
+ *
+ * Every selector is prefixed with .ink-signal, so these rules cannot apply
+ * to any element outside this page's wrapper. The custom properties are
+ * re-declared on the wrapper rather than on :root, which remaps the shared
+ * component classes (.card, .btn-fo, .lbl, .sh-title and the rest) for this
+ * subtree and leaves every other route on the globalStyles.js values.
+ *
+ * Palette:
+ *   ground #FBFBFA · surface #FFFFFF · rule #E6E6E3 · border #DCDCD8
+ *   ink #111111 · body #3F3F42 · muted #57575A · signal #C2371F
+ * Inverted surface: ground #111111 · #FFFFFF · #E2E2DF · #C9C9C7 · #9A9A9C
+ */
+const INK_SIGNAL_CSS = `
+.ink-signal {
+ --iv: #FBFBFA;
+ --iv2: #E6E6E3;
+ --iv3: #DCDCD8;
+ --wh: #FFFFFF;
+ --fo: #111111;
+ --fo2: #2A2A2A;
+ --fo3: #3F3F42;
+ --go: #57575A;
+ --go2: #E2E2DF;
+ --go3: #9A9A9C;
+ --sl: #111111;
+ --sl2: #3F3F42;
+ --sl3: #57575A;
+ --red: #C2371F;
+ --is-line: #E6E6E3;
+ --is-border: #DCDCD8;
+ background: var(--iv);
+}
+.ink-signal .card { border: 1px solid var(--is-border); }
+.ink-signal .card:hover { box-shadow: 0 18px 56px rgba(17,17,17,.08); }
+.ink-signal .card-featured { background: #111111; border-color: #111111; }
+.ink-signal .rule { background: #111111; }
+.ink-signal .badge { border: 1px solid var(--is-border); background: var(--is-line); color: #111111; }
+.ink-signal .btn-fo { background: #111111; color: #FBFBFA; }
+.ink-signal .btn-fo:hover { background: #2A2A2A; box-shadow: 0 10px 36px rgba(17,17,17,.18); }
+.ink-signal .btn-go { background: #C2371F; color: #FFFFFF; }
+.ink-signal .btn-go:hover { background: #A32C17; color: #FFFFFF; box-shadow: 0 10px 36px rgba(194,55,31,.26); }
+.ink-signal .form-field { background: #FFFFFF; border: 1px solid var(--is-border); }
+.ink-signal .form-field:focus { border-color: #111111; }
+`;
 
 export const metadata: Metadata = {
   title: { absolute: "Private GP Video Consultation UK | Evening Appointments, £59 or £89 | Veridian Clinic" },
@@ -285,11 +351,14 @@ const faqSchema = {
 export default function GpConsultationsPage() {
   return (
     <>
-      <style>{FONTS + CSS}</style>
+      <style>{FONTS + CSS + INK_SIGNAL_CSS}</style>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navigation />
       <main style={{ paddingTop: "var(--nav-h)" }}>
+        {/* Ink and Signal wrapper. The palette overrides live on this element,
+            so they cannot reach Navigation, Footer or any other route. */}
+        <div className="ink-signal">
 
         {/* Hero */}
         <section className="sec bg-iv">
@@ -324,15 +393,19 @@ export default function GpConsultationsPage() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,300px),1fr))", gap: 20 }}>
               {consultations.map((c) => {
-                // The featured card sits on --fo (#0d2818 forest green), so every
-                // colour inside it has to flip. Painting --fo text on a --fo card
-                // is what made the 20 minute option unreadable.
+                // The featured card is the inverted surface (#111111 ink ground),
+                // so every colour inside it is written out explicitly rather than
+                // inherited. Painting an ink value on an ink card is what made the
+                // 20 minute option unreadable before. Ratios against #111111:
+                // price #FFFFFF 18.9:1, body #E2E2DF 14.6:1, duration #C9C9C7
+                // 11.4:1, micro-label #9A9A9C 6.7:1.
                 const onDark = !!c.featured;
-                const eyebrow = onDark ? "var(--go3)" : "var(--go)";
-                const priceCol = onDark ? "var(--iv)" : "var(--fo)";
-                const bodyCol = onDark ? "rgba(246,241,232,.9)" : "var(--sl2)";
-                const quietCol = onDark ? "rgba(246,241,232,.68)" : "var(--sl3)";
-                const hairline = onDark ? "1px solid rgba(246,241,232,.22)" : "1px solid rgba(0,0,0,.07)";
+                const eyebrow = onDark ? "#9A9A9C" : "#57575A";
+                const tick = onDark ? "#C9C9C7" : "#111111";
+                const priceCol = onDark ? "#FFFFFF" : "#111111";
+                const bodyCol = onDark ? "#E2E2DF" : "#3F3F42";
+                const quietCol = onDark ? "#9A9A9C" : "#57575A";
+                const hairline = onDark ? "1px solid rgba(255,255,255,.18)" : "1px solid #E6E6E3";
                 return (
                 <div key={c.duration} className={c.featured ? "card card-featured" : "card"} style={{ padding: "clamp(26px,5vw,36px)", display: "flex", flexDirection: "column" }}>
                   <p style={{ fontSize: "clamp(.79rem,2.1vw,.83rem)", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: eyebrow, marginBottom: 12 }}>
@@ -340,7 +413,7 @@ export default function GpConsultationsPage() {
                   </p>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 8, flexWrap: "wrap" }}>
                     <span className="cg" style={{ fontSize: "clamp(2.7rem,9vw,3.3rem)", fontWeight: 600, color: priceCol, lineHeight: 1 }}>{c.price}</span>
-                    <span style={{ fontSize: "clamp(1rem,3vw,1.1rem)", color: bodyCol, fontWeight: 600 }}>{c.duration}</span>
+                    <span style={{ fontSize: "clamp(1rem,3vw,1.1rem)", color: onDark ? "#C9C9C7" : "#3F3F42", fontWeight: 600 }}>{c.duration}</span>
                   </div>
                   <p style={{ fontSize: "clamp(.97rem,2.7vw,1.04rem)", color: bodyCol, lineHeight: 1.8, marginBottom: 20 }}>{c.lead}</p>
 
@@ -351,7 +424,7 @@ export default function GpConsultationsPage() {
                     {c.suitableFor.map((s) => (
                       <li key={s} style={{ display: "grid", gridTemplateColumns: "20px 1fr", gap: 11, alignItems: "start" }}>
                         <svg width="17" height="17" viewBox="0 0 34 34" fill="none" style={{ marginTop: 5 }}>
-                          <path d="M8 17l5 5 13-13" stroke={eyebrow} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M8 17l5 5 13-13" stroke={tick} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                         <span style={{ fontSize: "clamp(.95rem,2.6vw,1.01rem)", color: bodyCol, lineHeight: 1.75 }}>{s}</span>
                       </li>
@@ -380,8 +453,10 @@ export default function GpConsultationsPage() {
         {/* Red flag safety netting */}
         <section className="sec bg-iv" style={{ paddingBottom: 0 }}>
           <div className="wrap" style={{ maxWidth: 860 }}>
-            <div style={{ padding: "24px 26px", background: "rgba(122,22,22,.06)", borderLeft: "3px solid var(--red)" }}>
-              <p style={{ fontSize: "clamp(.78rem,2.1vw,.82rem)", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--red)", marginBottom: 10 }}>
+            {/* The only place, with the featured card's button, where the signal
+                colour is allowed to appear. Clinically urgent content. */}
+            <div style={{ padding: "24px 26px", background: "rgba(194,55,31,.06)", borderLeft: "3px solid #C2371F" }}>
+              <p style={{ fontSize: "clamp(.78rem,2.1vw,.82rem)", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "#C2371F", marginBottom: 10 }}>
                 Do not book a video call for these
               </p>
               <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.9, marginBottom: 12 }}>
@@ -409,7 +484,7 @@ export default function GpConsultationsPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,270px),1fr))", gap: 16 }}>
               {canHelp.map((item) => (
                 <div key={item.title} className="card" style={{ padding: "24px 22px" }}>
-                  <span style={{ fontSize: "clamp(.72rem,2vw,.76rem)", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", padding: "3px 8px", border: "1px solid rgba(200,168,75,.3)", background: "rgba(200,168,75,.06)" }}>
+                  <span style={{ fontSize: "clamp(.72rem,2vw,.76rem)", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--go)", padding: "3px 8px", border: "1px solid #DCDCD8", background: "#E6E6E3" }}>
                     {item.tag}
                   </span>
                   <h3 className="cg" style={{ fontSize: "1.08rem", fontWeight: 500, color: "var(--sl)", margin: "12px 0 8px" }}>{item.title}</h3>
@@ -433,7 +508,7 @@ export default function GpConsultationsPage() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,280px),1fr))", gap: 16 }}>
               {exclusions.map((item) => (
-                <div key={item.title} style={{ padding: "22px 20px", background: "rgba(122,22,22,.04)", borderLeft: "3px solid var(--red)" }}>
+                <div key={item.title} style={{ padding: "22px 20px", background: "#FBFBFA", borderLeft: "3px solid #111111" }}>
                   <h3 style={{ fontSize: "clamp(1rem,2.7vw,1.06rem)", fontWeight: 600, color: "var(--sl)", marginBottom: 8 }}>{item.title}</h3>
                   <p style={{ fontSize: "clamp(.93rem,2.5vw,.98rem)", color: "var(--sl2)", lineHeight: 1.85 }}>{item.body}</p>
                 </div>
@@ -472,7 +547,7 @@ export default function GpConsultationsPage() {
             <div className="rule" />
             <div style={{ marginTop: 8 }}>
               {chargedSeparately.map((row, i) => (
-                <div key={row.item} style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 20, alignItems: "start", padding: "20px 0", borderBottom: i < chargedSeparately.length - 1 ? "1px solid rgba(0,0,0,.07)" : "none" }}>
+                <div key={row.item} style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 20, alignItems: "start", padding: "20px 0", borderBottom: i < chargedSeparately.length - 1 ? "1px solid #E6E6E3" : "none" }}>
                   <div>
                     <p style={{ fontSize: "clamp(.98rem,2.6vw,1.04rem)", fontWeight: 600, color: "var(--sl)", marginBottom: 6 }}>{row.item}</p>
                     <p style={{ fontSize: "clamp(.91rem,2.4vw,.95rem)", color: "var(--sl2)", lineHeight: 1.8 }}>{row.note}</p>
@@ -492,19 +567,19 @@ export default function GpConsultationsPage() {
         {/* Why this differs */}
         <section className="sec bg-fo">
           <div className="wrap" style={{ maxWidth: 860 }}>
-            <p className="lbl" style={{ color: "var(--go2)" }}>How we compare</p>
-            <div className="rule" style={{ background: "var(--go)" }} />
-            <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.6rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.25, margin: "8px 0 14px" }}>
+            <p className="lbl" style={{ color: "#9A9A9C" }}>How we compare</p>
+            <div className="rule" style={{ background: "#9A9A9C" }} />
+            <h2 className="cg" style={{ fontSize: "clamp(1.7rem,4vw,2.6rem)", fontWeight: 500, color: "#FFFFFF", lineHeight: 1.25, margin: "8px 0 14px" }}>
               Four things we publish that most of the market does not.
             </h2>
-            <p style={{ fontSize: "clamp(.98rem,2.6vw,1.04rem)", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 660, marginBottom: 32 }}>
+            <p style={{ fontSize: "clamp(.98rem,2.6vw,1.04rem)", color: "#E2E2DF", lineHeight: 1.9, maxWidth: 660, marginBottom: 32 }}>
               None of this is a criticism of the NHS. Your NHS GP is doing careful work inside a system under enormous pressure, and we would encourage you to stay registered. This is about what you are entitled to know before you hand your card over to a private provider.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,280px),1fr))", gap: 14 }}>
               {differences.map((d) => (
-                <div key={d.title} style={{ padding: "22px 20px", background: "rgba(246,241,232,.07)", border: "1px solid rgba(246,241,232,.1)" }}>
-                  <h3 className="cg" style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--iv)", marginBottom: 10 }}>{d.title}</h3>
-                  <p style={{ fontSize: "clamp(.91rem,2.4vw,.95rem)", color: "rgba(246,241,232,.7)", lineHeight: 1.85 }}>{d.body}</p>
+                <div key={d.title} style={{ padding: "22px 20px", background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.18)" }}>
+                  <h3 className="cg" style={{ fontSize: "1.05rem", fontWeight: 500, color: "#FFFFFF", marginBottom: 10 }}>{d.title}</h3>
+                  <p style={{ fontSize: "clamp(.91rem,2.4vw,.95rem)", color: "#C9C9C7", lineHeight: 1.85 }}>{d.body}</p>
                 </div>
               ))}
             </div>
@@ -601,7 +676,7 @@ export default function GpConsultationsPage() {
             </div>
             <div>
               {faqs.map((f, i) => (
-                <div key={f.q} style={{ padding: "24px 0", borderBottom: i < faqs.length - 1 ? "1px solid rgba(0,0,0,.07)" : "none" }}>
+                <div key={f.q} style={{ padding: "24px 0", borderBottom: i < faqs.length - 1 ? "1px solid #E6E6E3" : "none" }}>
                   <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "var(--sl)", marginBottom: 10 }}>{f.q}</h3>
                   <p style={{ fontSize: "clamp(.96rem,2.6vw,1.01rem)", color: "var(--sl2)", lineHeight: 1.9 }}>{f.a}</p>
                 </div>
@@ -629,12 +704,13 @@ export default function GpConsultationsPage() {
                 Book 20 Minutes, £89 →
               </a>
             </div>
-            <p style={{ fontSize: "clamp(.79rem,2.1vw,.83rem)", color: "var(--sl3)", lineHeight: 1.85, marginTop: 32, borderTop: "1px solid rgba(0,0,0,.07)", paddingTop: 20 }}>
+            <p style={{ fontSize: "clamp(.79rem,2.1vw,.83rem)", color: "var(--sl3)", lineHeight: 1.85, marginTop: 32, borderTop: "1px solid #E6E6E3", paddingTop: 20 }}>
               Consultations are delivered by Dr Oluwatosin Taiwo, MBBS MRCGP MRCS, and run through ThanksDoc&apos;s CQC-registered framework. ThanksDoc is a trading name of Endura Health Limited (company number 15418491), CQC registration number 1-18826835219. Bookings, payments and cancellations are subject to ThanksDoc&apos;s terms, including a 48 hour cancellation policy. Veridian Clinic is a private service for adults aged 18 and over, and is not a substitute for NHS GP registration or for emergency care.
             </p>
           </div>
         </section>
 
+        </div>
       </main>
       <Footer />
     </>

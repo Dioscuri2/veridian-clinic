@@ -22,6 +22,15 @@ const nextConfig = {
         destination: "/blood-tests/fatigue-energy",
         permanent: true,
       },
+      // Short URL for print. Leaflets and QR codes use veridianclinic.com/gp
+      // because a printed address has to be short enough to retype by hand.
+      // Query strings are forwarded, so /gp?c=ph carries the campaign tag
+      // through to analytics. Temporary, so the short URL stays reusable.
+      {
+        source: "/gp",
+        destination: "/gp-consultations",
+        permanent: false,
+      },
     ];
   },
   async headers() {
