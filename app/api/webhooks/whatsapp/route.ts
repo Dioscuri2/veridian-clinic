@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const VERIFY_TOKEN = (process.env.WHATSAPP_VERIFY_TOKEN || "").trim();
-const WA_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN || "";
-const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_VERIDIAN || "";
-const GIST_ID = process.env.GITHUB_GIST_WA_ID || "";
-const GH_TOKEN = process.env.GITHUB_TOKEN || "";
+// Stripped, not just trimmed: a newline pasted into the middle of a Railway
+// value makes Headers.append throw "invalid header value", which killed this
+// entire handler and silently lost the patient's message.
+const WA_TOKEN = (process.env.WHATSAPP_ACCESS_TOKEN || "").replace(/\s/g, "");
+const DISCORD_WEBHOOK = (process.env.DISCORD_WEBHOOK_VERIDIAN || "").replace(/^"|"$/g, "").trim();
+const GIST_ID = (process.env.GITHUB_GIST_WA_ID || "").replace(/^"|"$/g, "").trim();
+const GH_TOKEN = (process.env.GITHUB_TOKEN || "").replace(/^"|"$/g, "").trim();
 
 // ── GET, Meta webhook verification handshake ────────────────────────────────
 export async function GET(req: NextRequest) {
@@ -46,21 +49,38 @@ export async function POST(req: NextRequest) {
     const senderName = contact?.profile?.name ?? from;
     const timestamp = new Date(Number(msg.timestamp) * 1000).toISOString();
 
-    // 1. Auto-reply acknowledgement
-    if (WA_TOKEN && (type === "text" || type === "image" || type === "audio")) {
-      await sendWhatsAppReply(from, msgId,
-        "Thank you for messaging Veridian Clinic. We've received your message and will respond within a few hours during clinic hours (Mon-Fri, 9am-6pm). If this is a medical emergency, please call 999."
-      );
+    // Order matters. Store and alert first, acknowledge second: a patient's
+    // message must survive even if every outbound call fails. Each step is
+    // isolated so one failure cannot swallow the message, which is exactly
+    // what happened while the access token held a newline.
+
+    // 1. Persist to GitHub Gist for the admin inbox
+    if (GIST_ID && GH_TOKEN) {
+      try {
+        await appendToGist({ id: msgId, from, name: senderName, type, text, timestamp });
+      } catch (err) {
+        console.error("whatsapp: gist write failed", err);
+      }
     }
 
     // 2. Discord alert
     if (DISCORD_WEBHOOK) {
-      await notifyDiscord({ from, senderName, type, text, timestamp, msgId });
+      try {
+        await notifyDiscord({ from, senderName, type, text, timestamp, msgId });
+      } catch (err) {
+        console.error("whatsapp: discord alert failed", err);
+      }
     }
 
-    // 3. Persist to GitHub Gist for admin inbox
-    if (GIST_ID && GH_TOKEN) {
-      await appendToGist({ id: msgId, from, name: senderName, type, text, timestamp });
+    // 3. Auto-reply acknowledgement
+    if (WA_TOKEN && (type === "text" || type === "image" || type === "audio")) {
+      try {
+        await sendWhatsAppReply(from, msgId,
+          "Thanks for messaging Veridian Clinic. Dr Taiwo will reply personally, usually within a few hours. Appointments run Monday, Wednesday and Friday, 10:00 to 14:00 and 19:00 to 21:00, and evening slots are available. If this is a medical emergency please call 999, or 111 if you are unsure and it is not an emergency."
+        );
+      } catch (err) {
+        console.error("whatsapp: auto-reply failed", err);
+      }
     }
 
     console.log(JSON.stringify({
