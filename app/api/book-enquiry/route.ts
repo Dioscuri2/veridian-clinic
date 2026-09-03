@@ -42,6 +42,7 @@ const TIER_LABELS: Record<string, string> = {
   "fatigue-energy": "Tired of Being Told You're Fine (£249)",
   "metabolic-weight": "Why Won't The Weight Budge? (£199)",
   "optimiser-baseline": "The Optimiser's Baseline (£549)",
+  "weight-loss-quiz": "Weight Loss Triage Quiz, consultation at quiz rate (£48)",
 };
 
 function isValidEmail(e: string) {
@@ -182,7 +183,7 @@ export async function POST(req: NextRequest) {
     `**Name:** ${name}\n` +
     `**Email:** ${email}\n` +
     `**Phone:** ${phone || "-"}\n` +
-    (message ? `**Message:** ${message.slice(0, 200)}\n` : "") +
+    (message ? `**Message:** ${message.slice(0, 700)}\n` : "") +
     `\nReply at support@veridianclinic.com`
   );
 
