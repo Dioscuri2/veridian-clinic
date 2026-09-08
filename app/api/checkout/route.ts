@@ -181,7 +181,7 @@ const tierCatalog: Record<
     name: "Weight Loss Consultation, 15 Minutes with Dr Tosin",
     amount: 6000,
     description:
-      "Private 15-minute GP consultation for weight loss medicine assessment. Covers medical history, medicine selection (tirzepatide or semaglutide), dose titration plan, safety review, and private prescription if clinically appropriate.",
+      "Private 15-minute GP consultation for weight management assessment. Covers medical history, treatment selection, dose plan, safety review, and private prescription if clinically appropriate.",
     successPath: "/book/thank-you",
     cancelPath: "/weight-loss/consultation",
   },

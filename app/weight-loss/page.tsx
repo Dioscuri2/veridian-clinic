@@ -34,31 +34,31 @@ type Answers = Record<string, string | string[]>;
 const STOP_CONTENT: Record<StopReason, { title: string; body: string; extra?: string; cta: string; ctaHref: string }> = {
   age: {
     title: "This service is for adults aged 18 and over.",
-    body: "Weight loss injections are not licensed for use under 18. Please speak to your GP about age-appropriate weight management support.",
+    body: "Prescription weight management treatment is not licensed for use under 18. Please speak to your GP about age-appropriate support.",
     cta: "Return to home",
     ctaHref: "/",
   },
   pregnancy: {
-    title: "Weight loss injections are not safe during pregnancy or breastfeeding.",
-    body: "Tirzepatide and semaglutide must not be used if you are pregnant, breastfeeding, or planning to conceive. Please speak to your GP or midwife about safe weight management options.",
+    title: "This treatment is not safe during pregnancy or breastfeeding.",
+    body: "Prescription weight management medicines must not be used if you are pregnant, breastfeeding, or planning to conceive. Please speak to your GP or midwife about safe options.",
     cta: "Book a GP discovery call instead",
     ctaHref: bookUrl("discovery"),
   },
   thyroid: {
     title: "We are unable to prescribe this medicine for you.",
-    body: "A personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia type 2 (MEN2) is an absolute contraindication for tirzepatide and semaglutide. Please speak to your GP or endocrinologist.",
+    body: "A personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia type 2 (MEN2) is an absolute contraindication for the medicines used in this service. Please speak to your GP or endocrinologist.",
     cta: "Return to home",
     ctaHref: "/",
   },
   pancreatitis: {
     title: "We need to assess your pancreatic history further.",
-    body: "A history of acute or chronic pancreatitis is a contraindication for GLP-1 medicines. This does not mean treatment is impossible, but it requires a careful clinical assessment before any prescription.",
+    body: "A history of acute or chronic pancreatitis is a contraindication for these medicines. This does not mean treatment is impossible, but it requires a careful clinical assessment before any prescription.",
     cta: "Book a GP discovery call to discuss",
     ctaHref: bookUrl("discovery"),
   },
   type1: {
     title: "These medicines are not prescribed for type 1 diabetes.",
-    body: "Tirzepatide and semaglutide are not licensed for weight loss in type 1 diabetes, and a previous episode of diabetic ketoacidosis makes them unsafe to start outside specialist care. Your diabetes team is the right place to raise weight management, and they can look at options that work safely alongside your insulin.",
+    body: "These medicines are not licensed for weight loss in type 1 diabetes, and a previous episode of diabetic ketoacidosis makes them unsafe to start outside specialist care. Your diabetes team is the right place to raise weight management, and they can look at options that work safely alongside your insulin.",
     cta: "Return to home",
     ctaHref: "/",
   },
@@ -70,7 +70,7 @@ const STOP_CONTENT: Record<StopReason, { title: string; body: string; extra?: st
   },
   allergy: {
     title: "A previous serious reaction rules out this class of medicine.",
-    body: "A serious allergic reaction to a weight loss injection means neither tirzepatide nor semaglutide can be prescribed for you safely, because the risk of a further reaction is real. Please speak to your GP, who can consider non-injectable options and whether an allergy clinic review would help.",
+    body: "A serious allergic reaction to one of these medicines means they cannot be prescribed for you safely, because the risk of a further reaction is real. Please speak to your GP, who can consider other options and whether an allergy clinic review would help.",
     cta: "Return to home",
     ctaHref: "/",
   },
@@ -186,7 +186,7 @@ const QUESTIONS: Question[] = [
   {
     id: "pregnancy",
     label: "Are you currently pregnant, breastfeeding, or actively trying to conceive?",
-    helper: "Weight loss injections are not safe to use during pregnancy or breastfeeding.",
+    helper: "Prescription weight management treatment is not safe during pregnancy or breastfeeding.",
     type: "choice",
     showIf: a => a["sex"] === "female",
     options: [
@@ -199,14 +199,14 @@ const QUESTIONS: Question[] = [
   {
     id: "safety",
     label: "Do any of these apply to you? Select all that apply.",
-    helper: "Each of these affects whether a weight loss injection can be prescribed safely. If none apply, say so and carry on.",
+    helper: "Each of these affects whether treatment can be prescribed safely. If none apply, say so and carry on.",
     type: "multi",
     options: [
       { label: "Type 1 diabetes, or a past episode of diabetic ketoacidosis", value: "type1", stop: "type1" },
       { label: "Personal or family history of medullary thyroid cancer, or MEN 2", value: "mtc", stop: "thyroid" },
       { label: "Past or present pancreatitis", value: "pancreatitis", stop: "pancreatitis" },
       { label: "A cancer currently under active treatment", value: "cancer", stop: "cancer" },
-      { label: "A previous serious allergic reaction to a weight loss injection", value: "allergy", stop: "allergy" },
+      { label: "A previous serious allergic reaction to a weight management medicine", value: "allergy", stop: "allergy" },
       { label: "A current or past eating disorder", value: "eating-disorder", stop: "eating-disorder" },
       { label: "None of these apply", value: "none" },
     ],
@@ -244,8 +244,8 @@ const QUESTIONS: Question[] = [
 const LOWER_THRESHOLD_ETHNICITIES = ["south-asian", "chinese", "other-asian", "middle-eastern", "black-african", "african-caribbean"];
 
 const OUTCOME_SUMMARY: Record<Outcome, string> = {
-  glp1: "passes triage for a GLP-1, licence threshold met",
-  orlistat: "below the GLP-1 licence threshold, oral orlistat route to discuss",
+  glp1: "passes triage, higher licence threshold met",
+  orlistat: "below the higher licence threshold, oral route to discuss",
   discovery: "below every weight loss medicine threshold, Discovery Core offered",
   low: "BMI in the healthy range, not appropriate, Discovery Core offered",
 };
@@ -329,12 +329,12 @@ function getStop(q: Question | undefined, a: Answers): StopReason | null {
 
 const FAQS = [
   {
-    q: "What injections do you prescribe?",
-    a: "Dr Tosin assesses patients for tirzepatide (Mounjaro) and semaglutide (Wegovy), the two licensed injectable weight management medicines in the UK. The choice depends on your medical history, diabetes status, and individual factors assessed during your consultation.",
+    q: "What does the consultation cover?",
+    a: "Dr Tosin takes your full medical history, verifies your height and weight, and assesses whether prescription treatment is clinically appropriate for you. Where it is, the choice of treatment depends on your history, your diabetes status and the other medicines you take. Any specific treatment is discussed with you in consultation, not advertised beforehand.",
   },
   {
     q: "Do I need a high BMI to be considered?",
-    a: "Yes. Weight loss injections are licensed in the UK from a BMI of 30, or from 27 where you also have a weight-related condition such as high blood pressure, high cholesterol, sleep apnoea, prediabetes or type 2 diabetes. For some ethnic backgrounds, including South Asian, Chinese, other Asian, Middle Eastern, Black African and African-Caribbean, NICE practice lowers those thresholds by 2.5. Below the licensed threshold we will say so rather than take a consultation fee.",
+    a: "Yes. Treatment is licensed in the UK from a BMI of 30, or from 27 where you also have a weight-related condition such as high blood pressure, high cholesterol, sleep apnoea, prediabetes or type 2 diabetes. For some ethnic backgrounds, including South Asian, Chinese, other Asian, Middle Eastern, Black African and African-Caribbean, NICE practice lowers those thresholds by 2.5. Below the licensed threshold we will say so rather than take a consultation fee.",
   },
   {
     q: "Will I need a prescription after the consultation?",
@@ -342,15 +342,15 @@ const FAQS = [
   },
   {
     q: "Is this covered by the NHS?",
-    a: "This is a private service. NHS prescribing of tirzepatide is being phased in through specialist weight management services. If you want to explore NHS routes, your GP is the correct starting point.",
+    a: "This is a private service. NHS prescribing of these medicines is being phased in through specialist weight management services. If you want to explore NHS routes, your GP is the correct starting point.",
   },
   {
     q: "What happens after the consultation?",
-    a: "If a prescription is issued, Dr Tosin will explain how to start the medicine, the dose escalation schedule, what side effects to expect, and when to return for review. Ongoing monitoring appointments are available.",
+    a: "If a prescription is issued, Dr Tosin will explain how to start treatment, the dose schedule, what side effects to expect, and when to return for review. Ongoing monitoring appointments are available.",
   },
   {
     q: "Can I use this service if I have type 2 diabetes?",
-    a: "Yes. Type 2 diabetes is one of the main qualifying conditions for tirzepatide and semaglutide. Dr Tosin will assess any interaction with your current diabetes medicines, particularly insulin or sulfonylureas.",
+    a: "Yes. Type 2 diabetes is one of the main qualifying conditions at the lower BMI threshold. Dr Tosin will assess any interaction with your current diabetes medicines, particularly insulin or sulfonylureas.",
   },
 ];
 
@@ -647,7 +647,7 @@ function WlQuiz() {
         <p className="lbl">Free eligibility check</p>
         <div className="rule rule-c" />
         <h2 className="cg" style={{ fontSize: "clamp(1.4rem,2.8vw,2rem)", fontWeight: 600, color: "var(--fo)", lineHeight: 1.25, marginBottom: 14 }}>
-          Find out if a weight loss injection is right for you
+          Find out whether a consultation is worth your time
         </h2>
         <p style={{ fontSize: ".92rem", color: "var(--sl2)", lineHeight: 1.85, maxWidth: 540, margin: "0 auto 28px" }}>
           Up to 8 questions. Takes about 3 minutes. No commitment required. It checks whether anything rules you out before you spend anything, and it is a triage check rather than an eligibility decision.
@@ -707,13 +707,13 @@ function WlQuiz() {
           {adjustmentNote}
           <h3 className="cg" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--fo)", lineHeight: 1.3, marginBottom: 14 }}>
             {isLow
-              ? "A weight loss injection would not be appropriate for you."
-              : "Weight loss injections are not licensed at this BMI."}
+              ? "Prescription treatment would not be appropriate for you."
+              : "Prescription treatment is not licensed at this BMI."}
           </h3>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 16 }}>
             {isLow
               ? "Your BMI sits in the healthy range, and these medicines are neither licensed nor safe to use at a healthy weight. We would rather tell you that now than take a consultation fee for a prescription that could not follow."
-              : "GLP-1 injections are licensed from a BMI of 30, or from 27 where there is a weight-related health condition. Your figures do not meet either threshold, so we are not going to sell you a weight loss consultation that could not end in a prescription."}
+              : "Treatment is licensed from a BMI of 30, or from 27 where there is a weight-related health condition. Your figures do not meet either threshold, so we are not going to sell you a weight loss consultation that could not end in a prescription."}
           </p>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 24 }}>
             {isLow
@@ -744,12 +744,12 @@ function WlQuiz() {
         {adjustmentNote}
         <h3 className="cg" style={{ fontSize: "clamp(1.1rem,2.2vw,1.4rem)", fontWeight: 600, color: "var(--fo)", lineHeight: 1.3, marginBottom: 14 }}>
           {isOrlistat
-            ? "Weight loss injections are not licensed at your BMI, but there may still be an option worth discussing."
-            : "Nothing you have told us rules out a GLP-1 weight loss medicine."}
+            ? "Treatment at the higher BMI threshold is not licensed for you, but there may still be an option worth discussing."
+            : "Nothing you have told us rules out prescription treatment."}
         </h3>
         {isOrlistat && (
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 16 }}>
-            Tirzepatide and semaglutide are licensed from a BMI of 30, or from 27 where there is a weight-related condition, so neither is licensed for you at this BMI. Orlistat, a licensed oral treatment, is licensed from a BMI of 28 where risk factors are present. A consultation can explore honestly whether an oral option is appropriate for you, and it may conclude that it is not.
+            The main licensed route starts at a BMI of 30, or 27 where there is a weight-related condition, so it is not licensed for you at this BMI. A different licensed oral treatment starts at a BMI of 28 where risk factors are present. A consultation can explore honestly whether that option is appropriate for you, and it may conclude that it is not.
           </p>
         )}
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.85, marginBottom: 16 }}>
@@ -763,7 +763,7 @@ function WlQuiz() {
           {[
             "Full medical history and safety review",
             "Independent verification of your height and weight",
-            isOrlistat ? "Review of oral options, including whether orlistat is appropriate" : "Medicine selection: Mounjaro or Wegovy based on your profile",
+            isOrlistat ? "Review of the options licensed at your BMI" : "Treatment selection based on your history and profile",
             "Dose titration plan and what to expect",
             "Side effect management and monitoring schedule",
             "Private prescription if clinically appropriate",
@@ -834,11 +834,11 @@ export default function WeightLossPage() {
               <p className="lbl">Private weight loss · GP-led</p>
               <div className="rule" />
               <h1 className="cg" style={{ fontSize: "clamp(2rem,4.5vw,3.2rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.15, marginBottom: 20 }}>
-                Weight loss injections,<br />
-                <em style={{ fontStyle: "italic", color: "var(--go)" }}>prescribed by a GP.</em>
+                Medical weight loss,<br />
+                <em style={{ fontStyle: "italic", color: "var(--go)" }}>led by an actual GP.</em>
               </h1>
               <p style={{ fontSize: "1rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 560, marginBottom: 32 }}>
-                Tirzepatide (Mounjaro) and semaglutide (Wegovy) are licensed weight management medicines in the UK. Dr Tosin Taiwo, a practising UK GP, assesses suitability, selects the right medicine, and supports you through treatment. Complete the free eligibility check to get started.
+                Dr Tosin Taiwo is a practising UK GP. He reviews your full medical history, verifies your measurements properly, and tells you honestly whether prescription treatment is clinically appropriate for you. Sometimes the honest answer is no. Complete the free eligibility check to find out where you stand.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
                 <button
@@ -860,24 +860,30 @@ export default function WeightLossPage() {
         <section className="sec bg-iv2">
           <div className="wrap" style={{ maxWidth: 860 }}>
             <div className="sh text-center">
-              <p className="lbl">Licensed medicines · UK GP prescribed</p>
+              <p className="lbl">One clinical assessment · No obligation</p>
               <div className="rule rule-c" />
-              <h2 className="cg sh-title">Two medicines. One clinical assessment.</h2>
-              <p className="sh-body">Dr Tosin will advise on the right medicine for your specific history, goals, and existing medications.</p>
+              <h2 className="cg sh-title">What the consultation actually decides.</h2>
+              <p className="sh-body">Not every consultation ends in a prescription, and that is the point. This is what Dr Tosin works through with you, in order.</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20 }}>
               {[
                 {
-                  name: "Mounjaro (tirzepatide)",
-                  badge: "Dual mechanism",
-                  body: "Tirzepatide activates both GLP-1 and GIP receptors, a dual action that produces greater average weight loss than semaglutide in clinical trials. Licensed in the UK for weight management in adults with a BMI of 30 or over, or 27 with a qualifying condition.",
-                  points: ["Up to 22.5% average body weight loss in trials", "Weekly self-injection", "Dose escalation over 20 weeks", "Also licensed for type 2 diabetes management"],
+                  name: "Your full history",
+                  badge: "Step one",
+                  body: "Every condition that rules treatment out, and every one that changes how it would be managed. Thyroid and endocrine history, pancreatitis, gallbladder, mental health and eating disorder history, your current medicines and how they would interact.",
+                  points: ["Full past medical history", "Current medicines and interactions", "Contraindications checked properly", "Eating disorder screen, asked sensitively"],
                 },
                 {
-                  name: "Wegovy (semaglutide)",
-                  badge: "GLP-1 receptor agonist",
-                  body: "Semaglutide mimics the GLP-1 hormone to reduce appetite and slow gastric emptying. A well-established medicine with an extensive evidence base, also available as Ozempic for type 2 diabetes.",
-                  points: ["Up to 15% average body weight loss in trials", "Weekly self-injection", "Dose escalation over 16 weeks", "Option if tirzepatide is not suitable"],
+                  name: "Verified measurements",
+                  badge: "Step two",
+                  body: "Your height and weight are confirmed independently of the figures you typed into any online form. This is a General Pharmaceutical Council requirement for 2025, and it is the step that separates a real clinical service from a questionnaire that sells to anyone.",
+                  points: ["Height and weight verified, not self-reported", "BMI calculated with you", "Threshold adjusted where clinically indicated", "Your GP record consulted with your consent"],
+                },
+                {
+                  name: "An honest answer",
+                  badge: "Step three",
+                  body: "Whether treatment is clinically appropriate for you, what the alternatives are if it is not, and what happens next either way. If a prescription is right for you it is issued privately, with a monitoring plan and a written summary.",
+                  points: ["A clear yes or no, with reasons", "Alternatives if treatment is not right", "Monitoring and review schedule agreed", "Written summary after your consultation"],
                 },
               ].map(m => (
                 <div key={m.name} className="card">

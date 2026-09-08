@@ -63,7 +63,7 @@ function ConsultationContent() {
               <em style={{ fontStyle: "italic", color: "var(--go)" }}>with Dr Tosin</em>
             </h1>
             <p style={{ fontSize: ".96rem", color: "rgba(246,241,232,.7)", lineHeight: 1.9, maxWidth: 560 }}>
-              A focused 15-minute clinical assessment for adults seeking a GLP-1 weight loss medicine. Dr Tosin reviews your case, selects the right medicine for your profile, and issues a private prescription if appropriate.
+              A focused 15-minute clinical assessment for adults seeking medical help with their weight. Dr Tosin reviews your case, verifies your measurements, and issues a private prescription only where it is clinically appropriate.
             </p>
           </div>
         </section>
@@ -77,7 +77,7 @@ function ConsultationContent() {
               <h2 className="cg" style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--fo)", marginBottom: 20 }}>What this consultation covers</h2>
               {[
                 { title: "Full medical history review", detail: "Dr Tosin reviews your weight history, medical conditions, current medications, and relevant family history before any prescribing decision." },
-                { title: "Medicine selection", detail: "Tirzepatide (Mounjaro) or semaglutide (Wegovy), Dr Tosin selects based on your diabetes status, other conditions, and personal profile." },
+                { title: "Treatment selection", detail: "Where treatment is appropriate, Dr Tosin selects it with you based on your diabetes status, other conditions, and personal profile." },
                 { title: "Safety and contraindication check", detail: "Comprehensive review of all contraindications including thyroid history, pancreatitis, kidney function, and interactions with your current medicines." },
                 { title: "Dose titration plan", detail: "A clear, personalised plan for starting dose and escalation schedule, including what to expect at each stage and how to manage side effects." },
                 { title: "Private prescription", detail: "If clinically appropriate, Dr Tosin issues a private prescription you can take to any registered UK pharmacy or an online pharmacy." },

@@ -179,8 +179,8 @@ export default function MetabolicTurnaroundPage() {
                 },
                 {
                   num: "06",
-                  title: "GLP-1 Eligibility Assessment (if relevant)",
-                  body: "For patients who meet clinical criteria, an assessment for GLP-1 receptor agonist prescribing is included within the programme structure.",
+                  title: "Eligibility Assessment for Prescription Treatment (if relevant)",
+                  body: "For patients who meet the clinical criteria, an assessment for prescription weight management treatment is included within the programme structure. It is an assessment, not a guarantee of a prescription.",
                 },
               ].map((item, i, arr) => (
                 <div
@@ -357,7 +357,7 @@ export default function MetabolicTurnaroundPage() {
                   a: "Most private health insurance policies do not cover preventive programmes of this kind. We can provide an itemised receipt for tax or accounting purposes if relevant.",
                 },
                 {
-                  q: "Is GLP-1 medication included?",
+                  q: "Is weight management medication included?",
                   a: "An eligibility assessment is included for patients who meet clinical criteria. Prescribing decisions and any medication costs are separate and subject to clinical assessment.",
                 },
               ].map(({ q, a }) => (

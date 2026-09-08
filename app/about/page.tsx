@@ -154,7 +154,7 @@ export default function AboutPage() {
                   { area: "Longevity Medicine", detail: "Biological age assessment, telomere length, mitochondrial function markers, NAD metabolism" },
                   { area: "Thyroid and Hormones", detail: "Full thyroid including free T3, sex hormones, DHEA, cortisol, adrenal function" },
                   { area: "Nutritional Biochemistry", detail: "Vitamin D, B12, folate, iron studies, magnesium, zinc, omega-3 status" },
-                  { area: "Weight and Body Composition", detail: "Metabolic drivers of weight resistance, GLP-1 eligibility assessment" },
+                  { area: "Weight and Body Composition", detail: "Metabolic drivers of weight resistance, eligibility assessment for prescription treatment" },
                 ].map(({ area, detail }) => (
                   <div
                     key={area}

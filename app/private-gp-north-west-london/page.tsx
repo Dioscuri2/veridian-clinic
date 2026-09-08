@@ -9,12 +9,12 @@ const PAGE_URL = "https://veridianclinic.com/private-gp-north-west-london";
 export const metadata: Metadata = {
   title: { absolute: "Private GP in North West London | Metabolic, Longevity & Weight Loss Clinic | Veridian Clinic" },
   description:
-    "Private GP serving North West London for advanced blood tests, weight loss (GLP-1) medicine, and metabolic & longevity care. GMC-registered doctor. Secure video consultations available now, with a Golders Green Road consulting room opening soon. No NHS referral needed.",
+    "Private GP serving North West London for advanced blood tests, medical weight management, and metabolic & longevity care. GMC-registered doctor. Secure video consultations available now, with a Golders Green Road consulting room opening soon. No NHS referral needed.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Private GP in North West London | Veridian Clinic",
     description:
-      "Advanced blood tests, weight loss medicine, and metabolic & longevity care from a GMC-registered private GP serving North West London. Secure video consultations, with a Golders Green Road consulting room opening soon.",
+      "Advanced blood tests, medical weight management, and metabolic & longevity care from a GMC-registered private GP serving North West London. Secure video consultations, with a Golders Green Road consulting room opening soon.",
     url: PAGE_URL,
     type: "website",
     locale: "en_GB",
@@ -25,9 +25,8 @@ export const metadata: Metadata = {
     "private doctor North West London",
     "private blood tests North West London",
     "weight loss clinic North West London",
-    "Mounjaro North West London",
-    "Wegovy North West London",
-    "GLP-1 weight loss NW London",
+    "medical weight management North West London",
+    "weight loss doctor North West London",
     "longevity clinic North West London",
     "metabolic health North West London",
   ],
@@ -49,8 +48,8 @@ const pillars = [
   {
     href: "/weight-loss",
     tag: "Weight Loss",
-    title: "Weight loss & GLP-1 medicine",
-    body: "Clinically supervised weight loss with tirzepatide (Mounjaro) or semaglutide (Wegovy), selected for your profile after a full medical review. Private prescription, honest dosing, ongoing support.",
+    title: "Medical weight management",
+    body: "GP-led weight management: a full medical review, measurements verified properly, and an honest answer on whether prescription treatment is clinically appropriate for you. Ongoing supervision if it is.",
   },
   {
     href: "/assessments",
@@ -92,7 +91,7 @@ const schema = {
   "@type": "MedicalClinic",
   name: "Veridian Clinic Private GP, North West London",
   description:
-    "Private GP serving North West London for advanced blood tests, weight loss (GLP-1) medicine, and metabolic and longevity care. GMC-registered doctor. Secure video consultations, with a Golders Green Road consulting room opening soon.",
+    "Private GP serving North West London for advanced blood tests, medical weight management, and metabolic and longevity care. GMC-registered doctor. Secure video consultations, with a Golders Green Road consulting room opening soon.",
   url: PAGE_URL,
   areaServed: [
     { "@type": "City", name: "North West London" },
@@ -115,7 +114,7 @@ const schema = {
   availableService: [
     { "@type": "MedicalProcedure", name: "Private GP Consultation" },
     { "@type": "MedicalProcedure", name: "Advanced Metabolic & Longevity Blood Tests" },
-    { "@type": "MedicalProcedure", name: "GLP-1 Weight Loss Consultation" },
+    { "@type": "MedicalProcedure", name: "Weight Management Consultation" },
     { "@type": "MedicalProcedure", name: "Metabolic & Longevity Assessment" },
   ],
 };
