@@ -9,12 +9,12 @@ const PAGE_URL = "https://veridianclinic.com/private-gp-cambridge";
 export const metadata: Metadata = {
   title: { absolute: "Private GP in Cambridge | Metabolic, Longevity & Weight Loss Clinic | Veridian Clinic" },
   description:
-    "Private GP in Cambridge for advanced blood tests, weight loss (GLP-1), and metabolic & longevity medicine. GMC-registered doctor, in-person by appointment plus secure video consultations. No NHS referral needed.",
+    "Private GP in Cambridge for advanced blood tests, weight loss (GLP-1), and metabolic & longevity medicine. GMC-registered doctor. Secure video consultations available now, with a Cherry Hinton consulting room opening soon. No NHS referral needed.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Private GP in Cambridge | Veridian Clinic",
     description:
-      "Advanced blood tests, weight loss medicine, and metabolic & longevity care from a GMC-registered private GP serving Cambridge. In-person and video consultations.",
+      "Advanced blood tests, weight loss medicine, and metabolic & longevity care from a GMC-registered private GP serving Cambridge. Secure video consultations, with a Cherry Hinton consulting room opening soon.",
     url: PAGE_URL,
     type: "website",
     locale: "en_GB",
@@ -92,7 +92,7 @@ const schema = {
   "@type": "MedicalClinic",
   name: "Veridian Clinic Private GP, Cambridge",
   description:
-    "Private GP serving Cambridge for advanced blood tests, weight loss (GLP-1) medicine, and metabolic and longevity care. GMC-registered doctor, in-person and video consultations.",
+    "Private GP serving Cambridge for advanced blood tests, weight loss (GLP-1) medicine, and metabolic and longevity care. GMC-registered doctor. Secure video consultations, with a Cherry Hinton consulting room opening soon.",
   url: PAGE_URL,
   areaServed: [
     { "@type": "City", name: "Cambridge" },
@@ -147,7 +147,7 @@ export default function PrivateGpCambridgePage() {
               Private GP care in Cambridge, beyond the ten-minute appointment.
             </h1>
             <p className="a3" style={{ fontSize: "clamp(.92rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 660, marginBottom: 0 }}>
-              For people in and around Cambridge who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP, in person by appointment or by secure video across the UK.
+              For people in and around Cambridge who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP, by secure video across the UK. A Cherry Hinton consulting room is opening soon.
             </p>
           </div>
         </section>

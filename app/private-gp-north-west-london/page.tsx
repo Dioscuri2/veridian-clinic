@@ -9,12 +9,12 @@ const PAGE_URL = "https://veridianclinic.com/private-gp-north-west-london";
 export const metadata: Metadata = {
   title: { absolute: "Private GP in North West London | Metabolic, Longevity & Weight Loss Clinic | Veridian Clinic" },
   description:
-    "Private GP serving North West London for advanced blood tests, weight loss (GLP-1) medicine, and metabolic & longevity care. GMC-registered doctor, in-person by appointment plus secure video consultations. No NHS referral needed.",
+    "Private GP serving North West London for advanced blood tests, weight loss (GLP-1) medicine, and metabolic & longevity care. GMC-registered doctor. Secure video consultations available now, with a Golders Green Road consulting room opening soon. No NHS referral needed.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: "Private GP in North West London | Veridian Clinic",
     description:
-      "Advanced blood tests, weight loss medicine, and metabolic & longevity care from a GMC-registered private GP serving North West London. In-person and video consultations.",
+      "Advanced blood tests, weight loss medicine, and metabolic & longevity care from a GMC-registered private GP serving North West London. Secure video consultations, with a Golders Green Road consulting room opening soon.",
     url: PAGE_URL,
     type: "website",
     locale: "en_GB",
@@ -92,7 +92,7 @@ const schema = {
   "@type": "MedicalClinic",
   name: "Veridian Clinic Private GP, North West London",
   description:
-    "Private GP serving North West London for advanced blood tests, weight loss (GLP-1) medicine, and metabolic and longevity care. GMC-registered doctor, in-person and video consultations.",
+    "Private GP serving North West London for advanced blood tests, weight loss (GLP-1) medicine, and metabolic and longevity care. GMC-registered doctor. Secure video consultations, with a Golders Green Road consulting room opening soon.",
   url: PAGE_URL,
   areaServed: [
     { "@type": "City", name: "North West London" },
@@ -148,7 +148,7 @@ export default function PrivateGpNorthWestLondonPage() {
               Private GP care across North West London, beyond the ten-minute appointment.
             </h1>
             <p className="a3" style={{ fontSize: "clamp(.92rem,2vw,1rem)", color: "var(--sl2)", lineHeight: 1.95, maxWidth: 660, marginBottom: 0 }}>
-              For people across North West London who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP, in person by appointment or by secure video.
+              For people across North West London who want a doctor with time to look properly. Advanced blood testing, clinically supervised weight loss, and metabolic and longevity medicine from a GMC-registered GP, by secure video. A Golders Green Road consulting room is opening soon.
             </p>
           </div>
         </section>
