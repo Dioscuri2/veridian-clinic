@@ -112,7 +112,7 @@ export default function MetabolicWeightPage() {
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Why Won't The Weight Budge? Panel · £199</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
           Fasting insulin · HbA1c · HOMA-IR · Uric acid · Lp(a) · Adiponectin · TSH · Full fasting lipid profile<br />
-          GP-reviewed metabolic interpretation · Prioritised action plan · No GP referral needed · Results in 5 working days
+          GP-reviewed metabolic interpretation · Prioritised action plan · No GP referral needed · Results in 3 to 5 working days
         </p>
       </div>
 

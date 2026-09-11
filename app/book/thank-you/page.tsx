@@ -141,7 +141,7 @@ function ThankYouContent() {
                     ? [
                         "A confirmation email is on its way check your inbox (and spam folder) now.",
                         "Dr Tosin will contact you within 24 hours to confirm your preferred sample collection method.",
-                        "Your sample is processed by our nationally accredited UK laboratory results within 48-72 hours of receipt.",
+                        "Your sample is processed by our nationally accredited UK laboratory results within 3 to 5 working days of receipt.",
                         "Dr Tosin's written clinical interpretation and personalised next-step plan is sent directly to your email.",
                       ]
                     : [

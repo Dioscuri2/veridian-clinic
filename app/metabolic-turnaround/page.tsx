@@ -155,7 +155,7 @@ export default function MetabolicTurnaroundPage() {
                 {
                   num: "01",
                   title: "Comprehensive Blood Panel",
-                  body: "A 70+ marker private panel covering metabolic function, cardiovascular risk, hormonal balance, thyroid, inflammation, and nutritional status. Collected at your chosen Randox clinic nationally. Results within 48-72 hours.",
+                  body: "A 70+ marker private panel covering metabolic function, cardiovascular risk, hormonal balance, thyroid, inflammation, and nutritional status. Collected at your chosen Randox clinic nationally. Results within 3 to 5 working days.",
                 },
                 {
                   num: "02",

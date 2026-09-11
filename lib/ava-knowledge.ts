@@ -62,7 +62,7 @@ METABOLIC AND LONGEVITY PACKAGES
 
 ALL BLOOD TEST RESULTS include clinical interpretation written by Dr Taiwo.
 
-TARGETED BLOOD PANELS, no GP referral needed, results in 5 working days
+TARGETED BLOOD PANELS, no GP referral needed, results in 3 to 5 working days
 
 1. Is It My Hormones? Women's Hormone & Perimenopause Panel, £375
    Markers: Oestradiol, FSH, LH, progesterone, testosterone (total, with free testosterone calculated from SHBG), SHBG, prolactin, TSH, FT3, FT4, TPO antibodies, Lp(a), fasting insulin, HbA1c, vitamin D
@@ -149,7 +149,7 @@ Q: Where are you located?
 A: We are virtual-first. Blood draws use Randox Health collection points across the UK. In-person consulting rooms in Golders Green and Cambridge are opening soon, and there is a waiting list at veridianclinic.com/gp-consultations. Do not quote a price or a date for in-person appointments.
 
 Q: How long do results take?
-A: Most blood test results are returned within 5 working days, with full clinical interpretation included.
+A: Most blood test results are returned within 3 to 5 working days, with full clinical interpretation included.
 
 Q: Do you see children?
 A: No. All Veridian services are for adults aged 18 and over. We do not see children or under 18s, by video or in person.

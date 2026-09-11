@@ -151,7 +151,7 @@ export default function OptimiserBaselinePage() {
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>The Optimiser's Baseline · £549</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
           IGF-1 · ApoB · Lp(a) · sdLDL · ApoA-I · Full lipid profile · Adiponectin · Fasting insulin · HbA1c · Morning cortisol (single serum sample) · DHEA-S · Total testosterone · Free testosterone (calculated) · SHBG · LH · Cystatin C · Magnesium · Uric Acid · Full blood count · Liver function (ALT/AST/GGT) · Kidney function + eGFR · CRP<br />
-          GP-reviewed written baseline report · GP-led 30-minute consultation included · Prioritised optimisation plan · No GP referral needed · Results in 5 working days
+          GP-reviewed written baseline report · GP-led 30-minute consultation included · Prioritised optimisation plan · No GP referral needed · Results in 3 to 5 working days
         </p>
       </div>
 

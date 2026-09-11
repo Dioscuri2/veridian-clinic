@@ -143,7 +143,7 @@ export default function MensTestosteronePage() {
           <li>Lp(a), fasting insulin and HbA1c: the metabolic and cardiovascular crossover.</li>
           <li>Full Blood Count + CRP.</li>
           <li>GP-reviewed written report with personalised clinical interpretation and next-step plan.</li>
-          <li>Nationally accredited UK laboratory. Results typically within 48-72 hours.</li>
+          <li>Nationally accredited UK laboratory. Results typically within 3 to 5 working days.</li>
         </ul>
 
         {/* Related tests */}

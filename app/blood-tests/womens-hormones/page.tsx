@@ -130,7 +130,7 @@ export default function WomensHormonesPage() {
           <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Is It My Hormones? Panel · £375</p>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
             Oestradiol, FSH, LH, Progesterone, Prolactin, Testosterone (total, with free testosterone calculated from SHBG), SHBG, Thyroid (TSH, FT3, FT4 + TPO antibodies), Lp(a), Fasting Insulin, HbA1c, Vitamin D<br />
-            GP-reviewed written report with personalised clinical interpretation. No GP referral needed. Results in 5 working days.
+            GP-reviewed written report with personalised clinical interpretation. No GP referral needed. Results in 3 to 5 working days.
           </p>
         </div>
 

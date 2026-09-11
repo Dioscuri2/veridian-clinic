@@ -194,7 +194,7 @@ function buildPatientEmail(firstName: string, panel: PanelInfo): string {
                 ${[
                   ["Within 24 hours", "Dr Tosin will email you to confirm your collection method and send your kit or booking details."],
                   ["Sample collection", "Take your sample using your chosen method. Return or drop off as instructed."],
-                  ["Lab processing", "Your sample is processed by our nationally accredited UK pathology laboratory. Results typically available within 48 to 72 hours of receipt."],
+                  ["Lab processing", "Your sample is processed by our nationally accredited UK pathology laboratory. Results typically available within 3 to 5 working days of receipt."],
                   ["Your GP report", "Dr Tosin prepares a written clinical interpretation of every marker, not just reference ranges, and sends it directly to you with a personalised next-step recommendation."],
                 ].map(([step, detail]) => `
                 <tr>

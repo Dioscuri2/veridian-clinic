@@ -176,7 +176,7 @@ export default function FatigueEnergyPage() {
           <li>CRP + Full Blood Count + kidney function including cystatin C.</li>
           <li>Magnesium, adjusted calcium, phosphate, albumin and alkaline phosphatase.</li>
           <li>GP-reviewed written report with personalised interpretation and next-step action plan.</li>
-          <li>Nationally accredited UK laboratory. Results typically within 48-72 hours.</li>
+          <li>Nationally accredited UK laboratory. Results typically within 3 to 5 working days.</li>
           <li>Home collection kit, walk-in centre, or nurse home visit.</li>
         </ul>
 

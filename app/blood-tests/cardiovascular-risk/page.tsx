@@ -145,7 +145,7 @@ export default function CardiovascularRiskPage() {
         <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>What Your Cholesterol Test Missed · £349</p>
         <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
           ApoB · Lp(a) · Homocysteine · Small dense LDL · hs-CRP · Fasting insulin · HbA1c · Full lipid profile · ApoA-I<br />
-          GP-reviewed written cardiovascular risk interpretation · No GP referral needed · Results in 5 working days
+          GP-reviewed written cardiovascular risk interpretation · No GP referral needed · Results in 3 to 5 working days
         </p>
       </div>
 
