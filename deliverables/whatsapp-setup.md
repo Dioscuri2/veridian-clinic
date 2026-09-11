@@ -1,0 +1,112 @@
+# WhatsApp booking channel, setup and message copy
+
+**Number:** 07344 290497 (kept by the clinic, decision 2026-09-10)
+**Route chosen:** WhatsApp Business **App** on the handset, not the Cloud API
+**Status:** not yet registered. Nothing on this channel works until it is.
+
+---
+
+## 1. What is actually achievable, and what is not
+
+**Achievable, free, today: instant response.** The Business App sends a greeting message to a first-time sender and an away message outside business hours, both immediately. That is the sub-minute reply time the market is competing on.
+
+**Not achievable at any price: instant booking.** ThanksDoc has no public API. No tool, vendor or AI agent can place a booking into the ThanksDoc calendar programmatically. The best any of them can do is reply quickly with a link the patient taps. Which is exactly what the free app does.
+
+So the goal is: **reply in seconds with the right link**, and let ThanksDoc take the booking.
+
+---
+
+## 2. Setup order
+
+1. **Release the stale Cloud API registration first.** Meta Business Manager, WhatsApp Manager, Phone numbers, delete `07344 290497`. A number cannot be on the Cloud API and the Business App at once, and the app will refuse it until this is done.
+2. Install WhatsApp Business on the handset and register the number.
+3. Set **business hours**.
+4. Set the **greeting message** (§3) and the **away message** (§4).
+5. Add the **quick replies** (§5).
+6. Add **labels**: New enquiry, Sent booking link, Booked, No reply needed.
+7. Send a test message from a phone that is not yours and confirm it arrives and auto-replies.
+
+---
+
+## 3. Greeting message
+
+Sent automatically to anyone messaging for the first time, or after 14 days of no contact.
+
+```
+Thanks for messaging Veridian Clinic. You have reached the practice of
+Dr Tosin Taiwo, a GMC-registered GP.
+
+To book a private GP appointment by video or telephone:
+
+15 minutes, £59
+https://notes.thanksdoc.co.uk/book/service/334/36
+
+20 minutes, £89
+https://notes.thanksdoc.co.uk/book/service/335/36
+
+Most appointments are within 24 hours. Your prescription item, fit note
+or referral letter is included in the price.
+
+We read messages personally and will reply. Please use this channel for
+booking and admin only, and bring anything medical to the appointment
+itself.
+
+If you need urgent advice, call NHS 111. In an emergency, call 999.
+```
+
+## 4. Away message
+
+Sent automatically outside business hours.
+
+```
+Thanks for messaging Veridian Clinic. Nobody is at the desk right now,
+and we will reply when we are.
+
+You do not have to wait for us to book. Appointments are bookable at any
+hour:
+
+15 minutes, £59
+https://notes.thanksdoc.co.uk/book/service/334/36
+
+20 minutes, £89
+https://notes.thanksdoc.co.uk/book/service/335/36
+
+If you need urgent advice tonight, call NHS 111. In an emergency, call 999.
+```
+
+## 5. Quick replies
+
+Saved canned replies, triggered by typing a shortcut. These are the four that will cover most of the traffic.
+
+| Shortcut | Message |
+|---|---|
+| `/book` | Here is the booking link for a 15 minute appointment, £59: https://notes.thanksdoc.co.uk/book/service/334/36 and for 20 minutes, £89: https://notes.thanksdoc.co.uk/book/service/335/36 |
+| `/bloods` | Our blood panels are listed at https://veridianclinic.com/blood-tests with prices and what each one covers. Results come back in 3 to 5 working days with a written GP interpretation. |
+| `/phone` | Yes, telephone appointments cost exactly the same as video and are with the same GP. Just say so when you book. |
+| `/urgent` | This channel is not monitored around the clock, so please do not use it for anything urgent. Call NHS 111 for urgent advice, or 999 in an emergency. |
+
+---
+
+## 6. Rules for anything sent on this channel
+
+These apply to the automated messages and to anything typed by hand.
+
+- **No clinical advice.** Booking and admin only. Anything medical belongs in the consultation
+- **Never name or describe a prescription-only medicine**, including the drug class or the route. The same rule that applies to the website applies here
+- **Never state that a patient qualifies for treatment.** Only that nothing rules them out, and that the consultation decides
+- **Every automated message carries the 111 and 999 signpost.** This channel is not monitored in real time and must say so
+- **Prices must match `data/panels.ts` and the live ThanksDoc service.** Currently £59 for service 334 and £89 for service 335
+- **No typographic dashes**
+
+---
+
+## 7. Why not an AI receptionist vendor
+
+Assessed 2026-09-11 after a cold approach from askaidn.com.
+
+- **It cannot do the thing that would justify it.** No vendor can book into ThanksDoc, because there is no API. The differentiator on offer is fast replies, which the free app already does
+- **It requires the Cloud API, which stops being free.** Meta begins charging for service messages and free-form replies inside the 24 hour window from **1 October 2026**, and a reply generated by an AI agent is billed as a Meta Business Agent message. The Business App remains free
+- **It would process patient messages**, which are special category health data under UK GDPR. That needs a data processing agreement and a lawful basis before a single message is shared, and it puts a third party inside a clinical channel
+- **We already own most of it.** `app/api/webhooks/whatsapp/route.ts` persists messages, alerts Discord and auto-replies. It is currently dormant because it is Cloud API and the number is going on the app
+
+**Revisit if** volume outgrows hand-replying, or ThanksDoc ever publishes an API. At that point the build-versus-buy question is worth reopening, using the existing webhook as the starting point.
