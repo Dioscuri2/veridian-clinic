@@ -101,9 +101,10 @@ export const PANELS: Panel[] = [
         lines: [
           { code: "HSC9F", name: "Advanced GP3 Female", tradePence: GBP(185.9) },
           { code: "OMEGA_6_3", name: "Omega 3 Index", tradePence: GBP(56.5) },
+          { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
         ],
         notes:
-          "HSC9F already contains Adiponectin, FSH, LH, Oestradiol, Progesterone, Prolactin, CA-125, C3, C4. Total trade £242.40.",
+          "HSC9F already contains Adiponectin, FSH, LH, Oestradiol, Progesterone, Prolactin, CA-125, C3, C4. HOMOCYSTEINE ADDED 2026-09-14: it is in NO Randox panel, only the standalone HOMO test, but the site has claimed it on this panel for months. Dr Tosin chose to make the claim true rather than retract it. It MUST be ticked on every Longevity order or the copy becomes false. Total trade £282.90, 64.4% margin at £795.",
       },
       male: {
         verified: true,
@@ -111,9 +112,10 @@ export const PANELS: Panel[] = [
         lines: [
           { code: "TBLHSC9_M", name: "Advanced GP3 Male (full hormone profile)", tradePence: GBP(185.9) },
           { code: "OMEGA_6_3", name: "Omega 3 Index", tradePence: GBP(56.5) },
+          { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
         ],
         notes:
-          "Use TBLHSC9_M, NOT HSC9M: plain HSC9M has no sex hormones. Do NOT order GP3 + TBLHSC9 together (no deduplication, wastes ~£57). Adiponectin add-on (ADIP £98.10) decision pending with Dr Tosin, and if dropped, keep Adiponectin off male-facing copy. H. pylori, Anti-TTG, TAS, amylase, lipase, HbA1c and hs-CRP are already inside GP3, so Nexus greys them out as add-ons.",
+          "Use TBLHSC9_M, NOT HSC9M: plain HSC9M has no sex hormones. Do NOT order GP3 + TBLHSC9 together (no deduplication, wastes ~£57). Adiponectin add-on (ADIP £98.10) decision pending with Dr Tosin, and if dropped, keep Adiponectin off male-facing copy. H. pylori, Anti-TTG, TAS, amylase, lipase, HbA1c and hs-CRP are already inside GP3, so Nexus greys them out as add-ons. HOMOCYSTEINE ADDED 2026-09-14 for the same reason as the female order: it is in no Randox panel and must be ticked every time. Total trade £282.90, 64.4% margin at £795.",
       },
     },
   },
