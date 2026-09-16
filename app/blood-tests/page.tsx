@@ -104,7 +104,7 @@ const tests: {
     excerpt:
       "Total testosterone alone misses the picture in most men, where free testosterone, determined by SHBG, is the clinically relevant value. This panel measures total testosterone with free testosterone calculated from SHBG, plus LH, FSH, prolactin, DHEA-S, morning cortisol, Lp(a) and fasting insulin. GP-reviewed.",
     tag: "Men's Health",
-    price: "£325",
+    price: "£375",
     includedIn: "Running on Empty Panel",
   },
   {

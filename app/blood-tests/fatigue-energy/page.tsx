@@ -203,7 +203,7 @@ export default function FatigueEnergyPage() {
             {[
               { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Blood Test", note: "From £249" },
               { href: "/blood-tests/womens-hormones", label: "Women's Hormone & Perimenopause Panel", note: "£375" },
-              { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£325" },
+              { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£375" },
               { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments" },
             ].map((t) => (
               <Link key={t.href} href={t.href} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "var(--iv)", border: "1px solid rgba(0,0,0,.07)", textDecoration: "none" }}>

@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import PanelComparison from "@/components/PanelComparison";
 import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
   title: { absolute: "Testosterone Blood Test UK: Private Men's Hormone Panel | Veridian Clinic" },
   description:
-    "A private testosterone and men's hormone blood test in the UK. Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol and Lp(a). GP-reviewed written interpretation. Running on Empty Panel, £325.",
+    "A private testosterone and men's hormone blood test in the UK. Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol and Lp(a). GP-reviewed written interpretation. Running on Empty Panel, £375.",
   alternates: {
     canonical: "https://veridianclinic.com/blood-tests/mens-testosterone",
   },
   openGraph: {
     title: "Testosterone Blood Test UK: Private Men's Hormone Panel | Veridian Clinic",
     description:
-      "Private testosterone and male hormone testing in the UK. Free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol, Lp(a) and fasting insulin. GP-reviewed written report. £325.",
+      "Private testosterone and male hormone testing in the UK. Free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol, Lp(a) and fasting insulin. GP-reviewed written report. £375.",
     url: "https://veridianclinic.com/blood-tests/mens-testosterone",
     type: "article",
   },
@@ -70,7 +71,7 @@ export default function MensTestosteronePage() {
         title="Running on empty: Private testosterone &amp; men&apos;s hormone blood test UK"
         intro="Persistent fatigue, poor recovery, low drive, difficulty maintaining muscle, brain fog that won't clear: these are the symptoms men are most likely to dismiss as normal ageing, and most likely to have dismissed by a GP as well. In most cases, an NHS testosterone test, if ordered at all, measures total testosterone only. In the majority of men, that misses where the real problem actually lies."
         ctas={[
-          { href: bookUrl("mens-testosterone"), label: "Book Running on Empty Panel £325 →" },
+          { href: bookUrl("mens-testosterone"), label: "Book Running on Empty Panel £375 →" },
           { href: bookUrl("discovery"), label: "Speak to a GP First £127", variant: "secondary" },
         ]}
       >
@@ -106,6 +107,26 @@ export default function MensTestosteronePage() {
           <li><strong>Fasting insulin + HbA1c:</strong> insulin resistance and testosterone deficiency form a bidirectional cycle. Low testosterone impairs insulin sensitivity; high insulin suppresses SHBG, which paradoxically can increase total testosterone while worsening free testosterone availability and metabolic health. Understanding both sides of this relationship is essential for meaningful clinical management.</li>
           <li><strong>Full Blood Count + CRP:</strong> anaemia affects energy and recovery; systemic inflammation (elevated CRP) suppresses gonadal function and amplifies the clinical picture.</li>
         </ul>
+
+        <h2 className="cg" style={sectionHeading}>How this compares</h2>
+        <p style={paragraph}>
+          Most direct to consumer blood tests compete on how many results they can print. The number is easy to inflate, because a full blood count alone can be counted as one line or as twenty. What actually changes your outcome is whether the right markers were chosen for your problem, and whether a doctor read them.
+        </p>
+        <PanelComparison
+          ourLabel="Running on Empty"
+          ourPrice="£375"
+          rows={[
+            { feature: "Markers measured from one blood draw", ours: "45", theirs: "Varies" },
+            { feature: "A named GMC-registered GP reviews every result", ours: true, theirs: "Often automated" },
+            { feature: "Written interpretation with a next-step plan", ours: true, theirs: "Standard report" },
+            { feature: "Free testosterone calculated from total testosterone and SHBG", ours: true, theirs: "Often total testosterone only" },
+            { feature: "Free T3 and thyroid antibodies, not TSH alone", ours: true, theirs: "Often TSH only" },
+            { feature: "Morning cortisol and DHEA-S", ours: true, theirs: false },
+            { feature: "Lipoprotein(a)", ours: true, theirs: false },
+            { feature: "Fasting insulin", ours: true, theirs: false },
+          ]}
+          footnote="Compared with typical direct to consumer blood test services in the UK. A live results consultation with Dr Taiwo can be booked separately if you would rather talk your results through than read them."
+        />
 
         <h2 className="cg" style={sectionHeading}>What optimal testosterone looks like vs laboratory normal</h2>
         <p style={paragraph}>

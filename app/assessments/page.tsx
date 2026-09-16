@@ -162,7 +162,7 @@ const targetedPanels = [
   {
     name: "Running on Empty",
     subtitle: "Men's Energy & Hormone Panel",
-    price: "£325",
+    price: "£375",
     tag: "Men's Health",
     tagColor: "#3d7ab5",
     description: "Low drive, poor recovery, foggy thinking, a body that won't respond the way it used to. This panel tests the hormonal and metabolic drivers that most GPs don't screen for together.",

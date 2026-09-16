@@ -28,7 +28,7 @@ const PANELS: Record<string, PanelInfo> = {
   },
   "mens-testosterone": {
     name: "Running on Empty, Men's Testosterone & Hormone Panel",
-    price: "£325",
+    price: "£375",
     markerSummary: [
       "Total testosterone, free testosterone (calculated), SHBG, LH, FSH, Prolactin, DHEA-S",
       "Morning cortisol (single serum sample), Lipoprotein(a), Fasting Insulin, HbA1c",

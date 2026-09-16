@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ClinicalArticleLayout from "@/components/ClinicalArticleLayout";
 import Link from "next/link";
+import PanelComparison from "@/components/PanelComparison";
 import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
@@ -107,6 +108,26 @@ export default function WomensHormonesPage() {
           <li><strong>Vitamin D:</strong> deficiency is extremely common and worsens fatigue, mood and bone turnover, all of which worsen in perimenopause.</li>
         </ul>
 
+        <h2 className="cg" style={sectionHeading}>How this compares</h2>
+        <p style={paragraph}>
+          Most direct to consumer blood tests compete on how many results they can print. The number is easy to inflate, because a full blood count alone can be counted as one line or as twenty. What actually changes your outcome is whether the right markers were chosen for your problem, and whether a doctor read them.
+        </p>
+        <PanelComparison
+          ourLabel="Is It My Hormones?"
+          ourPrice="£375"
+          rows={[
+            { feature: "Markers measured from one blood draw", ours: "42", theirs: "Varies" },
+            { feature: "A named GMC-registered GP reviews every result", ours: true, theirs: "Often automated" },
+            { feature: "Written interpretation with a next-step plan", ours: true, theirs: "Standard report" },
+            { feature: "Full hormone profile: oestradiol, progesterone, LH, FSH, prolactin, testosterone and SHBG", ours: true, theirs: "Often a partial profile" },
+            { feature: "Free T3 and thyroid antibodies, not TSH alone", ours: true, theirs: "Often TSH only" },
+            { feature: "Lipoprotein(a)", ours: true, theirs: false },
+            { feature: "Fasting insulin", ours: true, theirs: false },
+            { feature: "CA-125", ours: true, theirs: false },
+          ]}
+          footnote="Compared with typical direct to consumer blood test services in the UK. A live results consultation with Dr Taiwo can be booked separately if you would rather talk your results through than read them."
+        />
+
         <h2 className="cg" style={sectionHeading}>Why a normal reference range is not the same as a normal result</h2>
         <p style={paragraph}>
           Laboratory reference ranges for sex hormones are built for the general population and treat menstrual cycle stage as a category, not a continuum. An oestradiol of 180 pmol/L sits within the follicular-phase reference range. But if the same woman has an FSH of 22 IU/L, low luteal progesterone, is sleeping poorly and having cycle changes, the clinical interpretation is perimenopause with declining ovarian reserve, not a normal hormonal picture.
@@ -139,7 +160,7 @@ export default function WomensHormonesPage() {
           <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--go)", marginBottom: 16 }}>Related Tests</p>
           <div style={{ display: "grid", gap: 10 }}>
             {[
-              { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£325" },
+              { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£375" },
               { href: "/blood-tests/fatigue-energy", label: "Fatigue & Energy Deep Screen", note: "£249" },
               { href: "/blood-tests/lipoprotein-a", label: "Lipoprotein(a) Blood Test", note: "From £795" },
               { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249" },

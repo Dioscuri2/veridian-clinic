@@ -139,7 +139,7 @@ const tierCatalog: Record<
   },
   "mens-testosterone": {
     name: "Running on Empty, Men's Testosterone & Hormone Panel",
-    amount: 32500,
+    amount: 37500,
     description:
       "Total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol (single serum sample). Lp(a), fasting insulin, HbA1c, Full Blood Count, CRP. GP-reviewed written report with personalised clinical interpretation included.",
     successPath: "/book/thank-you",

@@ -230,7 +230,7 @@ export const PANELS: Panel[] = [
     slug: "mens-testosterone",
     productName: "Men's Health",
     positioningLine: "Running on Empty",
-    pricePence: GBP(325),
+    pricePence: GBP(375),
     landingPage: "/blood-tests/mens-testosterone",
     checkoutTier: "mens-testosterone",
     thanksDocServiceId: 235,
@@ -250,7 +250,7 @@ export const PANELS: Panel[] = [
           { code: "CORTISOL", name: "Cortisol (single morning serum sample)", tradePence: GBP(32.4) },
         ],
         notes:
-          "Trade £209.80, 35.4% margin at £325, the THINNEST margin in the range. Dr Tosin accepted that trade-off knowingly on 2026-08-22 to keep the adrenal/androgen story: DHEAS £16.00 and CORTISOL £32.40 were ADDED BACK (50.3% → 35.4%, price unchanged). HSC7M_RP7 contains neither, so both are genuine additions. CORTISOL is a SINGLE MORNING SERUM cortisol, copy must say so and must NEVER imply a cortisol awakening response, a diurnal/circadian pattern, a curve, a rhythm, or any multi-sample or salivary protocol. REMOVED Free Testosterone (FREE_TEST £30.30): HSC7M_RP7 contains total Testosterone, SHBG and FAI (Free Androgen Index), so free testosterone is CALCULATED from total T and SHBG, never a directly measured assay. Copy must say 'free testosterone (calculated)'. Old order was £191.70. Also included: FSH, LH, Prolactin, Oestradiol, TSH/FT3/FT4 with Anti-Tg and Anti-TPO, full blood count, HbA1c, TPSA, Vitamin D, liver, kidney and eGFR. HSC7M_RP7 itself carries NO DHEA-S and NO cortisol, so both are bought as the separate DHEAS and CORTISOL lines above, and the claims stand only for as long as those lines stay on the order.",
+          "Trade £209.80, 44.1% margin at £375. REPRICED 325 to 375 on 2026-09-16: at £325 this was the thinnest margin in the range (35.4%) and men were paying £50 LESS than Women's Health for a panel costing £48 MORE. The extra cost is entirely DHEAS £16.00 + CORTISOL £32.40, added back on 2026-08-22 to keep the adrenal/androgen story. Composition was already audited clean, so price was the only lever. £375 also undercuts Randox Everyman Complete at £416, which charges £65 extra for a GP consultation we include. HSC7M_RP7 contains neither, so both are genuine additions. CORTISOL is a SINGLE MORNING SERUM cortisol, copy must say so and must NEVER imply a cortisol awakening response, a diurnal/circadian pattern, a curve, a rhythm, or any multi-sample or salivary protocol. REMOVED Free Testosterone (FREE_TEST £30.30): HSC7M_RP7 contains total Testosterone, SHBG and FAI (Free Androgen Index), so free testosterone is CALCULATED from total T and SHBG, never a directly measured assay. Copy must say 'free testosterone (calculated)'. Old order was £191.70. Also included: FSH, LH, Prolactin, Oestradiol, TSH/FT3/FT4 with Anti-Tg and Anti-TPO, full blood count, HbA1c, TPSA, Vitamin D, liver, kidney and eGFR. HSC7M_RP7 itself carries NO DHEA-S and NO cortisol, so both are bought as the separate DHEAS and CORTISOL lines above, and the claims stand only for as long as those lines stay on the order.",
       },
     },
   },

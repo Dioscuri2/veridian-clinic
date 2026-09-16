@@ -37,7 +37,7 @@ const TIER_LABELS: Record<string, string> = {
   "longevity-panel": "Longevity Panel (£795)",
   programme: "12-Week Metabolic Reset (£1,895)",
   "womens-hormones": "Is It My Hormones?, Women's Panel (£375)",
-  "mens-testosterone": "Running on Empty, Men's Panel (£325)",
+  "mens-testosterone": "Running on Empty, Men's Panel (£375)",
   "cardiovascular-risk": "What Your Cholesterol Test Missed (£349)",
   "fatigue-energy": "Tired of Being Told You're Fine (£249)",
   "metabolic-weight": "Why Won't The Weight Budge? (£199)",

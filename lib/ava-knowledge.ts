@@ -69,7 +69,7 @@ TARGETED BLOOD PANELS, no GP referral needed, results in 3 to 5 working days
    Best for: brain fog, poor sleep, weight gain, mood changes, irregular periods, perimenopause symptoms
    Page: veridianclinic.com/blood-tests/womens-hormones
 
-2. Running on Empty, Men's Testosterone & Hormone Panel, £325
+2. Running on Empty, Men's Testosterone & Hormone Panel, £375
    Markers: total testosterone, free testosterone (calculated), SHBG, LH, FSH, prolactin, DHEA-S, morning cortisol (single serum sample), Lp(a), fasting insulin, HbA1c, full blood count, CRP
    Best for: low energy, brain fog, belly fat, low libido, poor gym recovery
    Page: veridianclinic.com/blood-tests/mens-testosterone

@@ -161,7 +161,7 @@ export default function OptimiserBaselinePage() {
         <div style={{ display: "grid", gap: 10 }}>
           {[
             { href: "/blood-tests/cardiovascular-risk", label: "Advanced Cardiovascular Risk Panel", note: "£349" },
-            { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£325" },
+            { href: "/blood-tests/mens-testosterone", label: "Men's Testosterone & Hormone Panel", note: "£375" },
             { href: "/blood-tests/biological-age", label: "Biological Age Blood Test", note: "From £795" },
             { href: "/blood-tests/fasting-insulin", label: "Fasting Insulin Test", note: "From £249" },
             { href: "/assessments", label: "View All Panels & Pricing", note: "Assessments" },
