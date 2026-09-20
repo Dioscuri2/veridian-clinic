@@ -1,0 +1,141 @@
+{
+  "pillar": [
+    "https://veridianclinic.com/blood-tests",
+    "https://veridianclinic.com/assessments"
+  ],
+  "keywords": {
+    "https://veridianclinic.com/blood-tests": [
+      "blood test",
+      "private blood test",
+      "panel",
+      "markers",
+      "testing"
+    ],
+    "https://veridianclinic.com/blood-tests/apob": [
+      "apob",
+      "apolipoprotein b",
+      "ldl particle",
+      "cholesterol particle"
+    ],
+    "https://veridianclinic.com/blood-tests/lipoprotein-a": [
+      "lipoprotein(a)",
+      "lp(a)",
+      "genetic cholesterol",
+      "inherited risk"
+    ],
+    "https://veridianclinic.com/blood-tests/fasting-insulin": [
+      "fasting insulin",
+      "insulin resistance",
+      "homa-ir",
+      "hyperinsulinaemia"
+    ],
+    "https://veridianclinic.com/blood-tests/metabolic-weight": [
+      "metabolic syndrome",
+      "weight resistance",
+      "visceral fat",
+      "metabolic health"
+    ],
+    "https://veridianclinic.com/blood-tests/cardiovascular-risk": [
+      "cardiovascular risk",
+      "heart disease risk",
+      "homocysteine",
+      "small dense ldl",
+      "statin"
+    ],
+    "https://veridianclinic.com/blood-tests/fatigue-energy": [
+      "fatigue",
+      "tired all the time",
+      "low energy",
+      "thyroid",
+      "ferritin",
+      "b12"
+    ],
+    "https://veridianclinic.com/blood-tests/mens-testosterone": [
+      "testosterone",
+      "low testosterone",
+      "shbg",
+      "male hormones",
+      "dhea-s"
+    ],
+    "https://veridianclinic.com/blood-tests/womens-hormones": [
+      "perimenopause",
+      "female hormones",
+      "oestradiol",
+      "menopause"
+    ],
+    "https://veridianclinic.com/blood-tests/biological-age": [
+      "biological age",
+      "longevity",
+      "healthspan",
+      "omega-3 index"
+    ],
+    "https://veridianclinic.com/micronutrient-test": [
+      "vitamin d",
+      "micronutrient",
+      "selenium",
+      "deficiency",
+      "multivitamin"
+    ],
+    "https://veridianclinic.com/gp-consultations": [
+      "private gp",
+      "gp appointment",
+      "see a doctor",
+      "video consultation"
+    ],
+    "https://veridianclinic.com/weight-loss": [
+      "weight loss",
+      "losing weight",
+      "weight management",
+      "bmi"
+    ],
+    "https://veridianclinic.com/metabolic-quiz": [
+      "metabolic age",
+      "quiz",
+      "metabolic score"
+    ],
+    "https://veridianclinic.com/discovery-call": [
+      "discovery call",
+      "speak to a gp",
+      "clinical review"
+    ]
+  },
+  "files": {
+    "https://veridianclinic.com/blog/vitamin-d": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/vitamin-d/page.tsx",
+    "https://veridianclinic.com/blog/fast-insulin": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/fast-insulin/page.tsx",
+    "https://veridianclinic.com/blog/sulforaphane": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/sulforaphane/page.tsx",
+    "https://veridianclinic.com/blog/nhs-waiting-list-record": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/nhs-waiting-list-record/page.tsx",
+    "https://veridianclinic.com/blog/homocysteine": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/homocysteine/page.tsx",
+    "https://veridianclinic.com/blog/apob-vs-ldl": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/apob-vs-ldl/page.tsx",
+    "https://veridianclinic.com/blog/omega-3": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/omega-3/page.tsx",
+    "https://veridianclinic.com/blog/nhs-weight-loss-drug-rollout": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/nhs-weight-loss-drug-rollout/page.tsx",
+    "https://veridianclinic.com/blog/reversing-metabolic-syndrome": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/reversing-metabolic-syndrome/page.tsx",
+    "https://veridianclinic.com/blog/multivitamins": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/multivitamins/page.tsx",
+    "https://veridianclinic.com/blog/lipoprotein-a-apob-triglycerides": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/lipoprotein-a-apob-triglycerides/page.tsx",
+    "https://veridianclinic.com/blog/vigorous-exercise": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/vigorous-exercise/page.tsx",
+    "https://veridianclinic.com/blog/what-private-gp-checks-nhs-doesnt": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/what-private-gp-checks-nhs-doesnt/page.tsx",
+    "https://veridianclinic.com/blog/leptin-resistance": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/leptin-resistance/page.tsx",
+    "https://veridianclinic.com/blog/should-i-take-a-statin": "/Users/tosin/.openclaw/workspace-main/veridian-clinic/app/blog/should-i-take-a-statin/page.tsx"
+  },
+  "titles": {
+    "https://veridianclinic.com/blood-tests": "private blood tests",
+    "https://veridianclinic.com/blood-tests/apob": "ApoB blood test",
+    "https://veridianclinic.com/blood-tests/lipoprotein-a": "Lp(a) blood test",
+    "https://veridianclinic.com/blood-tests/fasting-insulin": "fasting insulin test",
+    "https://veridianclinic.com/blood-tests/metabolic-weight": "Weight and Metabolism panel",
+    "https://veridianclinic.com/blood-tests/cardiovascular-risk": "Cardiovascular Risk panel",
+    "https://veridianclinic.com/blood-tests/fatigue-energy": "Energy and Fatigue panel",
+    "https://veridianclinic.com/blood-tests/mens-testosterone": "men's hormone panel",
+    "https://veridianclinic.com/blood-tests/womens-hormones": "women's hormone panel",
+    "https://veridianclinic.com/blood-tests/biological-age": "Longevity Panel",
+    "https://veridianclinic.com/blood-tests/optimiser-baseline": "Performance panel",
+    "https://veridianclinic.com/micronutrient-test": "micronutrient panel",
+    "https://veridianclinic.com/gp-consultations": "private GP consultation",
+    "https://veridianclinic.com/weight-loss": "medical weight management",
+    "https://veridianclinic.com/assessments": "our assessments",
+    "https://veridianclinic.com/metabolic-quiz": "free metabolic quiz",
+    "https://veridianclinic.com/discovery-call": "Discovery Core consultation",
+    "https://veridianclinic.com/private-gp-north-west-london": "private GP in North West London",
+    "https://veridianclinic.com/private-gp-cambridge": "private GP in Cambridge",
+    "https://veridianclinic.com/markers-guide": "guide to the markers"
+  }
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key><string>/Users/tosin</string>
+		<key>PATH</key><string>/Users/tosin/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+		<key>DISCORD_WEBHOOK_VERIDIAN</key><string>https://discord.com/api/webhooks/1502920167410372741/UV23IXpraOv8PBaEq5av6h09txKmp2O51oFe_b2OEMVkNeYxi29KpAe0_lAFicgwZLxs</string>
+		<key>VERIDIAN_NEWS_COUNT</key><string>1</string>
+	</dict>
+	<key>Label</key><string>ing.veridian.newsjack</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>/Users/tosin/.openclaw/workspace-main/veridian-ops/newsjack-loop.sh</string>
+	</array>
+	<key>StandardErrorPath</key><string>/Users/tosin/.openclaw/workspace-main/veridian-ops/newsjack-launchd.log</string>
+	<key>StandardOutPath</key><string>/Users/tosin/.openclaw/workspace-main/veridian-ops/newsjack-launchd.log</string>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>15</integer></dict>
+		<dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>15</integer></dict>
+	</array>
+</dict>
+</plist>
