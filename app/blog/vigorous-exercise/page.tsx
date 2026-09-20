@@ -119,7 +119,7 @@ export default function VigorousExercisePage() {
       >
         <div style={callout}>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.8 }}>
-            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> vigorous exercise, defined as intensity where you cannot hold a full conversation, for around four cumulative minutes per day is linked to ~36% lower all-cause and cancer mortality. The leverage versus moderate intensity is striking: one vigorous minute is associated with roughly the cancer-risk reduction of 2.5 hours of walking. VILPA, vigorous incidental movement outside a gym, achieves comparable benefit. Cardiorespiratory fitness is one of the strongest measurable predictors of longevity.
+            <strong style={{ color: "var(--fo)" }}>Clinical bottom line:</strong> vigorous exercise, defined as intensity where you cannot hold a full conversation, for around four cumulative minutes per day is linked to ~36% lower all-cause and cancer mortality. One vigorous minute is associated with roughly the cancer-risk reduction of 2.5 hours of walking. VILPA, vigorous incidental movement outside a gym, achieves comparable benefit. Cardiorespiratory fitness is one of the strongest measurable predictors of longevity.
           </p>
         </div>
 
@@ -146,7 +146,7 @@ export default function VigorousExercisePage() {
           The implication is important: it is not simply that vigorously active people are also generally more active. The vigorous intensity itself appears to carry a health benefit beyond what is explained by total activity. The physiological stimulus from vigorous effort, including the cardiovascular demand, the hormonal response, and the inflammatory signalling cascade, appears to produce adaptations that lower-intensity activity does not, at least not at equivalent time cost.
         </p>
 
-        <h2 className="cg" style={sectionHeading}>The leverage ratio: vigorous versus other intensities</h2>
+        <h2 className="cg" style={sectionHeading}>Vigorous versus other intensities: the return per minute</h2>
         <p style={paragraph}>
           One of the most practically relevant findings in this area is the dose-equivalence between vigorous effort and lower-intensity activity. Analyses of the mortality data suggest that one minute of vigorous-intensity activity is associated with roughly the same all-cause mortality benefit as approximately four minutes of moderate-intensity effort, and roughly eight minutes of moderate effort for heart attack and stroke specifically.
         </p>

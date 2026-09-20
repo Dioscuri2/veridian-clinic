@@ -113,7 +113,7 @@ export default function ApoBVsLDLPage() {
 
         <h2 className="cg" style={sectionHeading}>What ApoB actually measures</h2>
         <p style={paragraph}>
-          ApoB, short for apolipoprotein B, is a protein that sits on the outer surface of each harmful lipoprotein particle. Here is the key detail: every single harmful particle carries exactly one ApoB molecule. This means that measuring ApoB in the blood gives a direct count of the number of harmful particles circulating in your body.
+          ApoB, short for apolipoprotein B, is a protein that sits on the outer surface of each harmful lipoprotein particle. Every harmful particle carries exactly one ApoB molecule. This means that measuring ApoB in the blood gives a direct count of the number of harmful particles circulating in your body.
         </p>
         <p style={paragraph}>
           Going back to the van analogy: ApoB tells you how many vans are on the road, not just how much cargo they are carrying in total.
@@ -175,7 +175,7 @@ export default function ApoBVsLDLPage() {
           Lp(a), pronounced "L-P-little-a" or lipoprotein-a, is a particle that looks similar to LDL under a microscope but behaves quite differently. It carries an extra protein on its surface called apolipoprotein(a), which makes it stickier, harder for the body to clear, and more likely to trigger inflammation in the artery wall.
         </p>
         <p style={paragraph}>
-          The most important thing to understand about Lp(a) is this: your level is almost entirely determined by your genes. Diet, exercise, and lifestyle changes make very little difference to it. If your Lp(a) is high, it has almost certainly been high since you were born. You inherited it.
+          Your Lp(a) level is almost entirely determined by your genes. Diet, exercise, and lifestyle changes make very little difference to it. If your Lp(a) is high, it has almost certainly been high since you were born. You inherited it.
         </p>
         <p style={paragraph}>
           Roughly one in five people in the UK carries an Lp(a) level high enough to meaningfully raise their cardiovascular risk. Most have never been tested because it does not appear on a standard NHS lipid panel.

@@ -72,7 +72,7 @@ export default function NhsWaitingListRecordPage() {
           It is worth being precise about what that list is, because it is widely misread. The 7.75 million figure counts <em>pathways</em>, not people. Roughly 6.2 million individuals are on it, some of them waiting on more than one pathway. It also counts planned, non-urgent treatment. If you have red-flag symptoms, you are not on this list, and you should not be treating yourself as though you are.
         </p>
 
-        <h2 className="cg" style={sectionHeading}>The part that gets missed: waiting is not neutral</h2>
+        <h2 className="cg" style={sectionHeading}>Waiting is not neutral</h2>
         <p style={paragraph}>
           The public conversation treats a waiting list as a queue where nothing happens until your turn. Clinically, that is not what a wait is. For a hip replacement, waiting mostly costs you pain and mobility, and the operation works just as well later. For metabolic disease, waiting costs you something you cannot get back.
         </p>

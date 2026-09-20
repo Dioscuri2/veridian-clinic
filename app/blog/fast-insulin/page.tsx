@@ -87,7 +87,7 @@ export default function FastInsulinPage() {
           Fasting insulin is one of the most underused markers in preventive metabolic medicine. Many patients are told they are fine because their fasting glucose or HbA1c sits inside the laboratory reference range. But glucose is often the last thing to move. The body works hard to keep blood sugar stable, and it does that by producing more insulin. By the time glucose becomes obviously abnormal, the compensatory process may have been running for years, quietly driving visceral fat accumulation, cardiovascular risk, fatigue, and metabolic decline.
         </p>
         <p style={paragraph}>
-          Fasting insulin is not offered on the NHS as part of routine metabolic screening. It is available through private blood testing, and it is a standard component of Veridian's Energy & Fatigue panel and Core Metabolic Assessment. The reason it matters so much is simple: if glucose looks normal but insulin is already elevated, the system is under strain, and the best time to act is now, while the pattern is still highly reversible.
+          Fasting insulin is not offered on the NHS as part of routine metabolic screening. It is available through private blood testing, and it is a standard component of Veridian's Energy & Fatigue panel and Core Metabolic Assessment. If glucose looks normal but insulin is already elevated, the system is under strain, and the best time to act is now, while the pattern is still highly reversible.
         </p>
 
         <div style={callout}>
@@ -128,7 +128,7 @@ export default function FastInsulinPage() {
           <li><strong>Significantly elevated:</strong> above 20 mIU/L, usually reflects established insulin resistance; associated with markedly elevated cardiometabolic risk.</li>
         </ul>
         <p style={paragraph}>
-          These thresholds are not universally agreed upon, and they depend on assay calibration. The important clinical point is that context matters: a fasting insulin of 14 mIU/L in a 58-year-old with a waist-to-height ratio of 0.6, elevated triglycerides, and a family history of diabetes has a different meaning than the same number in a lean 32-year-old who exercises four times a week.
+          These thresholds are not universally agreed upon, and they depend on assay calibration. Context decides the reading. A fasting insulin of 14 mIU/L in a 58-year-old with a waist-to-height ratio of 0.6, elevated triglycerides, and a family history of diabetes has a different meaning than the same number in a lean 32-year-old who exercises four times a week.
         </p>
 
         <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", margin: "32px 0", overflow: "hidden" }}>

@@ -87,7 +87,7 @@ export default function ReversingMetabolicSyndromePage() {
           Metabolic syndrome is diagnosed when three or more of the following are present: a waist circumference above 94 cm in men or 80 cm in women, fasting triglycerides above 1.7 mmol/L, HDL below 1.0 mmol/L in men or 1.2 mmol/L in women, blood pressure at or above 130/85 mmHg, or fasting glucose at or above 5.6 mmol/L. By these criteria, metabolic syndrome affects roughly one in four adults in the UK, a statistic that has risen sharply alongside rates of obesity, physical inactivity, and ultra-processed food consumption.
         </p>
         <p style={paragraph}>
-          What most patients are not told is that metabolic syndrome is among the most reversible of all cardiometabolic conditions. It is not a diagnosis that means permanent drug dependence or inexorable decline. The underlying mechanisms, primarily insulin resistance, visceral fat accumulation, and hepatic metabolic dysfunction, all respond to targeted behavioural change, often dramatically. The challenge is identifying the highest-leverage interventions and measuring the right markers to confirm that the metabolic pattern, not just the visible body, is actually improving.
+          What most patients are not told is that metabolic syndrome is among the most reversible of all cardiometabolic conditions. It is not a diagnosis that means permanent drug dependence or inexorable decline. The underlying mechanisms, primarily insulin resistance, visceral fat accumulation, and hepatic metabolic dysfunction, all respond to targeted behavioural change, often dramatically. The challenge is identifying which interventions move the most and measuring the right markers to confirm that the metabolic pattern, not just the visible body, is actually improving.
         </p>
 
         <div style={callout}>
@@ -98,7 +98,7 @@ export default function ReversingMetabolicSyndromePage() {
 
         <h2 className="cg" style={sectionHeading}>What is actually going wrong in metabolic syndrome</h2>
         <p style={paragraph}>
-          Metabolic syndrome is not five separate problems that happen to co-exist. It is one systemic dysfunction, insulin resistance, that expresses itself across multiple organ systems and organ-specific lab markers. Understanding this changes the treatment logic entirely: rather than chasing each marker individually, the most effective approach targets the underlying driver.
+          Metabolic syndrome is not five separate problems that happen to co-exist. It is one systemic dysfunction, insulin resistance, that expresses itself across multiple organ systems and organ-specific lab markers. That changes the treatment logic. Rather than chasing each marker individually, the most effective approach targets the underlying driver.
         </p>
         <p style={paragraph}>
           In insulin resistance, skeletal muscle, which accounts for approximately 80% of postprandial glucose disposal, becomes less responsive to insulin signalling. The pancreas compensates by producing more insulin. Elevated insulin drives visceral fat accumulation, suppresses fat burning, promotes hepatic fat deposition (MASLD), stimulates VLDL overproduction in the liver (raising triglycerides and lowering HDL through CETP-mediated exchanges), and gradually increases blood pressure through sodium retention and sympathetic nervous system activation.
@@ -130,7 +130,7 @@ export default function ReversingMetabolicSyndromePage() {
           />
         </div>
 
-        <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Dietary quality: the single highest-leverage intervention</h2>
+        <h2 className="cg" style={{ ...sectionHeading, fontSize: "1.3rem" }}>Dietary quality: the single biggest lever</h2>
         <p style={paragraph}>
           Of all dietary variables studied, ultra-processed food (UPF) reduction and refined carbohydrate restriction produce the most consistent improvements in the metabolic syndrome cluster. This is mechanistically logical: ultra-processed foods are typically high in refined carbohydrates, added sugars, and vegetable seed oils that drive insulin secretion, suppress satiety signals, and promote hepatic fat accumulation.
         </p>
