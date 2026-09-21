@@ -80,7 +80,28 @@ export const PANELS: Panel[] = [
     adGroup: "Metabolic Blood Test",
     status: "live",
     kind: "panel",
-    supplier: {}, // NOT yet audited
+    supplier: {
+      male: {
+        verified: true,
+        verifiedOn: "2026-09-21",
+        lines: [
+          { code: "HSC8M", name: "Advanced GP2 Male", tradePence: GBP(106.3) },
+          { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
+        ],
+        notes:
+          "Trade £146.80, 75.3% margin at £595, the BEST in the range. Verified live in Nexus 2026-09-21. HSC8M covers every Baseline claim except homocysteine and hs-CRP: HbA1c, glucose, fasting insulin, C-peptide, ApoB with full lipids and ApoA-I ratio, ApoE, Lp(a), sdLDL, ALT, AST, GGT, bilirubin, albumin, kidney with eGFR, cystatin C, adiponectin, full thyroid with both antibodies, ferritin and full iron studies, vitamin D, uric acid, magnesium, FBC and urinalysis. HOMO is a genuine add-on and is NOT greyed out. ⚠️ hs-CRP CANNOT BE ORDERED on top: both CRP and hsCRP grey out against HSC8 (total stayed £106.30, Tests: 0), because HSC8 already contains standard CRP. The site's hs-CRP claim on this product is therefore NOT deliverable and must say CRP. ⚠️ IN CLINIC ONLY: Nexus reports 'Unavailable for remote venous phlebotomy collection: (e) Too Many Sample Mediums' and 'Unavailable for home collection: (a) Required Test Kit Not Available'.",
+      },
+      female: {
+        verified: true,
+        verifiedOn: "2026-09-21",
+        lines: [
+          { code: "HSC8F", name: "Advanced GP2 Female", tradePence: GBP(106.3) },
+          { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
+        ],
+        notes:
+          "Trade £146.80, 75.3% margin at £595. Identical to the male order except HSC8F carries CA-125 and drops TPSA. Same two constraints: hs-CRP cannot be added (greys out against HSC8's standard CRP), and the order is In Clinic only.",
+      },
+    }, // NOT yet audited
   },
   {
     slug: "longevity-panel",

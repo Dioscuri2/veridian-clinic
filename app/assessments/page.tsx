@@ -86,7 +86,7 @@ const comparisonRows = [
  { feature: "ApoB + full lipid profile", discovery: false, baseline: true, programme: true, executive: true },
  { feature: "Homocysteine", discovery: false, baseline: true, programme: true, executive: true },
  { feature: "ALT / AST", discovery: false, baseline: true, programme: true, executive: true },
- { feature: "hs-CRP", discovery: false, baseline: true, programme: true, executive: true },
+ { feature: "CRP", discovery: false, baseline: true, programme: true, executive: true },
  { feature: "CGM cycle (14-day)", discovery: false, baseline: true, programme: "2nd cycle", executive: true },
  { feature: "Fortnightly coaching", discovery: false, baseline: false, programme: true, executive: true },
  { feature: "GP-led clinical review where indicated", discovery: false, baseline: false, programme: true, executive: true },
