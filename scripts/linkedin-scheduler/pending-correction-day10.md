@@ -1,64 +1,48 @@
-# Day 10 correction — BLOCKED on LinkedIn reconnect
+# Day 10 correction — DONE 2026-09-21
 
-**Original post:** `urn:li:share:7475789939322998784`, published 2026-06-25, topic
-"Cortisol and belly fat". **Still live and still wrong.**
+Both actions completed once LinkedIn OAuth was reconnected (token now valid to
+2026-11-20, verified in Upstash rather than assumed).
 
-## Why it has to come down
+## What happened
 
-1. It claims **"The cortisol awakening response is not tested on any standard NHS
-   panel. At Veridian it is included in the Energy Screen."** We do not test the CAR.
-   The CAR is multiple timed *salivary* samples at waking, +30 and +45 minutes.
-   Randox `CORTISOL` is a single serum draw. The claim is clinically inaccurate and
-   it is published under a GMC-registered GP's name.
-2. It sells the **Energy Screen at £195** — a product retired on 2026-08-21 and
-   merged into Energy & Fatigue (£249).
-3. Its link `/blood-tests/metabolic-screen` now 308s to the fatigue panel, which
-   contains **neither cortisol nor testosterone** — the two markers the post
-   advertises.
+| Post | Action | Result |
+|---|---|---|
+| `urn:li:share:7475789939322998784` (day 10, cortisol) | deleted, replaced | `alreadyGone: false` |
+| `urn:li:share:7478688989986762755` (day 15, Mounjaro/Wegovy) | deleted, no replacement | `alreadyGone: false` |
+| replacement post | published | `urn:li:share:7507675673851899904` |
 
-Do NOT simply repoint it at `/blood-tests/optimiser-baseline`. That page claims
-morning cortisol and DHEA-S via `HSC12`, whose analyte list is **not yet verified
-against Nexus**. That would relocate the unverified claim, not fix it.
+Day 15 got no rewrite because the drug names were its entire premise. Naming a
+prescription-only medicine in public advertising breaches HMR 2012 reg 284, and
+the CAP/ASA position covers the class term "GLP-1" as well as the brands.
 
-## Approved plan (Dr Tosin, 2026-08-21): delete the original, then post the rewrite
+## Verification done before publishing
 
-Blocked because **LinkedIn is disconnected** — `/api/social/delete-post` returns
-`{"error":"LinkedIn not connected"}`, i.e. `getLinkedInTokens()` found no tokens in
-Upstash Redis. Reconnect at `https://veridianclinic.com/api/auth/linkedin` (admin
-OAuth, needs a browser sign-in), then run the two commands at the bottom.
+All 14 marker claims in the replacement were checked against the Nexus-verified
+`HSC10` list in `data/randox/panel-analytes.json`: fasting insulin (INS),
+C-peptide (CPEP), HbA1c (HBA1_NEW), TSH, FT3, FT4, both thyroid antibodies
+(TGA, ATA), ferritin, iron studies (FE, TIBC, TF, TFSAT), B12 (VITB12),
+folate (FOL), vitamin D (25OH_VITD), CRP. Price GBP 249 matches `data/panels.ts`
+and ThanksDoc service 237.
 
-Do NOT add the rewrite to `schedule.json` as `pending`. The 07:00 cron would fire it
-while the original is still live — which is the "leave it up" option that was
-explicitly rejected. Delete first, post second.
+The replacement makes **no cortisol claim at all**, which was the original fault.
+It says instead that stress physiology "is harder to capture in one blood draw
+than the internet suggests" — an honest limit rather than a marker we cannot sell.
 
-## Rewrite (every marker below is on the Nexus-verified HSC10 analyte list)
+## no-ai-slop edits applied to the draft
 
-You have tried cutting calories.
-You are exercising three times a week.
-The weight is still creeping up, mostly around your middle.
+The drafted rewrite carried three tells. Fixed before posting:
 
-This is not a failure of discipline.
+1. **Three binary contrasts** ("not a failure of discipline", "a signal, not a
+   willpower problem", "not a PDF of numbers"). Kept the first, which is the
+   emotional core and reads as human. Cut the other two: one negation is voice,
+   three is a tic.
+2. **Stacked one-line fragments** at the open, the classic LinkedIn engagement-bait
+   rhythm. Merged into a single paragraph; the content is unchanged.
+3. **Hashtags trimmed** 6 to 4.
 
-Weight that settles around the abdomen despite genuine effort is usually a signal, not a willpower problem. The most common driver is insulin resistance, the phase where your pancreas is working progressively harder to hold glucose normal, and fasting glucose and HbA1c still read as reassuringly fine. Thyroid function and chronic inflammation compound it. Stress physiology plays a part too, though it is harder to capture in a single blood draw than the internet suggests.
+## Caution for whoever publishes next
 
-What a standard NHS panel rarely measures is fasting insulin. Without it you are looking at the end of the process and missing the decade that led there.
-
-Our Energy & Fatigue panel measures fasting insulin and C-peptide alongside HbA1c, full thyroid function with both antibody types, ferritin with complete iron studies, B12, folate, vitamin D and CRP. Every result comes back with a written interpretation from a GP, not a PDF of numbers.
-
-Book the Energy & Fatigue panel (£249): https://veridianclinic.com/blood-tests/fatigue-energy
-
-#InsulinResistance #MetabolicHealth #WeightLoss #Fatigue #PrivateGP #VeridianClinic
-
-## Commands, once LinkedIn is reconnected
-
-```bash
-cd scripts/linkedin-scheduler && source ./.env
-
-# 1. delete the original
-curl -s -X POST https://veridianclinic.com/api/social/delete-post \
-  -H "Content-Type: application/json" -H "Cookie: $ADMIN_COOKIE" \
-  -d '{"postId":"urn:li:share:7475789939322998784"}'
-
-# 2. post the rewrite (body text above), then record the new post_id
-#    against day 10 in schedule.json with a note that it supersedes the original.
-```
+Do NOT route these API calls through curl. Cloudflare blocks
+`POST /api/social/*` even with a browser user-agent, and repeated attempts risk a
+one-hour IP ban. Run the fetch from the logged-in `/admin` page in the browser
+instead, which is same-origin and carries the real session.

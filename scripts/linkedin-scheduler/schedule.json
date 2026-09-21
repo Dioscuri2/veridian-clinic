@@ -93,11 +93,14 @@
     "day": 10,
     "date": "2026-06-25",
     "topic": "Cortisol and belly fat",
-    "status": "posted",
+    "status": "deleted_and_replaced",
     "image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_381MTB6ulyEXwGWGeJIO9d9P1fT/hf_20260622_205820_5ce39091-cfd2-4764-8237-78d3e4087657.png",
     "content": "You have tried cutting calories.\nYou are exercising three times a week.\nThe weight is still creeping up, mostly around your middle.\n\nThis is not a failure of discipline.\n\nCortisol has a precise morning pattern that drives metabolism. When that pattern flattens, your body stores fat around the abdomen regardless of what you are eating. A blunted cortisol response also drives fatigue, brain fog, and slow recovery from exercise.\n\nThe cortisol awakening response is not tested on any standard NHS panel.\n\nAt Veridian it is included in the Energy Screen alongside thyroid, fasting insulin, testosterone, and B12, the complete metabolic picture of why effort alone is not working.\n\nBook the Energy Screen (195): https://veridianclinic.com/blood-tests/metabolic-screen\n\n#Cortisol #BellyFat #WeightLoss #MetabolicHealth #Fatigue #PrivateGP #VeridianClinic",
     "posted_at": "2026-06-25T06:00:15Z",
-    "post_id": "urn:li:share:7475789939322998784"
+    "post_id": "urn:li:share:7475789939322998784",
+    "deleted_at": "2026-09-21",
+    "replaced_by": "urn:li:share:7507675673851899904",
+    "reason": "Claimed the cortisol awakening response, which we do not test (single morning serum, not timed salivary). Also sold the retired GBP 195 Energy Screen and linked to a panel containing neither cortisol nor testosterone."
   },
   {
     "day": 11,
@@ -145,11 +148,13 @@
     "day": 15,
     "date": "2026-06-30",
     "topic": "GLP-1 readiness",
-    "status": "posted",
+    "status": "deleted",
     "image_url": null,
     "content": "Mounjaro and Wegovy are changing weight medicine.\n\nBut they work hardest when you know what is driving the weight in the first place.\n\nBefore starting any GLP-1, these are the markers I would want to see:\n\nFasting insulin: are you actually insulin resistant, or is something else driving weight gain?\nFull thyroid panel: is your metabolic rate suppressed?\nMorning cortisol: is stress-driven abdominal fat accumulation the main problem?\nHbA1c and HOMA-IR: how severe is the metabolic disruption?\n\nGLP-1s work. They work better when they are targeted at the right problem in the right person.\n\nAt Veridian we assess metabolic readiness before recommending any weight loss pathway.\n\nBook a Metabolic Weight Panel (199): https://veridianclinic.com/blood-tests/metabolic-weight\n\n#GLP1 #Mounjaro #Wegovy #WeightLoss #MetabolicHealth #PrivateGP #VeridianClinic",
     "posted_at": "2026-07-03T06:00:03Z",
-    "post_id": "urn:li:share:7478688989986762755"
+    "post_id": "urn:li:share:7478688989986762755",
+    "deleted_at": "2026-09-21",
+    "reason": "Named Mounjaro and Wegovy and used the GLP-1 class term. Advertising a prescription-only medicine to the public breaches HMR 2012 reg 284 and the CAP/ASA enforcement notice. No rewrite: the drug names were the whole premise."
   },
   {
     "day": 16,
