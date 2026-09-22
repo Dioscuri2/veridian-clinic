@@ -89,7 +89,7 @@ export const PANELS: Panel[] = [
           { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
         ],
         notes:
-          "Trade £146.80, 75.3% margin at £595, the BEST in the range. Verified live in Nexus 2026-09-21. HSC8M covers every Baseline claim except homocysteine and hs-CRP: HbA1c, glucose, fasting insulin, C-peptide, ApoB with full lipids and ApoA-I ratio, ApoE, Lp(a), sdLDL, ALT, AST, GGT, bilirubin, albumin, kidney with eGFR, cystatin C, adiponectin, full thyroid with both antibodies, ferritin and full iron studies, vitamin D, uric acid, magnesium, FBC and urinalysis. HOMO is a genuine add-on and is NOT greyed out. ⚠️ hs-CRP CANNOT BE ORDERED on top: both CRP and hsCRP grey out against HSC8 (total stayed £106.30, Tests: 0), because HSC8 already contains standard CRP. The site's hs-CRP claim on this product is therefore NOT deliverable and must say CRP. ⚠️ IN CLINIC ONLY: Nexus reports 'Unavailable for remote venous phlebotomy collection: (e) Too Many Sample Mediums' and 'Unavailable for home collection: (a) Required Test Kit Not Available'.",
+          "Trade £146.80, 75.3% margin at £595, the BEST in the range. Verified live in Nexus 2026-09-21. HSC8M covers every Baseline claim except homocysteine and hs-CRP: HbA1c, glucose, fasting insulin, C-peptide, ApoB with full lipids and ApoA-I ratio, ApoE, Lp(a), sdLDL, ALT, AST, GGT, bilirubin, albumin, kidney with eGFR, cystatin C, adiponectin, full thyroid with both antibodies, ferritin and full iron studies, vitamin D, uric acid, magnesium, FBC and urinalysis. HOMO is a genuine add-on and is NOT greyed out. hs-CRP IS INCLUDED. Corrected 2026-09-22: HSC8's live analyte list contains BOTH CRP and hsCRP. They grey out as add-ons because they are ALREADY IN the panel, not because they are blocked. An earlier reading of that greying was wrong. Do not add hsCRP as a separate line and do not weaken the hs-CRP claim. ⚠️ IN CLINIC ONLY: Nexus reports 'Unavailable for remote venous phlebotomy collection: (e) Too Many Sample Mediums' and 'Unavailable for home collection: (a) Required Test Kit Not Available'.",
       },
       female: {
         verified: true,
@@ -99,7 +99,7 @@ export const PANELS: Panel[] = [
           { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
         ],
         notes:
-          "Trade £146.80, 75.3% margin at £595. Identical to the male order except HSC8F carries CA-125 and drops TPSA. Same two constraints: hs-CRP cannot be added (greys out against HSC8's standard CRP), and the order is In Clinic only.",
+          "Trade £146.80, 75.3% margin at £595. Identical to the male order except HSC8F carries CA-125 and drops TPSA. hs-CRP is already inside HSC8F, so never add it as a separate line. The order is In Clinic only.",
       },
     }, // NOT yet audited
   },
@@ -212,12 +212,11 @@ export const PANELS: Panel[] = [
         lines: [
           { code: "RP10", name: "Heart Health", tradePence: GBP(37.6) },
           { code: "HOMO", name: "Homocysteine", tradePence: GBP(40.5) },
-          { code: "hsCRP", name: "hs-CRP", tradePence: GBP(14) },
           { code: "INS", name: "Fasting Insulin", tradePence: GBP(32.8) },
           { code: "HBA1_NEW", name: "HbA1c", tradePence: GBP(20.5) },
         ],
         notes:
-          "Trade £145.40, 58.3% margin at £349. REMOVED Lp(a) (LPA £28.10), ApoB (APO_B) and Small Dense LDL (SLDL): RP10 already contains all three, plus ApoA-I, ApoE, the ApoB/ApoA-I ratio, CRP and the full lipid profile. Old order was £199.00, then £124.90 without HbA1c. hsCRP is kept deliberately: RP10 carries standard CRP, not the high-sensitivity assay. RP10 contains NO HbA1c, so HBA1_NEW £20.50 was ADDED BACK on 2026-08-22 (Dr Tosin's call) to restore the HbA1c claim: 64.2% → 58.3% at an unchanged £349.",
+          "Trade £131.40, 62.4% margin at £349. CORRECTED 2026-09-22: the separate hsCRP £14.00 line was REDUNDANT and has been removed. RP10's live analyte list in Nexus contains BOTH CRP and hsCRP, so we were paying £14 per order for a marker already in the panel. Our captured nexus-analytes.json listed only CRP for RP10, which is a gap in the captured data, not in the panel. The hs-CRP claim on this page is TRUE. REMOVED Lp(a) (LPA £28.10), ApoB (APO_B) and Small Dense LDL (SLDL): RP10 already contains all three, plus ApoA-I, ApoE, the ApoB/ApoA-I ratio, CRP and the full lipid profile. Old order was £199.00, then £124.90 without HbA1c. hsCRP is kept deliberately: RP10 carries standard CRP, not the high-sensitivity assay. RP10 contains NO HbA1c, so HBA1_NEW £20.50 was ADDED BACK on 2026-08-22 (Dr Tosin's call) to restore the HbA1c claim: 64.2% → 58.3% at an unchanged £349.",
       },
     },
   },
