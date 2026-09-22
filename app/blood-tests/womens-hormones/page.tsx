@@ -119,13 +119,14 @@ export default function WomensHormonesPage() {
             { feature: "Markers measured from one blood draw", ours: "42", theirs: "Varies" },
             { feature: "A named GMC-registered GP reviews every result", ours: true, theirs: "Often automated" },
             { feature: "Written interpretation with a next-step plan", ours: true, theirs: "Standard report" },
+            { feature: "A 15 minute results consultation with the GP, included", ours: true, theirs: "Usually a paid add-on" },
             { feature: "Full hormone profile: oestradiol, progesterone, LH, FSH, prolactin, testosterone and SHBG", ours: true, theirs: "Often a partial profile" },
             { feature: "Free T3 and thyroid antibodies, not TSH alone", ours: true, theirs: "Often TSH only" },
             { feature: "Lipoprotein(a)", ours: true, theirs: false },
             { feature: "Fasting insulin", ours: true, theirs: false },
             { feature: "CA-125", ours: true, theirs: false },
           ]}
-          footnote="Compared with typical direct to consumer blood test services in the UK. A live results consultation with Dr Taiwo can be booked separately if you would rather talk your results through than read them."
+          footnote="Compared with typical direct to consumer blood test services in the UK. A 15 minute results consultation with Dr Taiwo is included in the price, so you can talk your results through rather than only read them."
         />
 
         <h2 className="cg" style={sectionHeading}>Why a normal reference range is not the same as a normal result</h2>
@@ -151,7 +152,7 @@ export default function WomensHormonesPage() {
           <p style={{ fontWeight: 700, color: "var(--fo)", marginBottom: 6 }}>Is It My Hormones? Panel · £375</p>
           <p style={{ fontSize: ".88rem", color: "var(--sl2)", lineHeight: 1.75 }}>
             Oestradiol, FSH, LH, Progesterone, Prolactin, Testosterone (total, with free testosterone calculated from SHBG), SHBG, Thyroid (TSH, FT3, FT4 + TPO antibodies), Lp(a), Fasting Insulin, HbA1c, Vitamin D<br />
-            GP-reviewed written report with personalised clinical interpretation. No GP referral needed. Results in 3 to 5 working days.
+            GP-reviewed written report with personalised clinical interpretation, plus a 15 minute results consultation. No GP referral needed. Results in 3 to 5 working days.
           </p>
         </div>
 

@@ -473,6 +473,28 @@ export const getPanel = (slug: string): Panel | undefined =>
 export const formatPrice = (p: Panel): string =>
   `£${(p.pricePence / 100).toLocaleString("en-GB")}`;
 
+/**
+ * RESULTS CONSULTATION IS BUNDLED INTO EVERY BLOOD PANEL (decision 2026-09-22).
+ *
+ * Every panel price now includes a 15 minute results consultation with Dr Taiwo
+ * on top of the written GP interpretation. This costs clinic TIME, not lab spend,
+ * so the trade costs and margins recorded against each product are unchanged.
+ *
+ * Why: Randox Everyman/Everywoman Complete is £416 with a Scientific Advisor and
+ * charges £65 extra for a GP consultation, so £481 to actually speak to a doctor.
+ * Veridian was £375 plus a separate £149 results consult = £524, i.e. £43 DEARER
+ * for the one thing we claim as our whole differentiator. Bundling reverses that.
+ *
+ * Consequence to hold on to: "a named GP" is now something the patient can book,
+ * not a claim. Any copy that says a results consultation is "available separately"
+ * or "can be booked separately" is now WRONG and must say included.
+ *
+ * ThanksDoc service 240 (GP Results Consultation, £149) stays live for patients
+ * whose bloods were taken elsewhere. That is a different product: it is scoped in
+ * its own description to Veridian blood test patients, so if it is to serve
+ * external results it needs rewording first.
+ */
+
 /** Trade cost in pence for one supplier order (sum of lines). */
 export const tradePence = (o: SupplierOrder): number =>
   o.lines.reduce((s, l) => s + l.tradePence, 0);

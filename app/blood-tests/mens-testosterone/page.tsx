@@ -119,13 +119,14 @@ export default function MensTestosteronePage() {
             { feature: "Markers measured from one blood draw", ours: "45", theirs: "Varies" },
             { feature: "A named GMC-registered GP reviews every result", ours: true, theirs: "Often automated" },
             { feature: "Written interpretation with a next-step plan", ours: true, theirs: "Standard report" },
+            { feature: "A 15 minute results consultation with the GP, included", ours: true, theirs: "Usually a paid add-on" },
             { feature: "Free testosterone calculated from total testosterone and SHBG", ours: true, theirs: "Often total testosterone only" },
             { feature: "Free T3 and thyroid antibodies, not TSH alone", ours: true, theirs: "Often TSH only" },
             { feature: "Morning cortisol and DHEA-S", ours: true, theirs: false },
             { feature: "Lipoprotein(a)", ours: true, theirs: false },
             { feature: "Fasting insulin", ours: true, theirs: false },
           ]}
-          footnote="Compared with typical direct to consumer blood test services in the UK. A live results consultation with Dr Taiwo can be booked separately if you would rather talk your results through than read them."
+          footnote="Compared with typical direct to consumer blood test services in the UK. A 15 minute results consultation with Dr Taiwo is included in the price, so you can talk your results through rather than only read them."
         />
 
         <h2 className="cg" style={sectionHeading}>What optimal testosterone looks like vs laboratory normal</h2>

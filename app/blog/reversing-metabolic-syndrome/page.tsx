@@ -5,14 +5,14 @@ import Image from "next/image";
 import { bookUrl } from "@/data/panels";
 
 export const metadata: Metadata = {
-  title: { absolute: "Reversing Metabolic Syndrome What the Evidence Actually Supports | Veridian Clinic" },
+  title: { absolute: "Metabolic Syndrome Remission: What the Evidence Actually Supports | Veridian Clinic" },
   description:
     "Metabolic syndrome is not a fixed diagnosis. Clinical evidence shows meaningful reversal is achievable in 12 weeks through targeted changes to diet, activity, sleep, and body composition, with objective biomarker tracking to confirm what is actually improving.",
   alternates: {
     canonical: "https://veridianclinic.com/blog/reversing-metabolic-syndrome",
   },
   openGraph: {
-    title: "Reversing Metabolic Syndrome in 12 Weeks | Veridian Clinic",
+    title: "Metabolic Syndrome Remission: What the Evidence Supports | Veridian Clinic",
     description:
       "What the clinical evidence says about reversing metabolic syndrome: the specific levers that move insulin, waist metrics, blood pressure, and lipids in the right direction.",
     url: "https://veridianclinic.com/blog/reversing-metabolic-syndrome",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Reversing Metabolic Syndrome What the Evidence Actually Supports",
+  headline: "Metabolic syndrome remission: what the evidence actually supports",
   description:
     "Metabolic syndrome is reversible. Clinical evidence shows targeted changes to diet, activity, sleep, and body composition can substantially improve the underlying metabolic pattern within 12 weeks.",
   author: { "@type": "Person", name: "Dr Oluwatosin Taiwo", url: "https://veridianclinic.com" },
