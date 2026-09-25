@@ -28,20 +28,22 @@ So the goal is: **reply in seconds with the right link**, and let ThanksDoc take
 
 1. ~~Release the stale Cloud API registration~~ — not applicable to this number. `020 3633 9518` has never touched Meta Business Manager, so there is no conflicting registration to clear. (This step was written for `07344 290497`, which did have one; see [[feedback_whatsapp_landline]].)
 2. ~~Install WhatsApp Business on the handset and register the number~~ — DONE 2026-09-25.
-3. **Business Hours** (Settings → Business tools → Business hours): see §3 for the exact toggles.
-4. **Greeting message** (Settings → Business tools → Greeting message): paste §4, toggle it ON.
-5. **Away message** (Settings → Business tools → Away message): paste §5, set to "Outside business hours".
-6. **Quick replies** (Settings → Business tools → Quick replies): add each row in §6 as its own shortcut + message.
-7. **Labels** (chat list → long-press a chat, or Settings → Business tools → Labels): create New enquiry, Sent booking link, Booked, No reply needed.
-8. Send a test message from a phone that is not yours and confirm it arrives, the greeting fires, and a quick reply sends correctly.
+3. ~~Business Hours~~ — DONE. Dr Tosin set every day to **"By appointment only"** rather than the fixed grid originally proposed in §3 below (kept for reference only, not used). See §3 for the one thing still to check on the phone.
+4. **Greeting message** (Settings → Business tools → Greeting message, **phone app only, not on web**): paste §4, toggle it ON. Still outstanding.
+5. **Away message** (Settings → Business tools → Away message, **phone app only, not on web**): paste §5. **Check what schedule options are offered now that hours are "By appointment only"** — if there is no "outside of business hours" trigger available, choose "Always send" instead so the away message still fires. Still outstanding.
+6. ~~Quick replies~~ — DONE 2026-09-25, built directly via WhatsApp Web (web.whatsapp.com → Settings → Business tools → Quick replies), all 10 shortcuts in §6 confirmed live and correct. Quick replies and Business profile (hours, catalogue, links, contact) ARE editable on web; greeting/away messages are NOT — confirmed empirically, not assumed.
+7. **Labels** (chat list → long-press a chat, or Settings → Business tools → Labels — not found under the web Business tools menu, phone app only): create New enquiry, Sent booking link, Booked, No reply needed. Still outstanding.
+8. Send a test message from a phone that is not yours and confirm it arrives, the greeting fires, and a quick reply sends correctly. Still outstanding.
+
+Also done while in the web session: the blank **Contact email** on the Business profile was filled with `support@veridianclinic.com` (was empty).
 
 If the app truncates any message below when you paste it, shorten it rather than leave it cut off mid-sentence or mid-link — a broken link is worse than a shorter message.
 
 ---
 
-## 3. Business hours
+## 3. Business hours — SUPERSEDED, Dr Tosin chose "By appointment only" instead
 
-Set to match the actual bookable ThanksDoc calendar, so the away message only fires when nobody can really reply. Per the last full ThanksDoc audit (2026-09-19), the live schedule is:
+This table was the original proposal. **Not used** — Dr Tosin set every day to "By appointment only" in the app before this doc was finalised, and that's a reasonable call for an appointment-only clinic with no walk-ins. Kept here only so a future session knows what was considered and rejected.
 
 | Day | Hours |
 |---|---|
@@ -53,7 +55,7 @@ Set to match the actual bookable ThanksDoc calendar, so the away message only fi
 | Saturday | Closed |
 | Sunday | Closed |
 
-**Check this against the live ThanksDoc availability calendar before saving** — schedules have drifted before (a bad Friday 07:00–09:00 rule sat live for weeks until caught). If it has changed, use the real hours instead of this table.
+**The one open question**: WhatsApp's away message normally triggers "outside of business hours". With no fixed hours set, it's unverified whether that trigger still works or whether the away message needs to be set to "Always send" instead. Check this when setting the away message on the phone (§2 step 5) — the app's away-message screen will show whatever schedule options it actually offers.
 
 ---
 
