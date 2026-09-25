@@ -276,7 +276,7 @@ export default function AvaChat() {
               </div>
             </div>
             <a
-              href="https://wa.me/447344290497?text=Hi%2C%20I%20found%20you%20via%20Veridian%20Clinic%20and%20would%20like%20to%20find%20out%20more."
+              href="https://wa.me/442036339518?text=Hi%2C%20I%20found%20you%20via%20Veridian%20Clinic%20and%20would%20like%20to%20find%20out%20more."
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"

@@ -104,7 +104,7 @@ Both families are on Google Fonts and licensed for print. Pair them properly: Co
 │   ↑ Figtree 10pt, SIGNAL colour       │
 │                                       │
 │  veridianclinic.com/gp                │  Figtree 11pt, Ink
-│  WhatsApp 07344 290497                │  Figtree 11pt, Ink
+│  WhatsApp 020 3633 9518                │  Figtree 11pt, Ink
 │                                       │
 │  Adults 18 and over                   │  Figtree 8pt, Muted
 ├───────────────────────────────────────┤  ← 45 mm from bottom trim
@@ -154,7 +154,7 @@ One prescription item, fit note or referral letter included in the price.
 
 Scan to book
 or go to veridianclinic.com/gp
-or message us on WhatsApp: 07344 290497
+or message us on WhatsApp: 020 3633 9518
 
 Adults 18 and over
 ```
@@ -183,7 +183,7 @@ do not have to give up a working day. Most people are seen within the
 same week. Current times are shown when you book.
 
 FOUR WAYS TO BOOK
-Scan the code on the front. Message us on WhatsApp on 07344 290497. Type
+Scan the code on the front. Message us on WhatsApp on 020 3633 9518. Type
 veridianclinic.com/gp into any phone or computer. Or ask the pharmacist
 to help you scan it.
 

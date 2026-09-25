@@ -25,8 +25,8 @@ Identical artwork except the QR code. Supply as two print files.
 
 | Variant | QR encodes | WhatsApp link | Supplied file |
 |---|---|---|---|
-| Golders Green | `https://veridianclinic.com/gp?c=gg` | `wa.me/447344290497?text=...%28Golders%20Green%29` | `qr-Golders-Green.svg` |
-| Cherry Hinton | `https://veridianclinic.com/gp?c=ch` | `wa.me/447344290497?text=...%28Cherry%20Hinton%29` | `qr-Cherry-Hinton.svg` |
+| Golders Green | `https://veridianclinic.com/gp?c=gg` | `wa.me/442036339518?text=...%28Golders%20Green%29` | `qr-Golders-Green.svg` |
+| Cherry Hinton | `https://veridianclinic.com/gp?c=ch` | `wa.me/442036339518?text=...%28Cherry%20Hinton%29` | `qr-Cherry-Hinton.svg` |
 
 ThanksDoc has no booking API, so there are exactly four ways in: **WhatsApp, the QR code, the QR link, and the typed URL.** All four must appear on the leaflet.
 
@@ -98,7 +98,7 @@ Artboard **154 x 216 mm** (148 x 210 mm trim, 3 mm bleed). Safe zone 5 mm inside
 │   Scan to book   included             │
 │                                       │
 │  veridianclinic.com/gp                │  typed fallback, essential
-│  WhatsApp 07344 290497                │  fourth route, above the lip
+│  WhatsApp 020 3633 9518                │  fourth route, above the lip
 │                                       │
 │  Adults 18 and over                   │
 ├───────────────────────────────────────┤  ← 45 mm line
@@ -140,7 +140,7 @@ Two columns, 7 mm gutter. Denser type is fine here; this face is read in the han
 >
 > [QR] **Scan to book**
 > or go to **veridianclinic.com/gp**
-> or message us on WhatsApp: **07344 290497**
+> or message us on WhatsApp: **020 3633 9518**
 >
 > Adults 18 and over
 
@@ -156,7 +156,7 @@ Two columns, 7 mm gutter. Denser type is fine here; this face is read in the han
 > Appointments run daytime and evening, including slots from 19:00, so you do not have to give up a working day. Most people are seen within the same week. Current times are shown when you book.
 >
 > **Four ways to book**
-> Scan the code on the front. Message us on WhatsApp on 07344 290497. Type veridianclinic.com/gp into any phone or computer. Or ask the pharmacist to help you scan it.
+> Scan the code on the front. Message us on WhatsApp on 020 3633 9518. Type veridianclinic.com/gp into any phone or computer. Or ask the pharmacist to help you scan it.
 >
 > **No smartphone, or would rather not use video?**
 > Telephone appointments cost exactly the same as video, with the same GP. Say so when you book.
@@ -268,7 +268,7 @@ PROFILE     Solopress: PDF/X-1a:2001, FOGRA39
 
 ## 10. Open items, needing Dr Tosin's decision before print
 
-1. **Does WhatsApp on 07344 290497 actually work?** *(Raised to the top of the list at this revision.)* The number appears three times on the leaflet and is one of the four booking routes. Our own notes record that the Meta Cloud API number never completed registration (status PENDING, verification EXPIRED), that you messaged it and saw no reply and no delivery, and that installing WhatsApp Business on a physical SIM was still outstanding. `lib/siteConfig.ts` calls it "verified", which contradicts that. **Send one message to it from a phone that is not yours and confirm it arrives before this goes to print.** If it does not work, the honest fix is to drop WhatsApp from the leaflet rather than print a dead route.
+1. **Does WhatsApp on 020 3633 9518 actually work?** *(Raised to the top of the list at this revision.)* The number appears three times on the leaflet and is one of the four booking routes. Our own notes record that the Meta Cloud API number never completed registration (status PENDING, verification EXPIRED), that you messaged it and saw no reply and no delivery, and that installing WhatsApp Business on a physical SIM was still outstanding. `lib/siteConfig.ts` calls it "verified", which contradicts that. **Send one message to it from a phone that is not yours and confirm it arrives before this goes to print.** If it does not work, the honest fix is to drop WhatsApp from the leaflet rather than print a dead route.
 2. **A telephone number.** The patients most likely to want a telephone consultation are the least likely to scan a QR to discover it exists. `02036339518` is voice-only and could serve, but only if it is monitored.
 3. **Are the booking days fixed enough to print?** Removed at this revision in favour of "daytime and evening, including slots from 19:00". Confirm the days if you want them back.
 4. **Is the Cambridge pharmacy also Jethro's?** The QR tags are location-based (`gg`, `ch`) so they work either way, but the copy may want the name.

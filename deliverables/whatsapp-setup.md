@@ -1,8 +1,16 @@
 # WhatsApp booking channel, setup and message copy
 
-**Number:** 07344 290497 (kept by the clinic, decision 2026-09-10)
+**Number:** 020 3633 9518 (Tamar Telecommunications VoIP number, superseded the
+2026-09-10 decision to use the mobile 07344 290497 — see below)
 **Route chosen:** WhatsApp Business **App** on the handset, not the Cloud API
-**Status:** not yet registered. Nothing on this channel works until it is.
+**Status:** REGISTERED. Linked to WhatsApp Business as "Veridian Clinic" on
+2026-09-25 via Tamar's voice-call verification (SMS fails on VoIP numbers;
+WhatsApp reads the 6-digit code out on a call to the number instead). This
+directly contradicts the earlier finding that VoIP numbers cannot register at
+all — that finding was based on repeated failed attempts with no "call me"
+option appearing; whatever changed, it worked this time. Business hours,
+greeting/away messages, quick replies and the test message below are still
+outstanding.
 
 ---
 
@@ -18,8 +26,8 @@ So the goal is: **reply in seconds with the right link**, and let ThanksDoc take
 
 ## 2. Setup order
 
-1. **Release the stale Cloud API registration first.** Meta Business Manager, WhatsApp Manager, Phone numbers, delete `07344 290497`. A number cannot be on the Cloud API and the Business App at once, and the app will refuse it until this is done.
-2. Install WhatsApp Business on the handset and register the number.
+1. ~~Release the stale Cloud API registration~~ — not applicable to this number. `020 3633 9518` has never touched Meta Business Manager, so there is no conflicting registration to clear. (This step was written for `07344 290497`, which did have one; see [[feedback_whatsapp_landline]].)
+2. ~~Install WhatsApp Business on the handset and register the number~~ — DONE 2026-09-25.
 3. Set **business hours**.
 4. Set the **greeting message** (§3) and the **away message** (§4).
 5. Add the **quick replies** (§5).
