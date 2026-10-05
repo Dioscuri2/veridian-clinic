@@ -30,7 +30,7 @@ async function fetchBrevo(pathname: string, init: RequestInit = {}) {
 
 async function ensureBrevoList(listName: string): Promise<number | null> {
   if (!BREVO_API_KEY) return null;
-  const res = await fetchBrevo("/contacts/lists?limit=100&offset=0");
+  const res = await fetchBrevo("/contacts/lists?limit=50&offset=0");
   if (!res.ok) return null;
   const data = await res.json();
   const existing = Array.isArray(data?.lists)

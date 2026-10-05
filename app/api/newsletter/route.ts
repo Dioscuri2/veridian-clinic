@@ -80,7 +80,7 @@ async function fetchBrevo(pathname: string, init: RequestInit = {}) {
 async function ensureBrevoList(listName: string): Promise<number | null> {
   if (!BREVO_API_KEY) return null;
 
-  const listResponse = await fetchBrevo(`/contacts/lists?limit=100&offset=0`);
+  const listResponse = await fetchBrevo(`/contacts/lists?limit=50&offset=0`);
   if (!listResponse.ok) return null;
 
   const listData = await listResponse.json();

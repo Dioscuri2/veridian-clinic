@@ -15,7 +15,7 @@ function isValidEmail(email: string) {
 
 async function ensureBrevoList(): Promise<number | null> {
   if (!BREVO_API_KEY) return null;
-  const res = await fetch(`${BREVO_BASE_URL}/contacts/lists?limit=100&offset=0`, {
+  const res = await fetch(`${BREVO_BASE_URL}/contacts/lists?limit=50&offset=0`, {
     headers: { accept: "application/json", "api-key": BREVO_API_KEY },
   });
   if (!res.ok) return null;
