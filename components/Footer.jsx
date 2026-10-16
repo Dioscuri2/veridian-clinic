@@ -113,9 +113,6 @@ export default function Footer() {
             <Link href="/private-gp-cambridge" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
               Private GP Cambridge
             </Link>
-            <Link href="/private-gp-north-west-london" style={{ fontSize: ".92rem", color: "rgba(246,241,232,.75)", textDecoration: "underline", textDecorationColor: "rgba(246,241,232,.25)" }}>
-              Private GP North West London
-            </Link>
             <PatientPortalLink />
           </div>
 

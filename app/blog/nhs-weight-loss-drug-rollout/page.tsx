@@ -98,9 +98,8 @@ export default function NhsWeightLossRolloutPage() {
           Wholesale prices in the UK rose substantially from September 2025, and the private market now runs roughly £130 to £340 per pen depending on dose and supplier. Be cautious of any service where a form is the only thing between you and a prescription. The medical review is not an administrative obstacle to getting treatment, it <em>is</em> the treatment decision, and a service that treats it as a formality is not doing the part that keeps you safe.
         </p>
         <p style={paragraph}>
-          Veridian Clinic is GP-led. Consultations are with Dr Tosin personally, with a full history and contraindication review before any prescribing decision. We see patients across the UK by secure video, with face-to-face consulting locations opening soon in{" "}
-          <Link href="/private-gp-cambridge" style={{ color: "var(--fo)", fontWeight: 600 }}>Cambridge</Link>{" "}and{" "}
-          <Link href="/private-gp-north-west-london" style={{ color: "var(--fo)", fontWeight: 600 }}>North West London</Link>.
+          Veridian Clinic is GP-led. Consultations are with Dr Tosin personally, with a full history and contraindication review before any prescribing decision. We see patients across the UK by secure video, with a face-to-face consulting location opening soon in{" "}
+          <Link href="/private-gp-cambridge" style={{ color: "var(--fo)", fontWeight: 600 }}>Cambridge</Link>.
         </p>
         <p style={{ ...paragraph, fontSize: ".84rem", color: "var(--sl3)", marginTop: 28 }}>
           This article is general information about NHS policy and metabolic health, not medical advice and not an advertisement for any prescription medicine. Prescription-only medicines are supplied only following an individual clinical assessment where appropriate. This service is not suitable for pregnant or breastfeeding patients. Always inform your registered GP of any private prescription.

@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     "private blood tests while waiting",
     "see a GP quickly UK",
     "private GP Cambridge",
-    "private GP North West London",
     "NHS 18 week target",
     "private consultation NHS wait",
   ],
@@ -109,9 +108,8 @@ export default function NhsWaitingListRecordPage() {
 
         <h2 className="cg" style={sectionHeading}>What we do</h2>
         <p style={paragraph}>
-          Veridian Clinic is a GP-led metabolic and longevity practice. Consultations are unhurried, testing is doctor-ordered rather than sold as a panel off a shelf, and every result comes back with a written interpretation and a plan rather than a PDF of numbers. Blood draws are arranged at a Randox clinic or through a home kit posted to you. We see patients across the UK by secure video, with face-to-face consulting locations opening soon in{" "}
-          <Link href="/private-gp-cambridge" style={{ color: "var(--fo)", fontWeight: 600 }}>Cambridge</Link>{" "}and{" "}
-          <Link href="/private-gp-north-west-london" style={{ color: "var(--fo)", fontWeight: 600 }}>North West London</Link>.
+          Veridian Clinic is a GP-led metabolic and longevity practice. Consultations are unhurried, testing is doctor-ordered rather than sold as a panel off a shelf, and every result comes back with a written interpretation and a plan rather than a PDF of numbers. Blood draws are arranged at a Randox clinic or through a home kit posted to you. We see patients across the UK by secure video, with a face-to-face consulting location opening soon in{" "}
+          <Link href="/private-gp-cambridge" style={{ color: "var(--fo)", fontWeight: 600 }}>Cambridge</Link>.
         </p>
         <p style={{ ...paragraph, fontSize: ".84rem", color: "var(--sl3)", marginTop: 28 }}>
           This article is general information, not medical advice. If you have urgent or red-flag symptoms, contact your GP, NHS 111, or emergency services. Do not withdraw from an NHS pathway on the basis of a private consultation without discussing it with your treating team.

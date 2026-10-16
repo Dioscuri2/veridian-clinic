@@ -119,7 +119,7 @@ Saved canned replies, triggered by typing a shortcut while in a chat. Every answ
 | `/results` | Blood test results are returned within 3 to 5 working days, with full written clinical interpretation from Dr Taiwo included in every panel. |
 | `/cancel` | Bookings are handled by ThanksDoc and their terms apply. Cancelling less than 48 hours before your appointment means no refund or exchange, and you would need to rebook. |
 | `/price` | GP consultations are £59 (15 min) or £89 (20 min). Blood test panels start from £199. Full pricing: https://veridianclinic.com/blood-tests |
-| `/location` | We are virtual-first. Blood draws use Randox Health collection points across the UK. In-person rooms in Golders Green and Cambridge are opening soon, join the waitlist at https://veridianclinic.com/gp-consultations |
+| `/location` | We are virtual-first. Blood draws use Randox Health collection points across the UK. An in-person room in Cambridge is opening soon, join the waitlist at https://veridianclinic.com/gp-consultations |
 | `/weightloss` | Dr Taiwo offers a private GP-led weight management assessment. Take the free eligibility check first at https://veridianclinic.com/weight-loss (about 3 minutes), it tells you whether anything rules you out and unlocks a reduced consultation rate. |
 
 ---

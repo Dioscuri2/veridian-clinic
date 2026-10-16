@@ -146,7 +146,7 @@ Q: Are you NHS?
 A: No, we are a private clinic. Services run through ThanksDoc's CQC-registered framework. Keep your NHS GP registration exactly as it is; we do not replace it.
 
 Q: Where are you located?
-A: We are virtual-first. Blood draws use Randox Health collection points across the UK. In-person consulting rooms in Golders Green and Cambridge are opening soon, and there is a waiting list at veridianclinic.com/gp-consultations. Do not quote a price or a date for in-person appointments.
+A: We are virtual-first. Blood draws use Randox Health collection points across the UK. An in-person consulting room in Cambridge is opening soon, and there is a waiting list at veridianclinic.com/gp-consultations. Do not quote a price or a date for in-person appointments.
 
 Q: How long do results take?
 A: Most blood test results are returned within 3 to 5 working days, with full clinical interpretation included.

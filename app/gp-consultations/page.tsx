@@ -98,8 +98,6 @@ export const metadata: Metadata = {
     "private GP appointment this week",
     "private prescription online UK",
     "private GP referral letter",
-    "private GP Golders Green",
-    "private GP NW11",
     "private GP Cambridge",
     "video GP consultation evening",
   ],
@@ -596,17 +594,15 @@ export default function GpConsultationsPage() {
               <div>
                 <p className="lbl">Opening soon</p>
                 <div className="rule" />
-                <h2 className="sh-title" style={{ marginTop: 8 }}>Face-to-face rooms in Golders Green and Cambridge</h2>
+                <h2 className="sh-title" style={{ marginTop: 8 }}>A face-to-face room in Cambridge</h2>
                 <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16 }}>
-                  In-person consulting rooms are opening in Golders Green (NW11) and in Cambridge, for the appointments that genuinely need a doctor in the room. We are not taking in-person bookings yet and we are not publishing a date or a price for them, because we would rather tell you nothing than tell you something we cannot hold to.
+                  An in-person consulting room is opening in Cambridge, for the appointments that genuinely need a doctor in the room. We are not taking in-person bookings yet and we are not publishing a date or a price for them, because we would rather tell you nothing than tell you something we cannot hold to.
                 </p>
                 <p style={{ fontSize: "clamp(.97rem,2.6vw,1.03rem)", color: "var(--sl2)", lineHeight: 1.95, marginBottom: 16 }}>
                   Join the waiting list and we will email you once, when in-person appointments open, with the location and the fees. This is a waiting list, not a booking, and it does not reserve an appointment or take any payment.
                 </p>
                 <p style={{ fontSize: "clamp(.95rem,2.5vw,1rem)", color: "var(--sl2)", lineHeight: 1.9 }}>
-                  If you are looking specifically for local care, we have separate pages for{" "}
-                  <Link href="/private-gp-north-west-london" style={{ color: "var(--fo)", fontWeight: 600 }}>private GP care in North West London</Link>{" "}
-                  and{" "}
+                  If you are looking specifically for local care, we have a separate page for{" "}
                   <Link href="/private-gp-cambridge" style={{ color: "var(--fo)", fontWeight: 600 }}>private GP care in Cambridge</Link>.
                 </p>
               </div>
@@ -615,13 +611,13 @@ export default function GpConsultationsPage() {
                 <LeadCaptureForm
                   source="gp-consultations-in-person-waitlist"
                   title="In-person waiting list"
-                  subtitle="Golders Green (NW11) and Cambridge. One email when the rooms open, with location and fees. No booking, no payment, no appointment held."
+                  subtitle="Cambridge. One email when the room opens, with location and fees. No booking, no payment, no appointment held."
                   ctaLabel="Join the In-Person Waiting List →"
                   submittingLabel="Adding you..."
                   consentLabel="I agree to Veridian Clinic emailing me about in-person appointments and occasional clinic updates. I understand this is a waiting list and not a booking."
                   buttonClassName="btn btn-fo btn-full"
                   fields={["firstName", "email"]}
-                  metadata={{ interest: "in-person-consultations", locations: "Golders Green NW11, Cambridge" }}
+                  metadata={{ interest: "in-person-consultations", locations: "Cambridge" }}
                   compact
                 />
                 <p style={{ fontSize: "clamp(.79rem,2.1vw,.83rem)", color: "var(--sl3)", lineHeight: 1.7, marginTop: 16 }}>

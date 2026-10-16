@@ -50,7 +50,6 @@ const staticRoutes = [
   "/perimenopause-quiz",
   "/micronutrient-test",
   "/private-gp-cambridge",
-  "/private-gp-north-west-london",
   "/privacy",
   "/quiz",
   "/terms",

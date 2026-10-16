@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     "private GP consultation UK",
     "advanced blood test markers UK",
     "private GP Cambridge",
-    "private GP North West London",
   ],
 };
 
@@ -102,9 +101,8 @@ export default function WhatPrivateGpChecksPage() {
 
         <h2 className="cg" style={sectionHeading}>How we work</h2>
         <p style={paragraph}>
-          Every panel at Veridian is doctor-ordered rather than picked off a shelf, and every result comes back with a written GP interpretation and a plan. Blood draws are arranged at a Randox clinic or through a home kit posted to you. Consultations are by secure video across the UK, with face-to-face consulting locations opening soon in{" "}
-          <Link href="/private-gp-cambridge" style={{ color: "var(--fo)", fontWeight: 600 }}>Cambridge</Link>{" "}and{" "}
-          <Link href="/private-gp-north-west-london" style={{ color: "var(--fo)", fontWeight: 600 }}>North West London</Link>.
+          Every panel at Veridian is doctor-ordered rather than picked off a shelf, and every result comes back with a written GP interpretation and a plan. Blood draws are arranged at a Randox clinic or through a home kit posted to you. Consultations are by secure video across the UK, with a face-to-face consulting location opening soon in{" "}
+          <Link href="/private-gp-cambridge" style={{ color: "var(--fo)", fontWeight: 600 }}>Cambridge</Link>.
         </p>
         <p style={{ ...paragraph, fontSize: ".84rem", color: "var(--sl3)", marginTop: 28 }}>
           This article is general information, not medical advice. Private testing complements NHS care and does not replace it. Always inform your registered GP of significant private results.

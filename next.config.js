@@ -31,6 +31,15 @@ const nextConfig = {
         destination: "/gp-consultations",
         permanent: false,
       },
+      // North West London / Golders Green page withdrawn 2026-10-16: the
+      // face-to-face room there is no longer planned, so every promise on it
+      // was unshippable. Temporary, because the site rebuild may reinstate a
+      // virtual-only NW London landing page.
+      {
+        source: "/private-gp-north-west-london",
+        destination: "/gp-consultations",
+        permanent: false,
+      },
     ];
   },
   async headers() {
