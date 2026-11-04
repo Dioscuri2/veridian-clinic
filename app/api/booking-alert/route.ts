@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
           "**New booking on ThanksDoc**",
           `Product: ${product}`,
           `Reached the thank-you page: ${when}`,
-          "Open ThanksDoc to see the patient and the slot: https://notes.thanksdoc.co.uk/staff/appointments/calendar",
+          "Open ThanksDoc to see the patient and the slot: https://my.thanksdoc.co.uk/dashboard",
         ].join("\n"),
       }),
     });

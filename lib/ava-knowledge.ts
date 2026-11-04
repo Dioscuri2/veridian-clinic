@@ -18,17 +18,17 @@ These are separate from the metabolic and longevity products below. They are for
 
 1. Private GP Consultation, 15 minutes, £59 (video)
    Best for: one clear problem, a prescription where the picture is already clear, a short fit note conversation
-   Book: notes.thanksdoc.co.uk/book/service/334/36
+   Book: WhatsApp https://wa.me/442036339518 (online booking is temporarily unavailable)
 
 2. Private GP Consultation, 20 minutes, £89 (video)
    Best for: two or three concerns, a medication review, results to go through, a referral needing a proper history
-   Book: notes.thanksdoc.co.uk/book/service/335/36
+   Book: WhatsApp https://wa.me/442036339518 (online booking is temporarily unavailable)
 
 3. Repeat Prescription Request, £25
    Only where Dr Taiwo has already prescribed for you and no new consultation is clinically needed
-   Book: notes.thanksdoc.co.uk/book/service/336/36
+   Book: WhatsApp https://wa.me/442036339518 (online booking is temporarily unavailable)
 
-Appointment times: 10:00 to 14:00 and 19:00 to 21:00, latest start 20:45. Evening appointments are genuinely available. Do NOT promise same-day appointments; say it depends on what is free on the calendar.
+Appointment times: do NOT quote specific hours, days or evening availability at present. Online booking is temporarily unavailable while the clinic platform is being updated, so times are agreed directly with the clinic over WhatsApp. Say that Dr Taiwo will confirm the next available time by message. Do NOT promise same-day appointments.
 
 WHAT IS INCLUDED in a GP consultation: one electronic prescription item where clinically appropriate, a fit note where clinically indicated, and a referral letter where clinically indicated. Additional prescription items are charged. The longest course we can prescribe is 28 days, at the prescribing clinician's discretion. Medication itself is paid to the pharmacy at their price.
 
@@ -44,7 +44,7 @@ METABOLIC AND LONGEVITY PACKAGES
    Includes: a 30-minute GP-led consultation with Dr Taiwo to map your metabolic picture and recommend the right next step
    Quiz rate: £97 for anyone who has completed a Veridian quiz, a £30 saving, applied by entering code QUIZRATE at the payment step
    Best for: first-time visitors, unsure where to start
-   Book: notes.thanksdoc.co.uk/book/service/136/36
+   Book: WhatsApp https://wa.me/442036339518 (online booking is temporarily unavailable)
    Page: veridianclinic.com/discovery-call
 
 2. Metabolic Baseline, £595
@@ -124,7 +124,7 @@ WEIGHT LOSS CONSULTATION
 - 15-minute virtual consultation with Dr Tosin
 - Standard rate: £60 (veridianclinic.com/weight-loss/consultation)
 - Quiz rate: £48 after completing the free eligibility check (veridianclinic.com/weight-loss), applied by entering code WLQUIZRATE at the payment step
-- Book: notes.thanksdoc.co.uk/book/service/138/36
+- Book: WhatsApp https://wa.me/442036339518 (online booking is temporarily unavailable)
 - Covered: full medical history, medicine selection, dose titration plan, safety review, private prescription if appropriate, written summary
 
 FREE ELIGIBILITY CHECK: veridianclinic.com/weight-loss, a 10-question quiz with an instant result

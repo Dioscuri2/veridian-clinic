@@ -514,8 +514,53 @@ const THANKSDOC_CLINIC_URL =
  * per-doctor link (service and doctor preselected, discount code box present).
  * Without one it falls back to the generic clinic booking page.
  */
+/**
+ * 🔴 INTERIM 2026-11-04: ThanksDoc online booking is DOWN.
+ * The clinic is locked on the new `my.thanksdoc.co.uk` platform by two expired
+ * compliance certificates, and every `notes.thanksdoc.co.uk` link now serves a
+ * dead "Booking Page Has Moved" page. Rather than send patients to a dead end,
+ * every booking CTA routes to WhatsApp until the clinic unlocks.
+ *
+ * TO REVERT: set BOOKING_VIA_WHATSAPP to false. Do NOT delete the ThanksDoc
+ * code paths below, but note the new platform uses a DIFFERENT URL shape
+ * (`/book/service/<id>/<doctorId>` is a 404 there), so the host and shape must
+ * both be re-checked against the dashboard before flipping this back.
+ */
+const BOOKING_VIA_WHATSAPP = true;
+const WHATSAPP_BOOKING_NUMBER = "442036339518";
+
+/** WhatsApp deep link, prefilled so the patient does not have to explain. */
+const whatsAppBookingUrl = (what?: string): string =>
+  `https://wa.me/${WHATSAPP_BOOKING_NUMBER}?text=${encodeURIComponent(
+    what
+      ? `Hi, I would like to book the ${what}.`
+      : "Hi, I would like to book an appointment."
+  )}`;
+
+/**
+ * Readable label for the WhatsApp prefill. Panel productNames are short labels
+ * ("Cardiovascular", "Performance"), so "the Cardiovascular." reads wrong, so
+ * append "panel" for panels, leave consultations and programmes as they are.
+ */
+const bookingLabel = (panel?: Panel): string | undefined => {
+  if (!panel) return undefined;
+  const name = panel.productName;
+  // Some productNames already carry the word ("Longevity Panel"); do not double it.
+  return panel.kind === "panel" && !/panel/i.test(name) ? `${name} panel` : name;
+};
+
+/** Readable label for a ThanksDoc service id, for the WhatsApp prefill. */
+const labelForServiceId = (serviceId?: number | null): string | undefined => {
+  if (!serviceId) return undefined;
+  if (serviceId === WEIGHT_LOSS_CONSULTATION_SERVICE_ID) return "Weight Loss Consultation";
+  return bookingLabel(PANELS.find(p => p.thanksDocServiceId === serviceId));
+};
+
 export const thanksDocBookingUrl = (serviceId?: number | null): string =>
-  serviceId ? `https://notes.thanksdoc.co.uk/book/service/${serviceId}/${THANKSDOC_DOCTOR_ID}` : THANKSDOC_CLINIC_URL;
+  BOOKING_VIA_WHATSAPP
+    ? whatsAppBookingUrl(labelForServiceId(serviceId))
+    : serviceId
+      ? `https://notes.thanksdoc.co.uk/book/service/${serviceId}/${THANKSDOC_DOCTOR_ID}` : THANKSDOC_CLINIC_URL;
 
 /** Legacy /book?tier= values that are not panel slugs. */
 const TIER_ALIASES: Record<string, string> = {
@@ -530,8 +575,12 @@ export const panelForTier = (tier: string): Panel | undefined =>
   getPanel(TIER_ALIASES[tier] ?? tier);
 
 /** Booking URL for a panel slug or legacy tier value. Falls back to the clinic page. */
-export const bookUrl = (tier: string): string =>
-  thanksDocBookingUrl(panelForTier(tier)?.thanksDocServiceId);
+export const bookUrl = (tier: string): string => {
+  const panel = panelForTier(tier);
+  return BOOKING_VIA_WHATSAPP
+    ? whatsAppBookingUrl(bookingLabel(panel))
+    : thanksDocBookingUrl(panel?.thanksDocServiceId);
+};
 
 /** Weight Loss Consultation is a ThanksDoc service with no panels.ts entry. */
 export const WEIGHT_LOSS_CONSULTATION_SERVICE_ID = 138;
