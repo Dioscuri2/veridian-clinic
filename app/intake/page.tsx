@@ -24,12 +24,15 @@ const steps = [
   },
 ];
 
+// These statements are load bearing. They must describe what the code actually
+// does. The Discord alert was stripped of all patient data so that the third
+// line below is true; do not re-add patient fields to it.
 const dataPoints = [
-  "All data is encrypted in transit and at rest",
-  "GDPR compliant - your data is never sold or shared with third parties",
-  "Stored on UK/EU servers only",
-  "You can request deletion of your data at any time",
-  "Accessible only to your treating clinician Dr Taiwo",
+  "Sent over an encrypted connection and handled under UK GDPR",
+  "Delivered only to Dr Taiwo, your treating clinician",
+  "Never sold, and never used for marketing",
+  "Handled by our email provider (Brevo, EU) solely to deliver it to him",
+  "You can ask us to delete it at any time at support@veridianclinic.com",
 ];
 
 type FormStatus = "idle" | "submitting" | "done" | "error";
@@ -60,6 +63,16 @@ export default function IntakePage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [dob, setDob] = useState("");
+  const [phone, setPhone] = useState("");
+  const [sexAtBirth, setSexAtBirth] = useState("");
+  const [address, setAddress] = useState("");
+  const [allergies, setAllergies] = useState("");
+  const [pregnancy, setPregnancy] = useState("");
+  const [alcohol, setAlcohol] = useState("");
+  const [gpPractice, setGpPractice] = useState("");
+  const [gpConsent, setGpConsent] = useState("");
+  const [isAdult, setIsAdult] = useState(false);
+  const [consent, setConsent] = useState(false);
   const [medications, setMedications] = useState("");
   const [conditions, setConditions] = useState("");
   const [symptoms, setSymptoms] = useState("");
@@ -74,6 +87,8 @@ export default function IntakePage() {
   const siteKeySet = !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const canSubmit =
     name.trim() && email.trim() && symptoms.trim() &&
+    phone.trim() && allergies.trim() &&
+    isAdult && consent &&
     status !== "submitting" &&
     (!siteKeySet || !!turnstileToken);
 
@@ -89,12 +104,20 @@ export default function IntakePage() {
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
+          phone: phone.trim(),
           dob,
+          sexAtBirth,
+          address: address.trim(),
           medications,
+          allergies,
           conditions,
           symptoms,
+          pregnancy,
           recentTests,
           smoking,
+          alcohol: alcohol.trim(),
+          gpPractice: gpPractice.trim(),
+          gpConsent,
           notes,
           recordingUrl: recordingUrl.trim(),
           turnstileToken,
@@ -182,6 +205,20 @@ export default function IntakePage() {
 
                   <form onSubmit={handleSubmit} style={{ display: "grid", gap: 20 }}>
 
+                    {/* Safety netting must come BEFORE any question. A patient with
+                        a red flag should leave this form, not complete it. */}
+                    <div style={{ padding: "18px 20px", background: "rgba(122,22,22,.14)", border: "1px solid rgba(122,22,22,.5)" }}>
+                      <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "#ff9b9b", marginBottom: 8 }}>
+                        Do not use this form in an emergency
+                      </p>
+                      <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.8)", lineHeight: 1.8, margin: 0 }}>
+                        Call <strong>999</strong> now if you have chest pain, breathlessness at rest, weakness or drooping on one side of the face or body, difficulty speaking, uncontrolled bleeding, a severe allergic reaction, or a first or prolonged seizure. Call <strong>NHS 111</strong> if you are unsure and need advice today. This form is not monitored in real time, and Dr Taiwo may not read it for several hours.
+                      </p>
+                      <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.8)", lineHeight: 1.8, margin: "10px 0 0" }}>
+                        If you are in mental health crisis or thinking about harming yourself, call <strong>111</strong> and select the mental health option, or <strong>Samaritans</strong> free on <strong>116 123</strong>, at any hour. Please do not wait for this form.
+                      </p>
+                    </div>
+
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16 }}>
                       <div>
                         <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Full name *</label>
@@ -199,10 +236,37 @@ export default function IntakePage() {
                       </div>
                     </div>
 
-                    <div style={{ maxWidth: 280 }}>
-                      <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Date of birth</label>
-                      <input type="date" value={dob} onChange={e => setDob(e.target.value)}
-                        style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: dob ? "var(--iv)" : "rgba(246,241,232,.35)" }}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16 }}>
+                      <div>
+                        <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Mobile number *</label>
+                        <input type="tel" required value={phone} onChange={e => setPhone(e.target.value)}
+                          placeholder="So Dr Taiwo can reach you"
+                          style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)" }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Date of birth</label>
+                        <input type="date" value={dob} onChange={e => setDob(e.target.value)}
+                          style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: dob ? "var(--iv)" : "rgba(246,241,232,.35)" }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Sex registered at birth</label>
+                        <select value={sexAtBirth} onChange={e => setSexAtBirth(e.target.value)}
+                          style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: sexAtBirth ? "var(--iv)" : "rgba(246,241,232,.35)" }}>
+                          <option value="">Select...</option>
+                          <option value="Female">Female</option>
+                          <option value="Male">Male</option>
+                          <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Home address and postcode</label>
+                      <textarea value={address} onChange={e => setAddress(e.target.value)} rows={2}
+                        placeholder="Needed for any private prescription or referral letter, and for your invoice."
+                        style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)", resize: "vertical", lineHeight: 1.7 }}
                       />
                     </div>
 
@@ -212,6 +276,33 @@ export default function IntakePage() {
                         placeholder="List any medications you currently take, including dose if known. Write 'None' if not applicable."
                         style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)", resize: "vertical", lineHeight: 1.7 }}
                       />
+                    </div>
+
+                    {/* Required. An unanswered allergy box is not the same as "no
+                        allergies", and this form feeds a consultation that may prescribe. */}
+                    <div>
+                      <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Allergies *</label>
+                      <textarea required value={allergies} onChange={e => setAllergies(e.target.value)} rows={2}
+                        placeholder="Any medicine, food or other allergy, and what reaction it caused. Write 'None known' if you have none."
+                        style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)", resize: "vertical", lineHeight: 1.7 }}
+                      />
+                      <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.45)", lineHeight: 1.7, marginTop: 8 }}>
+                        Please answer this one even if the answer is none. It cannot be left blank.
+                      </p>
+                    </div>
+
+                    <div>
+                      <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Pregnancy and breastfeeding</label>
+                      <select value={pregnancy} onChange={e => setPregnancy(e.target.value)}
+                        style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: pregnancy ? "var(--iv)" : "rgba(246,241,232,.35)" }}>
+                        <option value="">Select...</option>
+                        <option value="Not applicable">Not applicable</option>
+                        <option value="Not pregnant or breastfeeding">Not pregnant or breastfeeding</option>
+                        <option value="Pregnant">Pregnant</option>
+                        <option value="Breastfeeding">Breastfeeding</option>
+                        <option value="Trying to conceive">Trying to conceive</option>
+                        <option value="Unsure">Unsure</option>
+                      </select>
                     </div>
 
                     <div>
@@ -253,7 +344,37 @@ export default function IntakePage() {
                           <option value="Prefer not to say">Prefer not to say</option>
                         </select>
                       </div>
+                      <div>
+                        <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Alcohol, units per week</label>
+                        <input type="text" value={alcohol} onChange={e => setAlcohol(e.target.value)}
+                          placeholder="Roughly. A pint or a medium glass of wine is about 2 units."
+                          style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)" }}
+                        />
+                      </div>
                     </div>
+
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16 }}>
+                      <div>
+                        <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Your NHS GP practice</label>
+                        <input type="text" value={gpPractice} onChange={e => setGpPractice(e.target.value)}
+                          placeholder="Practice name and town"
+                          style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: "var(--iv)" }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>May we send a summary to your NHS GP?</label>
+                        <select value={gpConsent} onChange={e => setGpConsent(e.target.value)}
+                          style={{ ...fieldStyle, background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.14)", color: gpConsent ? "var(--iv)" : "rgba(246,241,232,.35)" }}>
+                          <option value="">Select...</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                          <option value="I would like to decide after the consultation">Decide after the consultation</option>
+                        </select>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: ".78rem", color: "rgba(246,241,232,.45)", lineHeight: 1.75, marginTop: -6 }}>
+                      Sharing a summary is good practice and keeps your NHS record complete, but it is your choice and saying no will not affect your care here. This service does not replace your NHS GP, so please stay registered with them.
+                    </p>
 
                     <div>
                       <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Anything else Dr Tosin should know?</label>
@@ -283,6 +404,30 @@ export default function IntakePage() {
                       <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.45)", lineHeight: 1.7, marginTop: 10 }}>
                         Please still complete the medication and medical condition fields above, as these need to be accurate in writing for your clinical record. Set your recording so that only people with the link can view it, and do not include payment details or passwords.
                       </p>
+                    </div>
+
+                    {/* Both required. Note the wording: the patient confirms their
+                        own age and accuracy. Nothing here tells them they qualify
+                        for anything, which is decided in consultation. */}
+                    <div style={{ padding: "18px 20px", background: "rgba(246,241,232,.04)", border: "1px solid rgba(246,241,232,.14)", display: "grid", gap: 14 }}>
+                      <label style={{ display: "flex", gap: 12, alignItems: "flex-start", cursor: "pointer" }}>
+                        <input type="checkbox" required checked={isAdult} onChange={e => setIsAdult(e.target.checked)}
+                          style={{ marginTop: 4, width: 16, height: 16, flexShrink: 0, accentColor: "#c8a84b" }}
+                        />
+                        <span style={{ fontSize: ".85rem", color: "rgba(246,241,232,.8)", lineHeight: 1.75 }}>
+                          I am <strong>18 or over</strong>. Veridian Clinic does not see children.
+                        </span>
+                      </label>
+                      <label style={{ display: "flex", gap: 12, alignItems: "flex-start", cursor: "pointer" }}>
+                        <input type="checkbox" required checked={consent} onChange={e => setConsent(e.target.checked)}
+                          style={{ marginTop: 4, width: 16, height: 16, flexShrink: 0, accentColor: "#c8a84b" }}
+                        />
+                        <span style={{ fontSize: ".85rem", color: "rgba(246,241,232,.8)", lineHeight: 1.75 }}>
+                          The information I have given is accurate and complete to the best of my knowledge, and I agree to Dr Taiwo holding and using it to provide my care. I understand this is a <strong>private service</strong> that does not replace NHS GP registration or emergency care, that I <strong>cannot be physically examined</strong> remotely, that <strong>controlled drugs will not be prescribed</strong>, and that whether any treatment or prescription is appropriate is decided during the consultation. See our{" "}
+                          <Link href="/privacy" style={{ color: "var(--go)", textDecoration: "underline" }}>privacy notice</Link>{" "}and{" "}
+                          <Link href="/terms" style={{ color: "var(--go)", textDecoration: "underline" }}>terms</Link>.
+                        </span>
+                      </label>
                     </div>
 
                     <TurnstileWidget
