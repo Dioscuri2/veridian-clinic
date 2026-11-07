@@ -389,9 +389,14 @@ export default function IntakePage() {
                         Optional &middot; Prefer to talk instead of type?
                       </p>
                       <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.7)", lineHeight: 1.8, marginBottom: 14 }}>
-                        Some people find it easier to explain their history out loud. If you would rather record a short message than write it, record a video or voice note using a tool such as{" "}
+                        Some people find it easier to explain their history out loud. The simplest way is to{" "}
+                        <a href="https://wa.me/442036339518?text=Voice%20note%20for%20my%20intake" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)", textDecoration: "underline" }}>send a voice note on WhatsApp to 020 3633 9518</a>
+                        {" "}and just talk. Hold the microphone button in WhatsApp and speak for as long as you need. We transcribe it and read it before your appointment, so there is nothing to type and nothing to upload.
+                      </p>
+                      <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.7)", lineHeight: 1.8, marginBottom: 14 }}>
+                        If you would rather record a video, or you are not on WhatsApp, use a free tool such as{" "}
                         <a href="https://www.loom.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)", textDecoration: "underline" }}>Loom</a>{" "}
-                        (free, up to 5 minutes, and it produces a transcript automatically), then paste the share link below. Cover the same ground as the questions above: what brought you here, how long it has been going on, what you have already tried, and what you are hoping for.
+                        and paste the share link below instead. Either way, cover the same ground as the questions above: what brought you here, how long it has been going on, what you have already tried, and what you are hoping for.
                       </p>
                       <label style={{ ...labelStyle, color: "rgba(246,241,232,.55)" }}>Link to your recording</label>
                       <input
