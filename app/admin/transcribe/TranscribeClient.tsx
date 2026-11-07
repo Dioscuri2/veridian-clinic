@@ -51,15 +51,23 @@ export default function TranscribeClient() {
         <h1 style={{ fontSize: "1.9rem", fontWeight: 500, color: "#f6f1e8", margin: "16px 0 8px" }}>
           Voice note to consultation context
         </h1>
-        <p style={{ fontSize: ".92rem", color: "rgba(246,241,232,.62)", lineHeight: 1.85, maxWidth: 660 }}>
-          For a patient who would rather talk than type. Ask them to send a voice note to the clinic
-          WhatsApp, export it, and drop it here. You get a verbatim transcript wrapped in the same
-          block format as the written intake email, ready to paste into Heidi.
-        </p>
-        <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.4)", lineHeight: 1.8, maxWidth: 660, marginTop: 10 }}>
-          The audio is sent to Groq for transcription and is not stored by us. Nothing here is
-          summarised by a model: the transcript is the patient&apos;s own words, so the clinical
-          structuring stays with you and with Heidi.
+        <div style={{ marginTop: 20, padding: "18px 20px", background: "rgba(200,168,75,.08)", border: "1px solid rgba(200,168,75,.3)" }}>
+          <p style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 8px" }}>
+            Try the simpler route first
+          </p>
+          <p style={{ fontSize: ".9rem", color: "rgba(246,241,232,.75)", lineHeight: 1.8, margin: 0 }}>
+            Heidi and Cue both take an audio file directly. If you have the WhatsApp voice note on
+            your machine, dropping it into one of those is fewer steps than this page and costs no
+            API quota. Use this page only when you want the transcript as text, in the same block
+            format as the written intake email, without opening either tool.
+          </p>
+        </div>
+
+        <p style={{ fontSize: ".82rem", color: "rgba(246,241,232,.4)", lineHeight: 1.8, maxWidth: 660, marginTop: 18 }}>
+          Audio sent here goes to Groq for transcription and is not stored by us. It uses a
+          dedicated key, never the one that runs Ava on the public site, so this can never rate
+          limit the website chatbot. Nothing is summarised by a model: the transcript is the
+          patient&apos;s own words, so the clinical structuring stays with you.
         </p>
 
         <form onSubmit={run} style={{ marginTop: 28, display: "grid", gap: 16 }}>

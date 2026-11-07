@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminRequest } from "@/lib/adminAuth";
 
-const GROQ_API_KEY = process.env.GROQ_API_KEY || "";
+// DELIBERATELY NOT GROQ_API_KEY. That key serves Ava, the public website
+// chatbot, on a free Groq tier whose quota is shared across the account.
+// Transcribing a few voice notes through it could rate limit a patient-facing
+// chatbot to save a clinician a manual step, which is the wrong trade. This
+// tool stays dark unless it is given its own key.
+const TRANSCRIBE_KEY = process.env.TRANSCRIBE_GROQ_API_KEY || "";
 
 // Groq's audio endpoint caps uploads. WhatsApp voice notes are opus and tiny
 // (a 10 minute note is well under 2 MB), so this ceiling is generous.
@@ -45,9 +50,12 @@ export async function POST(request: NextRequest) {
   if (!verifyAdminRequest(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  if (!GROQ_API_KEY) {
+  if (!TRANSCRIBE_KEY) {
     return NextResponse.json(
-      { error: "GROQ_API_KEY is not set on this environment, so transcription is unavailable." },
+      {
+        error:
+          "Transcription is not configured. Send the voice note straight into Heidi, or into Cue, which needs no key. To enable this page instead, set TRANSCRIBE_GROQ_API_KEY on Railway. Do not reuse GROQ_API_KEY: that one serves Ava on the public site.",
+      },
       { status: 503 },
     );
   }
@@ -83,7 +91,7 @@ export async function POST(request: NextRequest) {
   try {
     const res = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
       method: "POST",
-      headers: { Authorization: `Bearer ${GROQ_API_KEY}` },
+      headers: { Authorization: `Bearer ${TRANSCRIBE_KEY}` },
       body: upstream,
     });
 
