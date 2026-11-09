@@ -19,7 +19,7 @@ Never run `npx vercel` for this project. Railway API pattern + personal token: s
 
 ## PAYMENTS RULE (standing, 2026-08-20)
 
-**ALL blood-test and service payments run through ThanksDoc** (https://notes.thanksdoc.co.uk/book/clinic/veridian, via NEXT_PUBLIC_THANKSDOC_BOOKING_URL). Never build a new Stripe checkout flow for a panel/programme/consultation. The Stripe tierCatalog in app/api/checkout/route.ts is LEGACY (kept for the £19.99 guide PDF + the prebuild price-drift check). `data/panels.ts` is the single source of truth for all panels — read it before touching prices, markers or panel copy. Supplier is Randox (Nexus); only `supplier.verified: true` compositions may drive patient-facing marker claims.
+**ALL blood-test and service payments run through ThanksDoc.** Since the 2026-11 platform migration the host is `my.thanksdoc.co.uk` and booking is PER SERVICE: `/book/s/veridian/<service-slug>`. There is no working clinic-wide booking page, and `NEXT_PUBLIC_THANKSDOC_BOOKING_URL` is no longer read by the code. Links are built by `bookUrl()` / `thanksDocBookingUrl()` in `data/panels.ts`, which route a service to ThanksDoc only if it is listed in `THANKSDOC_BOOKING_SLUG` (i.e. verified Active in the dashboard) and otherwise fall back to WhatsApp. Never build a new Stripe checkout flow for a panel/programme/consultation. The Stripe tierCatalog in app/api/checkout/route.ts is LEGACY (kept for the £19.99 guide PDF + the prebuild price-drift check). `data/panels.ts` is the single source of truth for all panels — read it before touching prices, markers or panel copy. Supplier is Randox (Nexus); only `supplier.verified: true` compositions may drive patient-facing marker claims.
 
 ## Session pickup
 

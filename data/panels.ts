@@ -499,15 +499,13 @@ export const tradePence = (o: SupplierOrder): number =>
   o.lines.reduce((s, l) => s + l.tradePence, 0);
 
 // ── Booking links ────────────────────────────────────────────────
-// ThanksDoc discount codes (QUIZRATE, WLQUIZRATE) only work on the per-doctor
-// service link, never on the clinic/department link, so every product CTA must
-// use thanksDocBookingUrl with a service id.
-
-/** ThanksDoc practitioner id for Dr Tosin Taiwo. */
-const THANKSDOC_DOCTOR_ID = 36;
-
-const THANKSDOC_CLINIC_URL =
-  process.env.NEXT_PUBLIC_THANKSDOC_BOOKING_URL || "https://notes.thanksdoc.co.uk/book/clinic/veridian";
+// Discount codes are entered by the patient in the "Promo code" box on the
+// ThanksDoc booking form, so every product CTA must use a per-service link.
+//
+// The old per-doctor ids and the NEXT_PUBLIC_THANKSDOC_BOOKING_URL clinic page
+// were removed on 2026-11-09: they pointed at notes.thanksdoc.co.uk, which the
+// platform migration killed. The new platform addresses services by slug, not
+// by numeric id, and has no working clinic-wide booking page.
 
 /**
  * Canonical ThanksDoc booking URL. With a service id it returns the per-service,
@@ -515,18 +513,53 @@ const THANKSDOC_CLINIC_URL =
  * Without one it falls back to the generic clinic booking page.
  */
 /**
- * 🔴 INTERIM 2026-11-04: ThanksDoc online booking is DOWN.
- * The clinic is locked on the new `my.thanksdoc.co.uk` platform by two expired
- * compliance certificates, and every `notes.thanksdoc.co.uk` link now serves a
- * dead "Booking Page Has Moved" page. Rather than send patients to a dead end,
- * every booking CTA routes to WhatsApp until the clinic unlocks.
+ * ✅ RESTORED 2026-11-09: ThanksDoc online booking is BACK, on the new platform.
  *
- * TO REVERT: set BOOKING_VIA_WHATSAPP to false. Do NOT delete the ThanksDoc
- * code paths below, but note the new platform uses a DIFFERENT URL shape
- * (`/book/service/<id>/<doctorId>` is a 404 there), so the host and shape must
- * both be re-checked against the dashboard before flipping this back.
+ * The 2026-11-04 interim routed every booking CTA to WhatsApp because the
+ * clinic was compliance-locked and every `notes.thanksdoc.co.uk` link served a
+ * dead "Booking Page Has Moved" page. Compliance passed on 2026-11-09 (24/24)
+ * and booking works again, but on a DIFFERENT host and a DIFFERENT URL shape.
+ *
+ * 🪤 Routing is now PER SERVICE, not a single global flag, because only the
+ * four GP consultations are Active on ThanksDoc. The 21 blood panels and the
+ * programmes are still Inactive, and their booking page tells a patient
+ * "That service is not available online" — which is worse than WhatsApp. So a
+ * service appears in THANKSDOC_BOOKING_SLUG only once it is Active on
+ * ThanksDoc; everything else keeps falling back to WhatsApp.
+ *
+ * TO ADD A SERVICE: activate it in the ThanksDoc dashboard, copy its "Open
+ * booking link" slug, and add one line below. Do not guess the slug.
+ *
+ * 🪤 `https://my.thanksdoc.co.uk/book/veridian` is NOT a valid page despite
+ * returning HTTP 200 (it is client rendered and soft-404s). Only the
+ * per-service `/book/s/veridian/<slug>` form works.
  */
-const BOOKING_VIA_WHATSAPP = true;
+const THANKSDOC_BOOKING_HOST = "https://my.thanksdoc.co.uk";
+
+/**
+ * Panel slug -> ThanksDoc booking slug. ONLY services verified Active in the
+ * ThanksDoc dashboard on 2026-11-09. Adding a slug here sends live patients
+ * there, so verify the service is Active first.
+ */
+const THANKSDOC_BOOKING_SLUG: Record<string, string> = {
+  "gp-consultation-15": "private-gp-consultation-15-minutes",
+  "gp-consultation-20": "private-gp-consultation-20-minutes",
+};
+
+/** Same mapping keyed by the legacy numeric service id, for thanksDocBookingUrl. */
+const THANKSDOC_SLUG_BY_SERVICE_ID: Record<number, string> = {
+  334: "private-gp-consultation-15-minutes",
+  335: "private-gp-consultation-20-minutes",
+};
+
+/**
+ * Per-service booking URL. `ref` is echoed back to us in the ThanksDoc booking
+ * webhook and the post-booking redirect, so it is the campaign attribution tag.
+ */
+export const thanksDocServiceUrl = (bookingSlug: string, ref?: string): string =>
+  `${THANKSDOC_BOOKING_HOST}/book/s/veridian/${bookingSlug}` +
+  (ref ? `?ref=${encodeURIComponent(ref)}` : "");
+
 const WHATSAPP_BOOKING_NUMBER = "442036339518";
 
 /** WhatsApp deep link, prefilled so the patient does not have to explain. */
@@ -556,11 +589,12 @@ const labelForServiceId = (serviceId?: number | null): string | undefined => {
   return bookingLabel(PANELS.find(p => p.thanksDocServiceId === serviceId));
 };
 
-export const thanksDocBookingUrl = (serviceId?: number | null): string =>
-  BOOKING_VIA_WHATSAPP
-    ? whatsAppBookingUrl(labelForServiceId(serviceId))
-    : serviceId
-      ? `https://notes.thanksdoc.co.uk/book/service/${serviceId}/${THANKSDOC_DOCTOR_ID}` : THANKSDOC_CLINIC_URL;
+export const thanksDocBookingUrl = (serviceId?: number | null): string => {
+  const bookingSlug = serviceId ? THANKSDOC_SLUG_BY_SERVICE_ID[serviceId] : undefined;
+  return bookingSlug
+    ? thanksDocServiceUrl(bookingSlug)
+    : whatsAppBookingUrl(labelForServiceId(serviceId));
+};
 
 /** Legacy /book?tier= values that are not panel slugs. */
 const TIER_ALIASES: Record<string, string> = {
@@ -577,9 +611,10 @@ export const panelForTier = (tier: string): Panel | undefined =>
 /** Booking URL for a panel slug or legacy tier value. Falls back to the clinic page. */
 export const bookUrl = (tier: string): string => {
   const panel = panelForTier(tier);
-  return BOOKING_VIA_WHATSAPP
-    ? whatsAppBookingUrl(bookingLabel(panel))
-    : thanksDocBookingUrl(panel?.thanksDocServiceId);
+  const bookingSlug = panel ? THANKSDOC_BOOKING_SLUG[panel.slug] : undefined;
+  return bookingSlug
+    ? thanksDocServiceUrl(bookingSlug)
+    : whatsAppBookingUrl(bookingLabel(panel));
 };
 
 /** Weight Loss Consultation is a ThanksDoc service with no panels.ts entry. */
