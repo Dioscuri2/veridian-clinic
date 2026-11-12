@@ -2,11 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyTurnstileToken } from "@/lib/turnstile";
 import { cancelIntakeReminders } from "@/lib/intakeSequence";
 import { verifyAdminRequest } from "@/lib/adminAuth";
+import { saveIntake } from "@/lib/intakeStore";
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY || "";
 // Some env values are stored with literal quotes around them, which makes
 // fetch() throw "Failed to parse URL". Strip them rather than trusting config.
 const DISCORD_WEBHOOK = (process.env.DISCORD_WEBHOOK_VERIDIAN || "").trim().replace(/^["']|["']$/g, "");
+const INTAKES_ADMIN_URL = "https://veridianclinic.com/admin/intakes";
 
 interface IntakeFields {
   name: string;
@@ -155,10 +157,15 @@ function buildEmailHtml(f: IntakeFields): string {
 </body></html>`;
 }
 
+// FALLBACK ONLY. The record store is the system of record; this full-content
+// email is sent only when the store is down, so the patient's history still
+// reaches the clinician. It throws on every failure, including a missing key,
+// because at that point nothing else is holding the submission.
 async function sendEmail(f: IntakeFields) {
-  if (!BREVO_API_KEY) return;
+  if (!BREVO_API_KEY) throw new Error("Brevo is not configured, so the email fallback cannot run");
   const res = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
+    signal: AbortSignal.timeout(15000),
     headers: {
       accept: "application/json",
       "content-type": "application/json",
@@ -173,20 +180,71 @@ async function sendEmail(f: IntakeFields) {
       tags: ["clinical-intake"],
     }),
   });
-  // This email IS the delivery mechanism for the patient's intake. If it fails
-  // we must tell them to try again, not silently drop their medical history.
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
     throw new Error(`Brevo rejected the intake email (${res.status}): ${detail.slice(0, 200)}`);
   }
 }
 
+// Sent once the record is saved. DELIBERATELY CONTENT FREE: no name, no
+// answers. The clinical detail lives in the record store, not in a mailbox.
+// Best effort, because the intake is already safe by the time this runs.
+async function sendSavedNotice() {
+  if (!BREVO_API_KEY) return;
+  try {
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      signal: AbortSignal.timeout(8000),
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+        "api-key": BREVO_API_KEY,
+      },
+      body: JSON.stringify({
+        sender: { name: "Veridian Intake", email: "support@veridianclinic.com" },
+        to: [{ email: "support@veridianclinic.com", name: "Dr Tosin Taiwo" }],
+        subject: "New clinical intake saved",
+        textContent: `A patient has submitted a clinical intake and it has been saved.\n\nRead or download it: ${INTAKES_ADMIN_URL}\n\nThis message carries no patient details on purpose.`,
+        tags: ["clinical-intake-notice"],
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      console.error(`[api/intake] saved-notice email rejected (${res.status}), intake is saved regardless: ${detail.slice(0, 200)}`);
+    }
+  } catch (err) {
+    console.error("[api/intake] saved-notice email failed, intake is saved regardless:", err);
+  }
+}
+
+type AlertKind = "saved" | "emailFallback" | "failed";
+
+const ALERTS: Record<AlertKind, { title: string; description: string; color: number }> = {
+  saved: {
+    title: "New clinical intake saved",
+    description: `A patient intake has been saved. Read or download it at ${INTAKES_ADMIN_URL}. No patient data is sent to Discord.`,
+    color: 0xc8a84b,
+  },
+  emailFallback: {
+    title: "Clinical intake delivered by email (record store failed)",
+    description:
+      "A patient intake could not be confirmed as saved in the record store, so it was emailed to support@veridianclinic.com instead. It may be missing from the admin list. Check the server logs. No patient data is sent to Discord.",
+    color: 0xd98a00,
+  },
+  failed: {
+    title: "A clinical intake FAILED to submit",
+    description:
+      "A patient completed the intake form but it could not be saved or emailed. They were told to try again. Nothing was stored. Check the server logs. No patient data is sent to Discord.",
+    color: 0x7a1616,
+  },
+};
+
 // Best effort only. A staff alert must never be able to fail a patient's
 // submission, which is exactly what a malformed webhook URL did.
-async function pingDiscord() {
+async function pingDiscord(kind: AlertKind) {
   if (!DISCORD_WEBHOOK) return;
   try {
-    await postDiscord();
+    await postDiscord(kind);
   } catch (err) {
     console.error("[api/intake] Discord alert failed (submission unaffected):", err);
   }
@@ -194,27 +252,24 @@ async function pingDiscord() {
 
 // DELIBERATELY CONTENT FREE. Discord is a US third party and this is
 // special-category health data, which /intake promises stays with the treating
-// clinician. The alert says only that something arrived. Never add patient
+// clinician. The alert says only what happened. Never add patient
 // name, email, DOB or symptoms back into this payload.
-async function postDiscord() {
+async function postDiscord(kind: AlertKind) {
+  const { title, description, color } = ALERTS[kind];
   await fetch(DISCORD_WEBHOOK, {
     method: "POST",
+    signal: AbortSignal.timeout(8000),
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      embeds: [
-        {
-          title: "New clinical intake received",
-          description:
-            "A patient intake has been submitted. The details are in the email to support@veridianclinic.com. No patient data is sent to Discord.",
-          color: 0xc8a84b,
-          timestamp: new Date().toISOString(),
-        },
-      ],
+      embeds: [{ title, description, color, timestamp: new Date().toISOString() }],
     }),
   });
 }
 
 export async function POST(request: NextRequest) {
+  // True once a real patient submission has passed validation and the bot
+  // check. Only then is a failure worth a staff alert.
+  let accepted = false;
   try {
     const body = await request.json();
     const {
@@ -244,6 +299,7 @@ export async function POST(request: NextRequest) {
     if (!turnstileOk) {
       return NextResponse.json({ error: "Security check failed. Please refresh and try again." }, { status: 400 });
     }
+    accepted = true;
 
     const t = (v: unknown) => ((v as string) || "").trim();
     const fields: IntakeFields = {
@@ -267,15 +323,33 @@ export async function POST(request: NextRequest) {
       recordingUrl: t(recordingUrl),
     };
 
-    await Promise.all([sendEmail(fields), pingDiscord()]);
+    // SAVE FIRST. Alerts go out only after the record is confirmed stored, so
+    // an alert can never again announce an intake that nobody can read.
+    const text = buildScribeBlock(fields);
+    let reference = "";
+    try {
+      const saved = await saveIntake({ name: fields.name, email: fields.email, text });
+      reference = saved.id;
+    } catch (storeErr) {
+      console.error("[api/intake] record store failed, falling back to email:", storeErr);
+      await sendEmail(fields); // throws if this fails too, and the patient is told to retry
+    }
+
+    if (reference) {
+      await Promise.all([sendSavedNotice(), pingDiscord("saved")]);
+    } else {
+      await pingDiscord("emailFallback");
+    }
 
     // Form is in, so stop chasing them.
     await cancelIntakeReminders(fields.email);
 
-    return NextResponse.json({ ok: true });
+    // The patient gets their own copy back on screen, to read and download.
+    return NextResponse.json({ ok: true, reference, record: text });
   } catch (err) {
     // Was a bare catch, which is how a hard failure here stayed invisible.
     console.error("[api/intake] submit failed:", err);
+    if (accepted) await pingDiscord("failed");
     // Patients only ever see the generic line. The cause is appended for an
     // authenticated admin so this never has to be debugged blind again.
     const detail = verifyAdminRequest(request)

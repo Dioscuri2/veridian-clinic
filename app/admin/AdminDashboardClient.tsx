@@ -932,6 +932,7 @@ export default function AdminDashboardClient({
       <div style={{ background: "#1a1916", borderBottom: "1px solid #2a2820", padding: "0 24px", display: "flex", gap: "24px", alignItems: "center", height: "44px" }}>
         <button style={tabStyle(activeTab === "overview")} onClick={() => setActiveTab("overview")}>Overview</button>
           <button style={tabStyle(activeTab === "intake")} onClick={() => setActiveTab("intake")}>Intake</button>
+          <a href="/admin/intakes" style={{ ...tabStyle(false), textDecoration: "none" }}>Patient intakes</a>
         <button style={tabStyle(activeTab === "whatsapp")} onClick={() => setActiveTab("whatsapp")}>📱 WhatsApp</button>
         <button style={tabStyle(activeTab === "refund")} onClick={() => setActiveTab("refund")}>Refunds</button>
         <button style={tabStyle(activeTab === "social")} onClick={() => setActiveTab("social")}>Social</button>

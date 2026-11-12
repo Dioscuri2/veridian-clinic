@@ -25,13 +25,15 @@ const steps = [
 ];
 
 // These statements are load bearing. They must describe what the code actually
-// does. The Discord alert was stripped of all patient data so that the third
-// line below is true; do not re-add patient fields to it.
+// does. The Discord alert was stripped of all patient data so that the second
+// line below is true; do not re-add patient fields to it. Since Nov 2026 the
+// answers are saved, encrypted, to the clinic's record store (lib/intakeStore.ts)
+// and only fall back to a Brevo email if that store is down.
 const dataPoints = [
   "Sent over an encrypted connection and handled under UK GDPR",
-  "Delivered only to Dr Taiwo, your treating clinician",
+  "Saved, encrypted, to a private clinic record that only Dr Taiwo, your treating clinician, can open",
   "Never sold, and never used for marketing",
-  "Handled by our email provider (Brevo, EU) solely to deliver it to him",
+  "Our email provider (Brevo, EU) holds your email address for appointment messages. It carries your answers to Dr Taiwo only if the clinic record is unavailable",
   "You can ask us to delete it at any time at support@veridianclinic.com",
 ];
 
@@ -83,6 +85,7 @@ export default function IntakePage() {
   const [turnstileToken, setTurnstileToken] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [record, setRecord] = useState("");
 
   const siteKeySet = !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const canSubmit =
@@ -129,11 +132,21 @@ export default function IntakePage() {
         setStatus("error");
         return;
       }
+      setRecord(typeof data?.record === "string" ? data.record : "");
       setStatus("done");
     } catch {
       setErrorMsg("Something went wrong. Please try again.");
       setStatus("error");
     }
+  }
+
+  function downloadCopy() {
+    const url = URL.createObjectURL(new Blob([record], { type: "text/plain;charset=utf-8" }));
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "veridian-clinic-intake.txt";
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   return (
@@ -196,6 +209,14 @@ export default function IntakePage() {
                   <p style={{ fontSize: ".74rem", fontWeight: 700, letterSpacing: ".18em", textTransform: "uppercase", color: "var(--go2)", marginBottom: 12 }}>Intake Received</p>
                   <h2 className="cg" style={{ fontSize: "clamp(1.6rem,3.5vw,2.2rem)", fontWeight: 500, color: "var(--iv)", lineHeight: 1.2, marginBottom: 16 }}>Thank you. Dr Taiwo will be in touch.</h2>
                   <p style={{ fontSize: ".88rem", color: "rgba(246,241,232,.65)", lineHeight: 1.85, maxWidth: 480, margin: "0 auto 24px" }}>Your intake has been received. You will receive a confirmation email within 24 hours once Dr Taiwo has reviewed your details.</p>
+                  {record && (
+                    <div style={{ textAlign: "left", maxWidth: 560, margin: "0 auto 28px" }}>
+                      <p style={{ fontSize: ".74rem", fontWeight: 700, letterSpacing: ".18em", textTransform: "uppercase", color: "var(--go2)", marginBottom: 8 }}>Your copy</p>
+                      <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.65)", lineHeight: 1.8, margin: "0 0 12px" }}>This is what Dr Taiwo will read before your appointment. You can download it to keep.</p>
+                      <pre style={{ margin: "0 0 14px", padding: 16, background: "var(--iv)", color: "var(--sl)", fontFamily: "ui-monospace, Menlo, Consolas, monospace", fontSize: ".76rem", lineHeight: 1.65, whiteSpace: "pre-wrap", wordBreak: "break-word", maxHeight: 360, overflowY: "auto" }}>{record}</pre>
+                      <button type="button" onClick={downloadCopy} className="btn btn-ol" style={{ fontSize: ".85rem" }}>Download my copy</button>
+                    </div>
+                  )}
                   <Link href="/" className="btn btn-ol" style={{ fontSize: ".88rem" }}>Return to Home</Link>
                 </div>
               ) : (
