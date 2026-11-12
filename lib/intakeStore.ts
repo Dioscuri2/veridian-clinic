@@ -13,6 +13,7 @@ export interface IntakeRecord {
   name: string;
   email: string;
   text: string; // the plain-text block exactly as built at submission
+  source?: string; // set only when the clinic added it by hand, e.g. from WhatsApp
 }
 
 function r(): Redis {
@@ -49,7 +50,7 @@ export function decryptRecord(value: string): IntakeRecord {
   return JSON.parse(plain.toString("utf8")) as IntakeRecord;
 }
 
-export async function saveIntake(data: Pick<IntakeRecord, "name" | "email" | "text">): Promise<IntakeRecord> {
+export async function saveIntake(data: Pick<IntakeRecord, "name" | "email" | "text" | "source">): Promise<IntakeRecord> {
   const record: IntakeRecord = { ...data, id: randomUUID(), receivedAt: new Date().toISOString() };
   const redis = r();
   await redis.hset(INTAKES_KEY, { [record.id]: encryptRecord(record) });
@@ -89,7 +90,7 @@ export function intakeMarkdown(record: IntakeRecord): string {
     "",
     `- Received: ${received}`,
     `- Reference: ${record.id}`,
-    "- Source: veridianclinic.com/intake, as submitted by the patient",
+    `- Source: ${record.source || "veridianclinic.com/intake, as submitted by the patient"}`,
     "",
     "````text",
     record.text,

@@ -61,6 +61,28 @@ const labelStyle: React.CSSProperties = {
   marginBottom: 6,
 };
 
+// The same questions as the form, sent as a WhatsApp message the patient
+// answers by text or voice note. Keep in step with the form fields below.
+const WHATSAPP_INTAKE_TEXT = [
+  "My intake for Veridian Clinic",
+  "",
+  "1. Full name and date of birth:",
+  "2. What I would like help with, and how long it has been going on:",
+  "3. What I have already tried:",
+  "4. Medicines and supplements I take, with doses:",
+  "5. Allergies (or none known):",
+  "6. Medical conditions and operations:",
+  "7. Pregnant or breastfeeding, if relevant:",
+  "8. Blood tests in the last 12 months:",
+  "9. Smoking, and alcohol in a typical week:",
+  "10. My NHS GP practice, and whether you may send them a summary (yes or no):",
+  "11. Email address, home address and postcode:",
+  "12. Anything else:",
+  "",
+  "By sending this I confirm I am 18 or over, my answers are accurate, and I agree to Dr Taiwo holding them to provide my care.",
+].join("\n");
+const WHATSAPP_INTAKE_URL = `https://wa.me/442036339518?text=${encodeURIComponent(WHATSAPP_INTAKE_TEXT)}`;
+
 export default function IntakePage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -214,10 +236,10 @@ export default function IntakePage() {
                       <p style={{ fontSize: ".74rem", fontWeight: 700, letterSpacing: ".18em", textTransform: "uppercase", color: "var(--go2)", marginBottom: 8 }}>Your copy</p>
                       <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.65)", lineHeight: 1.8, margin: "0 0 12px" }}>This is what Dr Taiwo will read before your appointment. You can download it to keep.</p>
                       <pre style={{ margin: "0 0 14px", padding: 16, background: "var(--iv)", color: "var(--sl)", fontFamily: "ui-monospace, Menlo, Consolas, monospace", fontSize: ".76rem", lineHeight: 1.65, whiteSpace: "pre-wrap", wordBreak: "break-word", maxHeight: 360, overflowY: "auto" }}>{record}</pre>
-                      <button type="button" onClick={downloadCopy} className="btn btn-ol" style={{ fontSize: ".85rem" }}>Download my copy</button>
+                      <button type="button" onClick={downloadCopy} className="btn btn-go" style={{ fontSize: ".85rem" }}>Download my copy</button>
                     </div>
                   )}
-                  <Link href="/" className="btn btn-ol" style={{ fontSize: ".88rem" }}>Return to Home</Link>
+                  <Link href="/" className="btn btn-ol-lt" style={{ fontSize: ".88rem" }}>Return to Home</Link>
                 </div>
               ) : (
                 <>
@@ -237,6 +259,19 @@ export default function IntakePage() {
                       </p>
                       <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.8)", lineHeight: 1.8, margin: "10px 0 0" }}>
                         If you are in mental health crisis or thinking about harming yourself, call <strong>111</strong> and select the mental health option, or <strong>Samaritans</strong> free on <strong>116 123</strong>, at any hour. Please do not wait for this form.
+                      </p>
+                    </div>
+
+                    <div style={{ padding: "18px 20px", background: "rgba(200,168,75,.08)", border: "1px solid rgba(200,168,75,.3)" }}>
+                      <p style={{ fontSize: ".72rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--go)", marginBottom: 8 }}>
+                        Easier on WhatsApp?
+                      </p>
+                      <p style={{ fontSize: ".85rem", color: "rgba(246,241,232,.7)", lineHeight: 1.8, marginBottom: 14 }}>
+                        You can answer by WhatsApp message or voice note and skip this form. The button opens a chat with the clinic on 020 3633 9518 with the questions already written out. Type your answers under each one, or hold the microphone and talk through them.
+                      </p>
+                      <a href={WHATSAPP_INTAKE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-go" style={{ fontSize: ".85rem" }}>Answer on WhatsApp</a>
+                      <p style={{ fontSize: ".76rem", color: "rgba(246,241,232,.45)", lineHeight: 1.7, margin: "12px 0 0" }}>
+                        Answers sent this way pass through WhatsApp before they reach the clinic. Dr Taiwo will check your medicines and allergies with you at the start of your appointment.
                       </p>
                     </div>
 

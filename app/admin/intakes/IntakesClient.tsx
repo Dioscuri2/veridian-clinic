@@ -41,6 +41,10 @@ export default function IntakesClient() {
   const [unreadable, setUnreadable] = useState(0);
   const [openId, setOpenId] = useState("");
   const [copiedId, setCopiedId] = useState("");
+  const [addName, setAddName] = useState("");
+  const [addText, setAddText] = useState("");
+  const [addState, setAddState] = useState<"idle" | "saving" | "error">("idle");
+  const [addErr, setAddErr] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -66,6 +70,27 @@ export default function IntakesClient() {
     })();
   }, []);
 
+  async function addIntake(e: React.FormEvent) {
+    e.preventDefault();
+    setAddState("saving");
+    try {
+      const res = await fetch("/api/admin/intakes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: addName, text: addText }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || "Could not save the intake.");
+      setIntakes((list) => [data.intake, ...list]);
+      setAddName("");
+      setAddText("");
+      setAddState("idle");
+    } catch (error) {
+      setAddErr(error instanceof Error ? error.message : "Could not save the intake.");
+      setAddState("error");
+    }
+  }
+
   async function copy(intake: Intake) {
     try {
       await navigator.clipboard.writeText(intake.text);
@@ -89,6 +114,26 @@ export default function IntakesClient() {
           email or alert goes out. Open one to read it, copy it into the scribe, or download it as a
           Markdown file for the patient&apos;s record.
         </p>
+
+        {state === "ready" && (
+          <form onSubmit={addIntake} style={{ marginTop: 24, padding: 18, border: "1px solid rgba(200,168,75,.35)", display: "grid", gap: 10 }}>
+            <p style={{ margin: 0, color: "#f6f1e8", fontSize: ".95rem" }}>Add an intake from WhatsApp</p>
+            <p style={{ margin: 0, color: "rgba(246,241,232,.5)", fontSize: ".78rem", lineHeight: 1.7 }}>
+              Paste the patient&apos;s WhatsApp answers or the transcript of their voice note. It is saved to the same
+              encrypted record and marked as added by the clinic.
+            </p>
+            <input required value={addName} onChange={(e) => setAddName(e.target.value)} placeholder="Patient name" maxLength={120}
+              style={{ padding: "10px 12px", background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.2)", color: "#f6f1e8", fontSize: ".9rem", fontFamily: "Georgia, serif" }} />
+            <textarea required value={addText} onChange={(e) => setAddText(e.target.value)} placeholder="Their answers" rows={6} maxLength={20000}
+              style={{ padding: "10px 12px", background: "rgba(246,241,232,.06)", border: "1px solid rgba(246,241,232,.2)", color: "#f6f1e8", fontSize: ".88rem", lineHeight: 1.6, fontFamily: "Georgia, serif", resize: "vertical" }} />
+            {addState === "error" && <p style={{ margin: 0, color: "#ff9b9b", fontSize: ".82rem" }}>{addErr}</p>}
+            <div>
+              <button type="submit" disabled={addState === "saving"} style={{ ...btn, background: gold, color: "#2c2a26", fontWeight: 600 }}>
+                {addState === "saving" ? "Saving..." : "Save to record"}
+              </button>
+            </div>
+          </form>
+        )}
 
         {state === "loading" && <p style={{ marginTop: 28, color: "rgba(246,241,232,.6)", fontSize: ".9rem" }}>Loading...</p>}
 
