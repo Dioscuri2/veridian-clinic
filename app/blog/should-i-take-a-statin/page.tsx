@@ -155,7 +155,7 @@ export default function ShouldITakeAStatinPage() {
           The supplement space for cholesterol is full of unsupported claims. The following have meaningful clinical evidence:
         </p>
         <p style={paragraph}>
-          <strong style={{ color: "var(--fo)" }}>Plant sterols and stanols.</strong> These are the most robustly evidenced supplement for reducing LDL-C. They work by competing with cholesterol for absorption in the gut. Daily intake of 2 g of plant sterols (typically from fortified foods like Flora ProActiv or Benecol) reduces LDL by around 10 to 15%. This is acknowledged by NHS guidance. The effect is additive to a statin if you are already taking one.<sup><a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/nutrition/supplements/plant-sterols-and-stanols" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)" }}>2</a></sup>
+          <strong style={{ color: "var(--fo)" }}>Plant sterols and stanols.</strong> These are the most robustly evidenced supplement for reducing LDL-C. They work by competing with cholesterol for absorption in the gut. Daily intake of 2 g of plant sterols (typically from fortified foods like Flora ProActiv or Benecol) reduces LDL by around 10 to 15%. This is acknowledged by NHS guidance. The effect is additive to a statin if you are already taking one.<sup><a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/stanols-and-sterols" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)" }}>2</a></sup>
         </p>
         <p style={paragraph}>
           <strong style={{ color: "var(--fo)" }}>Omega-3 fatty acids (high dose).</strong> High-dose prescription omega-3 (icosapentaenoic acid, EPA) has strong evidence for reducing triglycerides and cardiovascular events. The REDUCE-IT trial showed a 25% reduction in major cardiovascular events in high-risk patients taking 4 g daily of EPA.<sup><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1812792" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)" }}>3</a></sup> Standard fish oil supplements at 1 g per day have a much weaker effect. To meaningfully reduce triglycerides, higher doses are needed.
@@ -224,7 +224,7 @@ export default function ShouldITakeAStatinPage() {
             </li>
             <li style={{ marginBottom: 6 }}>
               British Heart Foundation. Plant sterols and stanols: what the evidence shows.{" "}
-              <a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/nutrition/supplements/plant-sterols-and-stanols" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)" }}>bhf.org.uk</a>
+              <a href="https://www.bhf.org.uk/informationsupport/heart-matters-magazine/medical/ask-the-experts/stanols-and-sterols" target="_blank" rel="noopener noreferrer" style={{ color: "var(--go)" }}>bhf.org.uk</a>
             </li>
             <li style={{ marginBottom: 6 }}>
               Bhatt DL et al. Cardiovascular Risk Reduction with Icosapentaenoic Acid for Hypertriglyceridemia (REDUCE-IT). <em>New England Journal of Medicine</em>, 2019.{" "}
